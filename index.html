@@ -3,360 +3,396 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>比較・レビュー・ガイド情報サイト | トップページ</title>
-  <meta name="description" content="比較、レビュー、ガイド情報をポップで近未来感のあるデザインで整理したトップページです。">
+  <title>SEO Pages | 比較・レビュー・ガイド情報サイト</title>
+  <meta name="description" content="比較・レビュー・ガイド情報を整理したTOPページです。ランキング、特集、カテゴリ導線、注目バナーをわかりやすく掲載しています。">
   <link rel="stylesheet" href="style.css">
 
   <style>
-    .neo-hero{
-      position:relative;
-      overflow:hidden;
-      padding:38px 0 62px;
+    body{
       background:
-        radial-gradient(circle at 14% 20%, rgba(0,255,255,.18), transparent 24%),
-        radial-gradient(circle at 86% 18%, rgba(255,0,153,.16), transparent 20%),
-        radial-gradient(circle at 50% 100%, rgba(124,58,237,.22), transparent 32%),
-        linear-gradient(135deg, #070b17 0%, #111827 38%, #1e1b4b 100%);
-      color:#fff;
+        radial-gradient(circle at top left, rgba(0,212,255,.08), transparent 22%),
+        radial-gradient(circle at top right, rgba(236,72,153,.08), transparent 22%),
+        linear-gradient(180deg,#eef2ff 0%, #f8fafc 28%, #f8fafc 100%);
     }
 
-    .neo-hero::before{
+    .top-banner{
+      background: linear-gradient(90deg,#0f172a,#1d4ed8,#7c3aed);
+      color:#fff;
+      font-weight:800;
+      text-align:center;
+      padding:10px 16px;
+      font-size:14px;
+      letter-spacing:.04em;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(14px);
+      background:rgba(255,255,255,.82);
+      border-bottom:1px solid rgba(148,163,184,.18);
+    }
+
+    .site-header-inner{
+      width:min(1180px, calc(100% - 32px));
+      margin:0 auto;
+      min-height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+      padding:12px 0;
+    }
+
+    .site-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:900;
+      color:#0f172a;
+    }
+
+    .site-brand-mark{
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,#06b6d4,#7c3aed,#ec4899);
+      color:#fff;
+      box-shadow:0 12px 24px rgba(59,130,246,.18);
+      font-size:18px;
+    }
+
+    .site-brand-text small{
+      display:block;
+      color:#64748b;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .site-brand-text strong{
+      display:block;
+      font-size:22px;
+      line-height:1.1;
+    }
+
+    .header-actions{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .search-box{
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      background:#fff;
+      border:1px solid #dbe2ea;
+      border-radius:14px;
+      box-shadow:0 8px 20px rgba(15,23,42,.05);
+    }
+
+    .search-box input{
+      width:260px;
+      max-width:52vw;
+      border:none;
+      outline:none;
+      padding:12px 14px;
+      font-size:14px;
+      background:transparent;
+    }
+
+    .search-box button{
+      border:none;
+      background:#111827;
+      color:#fff;
+      width:48px;
+      height:44px;
+      cursor:pointer;
+      font-size:16px;
+    }
+
+    .header-chip{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:44px;
+      padding:0 16px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:14px;
+      color:#fff;
+      box-shadow:0 10px 20px rgba(15,23,42,.08);
+    }
+
+    .chip-blue{ background:linear-gradient(90deg,#0ea5e9,#2563eb); }
+    .chip-yellow{ background:linear-gradient(90deg,#f59e0b,#f97316); }
+    .chip-pink{ background:linear-gradient(90deg,#ec4899,#db2777); }
+
+    .subnav{
+      background:#fff;
+      border-bottom:1px solid rgba(148,163,184,.16);
+    }
+
+    .subnav-inner{
+      width:min(1180px, calc(100% - 32px));
+      margin:0 auto;
+      display:flex;
+      gap:22px;
+      overflow:auto;
+      white-space:nowrap;
+      padding:14px 0;
+      font-weight:800;
+      color:#334155;
+      scrollbar-width:none;
+    }
+
+    .subnav-inner::-webkit-scrollbar{
+      display:none;
+    }
+
+    .subnav-inner a:hover{
+      color:#2563eb;
+    }
+
+    .hero-wrap{
+      width:min(1180px, calc(100% - 32px));
+      margin:22px auto 0;
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:20px;
+      align-items:stretch;
+    }
+
+    .hero-main{
+      position:relative;
+      overflow:hidden;
+      border-radius:30px;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255,234,0,.18), transparent 22%),
+        radial-gradient(circle at 85% 20%, rgba(0,212,255,.18), transparent 24%),
+        linear-gradient(135deg,#0b1020 0%, #1d4ed8 50%, #7c3aed 100%);
+      color:#fff;
+      padding:34px 30px;
+      min-height:360px;
+      box-shadow:0 24px 48px rgba(15,23,42,.14);
+    }
+
+    .hero-main::before{
       content:"";
       position:absolute;
       inset:0;
       background:
-        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-      background-size:32px 32px;
-      mask-image:linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,.35));
+        repeating-linear-gradient(
+          -45deg,
+          rgba(255,255,255,.04) 0 10px,
+          rgba(255,255,255,0) 10px 20px
+        );
       pointer-events:none;
     }
 
-    .neo-hero::after{
-      content:"";
-      position:absolute;
-      inset:auto -10% -80px -10%;
-      height:180px;
-      background:radial-gradient(circle, rgba(0,212,255,.18), transparent 60%);
-      filter:blur(22px);
-      pointer-events:none;
-    }
-
-    .neo-grid{
+    .hero-main > *{
       position:relative;
       z-index:1;
-      display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:26px;
-      align-items:center;
     }
 
-    .neo-badge{
+    .hero-kicker{
       display:inline-flex;
       align-items:center;
       gap:8px;
+      background:linear-gradient(90deg,#ffea00,#ffb800);
+      color:#111827;
       padding:10px 16px;
       border-radius:999px;
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(0,255,255,.26);
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,.04) inset,
-        0 0 24px rgba(0,212,255,.14);
-      color:#b6f7ff;
       font-size:13px;
-      font-weight:800;
-      letter-spacing:.08em;
+      font-weight:900;
       margin-bottom:18px;
+      letter-spacing:.05em;
       text-transform:uppercase;
-      backdrop-filter:blur(10px);
+      box-shadow:0 12px 24px rgba(0,0,0,.18);
     }
 
-    .neo-title{
-      margin:0 0 16px;
-      font-size:clamp(40px, 6vw, 76px);
+    .hero-title{
+      margin:0 0 14px;
+      font-size:clamp(34px, 5.4vw, 70px);
       line-height:1.02;
       letter-spacing:-.04em;
       font-weight:900;
-      text-shadow:
-        0 0 16px rgba(0,212,255,.14),
-        0 0 36px rgba(255,0,153,.08);
+      text-shadow:0 6px 0 rgba(0,0,0,.10), 0 18px 36px rgba(0,0,0,.18);
     }
 
-    .neo-title .glow{
+    .hero-highlight{
       display:inline-block;
-      background:linear-gradient(90deg,#67e8f9 0%, #60a5fa 28%, #a78bfa 62%, #f472b6 100%);
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-      text-shadow:none;
+      background:linear-gradient(90deg,#ffea00,#ff9800);
+      color:#111827;
+      padding:.04em .18em;
+      border-radius:12px;
+      transform:rotate(-1deg);
+      box-shadow:0 10px 20px rgba(0,0,0,.18);
     }
 
-    .neo-lead{
-      max-width:760px;
-      margin:0 0 24px;
+    .hero-desc{
+      max-width:720px;
+      margin:0 0 18px;
       font-size:18px;
-      color:rgba(255,255,255,.86);
+      color:rgba(255,255,255,.9);
     }
 
-    .neo-actions{
+    .hero-btns{
       display:flex;
       gap:12px;
       flex-wrap:wrap;
-      margin-bottom:16px;
+      margin-top:18px;
     }
 
-    .neo-btn{
+    .hero-btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      min-height:54px;
-      padding:0 22px;
+      min-height:52px;
+      padding:0 20px;
       border-radius:16px;
-      font-weight:800;
+      font-weight:900;
       letter-spacing:.02em;
       transition:.2s ease;
-      border:1px solid transparent;
+      box-shadow:0 12px 24px rgba(0,0,0,.14);
     }
 
-    .neo-btn-main{
-      background:linear-gradient(90deg,#00d4ff,#7c3aed 55%, #ff2d95);
+    .hero-btn.primary{
+      background:linear-gradient(90deg,#ffea00,#ff9800);
+      color:#111827;
+    }
+
+    .hero-btn.secondary{
+      background:rgba(255,255,255,.12);
       color:#fff;
-      box-shadow:
-        0 10px 30px rgba(124,58,237,.28),
-        0 0 28px rgba(0,212,255,.14);
-    }
-
-    .neo-btn-main:hover{
-      transform:translateY(-2px) scale(1.01);
-    }
-
-    .neo-btn-sub{
-      background:rgba(255,255,255,.06);
-      border-color:rgba(255,255,255,.12);
-      color:#fff;
+      border:1px solid rgba(255,255,255,.18);
       backdrop-filter:blur(10px);
     }
 
-    .neo-btn-sub:hover{
+    .hero-btn:hover{
       transform:translateY(-2px);
-      border-color:rgba(0,212,255,.28);
     }
 
-    .neo-note{
-      color:rgba(255,255,255,.68);
-      font-size:14px;
-    }
-
-    .glass-panel{
-      position:relative;
-      background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:28px;
-      padding:24px;
-      box-shadow:
-        0 18px 40px rgba(0,0,0,.26),
-        0 0 32px rgba(0,212,255,.08);
-      backdrop-filter:blur(14px);
-      overflow:hidden;
-    }
-
-    .glass-panel::before{
-      content:"";
-      position:absolute;
-      inset:-40% auto auto -10%;
-      width:220px;
-      height:220px;
-      border-radius:999px;
-      background:radial-gradient(circle, rgba(0,212,255,.16), transparent 70%);
-      pointer-events:none;
-    }
-
-    .glass-panel::after{
-      content:"";
-      position:absolute;
-      inset:auto -50px -60px auto;
-      width:180px;
-      height:180px;
-      border-radius:999px;
-      background:radial-gradient(circle, rgba(255,45,149,.16), transparent 70%);
-      pointer-events:none;
-    }
-
-    .panel-kicker{
-      display:inline-flex;
-      padding:8px 12px;
-      border-radius:12px;
-      background:linear-gradient(90deg,#0ea5e9,#7c3aed);
-      color:#fff;
-      font-size:12px;
-      font-weight:900;
-      letter-spacing:.08em;
-      margin-bottom:14px;
-      text-transform:uppercase;
-      box-shadow:0 10px 24px rgba(14,165,233,.22);
-    }
-
-    .glass-panel h3{
-      position:relative;
-      z-index:1;
-      margin:0 0 12px;
-      font-size:28px;
-      line-height:1.12;
-    }
-
-    .glass-panel p{
-      position:relative;
-      z-index:1;
-      margin:0 0 16px;
-      color:rgba(255,255,255,.84);
-    }
-
-    .glass-list{
-      position:relative;
-      z-index:1;
+    .hero-side{
       display:grid;
-      gap:12px;
+      gap:14px;
     }
 
-    .glass-item{
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.10);
+    .glass-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.7));
+      border:1px solid rgba(255,255,255,.45);
+      border-radius:24px;
+      padding:22px;
+      box-shadow:0 18px 36px rgba(15,23,42,.10);
+      backdrop-filter:blur(16px);
+    }
+
+    .glass-card h3{
+      margin:0 0 10px;
+      font-size:28px;
+      line-height:1.15;
+      color:#0f172a;
+    }
+
+    .glass-card p{
+      margin:0;
+      color:#475569;
+    }
+
+    .mini-stat-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:12px;
+      margin-top:16px;
+    }
+
+    .mini-stat{
+      background:#fff;
+      border:1px solid #e2e8f0;
       border-radius:18px;
       padding:14px;
+      text-align:center;
     }
 
-    .glass-item strong{
+    .mini-stat strong{
       display:block;
-      margin-bottom:4px;
-      font-size:17px;
+      font-size:24px;
+      color:#111827;
     }
 
-    .neo-section{
-      padding:42px 0;
+    .section{
+      width:min(1180px, calc(100% - 32px));
+      margin:26px auto 0;
     }
 
-    .neo-head{
-      margin-bottom:22px;
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:18px;
+      flex-wrap:wrap;
     }
 
-    .neo-head h2{
-      margin:0 0 8px;
-      font-size:34px;
-      line-height:1.15;
-    }
-
-    .neo-head p{
+    .section-head h2{
       margin:0;
-      color:var(--sub);
-      font-size:16px;
+      font-size:34px;
+      line-height:1.1;
+      letter-spacing:-.03em;
+      color:#0f172a;
     }
 
-    .neo-head .accent{
+    .section-head p{
+      margin:0;
+      color:#64748b;
+      font-size:15px;
+    }
+
+    .accent-text{
       background:linear-gradient(90deg,#06b6d4,#8b5cf6,#ec4899);
       -webkit-background-clip:text;
       background-clip:text;
       color:transparent;
     }
 
-    .neo-cards{
+    .banner-grid{
       display:grid;
       grid-template-columns:repeat(3, minmax(0,1fr));
       gap:18px;
     }
 
-    .neo-card{
-      position:relative;
-      background:linear-gradient(180deg,#ffffff,#f8fafc);
-      border:1px solid rgba(148,163,184,.22);
-      border-radius:26px;
-      padding:22px;
-      box-shadow:0 16px 34px rgba(15,23,42,.08);
+    .banner-card{
+      background:#fff;
+      border:1px solid rgba(148,163,184,.18);
+      border-radius:24px;
       overflow:hidden;
-    }
-
-    .neo-card::before{
-      content:"";
-      position:absolute;
-      inset:0 auto auto 0;
-      width:100%;
-      height:6px;
-      background:linear-gradient(90deg,#00d4ff,#8b5cf6,#ff2d95);
-    }
-
-    .neo-card::after{
-      content:"";
-      position:absolute;
-      top:-30px;
-      right:-30px;
-      width:120px;
-      height:120px;
-      border-radius:999px;
-      background:radial-gradient(circle, rgba(0,212,255,.18), transparent 68%);
-      pointer-events:none;
-    }
-
-    .neo-label{
-      display:inline-flex;
-      padding:7px 12px;
-      border-radius:999px;
-      background:#0f172a;
-      color:#fff;
-      font-size:12px;
-      font-weight:900;
-      margin-bottom:12px;
-      letter-spacing:.06em;
-    }
-
-    .neo-card h3{
-      margin:0 0 10px;
-      font-size:24px;
-      line-height:1.18;
-    }
-
-    .neo-card p{
-      margin:0;
-      color:var(--sub);
-    }
-
-    .neo-links{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0,1fr));
-      gap:18px;
-    }
-
-    .neo-link{
-      position:relative;
-      display:block;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.94), rgba(248,250,252,.96));
-      border:1px solid rgba(148,163,184,.20);
-      border-radius:28px;
-      padding:24px;
-      box-shadow:0 18px 36px rgba(15,23,42,.08);
-      overflow:hidden;
+      box-shadow:0 18px 34px rgba(15,23,42,.08);
       transition:.2s ease;
     }
 
-    .neo-link:hover{
+    .banner-card:hover{
       transform:translateY(-3px);
-      box-shadow:0 24px 44px rgba(15,23,42,.12);
+      box-shadow:0 24px 40px rgba(15,23,42,.12);
     }
 
-    .neo-link::before{
-      content:"";
-      position:absolute;
-      inset:0 auto auto 0;
-      width:100%;
-      height:100%;
-      background:
-        radial-gradient(circle at 88% 18%, rgba(0,212,255,.14), transparent 22%),
-        radial-gradient(circle at 92% 76%, rgba(236,72,153,.12), transparent 24%);
-      pointer-events:none;
+    .banner-thumb{
+      aspect-ratio: 16 / 9;
+      background:#dbeafe center/cover no-repeat;
+      border-bottom:1px solid #e5e7eb;
     }
 
-    .neo-mini{
-      position:relative;
-      z-index:1;
+    .banner-content{
+      padding:18px;
+    }
+
+    .banner-tag{
       display:inline-flex;
       align-items:center;
       padding:7px 12px;
@@ -369,294 +405,611 @@
       letter-spacing:.05em;
     }
 
-    .neo-link h3{
-      position:relative;
-      z-index:1;
-      margin:0 0 10px;
-      font-size:28px;
+    .banner-content h3{
+      margin:0 0 8px;
+      font-size:24px;
       line-height:1.15;
+      color:#0f172a;
     }
 
-    .neo-link p{
-      position:relative;
-      z-index:1;
-      margin:0;
-      color:var(--sub);
+    .banner-content p{
+      margin:0 0 14px;
+      color:#64748b;
       font-size:15px;
     }
 
-    .neo-promo{
+    .banner-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .small-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:42px;
+      padding:0 14px;
+      border-radius:12px;
+      font-weight:800;
+      font-size:14px;
+    }
+
+    .small-btn.main{
+      background:linear-gradient(90deg,#ffea00,#ff9800);
+      color:#111827;
+    }
+
+    .small-btn.sub{
+      background:#eff6ff;
+      color:#1d4ed8;
+    }
+
+    .rank-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:18px;
+    }
+
+    .rank-card{
+      position:relative;
+      background:linear-gradient(180deg,#fff,#f8fafc);
+      border:1px solid rgba(148,163,184,.18);
+      border-radius:26px;
+      overflow:hidden;
+      box-shadow:0 18px 34px rgba(15,23,42,.08);
+    }
+
+    .rank-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:16px 18px;
+      background:linear-gradient(90deg,#111827,#312e81);
+      color:#fff;
+    }
+
+    .rank-no{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:52px;
+      height:52px;
+      border-radius:16px;
+      font-size:24px;
+      font-weight:900;
+      background:linear-gradient(135deg,#ffea00,#ff9800);
+      color:#111827;
+      box-shadow:0 10px 20px rgba(0,0,0,.16);
+    }
+
+    .rank-body{
+      padding:18px;
+    }
+
+    .rank-body h3{
+      margin:0 0 10px;
+      font-size:24px;
+      line-height:1.15;
+      color:#0f172a;
+    }
+
+    .rank-badges{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin:10px 0 12px;
+    }
+
+    .rank-badges span{
+      display:inline-flex;
+      padding:6px 10px;
+      border-radius:999px;
+      background:#eef2ff;
+      color:#3730a3;
+      font-size:12px;
+      font-weight:800;
+    }
+
+    .rank-body p{
+      margin:0 0 14px;
+      color:#64748b;
+      font-size:15px;
+    }
+
+    .category-grid{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:16px;
+    }
+
+    .category-card{
+      position:relative;
+      display:block;
+      background:linear-gradient(135deg,#ffffff,#f8fafc);
+      border:1px solid rgba(148,163,184,.18);
+      border-radius:24px;
+      padding:22px;
+      box-shadow:0 16px 30px rgba(15,23,42,.06);
+      overflow:hidden;
+      transition:.2s ease;
+    }
+
+    .category-card:hover{
+      transform:translateY(-3px);
+    }
+
+    .category-card::before{
+      content:"";
+      position:absolute;
+      inset:0 auto auto 0;
+      width:100%;
+      height:6px;
+      background:linear-gradient(90deg,#06b6d4,#8b5cf6,#ec4899);
+    }
+
+    .category-icon{
+      display:inline-grid;
+      place-items:center;
+      width:54px;
+      height:54px;
+      border-radius:18px;
+      background:linear-gradient(135deg,#111827,#312e81);
+      color:#fff;
+      font-size:24px;
+      margin-bottom:14px;
+      box-shadow:0 12px 24px rgba(15,23,42,.12);
+    }
+
+    .category-card h3{
+      margin:0 0 8px;
+      font-size:24px;
+      color:#0f172a;
+    }
+
+    .category-card p{
+      margin:0;
+      color:#64748b;
+      font-size:15px;
+    }
+
+    .feature-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .feature-card{
       background:
-        radial-gradient(circle at 12% 30%, rgba(0,212,255,.18), transparent 22%),
-        radial-gradient(circle at 88% 70%, rgba(236,72,153,.18), transparent 20%),
+        radial-gradient(circle at top right, rgba(0,212,255,.12), transparent 20%),
+        linear-gradient(180deg,#ffffff,#f8fafc);
+      border:1px solid rgba(148,163,184,.18);
+      border-radius:26px;
+      padding:24px;
+      box-shadow:0 18px 34px rgba(15,23,42,.06);
+    }
+
+    .feature-card h3{
+      margin:0 0 10px;
+      font-size:28px;
+      color:#0f172a;
+    }
+
+    .feature-card p{
+      margin:0 0 14px;
+      color:#64748b;
+    }
+
+    .feature-list{
+      margin:0;
+      padding-left:20px;
+      color:#475569;
+    }
+
+    .feature-list li{
+      margin-bottom:10px;
+    }
+
+    .cta-box{
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 12% 20%, rgba(0,212,255,.16), transparent 18%),
+        radial-gradient(circle at 90% 80%, rgba(236,72,153,.18), transparent 20%),
         linear-gradient(135deg,#0b1020 0%, #1e1b4b 55%, #3b0764 100%);
       color:#fff;
       border-radius:30px;
       padding:30px;
-      box-shadow:0 18px 40px rgba(15,23,42,.18);
-      overflow:hidden;
-      position:relative;
+      box-shadow:0 24px 46px rgba(15,23,42,.16);
     }
 
-    .neo-promo::before{
+    .cta-box::before{
       content:"";
       position:absolute;
       inset:0;
       background:
         linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-      background-size:26px 26px;
-      opacity:.45;
+      background-size:28px 28px;
+      opacity:.4;
       pointer-events:none;
     }
 
-    .neo-promo > *{
+    .cta-box > *{
       position:relative;
       z-index:1;
     }
 
-    .neo-promo h2{
+    .cta-box h2{
       margin:0 0 10px;
-      font-size:36px;
-      line-height:1.12;
+      font-size:38px;
+      line-height:1.1;
     }
 
-    .neo-promo p{
+    .cta-box p{
       margin:0 0 18px;
-      color:rgba(255,255,255,.84);
+      color:rgba(255,255,255,.86);
+      font-size:16px;
     }
 
-    .neo-promo-actions{
+    .footer{
+      width:min(1180px, calc(100% - 32px));
+      margin:34px auto 50px;
+      color:#64748b;
+      font-size:14px;
+    }
+
+    .footer-inner{
       display:flex;
+      justify-content:space-between;
       gap:12px;
       flex-wrap:wrap;
+      border-top:1px solid #e5e7eb;
+      padding-top:18px;
     }
 
-    .neo-faq{
-      display:grid;
-      gap:14px;
+    @media (max-width: 1100px){
+      .hero-wrap,
+      .banner-grid,
+      .rank-grid,
+      .category-grid,
+      .feature-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .hero-wrap{
+        grid-template-columns:1fr;
+      }
     }
 
-    .neo-faq-item{
-      background:linear-gradient(180deg,#ffffff,#f8fafc);
-      border:1px solid rgba(148,163,184,.20);
-      border-radius:22px;
-      padding:20px;
-      box-shadow:0 14px 28px rgba(15,23,42,.06);
-    }
-
-    .neo-faq-item strong{
-      display:block;
-      margin-bottom:6px;
-      font-size:18px;
-    }
-
-    @media (max-width: 980px){
-      .neo-grid,
-      .neo-cards,
-      .neo-links{
+    @media (max-width: 760px){
+      .banner-grid,
+      .rank-grid,
+      .category-grid,
+      .feature-grid,
+      .mini-stat-grid{
         grid-template-columns:1fr;
       }
 
-      .neo-hero{
-        padding-top:28px;
+      .search-box input{
+        width:180px;
+      }
+
+      .hero-main{
+        padding:24px 20px;
+      }
+
+      .hero-title{
+        font-size:40px;
       }
     }
   </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="wrap topbar-inner">
-      <div class="brand">
-        <div class="brand-mark">S</div>
-        <div>SEO Pages</div>
-      </div>
+  <div class="top-banner">
+    注目情報・ランキング・特集ページを見やすく整理したTOPページ
+  </div>
 
-      <nav class="nav">
-        <a href="#overview">全体像</a>
-        <a href="#categories">カテゴリ</a>
-        <a href="#pickup">注目ページ</a>
-        <a href="#faq">FAQ</a>
-      </nav>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="site-brand" href="index.html">
+        <div class="site-brand-mark">S</div>
+        <div class="site-brand-text">
+          <small>Future Pop Media</small>
+          <strong>SEO Pages</strong>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <div class="search-box">
+          <input type="text" placeholder="キーワードを入力">
+          <button type="button">🔍</button>
+        </div>
+        <a class="header-chip chip-blue" href="#pickup">注目</a>
+        <a class="header-chip chip-yellow" href="#ranking">ランキング</a>
+        <a class="header-chip chip-pink" href="#features">特集</a>
+      </div>
     </div>
   </header>
 
-  <main>
-    <section class="neo-hero">
-      <div class="wrap neo-grid">
-        <div>
-          <div class="neo-badge">Future Pop / Info Hub</div>
-          <h1 class="neo-title">
-            比較・レビュー・ガイドを<br>
-            <span class="glow">近未来っぽく整理する</span>
-          </h1>
+  <nav class="subnav">
+    <div class="subnav-inner">
+      <a href="index.html">TOP</a>
+      <a href="#ranking">おすすめランキング</a>
+      <a href="bonus.html">ボーナス比較</a>
+      <a href="guide.html">遊び方ガイド</a>
+      <a href="payments.html">入出金・決済</a>
+      <a href="review.html">レビュー</a>
+      <a href="#features">特集</a>
+      <a href="#news">最新情報</a>
+    </div>
+  </nav>
 
-          <p class="neo-lead">
-            このサイトは、比較記事、レビュー記事、ガイド記事を
-            <strong>ポップで視認性が高く、近未来感のあるデザイン</strong>で整理していくための情報ハブです。
-            まずは入口を分かりやすくし、気になるテーマへすぐ進める構成にしています。
-          </p>
-
-          <div class="neo-actions">
-            <a class="neo-btn neo-btn-main" href="#categories">カテゴリを見る</a>
-            <a class="neo-btn neo-btn-sub" href="#pickup">注目ページを見る</a>
-          </div>
-
-          <div class="neo-note">
-            今後はこの世界観を基準にして、カテゴリページや記事ページも同じトーンへ揃えていきます。
-          </div>
-        </div>
-
-        <aside class="glass-panel">
-          <div class="panel-kicker">Signal Board</div>
-          <h3>このサイトで見つけやすくするもの</h3>
-          <p>
-            情報をただ並べるのではなく、<strong>比較しやすい・選びやすい・読みに行きやすい</strong>
-            を重視して、導線ごと整理しています。
-          </p>
-
-          <div class="glass-list">
-            <div class="glass-item">
-              <strong>比較</strong>
-              条件や違いをすばやく見比べやすく整理
-            </div>
-            <div class="glass-item">
-              <strong>レビュー</strong>
-              個別の特徴や向いている人を把握しやすく設計
-            </div>
-            <div class="glass-item">
-              <strong>ガイド</strong>
-              初心者でも流れが見えやすい入口構成
-            </div>
-          </div>
-        </aside>
+  <section class="hero-wrap">
+    <div class="hero-main">
+      <div class="hero-kicker">PICK UP / INFORMATION HUB</div>
+      <h1 class="hero-title">
+        比較・レビュー・<br>
+        ガイドを<br>
+        <span class="hero-highlight">一気に見やすく整理</span>
+      </h1>
+      <p class="hero-desc">
+        このサイトは、比較記事、レビュー記事、手順ガイドを
+        ポップで分かりやすく整理していくための情報ハブです。
+        まずはカテゴリを入口にして、気になる情報へ最短で進める構成にしています。
+      </p>
+      <div class="hero-btns">
+        <a class="hero-btn primary" href="#categories">カテゴリをチェック</a>
+        <a class="hero-btn secondary" href="#pickup">注目ページを見る</a>
       </div>
-    </section>
+    </div>
 
-    <section id="overview" class="neo-section">
-      <div class="wrap">
-        <div class="neo-head">
-          <h2><span class="accent">全体像</span>を先に掴む</h2>
-          <p>
-            まずは「どの情報がどこにあるのか」がすぐ分かる構成にして、そこから必要なページへ進みやすくします。
-          </p>
-        </div>
-
-        <div class="neo-cards">
-          <article class="neo-card">
-            <div class="neo-label">STEP 1</div>
-            <h3>入口をテーマごとに分ける</h3>
-            <p>
-              比較したい人、レビューを読みたい人、手順を知りたい人が迷わないよう、
-              最初の時点でテーマを分けています。
-            </p>
-          </article>
-
-          <article class="neo-card">
-            <div class="neo-label">STEP 2</div>
-            <h3>記事タイプを整理する</h3>
-            <p>
-              比較記事、レビュー記事、ガイド記事を役割分担することで、
-              欲しい情報へ進みやすくしています。
-            </p>
-          </article>
-
-          <article class="neo-card">
-            <div class="neo-label">STEP 3</div>
-            <h3>導線を強く見せる</h3>
-            <p>
-              関連ページへ自然に進めるように、ボタンや注目エリアを強めに見せる構成にしています。
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="categories" class="neo-section">
-      <div class="wrap">
-        <div class="neo-head">
-          <h2>カテゴリ一覧</h2>
-          <p>
-            まずはここから。情報の入口を4つに整理して、気になるテーマへすぐ進めるようにしています。
-          </p>
-        </div>
-
-        <div class="neo-links">
-          <a class="neo-link" href="bonus.html">
-            <div class="neo-mini">比較系</div>
-            <h3>ボーナス比較</h3>
-            <p>条件や内容の違いを見比べやすく整理するカテゴリです。</p>
-          </a>
-
-          <a class="neo-link" href="review.html">
-            <div class="neo-mini">レビュー系</div>
-            <h3>サービスレビュー</h3>
-            <p>特徴、使いやすさ、向いている人などを個別に整理するカテゴリです。</p>
-          </a>
-
-          <a class="neo-link" href="payments.html">
-            <div class="neo-mini">手順系</div>
-            <h3>入出金・決済</h3>
-            <p>決済方法、使い方、注意点などを分かりやすく整理するカテゴリです。</p>
-          </a>
-
-          <a class="neo-link" href="guide.html">
-            <div class="neo-mini">初心者向け</div>
-            <h3>初心者ガイド</h3>
-            <p>最初に何を見ればいいか、どう進めると分かりやすいかを整理する入口です。</p>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section id="pickup" class="neo-section">
-      <div class="wrap">
-        <div class="neo-promo">
-          <h2>注目ページを先にチェック</h2>
-          <p>
-            カテゴリだけでなく、実際の記事ページもここから増やしていきます。
-            今の流れなら、まずは<strong>比較の見方ガイド</strong>のような基礎記事から読むのが自然です。
-          </p>
-
-          <div class="neo-promo-actions">
-            <a class="neo-btn neo-btn-main" href="bonus-guide.html">比較の見方ガイドへ</a>
-            <a class="neo-btn neo-btn-sub" href="bonus.html">カテゴリページを見る</a>
+    <div class="hero-side">
+      <div class="glass-card">
+        <h3>このサイトで分かること</h3>
+        <p>
+          情報をただ並べるだけではなく、
+          <strong>比較しやすい・選びやすい・読みやすい</strong>
+          を意識して整理しています。
+        </p>
+        <div class="mini-stat-grid">
+          <div class="mini-stat">
+            <strong>4</strong>
+            <span>主要カテゴリ</span>
+          </div>
+          <div class="mini-stat">
+            <strong>3</strong>
+            <span>主力導線</span>
+          </div>
+          <div class="mini-stat">
+            <strong>TOP</strong>
+            <span>情報入口</span>
           </div>
         </div>
       </div>
-    </section>
 
-    <section id="faq" class="neo-section">
-      <div class="wrap">
-        <div class="neo-head">
-          <h2>よくある質問</h2>
-          <p>サイトの方向性や次の進め方を、先に整理しています。</p>
-        </div>
-
-        <div class="neo-faq">
-          <div class="neo-faq-item">
-            <strong>Q. このページは完成版ですか？</strong>
-            <div>まだトップページの土台です。今後、カテゴリページや記事ページをこのトーンで揃えていく前提です。</div>
-          </div>
-
-          <div class="neo-faq-item">
-            <strong>Q. 次は何を整えるべきですか？</strong>
-            <div>このトップページに合わせて、カテゴリページと記事ページも同じ近未来ポップ系のデザインへ寄せるのがおすすめです。</div>
-          </div>
-
-          <div class="neo-faq-item">
-            <strong>Q. 今のデザインの狙いは？</strong>
-            <div>普通のブログっぽさではなく、ネオン感やガラス感を使って、近未来の情報ハブっぽい印象に寄せることです。</div>
-          </div>
+      <div class="glass-card">
+        <h3>主な導線</h3>
+        <p>まずはここから見れば全体が把握しやすいです。</p>
+        <div class="banner-actions" style="margin-top:14px;">
+          <a class="small-btn main" href="#ranking">ランキングへ</a>
+          <a class="small-btn sub" href="bonus-guide.html">比較ガイドへ</a>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+
+  <section id="pickup" class="section">
+    <div class="section-head">
+      <div>
+        <h2><span class="accent-text">注目バナー</span>エリア</h2>
+        <p>ここは各社バナーを主役に見せるエリアです。画像差し替えでそのまま使えます。</p>
+      </div>
+    </div>
+
+    <div class="banner-grid">
+      <article class="banner-card">
+        <div class="banner-thumb" style="background-image:url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop');"></div>
+        <div class="banner-content">
+          <div class="banner-tag">注目オファー</div>
+          <h3>最新特典を今すぐチェック</h3>
+          <p>大きな訴求バナーを置く想定の枠です。あとから各社バナーに差し替えできます。</p>
+          <div class="banner-actions">
+            <a class="small-btn main" href="#">詳細を見る</a>
+            <a class="small-btn sub" href="#">比較へ</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="banner-card">
+        <div class="banner-thumb" style="background-image:url('https://images.unsplash.com/photo-1518546305927-5a555bb7020d?q=80&w=1200&auto=format&fit=crop');"></div>
+        <div class="banner-content">
+          <div class="banner-tag">特集</div>
+          <h3>おすすめサービス特集</h3>
+          <p>ランキングや特集導線とつなぎやすい、中央の目立つバナー枠です。</p>
+          <div class="banner-actions">
+            <a class="small-btn main" href="#">特集を見る</a>
+            <a class="small-btn sub" href="#">レビューへ</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="banner-card">
+        <div class="banner-thumb" style="background-image:url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop');"></div>
+        <div class="banner-content">
+          <div class="banner-tag">新着</div>
+          <h3>新着キャンペーン情報</h3>
+          <p>ニュースや限定情報向けの枠です。TOP内で強く見せたい時に使えます。</p>
+          <div class="banner-actions">
+            <a class="small-btn main" href="#">今すぐ見る</a>
+            <a class="small-btn sub" href="#">新着へ</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="ranking" class="section">
+    <div class="section-head">
+      <div>
+        <h2>おすすめランキング</h2>
+        <p>バナーだけでなく、比較しやすい情報整理もセットで見せるエリアです。</p>
+      </div>
+    </div>
+
+    <div class="rank-grid">
+      <article class="rank-card">
+        <div class="rank-top">
+          <div class="rank-no">1</div>
+          <div>今週の注目</div>
+        </div>
+        <div class="rank-body">
+          <h3>サービスA</h3>
+          <div class="rank-badges">
+            <span>人気</span>
+            <span>初心者向け</span>
+            <span>特典あり</span>
+          </div>
+          <p>最初に見ておきたい定番枠。強みを3つ程度に絞って見せると整理しやすいです。</p>
+          <div class="banner-actions">
+            <a class="small-btn main" href="#">詳細を見る</a>
+            <a class="small-btn sub" href="#">レビューへ</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="rank-card">
+        <div class="rank-top">
+          <div class="rank-no">2</div>
+          <div>比較候補</div>
+        </div>
+        <div class="rank-body">
+          <h3>サービスB</h3>
+          <div class="rank-badges">
+            <span>比較向け</span>
+            <span>条件確認</span>
+            <span>人気</span>
+          </div>
+          <p>比較ページとの相性が良い枠。ランキングから比較表への導線を強くできます。</p>
+          <div class="banner-actions">
+            <a class="small-btn main" href="#">比較を見る</a>
+            <a class="small-btn sub" href="#">詳細へ</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="rank-card">
+        <div class="rank-top">
+          <div class="rank-no">3</div>
+          <div>注目枠</div>
+        </div>
+        <div class="rank-body">
+          <h3>サービスC</h3>
+          <div class="rank-badges">
+            <span>新着</span>
+            <span>特集向け</span>
+            <span>導線強化</span>
+          </div>
+          <p>特集ページや注目バナーとつなげやすい枠です。更新しながら回しやすい構成です。</p>
+          <div class="banner-actions">
+            <a class="small-btn main" href="#">今すぐ見る</a>
+            <a class="small-btn sub" href="#">関連記事へ</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="categories" class="section">
+    <div class="section-head">
+      <div>
+        <h2>カテゴリ導線</h2>
+        <p>ここからテーマごとに深掘りできます。バナーとは別に整理感を出すためのエリアです。</p>
+      </div>
+    </div>
+
+    <div class="category-grid">
+      <a class="category-card" href="bonus.html">
+        <div class="category-icon">🎁</div>
+        <h3>ボーナス比較</h3>
+        <p>比較系情報の入口。条件や見方ガイドへの導線と相性が良いカテゴリです。</p>
+      </a>
+
+      <a class="category-card" href="review.html">
+        <div class="category-icon">⭐</div>
+        <h3>サービスレビュー</h3>
+        <p>個別の特徴や向いている人を整理して、深掘りしたい時の入口にします。</p>
+      </a>
+
+      <a class="category-card" href="payments.html">
+        <div class="category-icon">💳</div>
+        <h3>入出金・決済</h3>
+        <p>手順系の情報や使い方を分かりやすくまとめるためのカテゴリです。</p>
+      </a>
+
+      <a class="category-card" href="guide.html">
+        <div class="category-icon">📘</div>
+        <h3>初心者ガイド</h3>
+        <p>全体像や進め方を整理し、最初に読む入口として使えるカテゴリです。</p>
+      </a>
+    </div>
+  </section>
+
+  <section id="features" class="section">
+    <div class="section-head">
+      <div>
+        <h2>特集・記事導線</h2>
+        <p>SEO記事や特集ページを増やしていく時の受け皿として使います。</p>
+      </div>
+    </div>
+
+    <div class="feature-grid">
+      <article class="feature-card">
+        <h3>比較の見方ガイド</h3>
+        <p>比較ページに進む前に読ませたい基礎記事を強く見せる枠です。</p>
+        <ul class="feature-list">
+          <li>比較軸の整理</li>
+          <li>初心者向けの見方</li>
+          <li>カテゴリページへの内部リンク強化</li>
+        </ul>
+        <div class="banner-actions" style="margin-top:14px;">
+          <a class="small-btn main" href="bonus-guide.html">記事を見る</a>
+        </div>
+      </article>
+
+      <article class="feature-card">
+        <h3>注目特集</h3>
+        <p>イベント系、限定情報、まとめ記事などを強く見せるための特集枠です。</p>
+        <ul class="feature-list">
+          <li>期間限定企画</li>
+          <li>新着情報まとめ</li>
+          <li>ランキング連動企画</li>
+        </ul>
+        <div class="banner-actions" style="margin-top:14px;">
+          <a class="small-btn main" href="#">特集を見る</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="news" class="section">
+    <div class="cta-box">
+      <h2>今後は各社バナーを差し替えて運用</h2>
+      <p>
+        このTOPページは、バナーが主役になる前提で作っています。
+        なので次は、各社バナー画像の差し替え、ランキング枠の整理、カテゴリ導線の強化をしていけばOKです。
+      </p>
+      <div class="banner-actions">
+        <a class="small-btn main" href="#pickup">注目バナーを見る</a>
+        <a class="small-btn sub" href="#ranking">ランキングへ</a>
+      </div>
+    </div>
+  </section>
 
   <footer class="footer">
-    <div class="wrap footer-inner">
+    <div class="footer-inner">
       <div>© SEO Pages</div>
-      <div>ポップ × 近未来 × ネオンUI トップページ案</div>
+      <div>バナー主役のTOPページデザイン案</div>
     </div>
   </footer>
 </body>
