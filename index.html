@@ -4,366 +4,462 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>比較・レビュー・ガイド情報サイト | トップページ</title>
-  <meta name="description" content="比較、レビュー、ガイド情報をポップで見やすく整理したトップページです。">
+  <meta name="description" content="比較、レビュー、ガイド情報をポップで近未来感のあるデザインで整理したトップページです。">
   <link rel="stylesheet" href="style.css">
 
   <style>
-    .impact-hero{
-      padding: 34px 0 56px;
+    .neo-hero{
+      position:relative;
+      overflow:hidden;
+      padding:38px 0 62px;
       background:
-        radial-gradient(circle at 10% 20%, rgba(255, 230, 0, .28), transparent 22%),
-        radial-gradient(circle at 85% 18%, rgba(255, 0, 92, .18), transparent 20%),
-        linear-gradient(135deg, #111827 0%, #1e3a8a 45%, #7c3aed 100%);
-      color: #fff;
-      overflow: hidden;
-      position: relative;
+        radial-gradient(circle at 14% 20%, rgba(0,255,255,.18), transparent 24%),
+        radial-gradient(circle at 86% 18%, rgba(255,0,153,.16), transparent 20%),
+        radial-gradient(circle at 50% 100%, rgba(124,58,237,.22), transparent 32%),
+        linear-gradient(135deg, #070b17 0%, #111827 38%, #1e1b4b 100%);
+      color:#fff;
     }
 
-    .impact-hero::before{
+    .neo-hero::before{
       content:"";
       position:absolute;
       inset:0;
       background:
-        repeating-linear-gradient(
-          -45deg,
-          rgba(255,255,255,.04) 0 10px,
-          rgba(255,255,255,0) 10px 20px
-        );
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size:32px 32px;
+      mask-image:linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,.35));
       pointer-events:none;
     }
 
-    .impact-grid{
+    .neo-hero::after{
+      content:"";
+      position:absolute;
+      inset:auto -10% -80px -10%;
+      height:180px;
+      background:radial-gradient(circle, rgba(0,212,255,.18), transparent 60%);
+      filter:blur(22px);
+      pointer-events:none;
+    }
+
+    .neo-grid{
       position:relative;
       z-index:1;
       display:grid;
-      grid-template-columns:1.08fr .92fr;
-      gap:24px;
+      grid-template-columns:1.05fr .95fr;
+      gap:26px;
       align-items:center;
     }
 
-    .impact-badge{
+    .neo-badge{
       display:inline-flex;
       align-items:center;
       gap:8px;
       padding:10px 16px;
       border-radius:999px;
-      background:linear-gradient(90deg,#ffea00,#ffb800);
-      color:#111827;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(0,255,255,.26);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.04) inset,
+        0 0 24px rgba(0,212,255,.14);
+      color:#b6f7ff;
       font-size:13px;
-      font-weight:900;
-      letter-spacing:.04em;
-      box-shadow:0 10px 24px rgba(0,0,0,.2);
-      margin-bottom:16px;
+      font-weight:800;
+      letter-spacing:.08em;
+      margin-bottom:18px;
       text-transform:uppercase;
+      backdrop-filter:blur(10px);
     }
 
-    .impact-title{
-      margin:0 0 14px;
-      font-size:clamp(38px, 6vw, 72px);
+    .neo-title{
+      margin:0 0 16px;
+      font-size:clamp(40px, 6vw, 76px);
       line-height:1.02;
-      letter-spacing:-.03em;
+      letter-spacing:-.04em;
       font-weight:900;
       text-shadow:
-        0 4px 0 rgba(0,0,0,.18),
-        0 12px 28px rgba(0,0,0,.24);
+        0 0 16px rgba(0,212,255,.14),
+        0 0 36px rgba(255,0,153,.08);
     }
 
-    .impact-highlight{
+    .neo-title .glow{
       display:inline-block;
-      padding:.02em .18em;
-      border-radius:12px;
-      background:linear-gradient(90deg,#ffea00,#ff7a00);
-      color:#111827;
-      transform:rotate(-1deg);
-      box-shadow:0 8px 18px rgba(0,0,0,.18);
+      background:linear-gradient(90deg,#67e8f9 0%, #60a5fa 28%, #a78bfa 62%, #f472b6 100%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      text-shadow:none;
     }
 
-    .impact-lead{
-      max-width:720px;
-      margin:0 0 22px;
+    .neo-lead{
+      max-width:760px;
+      margin:0 0 24px;
       font-size:18px;
-      color:rgba(255,255,255,.92);
+      color:rgba(255,255,255,.86);
     }
 
-    .impact-cta{
+    .neo-actions{
       display:flex;
       gap:12px;
       flex-wrap:wrap;
       margin-bottom:16px;
     }
 
-    .impact-btn{
+    .neo-btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
       min-height:54px;
       padding:0 22px;
       border-radius:16px;
-      font-weight:900;
+      font-weight:800;
       letter-spacing:.02em;
       transition:.2s ease;
-      border:2px solid transparent;
+      border:1px solid transparent;
     }
 
-    .impact-btn-main{
-      background:linear-gradient(90deg,#ffea00,#ff9900);
-      color:#111827;
-      box-shadow:0 12px 28px rgba(0,0,0,.24);
+    .neo-btn-main{
+      background:linear-gradient(90deg,#00d4ff,#7c3aed 55%, #ff2d95);
+      color:#fff;
+      box-shadow:
+        0 10px 30px rgba(124,58,237,.28),
+        0 0 28px rgba(0,212,255,.14);
     }
 
-    .impact-btn-main:hover{
+    .neo-btn-main:hover{
       transform:translateY(-2px) scale(1.01);
     }
 
-    .impact-btn-sub{
-      background:rgba(255,255,255,.12);
-      border-color:rgba(255,255,255,.22);
+    .neo-btn-sub{
+      background:rgba(255,255,255,.06);
+      border-color:rgba(255,255,255,.12);
       color:#fff;
-      backdrop-filter:blur(8px);
-    }
-
-    .impact-btn-sub:hover{
-      transform:translateY(-2px);
-    }
-
-    .impact-subnote{
-      color:rgba(255,255,255,.78);
-      font-size:14px;
-    }
-
-    .impact-panel{
-      background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
-      border:1px solid rgba(255,255,255,.18);
-      border-radius:28px;
-      padding:22px;
-      box-shadow:0 18px 40px rgba(0,0,0,.2);
       backdrop-filter:blur(10px);
     }
 
-    .burst{
-      display:inline-block;
-      padding:10px 14px;
-      background:linear-gradient(135deg,#ff1744,#ff6d00);
+    .neo-btn-sub:hover{
+      transform:translateY(-2px);
+      border-color:rgba(0,212,255,.28);
+    }
+
+    .neo-note{
+      color:rgba(255,255,255,.68);
+      font-size:14px;
+    }
+
+    .glass-panel{
+      position:relative;
+      background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:28px;
+      padding:24px;
+      box-shadow:
+        0 18px 40px rgba(0,0,0,.26),
+        0 0 32px rgba(0,212,255,.08);
+      backdrop-filter:blur(14px);
+      overflow:hidden;
+    }
+
+    .glass-panel::before{
+      content:"";
+      position:absolute;
+      inset:-40% auto auto -10%;
+      width:220px;
+      height:220px;
+      border-radius:999px;
+      background:radial-gradient(circle, rgba(0,212,255,.16), transparent 70%);
+      pointer-events:none;
+    }
+
+    .glass-panel::after{
+      content:"";
+      position:absolute;
+      inset:auto -50px -60px auto;
+      width:180px;
+      height:180px;
+      border-radius:999px;
+      background:radial-gradient(circle, rgba(255,45,149,.16), transparent 70%);
+      pointer-events:none;
+    }
+
+    .panel-kicker{
+      display:inline-flex;
+      padding:8px 12px;
+      border-radius:12px;
+      background:linear-gradient(90deg,#0ea5e9,#7c3aed);
       color:#fff;
-      border-radius:18px 18px 18px 4px;
-      font-size:13px;
+      font-size:12px;
       font-weight:900;
+      letter-spacing:.08em;
       margin-bottom:14px;
-      box-shadow:0 12px 24px rgba(0,0,0,.18);
+      text-transform:uppercase;
+      box-shadow:0 10px 24px rgba(14,165,233,.22);
     }
 
-    .impact-panel h3{
+    .glass-panel h3{
+      position:relative;
+      z-index:1;
       margin:0 0 12px;
-      font-size:26px;
-      line-height:1.15;
+      font-size:28px;
+      line-height:1.12;
     }
 
-    .impact-panel p{
+    .glass-panel p{
+      position:relative;
+      z-index:1;
       margin:0 0 16px;
-      color:rgba(255,255,255,.9);
+      color:rgba(255,255,255,.84);
     }
 
-    .impact-mini-list{
+    .glass-list{
+      position:relative;
+      z-index:1;
       display:grid;
       gap:12px;
     }
 
-    .impact-mini-item{
-      background:rgba(255,255,255,.10);
-      border:1px solid rgba(255,255,255,.15);
+    .glass-item{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
       border-radius:18px;
       padding:14px;
     }
 
-    .impact-mini-item strong{
+    .glass-item strong{
       display:block;
       margin-bottom:4px;
       font-size:17px;
     }
 
-    .shock-section{
-      padding:38px 0;
+    .neo-section{
+      padding:42px 0;
     }
 
-    .shock-head{
-      margin-bottom:20px;
+    .neo-head{
+      margin-bottom:22px;
     }
 
-    .shock-head h2{
+    .neo-head h2{
       margin:0 0 8px;
       font-size:34px;
       line-height:1.15;
     }
 
-    .shock-head p{
+    .neo-head p{
       margin:0;
       color:var(--sub);
       font-size:16px;
     }
 
-    .impact-cards{
+    .neo-head .accent{
+      background:linear-gradient(90deg,#06b6d4,#8b5cf6,#ec4899);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .neo-cards{
       display:grid;
       grid-template-columns:repeat(3, minmax(0,1fr));
       gap:18px;
     }
 
-    .impact-card{
+    .neo-card{
       position:relative;
-      background:#fff;
-      border:1px solid var(--line);
+      background:linear-gradient(180deg,#ffffff,#f8fafc);
+      border:1px solid rgba(148,163,184,.22);
       border-radius:26px;
       padding:22px;
       box-shadow:0 16px 34px rgba(15,23,42,.08);
       overflow:hidden;
     }
 
-    .impact-card::before{
+    .neo-card::before{
       content:"";
       position:absolute;
       inset:0 auto auto 0;
       width:100%;
-      height:8px;
-      background:linear-gradient(90deg,#ff1744,#ff9800,#ffea00,#22c55e,#3b82f6);
+      height:6px;
+      background:linear-gradient(90deg,#00d4ff,#8b5cf6,#ff2d95);
     }
 
-    .impact-card .label{
+    .neo-card::after{
+      content:"";
+      position:absolute;
+      top:-30px;
+      right:-30px;
+      width:120px;
+      height:120px;
+      border-radius:999px;
+      background:radial-gradient(circle, rgba(0,212,255,.18), transparent 68%);
+      pointer-events:none;
+    }
+
+    .neo-label{
       display:inline-flex;
       padding:7px 12px;
       border-radius:999px;
-      background:#111827;
+      background:#0f172a;
       color:#fff;
       font-size:12px;
       font-weight:900;
       margin-bottom:12px;
+      letter-spacing:.06em;
     }
 
-    .impact-card h3{
+    .neo-card h3{
       margin:0 0 10px;
       font-size:24px;
-      line-height:1.2;
+      line-height:1.18;
     }
 
-    .impact-card p{
+    .neo-card p{
       margin:0;
       color:var(--sub);
     }
 
-    .big-links{
+    .neo-links{
       display:grid;
       grid-template-columns:repeat(2, minmax(0,1fr));
       gap:18px;
     }
 
-    .big-link{
+    .neo-link{
       position:relative;
       display:block;
-      background:linear-gradient(135deg,#ffffff,#f8fafc);
-      border:1px solid var(--line);
-      border-radius:26px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.94), rgba(248,250,252,.96));
+      border:1px solid rgba(148,163,184,.20);
+      border-radius:28px;
       padding:24px;
-      box-shadow:0 16px 34px rgba(15,23,42,.08);
+      box-shadow:0 18px 36px rgba(15,23,42,.08);
       overflow:hidden;
       transition:.2s ease;
     }
 
-    .big-link:hover{
+    .neo-link:hover{
       transform:translateY(-3px);
+      box-shadow:0 24px 44px rgba(15,23,42,.12);
     }
 
-    .big-link::after{
+    .neo-link::before{
       content:"";
       position:absolute;
-      top:-24px;
-      right:-24px;
-      width:120px;
-      height:120px;
-      border-radius:999px;
-      background:radial-gradient(circle, rgba(255,190,11,.28), transparent 70%);
+      inset:0 auto auto 0;
+      width:100%;
+      height:100%;
+      background:
+        radial-gradient(circle at 88% 18%, rgba(0,212,255,.14), transparent 22%),
+        radial-gradient(circle at 92% 76%, rgba(236,72,153,.12), transparent 24%);
+      pointer-events:none;
     }
 
-    .big-link .mini{
+    .neo-mini{
+      position:relative;
+      z-index:1;
       display:inline-flex;
       align-items:center;
       padding:7px 12px;
       border-radius:999px;
-      background:#111827;
+      background:linear-gradient(90deg,#111827,#312e81);
       color:#fff;
       font-size:12px;
       font-weight:900;
       margin-bottom:12px;
+      letter-spacing:.05em;
     }
 
-    .big-link h3{
+    .neo-link h3{
+      position:relative;
+      z-index:1;
       margin:0 0 10px;
       font-size:28px;
       line-height:1.15;
     }
 
-    .big-link p{
+    .neo-link p{
+      position:relative;
+      z-index:1;
       margin:0;
       color:var(--sub);
       font-size:15px;
     }
 
-    .marker{
-      display:inline;
-      background:linear-gradient(transparent 58%, #fff07a 58%);
-      padding:0 .08em;
-    }
-
-    .promo-box{
-      background:linear-gradient(135deg,#0f172a,#312e81);
+    .neo-promo{
+      background:
+        radial-gradient(circle at 12% 30%, rgba(0,212,255,.18), transparent 22%),
+        radial-gradient(circle at 88% 70%, rgba(236,72,153,.18), transparent 20%),
+        linear-gradient(135deg,#0b1020 0%, #1e1b4b 55%, #3b0764 100%);
       color:#fff;
       border-radius:30px;
       padding:30px;
       box-shadow:0 18px 40px rgba(15,23,42,.18);
+      overflow:hidden;
+      position:relative;
     }
 
-    .promo-box h2{
+    .neo-promo::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size:26px 26px;
+      opacity:.45;
+      pointer-events:none;
+    }
+
+    .neo-promo > *{
+      position:relative;
+      z-index:1;
+    }
+
+    .neo-promo h2{
       margin:0 0 10px;
-      font-size:34px;
-      line-height:1.15;
+      font-size:36px;
+      line-height:1.12;
     }
 
-    .promo-box p{
-      margin:0 0 16px;
+    .neo-promo p{
+      margin:0 0 18px;
       color:rgba(255,255,255,.84);
     }
 
-    .promo-actions{
+    .neo-promo-actions{
       display:flex;
       gap:12px;
       flex-wrap:wrap;
     }
 
-    .faq-pop{
+    .neo-faq{
       display:grid;
       gap:14px;
     }
 
-    .faq-pop-item{
-      background:#fff;
-      border:1px solid var(--line);
+    .neo-faq-item{
+      background:linear-gradient(180deg,#ffffff,#f8fafc);
+      border:1px solid rgba(148,163,184,.20);
       border-radius:22px;
       padding:20px;
       box-shadow:0 14px 28px rgba(15,23,42,.06);
     }
 
-    .faq-pop-item strong{
+    .neo-faq-item strong{
       display:block;
       margin-bottom:6px;
       font-size:18px;
     }
 
     @media (max-width: 980px){
-      .impact-grid,
-      .impact-cards,
-      .big-links{
+      .neo-grid,
+      .neo-cards,
+      .neo-links{
         grid-template-columns:1fr;
       }
 
-      .impact-hero{
-        padding-top:24px;
+      .neo-hero{
+        padding-top:28px;
       }
     }
   </style>
@@ -386,171 +482,171 @@
   </header>
 
   <main>
-    <section class="impact-hero">
-      <div class="wrap impact-grid">
+    <section class="neo-hero">
+      <div class="wrap neo-grid">
         <div>
-          <div class="impact-badge">PICK UP / INFORMATION HUB</div>
-          <h1 class="impact-title">
+          <div class="neo-badge">Future Pop / Info Hub</div>
+          <h1 class="neo-title">
             比較・レビュー・ガイドを<br>
-            <span class="impact-highlight">一気に見やすく整理</span>
+            <span class="glow">近未来っぽく整理する</span>
           </h1>
-          <p class="impact-lead">
-            このサイトは、比較記事、レビュー記事、手順ガイドを
-            <strong>ポップで分かりやすく</strong>整理していくための情報ハブです。
-            まずはカテゴリを入口にして、気になる情報へ最短で進める構成にしています。
+
+          <p class="neo-lead">
+            このサイトは、比較記事、レビュー記事、ガイド記事を
+            <strong>ポップで視認性が高く、近未来感のあるデザイン</strong>で整理していくための情報ハブです。
+            まずは入口を分かりやすくし、気になるテーマへすぐ進める構成にしています。
           </p>
 
-          <div class="impact-cta">
-            <a class="impact-btn impact-btn-main" href="#categories">カテゴリをチェック</a>
-            <a class="impact-btn impact-btn-sub" href="#pickup">注目ページを見る</a>
+          <div class="neo-actions">
+            <a class="neo-btn neo-btn-main" href="#categories">カテゴリを見る</a>
+            <a class="neo-btn neo-btn-sub" href="#pickup">注目ページを見る</a>
           </div>
 
-          <div class="impact-subnote">
-            まずはトップページのデザイン基準を作り、その後カテゴリ・記事ページへ展開していく想定です。
+          <div class="neo-note">
+            今後はこの世界観を基準にして、カテゴリページや記事ページも同じトーンへ揃えていきます。
           </div>
         </div>
 
-        <aside class="impact-panel">
-          <div class="burst">注目ポイント</div>
-          <h3>このサイトで分かること</h3>
+        <aside class="glass-panel">
+          <div class="panel-kicker">Signal Board</div>
+          <h3>このサイトで見つけやすくするもの</h3>
           <p>
-            情報をただ並べるだけではなく、<strong>比較しやすい・選びやすい・読みやすい</strong>
-            を意識して整理しています。
+            情報をただ並べるのではなく、<strong>比較しやすい・選びやすい・読みに行きやすい</strong>
+            を重視して、導線ごと整理しています。
           </p>
 
-          <div class="impact-mini-list">
-            <div class="impact-mini-item">
+          <div class="glass-list">
+            <div class="glass-item">
               <strong>比較</strong>
-              条件や違いをひと目で見やすく整理
+              条件や違いをすばやく見比べやすく整理
             </div>
-            <div class="impact-mini-item">
+            <div class="glass-item">
               <strong>レビュー</strong>
-              個別の特徴や向いている人を把握
+              個別の特徴や向いている人を把握しやすく設計
             </div>
-            <div class="impact-mini-item">
+            <div class="glass-item">
               <strong>ガイド</strong>
-              初心者でも流れがわかりやすい構成
+              初心者でも流れが見えやすい入口構成
             </div>
           </div>
         </aside>
       </div>
     </section>
 
-    <section id="overview" class="shock-section">
+    <section id="overview" class="neo-section">
       <div class="wrap">
-        <div class="shock-head">
-          <h2><span class="marker">まずはサイトの全体像</span>をつかむ</h2>
+        <div class="neo-head">
+          <h2><span class="accent">全体像</span>を先に掴む</h2>
           <p>
-            いきなり細かい情報を見るのではなく、まずは「何がどこにあるか」が一瞬で分かる構成を目指しています。
+            まずは「どの情報がどこにあるのか」がすぐ分かる構成にして、そこから必要なページへ進みやすくします。
           </p>
         </div>
 
-        <div class="impact-cards">
-          <article class="impact-card">
-            <div class="label">STEP 1</div>
-            <h3>カテゴリで入口を分ける</h3>
+        <div class="neo-cards">
+          <article class="neo-card">
+            <div class="neo-label">STEP 1</div>
+            <h3>入口をテーマごとに分ける</h3>
             <p>
-              比較したい人、レビューを見たい人、手順を知りたい人が迷わないように、
-              入口の時点でテーマを分けています。
+              比較したい人、レビューを読みたい人、手順を知りたい人が迷わないよう、
+              最初の時点でテーマを分けています。
             </p>
           </article>
 
-          <article class="impact-card">
-            <div class="label">STEP 2</div>
+          <article class="neo-card">
+            <div class="neo-label">STEP 2</div>
             <h3>記事タイプを整理する</h3>
             <p>
-              比較記事、レビュー記事、ガイド記事を混ぜずに役割分担することで、
-              読者が必要な情報へ進みやすくなります。
+              比較記事、レビュー記事、ガイド記事を役割分担することで、
+              欲しい情報へ進みやすくしています。
             </p>
           </article>
 
-          <article class="impact-card">
-            <div class="label">STEP 3</div>
-            <h3>導線を強くする</h3>
+          <article class="neo-card">
+            <div class="neo-label">STEP 3</div>
+            <h3>導線を強く見せる</h3>
             <p>
-              関連ページへの移動や、次に読むべきページがわかるように、
-              導線を前面に出した構成にしています。
+              関連ページへ自然に進めるように、ボタンや注目エリアを強めに見せる構成にしています。
             </p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="categories" class="shock-section">
+    <section id="categories" class="neo-section">
       <div class="wrap">
-        <div class="shock-head">
+        <div class="neo-head">
           <h2>カテゴリ一覧</h2>
           <p>
-            まずはここから。情報の入口を4つに分けて、気になるテーマにすぐ進めるようにしています。
+            まずはここから。情報の入口を4つに整理して、気になるテーマへすぐ進めるようにしています。
           </p>
         </div>
 
-        <div class="big-links">
-          <a class="big-link" href="bonus.html">
-            <div class="mini">比較系</div>
+        <div class="neo-links">
+          <a class="neo-link" href="bonus.html">
+            <div class="neo-mini">比較系</div>
             <h3>ボーナス比較</h3>
-            <p>条件や内容の違いを整理し、比較しやすくまとめるカテゴリです。</p>
+            <p>条件や内容の違いを見比べやすく整理するカテゴリです。</p>
           </a>
 
-          <a class="big-link" href="review.html">
-            <div class="mini">レビュー系</div>
+          <a class="neo-link" href="review.html">
+            <div class="neo-mini">レビュー系</div>
             <h3>サービスレビュー</h3>
             <p>特徴、使いやすさ、向いている人などを個別に整理するカテゴリです。</p>
           </a>
 
-          <a class="big-link" href="payments.html">
-            <div class="mini">手順系</div>
+          <a class="neo-link" href="payments.html">
+            <div class="neo-mini">手順系</div>
             <h3>入出金・決済</h3>
-            <p>決済方法、使い方、注意点などをわかりやすく整理するカテゴリです。</p>
+            <p>決済方法、使い方、注意点などを分かりやすく整理するカテゴリです。</p>
           </a>
 
-          <a class="big-link" href="guide.html">
-            <div class="mini">初心者向け</div>
+          <a class="neo-link" href="guide.html">
+            <div class="neo-mini">初心者向け</div>
             <h3>初心者ガイド</h3>
-            <p>最初に何を見ればいいか、どう進めればいいかを整理する入口カテゴリです。</p>
+            <p>最初に何を見ればいいか、どう進めると分かりやすいかを整理する入口です。</p>
           </a>
         </div>
       </div>
     </section>
 
-    <section id="pickup" class="shock-section">
+    <section id="pickup" class="neo-section">
       <div class="wrap">
-        <div class="promo-box">
+        <div class="neo-promo">
           <h2>注目ページを先にチェック</h2>
           <p>
-            ここから先は、カテゴリページだけでなく、実際の記事ページも増やしていきます。
+            カテゴリだけでなく、実際の記事ページもここから増やしていきます。
             今の流れなら、まずは<strong>比較の見方ガイド</strong>のような基礎記事から読むのが自然です。
           </p>
 
-          <div class="promo-actions">
-            <a class="impact-btn impact-btn-main" href="bonus-guide.html">比較の見方ガイドへ</a>
-            <a class="impact-btn impact-btn-sub" href="bonus.html">カテゴリページを見る</a>
+          <div class="neo-promo-actions">
+            <a class="neo-btn neo-btn-main" href="bonus-guide.html">比較の見方ガイドへ</a>
+            <a class="neo-btn neo-btn-sub" href="bonus.html">カテゴリページを見る</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="faq" class="shock-section">
+    <section id="faq" class="neo-section">
       <div class="wrap">
-        <div class="shock-head">
+        <div class="neo-head">
           <h2>よくある質問</h2>
-          <p>今後よく聞かれそうなことを、先に整理しています。</p>
+          <p>サイトの方向性や次の進め方を、先に整理しています。</p>
         </div>
 
-        <div class="faq-pop">
-          <div class="faq-pop-item">
+        <div class="neo-faq">
+          <div class="neo-faq-item">
             <strong>Q. このページは完成版ですか？</strong>
-            <div>まだトップページの土台です。今後、各カテゴリページや記事ページを増やしていく前提です。</div>
+            <div>まだトップページの土台です。今後、カテゴリページや記事ページをこのトーンで揃えていく前提です。</div>
           </div>
 
-          <div class="faq-pop-item">
+          <div class="neo-faq-item">
             <strong>Q. 次は何を整えるべきですか？</strong>
-            <div>このトップページのトーンに合わせて、カテゴリページと記事ページを同じデザイン方向へ揃えるのがおすすめです。</div>
+            <div>このトップページに合わせて、カテゴリページと記事ページも同じ近未来ポップ系のデザインへ寄せるのがおすすめです。</div>
           </div>
 
-          <div class="faq-pop-item">
+          <div class="neo-faq-item">
             <strong>Q. 今のデザインの狙いは？</strong>
-            <div>普通のブログっぽさより、広告やポスターのような目を引く訴求力を強めつつ、本文は読みやすく保つことです。</div>
+            <div>普通のブログっぽさではなく、ネオン感やガラス感を使って、近未来の情報ハブっぽい印象に寄せることです。</div>
           </div>
         </div>
       </div>
@@ -560,7 +656,7 @@
   <footer class="footer">
     <div class="wrap footer-inner">
       <div>© SEO Pages</div>
-      <div>ポップ × インパクト重視のトップページ案</div>
+      <div>ポップ × 近未来 × ネオンUI トップページ案</div>
     </div>
   </footer>
 </body>
