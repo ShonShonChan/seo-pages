@@ -4,8 +4,369 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>比較・レビュー・ガイド情報サイト | トップページ</title>
-  <meta name="description" content="比較、レビュー、入出金、初心者ガイドなどの情報を整理するための仮トップページです。">
+  <meta name="description" content="比較、レビュー、ガイド情報をポップで見やすく整理したトップページです。">
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    .impact-hero{
+      padding: 34px 0 56px;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(255, 230, 0, .28), transparent 22%),
+        radial-gradient(circle at 85% 18%, rgba(255, 0, 92, .18), transparent 20%),
+        linear-gradient(135deg, #111827 0%, #1e3a8a 45%, #7c3aed 100%);
+      color: #fff;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .impact-hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        repeating-linear-gradient(
+          -45deg,
+          rgba(255,255,255,.04) 0 10px,
+          rgba(255,255,255,0) 10px 20px
+        );
+      pointer-events:none;
+    }
+
+    .impact-grid{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:24px;
+      align-items:center;
+    }
+
+    .impact-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 16px;
+      border-radius:999px;
+      background:linear-gradient(90deg,#ffea00,#ffb800);
+      color:#111827;
+      font-size:13px;
+      font-weight:900;
+      letter-spacing:.04em;
+      box-shadow:0 10px 24px rgba(0,0,0,.2);
+      margin-bottom:16px;
+      text-transform:uppercase;
+    }
+
+    .impact-title{
+      margin:0 0 14px;
+      font-size:clamp(38px, 6vw, 72px);
+      line-height:1.02;
+      letter-spacing:-.03em;
+      font-weight:900;
+      text-shadow:
+        0 4px 0 rgba(0,0,0,.18),
+        0 12px 28px rgba(0,0,0,.24);
+    }
+
+    .impact-highlight{
+      display:inline-block;
+      padding:.02em .18em;
+      border-radius:12px;
+      background:linear-gradient(90deg,#ffea00,#ff7a00);
+      color:#111827;
+      transform:rotate(-1deg);
+      box-shadow:0 8px 18px rgba(0,0,0,.18);
+    }
+
+    .impact-lead{
+      max-width:720px;
+      margin:0 0 22px;
+      font-size:18px;
+      color:rgba(255,255,255,.92);
+    }
+
+    .impact-cta{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:16px;
+    }
+
+    .impact-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:54px;
+      padding:0 22px;
+      border-radius:16px;
+      font-weight:900;
+      letter-spacing:.02em;
+      transition:.2s ease;
+      border:2px solid transparent;
+    }
+
+    .impact-btn-main{
+      background:linear-gradient(90deg,#ffea00,#ff9900);
+      color:#111827;
+      box-shadow:0 12px 28px rgba(0,0,0,.24);
+    }
+
+    .impact-btn-main:hover{
+      transform:translateY(-2px) scale(1.01);
+    }
+
+    .impact-btn-sub{
+      background:rgba(255,255,255,.12);
+      border-color:rgba(255,255,255,.22);
+      color:#fff;
+      backdrop-filter:blur(8px);
+    }
+
+    .impact-btn-sub:hover{
+      transform:translateY(-2px);
+    }
+
+    .impact-subnote{
+      color:rgba(255,255,255,.78);
+      font-size:14px;
+    }
+
+    .impact-panel{
+      background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:28px;
+      padding:22px;
+      box-shadow:0 18px 40px rgba(0,0,0,.2);
+      backdrop-filter:blur(10px);
+    }
+
+    .burst{
+      display:inline-block;
+      padding:10px 14px;
+      background:linear-gradient(135deg,#ff1744,#ff6d00);
+      color:#fff;
+      border-radius:18px 18px 18px 4px;
+      font-size:13px;
+      font-weight:900;
+      margin-bottom:14px;
+      box-shadow:0 12px 24px rgba(0,0,0,.18);
+    }
+
+    .impact-panel h3{
+      margin:0 0 12px;
+      font-size:26px;
+      line-height:1.15;
+    }
+
+    .impact-panel p{
+      margin:0 0 16px;
+      color:rgba(255,255,255,.9);
+    }
+
+    .impact-mini-list{
+      display:grid;
+      gap:12px;
+    }
+
+    .impact-mini-item{
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:18px;
+      padding:14px;
+    }
+
+    .impact-mini-item strong{
+      display:block;
+      margin-bottom:4px;
+      font-size:17px;
+    }
+
+    .shock-section{
+      padding:38px 0;
+    }
+
+    .shock-head{
+      margin-bottom:20px;
+    }
+
+    .shock-head h2{
+      margin:0 0 8px;
+      font-size:34px;
+      line-height:1.15;
+    }
+
+    .shock-head p{
+      margin:0;
+      color:var(--sub);
+      font-size:16px;
+    }
+
+    .impact-cards{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:18px;
+    }
+
+    .impact-card{
+      position:relative;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:26px;
+      padding:22px;
+      box-shadow:0 16px 34px rgba(15,23,42,.08);
+      overflow:hidden;
+    }
+
+    .impact-card::before{
+      content:"";
+      position:absolute;
+      inset:0 auto auto 0;
+      width:100%;
+      height:8px;
+      background:linear-gradient(90deg,#ff1744,#ff9800,#ffea00,#22c55e,#3b82f6);
+    }
+
+    .impact-card .label{
+      display:inline-flex;
+      padding:7px 12px;
+      border-radius:999px;
+      background:#111827;
+      color:#fff;
+      font-size:12px;
+      font-weight:900;
+      margin-bottom:12px;
+    }
+
+    .impact-card h3{
+      margin:0 0 10px;
+      font-size:24px;
+      line-height:1.2;
+    }
+
+    .impact-card p{
+      margin:0;
+      color:var(--sub);
+    }
+
+    .big-links{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:18px;
+    }
+
+    .big-link{
+      position:relative;
+      display:block;
+      background:linear-gradient(135deg,#ffffff,#f8fafc);
+      border:1px solid var(--line);
+      border-radius:26px;
+      padding:24px;
+      box-shadow:0 16px 34px rgba(15,23,42,.08);
+      overflow:hidden;
+      transition:.2s ease;
+    }
+
+    .big-link:hover{
+      transform:translateY(-3px);
+    }
+
+    .big-link::after{
+      content:"";
+      position:absolute;
+      top:-24px;
+      right:-24px;
+      width:120px;
+      height:120px;
+      border-radius:999px;
+      background:radial-gradient(circle, rgba(255,190,11,.28), transparent 70%);
+    }
+
+    .big-link .mini{
+      display:inline-flex;
+      align-items:center;
+      padding:7px 12px;
+      border-radius:999px;
+      background:#111827;
+      color:#fff;
+      font-size:12px;
+      font-weight:900;
+      margin-bottom:12px;
+    }
+
+    .big-link h3{
+      margin:0 0 10px;
+      font-size:28px;
+      line-height:1.15;
+    }
+
+    .big-link p{
+      margin:0;
+      color:var(--sub);
+      font-size:15px;
+    }
+
+    .marker{
+      display:inline;
+      background:linear-gradient(transparent 58%, #fff07a 58%);
+      padding:0 .08em;
+    }
+
+    .promo-box{
+      background:linear-gradient(135deg,#0f172a,#312e81);
+      color:#fff;
+      border-radius:30px;
+      padding:30px;
+      box-shadow:0 18px 40px rgba(15,23,42,.18);
+    }
+
+    .promo-box h2{
+      margin:0 0 10px;
+      font-size:34px;
+      line-height:1.15;
+    }
+
+    .promo-box p{
+      margin:0 0 16px;
+      color:rgba(255,255,255,.84);
+    }
+
+    .promo-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .faq-pop{
+      display:grid;
+      gap:14px;
+    }
+
+    .faq-pop-item{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:20px;
+      box-shadow:0 14px 28px rgba(15,23,42,.06);
+    }
+
+    .faq-pop-item strong{
+      display:block;
+      margin-bottom:6px;
+      font-size:18px;
+    }
+
+    @media (max-width: 980px){
+      .impact-grid,
+      .impact-cards,
+      .big-links{
+        grid-template-columns:1fr;
+      }
+
+      .impact-hero{
+        padding-top:24px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="topbar">
@@ -18,186 +379,179 @@
       <nav class="nav">
         <a href="#overview">全体像</a>
         <a href="#categories">カテゴリ</a>
-        <a href="#articles">記事設計</a>
+        <a href="#pickup">注目ページ</a>
         <a href="#faq">FAQ</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="wrap hero-grid">
+    <section class="impact-hero">
+      <div class="wrap impact-grid">
         <div>
-          <div class="eyebrow">比較 / レビュー / ガイド設計ベース</div>
-          <h1>比較・レビュー・ガイド情報サイトの土台ページ</h1>
-          <p>
-            このページは、比較記事、レビュー記事、ガイド記事などを整理していくための仮トップページです。
-            今後ここから、カテゴリページ、比較ページ、レビュー記事、手順ガイドなどを増やしていきます。
+          <div class="impact-badge">PICK UP / INFORMATION HUB</div>
+          <h1 class="impact-title">
+            比較・レビュー・ガイドを<br>
+            <span class="impact-highlight">一気に見やすく整理</span>
+          </h1>
+          <p class="impact-lead">
+            このサイトは、比較記事、レビュー記事、手順ガイドを
+            <strong>ポップで分かりやすく</strong>整理していくための情報ハブです。
+            まずはカテゴリを入口にして、気になる情報へ最短で進める構成にしています。
           </p>
 
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#categories">カテゴリを見る</a>
-            <a class="btn btn-secondary" href="#articles">記事設計を見る</a>
+          <div class="impact-cta">
+            <a class="impact-btn impact-btn-main" href="#categories">カテゴリをチェック</a>
+            <a class="impact-btn impact-btn-sub" href="#pickup">注目ページを見る</a>
           </div>
 
-          <div class="hero-note">
-            現在は初期デザイン段階です。今後、各カテゴリと記事ページを段階的に追加していきます。
+          <div class="impact-subnote">
+            まずはトップページのデザイン基準を作り、その後カテゴリ・記事ページへ展開していく想定です。
           </div>
         </div>
 
-        <aside class="hero-card">
-          <h3>このサイトの役割</h3>
-          <ul class="hero-list">
-            <li>比較・レビュー・ガイド記事を整理する</li>
-            <li>検索意図ごとにページを分けて運用しやすくする</li>
-            <li>テーマ別に情報を見やすくまとめる</li>
-            <li>内部リンクや導線改善をしやすい構造にする</li>
-          </ul>
+        <aside class="impact-panel">
+          <div class="burst">注目ポイント</div>
+          <h3>このサイトで分かること</h3>
+          <p>
+            情報をただ並べるだけではなく、<strong>比較しやすい・選びやすい・読みやすい</strong>
+            を意識して整理しています。
+          </p>
 
-          <div class="stats">
-            <div class="stat">
-              <strong>4</strong>
-              <span>主要カテゴリ案</span>
+          <div class="impact-mini-list">
+            <div class="impact-mini-item">
+              <strong>比較</strong>
+              条件や違いをひと目で見やすく整理
             </div>
-            <div class="stat">
-              <strong>3</strong>
-              <span>優先ページ種別</span>
+            <div class="impact-mini-item">
+              <strong>レビュー</strong>
+              個別の特徴や向いている人を把握
             </div>
-            <div class="stat">
-              <strong>1st</strong>
-              <span>土台フェーズ</span>
+            <div class="impact-mini-item">
+              <strong>ガイド</strong>
+              初心者でも流れがわかりやすい構成
             </div>
           </div>
         </aside>
       </div>
     </section>
 
-    <section id="overview" class="section">
+    <section id="overview" class="shock-section">
       <div class="wrap">
-        <div class="section-head">
-          <h2>まず何を作るサイトなのか</h2>
+        <div class="shock-head">
+          <h2><span class="marker">まずはサイトの全体像</span>をつかむ</h2>
           <p>
-            このサイトは、関連情報を比較・レビュー・ガイドの3軸で整理し、
-            中長期で運用しやすい形にまとめていくことを目的にしています。
+            いきなり細かい情報を見るのではなく、まずは「何がどこにあるか」が一瞬で分かる構成を目指しています。
           </p>
         </div>
 
-        <div class="cards cards-3">
-          <article class="card">
-            <span class="pill">サイト設計</span>
-            <h3>構造を先に固める</h3>
-            <p>URL、カテゴリ、内部リンクの土台を先に整理して、後からページを増やしても崩れにくい形を目指します。</p>
+        <div class="impact-cards">
+          <article class="impact-card">
+            <div class="label">STEP 1</div>
+            <h3>カテゴリで入口を分ける</h3>
+            <p>
+              比較したい人、レビューを見たい人、手順を知りたい人が迷わないように、
+              入口の時点でテーマを分けています。
+            </p>
           </article>
 
-          <article class="card">
-            <span class="pill">記事設計</span>
-            <h3>検索意図で分ける</h3>
-            <p>比較したい人、レビューを見たい人、手順を知りたい人など、意図ごとに記事タイプを分けて設計します。</p>
+          <article class="impact-card">
+            <div class="label">STEP 2</div>
+            <h3>記事タイプを整理する</h3>
+            <p>
+              比較記事、レビュー記事、ガイド記事を混ぜずに役割分担することで、
+              読者が必要な情報へ進みやすくなります。
+            </p>
           </article>
 
-          <article class="card">
-            <span class="pill">運用改善</span>
-            <h3>更新しながら育てる</h3>
-            <p>公開後もタイトル改善、FAQ追加、内部リンク追加、関連記事調整などでページ価値を高めていきます。</p>
+          <article class="impact-card">
+            <div class="label">STEP 3</div>
+            <h3>導線を強くする</h3>
+            <p>
+              関連ページへの移動や、次に読むべきページがわかるように、
+              導線を前面に出した構成にしています。
+            </p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="categories" class="section">
+    <section id="categories" class="shock-section">
       <div class="wrap">
-        <div class="section-head">
+        <div class="shock-head">
           <h2>カテゴリ一覧</h2>
-          <p>まずは主要カテゴリを4つに分けて、各カテゴリごとにページを増やしていく方針です。</p>
+          <p>
+            まずはここから。情報の入口を4つに分けて、気になるテーマにすぐ進めるようにしています。
+          </p>
         </div>
 
-        <div class="cards cards-2">
-          <a class="card" href="bonus.html">
-            <span class="pill">比較系</span>
+        <div class="big-links">
+          <a class="big-link" href="bonus.html">
+            <div class="mini">比較系</div>
             <h3>ボーナス比較</h3>
-            <p>歓迎特典や比較条件など、比較検討ニーズ向けのカテゴリページです。</p>
+            <p>条件や内容の違いを整理し、比較しやすくまとめるカテゴリです。</p>
           </a>
 
-          <a class="card" href="review.html">
-            <span class="pill">レビュー系</span>
+          <a class="big-link" href="review.html">
+            <div class="mini">レビュー系</div>
             <h3>サービスレビュー</h3>
-            <p>個別サービスの特徴、信頼性、向き不向きを整理するカテゴリページです。</p>
+            <p>特徴、使いやすさ、向いている人などを個別に整理するカテゴリです。</p>
           </a>
 
-          <a class="card" href="payments.html">
-            <span class="pill">手順系</span>
+          <a class="big-link" href="payments.html">
+            <div class="mini">手順系</div>
             <h3>入出金・決済</h3>
-            <p>決済方法、入金方法、出金方法などの手順ニーズを受けるカテゴリページです。</p>
+            <p>決済方法、使い方、注意点などをわかりやすく整理するカテゴリです。</p>
           </a>
 
-          <a class="card" href="guide.html">
-            <span class="pill">初心者向け</span>
+          <a class="big-link" href="guide.html">
+            <div class="mini">初心者向け</div>
             <h3>初心者ガイド</h3>
-            <p>これから始める人向けに、全体像や進め方を整理するカテゴリページです。</p>
+            <p>最初に何を見ればいいか、どう進めればいいかを整理する入口カテゴリです。</p>
           </a>
         </div>
       </div>
     </section>
 
-    <section id="articles" class="section">
+    <section id="pickup" class="shock-section">
       <div class="wrap">
-        <div class="section-head">
-          <h2>記事設計の考え方</h2>
-          <p>記事は全部同じ作りにせず、検索意図に応じて役割を分けるのがポイントです。</p>
-        </div>
+        <div class="promo-box">
+          <h2>注目ページを先にチェック</h2>
+          <p>
+            ここから先は、カテゴリページだけでなく、実際の記事ページも増やしていきます。
+            今の流れなら、まずは<strong>比較の見方ガイド</strong>のような基礎記事から読むのが自然です。
+          </p>
 
-        <div class="cards cards-3">
-          <article class="card">
-            <span class="pill">比較記事</span>
-            <h3>一覧で比較したい人向け</h3>
-            <p>比較表、比較軸、対象読者、向いている人を先に出して、選びやすい形にします。</p>
-          </article>
-
-          <article class="card">
-            <span class="pill">レビュー記事</span>
-            <h3>個別に詳しく知りたい人向け</h3>
-            <p>特徴、条件、サポート、向き不向きを整理して個別評価します。</p>
-          </article>
-
-          <article class="card">
-            <span class="pill">ガイド記事</span>
-            <h3>手順や基礎を知りたい人向け</h3>
-            <p>初心者向けに、登録方法、決済方法、基本の流れをわかりやすく整理します。</p>
-          </article>
+          <div class="promo-actions">
+            <a class="impact-btn impact-btn-main" href="bonus-guide.html">比較の見方ガイドへ</a>
+            <a class="impact-btn impact-btn-sub" href="bonus.html">カテゴリページを見る</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="faq" class="section">
+    <section id="faq" class="shock-section">
       <div class="wrap">
-        <div class="section-head">
+        <div class="shock-head">
           <h2>よくある質問</h2>
-          <p>今後よく聞かれそうなことを先に整理しています。</p>
+          <p>今後よく聞かれそうなことを、先に整理しています。</p>
         </div>
 
-        <div class="card">
-          <div class="faq-item">
-            <div class="faq-q">Q. このページは完成版ですか？</div>
-            <div>A. まだ仮トップページです。今後カテゴリページや記事ページを追加して育てていく前提です。</div>
+        <div class="faq-pop">
+          <div class="faq-pop-item">
+            <strong>Q. このページは完成版ですか？</strong>
+            <div>まだトップページの土台です。今後、各カテゴリページや記事ページを増やしていく前提です。</div>
           </div>
-          <div class="faq-item">
-            <div class="faq-q">Q. このあと何を作るべきですか？</div>
-            <div>A. まずはカテゴリページを整え、そのあと各カテゴリ内の記事を増やすのがおすすめです。</div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q">Q. このサイトは何に使いますか？</div>
-            <div>A. 比較記事、レビュー記事、ガイド記事を整理し、情報を見やすくまとめるために使います。</div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="section">
-      <div class="wrap">
-        <div class="cta">
-          <h2>次の一手はカテゴリページ作成です</h2>
-          <p>ここから先は、ボーナス比較、レビュー、入出金、初心者ガイドなどのカテゴリページを増やし、サイト全体を広げていきます。</p>
-          <a class="btn btn-primary" href="bonus.html">ボーナス比較ページへ</a>
+          <div class="faq-pop-item">
+            <strong>Q. 次は何を整えるべきですか？</strong>
+            <div>このトップページのトーンに合わせて、カテゴリページと記事ページを同じデザイン方向へ揃えるのがおすすめです。</div>
+          </div>
+
+          <div class="faq-pop-item">
+            <strong>Q. 今のデザインの狙いは？</strong>
+            <div>普通のブログっぽさより、広告やポスターのような目を引く訴求力を強めつつ、本文は読みやすく保つことです。</div>
+          </div>
         </div>
       </div>
     </section>
@@ -206,7 +560,7 @@
   <footer class="footer">
     <div class="wrap footer-inner">
       <div>© SEO Pages</div>
-      <div>GitHub Pages で構築中の仮トップページ</div>
+      <div>ポップ × インパクト重視のトップページ案</div>
     </div>
   </footer>
 </body>
