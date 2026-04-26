@@ -5,415 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>合法地域向けオンラインカジノSEOサイト | 比較・レビュー・ガイド</title>
   <meta name="description" content="合法地域向けオンラインカジノSEOサイトの仮トップページです。比較、レビュー、入出金、初心者ガイドなどを整理し、SEO運用しやすい構造で情報をまとめます。">
-  <style>
-    :root{
-      --bg:#f5f7fb;
-      --card:#ffffff;
-      --text:#111827;
-      --sub:#6b7280;
-      --line:#e5e7eb;
-      --primary:#2563eb;
-      --primary-dark:#1d4ed8;
-      --soft:#eff6ff;
-      --dark:#0f172a;
-      --max:1120px;
-      --shadow:0 12px 32px rgba(15,23,42,.08);
-      --radius:22px;
-    }
-
-    *{box-sizing:border-box}
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
-      margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Sans","Noto Sans JP",sans-serif;
-      color:var(--text);
-      background:var(--bg);
-      line-height:1.75;
-    }
-
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
-
-    img{
-      max-width:100%;
-      display:block;
-    }
-
-    .wrap{
-      width:min(var(--max), calc(100% - 32px));
-      margin:0 auto;
-    }
-
-    .topbar{
-      position:sticky;
-      top:0;
-      z-index:50;
-      backdrop-filter:blur(10px);
-      background:rgba(255,255,255,.82);
-      border-bottom:1px solid rgba(229,231,235,.8);
-    }
-
-    .topbar-inner{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-      min-height:72px;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      font-weight:800;
-      letter-spacing:.01em;
-    }
-
-    .brand-mark{
-      width:40px;
-      height:40px;
-      border-radius:14px;
-      background:linear-gradient(135deg,var(--primary),#60a5fa);
-      display:grid;
-      place-items:center;
-      color:#fff;
-      font-size:18px;
-      box-shadow:var(--shadow);
-    }
-
-    .nav{
-      display:flex;
-      gap:18px;
-      flex-wrap:wrap;
-      color:var(--sub);
-      font-size:14px;
-      font-weight:600;
-    }
-
-    .nav a:hover{
-      color:var(--primary);
-    }
-
-    .hero{
-      padding:72px 0 48px;
-      background:
-        radial-gradient(circle at top left, rgba(37,99,235,.14), transparent 30%),
-        radial-gradient(circle at top right, rgba(96,165,250,.18), transparent 24%);
-    }
-
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.15fr .85fr;
-      gap:28px;
-      align-items:center;
-    }
-
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 12px;
-      background:var(--soft);
-      border:1px solid #bfdbfe;
-      border-radius:999px;
-      color:var(--primary-dark);
-      font-size:13px;
-      font-weight:700;
-      margin-bottom:18px;
-    }
-
-    .hero h1{
-      margin:0 0 16px;
-      font-size:clamp(32px,5vw,56px);
-      line-height:1.1;
-      letter-spacing:-.02em;
-    }
-
-    .hero p{
-      margin:0 0 24px;
-      color:var(--sub);
-      font-size:17px;
-      max-width:760px;
-    }
-
-    .hero-actions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-bottom:18px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:48px;
-      padding:0 18px;
-      border-radius:14px;
-      font-weight:700;
-      border:1px solid transparent;
-      transition:.2s ease;
-    }
-
-    .btn-primary{
-      background:var(--primary);
-      color:#fff;
-      box-shadow:var(--shadow);
-    }
-
-    .btn-primary:hover{
-      background:var(--primary-dark);
-      transform:translateY(-1px);
-    }
-
-    .btn-secondary{
-      background:#fff;
-      border-color:var(--line);
-      color:var(--text);
-    }
-
-    .btn-secondary:hover{
-      border-color:#cbd5e1;
-      transform:translateY(-1px);
-    }
-
-    .hero-note{
-      color:var(--sub);
-      font-size:14px;
-    }
-
-    .hero-card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:28px;
-      padding:24px;
-      box-shadow:var(--shadow);
-    }
-
-    .hero-card h3{
-      margin:0 0 12px;
-      font-size:20px;
-    }
-
-    .hero-list{
-      margin:0;
-      padding-left:20px;
-      color:var(--sub);
-    }
-
-    .hero-list li{
-      margin-bottom:10px;
-    }
-
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:14px;
-      margin-top:18px;
-    }
-
-    .stat{
-      background:#f8fafc;
-      border:1px solid var(--line);
-      border-radius:18px;
-      padding:16px;
-    }
-
-    .stat strong{
-      display:block;
-      font-size:22px;
-      margin-bottom:4px;
-    }
-
-    .section{
-      padding:34px 0;
-    }
-
-    .section-head{
-      margin-bottom:22px;
-    }
-
-    .section-head h2{
-      margin:0 0 8px;
-      font-size:32px;
-      line-height:1.2;
-    }
-
-    .section-head p{
-      margin:0;
-      color:var(--sub);
-    }
-
-    .cards{
-      display:grid;
-      gap:18px;
-    }
-
-    .cards-3{
-      grid-template-columns:repeat(3,1fr);
-    }
-
-    .cards-2{
-      grid-template-columns:repeat(2,1fr);
-    }
-
-    .card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:22px;
-      box-shadow:var(--shadow);
-    }
-
-    .card h3{
-      margin:0 0 10px;
-      font-size:22px;
-    }
-
-    .card p{
-      margin:0;
-      color:var(--sub);
-    }
-
-    .pill{
-      display:inline-block;
-      margin-bottom:12px;
-      padding:6px 10px;
-      border-radius:999px;
-      background:#f8fafc;
-      border:1px solid var(--line);
-      color:var(--sub);
-      font-size:12px;
-      font-weight:700;
-    }
-
-    .checklist,
-    .toc{
-      margin:0;
-      padding-left:20px;
-    }
-
-    .checklist li,
-    .toc li{
-      margin-bottom:10px;
-    }
-
-    .callout{
-      background:linear-gradient(135deg,#eff6ff,#f8fafc);
-      border:1px solid #bfdbfe;
-      border-radius:22px;
-      padding:20px;
-    }
-
-    .table-wrap{
-      overflow-x:auto;
-    }
-
-    table{
-      width:100%;
-      border-collapse:collapse;
-      background:#fff;
-      border-radius:18px;
-      overflow:hidden;
-      border:1px solid var(--line);
-    }
-
-    th,td{
-      padding:14px 14px;
-      border-bottom:1px solid var(--line);
-      text-align:left;
-      vertical-align:top;
-      font-size:15px;
-    }
-
-    th{
-      background:#f8fafc;
-      font-size:14px;
-    }
-
-    .faq-item + .faq-item{
-      margin-top:16px;
-      padding-top:16px;
-      border-top:1px solid var(--line);
-    }
-
-    .faq-q{
-      font-weight:800;
-      margin-bottom:6px;
-    }
-
-    .cta{
-      background:linear-gradient(135deg,#0f172a,#1e293b);
-      color:#fff;
-      border-radius:28px;
-      padding:30px;
-      box-shadow:var(--shadow);
-    }
-
-    .cta h2{
-      margin:0 0 10px;
-      font-size:30px;
-    }
-
-    .cta p{
-      margin:0 0 18px;
-      color:rgba(255,255,255,.82);
-    }
-
-    .footer{
-      padding:30px 0 50px;
-      color:var(--sub);
-      font-size:14px;
-    }
-
-    .footer-inner{
-      display:flex;
-      justify-content:space-between;
-      gap:16px;
-      flex-wrap:wrap;
-      border-top:1px solid var(--line);
-      padding-top:20px;
-    }
-
-    @media (max-width: 960px){
-      .hero-grid,
-      .cards-3,
-      .cards-2{
-        grid-template-columns:1fr;
-      }
-
-      .hero{
-        padding-top:48px;
-      }
-
-      .topbar-inner{
-        min-height:auto;
-        padding:14px 0;
-        align-items:flex-start;
-        flex-direction:column;
-      }
-    }
-
-    @media (max-width: 640px){
-      .hero h1{
-        font-size:34px;
-      }
-
-      .section-head h2{
-        font-size:26px;
-      }
-
-      .stats{
-        grid-template-columns:1fr;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="topbar">
@@ -494,56 +86,20 @@
           <article class="card">
             <span class="pill">サイト設計</span>
             <h3>構造を先に固める</h3>
-            <p>
-              URL、カテゴリ、内部リンクの土台を先に整理して、後からページを増やしても崩れにくい形を目指します。
-            </p>
+            <p>URL、カテゴリ、内部リンクの土台を先に整理して、後からページを増やしても崩れにくい形を目指します。</p>
           </article>
 
           <article class="card">
             <span class="pill">記事設計</span>
             <h3>検索意図で分ける</h3>
-            <p>
-              比較したい人、レビューを見たい人、手順を知りたい人など、意図ごとに記事タイプを分けて設計します。
-            </p>
+            <p>比較したい人、レビューを見たい人、手順を知りたい人など、意図ごとに記事タイプを分けて設計します。</p>
           </article>
 
           <article class="card">
             <span class="pill">運用改善</span>
             <h3>更新しながら育てる</h3>
-            <p>
-              公開後もタイトル改善、FAQ追加、内部リンク追加、関連記事調整などでページ価値を高めていきます。
-            </p>
+            <p>公開後もタイトル改善、FAQ追加、内部リンク追加、関連記事調整などでページ価値を高めていきます。</p>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="wrap cards cards-2">
-        <div class="card">
-          <div class="section-head">
-            <h2>目次</h2>
-            <p>このトップページで整理している内容です。</p>
-          </div>
-          <ol class="toc">
-            <li><a href="#categories">カテゴリ設計</a></li>
-            <li><a href="#articles">記事設計</a></li>
-            <li><a href="#operation">運用改善</a></li>
-            <li><a href="#faq">FAQ</a></li>
-          </ol>
-        </div>
-
-        <div class="card">
-          <div class="section-head">
-            <h2>前提条件</h2>
-            <p>このサイトを運用する前提です。</p>
-          </div>
-          <ul class="checklist">
-            <li>合法地域向け、法令順守前提</li>
-            <li>規制回避や違法支援は対象外</li>
-            <li>短期量産より、構造的に強いページ設計を優先</li>
-            <li>カテゴリ → 記事 → 内部リンク の流れを重視</li>
-          </ul>
         </div>
       </div>
     </section>
@@ -551,49 +107,34 @@
     <section id="categories" class="section">
       <div class="wrap">
         <div class="section-head">
-          <h2>カテゴリ設計</h2>
-          <p>
-            最初にカテゴリを分けておくことで、記事追加と内部リンク設計がかなり楽になります。
-          </p>
+          <h2>カテゴリ一覧</h2>
+          <p>まずは主要カテゴリを4つに分けて、各カテゴリごとにページを増やしていく方針です。</p>
         </div>
 
-        <div class="table-wrap card">
-          <table>
-            <thead>
-              <tr>
-                <th>カテゴリ名</th>
-                <th>役割</th>
-                <th>主な検索意図</th>
-                <th>将来のURL例</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>ボーナス比較</td>
-                <td>比較検討の入口</td>
-                <td>どこがいいか比較したい</td>
-                <td>/bonus/</td>
-              </tr>
-              <tr>
-                <td>カジノレビュー</td>
-                <td>個別サービス評価</td>
-                <td>信頼性や条件を確認したい</td>
-                <td>/review/</td>
-              </tr>
-              <tr>
-                <td>入出金・決済</td>
-                <td>手順系ガイド</td>
-                <td>使い方や方法を知りたい</td>
-                <td>/payments/</td>
-              </tr>
-              <tr>
-                <td>初心者ガイド</td>
-                <td>全体理解の入口</td>
-                <td>最初に全体像を知りたい</td>
-                <td>/guide/</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="cards cards-2">
+          <a class="card" href="bonus.html">
+            <span class="pill">比較系</span>
+            <h3>ボーナス比較</h3>
+            <p>歓迎ボーナスやフリースピンなど、比較検討ニーズ向けのカテゴリページです。</p>
+          </a>
+
+          <a class="card" href="review.html">
+            <span class="pill">レビュー系</span>
+            <h3>カジノレビュー</h3>
+            <p>個別ブランドの信頼性、特徴、向き不向きを整理するカテゴリページです。</p>
+          </a>
+
+          <a class="card" href="payments.html">
+            <span class="pill">手順系</span>
+            <h3>入出金・決済</h3>
+            <p>決済方法、入金方法、出金方法などの手順ニーズを受けるカテゴリページです。</p>
+          </a>
+
+          <a class="card" href="guide.html">
+            <span class="pill">初心者向け</span>
+            <h3>初心者ガイド</h3>
+            <p>これから始める人向けに、全体像や進め方を整理するカテゴリページです。</p>
+          </a>
         </div>
       </div>
     </section>
@@ -602,61 +143,27 @@
       <div class="wrap">
         <div class="section-head">
           <h2>記事設計の考え方</h2>
-          <p>
-            記事は全部同じ作りにせず、検索意図に応じて役割を分けるのがポイントです。
-          </p>
+          <p>記事は全部同じ作りにせず、検索意図に応じて役割を分けるのがポイントです。</p>
         </div>
 
         <div class="cards cards-3">
           <article class="card">
             <span class="pill">比較記事</span>
             <h3>一覧で比較したい人向け</h3>
-            <p>
-              比較表、比較軸、対象読者、向いている人を先に出して、選びやすい形にします。
-            </p>
+            <p>比較表、比較軸、対象読者、向いている人を先に出して、選びやすい形にします。</p>
           </article>
 
           <article class="card">
             <span class="pill">レビュー記事</span>
             <h3>個別に詳しく知りたい人向け</h3>
-            <p>
-              ライセンス、ボーナス、入出金、サポート、向き不向きを整理して個別評価します。
-            </p>
+            <p>ライセンス、ボーナス、入出金、サポート、向き不向きを整理して個別評価します。</p>
           </article>
 
           <article class="card">
             <span class="pill">ガイド記事</span>
             <h3>手順や基礎を知りたい人向け</h3>
-            <p>
-              初心者向けに、登録方法、決済方法、遊び方の流れをわかりやすく整理します。
-            </p>
+            <p>初心者向けに、登録方法、決済方法、遊び方の流れをわかりやすく整理します。</p>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="operation" class="section">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>公開後の運用改善</h2>
-          <p>
-            ページは公開して終わりではなく、更新しながら改善することで価値が積み上がります。
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="callout">
-            <strong>運用の基本:</strong>
-            まずはカテゴリページと主要記事を作り、その後にタイトル改善、FAQ追加、内部リンク調整を継続していきます。
-          </div>
-
-          <ul class="checklist" style="margin-top:18px;">
-            <li>情報が古くなったページの更新</li>
-            <li>CTRが弱いページのタイトル見直し</li>
-            <li>関連記事リンクの最適化</li>
-            <li>よくある質問の追記</li>
-            <li>比較表や導線の改善</li>
-          </ul>
         </div>
       </div>
     </section>
@@ -671,17 +178,15 @@
         <div class="card">
           <div class="faq-item">
             <div class="faq-q">Q. このページは完成版ですか？</div>
-            <div class="faq-a">A. まだ仮トップページです。今後カテゴリページや記事ページを追加して育てていく前提です。</div>
+            <div>A. まだ仮トップページです。今後カテゴリページや記事ページを追加して育てていく前提です。</div>
           </div>
-
           <div class="faq-item">
             <div class="faq-q">Q. このあと何を作るべきですか？</div>
-            <div class="faq-a">A. まずはカテゴリ設計を固めて、次にカテゴリページ、最後に各記事ページを増やす流れがおすすめです。</div>
+            <div>A. まずはカテゴリページを整え、そのあと各カテゴリ内の記事を増やすのがおすすめです。</div>
           </div>
-
           <div class="faq-item">
             <div class="faq-q">Q. botは何に使いますか？</div>
-            <div class="faq-a">A. 記事構成、本文、SEO改善案、FAQ、タイトル・ディスクリプション作成に使います。</div>
+            <div>A. 記事構成、本文、SEO改善案、FAQ、タイトル・ディスクリプション作成に使います。</div>
           </div>
         </div>
       </div>
@@ -691,11 +196,8 @@
       <div class="wrap">
         <div class="cta">
           <h2>次の一手はカテゴリページ作成です</h2>
-          <p>
-            ここから先は、ボーナス比較、レビュー、入出金、初心者ガイドなどのカテゴリページを増やし、
-            サイト全体を広げていきます。
-          </p>
-          <a class="btn btn-primary" href="#categories">カテゴリ一覧を見る</a>
+          <p>ここから先は、ボーナス比較、レビュー、入出金、初心者ガイドなどのカテゴリページを増やし、サイト全体を広げていきます。</p>
+          <a class="btn btn-primary" href="bonus.html">ボーナス比較ページへ</a>
         </div>
       </div>
     </section>
