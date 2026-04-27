@@ -3,151 +3,235 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ボーナス比較の見方ガイド | 比較・レビュー・ガイド情報サイト</title>
-  <meta name="description" content="ボーナスを比較するときに見るべきポイントを整理したガイドページです。金額だけでなく、条件、対象、使いやすさまで比較の軸をわかりやすくまとめています。">
+  <title>ボーナス比較の見方ガイド | SEO Pages</title>
+  <meta name="description" content="ボーナス比較でまず何を見るべきかを整理したガイドページです。条件、対象、使いやすさ、比較表の見方をわかりやすくまとめています。">
   <link rel="stylesheet" href="style.css">
 
   <style>
-    .article-shell{
-      padding: 28px 0 56px;
+    body{
+      background:
+        radial-gradient(circle at top left, rgba(0,212,255,.08), transparent 22%),
+        radial-gradient(circle at top right, rgba(236,72,153,.08), transparent 22%),
+        linear-gradient(180deg,#eef2ff 0%, #f8fafc 28%, #f8fafc 100%);
+    }
+
+    .article-wrap{
+      width:min(1180px, calc(100% - 32px));
+      margin:22px auto 0;
+    }
+
+    .article-hero{
+      position:relative;
+      overflow:hidden;
+      border-radius:30px;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255,234,0,.18), transparent 22%),
+        radial-gradient(circle at 85% 20%, rgba(0,212,255,.18), transparent 24%),
+        linear-gradient(135deg,#0b1020 0%, #1d4ed8 50%, #7c3aed 100%);
+      color:#fff;
+      padding:30px 28px;
+      box-shadow:0 24px 48px rgba(15,23,42,.14);
+    }
+
+    .article-hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        repeating-linear-gradient(
+          -45deg,
+          rgba(255,255,255,.04) 0 10px,
+          rgba(255,255,255,0) 10px 20px
+        );
+      pointer-events:none;
+    }
+
+    .article-hero > *{
+      position:relative;
+      z-index:1;
+    }
+
+    .breadcrumb{
+      margin-bottom:14px;
+      color:rgba(255,255,255,.76);
+      font-size:14px;
+      font-weight:700;
+    }
+
+    .breadcrumb a{
+      color:rgba(255,255,255,.92);
+    }
+
+    .hero-kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:linear-gradient(90deg,#ffea00,#ffb800);
+      color:#111827;
+      padding:10px 16px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:900;
+      margin-bottom:16px;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+      box-shadow:0 12px 24px rgba(0,0,0,.18);
+    }
+
+    .hero-title{
+      margin:0 0 14px;
+      font-size:clamp(34px, 5vw, 62px);
+      line-height:1.03;
+      letter-spacing:-.04em;
+      font-weight:900;
+      text-shadow:0 6px 0 rgba(0,0,0,.10), 0 18px 36px rgba(0,0,0,.18);
+    }
+
+    .hero-highlight{
+      display:inline-block;
+      background:linear-gradient(90deg,#ffea00,#ff9800);
+      color:#111827;
+      padding:.04em .18em;
+      border-radius:12px;
+      transform:rotate(-1deg);
+      box-shadow:0 10px 20px rgba(0,0,0,.18);
+    }
+
+    .hero-desc{
+      max-width:860px;
+      margin:0 0 14px;
+      font-size:18px;
+      color:rgba(255,255,255,.9);
+    }
+
+    .hero-meta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+
+    .hero-meta span{
+      display:inline-flex;
+      align-items:center;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.18);
+      color:#fff;
+      font-size:13px;
+      font-weight:800;
     }
 
     .article-grid{
       display:grid;
       grid-template-columns:minmax(0, 1fr) 320px;
-      gap:24px;
+      gap:20px;
+      margin-top:24px;
       align-items:start;
     }
 
-    .article-main,
-    .article-side{
+    .content{
       display:grid;
       gap:18px;
     }
 
-    .article-card{
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:24px;
+    .side{
+      display:grid;
+      gap:18px;
+    }
+
+    .card{
+      background:linear-gradient(180deg,#ffffff,#f8fafc);
+      border:1px solid rgba(148,163,184,.18);
+      border-radius:26px;
       padding:24px;
-      box-shadow:var(--shadow);
+      box-shadow:0 18px 34px rgba(15,23,42,.06);
     }
 
-    .article-lead{
-      font-size:17px;
-      color:var(--sub);
-      margin:0;
-    }
-
-    .article-meta{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      color:var(--sub);
-      font-size:14px;
-      margin-top:14px;
-    }
-
-    .tag-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:18px;
-    }
-
-    .tag{
-      display:inline-flex;
-      align-items:center;
-      padding:7px 12px;
-      border-radius:999px;
-      background:#f8fafc;
-      border:1px solid var(--line);
-      color:var(--sub);
-      font-size:13px;
-      font-weight:700;
-    }
-
-    .article-card h2{
+    .card h2{
       margin:0 0 12px;
-      font-size:28px;
-      line-height:1.25;
+      font-size:30px;
+      line-height:1.15;
+      color:#0f172a;
     }
 
-    .article-card h3{
+    .card h3{
       margin:0 0 10px;
-      font-size:21px;
-      line-height:1.35;
+      font-size:22px;
+      line-height:1.2;
+      color:#0f172a;
     }
 
-    .article-card p{
+    .card p{
       margin:0 0 14px;
-      color:var(--sub);
+      color:#64748b;
+      font-size:16px;
     }
 
-    .article-card p:last-child{
+    .card p:last-child{
       margin-bottom:0;
     }
 
-    .point-box{
+    .accent-text{
+      background:linear-gradient(90deg,#06b6d4,#8b5cf6,#ec4899);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .point-grid{
       display:grid;
       gap:14px;
-      margin-top:16px;
+      margin-top:14px;
     }
 
-    .point-item{
-      background:#f8fafc;
-      border:1px solid var(--line);
-      border-radius:18px;
+    .point{
+      background:#fff;
+      border:1px solid #e5e7eb;
+      border-radius:20px;
       padding:16px;
+      box-shadow:0 10px 20px rgba(15,23,42,.04);
     }
 
-    .point-item strong{
+    .point strong{
       display:block;
       margin-bottom:6px;
-      font-size:17px;
-      color:var(--text);
+      font-size:18px;
+      color:#111827;
     }
 
     .score-grid{
       display:grid;
-      grid-template-columns:repeat(3, minmax(0, 1fr));
+      grid-template-columns:repeat(3, minmax(0,1fr));
       gap:14px;
       margin-top:16px;
     }
 
-    .score-card{
-      background:#f8fafc;
-      border:1px solid var(--line);
+    .score{
+      background:linear-gradient(135deg,#111827,#312e81);
+      color:#fff;
       border-radius:20px;
       padding:18px;
+      box-shadow:0 14px 28px rgba(15,23,42,.10);
     }
 
-    .score-card strong{
+    .score strong{
       display:block;
-      font-size:24px;
+      font-size:28px;
       margin-bottom:4px;
-    }
-
-    .check-block{
-      margin:0;
-      padding-left:20px;
-    }
-
-    .check-block li{
-      margin-bottom:10px;
-      color:var(--sub);
     }
 
     .compare-table-wrap{
       overflow-x:auto;
-      margin-top:16px;
+      margin-top:14px;
     }
 
     .compare-table{
       width:100%;
       border-collapse:collapse;
       background:#fff;
-      border:1px solid var(--line);
+      border:1px solid #e5e7eb;
       border-radius:18px;
       overflow:hidden;
     }
@@ -155,7 +239,7 @@
     .compare-table th,
     .compare-table td{
       padding:14px 12px;
-      border-bottom:1px solid var(--line);
+      border-bottom:1px solid #e5e7eb;
       text-align:left;
       vertical-align:top;
       font-size:15px;
@@ -164,55 +248,74 @@
     .compare-table th{
       background:#f8fafc;
       font-size:14px;
+      color:#334155;
     }
 
     .notice{
-      background:linear-gradient(135deg,#eff6ff,#f8fafc);
-      border:1px solid #bfdbfe;
+      margin-top:16px;
+      background:
+        radial-gradient(circle at top right, rgba(0,212,255,.12), transparent 20%),
+        linear-gradient(180deg,#ffffff,#f8fafc);
+      border:1px solid rgba(148,163,184,.18);
       border-radius:20px;
       padding:18px;
-      color:var(--text);
+      color:#334155;
+      font-weight:700;
+    }
+
+    .check-list{
+      margin:0;
+      padding-left:20px;
+      color:#475569;
+    }
+
+    .check-list li{
+      margin-bottom:10px;
     }
 
     .mini-links{
       display:grid;
       gap:12px;
-      margin-top:16px;
+      margin-top:14px;
     }
 
     .mini-link{
       display:block;
       background:#fff;
-      border:1px solid var(--line);
+      border:1px solid #e5e7eb;
       border-radius:18px;
       padding:16px;
-      box-shadow:var(--shadow);
+      box-shadow:0 10px 20px rgba(15,23,42,.04);
     }
 
     .mini-link strong{
       display:block;
       margin-bottom:6px;
-      font-size:17px;
+      font-size:18px;
+      color:#111827;
     }
 
     .mini-link span{
-      color:var(--sub);
+      color:#64748b;
       font-size:14px;
     }
 
     .sticky-card{
       position:sticky;
-      top:96px;
-      background:#fff;
-      border:1px solid var(--line);
+      top:92px;
+      background:
+        radial-gradient(circle at top right, rgba(0,212,255,.12), transparent 20%),
+        linear-gradient(180deg,#ffffff,#f8fafc);
+      border:1px solid rgba(148,163,184,.18);
       border-radius:24px;
       padding:20px;
-      box-shadow:var(--shadow);
+      box-shadow:0 18px 34px rgba(15,23,42,.06);
     }
 
     .sticky-card h3{
       margin:0 0 12px;
-      font-size:18px;
+      font-size:22px;
+      color:#0f172a;
     }
 
     .side-list{
@@ -220,11 +323,7 @@
       gap:10px;
       margin:0;
       padding-left:18px;
-      color:var(--sub);
-    }
-
-    .side-list li{
-      margin:0;
+      color:#475569;
     }
 
     .faq-list{
@@ -232,29 +331,34 @@
       gap:14px;
     }
 
-    .faq-one{
-      border-top:1px solid var(--line);
-      padding-top:14px;
+    .faq-item{
+      background:#fff;
+      border:1px solid #e5e7eb;
+      border-radius:18px;
+      padding:16px;
     }
 
-    .faq-one:first-child{
-      border-top:none;
-      padding-top:0;
-    }
-
-    .faq-q{
-      font-weight:800;
+    .faq-item strong{
+      display:block;
       margin-bottom:6px;
+      font-size:17px;
+      color:#111827;
     }
 
-    .author-box{
-      display:grid;
-      gap:10px;
+    .footer{
+      width:min(1180px, calc(100% - 32px));
+      margin:34px auto 50px;
+      color:#64748b;
+      font-size:14px;
     }
 
-    .author-box .name{
-      font-weight:800;
-      font-size:18px;
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      border-top:1px solid #e5e7eb;
+      padding-top:18px;
     }
 
     @media (max-width: 980px){
@@ -265,61 +369,18 @@
       .sticky-card{
         position:static;
       }
+    }
 
+    @media (max-width: 760px){
       .score-grid{
         grid-template-columns:1fr;
       }
+
+      .hero-title{
+        font-size:40px;
+      }
     }
   </style>
-
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Article",
-    "headline":"ボーナス比較の見方ガイド",
-    "description":"ボーナスを比較するときに見るべきポイントを整理したガイドページです。",
-    "inLanguage":"ja",
-    "mainEntityOfPage":{
-      "@type":"WebPage",
-      "@id":"https://shonshonchan.github.io/seo-pages/bonus-guide.html"
-    },
-    "author":{
-      "@type":"Person",
-      "name":"SEO Pages"
-    },
-    "publisher":{
-      "@type":"Organization",
-      "name":"SEO Pages"
-    }
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"BreadcrumbList",
-    "itemListElement":[
-      {
-        "@type":"ListItem",
-        "position":1,
-        "name":"トップ",
-        "item":"https://shonshonchan.github.io/seo-pages/index.html"
-      },
-      {
-        "@type":"ListItem",
-        "position":2,
-        "name":"ボーナス比較",
-        "item":"https://shonshonchan.github.io/seo-pages/bonus.html"
-      },
-      {
-        "@type":"ListItem",
-        "position":3,
-        "name":"ボーナス比較の見方ガイド",
-        "item":"https://shonshonchan.github.io/seo-pages/bonus-guide.html"
-      }
-    ]
-  }
-  </script>
 </head>
 <body>
   <header class="topbar">
@@ -330,243 +391,221 @@
       </a>
 
       <nav class="nav">
-        <a href="index.html">トップ</a>
+        <a href="index.html">TOP</a>
         <a href="bonus.html">ボーナス比較</a>
         <a href="review.html">レビュー</a>
-        <a href="payments.html">入出金</a>
-        <a href="guide.html">初心者ガイド</a>
+        <a href="guide.html">ガイド</a>
       </nav>
     </div>
   </header>
 
-  <main class="article-shell">
-    <div class="wrap">
+  <div class="article-wrap">
+    <section class="article-hero">
       <div class="breadcrumb">
-        <a href="index.html">トップ</a> / <a href="bonus.html">ボーナス比較</a> / ボーナス比較の見方ガイド
+        <a href="index.html">TOP</a> / <a href="bonus.html">ボーナス比較</a> / ボーナス比較の見方ガイド
       </div>
 
-      <section class="page-hero" style="padding-top:18px;">
-        <h1>ボーナス比較の見方ガイド</h1>
-        <p class="article-lead">
-          ボーナスを比較するときは、金額だけで判断すると失敗しやすいです。
-          このページでは、比較で見るべき基本項目を先に整理し、あとから個別の比較記事やレビュー記事を読む時にも迷わない土台を作ります。
-        </p>
+      <div class="hero-kicker">GUIDE / BONUS CHECK POINT</div>
 
-        <div class="article-meta">
-          <span>更新日: 2026-04-26</span>
-          <span>カテゴリ: ボーナス比較</span>
-          <span>記事タイプ: ガイド記事</span>
-        </div>
+      <h1 class="hero-title">
+        ボーナス比較を<br>
+        <span class="hero-highlight">どう見ればいいか</span>
+      </h1>
 
-        <div class="tag-row">
-          <span class="tag">比較軸整理</span>
-          <span class="tag">初心者向け</span>
-          <span class="tag">関連記事の入口</span>
-        </div>
-      </section>
+      <p class="hero-desc">
+        ボーナス比較は、数字だけを見ると判断をミスしやすいです。
+        このページでは、まず何を見て、どう絞り込んでいけばいいかを整理して、
+        比較ページやレビュー記事に進む前の土台を作ります。
+      </p>
 
-      <div class="article-grid">
-        <div class="article-main">
-          <section class="article-card">
-            <h2>最初に結論</h2>
-            <p>
-              ボーナス比較で最初に見るべきなのは、<strong>金額</strong>ではなく<strong>条件の読みやすさ</strong>です。
-              表面上の数字が大きくても、利用条件が複雑だったり、対象が限定的だったりすると、実際には使いにくいケースがあります。
-            </p>
-            <p>
-              そのため、比較の順番は
-              <strong>「条件のわかりやすさ → 対象範囲 → 実際の使いやすさ → 金額」</strong>
-              にすると判断しやすくなります。
-            </p>
-
-            <div class="score-grid">
-              <div class="score-card">
-                <strong>1</strong>
-                <span>条件のわかりやすさ</span>
-              </div>
-              <div class="score-card">
-                <strong>2</strong>
-                <span>対象範囲と使い道</span>
-              </div>
-              <div class="score-card">
-                <strong>3</strong>
-                <span>金額や特典量</span>
-              </div>
-            </div>
-          </section>
-
-          <section class="article-card">
-            <h2>比較で見るべき4つのポイント</h2>
-
-            <div class="point-box">
-              <div class="point-item">
-                <strong>1. 特典の中身</strong>
-                <p>
-                  まず確認したいのは、何が付与されるのかです。
-                  入金特典なのか、フリースピンなのか、複数の特典が組み合わさっているのかで、比較の前提が変わります。
-                </p>
-              </div>
-
-              <div class="point-item">
-                <strong>2. 利用条件の読みやすさ</strong>
-                <p>
-                  難しい条件が多いと、数字が大きくても判断しづらくなります。
-                  「条件が短く整理されているか」「要点がすぐ分かるか」を先に見ると、比較しやすくなります。
-                </p>
-              </div>
-
-              <div class="point-item">
-                <strong>3. 対象範囲</strong>
-                <p>
-                  一部の対象だけに使えるのか、広く使えるのかで実用性はかなり変わります。
-                  実際に使う場面を想像しやすいものほど、初心者にはわかりやすいです。
-                </p>
-              </div>
-
-              <div class="point-item">
-                <strong>4. 初心者向けかどうか</strong>
-                <p>
-                  比較記事では、金額の大きさだけでなく「初心者でも理解しやすいか」を入れると、記事全体の親切さが上がります。
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section class="article-card">
-            <h2>比較表はこう見ると迷いにくい</h2>
-            <p>
-              比較表は、上から順番に全部読む必要はありません。
-              まずは「特典の種類」と「条件の読みやすさ」を見て、候補を2〜3個に絞るのがおすすめです。
-            </p>
-
-            <div class="compare-table-wrap">
-              <table class="compare-table">
-                <thead>
-                  <tr>
-                    <th>比較項目</th>
-                    <th>見る理由</th>
-                    <th>初心者向けの見方</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>特典の種類</td>
-                    <td>比較の前提が変わるため</td>
-                    <td>まずは入金特典か付帯特典かを確認する</td>
-                  </tr>
-                  <tr>
-                    <td>条件の整理度</td>
-                    <td>理解しやすさに直結するため</td>
-                    <td>短く整理されているものから見る</td>
-                  </tr>
-                  <tr>
-                    <td>対象範囲</td>
-                    <td>実際の使いやすさに影響するため</td>
-                    <td>用途が広いものを優先する</td>
-                  </tr>
-                  <tr>
-                    <td>特典量</td>
-                    <td>最終比較で重要になるため</td>
-                    <td>最後に横並びで確認する</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div class="notice" style="margin-top:16px;">
-              <strong>ポイント:</strong>
-              比較表は「大きい数字を探す表」ではなく、
-              「自分に合う条件を見つける表」として使うと読みやすくなります。
-            </div>
-          </section>
-
-          <section class="article-card">
-            <h2>よくある失敗パターン</h2>
-            <ul class="check-block">
-              <li>数字だけを見て条件を読まない</li>
-              <li>対象範囲を見ずに比較してしまう</li>
-              <li>初心者向けかどうかを考えずに選ぶ</li>
-              <li>比較表を最初から最後まで細かく読みすぎて疲れる</li>
-            </ul>
-          </section>
-
-          <section class="article-card">
-            <h2>このあと読むと理解しやすい関連記事</h2>
-            <p>
-              ここで比較の軸を押さえたあとに、個別の比較記事やレビュー記事へ進むと、判断がかなり楽になります。
-            </p>
-
-            <div class="mini-links">
-              <a class="mini-link" href="bonus.html">
-                <strong>ボーナス比較カテゴリページ</strong>
-                <span>このカテゴリ全体の入口ページです。</span>
-              </a>
-
-              <a class="mini-link" href="review.html">
-                <strong>サービスレビューカテゴリ</strong>
-                <span>個別サービスを深掘りしたい時の入口として使えます。</span>
-              </a>
-
-              <a class="mini-link" href="guide.html">
-                <strong>初心者ガイドカテゴリ</strong>
-                <span>基本の流れや見方をもう一度整理したい時に向いています。</span>
-              </a>
-            </div>
-          </section>
-
-          <section class="article-card">
-            <h2>FAQ</h2>
-
-            <div class="faq-list">
-              <div class="faq-one">
-                <div class="faq-q">Q. 金額が大きいものを優先して見ればいいですか？</div>
-                <div class="faq-a">
-                  A. 最初から金額だけで比較するより、条件の読みやすさや対象範囲を先に見た方が判断しやすいです。
-                </div>
-              </div>
-
-              <div class="faq-one">
-                <div class="faq-q">Q. 比較表はどう読めばいいですか？</div>
-                <div class="faq-a">
-                  A. 最初は「特典の種類」「条件の整理度」「対象範囲」の3つだけに絞って見るのがおすすめです。
-                </div>
-              </div>
-
-              <div class="faq-one">
-                <div class="faq-q">Q. このページの次に何を読むべきですか？</div>
-                <div class="faq-a">
-                  A. 次はカテゴリページか、個別の比較記事・レビュー記事に進むと流れが自然です。
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-
-        <aside class="article-side">
-          <div class="sticky-card">
-            <h3>この記事の要点</h3>
-            <ol class="side-list">
-              <li>金額より先に条件を見る</li>
-              <li>対象範囲で使いやすさを見る</li>
-              <li>初心者向けかどうかを確認する</li>
-              <li>比較表は絞り込みに使う</li>
-            </ol>
-          </div>
-
-          <div class="sticky-card author-box">
-            <h3>この記事について</h3>
-            <div class="name">SEO Pages 編集部</div>
-            <div class="muted">
-              比較・レビュー・ガイド記事を整理しながら、サイト全体の導線を整えることを目的に作成した土台記事です。
-            </div>
-          </div>
-        </aside>
+      <div class="hero-meta">
+        <span>GUIDE</span>
+        <span>比較の基礎</span>
+        <span>初心者向け</span>
       </div>
+    </section>
+
+    <div class="article-grid">
+      <div class="content">
+        <section class="card">
+          <h2>最初に結論</h2>
+          <p>
+            ボーナス比較で最初に見るべきなのは、<strong>金額</strong>よりも<strong>条件の分かりやすさ</strong>です。
+            表面上の数字が大きくても、条件が複雑だったり、対象が限定的だったりすると、実際には比較しづらくなります。
+          </p>
+          <p>
+            なので、比較の順番は
+            <strong>「条件の読みやすさ → 対象範囲 → 使いやすさ → 最後に金額」</strong>
+            にすると判断しやすくなります。
+          </p>
+
+          <div class="score-grid">
+            <div class="score">
+              <strong>1</strong>
+              <span>条件の読みやすさ</span>
+            </div>
+            <div class="score">
+              <strong>2</strong>
+              <span>対象範囲</span>
+            </div>
+            <div class="score">
+              <strong>3</strong>
+              <span>金額や特典量</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2><span class="accent-text">比較で見るべき4つのポイント</span></h2>
+
+          <div class="point-grid">
+            <div class="point">
+              <strong>1. 特典の中身</strong>
+              <p>まず確認したいのは、何が付くのかです。入金特典なのか、追加特典なのかで比較の前提が変わります。</p>
+            </div>
+
+            <div class="point">
+              <strong>2. 条件の分かりやすさ</strong>
+              <p>難しい条件が多いと、数字が大きくても判断しづらくなります。要点がすぐ分かるかどうかを先に見ます。</p>
+            </div>
+
+            <div class="point">
+              <strong>3. 対象範囲</strong>
+              <p>一部だけに使えるのか、広く使えるのかで実用性はかなり変わります。使う場面を想像しやすいものから見ます。</p>
+            </div>
+
+            <div class="point">
+              <strong>4. 初心者向けかどうか</strong>
+              <p>比較記事では、数字の大きさだけでなく、初心者でも理解しやすいかを入れると全体の親切さが上がります。</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>比較表はこう見ると迷いにくい</h2>
+          <p>
+            比較表は、上から順番に全部読む必要はありません。
+            まずは「特典の種類」と「条件の分かりやすさ」を見て、候補を2〜3個に絞るのがおすすめです。
+          </p>
+
+          <div class="compare-table-wrap">
+            <table class="compare-table">
+              <thead>
+                <tr>
+                  <th>比較項目</th>
+                  <th>見る理由</th>
+                  <th>初心者向けの見方</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>特典の種類</td>
+                  <td>比較の前提が変わるため</td>
+                  <td>まずは何が付くのかを確認する</td>
+                </tr>
+                <tr>
+                  <td>条件の整理度</td>
+                  <td>理解しやすさに直結するため</td>
+                  <td>短く整理されているものから見る</td>
+                </tr>
+                <tr>
+                  <td>対象範囲</td>
+                  <td>使いやすさに影響するため</td>
+                  <td>用途が広いものを優先する</td>
+                </tr>
+                <tr>
+                  <td>特典量</td>
+                  <td>最終比較で重要になるため</td>
+                  <td>最後に横並びで確認する</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="notice">
+            ポイント: 比較表は「大きな数字を探す表」ではなく、
+            「自分に合う条件を見つける表」として使うと読みやすくなります。
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>よくある失敗パターン</h2>
+          <ul class="check-list">
+            <li>数字だけを見て条件を読まない</li>
+            <li>対象範囲を見ずに比較してしまう</li>
+            <li>初心者向けかどうかを考えずに選ぶ</li>
+            <li>比較表を最初から最後まで細かく読みすぎる</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>このあと読むと理解しやすい関連記事</h2>
+          <p>比較の軸を押さえたあとに、カテゴリページやレビューカテゴリへ進むと流れが自然です。</p>
+
+          <div class="mini-links">
+            <a class="mini-link" href="bonus.html">
+              <strong>ボーナス比較カテゴリページ</strong>
+              <span>このカテゴリ全体の入口ページです。</span>
+            </a>
+
+            <a class="mini-link" href="review.html">
+              <strong>サービスレビューカテゴリ</strong>
+              <span>個別サービスを深掘りしたい時の入口として使えます。</span>
+            </a>
+
+            <a class="mini-link" href="guide.html">
+              <strong>初心者ガイドカテゴリ</strong>
+              <span>基本の流れを整理したい時に向いています。</span>
+            </a>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>FAQ</h2>
+
+          <div class="faq-list">
+            <div class="faq-item">
+              <strong>Q. 金額が大きいものを優先して見ればいいですか？</strong>
+              <div>A. 最初から金額だけで比較するより、条件の読みやすさや対象範囲を先に見た方が判断しやすいです。</div>
+            </div>
+
+            <div class="faq-item">
+              <strong>Q. 比較表はどう読めばいいですか？</strong>
+              <div>A. 最初は「特典の種類」「条件の整理度」「対象範囲」の3つだけに絞って見るのがおすすめです。</div>
+            </div>
+
+            <div class="faq-item">
+              <strong>Q. このページの次に何を読むべきですか？</strong>
+              <div>A. 次はカテゴリページか、個別の比較記事・レビュー記事に進むと流れが自然です。</div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <aside class="side">
+        <div class="sticky-card">
+          <h3>この記事の要点</h3>
+          <ol class="side-list">
+            <li>金額より先に条件を見る</li>
+            <li>対象範囲で使いやすさを見る</li>
+            <li>初心者向けかどうかを確認する</li>
+            <li>比較表は絞り込みに使う</li>
+          </ol>
+        </div>
+
+        <div class="sticky-card">
+          <h3>次に進む導線</h3>
+          <div class="banner-actions">
+            <a class="small-btn main" href="bonus.html">カテゴリへ戻る</a>
+            <a class="small-btn sub" href="review.html">レビューへ</a>
+          </div>
+        </div>
+      </aside>
     </div>
-  </main>
+  </div>
 
   <footer class="footer">
-    <div class="wrap footer-inner">
+    <div class="footer-inner">
       <div>© SEO Pages</div>
       <div>ボーナス比較の見方ガイド</div>
     </div>
