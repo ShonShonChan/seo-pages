@@ -1,1093 +1,974 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>リベンジカジノ攻略 | 比較・レビュー・攻略情報サイト</title>
-  <meta
-    name="description"
-    content="比較・レビュー・攻略記事を通じて、オンラインカジノの情報を整理するSEOメディア。ボーナス、還元率、入出金、信頼性、初心者向け情報を分かりやすく掲載。"
-  />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>次は、賢く選ぶ。オンラインカジノ比較ガイド</title>
+  <meta name="description" content="オンラインカジノの安全性・ボーナス条件・入出金・日本語対応・ライセンス情報をわかりやすく比較。初心者でも条件を確認しながら納得して選べる比較メディアです。">
+
   <style>
-    :root {
-      --bg: #0c1120;
-      --bg-deep: #090d17;
-      --panel: rgba(16, 23, 42, 0.88);
-      --panel-soft: rgba(255,255,255,0.08);
-      --card: #121a2f;
-      --card-2: #18213a;
-      --text: #f7f4ed;
-      --muted: #d6d1c7;
-      --subtle: #a7aab7;
-      --line: rgba(255,255,255,0.12);
+    :root{
+      --bg:#0b1020;
+      --bg2:#121a30;
+      --panel:#111827;
+      --panel-soft:#18233f;
+      --card:#ffffff;
+      --text:#f8fafc;
+      --text-dark:#111827;
+      --muted:#cbd5e1;
+      --muted-dark:#475569;
+      --line:rgba(255,255,255,.12);
+      --line-dark:#e5e7eb;
 
-      --red: #e53935;
-      --red-deep: #a90f14;
-      --gold: #ffc928;
-      --gold-2: #ffdf78;
-      --orange: #ff8a00;
-      --navy: #101930;
-      --black: #080b12;
+      --red:#d62828;
+      --red-dark:#8f1111;
+      --gold:#ffc300;
+      --gold-soft:#ffe082;
+      --orange:#f77f00;
+      --navy:#0f172a;
+      --black:#080b12;
+      --white:#ffffff;
 
-      --success: #39c281;
-      --warning: #ffb938;
-
-      --shadow-1: 0 18px 45px rgba(0,0,0,0.28);
-      --shadow-2: 0 14px 30px rgba(229, 57, 53, 0.18);
-      --radius-xl: 28px;
-      --radius-lg: 22px;
-      --radius-md: 16px;
-      --radius-sm: 12px;
-      --max: 1260px;
+      --shadow:0 18px 40px rgba(0,0,0,.24);
+      --shadow-soft:0 14px 30px rgba(15,23,42,.10);
+      --radius-xl:30px;
+      --radius-lg:24px;
+      --radius-md:18px;
+      --radius-sm:12px;
+      --max:1200px;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
-      color: var(--text);
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;
+      color:var(--text);
       background:
-        radial-gradient(circle at 15% 10%, rgba(255, 152, 0, 0.22), transparent 26%),
-        radial-gradient(circle at 85% 8%, rgba(255, 59, 48, 0.22), transparent 24%),
-        radial-gradient(circle at 30% 50%, rgba(255, 200, 0, 0.10), transparent 24%),
-        linear-gradient(180deg, #111625 0%, #0a101d 48%, #09111c 100%);
-      line-height: 1.7;
+        radial-gradient(circle at 10% 10%, rgba(255,195,0,.14), transparent 22%),
+        radial-gradient(circle at 90% 12%, rgba(214,40,40,.16), transparent 22%),
+        linear-gradient(180deg,#121826 0%, #0b1020 42%, #0a0f1d 100%);
+      line-height:1.7;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.18;
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .wrap{
+      width:min(var(--max), calc(100% - 32px));
+      margin:0 auto;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(14px);
+      background:rgba(8,11,18,.72);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .topbar-inner{
+      min-height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+      padding:12px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:900;
+    }
+
+    .brand-mark{
+      width:46px;
+      height:46px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,var(--gold),var(--orange));
+      color:#2b1600;
+      font-size:18px;
+      box-shadow:0 10px 24px rgba(255,195,0,.24);
+    }
+
+    .brand-copy{
+      display:flex;
+      flex-direction:column;
+      line-height:1.1;
+    }
+
+    .brand-copy strong{
+      font-size:1.06rem;
+      color:#fff7e8;
+    }
+
+    .brand-copy span{
+      font-size:.78rem;
+      color:#ffd58a;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .nav{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .nav a{
+      padding:10px 14px;
+      border-radius:999px;
+      color:#f3ead8;
+      font-weight:800;
+      font-size:.94rem;
+    }
+
+    .nav a:hover{
+      background:rgba(255,255,255,.08);
+    }
+
+    .hero{
+      padding:28px 0 18px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:22px;
+      align-items:stretch;
+    }
+
+    .hero-main{
+      position:relative;
+      overflow:hidden;
+      border-radius:var(--radius-xl);
+      padding:34px 30px;
+      min-height:520px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,.10);
       background:
+        radial-gradient(circle at 18% 18%, rgba(255,195,0,.22), transparent 24%),
+        radial-gradient(circle at 82% 18%, rgba(214,40,40,.24), transparent 24%),
+        linear-gradient(135deg,#4a0f12 0%, #7f1218 18%, #1a152c 54%, #0b1020 100%);
+    }
+
+    .hero-main::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(120deg, rgba(255,255,255,.06), transparent 28%),
         repeating-linear-gradient(
           135deg,
           transparent 0 14px,
-          rgba(255,255,255,0.025) 14px 22px
+          rgba(255,255,255,.025) 14px 22px
         );
-      z-index: -2;
+      pointer-events:none;
     }
 
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 20% 0%, rgba(255,196,0,0.12), transparent 25%),
-        radial-gradient(circle at 80% 0%, rgba(255,76,59,0.12), transparent 25%);
-      z-index: -1;
+    .hero-main > *{
+      position:relative;
+      z-index:1;
     }
 
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-
-    .container {
-      width: min(var(--max), calc(100% - 32px));
-      margin-inline: auto;
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 16px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#ffe27a,#ffb700);
+      color:#2a1400;
+      font-size:.82rem;
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:20px;
+      box-shadow:0 12px 26px rgba(255,195,0,.22);
     }
 
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(16px);
-      background: rgba(8, 11, 18, 0.72);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .topbar-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      min-height: 78px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      font-weight: 900;
-      letter-spacing: 0.02em;
-    }
-
-    .brand-badge {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      font-size: 1.1rem;
-      font-weight: 900;
-      color: #1b1204;
-      background: linear-gradient(135deg, var(--gold), #ff9f1a);
-      box-shadow: 0 10px 24px rgba(255, 179, 0, 0.28);
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.15;
-    }
-
-    .brand-text strong {
-      font-size: 1.1rem;
-    }
-
-    .brand-text span {
-      font-size: 0.8rem;
-      color: #ffd278;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-    }
-
-    .nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .nav a {
-      padding: 10px 14px;
-      border-radius: 999px;
-      color: #efe9de;
-      font-weight: 800;
-      font-size: 0.95rem;
-      transition: 0.2s ease;
-    }
-
-    .nav a:hover {
-      background: rgba(255,255,255,0.08);
-      color: #fff7de;
-    }
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      padding: 46px 0 28px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.18fr 0.82fr;
-      gap: 28px;
-      align-items: stretch;
-    }
-
-    .hero-main,
-    .hero-side {
-      position: relative;
-      border-radius: 30px;
-      overflow: hidden;
-      box-shadow: var(--shadow-1);
-      border: 1px solid rgba(255,255,255,0.10);
-    }
-
-    .hero-main {
-      min-height: 580px;
-      padding: 38px 38px 34px;
-      background:
-        linear-gradient(135deg, rgba(255, 183, 0, 0.14), rgba(255,255,255,0) 35%),
-        radial-gradient(circle at 15% 18%, rgba(255,203,0,0.26), transparent 28%),
-        radial-gradient(circle at 85% 22%, rgba(255,78,65,0.28), transparent 28%),
-        linear-gradient(135deg, #4a060b 0%, #8e1116 18%, #150f26 58%, #0d1222 100%);
-    }
-
-    .hero-main::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(120deg, rgba(255,255,255,0.05), transparent 26%),
-        linear-gradient(0deg, rgba(0,0,0,0.20), rgba(0,0,0,0.06)),
-        repeating-linear-gradient(
-          135deg,
-          transparent 0 11px,
-          rgba(255,255,255,0.03) 11px 18px
-        );
-      pointer-events: none;
-    }
-
-    .hero-main::after {
-      content: "";
-      position: absolute;
-      width: 460px;
-      height: 460px;
-      right: -90px;
-      bottom: -100px;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle, rgba(255,197,0,0.35), rgba(255,133,0,0.08) 46%, transparent 68%);
-      filter: blur(2px);
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 760px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 16px;
-      border-radius: 999px;
-      color: #230900;
-      font-size: 0.84rem;
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      background: linear-gradient(135deg, #ffe66b, #ffba08);
-      box-shadow: 0 10px 24px rgba(255, 196, 0, 0.22);
-      margin-bottom: 22px;
-      text-transform: uppercase;
-    }
-
-    .hero-title {
-      margin: 0 0 18px;
-      font-size: clamp(2.6rem, 5.7vw, 5.2rem);
-      line-height: 0.95;
-      letter-spacing: -0.04em;
-      font-weight: 900;
+    .hero-title{
+      margin:0 0 16px;
+      font-size:clamp(2.4rem, 5.4vw, 5rem);
+      line-height:.98;
+      letter-spacing:-.04em;
+      font-weight:900;
       text-shadow:
-        0 4px 0 rgba(0,0,0,0.26),
-        0 0 34px rgba(255,196,0,0.16);
+        0 4px 0 rgba(0,0,0,.20),
+        0 0 24px rgba(255,195,0,.12);
     }
 
-    .hero-title .top {
-      display: block;
-      color: #fffdf7;
+    .hero-title .line1{
+      display:block;
+      color:#fffaf0;
     }
 
-    .hero-title .accent {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 10px 18px 8px;
-      background: linear-gradient(135deg, #ffd60a 0%, #ff9f1a 55%, #ff6b00 100%);
-      color: #180f02;
-      border-radius: 18px;
-      box-shadow:
-        0 12px 28px rgba(255,152,0,0.24),
-        inset 0 1px 0 rgba(255,255,255,0.45);
+    .hero-title .line2{
+      display:inline-block;
+      margin-top:10px;
+      padding:8px 16px;
+      border-radius:16px;
+      background:linear-gradient(135deg,#ffd54f,#ff8f00);
+      color:#251200;
+      box-shadow:0 12px 28px rgba(255,143,0,.20);
     }
 
-    .hero-desc {
-      max-width: 700px;
-      font-size: 1.08rem;
-      color: #fff1d6;
-      margin-bottom: 24px;
-      text-shadow: 0 1px 0 rgba(0,0,0,0.18);
+    .hero-desc{
+      max-width:760px;
+      font-size:1.02rem;
+      color:#f7e7c8;
+      margin:0 0 20px;
     }
 
-    .hero-points {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-bottom: 26px;
+    .hero-points{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:12px;
+      margin-bottom:22px;
     }
 
-    .hero-point {
-      padding: 14px 14px 12px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,255,255,0.10);
-      backdrop-filter: blur(6px);
+    .hero-point{
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:18px;
+      padding:14px;
+      backdrop-filter:blur(6px);
     }
 
-    .hero-point strong {
-      display: block;
-      font-size: 1.02rem;
-      margin-bottom: 4px;
-      color: #fff7db;
+    .hero-point strong{
+      display:block;
+      margin-bottom:4px;
+      color:#fff6dd;
+      font-size:.98rem;
     }
 
-    .hero-point span {
-      color: #f2e0c3;
-      font-size: 0.92rem;
+    .hero-point span{
+      color:#eadcc2;
+      font-size:.9rem;
     }
 
-    .hero-cta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 22px;
+    .hero-cta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:16px;
     }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      min-height: 52px;
-      padding: 0 22px;
-      border-radius: 14px;
-      font-weight: 900;
-      font-size: 0.98rem;
-      letter-spacing: 0.01em;
-      border: 1px solid transparent;
-      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
-      cursor: pointer;
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:52px;
+      padding:0 20px;
+      border-radius:14px;
+      font-weight:900;
+      font-size:.96rem;
+      transition:.18s ease;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
+    .btn:hover{
+      transform:translateY(-2px);
     }
 
-    .btn-primary {
-      color: #190900;
-      background: linear-gradient(135deg, #ffe562 0%, #ffb700 50%, #ff8e1b 100%);
-      box-shadow: 0 16px 30px rgba(255, 162, 0, 0.24);
+    .btn-primary{
+      background:linear-gradient(135deg,#ffe27a,#ffb700,#ff8f00);
+      color:#251200;
+      box-shadow:0 14px 28px rgba(255,143,0,.22);
     }
 
-    .btn-secondary {
-      color: #fff7eb;
-      background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06));
-      border-color: rgba(255,255,255,0.15);
+    .btn-red{
+      background:linear-gradient(135deg,#ff6b57,#d62828,#8f1111);
+      color:#fff8f4;
+      box-shadow:0 14px 28px rgba(214,40,40,.22);
     }
 
-    .btn-danger {
-      color: #fff8f1;
-      background: linear-gradient(135deg, #ff5d47 0%, #d81920 65%, #8f0c12 100%);
-      box-shadow: 0 16px 32px rgba(217, 25, 32, 0.25);
+    .btn-ghost{
+      background:rgba(255,255,255,.10);
+      color:#fff7eb;
+      border:1px solid rgba(255,255,255,.14);
     }
 
-    .hero-note {
-      color: #ffdfb8;
-      font-size: 0.9rem;
-      opacity: 0.95;
+    .hero-note{
+      color:#f4ddb0;
+      font-size:.9rem;
     }
 
-    .hero-side {
-      min-height: 580px;
-      padding: 26px;
+    .hero-side{
+      display:grid;
+      gap:16px;
+    }
+
+    .glass{
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04)),
-        linear-gradient(135deg, #261128 0%, #16162b 38%, #111926 100%);
+        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)),
+        linear-gradient(135deg,#17192b 0%, #101827 100%);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:28px;
+      padding:22px;
+      box-shadow:var(--shadow);
     }
 
-    .side-badge {
-      display: inline-block;
-      background: linear-gradient(135deg, #ff9a3d, #ff4300);
-      color: #fff8ee;
-      border-radius: 999px;
-      padding: 10px 16px;
-      font-size: 0.82rem;
-      font-weight: 900;
-      margin-bottom: 18px;
+    .glass h3{
+      margin:0 0 10px;
+      font-size:1.7rem;
+      line-height:1.15;
+      color:#fff6e8;
     }
 
-    .side-title {
-      margin: 0 0 16px;
-      font-size: 2rem;
-      line-height: 1.15;
-      font-weight: 900;
-      color: #fff7e6;
+    .glass p{
+      margin:0;
+      color:#d8d2c7;
     }
 
-    .side-copy {
-      color: #e4dccf;
-      margin-bottom: 18px;
+    .glass-list{
+      display:grid;
+      gap:12px;
+      margin-top:16px;
     }
 
-    .reason-list {
-      display: grid;
-      gap: 14px;
-      margin-bottom: 18px;
+    .glass-item{
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px;
+      padding:14px;
     }
 
-    .reason-item {
-      padding: 16px 16px 14px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.10);
+    .glass-item strong{
+      display:block;
+      margin-bottom:4px;
+      color:#fff0cf;
     }
 
-    .reason-item strong {
-      display: block;
-      color: #fff5db;
-      font-size: 1.05rem;
-      margin-bottom: 6px;
+    .score-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:12px;
+      margin-top:16px;
     }
 
-    .reason-item span {
-      color: #d8d3c8;
-      font-size: 0.94rem;
+    .score-card{
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px;
+      text-align:center;
+      padding:14px 10px;
     }
 
-    .score-row {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 12px;
-      margin-top: 18px;
+    .score-card strong{
+      display:block;
+      font-size:1.85rem;
+      color:#ffe08a;
+      line-height:1;
+      margin-bottom:8px;
     }
 
-    .score-card {
-      padding: 16px 12px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.08);
-      text-align: center;
-      border: 1px solid rgba(255,255,255,0.12);
+    .score-card span{
+      color:#ddd5ca;
+      font-size:.88rem;
+      font-weight:800;
     }
 
-    .score-card strong {
-      display: block;
-      font-size: 2rem;
-      line-height: 1;
-      margin-bottom: 8px;
-      color: #fff0b3;
+    .section{
+      padding:34px 0 10px;
     }
 
-    .score-card span {
-      color: #ded9ce;
-      font-size: 0.9rem;
-      font-weight: 700;
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-bottom:20px;
     }
 
-    .section {
-      padding: 34px 0 18px;
+    .section-kicker{
+      display:inline-block;
+      color:#ffcf73;
+      font-size:.8rem;
+      font-weight:900;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      margin-bottom:8px;
     }
 
-    .section-head {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: end;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 22px;
+    .section-title{
+      margin:0;
+      font-size:clamp(1.9rem, 3.8vw, 3rem);
+      line-height:1.04;
+      letter-spacing:-.03em;
+      color:#fff8ee;
+      font-weight:900;
     }
 
-    .section-kicker {
-      display: inline-block;
-      color: #ffcc71;
-      font-weight: 900;
-      font-size: 0.8rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
+    .section-title .grad{
+      background:linear-gradient(135deg,#ffcf4a,#ff8c00,#e53935);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
     }
 
-    .section-title {
-      margin: 0;
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.02;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      color: #fff7ed;
-      text-shadow: 0 0 22px rgba(255,178,0,0.08);
+    .section-desc{
+      max-width:760px;
+      margin-top:10px;
+      color:#d3d3d8;
     }
 
-    .section-title .grad {
-      background: linear-gradient(135deg, #ffbf2f 0%, #ff7b00 40%, #ff4040 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:20px;
     }
 
-    .section-desc {
-      max-width: 760px;
-      color: var(--muted);
-      margin-top: 12px;
+    .grid-4{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:18px;
     }
 
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 20px;
-    }
-
-    .grid-4 {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0,1fr));
-      gap: 18px;
-    }
-
-    .card {
+    .card{
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03)),
-        linear-gradient(180deg, #141b30, #101727);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 24px;
-      box-shadow: var(--shadow-1);
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03)),
+        linear-gradient(180deg,#141b30,#101727);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:26px;
+      box-shadow:var(--shadow);
     }
 
-    .ranking-card {
-      overflow: hidden;
-      position: relative;
-      transition: transform .2s ease, box-shadow .2s ease;
+    .rank-card{
+      overflow:hidden;
+      transition:.18s ease;
     }
 
-    .ranking-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 24px 46px rgba(0,0,0,0.32);
+    .rank-card:hover{
+      transform:translateY(-4px);
     }
 
-    .ranking-top {
-      position: relative;
-      padding: 18px 18px 14px;
-      min-height: 230px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .rank-top{
+      position:relative;
+      min-height:220px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
       background:
-        radial-gradient(circle at 50% 18%, rgba(255,215,74,0.22), transparent 28%),
-        linear-gradient(135deg, #241306 0%, #4a1600 30%, #10182b 100%);
-      overflow: hidden;
+        radial-gradient(circle at 50% 18%, rgba(255,210,90,.20), transparent 26%),
+        linear-gradient(135deg,#281206 0%, #4b1706 28%, #101827 100%);
     }
 
-    .ranking-top img {
-      max-height: 120px;
-      object-fit: contain;
-      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.22));
-      z-index: 2;
+    .rank-badge{
+      position:absolute;
+      top:16px;
+      left:16px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#fff1a5,#ffbf00);
+      color:#2b1700;
+      font-size:.84rem;
+      font-weight:900;
+      box-shadow:0 10px 20px rgba(255,191,0,.18);
     }
 
-    .rank-badge {
-      position: absolute;
-      left: 16px;
-      top: 16px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #fff2a8, #ffbf00);
-      color: #281400;
-      font-weight: 900;
-      font-size: 0.85rem;
-      box-shadow: 0 10px 20px rgba(255,185,0,0.22);
-      z-index: 3;
+    .rank-logo{
+      width:100%;
+      max-width:220px;
+      min-height:88px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:18px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.06);
+      color:#ffe7b2;
+      font-weight:900;
+      text-align:center;
+      padding:16px;
     }
 
-    .ranking-body {
-      padding: 18px 18px 20px;
+    .rank-body{
+      padding:18px;
     }
 
-    .ranking-name {
-      margin: 0 0 8px;
-      font-size: 1.55rem;
-      line-height: 1.15;
-      font-weight: 900;
-      color: #fff7e5;
+    .rank-body h3{
+      margin:0 0 8px;
+      font-size:1.45rem;
+      color:#fff7eb;
+      line-height:1.16;
     }
 
-    .ranking-copy {
-      color: var(--muted);
-      margin: 0 0 14px;
-      min-height: 84px;
+    .rank-body p{
+      margin:0 0 12px;
+      color:#d7d0c5;
+      min-height:72px;
     }
 
-    .rating-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 14px;
+    .tag-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:12px;
     }
 
-    .tag {
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: #f0e6d6;
-      font-size: 0.82rem;
-      font-weight: 800;
+    .tag{
+      display:inline-flex;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.08);
+      color:#f1e7d4;
+      font-size:.82rem;
+      font-weight:800;
     }
 
-    .rating-list {
-      display: grid;
-      gap: 8px;
-      margin-bottom: 16px;
+    .compare-mini{
+      display:grid;
+      gap:8px;
+      margin-bottom:14px;
     }
 
-    .rating-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      padding-bottom: 8px;
-      border-bottom: 1px dashed rgba(255,255,255,0.10);
-      color: #e8dfcf;
-      font-size: 0.92rem;
+    .compare-item{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      padding-bottom:8px;
+      border-bottom:1px dashed rgba(255,255,255,.10);
+      color:#e8dfcf;
+      font-size:.92rem;
     }
 
-    .rating-item strong {
-      color: #ffdd8c;
-      font-weight: 900;
+    .compare-item strong{
+      color:#ffd777;
     }
 
-    .cta-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
+    .cta-row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
     }
 
-    .mini-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 44px;
-      padding: 0 16px;
-      border-radius: 12px;
-      font-weight: 900;
-      font-size: 0.9rem;
+    .mini-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:42px;
+      padding:0 14px;
+      border-radius:12px;
+      font-weight:900;
+      font-size:.9rem;
     }
 
-    .mini-btn-primary {
-      color: #1b0e00;
-      background: linear-gradient(135deg, #ffe260, #ffb200);
+    .mini-btn.primary{
+      background:linear-gradient(135deg,#ffe27a,#ffb700);
+      color:#251200;
     }
 
-    .mini-btn-secondary {
-      color: #e9edf7;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.10);
+    .mini-btn.secondary{
+      background:rgba(255,255,255,.08);
+      color:#f4f0ea;
+      border:1px solid rgba(255,255,255,.08);
     }
 
-    .feature-card {
-      padding: 22px;
-      min-height: 100%;
+    .guide-card,
+    .content-card{
+      padding:22px;
+      min-height:100%;
     }
 
-    .feature-icon {
-      width: 54px;
-      height: 54px;
-      border-radius: 16px;
-      display: grid;
-      place-items: center;
-      font-size: 1.5rem;
-      background: linear-gradient(135deg, rgba(255,204,51,0.18), rgba(229,57,53,0.25));
-      border: 1px solid rgba(255,255,255,0.08);
-      margin-bottom: 16px;
+    .guide-icon{
+      width:52px;
+      height:52px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,rgba(255,195,0,.18),rgba(229,57,53,.24));
+      border:1px solid rgba(255,255,255,.08);
+      margin-bottom:14px;
+      font-size:1.4rem;
     }
 
-    .feature-card h3 {
-      margin: 0 0 10px;
-      font-size: 1.35rem;
-      line-height: 1.2;
-      color: #fff7e8;
+    .guide-card h3,
+    .content-card h3{
+      margin:0 0 10px;
+      color:#fff7eb;
+      font-size:1.3rem;
+      line-height:1.2;
     }
 
-    .feature-card p {
-      margin: 0;
-      color: var(--muted);
+    .guide-card p,
+    .content-card p{
+      margin:0;
+      color:#d6d0c6;
     }
 
-    .topic-card {
-      padding: 22px;
-      position: relative;
-      overflow: hidden;
-      min-height: 100%;
+    .bonus-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:18px;
     }
 
-    .topic-chip {
-      display: inline-block;
-      margin-bottom: 12px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: #ffcf6b;
-      font-size: 0.8rem;
-      font-weight: 900;
+    .bonus-box{
+      padding:22px;
+      min-height:100%;
     }
 
-    .topic-card h3 {
-      margin: 0 0 8px;
-      font-size: 1.3rem;
-      color: #fff6ea;
+    .bonus-box ul{
+      margin:0;
+      padding-left:18px;
+      color:#e8dfd0;
     }
 
-    .topic-card p {
-      margin: 0 0 14px;
-      color: var(--muted);
-      min-height: 74px;
+    .bonus-box li + li{
+      margin-top:6px;
     }
 
-    .topic-card ul {
-      margin: 0;
-      padding-left: 18px;
-      color: #ede4d2;
+    .trust-wrap{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:20px;
     }
 
-    .topic-card li + li {
-      margin-top: 6px;
+    .trust-card{
+      padding:24px;
     }
 
-    .trust-wrap {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 20px;
+    .trust-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:14px;
+      margin-top:16px;
     }
 
-    .trust-card {
-      padding: 24px;
+    .trust-item{
+      padding:16px;
+      border-radius:18px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
     }
 
-    .trust-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 14px;
-      margin-top: 18px;
+    .trust-item strong{
+      display:block;
+      margin-bottom:6px;
+      color:#fff2d0;
     }
 
-    .trust-item {
-      padding: 16px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
+    .trust-item span{
+      color:#d8d1c5;
+      font-size:.92rem;
     }
 
-    .trust-item strong {
-      display: block;
-      margin-bottom: 6px;
-      color: #fff3cf;
-      font-size: 1rem;
+    .check-list{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:grid;
+      gap:10px;
     }
 
-    .trust-item span {
-      color: var(--muted);
-      font-size: 0.92rem;
+    .check-list li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      color:#e5ddd1;
     }
 
-    .check-list {
-      display: grid;
-      gap: 10px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
+    .check-list li::before{
+      content:"✓";
+      color:#ffd15e;
+      font-weight:900;
+      flex:0 0 auto;
     }
 
-    .check-list li {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      color: #e7dfd3;
+    .article-layout{
+      display:grid;
+      grid-template-columns:1.12fr .88fr;
+      gap:20px;
     }
 
-    .check-list li::before {
-      content: "✓";
-      flex: 0 0 auto;
-      margin-top: 1px;
-      color: #ffd060;
-      font-weight: 900;
+    .article-card{
+      overflow:hidden;
+      border-radius:26px;
+      background:#fffdfa;
+      box-shadow:var(--shadow-soft);
     }
 
-    .article-layout {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 20px;
-    }
-
-    .article-demo {
-      padding: 0;
-      overflow: hidden;
-    }
-
-    .article-head {
-      padding: 22px 24px;
+    .article-head{
+      padding:22px 24px;
       background:
-        radial-gradient(circle at 15% 15%, rgba(255,210,80,0.20), transparent 20%),
-        linear-gradient(135deg, #40110e, #120f22 70%);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+        radial-gradient(circle at 15% 20%, rgba(255,206,84,.18), transparent 20%),
+        linear-gradient(135deg,#531212,#15172a 70%);
+      color:#fff8ef;
+      border-bottom:1px solid rgba(255,255,255,.08);
     }
 
-    .article-head .pill {
-      display: inline-block;
-      margin-bottom: 12px;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #ffca33, #ff7a00);
-      color: #291300;
-      font-size: 0.8rem;
-      font-weight: 900;
+    .pill{
+      display:inline-block;
+      padding:7px 12px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#ffd54f,#ff8f00);
+      color:#2a1400;
+      font-size:.8rem;
+      font-weight:900;
+      margin-bottom:12px;
     }
 
-    .article-head h3 {
-      margin: 0 0 8px;
-      font-size: 1.7rem;
-      line-height: 1.2;
-      color: #fff8ef;
+    .article-head h3{
+      margin:0 0 8px;
+      font-size:1.65rem;
+      line-height:1.2;
     }
 
-    .article-meta {
-      font-size: 0.88rem;
-      color: #f7e1bb;
+    .article-meta{
+      color:#f1dfbd;
+      font-size:.88rem;
     }
 
-    .article-body {
-      padding: 22px 24px 26px;
-      background: #fffdfa;
-      color: #1b2133;
+    .article-body{
+      padding:22px 24px 26px;
+      color:#1d2435;
+      background:#fffdfa;
     }
 
-    .article-body h4 {
-      margin: 0 0 10px;
-      font-size: 1.18rem;
-      line-height: 1.3;
-      border-left: 5px solid #d61f27;
-      padding-left: 12px;
-      color: #151d30;
+    .article-body h4{
+      margin:0 0 10px;
+      font-size:1.14rem;
+      line-height:1.3;
+      color:#141c2c;
+      border-left:5px solid var(--red);
+      padding-left:12px;
     }
 
-    .article-body p {
-      margin: 0 0 16px;
-      color: #333c50;
+    .article-body p{
+      margin:0 0 16px;
+      color:#374151;
     }
 
-    .article-body .callout {
-      background: #fff2d1;
-      border: 1px solid #ffd981;
-      border-radius: 14px;
-      padding: 14px 16px;
-      color: #503819;
-      margin: 0 0 16px;
-      font-size: 0.95rem;
+    .callout{
+      margin:0 0 16px;
+      background:#fff3d4;
+      border:1px solid #ffd57b;
+      color:#4f3a17;
+      border-radius:14px;
+      padding:14px 16px;
+      font-size:.95rem;
     }
 
-    .article-body ul {
-      padding-left: 18px;
-      color: #313b52;
-      margin: 0 0 16px;
+    .article-body ul{
+      margin:0 0 16px;
+      padding-left:18px;
+      color:#374151;
     }
 
-    .article-body li + li {
-      margin-top: 6px;
+    .sidebar{
+      display:grid;
+      gap:16px;
     }
 
-    .sidebar-stack {
-      display: grid;
-      gap: 16px;
+    .side-card{
+      padding:20px;
     }
 
-    .side-panel {
-      padding: 20px;
+    .side-card h3{
+      margin:0 0 10px;
+      color:#fff7eb;
+      font-size:1.2rem;
     }
 
-    .side-panel h3 {
-      margin: 0 0 10px;
-      font-size: 1.22rem;
-      color: #fff8eb;
+    .side-card p,
+    .side-card li{
+      color:#d8d1c5;
+      font-size:.94rem;
     }
 
-    .side-panel p,
-    .side-panel li {
-      color: var(--muted);
-      font-size: 0.95rem;
+    .side-card ul{
+      margin:0;
+      padding-left:18px;
     }
 
-    .side-panel ul {
-      margin: 0;
-      padding-left: 18px;
+    .faq-list{
+      display:grid;
+      gap:14px;
     }
 
-    .faq-list {
-      display: grid;
-      gap: 14px;
-    }
-
-    details.faq {
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.10);
+    details.faq{
+      border-radius:20px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)),
-        linear-gradient(180deg, #141b30, #101728);
-      overflow: hidden;
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03)),
+        linear-gradient(180deg,#141b30,#101727);
     }
 
-    details.faq summary {
-      list-style: none;
-      cursor: pointer;
-      padding: 18px 20px;
-      font-weight: 900;
-      color: #fff6e7;
-      position: relative;
-      padding-right: 52px;
+    details.faq summary{
+      list-style:none;
+      cursor:pointer;
+      padding:18px 20px;
+      font-weight:900;
+      color:#fff7eb;
+      position:relative;
+      padding-right:50px;
     }
 
-    details.faq summary::-webkit-details-marker {
-      display: none;
+    details.faq summary::-webkit-details-marker{display:none}
+
+    details.faq summary::after{
+      content:"+";
+      position:absolute;
+      right:18px;
+      top:50%;
+      transform:translateY(-50%);
+      width:28px;
+      height:28px;
+      border-radius:999px;
+      display:grid;
+      place-items:center;
+      background:rgba(255,255,255,.08);
+      color:#ffd36c;
+      font-weight:900;
     }
 
-    details.faq summary::after {
-      content: "+";
-      position: absolute;
-      right: 18px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 28px;
-      height: 28px;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      background: rgba(255,255,255,0.10);
-      color: #ffd36c;
-      font-size: 1rem;
-      font-weight: 900;
+    details.faq[open] summary::after{content:"−"}
+
+    .faq-content{
+      padding:0 20px 18px;
+      border-top:1px solid rgba(255,255,255,.08);
+      color:#d7d0c5;
     }
 
-    details.faq[open] summary::after {
-      content: "−";
-    }
-
-    .faq-content {
-      padding: 0 20px 18px;
-      color: var(--muted);
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .cta-banner {
-      position: relative;
-      overflow: hidden;
-      padding: 30px;
-      border-radius: 30px;
+    .cta-banner{
+      position:relative;
+      overflow:hidden;
+      padding:28px;
+      border-radius:30px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,.10);
       background:
-        radial-gradient(circle at 15% 25%, rgba(255,225,100,0.24), transparent 28%),
-        radial-gradient(circle at 80% 10%, rgba(255,74,74,0.22), transparent 30%),
-        linear-gradient(135deg, #4b0a0a 0%, #a51b15 32%, #211027 100%);
-      border: 1px solid rgba(255,255,255,0.10);
-      box-shadow: var(--shadow-1);
+        radial-gradient(circle at 15% 18%, rgba(255,210,90,.22), transparent 24%),
+        radial-gradient(circle at 82% 18%, rgba(229,57,53,.24), transparent 24%),
+        linear-gradient(135deg,#4a0f12 0%, #8f1111 24%, #1a152c 58%, #0b1020 100%);
     }
 
-    .cta-banner h2 {
-      margin: 0 0 10px;
-      font-size: clamp(1.9rem, 4vw, 3rem);
-      line-height: 1.05;
-      color: #fff7eb;
+    .cta-banner h2{
+      margin:0 0 10px;
+      font-size:clamp(1.9rem, 4vw, 2.9rem);
+      line-height:1.06;
+      color:#fff8ef;
     }
 
-    .cta-banner p {
-      margin: 0 0 18px;
-      max-width: 760px;
-      color: #f7e2bf;
+    .cta-banner p{
+      max-width:760px;
+      margin:0 0 18px;
+      color:#f0dfc0;
     }
 
-    .site-footer {
-      padding: 34px 0 50px;
-      color: #c9c5bc;
+    .footer{
+      padding:34px 0 46px;
+      color:#cfc8bc;
     }
 
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 20px;
-      align-items: start;
-      padding-top: 24px;
-      border-top: 1px solid rgba(255,255,255,0.08);
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(255,255,255,.08);
+      padding-top:20px;
     }
 
-    .footer-note {
-      font-size: 0.92rem;
-      color: #bdb9b1;
+    .footer-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
     }
 
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: flex-end;
+    .footer-links a{
+      padding:10px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.06);
+      font-size:.9rem;
+      font-weight:800;
     }
 
-    .footer-links a {
-      padding: 10px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.06);
-      font-size: 0.9rem;
-      font-weight: 800;
-    }
-
-    .spacer-6 { height: 6px; }
-
-    @media (max-width: 1080px) {
+    @media (max-width:1080px){
       .hero-grid,
       .trust-wrap,
-      .article-layout,
-      .footer-grid {
-        grid-template-columns: 1fr;
+      .article-layout{
+        grid-template-columns:1fr;
       }
 
-      .grid-3 {
-        grid-template-columns: 1fr;
+      .grid-3{
+        grid-template-columns:1fr;
       }
 
-      .grid-4 {
-        grid-template-columns: repeat(2, minmax(0,1fr));
+      .grid-4{
+        grid-template-columns:repeat(2, minmax(0,1fr));
       }
 
-      .hero-main,
-      .hero-side {
-        min-height: auto;
+      .bonus-grid{
+        grid-template-columns:1fr;
       }
     }
 
-    @media (max-width: 760px) {
-      .topbar-inner {
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 14px 0;
+    @media (max-width:760px){
+      .wrap{
+        width:min(var(--max), calc(100% - 20px));
       }
 
-      .hero-main {
-        padding: 26px 22px 24px;
+      .topbar-inner{
+        align-items:flex-start;
+        flex-direction:column;
       }
 
-      .hero-side {
-        padding: 22px 18px;
+      .hero-main{
+        padding:24px 20px;
+        min-height:auto;
       }
 
       .hero-points,
-      .score-row,
+      .score-grid,
       .trust-grid,
-      .grid-4 {
-        grid-template-columns: 1fr;
+      .grid-4{
+        grid-template-columns:1fr;
       }
 
-      .section {
-        padding-top: 26px;
+      .section{
+        padding-top:26px;
       }
 
-      .hero-title {
-        font-size: clamp(2.2rem, 11vw, 3.5rem);
+      .hero-title{
+        font-size:clamp(2.1rem, 10vw, 3.5rem);
       }
 
-      .section-title {
-        font-size: clamp(1.8rem, 8vw, 2.5rem);
-      }
-
-      .container {
-        width: min(var(--max), calc(100% - 20px));
-      }
-
-      .cta-banner {
-        padding: 24px 20px;
-      }
-
-      .ranking-top {
-        min-height: 200px;
+      .section-title{
+        font-size:clamp(1.8rem, 8vw, 2.5rem);
       }
     }
   </style>
 </head>
 <body>
   <header class="topbar">
-    <div class="container topbar-inner">
+    <div class="wrap topbar-inner">
       <a class="brand" href="#top">
-        <div class="brand-badge">炎</div>
-        <div class="brand-text">
-          <strong>リベンジカジノ攻略</strong>
-          <span>REVENGE × CASINO × STRATEGY</span>
+        <div class="brand-mark">炎</div>
+        <div class="brand-copy">
+          <strong>リベンジカジノ比較ガイド</strong>
+          <span>Next, Choose Wisely.</span>
         </div>
       </a>
 
       <nav class="nav">
         <a href="#ranking">比較ランキング</a>
-        <a href="#strategy">攻略コンテンツ</a>
-        <a href="#trust">安全性</a>
-        <a href="#article">記事設計</a>
+        <a href="#guide">選び方ガイド</a>
+        <a href="#bonus">ボーナス比較</a>
+        <a href="#safety">安全性</a>
         <a href="#faq">FAQ</a>
       </nav>
     </div>
@@ -1095,226 +976,181 @@
 
   <main id="top">
     <section class="hero">
-      <div class="container hero-grid">
+      <div class="wrap hero-grid">
         <div class="hero-main">
-          <div class="hero-content">
-            <div class="eyebrow">REVENGE MODE / NEXT ROUND</div>
+          <div class="eyebrow">Revenge = Learn & Choose Better</div>
 
-            <h1 class="hero-title">
-              <span class="top">負けを知識に変えろ。</span>
-              <span class="accent">次の勝負で、逆転だ。</span>
-            </h1>
+          <h1 class="hero-title">
+            <span class="line1">次は、賢く選ぶ。</span>
+            <span class="line2">失敗しないオンラインカジノ比較。</span>
+          </h1>
 
-            <p class="hero-desc">
-              比較・レビュー・攻略記事を通じて、次の判断をより良くするための情報を整理。
-              熱量ある世界観の中に、比較基準・ライセンス・リスク説明などの信頼要素を組み込み、
-              読みやすく使いやすいカジノ系SEOメディアとして設計しています。
-            </p>
+          <p class="hero-desc">
+            ライセンス・ボーナス条件・入出金・日本語対応・評判をわかりやすく整理。
+            勢いではなく、比較と理解で自分に合ったオンラインカジノを選べるようにするための比較メディアです。
+          </p>
 
-            <div class="hero-points">
-              <div class="hero-point">
-                <strong>比較で見極める</strong>
-                <span>ボーナス・還元率・入出金・信頼性を整理</span>
-              </div>
-              <div class="hero-point">
-                <strong>攻略で学ぶ</strong>
-                <span>スロット、BJ、ルーレット、初心者導線</span>
-              </div>
-              <div class="hero-point">
-                <strong>冷静に判断する</strong>
-                <span>煽りすぎず、次の一手を考えるメディア</span>
-              </div>
+          <div class="hero-points">
+            <div class="hero-point">
+              <strong>比較して選ぶ</strong>
+              <span>安全性・条件・使いやすさを整理</span>
             </div>
-
-            <div class="hero-cta">
-              <a class="btn btn-primary" href="#ranking">人気カジノを比較する</a>
-              <a class="btn btn-danger" href="#strategy">攻略記事を読む</a>
-              <a class="btn btn-secondary" href="#ranking">ボーナス情報を見る</a>
+            <div class="hero-point">
+              <strong>初心者でも分かる</strong>
+              <span>ガイドとFAQで迷いにくい構成</span>
             </div>
-
-            <div class="hero-note">
-              ※ 本サイトは情報整理を目的とした比較・攻略メディアです。誇大表現を避け、比較基準やリスク説明を明示します。
+            <div class="hero-point">
+              <strong>冷静に判断する</strong>
+              <span>煽りすぎず、リスクも明示</span>
             </div>
+          </div>
+
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#ranking">オンラインカジノを比較する</a>
+            <a class="btn btn-red" href="#guide">初心者ガイドを見る</a>
+            <a class="btn btn-ghost" href="#bonus">ボーナス条件を確認する</a>
+          </div>
+
+          <div class="hero-note">
+            リベンジは、冷静な比較から始まる。条件を知って、納得して選ぶための比較ガイドです。
           </div>
         </div>
 
         <aside class="hero-side">
-          <div class="side-badge">注目ポイント</div>
-          <h2 class="side-title">熱く、冷静に、<br>勝ち筋を掴む。</h2>
-          <p class="side-copy">
-            派手なビジュアルで世界観を作りながらも、SEOメディアとして必要な「見やすさ」「比較しやすさ」「信頼性」を両立させます。
-          </p>
+          <div class="glass">
+            <h3>比較メディアとして重視すること</h3>
+            <p>派手な世界観の中でも、比較しやすさ・安全性・読みやすさを最優先に設計します。</p>
 
-          <div class="reason-list">
-            <div class="reason-item">
-              <strong>比較</strong>
-              <span>条件や特徴を一覧化し、選びやすく整理</span>
+            <div class="glass-list">
+              <div class="glass-item">
+                <strong>安全性</strong>
+                ライセンス、運営情報、責任あるギャンブルを確認
+              </div>
+              <div class="glass-item">
+                <strong>条件理解</strong>
+                ボーナス条件や出金条件を整理して比較
+              </div>
+              <div class="glass-item">
+                <strong>初心者導線</strong>
+                登録、本人確認、入出金などの基本も案内
+              </div>
             </div>
-            <div class="reason-item">
-              <strong>レビュー</strong>
-              <span>各ブランドの特徴や向いている人を把握</span>
-            </div>
-            <div class="reason-item">
-              <strong>ガイド</strong>
-              <span>初心者でも流れが分かる構成で迷いにくい</span>
-            </div>
-          </div>
 
-          <div class="score-row">
-            <div class="score-card">
-              <strong>6</strong>
-              <span>主要比較軸</span>
-            </div>
-            <div class="score-card">
-              <strong>8+</strong>
-              <span>攻略カテゴリ</span>
-            </div>
-            <div class="score-card">
-              <strong>SEO</strong>
-              <span>導線最適化</span>
+            <div class="score-grid">
+              <div class="score-card">
+                <strong>10</strong>
+                <span>主要比較軸</span>
+              </div>
+              <div class="score-card">
+                <strong>SEO</strong>
+                <span>導線設計</span>
+              </div>
+              <div class="score-card">
+                <strong>FAQ</strong>
+                <span>不安解消</span>
+              </div>
             </div>
           </div>
         </aside>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="section-kicker">Design Concept</div>
-            <h2 class="section-title">このサイトは <span class="grad">何を目指すか</span></h2>
-            <p class="section-desc">
-              「リベンジ × 勝負魂 × 知識で巻き返す」を世界観の軸にしながら、実際の情報設計では比較・攻略・安全性を分かりやすく整理。
-              バナーやランキングが主役でも、読み物としての信頼感を損なわない構成を採用しています。
-            </p>
-          </div>
-        </div>
-
-        <div class="grid-3">
-          <article class="card feature-card">
-            <div class="feature-icon">🔥</div>
-            <h3>一撃で印象に残るファーストビュー</h3>
-            <p>
-              炎・金色の光・赤いビジュアルを基調に、ヒーロー領域で世界観を一発で伝達。
-              ただし情報量は整理し、CTAが明確に見える設計にします。
-            </p>
-          </article>
-
-          <article class="card feature-card">
-            <div class="feature-icon">🏆</div>
-            <h3>比較・ランキングを中心導線に置く</h3>
-            <p>
-              ユーザーがまず気になる「どこが良いのか」を最初に整理。
-              王冠・メダル・順位表現で視覚的にも分かりやすいUIにします。
-            </p>
-          </article>
-
-          <article class="card feature-card">
-            <div class="feature-icon">🛡️</div>
-            <h3>派手でも、信頼性は崩さない</h3>
-            <p>
-              ライセンス情報、比較基準、責任あるギャンブル、年齢確認、注意事項を明示し、
-              情報メディアとしての信用を担保します。
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section class="section" id="ranking">
-      <div class="container">
+      <div class="wrap">
         <div class="section-head">
           <div>
-            <div class="section-kicker">Ranking / Comparison</div>
-            <h2 class="section-title"><span class="grad">逆転候補</span> を比較する</h2>
+            <div class="section-kicker">Comparison Ranking</div>
+            <h2 class="section-title">おすすめオンラインカジノ <span class="grad">比較ランキング</span></h2>
             <p class="section-desc">
-              ボーナス、還元率、ゲーム数、入出金、信頼性、日本語対応、初心者向けなどの比較軸を整理したランキングUI例です。
+              ボーナスだけでなく、ライセンス、出金スピード、日本語対応、サポート体制、初心者向け度などを含めて比較するUI例です。
             </p>
           </div>
         </div>
 
         <div class="grid-3">
-          <article class="card ranking-card">
-            <div class="ranking-top">
-              <div class="rank-badge">👑 Rank 01</div>
-              <img src="https://placehold.co/320x140/1a1a1a/f9d66b?text=BRAND+LOGO" alt="ランキング1位 ブランドロゴ" />
+          <article class="card rank-card">
+            <div class="rank-top">
+              <div class="rank-badge">👑 Rank 1</div>
+              <div class="rank-logo">ブランドロゴ枠</div>
             </div>
-            <div class="ranking-body">
-              <h3 class="ranking-name">炎の注目カジノA</h3>
-              <p class="ranking-copy">
-                比較バランスがよく、はじめて比較ページを見るユーザーにも訴求しやすい想定の1位枠です。
-              </p>
-              <div class="rating-tags">
-                <span class="tag">人気</span>
+            <div class="rank-body">
+              <h3>おすすめカジノA</h3>
+              <p>総合的な比較バランスが良く、初心者にも情報が整理されて見やすい想定の1位枠です。</p>
+
+              <div class="tag-row">
+                <span class="tag">ライセンス確認済み想定</span>
+                <span class="tag">日本語対応</span>
                 <span class="tag">初心者向け</span>
-                <span class="tag">比較軸が明確</span>
               </div>
-              <div class="rating-list">
-                <div class="rating-item"><span>ボーナス</span><strong>4.8 / 5</strong></div>
-                <div class="rating-item"><span>還元率</span><strong>4.6 / 5</strong></div>
-                <div class="rating-item"><span>入出金</span><strong>4.7 / 5</strong></div>
-                <div class="rating-item"><span>信頼性</span><strong>4.8 / 5</strong></div>
+
+              <div class="compare-mini">
+                <div class="compare-item"><span>ボーナス条件</span><strong>確認しやすい</strong></div>
+                <div class="compare-item"><span>出金スピード</span><strong>比較的早い</strong></div>
+                <div class="compare-item"><span>日本語対応</span><strong>あり</strong></div>
+                <div class="compare-item"><span>注意点</span><strong>条件は要確認</strong></div>
               </div>
+
               <div class="cta-row">
-                <a class="mini-btn mini-btn-primary" href="#">詳細を見る</a>
-                <a class="mini-btn mini-btn-secondary" href="#">レビューへ</a>
+                <a class="mini-btn primary" href="#">詳細レビューを見る</a>
+                <a class="mini-btn secondary" href="#">公式情報を確認する</a>
               </div>
             </div>
           </article>
 
-          <article class="card ranking-card">
-            <div class="ranking-top">
-              <div class="rank-badge">🥈 Rank 02</div>
-              <img src="https://placehold.co/320x140/101830/ffd976?text=BRAND+LOGO" alt="ランキング2位 ブランドロゴ" />
+          <article class="card rank-card">
+            <div class="rank-top">
+              <div class="rank-badge">🥈 Rank 2</div>
+              <div class="rank-logo">ブランドロゴ枠</div>
             </div>
-            <div class="ranking-body">
-              <h3 class="ranking-name">逆転チャンスB</h3>
-              <p class="ranking-copy">
-                ボーナスや日本語対応を訴求したい場合の比較枠。レビュー・関連記事への内部導線も強化しやすい設計です。
-              </p>
-              <div class="rating-tags">
-                <span class="tag">ボーナス重視</span>
-                <span class="tag">レビュー向き</span>
-                <span class="tag">内部リンク強化</span>
+            <div class="rank-body">
+              <h3>おすすめカジノB</h3>
+              <p>ボーナス比較やキャンペーン訴求と相性が良く、レビュー記事への内部リンクも作りやすい枠です。</p>
+
+              <div class="tag-row">
+                <span class="tag">ボーナス比較向き</span>
+                <span class="tag">条件確認必須</span>
+                <span class="tag">スマホ対応</span>
               </div>
-              <div class="rating-list">
-                <div class="rating-item"><span>ボーナス</span><strong>4.7 / 5</strong></div>
-                <div class="rating-item"><span>還元率</span><strong>4.5 / 5</strong></div>
-                <div class="rating-item"><span>入出金</span><strong>4.5 / 5</strong></div>
-                <div class="rating-item"><span>信頼性</span><strong>4.6 / 5</strong></div>
+
+              <div class="compare-mini">
+                <div class="compare-item"><span>ボーナス内容</span><strong>比較しやすい</strong></div>
+                <div class="compare-item"><span>出金条件</span><strong>要事前確認</strong></div>
+                <div class="compare-item"><span>ゲーム数</span><strong>豊富</strong></div>
+                <div class="compare-item"><span>注意点</span><strong>規約確認推奨</strong></div>
               </div>
+
               <div class="cta-row">
-                <a class="mini-btn mini-btn-primary" href="#">比較を見る</a>
-                <a class="mini-btn mini-btn-secondary" href="#">関連記事へ</a>
+                <a class="mini-btn primary" href="#">条件を確認する</a>
+                <a class="mini-btn secondary" href="#">比較表を見る</a>
               </div>
             </div>
           </article>
 
-          <article class="card ranking-card">
-            <div class="ranking-top">
-              <div class="rank-badge">🥉 Rank 03</div>
-              <img src="https://placehold.co/320x140/201510/ffe2a0?text=BRAND+LOGO" alt="ランキング3位 ブランドロゴ" />
+          <article class="card rank-card">
+            <div class="rank-top">
+              <div class="rank-badge">🥉 Rank 3</div>
+              <div class="rank-logo">ブランドロゴ枠</div>
             </div>
-            <div class="ranking-body">
-              <h3 class="ranking-name">勝負魂カジノC</h3>
-              <p class="ranking-copy">
-                高級感・ブランド感を見せたい枠。比較表とセットで見せることで、順位の納得感を伝えやすくします。
-              </p>
-              <div class="rating-tags">
+            <div class="rank-body">
+              <h3>おすすめカジノC</h3>
+              <p>ブランド感や高級感を見せやすい枠。比較サイトとしてはおすすめポイントと注意点をセットで表示します。</p>
+
+              <div class="tag-row">
                 <span class="tag">高級感</span>
-                <span class="tag">信頼性訴求</span>
-                <span class="tag">比較表向き</span>
+                <span class="tag">比較向け</span>
+                <span class="tag">レビュー誘導</span>
               </div>
-              <div class="rating-list">
-                <div class="rating-item"><span>ボーナス</span><strong>4.4 / 5</strong></div>
-                <div class="rating-item"><span>還元率</span><strong>4.7 / 5</strong></div>
-                <div class="rating-item"><span>入出金</span><strong>4.6 / 5</strong></div>
-                <div class="rating-item"><span>信頼性</span><strong>4.7 / 5</strong></div>
+
+              <div class="compare-mini">
+                <div class="compare-item"><span>ライセンス</span><strong>明示予定</strong></div>
+                <div class="compare-item"><span>日本語対応</span><strong>比較項目に含む</strong></div>
+                <div class="compare-item"><span>サポート</span><strong>要確認</strong></div>
+                <div class="compare-item"><span>注意点</span><strong>出金条件確認</strong></div>
               </div>
+
               <div class="cta-row">
-                <a class="mini-btn mini-btn-primary" href="#">詳細を見る</a>
-                <a class="mini-btn mini-btn-secondary" href="#">比較表へ</a>
+                <a class="mini-btn primary" href="#">安全性を確認する</a>
+                <a class="mini-btn secondary" href="#">詳細レビューを見る</a>
               </div>
             </div>
           </article>
@@ -1322,334 +1158,324 @@
       </div>
     </section>
 
-    <section class="section" id="strategy">
-      <div class="container">
+    <section class="section" id="guide">
+      <div class="wrap">
         <div class="section-head">
           <div>
-            <div class="section-kicker">Strategy Contents</div>
-            <h2 class="section-title">熱く学ぶ <span class="grad">攻略コンテンツ</span></h2>
+            <div class="section-kicker">How to Choose</div>
+            <h2 class="section-title">失敗しない <span class="grad">選び方ガイド</span></h2>
             <p class="section-desc">
-              「派手な世界観」と「実際に読みやすい情報設計」を両立させるため、コンテンツは検索意図別に分けて整理。
-              初心者導線・ボーナス活用・ゲーム別攻略・リスク管理まで含めます。
+              リベンジとは、勢いで選び直すことではなく、前回見落とした条件を今回はちゃんと確認すること。
+              そのための確認ポイントを整理します。
             </p>
           </div>
         </div>
 
         <div class="grid-4">
-          <article class="card topic-card">
-            <div class="topic-chip">攻略</div>
-            <h3>スロット攻略</h3>
-            <p>機種の特徴、還元率、ボーナスの活かし方などを整理する入門〜中級者向けカテゴリ。</p>
-            <ul>
-              <li>人気スロット比較</li>
-              <li>RTPの見方</li>
-              <li>ボーナスとの相性</li>
-            </ul>
+          <article class="card guide-card">
+            <div class="guide-icon">🛡️</div>
+            <h3>ライセンスを確認する</h3>
+            <p>運営元やライセンス情報を先に見ることで、安全性判断の土台を作ります。</p>
           </article>
 
-          <article class="card topic-card">
-            <div class="topic-chip">攻略</div>
-            <h3>ブラックジャック攻略</h3>
-            <p>ルール理解、基本戦略、初心者向け導線を分かりやすく整理するカテゴリ。</p>
-            <ul>
-              <li>基本ルール</li>
-              <li>判断パターンの整理</li>
-              <li>初心者向け導線</li>
-            </ul>
+          <article class="card guide-card">
+            <div class="guide-icon">🎁</div>
+            <h3>ボーナス条件を確認する</h3>
+            <p>金額だけでなく、賭け条件や有効期限まで含めて理解することが重要です。</p>
           </article>
 
-          <article class="card topic-card">
-            <div class="topic-chip">攻略</div>
-            <h3>ルーレット攻略</h3>
-            <p>ベットの種類、遊び方、リスクの考え方など、基礎理解に役立つ記事群を用意。</p>
-            <ul>
-              <li>ベット種類</li>
-              <li>遊び方の流れ</li>
-              <li>考え方の基礎</li>
-            </ul>
+          <article class="card guide-card">
+            <div class="guide-icon">💸</div>
+            <h3>出金条件を確認する</h3>
+            <p>出金スピードや本人確認の有無など、後から困りやすい点を先に把握します。</p>
           </article>
 
-          <article class="card topic-card">
-            <div class="topic-chip">ボーナス</div>
-            <h3>ボーナス活用術</h3>
-            <p>ボーナスの基本、条件の見方、初心者が見落としやすいポイントを整理します。</p>
+          <article class="card guide-card">
+            <div class="guide-icon">📘</div>
+            <h3>利用規約を確認する</h3>
+            <p>難しそうでも要点だけは読んで、知らずに不利な条件を選ばないようにします。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="bonus">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Bonus Comparison</div>
+            <h2 class="section-title">ボーナス条件を <span class="grad">比較して選ぶ</span></h2>
+            <p class="section-desc">
+              ボーナスは魅力的に見えても、条件を理解しないまま選ぶと後悔につながります。種類ごとに整理して比較できる構成にします。
+            </p>
+          </div>
+        </div>
+
+        <div class="bonus-grid">
+          <article class="card bonus-box">
+            <h3>比較したい主なボーナス種類</h3>
             <ul>
               <li>入金不要ボーナス</li>
-              <li>条件の見方</li>
-              <li>注意点の整理</li>
+              <li>初回入金ボーナス</li>
+              <li>フリースピン</li>
+              <li>キャッシュバック</li>
+              <li>VIPプログラム</li>
             </ul>
           </article>
 
-          <article class="card topic-card">
-            <div class="topic-chip">初心者向け</div>
-            <h3>はじめてガイド</h3>
-            <p>登録から本人確認、入出金、ゲーム選びまで迷いやすいポイントを分かりやすく解説。</p>
+          <article class="card bonus-box">
+            <h3>必ず見るべき条件</h3>
             <ul>
-              <li>始め方の流れ</li>
-              <li>本人確認とは</li>
-              <li>初心者に向く選び方</li>
-            </ul>
-          </article>
-
-          <article class="card topic-card">
-            <div class="topic-chip">管理</div>
-            <h3>リスク管理</h3>
-            <p>派手な表現に偏らず、資金管理・遊び方のバランス・責任あるギャンブルを整理します。</p>
-            <ul>
-              <li>予算の考え方</li>
-              <li>無理のない利用</li>
-              <li>注意事項</li>
-            </ul>
-          </article>
-
-          <article class="card topic-card">
-            <div class="topic-chip">比較</div>
-            <h3>レビュー・比較記事</h3>
-            <p>複数ブランドの特徴を並べて、どんな人に向くかを整理する比較・レビュー用カテゴリ。</p>
-            <ul>
-              <li>おすすめ比較</li>
-              <li>特徴の違い</li>
-              <li>選び方の軸</li>
-            </ul>
-          </article>
-
-          <article class="card topic-card">
-            <div class="topic-chip">SEO</div>
-            <h3>検索意図別カテゴリ</h3>
-            <p>比較系・レビュー系・ガイド系・ボーナス系で分け、サイト全体のSEO導線を整えます。</p>
-            <ul>
-              <li>比較意図</li>
-              <li>情報収集意図</li>
-              <li>初心者意図</li>
+              <li>賭け条件</li>
+              <li>有効期限</li>
+              <li>対象ゲーム</li>
+              <li>出金条件</li>
+              <li>最低入金額</li>
             </ul>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="trust">
-      <div class="container">
+    <section class="section">
+      <div class="wrap">
         <div class="section-head">
           <div>
-            <div class="section-kicker">Trust / Safety</div>
-            <h2 class="section-title">派手でも <span class="grad">信頼性は崩さない</span></h2>
+            <div class="section-kicker">Beginner / Game Guides</div>
+            <h2 class="section-title">初心者向け情報と <span class="grad">ゲーム別ガイド</span></h2>
             <p class="section-desc">
-              「必ず勝てる」「絶対儲かる」といった誇大表現を避け、比較基準やライセンス情報などを明示。
-              ビジュアルの熱量と、情報サイトとしての信用を両立させます。
+              「勝てる方法」ではなく、ルール・リスク・楽しみ方・比較ポイントを中心に整理する情報設計です。
+            </p>
+          </div>
+        </div>
+
+        <div class="grid-4">
+          <article class="card content-card">
+            <h3>初心者ガイド</h3>
+            <p>登録方法、本人確認、入出金、規約確認、よくある失敗例を分かりやすくまとめます。</p>
+          </article>
+
+          <article class="card content-card">
+            <h3>スロット</h3>
+            <p>RTPやボーナスとの相性など、基本情報と選び方を中心に整理します。</p>
+          </article>
+
+          <article class="card content-card">
+            <h3>ブラックジャック / ルーレット</h3>
+            <p>ルール理解とリスクの捉え方を中心に、初心者でも読みやすい構成にします。</p>
+          </article>
+
+          <article class="card content-card">
+            <h3>ライブカジノ / バカラ</h3>
+            <p>ゲームの特徴や向いている人を整理し、比較導線へつなげやすくします。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="safety">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Safety / Trust</div>
+            <h2 class="section-title">安全性と <span class="grad">信頼性を確認する</span></h2>
+            <p class="section-desc">
+              派手な演出があっても、比較サイトとしての信用を失わないために、
+              ライセンス情報・運営会社情報・年齢確認・責任あるギャンブルを明示します。
             </p>
           </div>
         </div>
 
         <div class="trust-wrap">
           <article class="card trust-card">
-            <h3 style="margin:0 0 10px; font-size:1.7rem; color:#fff8ea;">信頼性を担保するUI要素</h3>
-            <p style="margin:0; color:var(--muted);">
-              比較メディアとして必要な確認項目を、視認性の高いカードや注意セクションとして常設します。
-            </p>
+            <h3 style="margin:0 0 10px; font-size:1.6rem; color:#fff7eb;">比較サイトとして明示したい項目</h3>
+            <p style="margin:0; color:#d7d0c5;">判断材料を揃えることが、失敗しない選び方の第一歩です。</p>
 
             <div class="trust-grid">
               <div class="trust-item">
                 <strong>ライセンス情報</strong>
-                <span>各ブランドのライセンス情報を確認できる導線を明示</span>
+                <span>認可情報や運営体制が確認できるか</span>
               </div>
               <div class="trust-item">
                 <strong>運営会社情報</strong>
-                <span>ブランド背景や運営主体などを整理して表記</span>
+                <span>ブランド背景や企業情報を整理</span>
+              </div>
+              <div class="trust-item">
+                <strong>SSL・セキュリティ</strong>
+                <span>基本的な保護体制の確認</span>
               </div>
               <div class="trust-item">
                 <strong>比較基準の明示</strong>
-                <span>順位づけの基準や評価軸を比較ページに記載</span>
-              </div>
-              <div class="trust-item">
-                <strong>責任あるギャンブル</strong>
-                <span>年齢確認・利用上の注意・無理のない遊び方を掲載</span>
+                <span>何を基準にランキングしているか示す</span>
               </div>
             </div>
           </article>
 
           <article class="card trust-card">
-            <h3 style="margin:0 0 10px; font-size:1.5rem; color:#fff8ea;">掲載方針・注意点</h3>
+            <h3 style="margin:0 0 10px; font-size:1.5rem; color:#fff7eb;">注意書きとして常設したい内容</h3>
             <ul class="check-list">
-              <li>過度な射幸心を煽らない表現にする</li>
-              <li>「必ず勝てる」「絶対儲かる」などの断定表現は避ける</li>
-              <li>比較軸（ボーナス、還元率、入出金、信頼性など）を明示する</li>
-              <li>利用規約や本人確認、年齢確認に関する注意を掲載する</li>
-              <li>レビュー記事でもメリットだけでなく注意点も記載する</li>
-              <li>記事本文は読みやすさを優先し、背景演出はヘッダー寄りに限定する</li>
+              <li>責任あるギャンブルを案内する</li>
+              <li>予算を決めて楽しむ前提を示す</li>
+              <li>年齢確認や本人確認について案内する</li>
+              <li>公式情報・利用規約確認への導線を置く</li>
+              <li>誇大表現や断定表現を避ける</li>
+              <li>リスク説明を明示する</li>
             </ul>
-
-            <div class="spacer-6"></div>
-            <a class="btn btn-secondary" href="#article">記事ページの構成を見る</a>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="article">
-      <div class="container">
+    <section class="section">
+      <div class="wrap">
         <div class="section-head">
           <div>
             <div class="section-kicker">Article Template</div>
-            <h2 class="section-title">記事ページの <span class="grad">読みやすさ設計</span></h2>
+            <h2 class="section-title">記事ページの <span class="grad">テンプレート設計</span></h2>
             <p class="section-desc">
-              記事本文は白背景中心で可読性を高め、ヘッダーや見出しにだけ炎・赤金ライン・世界観を反映。
-              デザインと実用性のバランスを取った記事ページ構成の例です。
+              記事ページはSEOと可読性を重視。派手な演出は見出し周辺に限定し、本文は読みやすさを最優先にします。
             </p>
           </div>
         </div>
 
         <div class="article-layout">
-          <article class="card article-demo">
+          <article class="article-card">
             <div class="article-head">
-              <span class="pill">攻略記事サンプル</span>
-              <h3>負けを知識に変える。初心者向けカジノ比較の見方</h3>
-              <div class="article-meta">更新日: 2026-04-27 / カテゴリ: 比較・初心者ガイド</div>
+              <span class="pill">記事テンプレート例</span>
+              <h3>失敗しないオンラインカジノ比較の見方</h3>
+              <div class="article-meta">更新日 / 比較基準 / カテゴリ表示</div>
             </div>
 
             <div class="article-body">
-              <h4>結論：まずは比較基準を決める</h4>
-              <p>
-                はじめに大事なのは、ボーナスだけで決めないことです。入出金方法、信頼性、日本語対応、初心者向け情報の充実度など、
-                複数の軸で比較することで、自分に合う選択がしやすくなります。
-              </p>
+              <h4>結論ボックス</h4>
+              <p>ボーナス金額より先に、ライセンス・賭け条件・出金条件を確認するのが重要です。</p>
 
               <div class="callout">
-                ポイント：派手な見せ方はトップや見出し周辺に集中させ、本文は白背景で落ち着いて読めるようにします。
+                重要ポイント：派手なビジュアルはヘッダーやCTA周辺に寄せ、本文や比較表は白背景で落ち着いて読める設計にします。
               </div>
 
-              <h4>見るべき比較軸</h4>
+              <h4>この記事でわかること</h4>
               <ul>
-                <li>ボーナス条件の分かりやすさ</li>
-                <li>入出金のしやすさと対応手段</li>
-                <li>ライセンスや運営情報の確認しやすさ</li>
-                <li>初心者向けガイドやサポートの有無</li>
+                <li>比較するときに見るべき軸</li>
+                <li>初心者が見落としやすい条件</li>
+                <li>安全性を判断するポイント</li>
               </ul>
 
               <h4>注意点</h4>
-              <p>
-                断定的な勝利表現を避け、リスク説明や責任ある利用を案内することが重要です。
-                SEOメディアとしては、ユーザーが比較しやすいことと、安心して読めることの両方が評価につながります。
-              </p>
+              <p>「おすすめ」だけでなく、「注意点」や「確認すべき規約」もセットで書くことで、比較サイトとしての信頼感を担保します。</p>
             </div>
           </article>
 
-          <div class="sidebar-stack">
-            <article class="card side-panel">
-              <h3>関連記事導線</h3>
+          <aside class="sidebar">
+            <article class="card side-card">
+              <h3>記事内の基本構成</h3>
               <ul>
-                <li>おすすめ比較ランキング</li>
-                <li>ボーナス条件の見方</li>
-                <li>初心者向けの始め方ガイド</li>
-                <li>責任あるギャンブルについて</li>
+                <li>記事タイトル</li>
+                <li>結論ボックス</li>
+                <li>目次</li>
+                <li>比較表</li>
+                <li>詳細解説</li>
+                <li>FAQ</li>
+                <li>CTA</li>
               </ul>
             </article>
 
-            <article class="card side-panel">
-              <h3>比較基準の明示</h3>
-              <p>
-                記事・比較ページの中で、「何を基準に評価しているか」を先に明記することで、
-                ユーザーが内容を信用しやすくなります。
-              </p>
+            <article class="card side-card">
+              <h3>重要なUIルール</h3>
+              <p>見出しには赤×金ライン、重要ポイントには注意ボックス、比較表はスマホでも読みやすい横スクロール対応にします。</p>
             </article>
 
-            <article class="card side-panel">
-              <h3>安全性UIの例</h3>
-              <ul>
-                <li>年齢確認の案内</li>
-                <li>利用規約確認の導線</li>
-                <li>ライセンス情報の表示</li>
-                <li>リスク説明の常設</li>
-              </ul>
+            <article class="card side-card">
+              <h3>キャラクターの使い方</h3>
+              <p>熱血キャラは煽り役ではなく、比較ポイントや注意点を教えるナビゲーターとして使います。</p>
             </article>
-          </div>
+          </aside>
         </div>
       </div>
     </section>
 
     <section class="section" id="faq">
-      <div class="container">
+      <div class="wrap">
         <div class="section-head">
           <div>
             <div class="section-kicker">FAQ</div>
             <h2 class="section-title">よくある質問と <span class="grad">不安の解消</span></h2>
             <p class="section-desc">
-              派手なデザインの中でも、FAQを見やすく整理して情報メディアとしての安心感を高めます。
+              初心者や比較検討中のユーザーが気になるポイントをFAQとして整理し、安心して読み進められる構成にします。
             </p>
           </div>
         </div>
 
         <div class="faq-list">
           <details class="faq" open>
-            <summary>このサイトは何をするサイトですか？</summary>
+            <summary>オンラインカジノは安全ですか？</summary>
             <div class="faq-content">
-              比較・レビュー・攻略・初心者向け情報を整理し、ユーザーが次の判断をしやすくするための情報メディアです。
+              安全性を判断するには、ライセンス情報、運営会社、規約、本人確認、サポート体制などを確認することが大切です。
             </div>
           </details>
 
           <details class="faq">
-            <summary>派手なデザインでも読みやすさは大丈夫ですか？</summary>
+            <summary>どこを比較すればいいですか？</summary>
             <div class="faq-content">
-              はい。派手な演出は主にファーストビューや見出し・装飾に限定し、本文や比較表は読みやすいコントラスト設計にしています。
+              ボーナスだけでなく、賭け条件、出金条件、日本語対応、ライセンス、サポート体制などを総合的に比較するのがおすすめです。
             </div>
           </details>
 
           <details class="faq">
-            <summary>比較ランキングは何を基準にしていますか？</summary>
+            <summary>ボーナスの賭け条件とは？</summary>
             <div class="faq-content">
-              ボーナス、還元率、ゲームラインナップ、入出金、信頼性、日本語対応、初心者向け情報の分かりやすさなどを総合的に整理して掲載します。
+              ボーナス利用時に求められる消化条件のことです。金額だけでなく、条件の内容も必ず確認する必要があります。
             </div>
           </details>
 
           <details class="faq">
-            <summary>信頼性はどのように示しますか？</summary>
+            <summary>出金できないケースはありますか？</summary>
             <div class="faq-content">
-              ライセンス情報、運営会社情報、責任あるギャンブル、年齢確認、比較基準の明示などをUIに組み込み、誇大表現を避けることで担保します。
+              本人確認未完了、条件未達成、規約上の制限などで出金に時間がかかるケースがあります。事前確認が重要です。
+            </div>
+          </details>
+
+          <details class="faq">
+            <summary>初心者は何を確認すべきですか？</summary>
+            <div class="faq-content">
+              ライセンス、ボーナス条件、入出金方法、日本語対応、規約、予算設定の6点を先に確認すると判断しやすくなります。
             </div>
           </details>
         </div>
       </div>
     </section>
 
-    <section class="section" style="padding-bottom:32px;">
-      <div class="container">
+    <section class="section" style="padding-bottom:30px;">
+      <div class="wrap">
         <div class="cta-banner">
-          <h2>次こそ勝負。<br>比較と知識で、次の一手を整える。</h2>
+          <h2>勢いではなく、情報で選ぶ。<br>次の判断を、もっと良くする。</h2>
           <p>
-            バナー・ランキング・攻略記事・FAQ・安全性要素を組み合わせた、
-            「熱量はあるのに読みやすい」メディアデザインに仕上げています。
-            次は実際のブランドロゴ・バナー・カテゴリページ・記事一覧へ展開できます。
+            熱い世界観はそのままに、比較・安全性・初心者理解を主役にしたオンラインカジノ比較メディア。
+            後悔しないための選び方を、分かりやすく整理して届ける設計です。
           </p>
+
           <div class="hero-cta">
-            <a class="btn btn-primary" href="#ranking">人気カジノを比較する</a>
-            <a class="btn btn-danger" href="#strategy">攻略記事を読む</a>
-            <a class="btn btn-secondary" href="#trust">安全性を見る</a>
+            <a class="btn btn-primary" href="#ranking">ランキングを見る</a>
+            <a class="btn btn-red" href="#guide">初心者ガイドを見る</a>
+            <a class="btn btn-ghost" href="#safety">安全性を確認する</a>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
+  <footer class="footer">
+    <div class="wrap footer-inner">
       <div>
-        <div class="brand" style="margin-bottom:10px;">
-          <div class="brand-badge">炎</div>
-          <div class="brand-text">
-            <strong>リベンジカジノ攻略</strong>
-            <span>REVENGE MEDIA DESIGN</span>
-          </div>
-        </div>
-        <div class="footer-note">
-          本サイトは情報整理を目的としたメディアデザイン案です。掲載内容は比較・レビュー・攻略・ガイドを中心に整理し、
-          誇大表現を避けた構成を前提としています。
-        </div>
+        <strong>リベンジカジノ比較ガイド</strong><br>
+        <span style="color:#bdb8b0; font-size:.92rem;">比較・安全性・条件確認を重視したオンラインカジノ比較メディア</span>
       </div>
 
       <div class="footer-links">
         <a href="#ranking">比較ランキング</a>
-        <a href="#strategy">攻略コンテンツ</a>
-        <a href="#trust">安全性</a>
-        <a href="#article">記事ページ</a>
+        <a href="#guide">選び方ガイド</a>
+        <a href="#bonus">ボーナス比較</a>
+        <a href="#safety">安全性</a>
         <a href="#faq">FAQ</a>
       </div>
     </div>
