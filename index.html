@@ -371,6 +371,12 @@
       gap: 12px;
       position: relative;
       overflow: hidden;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .brand-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 42px rgba(120, 20, 20, 0.14);
     }
 
     .brand-card::before {
@@ -1084,17 +1090,17 @@
       </div>
 
       <div class="brand-grid">
-        <article class="brand-card">
+        <a href="review-slottenkoku.html" class="brand-card" aria-label="スロット天国レビューを見る">
           <div class="logo-box">
             <img src="slottenkoku-logo.png" alt="スロット天国 ロゴ" />
           </div>
           <h3>スロット天国</h3>
-          <p>優先掲載候補。ボーナス条件や出金条件を確認しながら紹介。</p>
+          <p>個別レビュー公開済み。特徴、ボーナス条件、入出金、注意点を確認できます。</p>
           <div class="tag-row">
             <span class="tag">注目</span>
-            <span class="tag gold">レビュー候補</span>
+            <span class="tag gold">レビューあり</span>
           </div>
-        </article>
+        </a>
 
         <article class="brand-card">
           <div class="logo-box">
@@ -1170,14 +1176,14 @@
             </div>
           </div>
           <p>
-            優先掲載候補として、ボーナス条件・出金条件・初心者向けの分かりやすさを中心に整理したいサイトです。
+            個別レビュー公開済み。ボーナス条件・出金条件・初心者向けの確認ポイントを、注意点込みで整理しています。
           </p>
           <ul class="check-list">
             <li>ボーナス条件を確認</li>
             <li>出金前の本人確認を確認</li>
-            <li>レビュー記事化に向く</li>
+            <li>個別レビューで注意点まで確認</li>
           </ul>
-          <a href="casino-list.html" class="mini-link main">一覧で確認する</a>
+          <a href="review-slottenkoku.html" class="mini-link main">レビューを見る</a>
         </article>
 
         <article class="ranking-card">
@@ -1305,6 +1311,12 @@
 
       <div class="link-grid">
         <div class="link-card">
+          <h3>スロット天国レビュー</h3>
+          <p>スロット天国の特徴、ボーナス条件、入出金、注意点を個別に確認できます。</p>
+          <a href="review-slottenkoku.html">個別レビューを見る →</a>
+        </div>
+
+        <div class="link-card">
           <h3>カジノ一覧</h3>
           <p>掲載中・掲載候補のカジノサイトを条件別にまとめて確認できます。</p>
           <a href="casino-list.html">カジノ一覧を見る →</a>
@@ -1326,12 +1338,6 @@
           <h3>レビュー一覧</h3>
           <p>各サイトの特徴、使いやすさ、注意点を整理して確認できます。</p>
           <a href="review.html">レビュー一覧を見る →</a>
-        </div>
-
-        <div class="link-card">
-          <h3>初心者ガイド</h3>
-          <p>はじめて比較する人向けに、選び方の流れを整理しています。</p>
-          <a href="guide.html">初心者ガイドを見る →</a>
         </div>
 
         <div class="link-card">
@@ -1412,9 +1418,9 @@
           比較して納得することが、後悔を減らす第一歩です。
         </p>
         <div class="cta-actions">
-          <a href="casino-list.html" class="btn btn-gold">掲載カジノを一覧で比較</a>
+          <a href="review-slottenkoku.html" class="btn btn-gold">スロット天国レビューを見る</a>
+          <a href="casino-list.html" class="btn btn-outline">掲載カジノを一覧で比較</a>
           <a href="bonus.html" class="btn btn-outline">ボーナス条件を見る</a>
-          <a href="guide.html" class="btn btn-outline">初心者ガイドを見る</a>
         </div>
       </div>
     </section>
@@ -1436,6 +1442,7 @@
       <div class="footer-links">
         <a href="index.html">TOP</a>
         <a href="casino-list.html">カジノ一覧</a>
+        <a href="review-slottenkoku.html">スロット天国レビュー</a>
         <a href="bonus.html">ボーナス比較</a>
         <a href="bonus-guide.html">見方ガイド</a>
         <a href="review.html">レビュー</a>
