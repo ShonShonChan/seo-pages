@@ -3,9 +3,437 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>入出金・決済ガイド | 比較・レビュー・ガイド情報サイト</title>
-  <meta name="description" content="入出金・決済カテゴリページです。決済方法、入金手順、出金手順などの情報整理に使います。">
+  <title>入出金・決済 | SEO Pages</title>
+  <meta name="description" content="入出金・決済カテゴリページです。決済方法、使い方、注意点、関連記事への導線を整理しています。">
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    body{
+      background:
+        radial-gradient(circle at top left, rgba(0,212,255,.08), transparent 22%),
+        radial-gradient(circle at top right, rgba(236,72,153,.08), transparent 22%),
+        linear-gradient(180deg,#eef2ff 0%, #f8fafc 28%, #f8fafc 100%);
+    }
+
+    .page-wrap{
+      width:min(1180px, calc(100% - 32px));
+      margin:0 auto;
+    }
+
+    .page-top{
+      margin-top:22px;
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:20px;
+      align-items:stretch;
+    }
+
+    .hero-main{
+      position:relative;
+      overflow:hidden;
+      border-radius:30px;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255,234,0,.18), transparent 22%),
+        radial-gradient(circle at 85% 20%, rgba(0,212,255,.18), transparent 24%),
+        linear-gradient(135deg,#0b1020 0%, #1d4ed8 50%, #7c3aed 100%);
+      color:#fff;
+      padding:30px 28px;
+      min-height:320px;
+      box-shadow:0 24px 48px rgba(15,23,42,.14);
+    }
+
+    .hero-main::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        repeating-linear-gradient(
+          -45deg,
+          rgba(255,255,255,.04) 0 10px,
+          rgba(255,255,255,0) 10px 20px
+        );
+      pointer-events:none;
+    }
+
+    .hero-main > *{
+      position:relative;
+      z-index:1;
+    }
+
+    .breadcrumb{
+      margin-bottom:14px;
+      color:rgba(255,255,255,.76);
+      font-size:14px;
+      font-weight:700;
+    }
+
+    .breadcrumb a{
+      color:rgba(255,255,255,.92);
+    }
+
+    .hero-kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:linear-gradient(90deg,#ffea00,#ffb800);
+      color:#111827;
+      padding:10px 16px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:900;
+      margin-bottom:16px;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+      box-shadow:0 12px 24px rgba(0,0,0,.18);
+    }
+
+    .hero-title{
+      margin:0 0 14px;
+      font-size:clamp(34px, 5vw, 64px);
+      line-height:1.03;
+      letter-spacing:-.04em;
+      font-weight:900;
+      text-shadow:0 6px 0 rgba(0,0,0,.10), 0 18px 36px rgba(0,0,0,.18);
+    }
+
+    .hero-highlight{
+      display:inline-block;
+      background:linear-gradient(90deg,#ffea00,#ff9800);
+      color:#111827;
+      padding:.04em .18em;
+      border-radius:12px;
+      transform:rotate(-1deg);
+      box-shadow:0 10px 20px rgba(0,0,0,.18);
+    }
+
+    .hero-desc{
+      max-width:720px;
+      margin:0 0 18px;
+      font-size:18px;
+      color:rgba(255,255,255,.9);
+    }
+
+    .hero-btns{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
+    .hero-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:52px;
+      padding:0 20px;
+      border-radius:16px;
+      font-weight:900;
+      letter-spacing:.02em;
+      transition:.2s ease;
+      box-shadow:0 12px 24px rgba(0,0,0,.14);
+    }
+
+    .hero-btn.primary{
+      background:linear-gradient(90deg,#ffea00,#ff9800);
+      color:#111827;
+    }
+
+    .hero-btn.secondary{
+      background:rgba(255,255,255,.12);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.18);
+      backdrop-filter:blur(10px);
+    }
+
+    .hero-btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .hero-side{
+      display:grid;
+      gap:14px;
+    }
+
+    .glass-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.7));
+      border:1px solid rgba(255,255,255,.45);
+      border-radius:24px;
+      padding:22px;
+      box-shadow:0 18px 36px rgba(15,23,42,.10);
+      backdrop-filter:blur(16px);
+    }
+
+    .glass-card h3{
+      margin:0 0 10px;
+      font-size:26px;
+      line-height:1.15;
+      color:#0f172a;
+    }
+
+    .glass-card p{
+      margin:0;
+      color:#475569;
+    }
+
+    .mini-checks{
+      display:grid;
+      gap:12px;
+      margin-top:16px;
+    }
+
+    .mini-check{
+      background:#fff;
+      border:1px solid #e2e8f0;
+      border-radius:18px;
+      padding:14px;
+      color:#334155;
+      font-weight:700;
+    }
+
+    .section{
+      width:min(1180px, calc(100% - 32px));
+      margin:26px auto 0;
+    }
+
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:18px;
+      flex-wrap:wrap;
+    }
+
+    .section-head h2{
+      margin:0;
+      font-size:34px;
+      line-height:1.1;
+      letter-spacing:-.03em;
+      color:#0f172a;
+    }
+
+    .section-head p{
+      margin:0;
+      color:#64748b;
+      font-size:15px;
+    }
+
+    .accent-text{
+      background:linear-gradient(90deg,#06b6d4,#8b5cf6,#ec4899);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .pay-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:18px;
+    }
+
+    .pay-card{
+      background:
+        radial-gradient(circle at top right, rgba(0,212,255,.12), transparent 20%),
+        linear-gradient(180deg,#ffffff,#f8fafc);
+      border:1px solid rgba(148,163,184,.18);
+      border-radius:26px;
+      padding:24px;
+      box-shadow:0 18px 34px rgba(15,23,42,.06);
+    }
+
+    .pay-icon{
+      display:inline-grid;
+      place-items:center;
+      width:54px;
+      height:54px;
+      border-radius:18px;
+      background:linear-gradient(135deg,#111827,#312e81);
+      color:#fff;
+      font-size:24px;
+      margin-bottom:14px;
+      box-shadow:0 12px 24px rgba(15,23,42,.12);
+    }
+
+    .pay-card h3{
+      margin:0 0 10px;
+      font-size:26px;
+      color:#0f172a;
+    }
+
+    .pay-card p{
+      margin:0;
+      color:#64748b;
+    }
+
+    .banner-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .small-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:42px;
+      padding:0 14px;
+      border-radius:12px;
+      font-weight:800;
+      font-size:14px;
+    }
+
+    .small-btn.main{
+      background:linear-gradient(90deg,#ffea00,#ff9800);
+      color:#111827;
+    }
+
+    .small-btn.sub{
+      background:#eff6ff;
+      color:#1d4ed8;
+    }
+
+    .article-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:18px;
+    }
+
+    .article-card{
+      position:relative;
+      display:block;
+      background:linear-gradient(135deg,#ffffff,#f8fafc);
+      border:1px solid rgba(148,163,184,.18);
+      border-radius:24px;
+      padding:22px;
+      box-shadow:0 16px 30px rgba(15,23,42,.06);
+      overflow:hidden;
+      transition:.2s ease;
+    }
+
+    .article-card:hover{
+      transform:translateY(-3px);
+    }
+
+    .article-card::before{
+      content:"";
+      position:absolute;
+      inset:0 auto auto 0;
+      width:100%;
+      height:6px;
+      background:linear-gradient(90deg,#06b6d4,#8b5cf6,#ec4899);
+    }
+
+    .article-pill{
+      display:inline-flex;
+      align-items:center;
+      padding:7px 12px;
+      border-radius:999px;
+      background:#111827;
+      color:#fff;
+      font-size:12px;
+      font-weight:900;
+      margin-bottom:12px;
+      letter-spacing:.05em;
+    }
+
+    .article-card h3{
+      margin:0 0 8px;
+      font-size:24px;
+      color:#0f172a;
+      line-height:1.15;
+    }
+
+    .article-card p{
+      margin:0;
+      color:#64748b;
+      font-size:15px;
+    }
+
+    .guide-box{
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 12% 20%, rgba(0,212,255,.16), transparent 18%),
+        radial-gradient(circle at 90% 80%, rgba(236,72,153,.18), transparent 20%),
+        linear-gradient(135deg,#0b1020 0%, #1e1b4b 55%, #3b0764 100%);
+      color:#fff;
+      border-radius:30px;
+      padding:30px;
+      box-shadow:0 24px 46px rgba(15,23,42,.16);
+    }
+
+    .guide-box::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size:28px 28px;
+      opacity:.4;
+      pointer-events:none;
+    }
+
+    .guide-box > *{
+      position:relative;
+      z-index:1;
+    }
+
+    .guide-box h2{
+      margin:0 0 10px;
+      font-size:38px;
+      line-height:1.1;
+    }
+
+    .guide-box p{
+      margin:0 0 18px;
+      color:rgba(255,255,255,.86);
+      font-size:16px;
+    }
+
+    .footer{
+      width:min(1180px, calc(100% - 32px));
+      margin:34px auto 50px;
+      color:#64748b;
+      font-size:14px;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      border-top:1px solid #e5e7eb;
+      padding-top:18px;
+    }
+
+    @media (max-width: 1100px){
+      .page-top,
+      .pay-grid,
+      .article-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .page-top{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 760px){
+      .pay-grid,
+      .article-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-main{
+        padding:24px 20px;
+      }
+
+      .hero-title{
+        font-size:40px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="topbar">
@@ -14,73 +442,143 @@
         <div class="brand-mark">S</div>
         <div>SEO Pages</div>
       </a>
+
       <nav class="nav">
-        <a href="index.html">トップ</a>
-        <a href="bonus.html">ボーナス比較</a>
-        <a href="review.html">レビュー</a>
+        <a href="index.html">TOP</a>
+        <a href="#methods">決済方法</a>
+        <a href="#articles">関連記事</a>
         <a href="guide.html">初心者ガイド</a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section class="page-hero">
-      <div class="wrap">
-        <div class="breadcrumb"><a href="index.html">トップ</a> / 入出金・決済</div>
-        <h1>入出金・決済カテゴリ</h1>
+  <div class="page-wrap page-top">
+    <section class="hero-main">
+      <div class="breadcrumb">
+        <a href="index.html">TOP</a> / 入出金・決済
+      </div>
+
+      <div class="hero-kicker">PAYMENTS / GUIDE CATEGORY</div>
+
+      <h1 class="hero-title">
+        入出金・決済を<br>
+        <span class="hero-highlight">整理して見やすく</span>
+      </h1>
+
+      <p class="hero-desc">
+        このページは、入金方法、出金方法、決済の基本的な見方を整理するカテゴリページです。
+        手順系の記事や注意点をまとめて、迷いにくい入口になるようにしています。
+      </p>
+
+      <div class="hero-btns">
+        <a class="hero-btn primary" href="#methods">決済方法を見る</a>
+        <a class="hero-btn secondary" href="#articles">関連記事を見る</a>
+      </div>
+    </section>
+
+    <aside class="hero-side">
+      <div class="glass-card">
+        <h3>このカテゴリの役割</h3>
         <p>
-          このカテゴリは、入金方法、出金方法、決済手順、注意点などの基本情報を整理するためのカテゴリページです。
+          手順系の情報を整理して、
+          <strong>方法・流れ・注意点</strong>
+          を見やすくまとめるためのカテゴリとして使います。
         </p>
-      </div>
-    </section>
 
-    <section class="section">
-      <div class="wrap cards cards-2">
-        <div class="card">
-          <h2>主なテーマ</h2>
-          <ul class="checklist">
-            <li>クレジットカード入金</li>
-            <li>電子ウォレット</li>
-            <li>仮想通貨決済</li>
-            <li>出金手順</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h2>このカテゴリの役割</h2>
-          <ul class="checklist">
-            <li>手順系キーワードを受ける</li>
-            <li>初心者向けの不安解消をする</li>
-            <li>レビュー記事への内部リンクをつなぐ</li>
-          </ul>
+        <div class="mini-checks">
+          <div class="mini-check">方法ごとの差を整理</div>
+          <div class="mini-check">手順系記事の入口にする</div>
+          <div class="mini-check">初心者の不安を減らす</div>
         </div>
       </div>
-    </section>
 
-    <section class="section">
-      <div class="wrap card">
-        <h2>掲載予定記事</h2>
-        <div class="list-links">
-          <div class="link-card">
-            <strong>入金方法まとめ</strong>
-            <span class="muted">主要な入金方法の比較と手順</span>
-          </div>
-          <div class="link-card">
-            <strong>出金方法まとめ</strong>
-            <span class="muted">出金手順と注意点の整理</span>
-          </div>
-          <div class="link-card">
-            <strong>仮想通貨での入出金ガイド</strong>
-            <span class="muted">決済手順と注意点のガイド</span>
-          </div>
+      <div class="glass-card">
+        <h3>おすすめ導線</h3>
+        <p>最初に全体像を見たあと、比較カテゴリやガイドカテゴリへ戻る流れも自然です。</p>
+        <div class="banner-actions" style="margin-top:14px;">
+          <a class="small-btn main" href="guide.html">初心者ガイドへ</a>
+          <a class="small-btn sub" href="bonus.html">比較へ</a>
         </div>
       </div>
-    </section>
-  </main>
+    </aside>
+  </div>
+
+  <section id="methods" class="section">
+    <div class="section-head">
+      <div>
+        <h2><span class="accent-text">主な決済テーマ</span></h2>
+        <p>このカテゴリでは、入出金系でよく見られるテーマを整理して展開していく想定です。</p>
+      </div>
+    </div>
+
+    <div class="pay-grid">
+      <article class="pay-card">
+        <div class="pay-icon">💳</div>
+        <h3>カード系</h3>
+        <p>クレジットカードなど、最初に想起されやすい決済方法を整理するための枠です。</p>
+      </article>
+
+      <article class="pay-card">
+        <div class="pay-icon">📱</div>
+        <h3>ウォレット系</h3>
+        <p>電子ウォレットなど、使い方や特徴を整理しやすいテーマの枠です。</p>
+      </article>
+
+      <article class="pay-card">
+        <div class="pay-icon">🪙</div>
+        <h3>仮想通貨系</h3>
+        <p>仮想通貨決済など、別テーマとして整理したい情報をまとめるための枠です。</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="guide-box">
+      <h2>手順系の記事を積み上げる土台</h2>
+      <p>
+        このカテゴリは、方法ごとの比較よりも「どう使うか」「何に注意するか」を整理するのに向いています。
+        今後、入金方法・出金方法・仮想通貨関連の記事を増やしていく想定です。
+      </p>
+      <div class="banner-actions">
+        <a class="small-btn main" href="guide.html">初心者ガイドへ</a>
+        <a class="small-btn sub" href="review.html">レビューへ</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="articles" class="section">
+    <div class="section-head">
+      <div>
+        <h2>関連記事導線</h2>
+        <p>ここから今後、入出金・決済系の実記事を増やしていく想定です。</p>
+      </div>
+    </div>
+
+    <div class="article-grid">
+      <a class="article-card" href="#">
+        <div class="article-pill">PAYMENT</div>
+        <h3>入金方法まとめ記事枠</h3>
+        <p>今後、主要な入金方法や特徴を整理する記事をここに追加していく想定です。</p>
+      </a>
+
+      <a class="article-card" href="#">
+        <div class="article-pill">WITHDRAWAL</div>
+        <h3>出金方法まとめ記事枠</h3>
+        <p>出金時の流れや注意点を整理する記事への導線として使う想定です。</p>
+      </a>
+
+      <a class="article-card" href="guide.html">
+        <div class="article-pill">GUIDE</div>
+        <h3>初心者ガイドへ進む</h3>
+        <p>最初に全体像を整理したい時の入口として、ガイドカテゴリへつなぎます。</p>
+      </a>
+    </div>
+  </section>
 
   <footer class="footer">
-    <div class="wrap footer-inner">
+    <div class="footer-inner">
       <div>© SEO Pages</div>
-      <div>入出金カテゴリページ</div>
+      <div>入出金・決済カテゴリページ</div>
     </div>
   </footer>
 </body>
