@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>オンラインカジノレビュー一覧｜特徴・条件・注意点を比較｜リベンジカジノ比較ガイド</title>
-  <meta name="description" content="オンラインカジノのレビュー一覧ページです。スロット天国、コニベット、STAKEなど、各カジノサイトの特徴、ボーナス条件、入出金、日本語対応、安全性、注意点を比較メディア視点で整理します。" />
+  <title>オンラインカジノレビュー一覧｜公開済み・準備中レビューをまとめて確認｜リベンジカジノ比較ガイド</title>
+  <meta name="description" content="オンラインカジノの個別レビュー一覧ページです。スロット天国、コニベット、STAKEなどの公開済みレビューに加え、ベラジョン、游雅堂、bitcasinoなどの準備中・調査中レビューもまとめて確認できます。" />
 
   <style>
     :root {
@@ -18,6 +18,7 @@
       --cream: #fff9f2;
       --text: #2b2b2b;
       --muted: #666666;
+      --line: #f0d3d3;
       --white: #ffffff;
       --shadow: 0 18px 45px rgba(120, 20, 20, 0.12);
       --radius-lg: 24px;
@@ -176,10 +177,13 @@
       background: linear-gradient(90deg, var(--red), var(--orange), var(--gold));
     }
 
-    .hero-content {
+    .hero-grid {
       position: relative;
       z-index: 1;
-      max-width: 820px;
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 34px;
+      align-items: center;
     }
 
     .eyebrow {
@@ -216,7 +220,7 @@
       margin: 0 0 24px;
       color: #444;
       font-size: 17px;
-      max-width: 740px;
+      max-width: 720px;
     }
 
     .hero-actions,
@@ -225,6 +229,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
+      margin-top: 22px;
     }
 
     .btn,
@@ -284,6 +289,48 @@
       color: #777;
       border-color: #e2e2e2;
       pointer-events: none;
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(215, 25, 32, 0.14);
+      border-radius: 26px;
+      padding: 22px;
+      box-shadow: 0 16px 34px rgba(120, 20, 20, 0.12);
+    }
+
+    .hero-card h2 {
+      margin: 0 0 12px;
+      color: var(--red-dark);
+      font-size: 20px;
+      line-height: 1.35;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .stat-item {
+      background: #fff7f4;
+      border: 1px solid rgba(215, 25, 32, 0.14);
+      border-radius: 16px;
+      padding: 12px;
+    }
+
+    .stat-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 2px;
+    }
+
+    .stat-item strong {
+      color: var(--red-dark);
+      font-size: 16px;
+      line-height: 1.4;
     }
 
     .notice {
@@ -346,6 +393,48 @@
       margin-bottom: 10px;
     }
 
+    .quick-nav {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .quick-card,
+    .review-card,
+    .link-card,
+    .policy-card {
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.15);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: 0 10px 28px rgba(120, 20, 20, 0.07);
+    }
+
+    .quick-card h3,
+    .link-card h3,
+    .policy-card h3 {
+      margin: 0 0 8px;
+      color: var(--red-dark);
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .quick-card p,
+    .link-card p,
+    .policy-card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .quick-card a,
+    .link-card a {
+      color: var(--red);
+      font-weight: 900;
+      font-size: 14px;
+    }
+
     .review-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -353,22 +442,13 @@
     }
 
     .review-card {
-      background: #fff;
-      border: 1px solid rgba(215, 25, 32, 0.16);
       border-radius: var(--radius-lg);
-      padding: 20px;
       box-shadow: var(--shadow);
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 14px;
       position: relative;
       overflow: hidden;
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
-    }
-
-    .review-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 22px 48px rgba(120, 20, 20, 0.16);
     }
 
     .review-card::before {
@@ -379,11 +459,11 @@
       background: linear-gradient(90deg, var(--red), var(--orange), var(--gold));
     }
 
-    .review-card.featured {
-      border-color: rgba(215, 25, 32, 0.34);
+    .review-card.ready {
       background:
-        radial-gradient(circle at top right, rgba(246, 183, 60, 0.13), transparent 36%),
-        linear-gradient(180deg, #fff, #fff8f5);
+        radial-gradient(circle at top right, rgba(246, 183, 60, 0.12), transparent 34%),
+        #fff;
+      border-color: rgba(215, 25, 32, 0.24);
     }
 
     .review-top {
@@ -478,9 +558,9 @@
       border-color: #e6e6e6;
     }
 
-    .review-text {
+    .review-card p {
       margin: 0;
-      color: #484848;
+      color: #4d4d4d;
       font-size: 14px;
       line-height: 1.75;
     }
@@ -528,58 +608,6 @@
       font-weight: 900;
     }
 
-    .guide-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .guide-card,
-    .link-card {
-      background: #fff;
-      border: 1px solid rgba(215, 25, 32, 0.15);
-      border-radius: var(--radius-md);
-      padding: 20px;
-      box-shadow: 0 10px 28px rgba(120, 20, 20, 0.07);
-    }
-
-    .guide-number {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, var(--red), var(--orange));
-      color: #fff;
-      font-weight: 900;
-      margin-bottom: 12px;
-    }
-
-    .guide-card h3,
-    .link-card h3 {
-      margin: 0 0 8px;
-      font-size: 18px;
-      color: var(--red-dark);
-      line-height: 1.35;
-    }
-
-    .guide-card p,
-    .link-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    .link-card p {
-      margin-bottom: 12px;
-    }
-
-    .link-card a {
-      color: var(--red);
-      font-weight: 900;
-    }
-
     .table-wrap {
       overflow-x: auto;
       background: #fff;
@@ -591,7 +619,7 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 900px;
+      min-width: 980px;
       font-size: 14px;
     }
 
@@ -646,10 +674,15 @@
       background: #f4f4f4;
     }
 
+    .policy-grid,
     .link-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
+    }
+
+    .policy-card {
+      border-radius: var(--radius-lg);
     }
 
     .warning-box {
@@ -777,7 +810,7 @@
     }
 
     @media (max-width: 1060px) {
-      .guide-grid {
+      .quick-nav {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
@@ -792,11 +825,16 @@
         justify-content: flex-start;
       }
 
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
       .hero-box {
         padding: 34px 24px;
       }
 
       .review-grid,
+      .policy-grid,
       .link-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -844,9 +882,11 @@
         width: 100%;
       }
 
+      .quick-nav,
       .review-grid,
-      .guide-grid,
-      .link-grid {
+      .policy-grid,
+      .link-grid,
+      .stats-grid {
         grid-template-columns: 1fr;
       }
 
@@ -894,34 +934,58 @@
         <a href="review.html">レビュー</a>
         <a href="guide.html">初心者ガイド</a>
         <a href="payments.html">入出金</a>
-        <a href="#review-list" class="nav-cta">レビュー一覧</a>
+        <a href="#published" class="nav-cta">公開済みレビュー</a>
       </nav>
     </div>
   </header>
 
   <div class="breadcrumb">
-    <a href="index.html">TOP</a> ＞ レビュー
+    <a href="index.html">TOP</a> ＞ レビュー一覧
   </div>
 
   <main>
     <section class="hero">
       <div class="hero-box">
-        <div class="hero-content">
-          <div class="eyebrow">口コミではなく、判断材料を整理するレビュー</div>
-          <h1>
-            オンラインカジノ<br />
-            <span class="hero-highlight">レビュー一覧</span>
-          </h1>
-          <p class="hero-lead">
-            各カジノサイトの特徴、ボーナス条件、入出金、日本語対応、安全性、注意点を整理したレビュー一覧です。
-            良い点だけでなく、登録前に確認したい条件やリスクもあわせて確認しましょう。
-          </p>
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">レビュー追加時の中心ページ</div>
+            <h1>
+              オンラインカジノ<br />
+              <span class="hero-highlight">レビュー一覧ハブ</span>
+            </h1>
+            <p class="hero-lead">
+              公開済みレビュー、準備中レビュー、調査中レビューをまとめて確認できるページです。
+              今後レビュー記事が増えても、まずはこのページを更新することで、サイト全体の導線を整理しやすくします。
+            </p>
 
-          <div class="hero-actions">
-            <a href="#review-list" class="btn btn-primary">レビューを見る</a>
-            <a href="casino-list.html" class="btn btn-gold">カジノ一覧で比較</a>
-            <a href="guide.html" class="btn btn-outline">初心者ガイドへ</a>
+            <div class="hero-actions">
+              <a href="#published" class="btn btn-primary">公開済みレビューを見る</a>
+              <a href="#planned" class="btn btn-gold">準備中レビューを見る</a>
+              <a href="casino-list.html" class="btn btn-outline">カジノ一覧で比較</a>
+            </div>
           </div>
+
+          <aside class="hero-card">
+            <h2>レビュー状況</h2>
+            <div class="stats-grid">
+              <div class="stat-item">
+                <span>公開済み</span>
+                <strong>3本</strong>
+              </div>
+              <div class="stat-item">
+                <span>次の候補</span>
+                <strong>ベラジョン / 游雅堂</strong>
+              </div>
+              <div class="stat-item">
+                <span>中心ページ</span>
+                <strong>review.html</strong>
+              </div>
+              <div class="stat-item">
+                <span>比較導線</span>
+                <strong>casino-list.html</strong>
+              </div>
+            </div>
+          </aside>
         </div>
       </div>
     </section>
@@ -929,25 +993,63 @@
     <section class="notice">
       <div class="notice-box">
         <strong>注意：</strong>
-        本ページはオンラインカジノの特徴や条件を比較するためのレビュー一覧です。
-        利用を推奨・保証するものではありません。登録前には、必ず各サイトの公式規約、対象地域、年齢制限、本人確認、出金条件、関連法規を確認してください。
+        本ページはオンラインカジノのレビューを比較・整理するための情報ページです。
+        利用を推奨・保証するものではありません。登録前には必ず各サイトの公式規約、対象地域、年齢制限、本人確認、出金条件、関連法規を確認してください。
       </div>
     </section>
 
-    <section class="section" id="review-list">
+    <section class="section" id="quick">
       <div class="section-head">
         <div>
-          <div class="label">レビュー一覧</div>
-          <h2 class="section-title">公開中・準備中の<span>個別レビュー</span></h2>
+          <div class="label">レビューの探し方</div>
+          <h2 class="section-title">目的に合わせて<span>レビューを探す</span></h2>
           <p class="section-desc">
-            スロット天国、コニベット、STAKEの個別レビューを公開済みとして配置しています。
-            今後、ベラジョン、游雅堂のレビューも同じ型で追加していく想定です。
+            レビューが増えても迷わないように、目的別の入口を用意しています。
+          </p>
+        </div>
+      </div>
+
+      <div class="quick-nav">
+        <div class="quick-card">
+          <h3>公開済みレビュー</h3>
+          <p>すでに個別ページがあるレビューを確認できます。</p>
+          <a href="#published">公開済みを見る →</a>
+        </div>
+
+        <div class="quick-card">
+          <h3>準備中レビュー</h3>
+          <p>今後追加予定のレビュー候補を確認できます。</p>
+          <a href="#planned">準備中を見る →</a>
+        </div>
+
+        <div class="quick-card">
+          <h3>条件別に比較</h3>
+          <p>ボーナス、出金、日本語対応などの軸で確認できます。</p>
+          <a href="#review-table">比較表を見る →</a>
+        </div>
+
+        <div class="quick-card">
+          <h3>全カジノ一覧</h3>
+          <p>レビュー有無に関係なく、掲載候補を一覧で確認できます。</p>
+          <a href="casino-list.html">カジノ一覧へ →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="published">
+      <div class="section-head">
+        <div>
+          <div class="label">公開済みレビュー</div>
+          <h2 class="section-title">現在公開中の<span>個別レビュー</span></h2>
+          <p class="section-desc">
+            現在はスロット天国、コニベット、STAKEの3本を公開済みレビューとして扱います。
+            この3本を今後の個別レビュー記事の成功例として利用します。
           </p>
         </div>
       </div>
 
       <div class="review-grid">
-        <article class="review-card featured">
+        <article class="review-card ready">
           <div class="review-top">
             <div class="rank">1</div>
             <div class="logo-box">
@@ -955,33 +1057,33 @@
             </div>
             <div>
               <h3 class="review-name">スロット天国</h3>
-              <p class="review-sub">個別レビュー公開済み</p>
+              <p class="review-sub">通常レビュー型</p>
             </div>
           </div>
 
           <div class="tag-row">
-            <span class="tag">注目</span>
-            <span class="tag gold">レビューあり</span>
-            <span class="tag gray">条件確認推奨</span>
+            <span class="tag">公開済み</span>
+            <span class="tag gold">ボーナス確認</span>
+            <span class="tag gray">出金条件</span>
           </div>
 
-          <p class="review-text">
-            スロット天国の特徴、ボーナス条件、入出金、日本語対応、安全性、注意点を個別レビューとして整理しています。
+          <p>
+            ボーナス条件、入出金、本人確認、日本語対応、注意点をバランスよく整理した通常レビュー型です。
           </p>
 
           <ul class="check-list">
-            <li>特徴と見どころを確認</li>
-            <li>ボーナス条件と注意点を確認</li>
-            <li>入出金・本人確認のポイントを確認</li>
+            <li>ボーナス条件を確認</li>
+            <li>入出金と本人確認を確認</li>
+            <li>初心者向けの注意点を確認</li>
           </ul>
 
           <div class="card-actions">
             <a href="review-slottenkoku.html" class="mini-btn main">レビューを見る</a>
-            <a href="casino-list.html" class="mini-btn">一覧で比較</a>
+            <a href="bonus.html" class="mini-btn">ボーナス比較</a>
           </div>
         </article>
 
-        <article class="review-card featured">
+        <article class="review-card ready">
           <div class="review-top">
             <div class="rank">2</div>
             <div class="logo-box">
@@ -989,24 +1091,24 @@
             </div>
             <div>
               <h3 class="review-name">コニベット</h3>
-              <p class="review-sub">個別レビュー公開済み</p>
+              <p class="review-sub">キャンペーン・規約確認型</p>
             </div>
           </div>
 
           <div class="tag-row">
-            <span class="tag">注目</span>
-            <span class="tag gold">レビューあり</span>
+            <span class="tag">公開済み</span>
+            <span class="tag gold">キャンペーン</span>
             <span class="tag gray">規約確認</span>
           </div>
 
-          <p class="review-text">
-            コニベットの特徴、キャンペーン条件、入出金、日本語対応、安全性、注意点を個別レビューとして整理しています。
+          <p>
+            キャンペーン条件、日本語対応、公式規約、出金条件を中心に整理したレビューです。
           </p>
 
           <ul class="check-list">
             <li>キャンペーン条件を確認</li>
             <li>日本語対応の範囲を確認</li>
-            <li>出金条件と本人確認を確認</li>
+            <li>公式規約と出金条件を確認</li>
           </ul>
 
           <div class="card-actions">
@@ -1015,7 +1117,7 @@
           </div>
         </article>
 
-        <article class="review-card featured">
+        <article class="review-card ready">
           <div class="review-top">
             <div class="rank">3</div>
             <div class="logo-box">
@@ -1023,18 +1125,18 @@
             </div>
             <div>
               <h3 class="review-name">STAKE</h3>
-              <p class="review-sub">個別レビュー公開済み</p>
+              <p class="review-sub">暗号資産・対象地域確認型</p>
             </div>
           </div>
 
           <div class="tag-row">
-            <span class="tag">知名度</span>
-            <span class="tag gold">レビューあり</span>
-            <span class="tag gray">対象地域確認</span>
+            <span class="tag">公開済み</span>
+            <span class="tag gold">暗号資産</span>
+            <span class="tag gray">対象地域</span>
           </div>
 
-          <p class="review-text">
-            STAKEの特徴、暗号資産を含む入出金、対象地域、日本語対応、安全性、注意点を個別レビューとして整理しています。
+          <p>
+            知名度、暗号資産入出金、対象地域、本人確認、規約確認を中心に整理したレビューです。
           </p>
 
           <ul class="check-list">
@@ -1048,7 +1150,22 @@
             <a href="payments.html" class="mini-btn">入出金を見る</a>
           </div>
         </article>
+      </div>
+    </section>
 
+    <section class="section" id="planned">
+      <div class="section-head">
+        <div>
+          <div class="label">準備中・追加予定</div>
+          <h2 class="section-title">今後追加する<span>レビュー候補</span></h2>
+          <p class="section-desc">
+            今後は、ベラジョン、游雅堂を優先候補として個別レビュー化する想定です。
+            以降の候補は、公式情報や素材確認ができたものから順番に追加します。
+          </p>
+        </div>
+      </div>
+
+      <div class="review-grid">
         <article class="review-card">
           <div class="review-top">
             <div class="rank">4</div>
@@ -1057,23 +1174,23 @@
             </div>
             <div>
               <h3 class="review-name">ベラジョン</h3>
-              <p class="review-sub">素材確認中</p>
+              <p class="review-sub">次の優先候補</p>
             </div>
           </div>
 
           <div class="tag-row">
-            <span class="tag">レビュー候補</span>
+            <span class="tag">準備中</span>
             <span class="tag gold">素材確認</span>
-            <span class="tag gray">条件確認</span>
+            <span class="tag gray">レビュー候補</span>
           </div>
 
-          <p class="review-text">
-            ベラジョンは認知度の高い候補として、最新条件、ロゴ素材、ボーナス規約、入出金条件を確認したうえでレビュー化します。
+          <p>
+            認知度のある候補として、ロゴ素材、最新ボーナス、入出金条件、日本語対応を確認したうえでレビュー化します。
           </p>
 
           <ul class="check-list">
-            <li>ロゴ素材を整理</li>
-            <li>最新ボーナス条件を確認</li>
+            <li>ロゴ素材を確認</li>
+            <li>ボーナス条件を確認</li>
             <li>出金条件とサポートを確認</li>
           </ul>
 
@@ -1091,24 +1208,24 @@
             </div>
             <div>
               <h3 class="review-name">游雅堂</h3>
-              <p class="review-sub">レビュー準備中</p>
+              <p class="review-sub">次の優先候補</p>
             </div>
           </div>
 
           <div class="tag-row">
-            <span class="tag">比較候補</span>
-            <span class="tag gold">日本語対応確認</span>
+            <span class="tag">準備中</span>
+            <span class="tag gold">日本語対応</span>
             <span class="tag gray">出金確認</span>
           </div>
 
-          <p class="review-text">
-            游雅堂は、日本語対応、入出金条件、サポート体制、ボーナス条件を整理したうえで、個別レビュー化を検討します。
+          <p>
+            日本語対応、入出金条件、サポート体制、ボーナス条件を整理したうえで個別レビュー化します。
           </p>
 
           <ul class="check-list">
             <li>日本語対応範囲を確認</li>
             <li>入出金条件を確認</li>
-            <li>注意点込みで紹介</li>
+            <li>サポート体制を確認</li>
           </ul>
 
           <div class="card-actions">
@@ -1125,7 +1242,7 @@
             </div>
             <div>
               <h3 class="review-name">追加レビュー候補</h3>
-              <p class="review-sub">掲載拡張用</p>
+              <p class="review-sub">調査中</p>
             </div>
           </div>
 
@@ -1135,70 +1252,32 @@
             <span class="tag gray">公式情報確認</span>
           </div>
 
-          <p class="review-text">
-            新しいカジノサイトを追加する場合は、まず一覧掲載で条件を整理し、十分に確認できたものから個別レビューへ展開します。
+          <p>
+            bitcasino、Mystino、Casino Secret、Bons Casino、BC.Gameなどは、条件を整理できたものから追加します。
           </p>
 
           <ul class="check-list">
-            <li>ライセンスを確認</li>
             <li>運営会社を確認</li>
-            <li>規約と出金条件を確認</li>
+            <li>ライセンス情報を確認</li>
+            <li>ボーナスと出金条件を確認</li>
           </ul>
 
           <div class="card-actions">
             <a href="casino-list.html" class="mini-btn main">掲載候補を見る</a>
-            <a href="#review-policy" class="mini-btn">基準を見る</a>
+            <a href="#review-policy" class="mini-btn">方針を見る</a>
           </div>
         </article>
-      </div>
-    </section>
-
-    <section class="section" id="review-policy">
-      <div class="section-head">
-        <div>
-          <div class="label">レビュー方針</div>
-          <h2 class="section-title">レビューでは<span>良い点だけでなく注意点も確認</span></h2>
-          <p class="section-desc">
-            本サイトのレビューは、登録を急がせるためのものではありません。
-            条件を理解し、比較材料を整理するためのレビューとして作成します。
-          </p>
-        </div>
-      </div>
-
-      <div class="guide-grid">
-        <div class="guide-card">
-          <div class="guide-number">1</div>
-          <h3>特徴を見る</h3>
-          <p>サイトの強み、使いやすさ、ゲーム傾向、日本語対応の分かりやすさを整理します。</p>
-        </div>
-
-        <div class="guide-card">
-          <div class="guide-number">2</div>
-          <h3>条件を見る</h3>
-          <p>ボーナス金額ではなく、賭け条件、有効期限、対象ゲーム、最大出金を確認します。</p>
-        </div>
-
-        <div class="guide-card">
-          <div class="guide-number">3</div>
-          <h3>出金を見る</h3>
-          <p>入金方法だけでなく、最低出金額、本人確認、手数料、反映時間を確認します。</p>
-        </div>
-
-        <div class="guide-card">
-          <div class="guide-number">4</div>
-          <h3>注意点を見る</h3>
-          <p>対象地域、規約変更、サポート対応、利用リスクをあわせて確認します。</p>
-        </div>
       </div>
     </section>
 
     <section class="section" id="review-table">
       <div class="section-head">
         <div>
-          <div class="label">レビュー進捗</div>
-          <h2 class="section-title">個別レビューの<span>作成状況</span></h2>
+          <div class="label">レビュー管理表</div>
+          <h2 class="section-title">レビュー状況を<span>一覧で管理</span></h2>
           <p class="section-desc">
-            公開済みレビューと、今後作成予定のレビュー候補を一覧化しています。
+            新しいレビューを追加するときは、まずこの表に公開状況を反映します。
+            TOPやボーナスページは毎回更新せず、レビュー管理はこのページとカジノ一覧に集約します。
           </p>
         </div>
       </div>
@@ -1211,6 +1290,7 @@
               <th>レビュー状況</th>
               <th>優先度</th>
               <th>主な確認項目</th>
+              <th>更新対象</th>
               <th>関連ページ</th>
             </tr>
           </thead>
@@ -1220,6 +1300,7 @@
               <td><span class="status good">公開済み</span></td>
               <td>高</td>
               <td>ボーナス条件、入出金、本人確認、日本語対応、注意点</td>
+              <td>既存維持</td>
               <td><a href="review-slottenkoku.html">レビューを見る</a></td>
             </tr>
             <tr>
@@ -1227,6 +1308,7 @@
               <td><span class="status good">公開済み</span></td>
               <td>高</td>
               <td>キャンペーン条件、日本語対応、公式規約、出金条件</td>
+              <td>既存維持</td>
               <td><a href="review-konibet.html">レビューを見る</a></td>
             </tr>
             <tr>
@@ -1234,82 +1316,152 @@
               <td><span class="status good">公開済み</span></td>
               <td>高</td>
               <td>対象地域、暗号資産入出金、本人確認、規約確認</td>
+              <td>既存維持</td>
               <td><a href="review-stake.html">レビューを見る</a></td>
             </tr>
             <tr>
               <td><strong>ベラジョン</strong></td>
-              <td><span class="status neutral">素材確認中</span></td>
-              <td>中</td>
-              <td>ロゴ素材、最新ボーナス、入出金、サポート</td>
+              <td><span class="status check">次の候補</span></td>
+              <td>高</td>
+              <td>ロゴ素材、最新ボーナス、入出金、日本語対応</td>
+              <td>review.html / casino-list.html</td>
               <td><a href="casino-list.html">一覧で確認</a></td>
             </tr>
             <tr>
               <td><strong>游雅堂</strong></td>
-              <td><span class="status check">準備中</span></td>
+              <td><span class="status check">次の候補</span></td>
+              <td>高</td>
+              <td>日本語対応、出金条件、サポート、ボーナス条件</td>
+              <td>review.html / casino-list.html</td>
+              <td><a href="payments.html">入出金を見る</a></td>
+            </tr>
+            <tr>
+              <td><strong>bitcasino</strong></td>
+              <td><span class="status neutral">調査中</span></td>
               <td>中</td>
-              <td>日本語対応、入出金条件、サポート、注意点</td>
-              <td><a href="payments.html">入出金ガイド</a></td>
+              <td>暗号資産、対象地域、出金条件、本人確認</td>
+              <td>後回し</td>
+              <td><a href="casino-list.html">一覧で確認</a></td>
+            </tr>
+            <tr>
+              <td><strong>Mystino</strong></td>
+              <td><span class="status neutral">調査中</span></td>
+              <td>中</td>
+              <td>ボーナス条件、日本語対応、入出金、規約</td>
+              <td>後回し</td>
+              <td><a href="casino-list.html">一覧で確認</a></td>
+            </tr>
+            <tr>
+              <td><strong>Casino Secret</strong></td>
+              <td><span class="status neutral">調査中</span></td>
+              <td>中</td>
+              <td>条件表記、出金条件、本人確認、サポート</td>
+              <td>後回し</td>
+              <td><a href="casino-list.html">一覧で確認</a></td>
+            </tr>
+            <tr>
+              <td><strong>Bons Casino</strong></td>
+              <td><span class="status neutral">調査中</span></td>
+              <td>低〜中</td>
+              <td>運営情報、サポート、ボーナス、出金条件</td>
+              <td>後回し</td>
+              <td><a href="casino-list.html">一覧で確認</a></td>
+            </tr>
+            <tr>
+              <td><strong>BC.Game</strong></td>
+              <td><span class="status neutral">調査中</span></td>
+              <td>中</td>
+              <td>暗号資産、対象地域、本人確認、規約</td>
+              <td>後回し</td>
+              <td><a href="casino-list.html">一覧で確認</a></td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <section class="section" id="how-to-read">
+    <section class="section" id="review-policy">
       <div class="section-head">
         <div>
-          <div class="label">読み方</div>
-          <h2 class="section-title">レビュー記事は<span>ここを重点的に読む</span></h2>
+          <div class="label">レビュー方針</div>
+          <h2 class="section-title">レビュー記事は<span>この方針で増やす</span></h2>
           <p class="section-desc">
-            個別レビューを読むときは、印象やキャンペーンだけでなく、後から困りやすい条件を先に確認しましょう。
+            今後レビューを増やすときは、毎回TOPや土台ページを触るのではなく、
+            review.html と casino-list.html を中心に更新する方針にします。
           </p>
         </div>
       </div>
 
-      <div class="review-grid">
-        <div class="review-card">
-          <div class="tag-row">
-            <span class="tag">重要</span>
-            <span class="tag gold">ボーナス</span>
-          </div>
-          <h3 class="review-name">ボーナス条件</h3>
-          <p class="review-text">
-            ウェルカムボーナスやキャンペーンを見るときは、金額だけでなく、賭け条件、有効期限、対象ゲーム、最大出金を確認します。
+      <div class="policy-grid">
+        <div class="policy-card">
+          <h3>1. 新規レビューを作る</h3>
+          <p>
+            `review-[slug].html` を作成します。既存の3本を参考に、注意書き、目次、レビュー要点、責任ある利用、FAQを入れます。
           </p>
-          <ul class="caution-list">
-            <li>高額ボーナスでも条件が重い場合があります。</li>
-            <li>対象ゲームが限定される場合があります。</li>
-          </ul>
         </div>
 
-        <div class="review-card">
-          <div class="tag-row">
-            <span class="tag">重要</span>
-            <span class="tag gold">出金</span>
-          </div>
-          <h3 class="review-name">入出金・本人確認</h3>
-          <p class="review-text">
-            入金方法だけで判断せず、出金方法、最低出金額、本人確認、反映時間、手数料を確認します。
+        <div class="policy-card">
+          <h3>2. review.html を更新</h3>
+          <p>
+            公開済みレビュー欄、レビュー管理表、関連リンクを更新します。レビュー管理の中心はこのページに集約します。
           </p>
-          <ul class="caution-list">
-            <li>出金時に本人確認が必要になる場合があります。</li>
-            <li>ボーナス利用時は出金条件が変わる場合があります。</li>
-          </ul>
         </div>
 
-        <div class="review-card">
-          <div class="tag-row">
-            <span class="tag">重要</span>
-            <span class="tag gold">安全性</span>
-          </div>
-          <h3 class="review-name">安全性・規約</h3>
-          <p class="review-text">
-            ライセンス、運営会社、対象地域、責任あるギャンブル対策、利用規約を複数の視点で確認します。
+        <div class="policy-card">
+          <h3>3. casino-list.html を更新</h3>
+          <p>
+            該当サイトのカードと比較表を更新します。全カジノ掲載情報は casino-list.html に集約します。
           </p>
-          <ul class="caution-list">
-            <li>ライセンス表記だけで絶対安全とは判断しません。</li>
-            <li>対象地域や規約は変更される場合があります。</li>
-          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="internal-links">
+      <div class="section-head">
+        <div>
+          <div class="label">関連ページ</div>
+          <h2 class="section-title">レビューとあわせて<span>確認したいページ</span></h2>
+          <p class="section-desc">
+            個別レビューだけで判断せず、一覧比較、ボーナス比較、入出金ガイドもあわせて確認しましょう。
+          </p>
+        </div>
+      </div>
+
+      <div class="link-grid">
+        <div class="link-card">
+          <h3>カジノ一覧</h3>
+          <p>レビュー有無に関係なく、掲載中・掲載候補のカジノサイトを一覧で確認できます。</p>
+          <a href="casino-list.html">一覧で比較する →</a>
+        </div>
+
+        <div class="link-card">
+          <h3>ボーナス比較</h3>
+          <p>賭け条件、有効期限、対象ゲーム、最大出金を中心に確認できます。</p>
+          <a href="bonus.html">ボーナス比較を見る →</a>
+        </div>
+
+        <div class="link-card">
+          <h3>入出金ガイド</h3>
+          <p>出金条件、本人確認、反映時間、暗号資産の注意点を確認できます。</p>
+          <a href="payments.html">入出金を見る →</a>
+        </div>
+
+        <div class="link-card">
+          <h3>初心者ガイド</h3>
+          <p>初めて比較する人向けに、見るべき順番や注意点を整理しています。</p>
+          <a href="guide.html">初心者ガイドを見る →</a>
+        </div>
+
+        <div class="link-card">
+          <h3>ボーナスの見方</h3>
+          <p>ボーナス条件の読み方、賭け条件、最大出金などを確認できます。</p>
+          <a href="bonus-guide.html">見方ガイドを見る →</a>
+        </div>
+
+        <div class="link-card">
+          <h3>TOPページ</h3>
+          <p>サイト全体の使い方と主要導線を確認できます。</p>
+          <a href="index.html">TOPへ戻る →</a>
         </div>
       </div>
     </section>
@@ -1331,56 +1483,6 @@
       </div>
     </section>
 
-    <section class="section" id="related">
-      <div class="section-head">
-        <div>
-          <div class="label">関連ページ</div>
-          <h2 class="section-title">レビューとあわせて<span>確認したいページ</span></h2>
-          <p class="section-desc">
-            レビューだけで判断せず、一覧比較、ボーナス比較、入出金ガイドもあわせて確認しましょう。
-          </p>
-        </div>
-      </div>
-
-      <div class="link-grid">
-        <div class="link-card">
-          <h3>スロット天国レビュー</h3>
-          <p>スロット天国の特徴、ボーナス条件、入出金、注意点を確認できます。</p>
-          <a href="review-slottenkoku.html">個別レビューを見る →</a>
-        </div>
-
-        <div class="link-card">
-          <h3>コニベットレビュー</h3>
-          <p>コニベットのキャンペーン条件、出金条件、注意点を確認できます。</p>
-          <a href="review-konibet.html">個別レビューを見る →</a>
-        </div>
-
-        <div class="link-card">
-          <h3>STAKEレビュー</h3>
-          <p>STAKEの対象地域、暗号資産入出金、注意点を確認できます。</p>
-          <a href="review-stake.html">個別レビューを見る →</a>
-        </div>
-
-        <div class="link-card">
-          <h3>カジノ一覧</h3>
-          <p>掲載中・掲載候補のカジノサイトを条件別に比較できます。</p>
-          <a href="casino-list.html">一覧で比較する →</a>
-        </div>
-
-        <div class="link-card">
-          <h3>ボーナス比較</h3>
-          <p>賭け条件、有効期限、対象ゲーム、出金条件を中心に確認できます。</p>
-          <a href="bonus.html">ボーナス比較を見る →</a>
-        </div>
-
-        <div class="link-card">
-          <h3>入出金・決済ガイド</h3>
-          <p>入金方法だけでなく、出金条件や本人確認の流れを確認できます。</p>
-          <a href="payments.html">入出金ガイドを見る →</a>
-        </div>
-      </div>
-    </section>
-
     <section class="section" id="faq">
       <div class="section-head">
         <div>
@@ -1390,38 +1492,38 @@
       </div>
 
       <details>
+        <summary>今後レビューが増えたら、どのページを更新しますか？</summary>
+        <p>
+          基本的には、新しい個別レビュー、review.html、casino-list.html の3つを更新します。
+          TOP、ボーナス比較、入出金、初心者ガイドは毎回更新しない方針です。
+        </p>
+      </details>
+
+      <details>
+        <summary>公開済みレビューと準備中レビューの違いは何ですか？</summary>
+        <p>
+          公開済みレビューは個別ページが作成済みのものです。準備中レビューは、ロゴ素材や公式情報、条件確認が必要な候補です。
+        </p>
+      </details>
+
+      <details>
+        <summary>次に作るべきレビューはどれですか？</summary>
+        <p>
+          現時点では、ベラジョンと游雅堂が次の優先候補です。ロゴ素材や公式情報確認の状況に応じて順番を変更しても問題ありません。
+        </p>
+      </details>
+
+      <details>
         <summary>レビュー上位のサイトを選べば問題ありませんか？</summary>
         <p>
-          レビューは比較の入口として参考にできますが、最終的には自分の目的、予算、利用環境、入出金方法、ボーナス条件を確認して判断することが大切です。
+          いいえ。レビューは比較の入口です。最終的には公式規約、対象地域、出金条件、本人確認、関連法規を確認して判断してください。
         </p>
       </details>
 
       <details>
-        <summary>個別レビューでは何を確認すればよいですか？</summary>
+        <summary>このページは利用を推奨するものですか？</summary>
         <p>
-          特徴、ボーナス条件、入出金、本人確認、日本語対応、安全性、注意点を確認しましょう。
-          特に出金条件や規約は登録前に見ておくことが重要です。
-        </p>
-      </details>
-
-      <details>
-        <summary>レビュー準備中のサイトはおすすめですか？</summary>
-        <p>
-          準備中のサイトは、まだ条件を整理している段階です。掲載候補ではありますが、個別レビュー公開前におすすめと断定するものではありません。
-        </p>
-      </details>
-
-      <details>
-        <summary>ボーナスが大きいサイトほど良いですか？</summary>
-        <p>
-          ボーナス金額だけでは判断できません。賭け条件、有効期限、対象ゲーム、最大出金、禁止ベットなどを確認する必要があります。
-        </p>
-      </details>
-
-      <details>
-        <summary>このサイトのレビューは利用を推奨するものですか？</summary>
-        <p>
-          いいえ。レビューは条件や注意点を整理するための情報ページです。利用前には必ず公式情報、規約、対象地域、関連法規を確認してください。
+          いいえ。本ページは条件や注意点を整理するための情報ページです。利用を推奨・保証するものではありません。
         </p>
       </details>
     </section>
@@ -1431,12 +1533,12 @@
         <h2>レビューは、登録前の確認材料として読む。</h2>
         <p>
           気になるサイトを見つけたら、良い点だけでなく、ボーナス条件、出金条件、日本語対応、公式規約まで確認しましょう。
-          比較して納得することが、後悔を減らす第一歩です。
+          今後のレビュー追加も、このページを中心に整理していきます。
         </p>
         <div class="cta-actions">
-          <a href="review-slottenkoku.html" class="btn btn-gold">スロット天国レビューを見る</a>
-          <a href="review-konibet.html" class="btn btn-outline">コニベットレビューを見る</a>
-          <a href="review-stake.html" class="btn btn-outline">STAKEレビューを見る</a>
+          <a href="casino-list.html" class="btn btn-gold">カジノ一覧で比較する</a>
+          <a href="bonus.html" class="btn btn-outline">ボーナス条件を見る</a>
+          <a href="payments.html" class="btn btn-outline">入出金を確認する</a>
         </div>
       </div>
     </section>
