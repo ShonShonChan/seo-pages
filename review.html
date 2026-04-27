@@ -3,9 +3,492 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>サービスレビュー | 比較・レビュー・ガイド情報サイト</title>
-  <meta name="description" content="サービスレビューカテゴリページです。信頼性、特徴、向いている人を整理するレビュー記事群の入口として使います。">
+  <title>サービスレビュー | SEO Pages</title>
+  <meta name="description" content="サービスレビューカテゴリページです。注目バナー、レビュー観点、関連記事への導線をまとめています。">
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    body{
+      background:
+        radial-gradient(circle at top left, rgba(0,212,255,.08), transparent 22%),
+        radial-gradient(circle at top right, rgba(236,72,153,.08), transparent 22%),
+        linear-gradient(180deg,#eef2ff 0%, #f8fafc 28%, #f8fafc 100%);
+    }
+
+    .page-wrap{
+      width:min(1180px, calc(100% - 32px));
+      margin:0 auto;
+    }
+
+    .page-top{
+      margin-top:22px;
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:20px;
+      align-items:stretch;
+    }
+
+    .hero-main{
+      position:relative;
+      overflow:hidden;
+      border-radius:30px;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255,234,0,.18), transparent 22%),
+        radial-gradient(circle at 85% 20%, rgba(0,212,255,.18), transparent 24%),
+        linear-gradient(135deg,#0b1020 0%, #1d4ed8 50%, #7c3aed 100%);
+      color:#fff;
+      padding:30px 28px;
+      min-height:320px;
+      box-shadow:0 24px 48px rgba(15,23,42,.14);
+    }
+
+    .hero-main::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        repeating-linear-gradient(
+          -45deg,
+          rgba(255,255,255,.04) 0 10px,
+          rgba(255,255,255,0) 10px 20px
+        );
+      pointer-events:none;
+    }
+
+    .hero-main > *{
+      position:relative;
+      z-index:1;
+    }
+
+    .breadcrumb{
+      margin-bottom:14px;
+      color:rgba(255,255,255,.76);
+      font-size:14px;
+      font-weight:700;
+    }
+
+    .breadcrumb a{
+      color:rgba(255,255,255,.92);
+    }
+
+    .hero-kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:linear-gradient(90deg,#ffea00,#ffb800);
+      color:#111827;
+      padding:10px 16px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:900;
+      margin-bottom:16px;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+      box-shadow:0 12px 24px rgba(0,0,0,.18);
+    }
+
+    .hero-title{
+      margin:0 0 14px;
+      font-size:clamp(34px, 5vw, 64px);
+      line-height:1.03;
+      letter-spacing:-.04em;
+      font-weight:900;
+      text-shadow:0 6px 0 rgba(0,0,0,.10), 0 18px 36px rgba(0,0,0,.18);
+    }
+
+    .hero-highlight{
+      display:inline-block;
+      background:linear-gradient(90deg,#ffea00,#ff9800);
+      color:#111827;
+      padding:.04em .18em;
+      border-radius:12px;
+      transform:rotate(-1deg);
+      box-shadow:0 10px 20px rgba(0,0,0,.18);
+    }
+
+    .hero-desc{
+      max-width:720px;
+      margin:0 0 18px;
+      font-size:18px;
+      color:rgba(255,255,255,.9);
+    }
+
+    .hero-btns{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
+    .hero-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:52px;
+      padding:0 20px;
+      border-radius:16px;
+      font-weight:900;
+      letter-spacing:.02em;
+      transition:.2s ease;
+      box-shadow:0 12px 24px rgba(0,0,0,.14);
+    }
+
+    .hero-btn.primary{
+      background:linear-gradient(90deg,#ffea00,#ff9800);
+      color:#111827;
+    }
+
+    .hero-btn.secondary{
+      background:rgba(255,255,255,.12);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.18);
+      backdrop-filter:blur(10px);
+    }
+
+    .hero-btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .hero-side{
+      display:grid;
+      gap:14px;
+    }
+
+    .glass-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.7));
+      border:1px solid rgba(255,255,255,.45);
+      border-radius:24px;
+      padding:22px;
+      box-shadow:0 18px 36px rgba(15,23,42,.10);
+      backdrop-filter:blur(16px);
+    }
+
+    .glass-card h3{
+      margin:0 0 10px;
+      font-size:26px;
+      line-height:1.15;
+      color:#0f172a;
+    }
+
+    .glass-card p{
+      margin:0;
+      color:#475569;
+    }
+
+    .mini-checks{
+      display:grid;
+      gap:12px;
+      margin-top:16px;
+    }
+
+    .mini-check{
+      background:#fff;
+      border:1px solid #e2e8f0;
+      border-radius:18px;
+      padding:14px;
+      color:#334155;
+      font-weight:700;
+    }
+
+    .section{
+      width:min(1180px, calc(100% - 32px));
+      margin:26px auto 0;
+    }
+
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:18px;
+      flex-wrap:wrap;
+    }
+
+    .section-head h2{
+      margin:0;
+      font-size:34px;
+      line-height:1.1;
+      letter-spacing:-.03em;
+      color:#0f172a;
+    }
+
+    .section-head p{
+      margin:0;
+      color:#64748b;
+      font-size:15px;
+    }
+
+    .accent-text{
+      background:linear-gradient(90deg,#06b6d4,#8b5cf6,#ec4899);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .banner-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:18px;
+    }
+
+    .banner-card{
+      background:#fff;
+      border:1px solid rgba(148,163,184,.18);
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:0 18px 34px rgba(15,23,42,.08);
+      transition:.2s ease;
+    }
+
+    .banner-card:hover{
+      transform:translateY(-3px);
+      box-shadow:0 24px 40px rgba(15,23,42,.12);
+    }
+
+    .banner-thumb{
+      aspect-ratio:16 / 9;
+      background:#dbeafe center/cover no-repeat;
+      border-bottom:1px solid #e5e7eb;
+    }
+
+    .banner-content{
+      padding:18px;
+    }
+
+    .banner-tag{
+      display:inline-flex;
+      align-items:center;
+      padding:7px 12px;
+      border-radius:999px;
+      background:linear-gradient(90deg,#111827,#312e81);
+      color:#fff;
+      font-size:12px;
+      font-weight:900;
+      margin-bottom:12px;
+      letter-spacing:.05em;
+    }
+
+    .banner-content h3{
+      margin:0 0 8px;
+      font-size:24px;
+      line-height:1.15;
+      color:#0f172a;
+    }
+
+    .banner-content p{
+      margin:0 0 14px;
+      color:#64748b;
+      font-size:15px;
+    }
+
+    .banner-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .small-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:42px;
+      padding:0 14px;
+      border-radius:12px;
+      font-weight:800;
+      font-size:14px;
+    }
+
+    .small-btn.main{
+      background:linear-gradient(90deg,#ffea00,#ff9800);
+      color:#111827;
+    }
+
+    .small-btn.sub{
+      background:#eff6ff;
+      color:#1d4ed8;
+    }
+
+    .review-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:18px;
+    }
+
+    .review-card{
+      background:
+        radial-gradient(circle at top right, rgba(0,212,255,.12), transparent 20%),
+        linear-gradient(180deg,#ffffff,#f8fafc);
+      border:1px solid rgba(148,163,184,.18);
+      border-radius:26px;
+      padding:24px;
+      box-shadow:0 18px 34px rgba(15,23,42,.06);
+    }
+
+    .review-card h3{
+      margin:0 0 10px;
+      font-size:26px;
+      color:#0f172a;
+    }
+
+    .review-card p{
+      margin:0 0 14px;
+      color:#64748b;
+    }
+
+    .feature-list{
+      margin:0;
+      padding-left:20px;
+      color:#475569;
+    }
+
+    .feature-list li{
+      margin-bottom:10px;
+    }
+
+    .article-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:18px;
+    }
+
+    .article-card{
+      position:relative;
+      display:block;
+      background:linear-gradient(135deg,#ffffff,#f8fafc);
+      border:1px solid rgba(148,163,184,.18);
+      border-radius:24px;
+      padding:22px;
+      box-shadow:0 16px 30px rgba(15,23,42,.06);
+      overflow:hidden;
+      transition:.2s ease;
+    }
+
+    .article-card:hover{
+      transform:translateY(-3px);
+    }
+
+    .article-card::before{
+      content:"";
+      position:absolute;
+      inset:0 auto auto 0;
+      width:100%;
+      height:6px;
+      background:linear-gradient(90deg,#06b6d4,#8b5cf6,#ec4899);
+    }
+
+    .article-pill{
+      display:inline-flex;
+      align-items:center;
+      padding:7px 12px;
+      border-radius:999px;
+      background:#111827;
+      color:#fff;
+      font-size:12px;
+      font-weight:900;
+      margin-bottom:12px;
+      letter-spacing:.05em;
+    }
+
+    .article-card h3{
+      margin:0 0 8px;
+      font-size:24px;
+      color:#0f172a;
+      line-height:1.15;
+    }
+
+    .article-card p{
+      margin:0;
+      color:#64748b;
+      font-size:15px;
+    }
+
+    .guide-box{
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 12% 20%, rgba(0,212,255,.16), transparent 18%),
+        radial-gradient(circle at 90% 80%, rgba(236,72,153,.18), transparent 20%),
+        linear-gradient(135deg,#0b1020 0%, #1e1b4b 55%, #3b0764 100%);
+      color:#fff;
+      border-radius:30px;
+      padding:30px;
+      box-shadow:0 24px 46px rgba(15,23,42,.16);
+    }
+
+    .guide-box::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size:28px 28px;
+      opacity:.4;
+      pointer-events:none;
+    }
+
+    .guide-box > *{
+      position:relative;
+      z-index:1;
+    }
+
+    .guide-box h2{
+      margin:0 0 10px;
+      font-size:38px;
+      line-height:1.1;
+    }
+
+    .guide-box p{
+      margin:0 0 18px;
+      color:rgba(255,255,255,.86);
+      font-size:16px;
+    }
+
+    .footer{
+      width:min(1180px, calc(100% - 32px));
+      margin:34px auto 50px;
+      color:#64748b;
+      font-size:14px;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      border-top:1px solid #e5e7eb;
+      padding-top:18px;
+    }
+
+    @media (max-width: 1100px){
+      .page-top,
+      .banner-grid,
+      .review-grid,
+      .article-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .page-top{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 760px){
+      .banner-grid,
+      .review-grid,
+      .article-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-title{
+        font-size:40px;
+      }
+
+      .hero-main{
+        padding:24px 20px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="topbar">
@@ -14,69 +497,203 @@
         <div class="brand-mark">S</div>
         <div>SEO Pages</div>
       </a>
+
       <nav class="nav">
-        <a href="index.html">トップ</a>
-        <a href="bonus.html">ボーナス比較</a>
-        <a href="payments.html">入出金</a>
-        <a href="guide.html">初心者ガイド</a>
+        <a href="index.html">TOP</a>
+        <a href="#pickup">注目</a>
+        <a href="#points">レビュー観点</a>
+        <a href="#articles">関連記事</a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section class="page-hero">
-      <div class="wrap">
-        <div class="breadcrumb"><a href="index.html">トップ</a> / サービスレビュー</div>
-        <h1>サービスレビューカテゴリ</h1>
+  <div class="page-wrap page-top">
+    <section class="hero-main">
+      <div class="breadcrumb">
+        <a href="index.html">TOP</a> / サービスレビュー
+      </div>
+
+      <div class="hero-kicker">REVIEW CATEGORY / PICK UP</div>
+
+      <h1 class="hero-title">
+        サービスレビューを<br>
+        <span class="hero-highlight">見やすく整理する</span>
+      </h1>
+
+      <p class="hero-desc">
+        このページは、個別サービスの特徴や向いている人を整理するレビューカテゴリページです。
+        注目バナー、レビュー観点、関連記事への導線をまとめて、深掘りしやすい入口にしています。
+      </p>
+
+      <div class="hero-btns">
+        <a class="hero-btn primary" href="#pickup">注目バナーを見る</a>
+        <a class="hero-btn secondary" href="#articles">関連記事を見る</a>
+      </div>
+    </section>
+
+    <aside class="hero-side">
+      <div class="glass-card">
+        <h3>このカテゴリの役割</h3>
         <p>
-          このカテゴリでは、個別サービスについて、信頼性、特徴、条件、向いているユーザーなどを整理していきます。
+          個別レビューを読みやすく整理して、
+          <strong>特徴・条件・向いている人</strong>
+          を分かりやすく把握できる入口として使います。
         </p>
-      </div>
-    </section>
 
-    <section class="section">
-      <div class="wrap cards cards-3">
-        <div class="card">
-          <span class="pill">信頼性</span>
-          <h3>基本情報を確認</h3>
-          <p>運営元や特徴など、基本情報をレビューの基礎項目として整理します。</p>
-        </div>
-        <div class="card">
-          <span class="pill">条件</span>
-          <h3>特典や利用条件を確認</h3>
-          <p>魅力だけでなく、注意点や条件面もあわせて整理します。</p>
-        </div>
-        <div class="card">
-          <span class="pill">適性</span>
-          <h3>向いている人を明確化</h3>
-          <p>初心者向けか、条件重視か、使いやすさ重視かなどを見分けやすくします。</p>
+        <div class="mini-checks">
+          <div class="mini-check">個別特徴を把握しやすくする</div>
+          <div class="mini-check">比較記事への導線を作る</div>
+          <div class="mini-check">初心者向けの入口にもする</div>
         </div>
       </div>
-    </section>
 
-    <section class="section">
-      <div class="wrap card">
-        <h2>掲載予定レビュー</h2>
-        <div class="list-links">
-          <div class="link-card">
-            <strong>〇〇サービス レビュー</strong>
-            <span class="muted">特徴・向いている人を整理</span>
-          </div>
-          <div class="link-card">
-            <strong>△△サービス レビュー</strong>
-            <span class="muted">条件と使いやすさを中心に整理</span>
-          </div>
-          <div class="link-card">
-            <strong>□□サービス レビュー</strong>
-            <span class="muted">初心者向けかどうかをわかりやすく整理</span>
-          </div>
+      <div class="glass-card">
+        <h3>おすすめ導線</h3>
+        <p>比較後に詳しく見たい人が、このカテゴリへ流れてくる想定です。</p>
+        <div class="banner-actions" style="margin-top:14px;">
+          <a class="small-btn main" href="bonus.html">比較カテゴリへ</a>
+          <a class="small-btn sub" href="#articles">関連記事へ</a>
         </div>
       </div>
-    </section>
-  </main>
+    </aside>
+  </div>
+
+  <section id="pickup" class="section">
+    <div class="section-head">
+      <div>
+        <h2><span class="accent-text">注目バナー</span>エリア</h2>
+        <p>ここは各社の主要訴求や注目レビューを見せる場所です。あとで実バナー画像へ差し替えできます。</p>
+      </div>
+    </div>
+
+    <div class="banner-grid">
+      <article class="banner-card">
+        <div class="banner-thumb" style="background-image:url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop');"></div>
+        <div class="banner-content">
+          <div class="banner-tag">注目レビュー</div>
+          <h3>主要レビュー枠</h3>
+          <p>ここには各社のメイン訴求や、注目レビューの入口バナーを置く想定です。</p>
+          <div class="banner-actions">
+            <a class="small-btn main" href="#">詳細を見る</a>
+            <a class="small-btn sub" href="#">レビューへ</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="banner-card">
+        <div class="banner-thumb" style="background-image:url('https://images.unsplash.com/photo-1518546305927-5a555bb7020d?q=80&w=1200&auto=format&fit=crop');"></div>
+        <div class="banner-content">
+          <div class="banner-tag">比較候補</div>
+          <h3>比較から流す導線枠</h3>
+          <p>比較ページから深掘りしたい時に、ここへ自然に流せる構成にしています。</p>
+          <div class="banner-actions">
+            <a class="small-btn main" href="#">詳細へ</a>
+            <a class="small-btn sub" href="#">比較へ</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="banner-card">
+        <div class="banner-thumb" style="background-image:url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop');"></div>
+        <div class="banner-content">
+          <div class="banner-tag">新着</div>
+          <h3>新着レビュー枠</h3>
+          <p>新着レビューや更新情報を載せる場所としても使いやすい枠です。</p>
+          <div class="banner-actions">
+            <a class="small-btn main" href="#">今すぐ見る</a>
+            <a class="small-btn sub" href="#">関連記事へ</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="points" class="section">
+    <div class="section-head">
+      <div>
+        <h2>レビューで見る観点</h2>
+        <p>レビュー記事では、良さだけでなく、特徴や向いている人まで整理して見せるのが大事です。</p>
+      </div>
+    </div>
+
+    <div class="review-grid">
+      <article class="review-card">
+        <h3>基本情報</h3>
+        <p>まずは特徴、サービスの立ち位置、使いやすさなど、全体像をつかみやすく整理します。</p>
+        <ul class="feature-list">
+          <li>特徴の要約</li>
+          <li>第一印象</li>
+          <li>初心者向けかどうか</li>
+        </ul>
+      </article>
+
+      <article class="review-card">
+        <h3>条件や使い勝手</h3>
+        <p>特典や利用条件、決済面など、比較する時に気になる部分を整理していきます。</p>
+        <ul class="feature-list">
+          <li>条件の分かりやすさ</li>
+          <li>使い勝手</li>
+          <li>注意点</li>
+        </ul>
+      </article>
+
+      <article class="review-card">
+        <h3>向いている人</h3>
+        <p>どんな人に合うのかを明確にすることで、比較記事との相性も良くなります。</p>
+        <ul class="feature-list">
+          <li>初心者向け</li>
+          <li>比較検討向け</li>
+          <li>深掘りしたい人向け</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="guide-box">
+      <h2>比較カテゴリとセットで回す</h2>
+      <p>
+        レビューカテゴリは単体で見るより、比較カテゴリやガイド記事とつなげることで、
+        サイト全体の導線がかなり強くなります。
+      </p>
+      <div class="banner-actions">
+        <a class="small-btn main" href="bonus.html">ボーナス比較へ</a>
+        <a class="small-btn sub" href="guide.html">初心者ガイドへ</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="articles" class="section">
+    <div class="section-head">
+      <div>
+        <h2>関連記事導線</h2>
+        <p>ここから今後、個別レビュー記事や比較記事を増やしていく想定です。</p>
+      </div>
+    </div>
+
+    <div class="article-grid">
+      <a class="article-card" href="#">
+        <div class="article-pill">REVIEW</div>
+        <h3>注目レビュー記事枠</h3>
+        <p>今後、個別サービスのレビュー記事をここに追加していく想定です。</p>
+      </a>
+
+      <a class="article-card" href="bonus.html">
+        <div class="article-pill">COMPARE</div>
+        <h3>比較カテゴリへ進む</h3>
+        <p>レビュー前後で比較したい時の入口として使える導線です。</p>
+      </a>
+
+      <a class="article-card" href="guide.html">
+        <div class="article-pill">GUIDE</div>
+        <h3>初心者ガイドへ進む</h3>
+        <p>最初に流れを把握したい人向けに、ガイドカテゴリへつなぎます。</p>
+      </a>
+    </div>
+  </section>
 
   <footer class="footer">
-    <div class="wrap footer-inner">
+    <div class="footer-inner">
       <div>© SEO Pages</div>
       <div>レビューカテゴリページ</div>
     </div>
