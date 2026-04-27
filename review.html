@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>オンラインカジノレビュー一覧｜特徴・条件・注意点を比較｜リベンジカジノ比較ガイド</title>
-  <meta name="description" content="オンラインカジノのレビュー一覧ページです。各カジノサイトの特徴、ボーナス条件、入出金、日本語対応、安全性、注意点を比較メディア視点で整理。金額だけでなく条件を確認して選びましょう。" />
+  <meta name="description" content="オンラインカジノのレビュー一覧ページです。スロット天国、コニベット、STAKEなど、各カジノサイトの特徴、ボーナス条件、入出金、日本語対応、安全性、注意点を比較メディア視点で整理します。" />
 
   <style>
     :root {
@@ -18,12 +18,10 @@
       --cream: #fff9f2;
       --text: #2b2b2b;
       --muted: #666666;
-      --line: #f0d3d3;
       --white: #ffffff;
       --shadow: 0 18px 45px rgba(120, 20, 20, 0.12);
       --radius-lg: 24px;
       --radius-md: 16px;
-      --radius-sm: 10px;
       --max: 1180px;
     }
 
@@ -221,26 +219,31 @@
       max-width: 740px;
     }
 
-    .hero-actions {
+    .hero-actions,
+    .cta-actions,
+    .card-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 24px;
     }
 
-    .btn {
+    .btn,
+    .mini-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      padding: 13px 18px;
       border-radius: 999px;
       font-weight: 900;
       line-height: 1.2;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
     }
 
-    .btn:hover {
+    .btn {
+      padding: 13px 18px;
+    }
+
+    .btn:hover,
+    .mini-btn:hover {
       transform: translateY(-2px);
     }
 
@@ -260,6 +263,27 @@
       background: #fff;
       color: var(--red-dark);
       border: 1px solid rgba(215, 25, 32, 0.24);
+    }
+
+    .mini-btn {
+      padding: 10px 13px;
+      font-size: 13px;
+      border: 1px solid rgba(215, 25, 32, 0.18);
+      background: #fff;
+      color: var(--red-dark);
+    }
+
+    .mini-btn.main {
+      background: var(--red);
+      color: #fff;
+      border-color: var(--red);
+    }
+
+    .mini-btn.disabled {
+      background: #f4f4f4;
+      color: #777;
+      border-color: #e2e2e2;
+      pointer-events: none;
     }
 
     .notice {
@@ -504,46 +528,14 @@
       font-weight: 900;
     }
 
-    .card-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: auto;
-    }
-
-    .mini-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 13px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 900;
-      border: 1px solid rgba(215, 25, 32, 0.18);
-      background: #fff;
-      color: var(--red-dark);
-    }
-
-    .mini-btn.main {
-      background: var(--red);
-      color: #fff;
-      border-color: var(--red);
-    }
-
-    .mini-btn.disabled {
-      background: #f4f4f4;
-      color: #777;
-      border-color: #e2e2e2;
-      pointer-events: none;
-    }
-
     .guide-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 16px;
     }
 
-    .guide-card {
+    .guide-card,
+    .link-card {
       background: #fff;
       border: 1px solid rgba(215, 25, 32, 0.15);
       border-radius: var(--radius-md);
@@ -563,18 +555,29 @@
       margin-bottom: 12px;
     }
 
-    .guide-card h3 {
+    .guide-card h3,
+    .link-card h3 {
       margin: 0 0 8px;
       font-size: 18px;
       color: var(--red-dark);
       line-height: 1.35;
     }
 
-    .guide-card p {
+    .guide-card p,
+    .link-card p {
       margin: 0;
       color: var(--muted);
       font-size: 14px;
       line-height: 1.7;
+    }
+
+    .link-card p {
+      margin-bottom: 12px;
+    }
+
+    .link-card a {
+      color: var(--red);
+      font-weight: 900;
     }
 
     .table-wrap {
@@ -611,8 +614,10 @@
       border-bottom: none;
     }
 
-    td strong {
+    td strong,
+    td a {
       color: #222;
+      font-weight: 900;
     }
 
     .status {
@@ -645,32 +650,6 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
-    }
-
-    .link-card {
-      background: #fff;
-      border: 1px solid rgba(215, 25, 32, 0.15);
-      border-radius: var(--radius-md);
-      padding: 20px;
-      box-shadow: 0 10px 28px rgba(120, 20, 20, 0.07);
-    }
-
-    .link-card h3 {
-      margin: 0 0 8px;
-      color: var(--red-dark);
-      font-size: 18px;
-    }
-
-    .link-card p {
-      margin: 0 0 12px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    .link-card a {
-      color: var(--red);
-      font-weight: 900;
     }
 
     .warning-box {
@@ -758,12 +737,6 @@
       margin: 0 0 22px;
       color: rgba(255, 255, 255, 0.88);
       max-width: 760px;
-    }
-
-    .cta-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
     }
 
     .cta .btn-outline {
@@ -967,8 +940,8 @@
           <div class="label">レビュー一覧</div>
           <h2 class="section-title">公開中・準備中の<span>個別レビュー</span></h2>
           <p class="section-desc">
-            スロット天国とコニベットの個別レビューを公開済みとして配置しています。
-            今後、STAKE、ベラジョン、游雅堂のレビューも同じ型で追加していく想定です。
+            スロット天国、コニベット、STAKEの個別レビューを公開済みとして配置しています。
+            今後、ベラジョン、游雅堂のレビューも同じ型で追加していく想定です。
           </p>
         </div>
       </div>
@@ -994,7 +967,6 @@
 
           <p class="review-text">
             スロット天国の特徴、ボーナス条件、入出金、日本語対応、安全性、注意点を個別レビューとして整理しています。
-            金額だけでなく、出金条件や本人確認まで確認したい人向けです。
           </p>
 
           <ul class="check-list">
@@ -1029,7 +1001,6 @@
 
           <p class="review-text">
             コニベットの特徴、キャンペーン条件、入出金、日本語対応、安全性、注意点を個別レビューとして整理しています。
-            キャンペーン内容だけでなく、公式規約や出金条件まで確認したい人向けです。
           </p>
 
           <ul class="check-list">
@@ -1044,7 +1015,7 @@
           </div>
         </article>
 
-        <article class="review-card">
+        <article class="review-card featured">
           <div class="review-top">
             <div class="rank">3</div>
             <div class="logo-box">
@@ -1052,18 +1023,18 @@
             </div>
             <div>
               <h3 class="review-name">STAKE</h3>
-              <p class="review-sub">レビュー準備中</p>
+              <p class="review-sub">個別レビュー公開済み</p>
             </div>
           </div>
 
           <div class="tag-row">
             <span class="tag">知名度</span>
-            <span class="tag gold">暗号資産系確認</span>
+            <span class="tag gold">レビューあり</span>
             <span class="tag gray">対象地域確認</span>
           </div>
 
           <p class="review-text">
-            STAKEは知名度のある候補ですが、対象地域、暗号資産の扱い、入出金条件、本人確認、規約確認が重要です。
+            STAKEの特徴、暗号資産を含む入出金、対象地域、日本語対応、安全性、注意点を個別レビューとして整理しています。
           </p>
 
           <ul class="check-list">
@@ -1073,7 +1044,7 @@
           </ul>
 
           <div class="card-actions">
-            <span class="mini-btn disabled">準備中</span>
+            <a href="review-stake.html" class="mini-btn main">レビューを見る</a>
             <a href="payments.html" class="mini-btn">入出金を見る</a>
           </div>
         </article>
@@ -1228,7 +1199,6 @@
           <h2 class="section-title">個別レビューの<span>作成状況</span></h2>
           <p class="section-desc">
             公開済みレビューと、今後作成予定のレビュー候補を一覧化しています。
-            サイト追加時は、この表を更新していくと管理しやすくなります。
           </p>
         </div>
       </div>
@@ -1260,11 +1230,11 @@
               <td><a href="review-konibet.html">レビューを見る</a></td>
             </tr>
             <tr>
-              <td><strong>STAKE</strong></td>
-              <td><span class="status check">準備中</span></td>
-              <td>中</td>
+              <td><strong><a href="review-stake.html">STAKE</a></strong></td>
+              <td><span class="status good">公開済み</span></td>
+              <td>高</td>
               <td>対象地域、暗号資産入出金、本人確認、規約確認</td>
-              <td><a href="payments.html">入出金ガイド</a></td>
+              <td><a href="review-stake.html">レビューを見る</a></td>
             </tr>
             <tr>
               <td><strong>ベラジョン</strong></td>
@@ -1386,6 +1356,12 @@
         </div>
 
         <div class="link-card">
+          <h3>STAKEレビュー</h3>
+          <p>STAKEの対象地域、暗号資産入出金、注意点を確認できます。</p>
+          <a href="review-stake.html">個別レビューを見る →</a>
+        </div>
+
+        <div class="link-card">
           <h3>カジノ一覧</h3>
           <p>掲載中・掲載候補のカジノサイトを条件別に比較できます。</p>
           <a href="casino-list.html">一覧で比較する →</a>
@@ -1395,12 +1371,6 @@
           <h3>ボーナス比較</h3>
           <p>賭け条件、有効期限、対象ゲーム、出金条件を中心に確認できます。</p>
           <a href="bonus.html">ボーナス比較を見る →</a>
-        </div>
-
-        <div class="link-card">
-          <h3>初心者ガイド</h3>
-          <p>オンラインカジノを比較する前に知っておきたい基本を確認できます。</p>
-          <a href="guide.html">初心者ガイドを見る →</a>
         </div>
 
         <div class="link-card">
@@ -1466,7 +1436,7 @@
         <div class="cta-actions">
           <a href="review-slottenkoku.html" class="btn btn-gold">スロット天国レビューを見る</a>
           <a href="review-konibet.html" class="btn btn-outline">コニベットレビューを見る</a>
-          <a href="casino-list.html" class="btn btn-outline">カジノ一覧で比較</a>
+          <a href="review-stake.html" class="btn btn-outline">STAKEレビューを見る</a>
         </div>
       </div>
     </section>
@@ -1491,6 +1461,7 @@
         <a href="review.html">レビュー</a>
         <a href="review-slottenkoku.html">スロット天国レビュー</a>
         <a href="review-konibet.html">コニベットレビュー</a>
+        <a href="review-stake.html">STAKEレビュー</a>
         <a href="bonus.html">ボーナス比較</a>
         <a href="bonus-guide.html">見方ガイド</a>
         <a href="guide.html">初心者ガイド</a>
