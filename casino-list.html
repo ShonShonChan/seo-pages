@@ -31,6 +31,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
@@ -408,6 +412,7 @@
       place-items: center;
       overflow: hidden;
       padding: 7px;
+      flex: 0 0 auto;
     }
 
     .logo-placeholder {
@@ -1000,12 +1005,12 @@
             </div>
             <div>
               <h3 class="casino-name">スロット天国</h3>
-              <p class="casino-sub">既存優先掲載枠</p>
+              <p class="casino-sub">個別レビュー公開済み</p>
             </div>
           </div>
           <div class="tag-row">
             <span class="tag">注目</span>
-            <span class="tag gold">初心者向け確認</span>
+            <span class="tag gold">レビューあり</span>
             <span class="tag gray">条件確認推奨</span>
           </div>
           <p class="casino-text">
@@ -1014,10 +1019,10 @@
           <ul class="check-list">
             <li>ボーナス条件の分かりやすさを確認</li>
             <li>出金前の本人確認条件を確認</li>
-            <li>初心者向けレビュー記事化に向く</li>
+            <li>個別レビューで注意点まで確認</li>
           </ul>
           <div class="card-actions">
-            <a href="review.html" class="mini-btn main">レビュー一覧へ</a>
+            <a href="review-slottenkoku.html" class="mini-btn main">レビューを見る</a>
             <a href="bonus.html" class="mini-btn">ボーナス比較</a>
           </div>
         </article>
@@ -1201,12 +1206,12 @@
           </thead>
           <tbody>
             <tr>
-              <td><strong>スロット天国</strong></td>
-              <td><span class="status good">優先掲載</span></td>
+              <td><strong><a href="review-slottenkoku.html">スロット天国</a></strong></td>
+              <td><span class="status good">レビュー公開済み</span></td>
               <td><span class="score">要確認</span></td>
               <td>賭け条件・有効期限・対象ゲーム</td>
               <td>最低出金額・本人確認・反映時間</td>
-              <td><span class="status good">優先</span></td>
+              <td><span class="status good">公開済み</span></td>
               <td>ボーナス条件を金額だけで判断しない</td>
             </tr>
             <tr>
@@ -1372,6 +1377,12 @@
 
       <div class="link-grid">
         <div class="link-card">
+          <h3>スロット天国レビュー</h3>
+          <p>スロット天国の特徴、ボーナス条件、入出金、注意点を個別に確認できます。</p>
+          <a href="review-slottenkoku.html">個別レビューを見る →</a>
+        </div>
+
+        <div class="link-card">
           <h3>ボーナス比較</h3>
           <p>賭け条件、有効期限、対象ゲーム、出金条件を中心に確認します。</p>
           <a href="bonus.html">ボーナス比較を見る →</a>
@@ -1399,12 +1410,6 @@
           <h3>入出金・決済ガイド</h3>
           <p>入金方法だけでなく、出金条件や本人確認の流れも確認します。</p>
           <a href="payments.html">入出金ガイドを見る →</a>
-        </div>
-
-        <div class="link-card">
-          <h3>TOPページ</h3>
-          <p>注目ランキングや主要カテゴリへの入口を確認できます。</p>
-          <a href="index.html">TOPへ戻る →</a>
         </div>
       </div>
     </section>
@@ -1463,9 +1468,9 @@
           リベンジは、勢いではなく情報から。気になるサイトを見つけたら、ボーナス条件、出金条件、日本語対応、規約を確認してから比較しましょう。
         </p>
         <div class="cta-actions">
-          <a href="bonus.html" class="btn btn-gold">ボーナス条件を確認</a>
+          <a href="review-slottenkoku.html" class="btn btn-gold">スロット天国レビューを見る</a>
+          <a href="bonus.html" class="btn btn-outline">ボーナス条件を確認</a>
           <a href="payments.html" class="btn btn-outline">入出金を確認</a>
-          <a href="guide.html" class="btn btn-outline">初心者ガイドを見る</a>
         </div>
       </div>
     </section>
@@ -1488,7 +1493,9 @@
         <a href="index.html">TOP</a>
         <a href="casino-list.html">カジノ一覧</a>
         <a href="bonus.html">ボーナス比較</a>
+        <a href="bonus-guide.html">見方ガイド</a>
         <a href="review.html">レビュー</a>
+        <a href="review-slottenkoku.html">スロット天国レビュー</a>
         <a href="guide.html">初心者ガイド</a>
         <a href="payments.html">入出金</a>
       </div>
