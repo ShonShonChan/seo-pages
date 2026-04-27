@@ -3,28 +3,135 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>初心者ガイド | SEO Pages</title>
-  <meta name="description" content="初心者ガイドカテゴリページです。最初に知っておきたい流れ、見方、進め方を整理しています。">
-  <link rel="stylesheet" href="style.css">
+  <title>初心者ガイド | リベンジカジノ比較ガイド</title>
+  <meta name="description" content="オンラインカジノ初心者向けのガイドページです。始め方、本人確認、入出金、規約、予算設定などを分かりやすく整理しています。">
 
   <style>
-    body{
-      background:
-        radial-gradient(circle at top left, rgba(0,212,255,.08), transparent 22%),
-        radial-gradient(circle at top right, rgba(236,72,153,.08), transparent 22%),
-        linear-gradient(180deg,#eef2ff 0%, #f8fafc 28%, #f8fafc 100%);
+    :root{
+      --red:#d62828;
+      --red-dark:#8f1111;
+      --gold:#ffc300;
+      --orange:#f77f00;
+      --white:#ffffff;
+      --offwhite:#fff8f6;
+      --soft:#fff1ed;
+      --line:#ead6d1;
+      --text:#1f2937;
+      --muted:#64748b;
+      --shadow:0 16px 36px rgba(15,23,42,.10);
+      --shadow-strong:0 18px 42px rgba(214,40,40,.16);
+      --radius-xl:30px;
+      --radius-lg:24px;
+      --radius-md:18px;
+      --radius-sm:12px;
+      --max:1200px;
     }
 
-    .page-wrap{
-      width:min(1180px, calc(100% - 32px));
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(255,195,0,.10), transparent 20%),
+        radial-gradient(circle at 88% 10%, rgba(214,40,40,.10), transparent 20%),
+        linear-gradient(180deg,#fff8f6 0%, #ffffff 42%, #fff7f4 100%);
+      line-height:1.7;
+    }
+
+    a{color:inherit;text-decoration:none}
+
+    .wrap{
+      width:min(var(--max), calc(100% - 32px));
       margin:0 auto;
     }
 
-    .page-top{
-      margin-top:22px;
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(12px);
+      background:rgba(255,255,255,.88);
+      border-bottom:1px solid rgba(214,40,40,.10);
+      box-shadow:0 6px 18px rgba(15,23,42,.04);
+    }
+
+    .topbar-inner{
+      min-height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+      padding:12px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:900;
+    }
+
+    .brand-mark{
+      width:46px;
+      height:46px;
+      border-radius:14px;
       display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:20px;
+      place-items:center;
+      background:linear-gradient(135deg,var(--red),var(--gold));
+      color:#fff;
+      font-size:18px;
+      box-shadow:0 10px 24px rgba(214,40,40,.18);
+    }
+
+    .brand-copy{
+      display:flex;
+      flex-direction:column;
+      line-height:1.1;
+    }
+
+    .brand-copy strong{
+      font-size:1.06rem;
+      color:var(--red-dark);
+    }
+
+    .brand-copy span{
+      font-size:.78rem;
+      color:#9a3412;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .nav{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .nav a{
+      padding:10px 14px;
+      border-radius:999px;
+      color:var(--text);
+      font-weight:800;
+      font-size:.94rem;
+      transition:.18s ease;
+    }
+
+    .nav a:hover{
+      background:#fff0eb;
+      color:var(--red);
+    }
+
+    .hero{
+      padding:24px 0 16px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:22px;
       align-items:stretch;
     }
 
@@ -32,14 +139,14 @@
       position:relative;
       overflow:hidden;
       border-radius:30px;
+      padding:32px 28px;
+      min-height:430px;
+      box-shadow:var(--shadow-strong);
+      border:1px solid rgba(214,40,40,.12);
       background:
-        radial-gradient(circle at 15% 20%, rgba(255,234,0,.18), transparent 22%),
-        radial-gradient(circle at 85% 20%, rgba(0,212,255,.18), transparent 24%),
-        linear-gradient(135deg,#0b1020 0%, #1d4ed8 50%, #7c3aed 100%);
-      color:#fff;
-      padding:30px 28px;
-      min-height:320px;
-      box-shadow:0 24px 48px rgba(15,23,42,.14);
+        radial-gradient(circle at 15% 18%, rgba(255,195,0,.18), transparent 22%),
+        radial-gradient(circle at 85% 18%, rgba(214,40,40,.18), transparent 20%),
+        linear-gradient(135deg,#ffffff 0%, #fff5f0 34%, #ffe7de 100%);
     }
 
     .hero-main::before{
@@ -47,10 +154,11 @@
       position:absolute;
       inset:0;
       background:
+        linear-gradient(120deg, rgba(255,255,255,.55), transparent 30%),
         repeating-linear-gradient(
-          -45deg,
-          rgba(255,255,255,.04) 0 10px,
-          rgba(255,255,255,0) 10px 20px
+          135deg,
+          transparent 0 18px,
+          rgba(214,40,40,.03) 18px 28px
         );
       pointer-events:none;
     }
@@ -62,377 +170,329 @@
 
     .breadcrumb{
       margin-bottom:14px;
-      color:rgba(255,255,255,.76);
-      font-size:14px;
-      font-weight:700;
+      color:#9a3412;
+      font-size:.9rem;
+      font-weight:800;
     }
 
     .breadcrumb a{
-      color:rgba(255,255,255,.92);
+      color:var(--red);
     }
 
-    .hero-kicker{
+    .eyebrow{
       display:inline-flex;
       align-items:center;
       gap:8px;
-      background:linear-gradient(90deg,#ffea00,#ffb800);
-      color:#111827;
       padding:10px 16px;
       border-radius:999px;
-      font-size:13px;
+      background:linear-gradient(135deg,#ffd36b,#ffb700);
+      color:#452000;
+      font-size:.82rem;
       font-weight:900;
-      margin-bottom:16px;
-      letter-spacing:.05em;
+      letter-spacing:.08em;
       text-transform:uppercase;
-      box-shadow:0 12px 24px rgba(0,0,0,.18);
+      margin-bottom:18px;
+      box-shadow:0 10px 24px rgba(255,183,0,.18);
     }
 
     .hero-title{
       margin:0 0 14px;
-      font-size:clamp(34px, 5vw, 64px);
-      line-height:1.03;
+      font-size:clamp(2.2rem, 5vw, 4.2rem);
+      line-height:1.02;
       letter-spacing:-.04em;
       font-weight:900;
-      text-shadow:0 6px 0 rgba(0,0,0,.10), 0 18px 36px rgba(0,0,0,.18);
+      color:var(--red-dark);
     }
 
-    .hero-highlight{
+    .hero-title .accent{
       display:inline-block;
-      background:linear-gradient(90deg,#ffea00,#ff9800);
-      color:#111827;
-      padding:.04em .18em;
-      border-radius:12px;
-      transform:rotate(-1deg);
-      box-shadow:0 10px 20px rgba(0,0,0,.18);
+      margin-top:10px;
+      padding:8px 14px;
+      border-radius:16px;
+      background:linear-gradient(135deg,var(--red),#ff6b57,#ffb700);
+      color:#fff;
+      box-shadow:0 12px 28px rgba(214,40,40,.18);
     }
 
     .hero-desc{
-      max-width:720px;
-      margin:0 0 18px;
-      font-size:18px;
-      color:rgba(255,255,255,.9);
+      max-width:760px;
+      font-size:1rem;
+      color:#4b5563;
+      margin:0 0 20px;
     }
 
-    .hero-btns{
+    .hero-cta{
       display:flex;
-      gap:12px;
       flex-wrap:wrap;
-      margin-top:18px;
+      gap:12px;
+      margin-bottom:10px;
     }
 
-    .hero-btn{
+    .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      min-height:52px;
-      padding:0 20px;
-      border-radius:16px;
+      min-height:50px;
+      padding:0 18px;
+      border-radius:14px;
       font-weight:900;
-      letter-spacing:.02em;
-      transition:.2s ease;
-      box-shadow:0 12px 24px rgba(0,0,0,.14);
+      font-size:.95rem;
+      transition:.18s ease;
     }
 
-    .hero-btn.primary{
-      background:linear-gradient(90deg,#ffea00,#ff9800);
-      color:#111827;
-    }
+    .btn:hover{ transform:translateY(-2px); }
 
-    .hero-btn.secondary{
-      background:rgba(255,255,255,.12);
+    .btn-primary{
+      background:linear-gradient(135deg,var(--red),#ff6b57);
       color:#fff;
-      border:1px solid rgba(255,255,255,.18);
-      backdrop-filter:blur(10px);
+      box-shadow:0 14px 28px rgba(214,40,40,.20);
     }
 
-    .hero-btn:hover{
-      transform:translateY(-2px);
+    .btn-gold{
+      background:linear-gradient(135deg,#ffe27a,#ffb700);
+      color:#452000;
+      box-shadow:0 14px 28px rgba(255,183,0,.18);
     }
 
-    .hero-side{
-      display:grid;
-      gap:14px;
+    .btn-ghost{
+      background:#fff;
+      color:var(--red);
+      border:1px solid rgba(214,40,40,.16);
     }
 
-    .glass-card{
-      background:linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.7));
-      border:1px solid rgba(255,255,255,.45);
-      border-radius:24px;
+    .panel{
+      background:linear-gradient(180deg,#ffffff,#fff8f5);
+      border:1px solid rgba(214,40,40,.10);
+      border-radius:28px;
       padding:22px;
-      box-shadow:0 18px 36px rgba(15,23,42,.10);
-      backdrop-filter:blur(16px);
+      box-shadow:var(--shadow);
     }
 
-    .glass-card h3{
+    .panel h3{
       margin:0 0 10px;
-      font-size:26px;
+      font-size:1.5rem;
       line-height:1.15;
-      color:#0f172a;
+      color:var(--red-dark);
     }
 
-    .glass-card p{
+    .panel p{
       margin:0;
       color:#475569;
     }
 
-    .mini-checks{
+    .panel-list{
       display:grid;
       gap:12px;
       margin-top:16px;
     }
 
-    .mini-check{
+    .panel-item{
       background:#fff;
-      border:1px solid #e2e8f0;
+      border:1px solid #f1d8d2;
       border-radius:18px;
       padding:14px;
-      color:#334155;
-      font-weight:700;
+      color:#475569;
+    }
+
+    .panel-item strong{
+      display:block;
+      margin-bottom:4px;
+      color:var(--red);
     }
 
     .section{
-      width:min(1180px, calc(100% - 32px));
-      margin:26px auto 0;
+      padding:32px 0 10px;
     }
 
     .section-head{
       display:flex;
       align-items:end;
       justify-content:space-between;
-      gap:14px;
-      margin-bottom:18px;
+      gap:16px;
       flex-wrap:wrap;
+      margin-bottom:20px;
     }
 
-    .section-head h2{
+    .section-kicker{
+      display:inline-block;
+      color:#b45309;
+      font-size:.8rem;
+      font-weight:900;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      margin-bottom:8px;
+    }
+
+    .section-title{
       margin:0;
-      font-size:34px;
-      line-height:1.1;
+      font-size:clamp(1.8rem, 3.6vw, 2.8rem);
+      line-height:1.06;
       letter-spacing:-.03em;
-      color:#0f172a;
+      color:var(--red-dark);
+      font-weight:900;
     }
 
-    .section-head p{
-      margin:0;
-      color:#64748b;
-      font-size:15px;
-    }
-
-    .accent-text{
-      background:linear-gradient(90deg,#06b6d4,#8b5cf6,#ec4899);
+    .section-title .grad{
+      background:linear-gradient(135deg,var(--red),#ff7b00,#ffb700);
       -webkit-background-clip:text;
       background-clip:text;
       color:transparent;
     }
 
+    .section-desc{
+      max-width:760px;
+      margin-top:10px;
+      color:#64748b;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:18px;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:18px;
+    }
+
+    .card{
+      background:#fff;
+      border:1px solid #f0ddd7;
+      border-radius:26px;
+      box-shadow:0 14px 30px rgba(15,23,42,.06);
+      padding:22px;
+      min-height:100%;
+    }
+
+    .card h3{
+      margin:0 0 10px;
+      color:var(--red-dark);
+      font-size:1.3rem;
+      line-height:1.2;
+    }
+
+    .card p{
+      margin:0;
+      color:#64748b;
+    }
+
+    .icon-box{
+      width:52px;
+      height:52px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,#ffe1d7,#ffd36b);
+      border:1px solid #f1d7ce;
+      margin-bottom:14px;
+      font-size:1.35rem;
+    }
+
     .step-grid{
       display:grid;
-      grid-template-columns:repeat(3, minmax(0,1fr));
-      gap:18px;
+      gap:12px;
     }
 
-    .step-card{
-      background:
-        radial-gradient(circle at top right, rgba(0,212,255,.12), transparent 20%),
-        linear-gradient(180deg,#ffffff,#f8fafc);
-      border:1px solid rgba(148,163,184,.18);
-      border-radius:26px;
-      padding:24px;
-      box-shadow:0 18px 34px rgba(15,23,42,.06);
-    }
-
-    .step-no{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:54px;
-      height:54px;
+    .step{
+      background:#fff8f6;
+      border:1px solid #f1dfda;
       border-radius:18px;
-      background:linear-gradient(135deg,#111827,#312e81);
-      color:#fff;
-      font-size:24px;
-      font-weight:900;
-      margin-bottom:14px;
-      box-shadow:0 12px 24px rgba(15,23,42,.12);
-    }
-
-    .step-card h3{
-      margin:0 0 10px;
-      font-size:26px;
-      color:#0f172a;
-    }
-
-    .step-card p{
-      margin:0;
+      padding:16px;
       color:#64748b;
     }
 
-    .banner-actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    .small-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:42px;
-      padding:0 14px;
-      border-radius:12px;
-      font-weight:800;
-      font-size:14px;
-    }
-
-    .small-btn.main{
-      background:linear-gradient(90deg,#ffea00,#ff9800);
-      color:#111827;
-    }
-
-    .small-btn.sub{
-      background:#eff6ff;
-      color:#1d4ed8;
-    }
-
-    .article-grid{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0,1fr));
-      gap:18px;
-    }
-
-    .article-card{
-      position:relative;
+    .step strong{
       display:block;
-      background:linear-gradient(135deg,#ffffff,#f8fafc);
-      border:1px solid rgba(148,163,184,.18);
-      border-radius:24px;
-      padding:22px;
-      box-shadow:0 16px 30px rgba(15,23,42,.06);
-      overflow:hidden;
-      transition:.2s ease;
+      margin-bottom:6px;
+      color:var(--red-dark);
+      font-size:1.02rem;
     }
 
-    .article-card:hover{
-      transform:translateY(-3px);
-    }
-
-    .article-card::before{
-      content:"";
-      position:absolute;
-      inset:0 auto auto 0;
-      width:100%;
-      height:6px;
-      background:linear-gradient(90deg,#06b6d4,#8b5cf6,#ec4899);
-    }
-
-    .article-pill{
-      display:inline-flex;
-      align-items:center;
-      padding:7px 12px;
-      border-radius:999px;
-      background:#111827;
-      color:#fff;
-      font-size:12px;
-      font-weight:900;
-      margin-bottom:12px;
-      letter-spacing:.05em;
-    }
-
-    .article-card h3{
-      margin:0 0 8px;
-      font-size:24px;
-      color:#0f172a;
-      line-height:1.15;
-    }
-
-    .article-card p{
-      margin:0;
-      color:#64748b;
-      font-size:15px;
-    }
-
-    .guide-box{
-      position:relative;
-      overflow:hidden;
-      background:
-        radial-gradient(circle at 12% 20%, rgba(0,212,255,.16), transparent 18%),
-        radial-gradient(circle at 90% 80%, rgba(236,72,153,.18), transparent 20%),
-        linear-gradient(135deg,#0b1020 0%, #1e1b4b 55%, #3b0764 100%);
-      color:#fff;
+    .cta-banner{
+      padding:28px;
       border-radius:30px;
-      padding:30px;
-      box-shadow:0 24px 46px rgba(15,23,42,.16);
-    }
-
-    .guide-box::before{
-      content:"";
-      position:absolute;
-      inset:0;
+      box-shadow:var(--shadow-strong);
+      border:1px solid rgba(214,40,40,.12);
       background:
-        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-      background-size:28px 28px;
-      opacity:.4;
-      pointer-events:none;
+        radial-gradient(circle at 15% 18%, rgba(255,210,90,.16), transparent 24%),
+        radial-gradient(circle at 82% 18%, rgba(229,57,53,.16), transparent 24%),
+        linear-gradient(135deg,#ffffff 0%, #fff1eb 55%, #ffe2d8 100%);
     }
 
-    .guide-box > *{
-      position:relative;
-      z-index:1;
-    }
-
-    .guide-box h2{
+    .cta-banner h2{
       margin:0 0 10px;
-      font-size:38px;
-      line-height:1.1;
+      font-size:clamp(1.8rem, 4vw, 2.7rem);
+      line-height:1.08;
+      color:var(--red-dark);
     }
 
-    .guide-box p{
+    .cta-banner p{
+      max-width:760px;
       margin:0 0 18px;
-      color:rgba(255,255,255,.86);
-      font-size:16px;
+      color:#64748b;
     }
 
     .footer{
-      width:min(1180px, calc(100% - 32px));
-      margin:34px auto 50px;
+      padding:34px 0 46px;
       color:#64748b;
-      font-size:14px;
     }
 
     .footer-inner{
       display:flex;
       justify-content:space-between;
-      gap:12px;
+      gap:16px;
       flex-wrap:wrap;
-      border-top:1px solid #e5e7eb;
-      padding-top:18px;
+      border-top:1px solid #f0ddd7;
+      padding-top:20px;
     }
 
-    @media (max-width: 1100px){
-      .page-top,
-      .step-grid,
-      .article-grid{
-        grid-template-columns:1fr 1fr;
-      }
+    .footer-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
 
-      .page-top{
+    .footer-links a{
+      padding:10px 12px;
+      border-radius:999px;
+      background:#fff7f4;
+      border:1px solid #f0ddd7;
+      font-size:.9rem;
+      font-weight:800;
+      color:var(--red);
+    }
+
+    @media (max-width:1080px){
+      .hero-grid,
+      .grid-2,
+      .grid-3{
         grid-template-columns:1fr;
       }
     }
 
-    @media (max-width: 760px){
-      .step-grid,
-      .article-grid{
-        grid-template-columns:1fr;
+    @media (max-width:760px){
+      .wrap{
+        width:min(var(--max), calc(100% - 20px));
+      }
+
+      .topbar-inner{
+        align-items:flex-start;
+        flex-direction:column;
       }
 
       .hero-main{
         padding:24px 20px;
+        min-height:auto;
       }
 
       .hero-title{
-        font-size:40px;
+        font-size:clamp(2rem, 10vw, 3.3rem);
+      }
+
+      .section-title{
+        font-size:clamp(1.7rem, 8vw, 2.4rem);
       }
     }
   </style>
@@ -441,146 +501,192 @@
   <header class="topbar">
     <div class="wrap topbar-inner">
       <a class="brand" href="index.html">
-        <div class="brand-mark">S</div>
-        <div>SEO Pages</div>
+        <div class="brand-mark">炎</div>
+        <div class="brand-copy">
+          <strong>リベンジカジノ比較ガイド</strong>
+          <span>Beginner Guide</span>
+        </div>
       </a>
 
       <nav class="nav">
         <a href="index.html">TOP</a>
         <a href="#steps">進め方</a>
-        <a href="#articles">関連記事</a>
-        <a href="bonus.html">比較</a>
+        <a href="#basics">基本確認</a>
+        <a href="bonus.html">ボーナス比較</a>
       </nav>
     </div>
   </header>
 
-  <div class="page-wrap page-top">
-    <section class="hero-main">
-      <div class="breadcrumb">
-        <a href="index.html">TOP</a> / 初心者ガイド
-      </div>
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-main">
+          <div class="breadcrumb">
+            <a href="index.html">TOP</a> / 初心者ガイド
+          </div>
 
-      <div class="hero-kicker">BEGINNER GUIDE / FIRST STEP</div>
+          <div class="eyebrow">Beginner = Start With Understanding</div>
 
-      <h1 class="hero-title">
-        最初の流れを<br>
-        <span class="hero-highlight">分かりやすく整理</span>
-      </h1>
+          <h1 class="hero-title">
+            はじめてでも、<br>
+            <span class="accent">順番を知れば迷いにくい。</span>
+          </h1>
 
-      <p class="hero-desc">
-        このページは、初めて情報を見に来た人向けの入口ページです。
-        何から見ればいいのか、どのカテゴリに進めばいいのかを整理して、迷いにくい導線を作っています。
-      </p>
+          <p class="hero-desc">
+            オンラインカジノを比較するときは、最初に何を見ればいいかが分からないと迷いやすくなります。
+            このページでは、登録前に知っておきたい基本、本人確認、入出金、規約、予算設定などを分かりやすく整理しています。
+          </p>
 
-      <div class="hero-btns">
-        <a class="hero-btn primary" href="#steps">進め方を見る</a>
-        <a class="hero-btn secondary" href="#articles">関連記事を見る</a>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#steps">進め方を見る</a>
+            <a class="btn btn-gold" href="#basics">基本確認へ</a>
+            <a class="btn btn-ghost" href="bonus.html">ボーナス比較へ</a>
+          </div>
+        </div>
+
+        <aside class="panel">
+          <h3>初心者が先に知りたいこと</h3>
+          <p>最初に流れを整理しておくと、後から条件や規約で困りにくくなります。</p>
+
+          <div class="panel-list">
+            <div class="panel-item">
+              <strong>始め方</strong>
+              登録前に確認する流れ
+            </div>
+            <div class="panel-item">
+              <strong>本人確認</strong>
+              どのタイミングで必要か
+            </div>
+            <div class="panel-item">
+              <strong>入出金</strong>
+              方法と注意点を把握
+            </div>
+            <div class="panel-item">
+              <strong>予算設定</strong>
+              無理のない利用を前提に考える
+            </div>
+          </div>
+        </aside>
       </div>
     </section>
 
-    <aside class="hero-side">
-      <div class="glass-card">
-        <h3>このカテゴリの役割</h3>
-        <p>
-          はじめての人向けに、
-          <strong>全体像・進め方・次の導線</strong>
-          をまとめて、入口として使いやすくする役割があります。
-        </p>
+    <section class="section" id="steps">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">First Steps</div>
+            <h2 class="section-title">初心者向けの <span class="grad">進め方</span></h2>
+            <p class="section-desc">
+              最初に何を確認して、次にどのページを見ればいいかを順番で整理すると、全体像がつかみやすくなります。
+            </p>
+          </div>
+        </div>
 
-        <div class="mini-checks">
-          <div class="mini-check">最初に何を見るかを整理</div>
-          <div class="mini-check">カテゴリ導線をわかりやすくする</div>
-          <div class="mini-check">初心者向けの不安を減らす</div>
+        <div class="grid-3">
+          <article class="card">
+            <div class="icon-box">1</div>
+            <h3>比較の基準を知る</h3>
+            <p>ライセンス、ボーナス条件、入出金、日本語対応など、何を見て比較するかを最初に把握します。</p>
+          </article>
+
+          <article class="card">
+            <div class="icon-box">2</div>
+            <h3>基本条件を確認する</h3>
+            <p>本人確認、出金条件、規約、サポート体制など、後で困りやすいポイントを事前に見ます。</p>
+          </article>
+
+          <article class="card">
+            <div class="icon-box">3</div>
+            <h3>カテゴリごとに深掘りする</h3>
+            <p>ボーナス比較、レビュー、入出金ガイドなど、必要なテーマごとに順番に読んでいきます。</p>
+          </article>
         </div>
       </div>
+    </section>
 
-      <div class="glass-card">
-        <h3>おすすめ導線</h3>
-        <p>全体像を見たあと、比較カテゴリやレビューカテゴリへ進む流れが自然です。</p>
-        <div class="banner-actions" style="margin-top:14px;">
-          <a class="small-btn main" href="bonus.html">比較へ</a>
-          <a class="small-btn sub" href="review.html">レビューへ</a>
+    <section class="section" id="basics">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Basic Checks</div>
+            <h2 class="section-title">最初に確認したい <span class="grad">基本項目</span></h2>
+            <p class="section-desc">
+              登録前や比較前に、最低限見ておきたい項目を整理しています。
+            </p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <article class="card">
+            <h3>事前に見ておきたいこと</h3>
+            <div class="step-grid">
+              <div class="step">
+                <strong>ライセンス情報</strong>
+                運営体制や安全性の判断材料になります。
+              </div>
+              <div class="step">
+                <strong>日本語対応</strong>
+                使いやすさやサポートの分かりやすさに関わります。
+              </div>
+              <div class="step">
+                <strong>入出金方法</strong>
+                自分に合う手段があるかを確認します。
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>後回しにしない方が良いこと</h3>
+            <div class="step-grid">
+              <div class="step">
+                <strong>本人確認の有無</strong>
+                出金時に必要になることが多いので先に把握します。
+              </div>
+              <div class="step">
+                <strong>利用規約</strong>
+                ボーナスや出金条件に関わる重要な情報が含まれます。
+              </div>
+              <div class="step">
+                <strong>予算設定</strong>
+                無理のない範囲で利用する前提を最初に決めておくことが大切です。
+              </div>
+            </div>
+          </article>
         </div>
       </div>
-    </aside>
-  </div>
+    </section>
 
-  <section id="steps" class="section">
-    <div class="section-head">
-      <div>
-        <h2><span class="accent-text">最初の進め方</span></h2>
-        <p>まずは何を見て、次にどこへ進めばいいかを3ステップで整理します。</p>
+    <section class="section">
+      <div class="wrap">
+        <div class="cta-banner">
+          <h2>初心者ガイドを見たら、<br>次は比較カテゴリへ進むのがおすすめ。</h2>
+          <p>
+            全体像をつかんだあとに、ボーナス比較やレビューカテゴリへ進むと、
+            何を基準に見ればいいかが分かりやすくなります。
+          </p>
+
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="bonus.html">ボーナス比較へ</a>
+            <a class="btn btn-gold" href="review.html">レビューカテゴリへ</a>
+            <a class="btn btn-ghost" href="index.html">TOPへ戻る</a>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div class="step-grid">
-      <article class="step-card">
-        <div class="step-no">1</div>
-        <h3>全体像をつかむ</h3>
-        <p>まずはこのカテゴリで、サイト全体の役割や、どんな情報があるかを把握します。</p>
-      </article>
-
-      <article class="step-card">
-        <div class="step-no">2</div>
-        <h3>比較ポイントを見る</h3>
-        <p>次に、比較カテゴリで何を見ればいいかを理解して、判断の軸を持てるようにします。</p>
-      </article>
-
-      <article class="step-card">
-        <div class="step-no">3</div>
-        <h3>詳細ページへ進む</h3>
-        <p>気になるものが出てきたら、レビューや手順系ページへ進んで深掘りする流れです。</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="guide-box">
-      <h2>まずは比較カテゴリから見るのがおすすめ</h2>
-      <p>
-        初心者ガイドは入口なので、このあと比較カテゴリを見ると全体の流れがつかみやすくなります。
-        そのあとでレビューカテゴリへ進むと、理解しやすい順番になります。
-      </p>
-      <div class="banner-actions">
-        <a class="small-btn main" href="bonus.html">ボーナス比較へ</a>
-        <a class="small-btn sub" href="review.html">レビューへ</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="articles" class="section">
-    <div class="section-head">
-      <div>
-        <h2>関連記事導線</h2>
-        <p>ここから今後、初心者向けの記事や導入記事を増やしていく想定です。</p>
-      </div>
-    </div>
-
-    <div class="article-grid">
-      <a class="article-card" href="bonus-guide.html">
-        <div class="article-pill">GUIDE</div>
-        <h3>比較の見方ガイド</h3>
-        <p>何を基準に見ればいいかを整理した、次に読むのに向いている記事です。</p>
-      </a>
-
-      <a class="article-card" href="bonus.html">
-        <div class="article-pill">COMPARE</div>
-        <h3>ボーナス比較へ進む</h3>
-        <p>比較系情報の入口として、次に進む導線に使いやすいカテゴリです。</p>
-      </a>
-
-      <a class="article-card" href="review.html">
-        <div class="article-pill">REVIEW</div>
-        <h3>サービスレビューへ進む</h3>
-        <p>比較のあとに、個別の特徴を深掘りしたい時の導線として使います。</p>
-      </a>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer class="footer">
-    <div class="footer-inner">
-      <div>© SEO Pages</div>
-      <div>初心者ガイドカテゴリページ</div>
+    <div class="wrap footer-inner">
+      <div>
+        <strong style="color:#8f1111;">リベンジカジノ比較ガイド</strong><br>
+        <span style="color:#64748b; font-size:.92rem;">はじめて比較する人向けの初心者ガイドページ</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="index.html">TOP</a>
+        <a href="bonus.html">ボーナス比較</a>
+        <a href="review.html">レビュー</a>
+      </div>
     </div>
   </footer>
 </body>
