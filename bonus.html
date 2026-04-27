@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>オンラインカジノ ボーナス比較｜賭け条件・出金条件・注意点を確認｜リベンジカジノ比較ガイド</title>
-  <meta name="description" content="オンラインカジノのボーナスを金額だけで選ばず、賭け条件、有効期限、対象ゲーム、最大出金、出金条件、本人確認などの観点から比較。初心者が見落としやすい注意点も整理します。" />
+  <title>オンラインカジノ ボーナス比較｜賭け条件・最大出金・注意点を確認｜リベンジカジノ比較ガイド</title>
+  <meta name="description" content="オンラインカジノのボーナスを金額だけで選ばず、賭け条件、有効期限、対象ゲーム、最大出金、出金条件、本人確認などの観点から比較するための固定型ガイドページです。" />
 
   <style>
     :root {
@@ -402,14 +402,27 @@
       margin-bottom: 10px;
     }
 
-    .point-grid {
+    .point-grid,
+    .term-grid,
+    .flow-grid,
+    .link-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 16px;
     }
 
+    .point-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .term-grid,
+    .flow-grid,
+    .link-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
     .point-card,
-    .bonus-card,
+    .term-card,
+    .flow-card,
     .link-card {
       background: #fff;
       border: 1px solid rgba(215, 25, 32, 0.15);
@@ -418,7 +431,22 @@
       box-shadow: 0 10px 28px rgba(120, 20, 20, 0.07);
     }
 
-    .point-number {
+    .flow-card {
+      border-radius: var(--radius-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .flow-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--red), var(--orange), var(--gold));
+    }
+
+    .point-number,
+    .flow-number {
       width: 34px;
       height: 34px;
       border-radius: 50%;
@@ -428,10 +456,12 @@
       color: #fff;
       font-weight: 900;
       margin-bottom: 12px;
+      box-shadow: 0 8px 18px rgba(215, 25, 32, 0.18);
     }
 
     .point-card h3,
-    .bonus-card h3,
+    .term-card h3,
+    .flow-card h3,
     .link-card h3 {
       margin: 0 0 8px;
       font-size: 18px;
@@ -440,7 +470,8 @@
     }
 
     .point-card p,
-    .bonus-card p,
+    .term-card p,
+    .flow-card p,
     .link-card p {
       margin: 0;
       color: var(--muted);
@@ -448,106 +479,39 @@
       line-height: 1.7;
     }
 
-    .bonus-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+    .link-card p {
+      margin-bottom: 12px;
     }
 
-    .bonus-card {
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .bonus-card::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 5px;
-      background: linear-gradient(90deg, var(--red), var(--orange), var(--gold));
-    }
-
-    .bonus-top {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding-top: 4px;
-    }
-
-    .rank {
-      min-width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--red), var(--orange));
-      color: #fff;
-      display: grid;
-      place-items: center;
+    .link-card a {
+      color: var(--red);
       font-weight: 900;
-      box-shadow: 0 8px 18px rgba(215, 25, 32, 0.22);
     }
 
-    .logo-box {
-      width: 74px;
-      height: 54px;
-      border-radius: 14px;
-      background: #fff;
-      border: 1px solid rgba(215, 25, 32, 0.14);
+    .fixed-box {
+      background:
+        radial-gradient(circle at top right, rgba(246, 183, 60, 0.2), transparent 34%),
+        linear-gradient(135deg, #fff, #fff4ed);
+      border: 1px solid rgba(215, 25, 32, 0.18);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow);
       display: grid;
-      place-items: center;
-      overflow: hidden;
-      padding: 7px;
-      flex: 0 0 auto;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
     }
 
-    .logo-box img {
-      max-height: 40px;
-      object-fit: contain;
-    }
-
-    .bonus-name {
-      margin: 0;
-      font-size: 20px;
-      line-height: 1.25;
-    }
-
-    .bonus-sub {
-      margin: 3px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.45;
-    }
-
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .tag {
-      font-size: 12px;
-      font-weight: 800;
-      border-radius: 999px;
-      padding: 5px 9px;
-      background: var(--red-soft);
+    .fixed-box h2 {
+      margin: 0 0 12px;
       color: var(--red-dark);
-      border: 1px solid rgba(215, 25, 32, 0.12);
+      font-size: clamp(22px, 3vw, 32px);
+      line-height: 1.3;
     }
 
-    .tag.gold {
-      background: var(--gold-soft);
-      color: #6a4300;
-      border-color: rgba(246, 183, 60, 0.28);
-    }
-
-    .tag.gray {
-      background: #f5f5f5;
+    .fixed-box p {
+      margin: 0 0 12px;
       color: #555;
-      border-color: #e6e6e6;
     }
 
     .table-wrap {
@@ -561,7 +525,7 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 980px;
+      min-width: 920px;
       font-size: 14px;
     }
 
@@ -614,52 +578,6 @@
     .status.neutral {
       color: #555;
       background: #f4f4f4;
-    }
-
-    .explain-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .explain-card {
-      background: #fff;
-      border: 1px solid rgba(215, 25, 32, 0.15);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-      box-shadow: 0 12px 34px rgba(120, 20, 20, 0.08);
-    }
-
-    .explain-card h3 {
-      margin: 0 0 10px;
-      color: var(--red-dark);
-      font-size: 21px;
-    }
-
-    .explain-card p {
-      margin: 0 0 12px;
-      color: #555;
-      font-size: 14px;
-      line-height: 1.8;
-    }
-
-    .explain-card p:last-child {
-      margin-bottom: 0;
-    }
-
-    .link-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .link-card p {
-      margin-bottom: 12px;
-    }
-
-    .link-card a {
-      color: var(--red);
-      font-weight: 900;
     }
 
     .warning-box {
@@ -803,7 +721,7 @@
       }
 
       .hero-grid,
-      .explain-grid {
+      .fixed-box {
         grid-template-columns: 1fr;
       }
 
@@ -811,7 +729,8 @@
         padding: 34px 24px;
       }
 
-      .bonus-grid,
+      .term-grid,
+      .flow-grid,
       .link-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -860,18 +779,10 @@
       }
 
       .point-grid,
-      .bonus-grid,
+      .term-grid,
+      .flow-grid,
       .link-grid {
         grid-template-columns: 1fr;
-      }
-
-      .bonus-top {
-        align-items: flex-start;
-      }
-
-      .logo-box {
-        width: 66px;
-        height: 50px;
       }
 
       .section {
@@ -886,6 +797,8 @@
         padding-right: 16px;
       }
 
+      .fixed-box,
+      .warning-box,
       .cta-box {
         padding: 26px 20px;
         border-radius: 24px;
@@ -905,12 +818,12 @@
       <nav class="nav" aria-label="主要ナビゲーション">
         <a href="index.html">TOP</a>
         <a href="casino-list.html">カジノ一覧</a>
+        <a href="review.html">レビュー</a>
         <a href="bonus.html">ボーナス比較</a>
         <a href="bonus-guide.html">見方ガイド</a>
-        <a href="review.html">レビュー</a>
         <a href="guide.html">初心者ガイド</a>
         <a href="payments.html">入出金</a>
-        <a href="#bonus-table" class="nav-cta">比較表を見る</a>
+        <a href="#checkpoints" class="nav-cta">確認項目</a>
       </nav>
     </div>
   </header>
@@ -924,32 +837,31 @@
       <div class="hero-box">
         <div class="hero-grid">
           <div>
-            <div class="eyebrow">金額よりも、条件を確認する</div>
+            <div class="eyebrow">固定型補助ページ：ボーナス条件の理解に集中</div>
             <h1>
-              オンラインカジノ<br />
-              <span class="hero-highlight">ボーナス比較ガイド</span>
+              ボーナスは<br />
+              <span class="hero-highlight">金額より条件で比較</span>
             </h1>
             <p class="hero-lead">
-              ボーナスは金額の大きさだけで選ぶと、賭け条件、有効期限、対象ゲーム、最大出金、本人確認などで後から困ることがあります。
-              このページでは、初心者が見落としやすい条件を整理し、冷静に比較できるように解説します。
+              オンラインカジノのボーナスは、金額の大きさだけで選ぶと、賭け条件、有効期限、対象ゲーム、最大出金、本人確認などで後から困ることがあります。
+              このページでは、個別サイト追加に左右されない「ボーナスの見方」を固定情報として整理します。
             </p>
 
             <div class="hero-actions">
-              <a href="#bonus-table" class="btn btn-primary">ボーナス比較表を見る</a>
-              <a href="#how-to-check" class="btn btn-gold">確認ポイントを見る</a>
-              <a href="bonus-guide.html" class="btn btn-outline">ボーナスの見方ガイドへ</a>
+              <a href="#checkpoints" class="btn btn-primary">確認項目を見る</a>
+              <a href="bonus-guide.html" class="btn btn-gold">詳しい見方ガイドへ</a>
+              <a href="review.html" class="btn btn-outline">レビュー一覧へ</a>
             </div>
           </div>
 
           <aside class="hero-card">
-            <h2>ボーナスで見るべき項目</h2>
+            <h2>このページの役割</h2>
             <ul class="check-list">
-              <li>賭け条件の倍率</li>
-              <li>有効期限</li>
-              <li>対象ゲームと対象外ゲーム</li>
-              <li>最大出金額</li>
-              <li>出金前の本人確認</li>
-              <li>禁止ベットや利用制限</li>
+              <li>ボーナス条件の基本を理解する</li>
+              <li>賭け条件・最大出金・対象ゲームを確認する</li>
+              <li>新規レビュー追加のたびに毎回更新しない</li>
+              <li>個別サイト情報は review.html / casino-list.html に集約する</li>
+              <li>最新条件は公式規約で確認する前提にする</li>
             </ul>
           </aside>
         </div>
@@ -959,19 +871,46 @@
     <section class="notice">
       <div class="notice-box">
         <strong>注意：</strong>
-        本ページはオンラインカジノのボーナス条件を比較するための情報ページです。
+        本ページはオンラインカジノのボーナス条件を理解・比較するための情報ページです。
         利用を推奨・保証するものではありません。ボーナス内容やキャンペーン条件は変更される可能性があるため、登録前には必ず各サイトの公式規約、対象地域、年齢制限、本人確認、出金条件を確認してください。
       </div>
     </section>
 
-    <section class="section" id="how-to-check">
+    <section class="section" id="fixed-policy">
+      <div class="fixed-box">
+        <div>
+          <div class="label">固定型ページ方針</div>
+          <h2>個別サイト追加のたびに、このページは更新しない。</h2>
+          <p>
+            今後ベラジョン、游雅堂、bitcasino、Mystinoなどのレビューが増えても、
+            `bonus.html` は毎回個別サイトカードを増やすページにはしません。
+          </p>
+          <p>
+            このページは、読者がボーナス条件を理解するための固定型補助ページとして運用します。
+          </p>
+        </div>
+
+        <div>
+          <h2>個別サイト情報の置き場所</h2>
+          <ul class="check-list">
+            <li>公開済みレビューは review.html に集約</li>
+            <li>全掲載サイトは casino-list.html に集約</li>
+            <li>詳しいボーナス用語は bonus-guide.html に集約</li>
+            <li>出金条件は payments.html に集約</li>
+            <li>このページはボーナス比較の考え方を固定で案内</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="checkpoints">
       <div class="section-head">
         <div>
-          <div class="label">基本の見方</div>
-          <h2 class="section-title">ボーナスは<span>金額ではなく条件で見る</span></h2>
+          <div class="label">確認項目</div>
+          <h2 class="section-title">ボーナスは<span>この6項目</span>を見る</h2>
           <p class="section-desc">
-            高額ボーナスは魅力的に見えますが、実際に使いやすいかどうかは条件次第です。
-            初心者はまず以下の4項目を確認しましょう。
+            ボーナス金額だけでは、実際に使いやすいか判断できません。
+            以下の項目を確認してから比較しましょう。
           </p>
         </div>
       </div>
@@ -981,8 +920,7 @@
           <div class="point-number">1</div>
           <h3>賭け条件</h3>
           <p>
-            ボーナスを出金可能にするために、どれくらい賭ける必要があるかを示す条件です。
-            倍率が高いほど達成が難しくなる場合があります。
+            ボーナスを出金可能にするために、どれくらいプレイが必要かを示す条件です。
           </p>
         </div>
 
@@ -990,8 +928,7 @@
           <div class="point-number">2</div>
           <h3>有効期限</h3>
           <p>
-            ボーナスには利用期限が設定されている場合があります。
-            期限内に条件を満たせないと、ボーナスや関連する残高が失効する可能性があります。
+            期限内に条件を満たせないと、ボーナスや関連残高が失効する場合があります。
           </p>
         </div>
 
@@ -999,8 +936,7 @@
           <div class="point-number">3</div>
           <h3>対象ゲーム</h3>
           <p>
-            すべてのゲームが賭け条件に同じ割合で反映されるとは限りません。
-            スロット、ライブカジノ、テーブルゲームで条件が異なる場合があります。
+            すべてのゲームが同じ割合で賭け条件に反映されるとは限りません。
           </p>
         </div>
 
@@ -1008,138 +944,170 @@
           <div class="point-number">4</div>
           <h3>最大出金</h3>
           <p>
-            ボーナス利用時には、出金できる上限が設定される場合があります。
-            金額だけでなく、出金上限も必ず確認しましょう。
+            ボーナス利用時に出金できる上限が設定される場合があります。
+          </p>
+        </div>
+
+        <div class="point-card">
+          <div class="point-number">5</div>
+          <h3>本人確認</h3>
+          <p>
+            出金前に身分証や住所確認などの本人確認が必要になる場合があります。
+          </p>
+        </div>
+
+        <div class="point-card">
+          <div class="point-number">6</div>
+          <h3>禁止ベット</h3>
+          <p>
+            ボーナス利用中に禁止される賭け方がある場合があります。
+          </p>
+        </div>
+
+        <div class="point-card">
+          <div class="point-number">7</div>
+          <h3>対象地域</h3>
+          <p>
+            キャンペーンやボーナスが利用できる地域が限定される場合があります。
+          </p>
+        </div>
+
+        <div class="point-card">
+          <div class="point-number">8</div>
+          <h3>出金制限</h3>
+          <p>
+            条件未達成の場合、出金や残高移動に制限がかかる場合があります。
           </p>
         </div>
       </div>
     </section>
 
-    <section class="section" id="bonus-picks">
+    <section class="section" id="terms">
       <div class="section-head">
         <div>
-          <div class="label">公開済みレビュー連動</div>
-          <h2 class="section-title">公開済みレビュー3本の<span>ボーナス確認ポイント</span></h2>
+          <div class="label">用語理解</div>
+          <h2 class="section-title">初心者が知っておきたい<span>ボーナス用語</span></h2>
           <p class="section-desc">
-            ここでは、公開済みレビューのある3サイトについて、ボーナスを見るときの確認軸を整理しています。
-            最新条件は必ず公式情報で確認してください。
+            比較ページやレビューでよく出てくる用語を、簡単に整理します。
           </p>
         </div>
       </div>
 
-      <div class="bonus-grid">
-        <article class="bonus-card">
-          <div class="bonus-top">
-            <div class="rank">1</div>
-            <div class="logo-box">
-              <img src="slottenkoku-logo.png" alt="スロット天国 ロゴ" />
-            </div>
-            <div>
-              <h3 class="bonus-name">スロット天国</h3>
-              <p class="bonus-sub">通常レビュー型</p>
-            </div>
-          </div>
-
-          <div class="tag-row">
-            <span class="tag">レビューあり</span>
-            <span class="tag gold">条件確認</span>
-            <span class="tag gray">出金確認</span>
-          </div>
-
+      <div class="term-grid">
+        <div class="term-card">
+          <h3>賭け条件</h3>
           <p>
-            ボーナス条件、入出金、本人確認などをバランスよく確認したい人向けのレビューです。
+            ボーナスを出金可能な状態にするため、指定された金額分をプレイする必要がある条件です。
           </p>
+        </div>
 
-          <ul class="check-list">
-            <li>賭け条件を確認</li>
-            <li>対象ゲームを確認</li>
-            <li>出金前の本人確認を確認</li>
-          </ul>
-
-          <div class="card-actions">
-            <a href="review-slottenkoku.html" class="mini-btn main">レビューを見る</a>
-            <a href="casino-list.html" class="mini-btn">一覧で比較</a>
-          </div>
-        </article>
-
-        <article class="bonus-card">
-          <div class="bonus-top">
-            <div class="rank">2</div>
-            <div class="logo-box">
-              <img src="konibet-logo.png" alt="コニベット ロゴ" />
-            </div>
-            <div>
-              <h3 class="bonus-name">コニベット</h3>
-              <p class="bonus-sub">キャンペーン条件確認型</p>
-            </div>
-          </div>
-
-          <div class="tag-row">
-            <span class="tag">レビューあり</span>
-            <span class="tag gold">キャンペーン</span>
-            <span class="tag gray">規約確認</span>
-          </div>
-
+        <div class="term-card">
+          <h3>最大出金</h3>
           <p>
-            キャンペーン内容だけでなく、対象条件、公式規約、出金条件まで確認したい人向けです。
+            ボーナス利用時に出金できる上限です。残高が増えても、上限を超える分は出金できない場合があります。
           </p>
+        </div>
 
-          <ul class="check-list">
-            <li>キャンペーン対象を確認</li>
-            <li>有効期限を確認</li>
-            <li>出金条件を確認</li>
-          </ul>
-
-          <div class="card-actions">
-            <a href="review-konibet.html" class="mini-btn main">レビューを見る</a>
-            <a href="review.html" class="mini-btn">レビュー一覧</a>
-          </div>
-        </article>
-
-        <article class="bonus-card">
-          <div class="bonus-top">
-            <div class="rank">3</div>
-            <div class="logo-box">
-              <img src="stake-logo.png" alt="STAKE ロゴ" />
-            </div>
-            <div>
-              <h3 class="bonus-name">STAKE</h3>
-              <p class="bonus-sub">対象地域・暗号資産確認型</p>
-            </div>
-          </div>
-
-          <div class="tag-row">
-            <span class="tag">レビューあり</span>
-            <span class="tag gold">対象地域</span>
-            <span class="tag gray">暗号資産</span>
-          </div>
-
+        <div class="term-card">
+          <h3>対象ゲーム</h3>
           <p>
-            ボーナス条件に加えて、対象地域、暗号資産入出金、本人確認を慎重に確認したい人向けです。
+            ボーナスの条件達成に反映されるゲームです。スロット、ライブカジノ、テーブルゲームで条件が異なる場合があります。
           </p>
+        </div>
 
-          <ul class="check-list">
-            <li>対象地域を確認</li>
-            <li>暗号資産利用時の条件を確認</li>
-            <li>本人確認と規約を確認</li>
-          </ul>
+        <div class="term-card">
+          <h3>有効期限</h3>
+          <p>
+            ボーナスを利用できる期限です。期限を過ぎるとボーナスや関連残高が失効する場合があります。
+          </p>
+        </div>
 
-          <div class="card-actions">
-            <a href="review-stake.html" class="mini-btn main">レビューを見る</a>
-            <a href="payments.html" class="mini-btn">入出金を見る</a>
-          </div>
-        </article>
+        <div class="term-card">
+          <h3>禁止ベット</h3>
+          <p>
+            ボーナス利用中に禁止されている賭け方です。違反するとボーナスや残高が無効になる可能性があります。
+          </p>
+        </div>
+
+        <div class="term-card">
+          <h3>ボーナス放棄</h3>
+          <p>
+            ボーナスを使わずに通常残高だけで遊ぶため、ボーナスを破棄する操作です。条件はサイトごとに異なります。
+          </p>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="bonus-table">
+    <section class="section" id="flow">
       <div class="section-head">
         <div>
-          <div class="label">比較表</div>
-          <h2 class="section-title">ボーナス条件を<span>一覧で比較</span></h2>
+          <div class="label">確認の流れ</div>
+          <h2 class="section-title">登録前は<span>この順番で確認</span>する</h2>
           <p class="section-desc">
-            金額の大小ではなく、条件の見やすさ・出金条件・本人確認・対象ゲームなどを比較するための表です。
-            実際の金額やキャンペーン内容は変わる可能性があるため、公式情報で確認してください。
+            ボーナスを見たあと、すぐに登録するのではなく、条件を順番に確認しましょう。
+          </p>
+        </div>
+      </div>
+
+      <div class="flow-grid">
+        <div class="flow-card">
+          <div class="flow-number">1</div>
+          <h3>ボーナス内容を見る</h3>
+          <p>
+            まずはどのようなボーナスかを確認します。ただし、この段階では金額だけで判断しません。
+          </p>
+        </div>
+
+        <div class="flow-card">
+          <div class="flow-number">2</div>
+          <h3>条件を読む</h3>
+          <p>
+            賭け条件、有効期限、対象ゲーム、最大出金、禁止ベットを確認します。
+          </p>
+        </div>
+
+        <div class="flow-card">
+          <div class="flow-number">3</div>
+          <h3>出金条件を確認</h3>
+          <p>
+            本人確認、最低出金額、出金方法、反映時間、手数料を確認します。
+          </p>
+        </div>
+
+        <div class="flow-card">
+          <div class="flow-number">4</div>
+          <h3>レビューを見る</h3>
+          <p>
+            気になるサイトは個別レビューで、特徴と注意点を確認します。
+          </p>
+        </div>
+
+        <div class="flow-card">
+          <div class="flow-number">5</div>
+          <h3>公式規約を見る</h3>
+          <p>
+            最終的には公式サイトの最新規約、対象地域、年齢制限を確認します。
+          </p>
+        </div>
+
+        <div class="flow-card">
+          <div class="flow-number">6</div>
+          <h3>無理に利用しない</h3>
+          <p>
+            条件が分かりにくい、不安がある、予算を超えそうな場合は利用を避けましょう。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="table">
+      <div class="section-head">
+        <div>
+          <div class="label">比較軸</div>
+          <h2 class="section-title">ボーナス比較で<span>見るべき軸</span></h2>
+          <p class="section-desc">
+            個別サイトごとの最新条件は review.html や casino-list.html に任せ、
+            ここでは普遍的な比較軸を整理します。
           </p>
         </div>
       </div>
@@ -1148,124 +1116,51 @@
         <table>
           <thead>
             <tr>
-              <th>サイト名</th>
-              <th>レビュー状況</th>
-              <th>確認したいボーナス条件</th>
-              <th>出金条件</th>
+              <th>比較軸</th>
+              <th>見るべき内容</th>
               <th>注意点</th>
               <th>関連ページ</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong><a href="review-slottenkoku.html">スロット天国</a></strong></td>
-              <td><span class="status good">レビュー公開済み</span></td>
-              <td>賭け条件、有効期限、対象ゲーム、最大出金</td>
-              <td>最低出金額、本人確認、反映時間を確認</td>
-              <td>ボーナス金額だけで判断しない</td>
-              <td><a href="review-slottenkoku.html">レビューを見る</a></td>
+              <td><strong>金額</strong></td>
+              <td>ボーナス額、上限額、対象入金額</td>
+              <td>金額が大きくても条件が厳しい場合があります。</td>
+              <td><a href="bonus-guide.html">見方ガイド</a></td>
             </tr>
             <tr>
-              <td><strong><a href="review-konibet.html">コニベット</a></strong></td>
-              <td><span class="status good">レビュー公開済み</span></td>
-              <td>キャンペーン対象、賭け条件、有効期限</td>
-              <td>出金条件、本人確認、公式規約を確認</td>
-              <td>最新キャンペーンと規約の差分に注意</td>
-              <td><a href="review-konibet.html">レビューを見る</a></td>
+              <td><strong>賭け条件</strong></td>
+              <td>何倍のプレイが必要か</td>
+              <td>倍率が高いほど達成が難しくなる場合があります。</td>
+              <td><a href="bonus-guide.html">見方ガイド</a></td>
             </tr>
             <tr>
-              <td><strong><a href="review-stake.html">STAKE</a></strong></td>
-              <td><span class="status good">レビュー公開済み</span></td>
-              <td>特典条件、対象地域、対象ゲーム</td>
-              <td>暗号資産入出金、本人確認、手数料を確認</td>
-              <td>対象地域と暗号資産利用条件を確認</td>
-              <td><a href="review-stake.html">レビューを見る</a></td>
-            </tr>
-            <tr>
-              <td><strong>ベラジョン</strong></td>
-              <td><span class="status check">レビュー候補</span></td>
-              <td>ウェルカム条件、最大出金、有効期限</td>
-              <td>出金スピード、本人確認、最低出金額</td>
-              <td>最新条件とロゴ素材の確認が必要</td>
+              <td><strong>対象ゲーム</strong></td>
+              <td>条件達成に反映されるゲーム</td>
+              <td>ゲームごとに反映率が異なる場合があります。</td>
               <td><a href="review.html">レビュー一覧</a></td>
             </tr>
             <tr>
-              <td><strong>游雅堂</strong></td>
-              <td><span class="status check">レビュー候補</span></td>
-              <td>賭け条件、対象ゲーム、キャンペーン対象</td>
-              <td>決済方法、出金条件、日本語サポート</td>
-              <td>日本語対応範囲と規約を確認</td>
-              <td><a href="payments.html">入出金を見る</a></td>
+              <td><strong>最大出金</strong></td>
+              <td>ボーナス利用時の出金上限</td>
+              <td>残高が増えても上限以上は出金できない場合があります。</td>
+              <td><a href="payments.html">入出金</a></td>
             </tr>
             <tr>
-              <td><strong>bitcasino</strong></td>
-              <td><span class="status neutral">調査中</span></td>
-              <td>暗号資産系ボーナス、対象通貨、条件</td>
-              <td>暗号資産入出金、KYC、手数料</td>
-              <td>対象地域、通貨、出金条件を確認</td>
-              <td><a href="casino-list.html">一覧で確認</a></td>
+              <td><strong>本人確認</strong></td>
+              <td>KYC、身分証、住所確認</td>
+              <td>出金前に確認が必要になる場合があります。</td>
+              <td><a href="payments.html">入出金</a></td>
+            </tr>
+            <tr>
+              <td><strong>対象地域</strong></td>
+              <td>利用可能地域、制限地域</td>
+              <td>地域によって利用できない場合があります。</td>
+              <td><a href="casino-list.html">カジノ一覧</a></td>
             </tr>
           </tbody>
         </table>
-      </div>
-    </section>
-
-    <section class="section" id="terms">
-      <div class="section-head">
-        <div>
-          <div class="label">用語解説</div>
-          <h2 class="section-title">初心者が見落としやすい<span>ボーナス用語</span></h2>
-          <p class="section-desc">
-            ボーナスページでは専門用語が多く出てきます。
-            ここでは、登録前に理解しておきたい基本用語を整理します。
-          </p>
-        </div>
-      </div>
-
-      <div class="explain-grid">
-        <div class="explain-card">
-          <h3>賭け条件とは？</h3>
-          <p>
-            ボーナスを出金可能な状態にするために、指定された金額分をプレイする必要がある条件です。
-            例えば「ボーナス額の何倍」といった形で設定されることがあります。
-          </p>
-          <p>
-            倍率が高いほど、達成までに多くのプレイが必要になるため、ボーナス金額だけでなく賭け条件を必ず確認しましょう。
-          </p>
-        </div>
-
-        <div class="explain-card">
-          <h3>最大出金とは？</h3>
-          <p>
-            ボーナス利用時に出金できる上限のことです。
-            ボーナスで得た残高が増えても、最大出金額を超える分は出金できない場合があります。
-          </p>
-          <p>
-            高額ボーナスに見えても、最大出金が低い場合は実際の条件が厳しいことがあります。
-          </p>
-        </div>
-
-        <div class="explain-card">
-          <h3>対象ゲームとは？</h3>
-          <p>
-            ボーナスの賭け条件に反映されるゲームのことです。
-            スロットは対象でも、ライブカジノやテーブルゲームは対象外、または反映率が低い場合があります。
-          </p>
-          <p>
-            好きなゲームで条件を満たせるとは限らないため、対象ゲームは必ず確認しましょう。
-          </p>
-        </div>
-
-        <div class="explain-card">
-          <h3>禁止ベットとは？</h3>
-          <p>
-            ボーナス利用中に禁止されている賭け方のことです。
-            一定額以上のベット、特定ゲームでのプレイ、低リスク戦略などが禁止される場合があります。
-          </p>
-          <p>
-            規約違反と判断されると、ボーナスや残高が無効になる可能性があるため注意が必要です。
-          </p>
-        </div>
       </div>
     </section>
 
@@ -1275,33 +1170,33 @@
           <div class="label">注意点</div>
           <h2 class="section-title">ボーナス選びで<span>避けたい失敗</span></h2>
           <p class="section-desc">
-            初心者が失敗しやすいのは、ボーナス金額だけを見て、細かい条件を読まずに選んでしまうことです。
+            初心者が失敗しやすいのは、条件を読まずに金額だけで判断してしまうことです。
           </p>
         </div>
       </div>
 
-      <div class="explain-grid">
-        <div class="explain-card">
-          <h3>金額だけで選ぶ</h3>
-          <p>
-            大きなボーナスは魅力的に見えますが、賭け条件や最大出金が厳しい場合があります。
-            金額よりも、実際に使いやすい条件かどうかを確認しましょう。
-          </p>
+      <div class="fixed-box">
+        <div>
+          <h2>避けたい選び方</h2>
           <ul class="caution-list">
-            <li>高額でも条件が重い場合があります。</li>
-            <li>対象ゲームが限られる場合があります。</li>
+            <li>ボーナス金額だけで選ぶ</li>
+            <li>賭け条件を確認しない</li>
+            <li>最大出金を見落とす</li>
+            <li>対象ゲームを確認しない</li>
+            <li>出金前の本人確認を考えていない</li>
+            <li>禁止ベットや規約違反を確認しない</li>
           </ul>
         </div>
 
-        <div class="explain-card">
-          <h3>出金条件を後回しにする</h3>
-          <p>
-            ボーナスは入金時だけでなく、出金時の条件も重要です。
-            本人確認、最低出金額、反映時間、出金方法を先に確認しておきましょう。
-          </p>
-          <ul class="caution-list">
-            <li>出金時に本人確認が必要になる場合があります。</li>
-            <li>ボーナス利用中は出金制限がかかる場合があります。</li>
+        <div>
+          <h2>安全寄りの見方</h2>
+          <ul class="check-list">
+            <li>金額より条件を先に見る</li>
+            <li>出金条件もセットで確認する</li>
+            <li>レビューで注意点を確認する</li>
+            <li>最終的には公式規約を見る</li>
+            <li>不明点がある場合は急がない</li>
+            <li>予算を決めて無理に利用しない</li>
           </ul>
         </div>
       </div>
@@ -1313,7 +1208,7 @@
           <div class="label">関連ページ</div>
           <h2 class="section-title">ボーナスとあわせて<span>確認したいページ</span></h2>
           <p class="section-desc">
-            ボーナス条件だけで判断せず、個別レビュー、入出金ガイド、初心者ガイドもあわせて確認しましょう。
+            個別サイトの最新状況は、レビュー一覧とカジノ一覧に集約します。
           </p>
         </div>
       </div>
@@ -1321,38 +1216,38 @@
       <div class="link-grid">
         <div class="link-card">
           <h3>ボーナスの見方ガイド</h3>
-          <p>賭け条件、有効期限、最大出金など、ボーナスを見るときの基本を確認できます。</p>
+          <p>賭け条件、有効期限、最大出金などをさらに詳しく確認できます。</p>
           <a href="bonus-guide.html">見方ガイドを見る →</a>
         </div>
 
         <div class="link-card">
-          <h3>スロット天国レビュー</h3>
-          <p>スロット天国のボーナス条件、入出金、注意点を確認できます。</p>
-          <a href="review-slottenkoku.html">個別レビューを見る →</a>
-        </div>
-
-        <div class="link-card">
-          <h3>コニベットレビュー</h3>
-          <p>コニベットのキャンペーン条件、出金条件、注意点を確認できます。</p>
-          <a href="review-konibet.html">個別レビューを見る →</a>
-        </div>
-
-        <div class="link-card">
-          <h3>STAKEレビュー</h3>
-          <p>STAKEの対象地域、暗号資産入出金、本人確認を確認できます。</p>
-          <a href="review-stake.html">個別レビューを見る →</a>
-        </div>
-
-        <div class="link-card">
-          <h3>入出金・決済ガイド</h3>
-          <p>ボーナス利用時にも重要な出金条件や本人確認を確認できます。</p>
-          <a href="payments.html">入出金ガイドを見る →</a>
+          <h3>レビュー一覧</h3>
+          <p>公開済みレビューと準備中レビューをまとめて確認できます。</p>
+          <a href="review.html">レビューを見る →</a>
         </div>
 
         <div class="link-card">
           <h3>カジノ一覧</h3>
-          <p>掲載中・掲載候補のカジノサイトを条件別に比較できます。</p>
+          <p>掲載中・準備中・調査中のサイトを一覧で比較できます。</p>
           <a href="casino-list.html">一覧で比較する →</a>
+        </div>
+
+        <div class="link-card">
+          <h3>入出金ガイド</h3>
+          <p>ボーナス利用時にも重要な出金条件や本人確認を確認できます。</p>
+          <a href="payments.html">入出金を見る →</a>
+        </div>
+
+        <div class="link-card">
+          <h3>初心者ガイド</h3>
+          <p>初めて比較する人向けに、見るべき順番を確認できます。</p>
+          <a href="guide.html">初心者ガイドを見る →</a>
+        </div>
+
+        <div class="link-card">
+          <h3>TOPページ</h3>
+          <p>サイト全体の使い方と主要導線を確認できます。</p>
+          <a href="index.html">TOPへ戻る →</a>
         </div>
       </div>
     </section>
@@ -1383,6 +1278,13 @@
       </div>
 
       <details>
+        <summary>今後レビューが増えたら、このページも毎回更新しますか？</summary>
+        <p>
+          基本的には更新しません。個別サイト情報は review.html と casino-list.html に集約し、このページはボーナス条件の見方を固定で案内します。
+        </p>
+      </details>
+
+      <details>
         <summary>ボーナス金額が大きいサイトを選べばよいですか？</summary>
         <p>
           ボーナス金額だけで選ぶのはおすすめしません。賭け条件、有効期限、対象ゲーム、最大出金、出金前の制限などを確認する必要があります。
@@ -1404,16 +1306,9 @@
       </details>
 
       <details>
-        <summary>対象ゲームはなぜ重要ですか？</summary>
+        <summary>最新のボーナス条件はどこで確認すべきですか？</summary>
         <p>
-          ボーナスの賭け条件に反映されるゲームが限られる場合があるためです。好きなゲームで条件を達成できるとは限りません。
-        </p>
-      </details>
-
-      <details>
-        <summary>このページは特定サイトの利用をすすめていますか？</summary>
-        <p>
-          いいえ。本ページはボーナス条件を比較するための情報ページです。利用前には必ず公式情報、規約、対象地域、関連法規を確認してください。
+          最終的には各サイトの公式キャンペーンページや公式規約で確認してください。本サイトでは比較の見方や確認ポイントを整理しています。
         </p>
       </details>
     </section>
@@ -1423,12 +1318,12 @@
         <h2>ボーナスは、金額よりも条件で比較する。</h2>
         <p>
           気になるボーナスを見つけたら、賭け条件、有効期限、対象ゲーム、最大出金、出金条件を確認しましょう。
-          条件を理解してから比較することが、後悔を減らす第一歩です。
+          個別サイトの情報はレビュー一覧とカジノ一覧で確認できます。
         </p>
         <div class="cta-actions">
           <a href="bonus-guide.html" class="btn btn-gold">ボーナスの見方を確認</a>
           <a href="review.html" class="btn btn-outline">レビュー一覧を見る</a>
-          <a href="payments.html" class="btn btn-outline">入出金を確認する</a>
+          <a href="casino-list.html" class="btn btn-outline">カジノ一覧で比較</a>
         </div>
       </div>
     </section>
@@ -1450,12 +1345,12 @@
       <div class="footer-links">
         <a href="index.html">TOP</a>
         <a href="casino-list.html">カジノ一覧</a>
-        <a href="bonus.html">ボーナス比較</a>
-        <a href="bonus-guide.html">見方ガイド</a>
         <a href="review.html">レビュー</a>
         <a href="review-slottenkoku.html">スロット天国レビュー</a>
         <a href="review-konibet.html">コニベットレビュー</a>
         <a href="review-stake.html">STAKEレビュー</a>
+        <a href="bonus.html">ボーナス比較</a>
+        <a href="bonus-guide.html">見方ガイド</a>
         <a href="guide.html">初心者ガイド</a>
         <a href="payments.html">入出金</a>
       </div>
