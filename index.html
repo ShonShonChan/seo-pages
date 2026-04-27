@@ -362,6 +362,41 @@
       color:transparent;
     }
 
+    .brand-asset{
+      aspect-ratio:16 / 9;
+      width:100%;
+      object-fit:cover;
+      display:block;
+      background:#fff;
+    }
+
+    .brand-logo-box{
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+      min-height:72px;
+      margin-bottom:12px;
+    }
+
+    .brand-logo-box img{
+      max-width:180px;
+      max-height:42px;
+      width:auto;
+      height:auto;
+      display:block;
+    }
+
+    .feature-image{
+      width:100%;
+      aspect-ratio:16 / 9;
+      object-fit:cover;
+      display:block;
+      border-radius:18px;
+      margin-bottom:16px;
+      background:#fff;
+      border:1px solid rgba(148,163,184,.18);
+    }
+
     .banner-grid{
       display:grid;
       grid-template-columns:repeat(3, minmax(0,1fr));
@@ -835,11 +870,18 @@
       </article>
 
       <article class="banner-card">
-        <div class="banner-thumb" style="background-image:url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop');"></div>
+        <div class="banner-thumb" style="background:#0f172a; display:flex; align-items:center; justify-content:center; padding:24px;">
+          <img
+            class="brand-asset"
+            src="https://stake.com/_app/immutable/assets/stake-full.tLL7usOz.svg"
+            alt="Stake logo"
+            style="object-fit:contain; background:transparent;"
+          >
+        </div>
         <div class="banner-content">
           <div class="banner-tag">Priority 03</div>
           <h3>STAKE</h3>
-          <p>上位3枠の3番手です。注目エリア内で十分視認される位置に置いています。</p>
+          <p>公開確認できた公式ロゴを先に反映した枠です。バナー素材は後で公式テンプレ差し替えに置き換える想定です。</p>
           <div class="banner-actions">
             <a class="small-btn main" href="#">今すぐ見る</a>
             <a class="small-btn sub" href="#">関連記事へ</a>
@@ -904,13 +946,19 @@
           <div>主力枠</div>
         </div>
         <div class="rank-body">
+          <div class="brand-logo-box">
+            <img
+              src="https://stake.com/_app/immutable/assets/stake-full.tLL7usOz.svg"
+              alt="Stake logo"
+            >
+          </div>
           <h3>STAKE</h3>
           <div class="rank-badges">
             <span>3番手</span>
             <span>主力</span>
             <span>TOP露出</span>
           </div>
-          <p>TOPの上位3ブランドの一角として配置。ランキングと注目バナーの両方で見せる想定です。</p>
+          <p>公開確認できた公式ロゴを反映済み。今後は公式アフィリエイト側のバナー素材が取得できたら、この枠を差し替えます。</p>
           <div class="banner-actions">
             <a class="small-btn main" href="#">今すぐ見る</a>
             <a class="small-btn sub" href="#">関連記事へ</a>
@@ -965,12 +1013,17 @@
 
     <div class="feature-grid">
       <article class="feature-card">
+        <img
+          class="feature-image"
+          src="https://www.vjgroupaffiliation.com/wp-content/uploads/2021/12/VJ-JP-wordpress-600x500-1.png"
+          alt="Vera&John official preview"
+        >
         <h3>ベラジョン</h3>
-        <p>補助枠・特集枠でしっかり露出させるブランドとして配置。上位導線の次に見せる位置です。</p>
+        <p>公開確認できた公式アフィリエイト素材のプレビュー画像を反映した枠です。ロゴキット導線も確認できています。</p>
         <ul class="feature-list">
+          <li>公開プレビュー素材あり</li>
+          <li>ロゴキット導線あり</li>
           <li>補助ピックアップ枠向け</li>
-          <li>特集導線に入れやすい</li>
-          <li>中段以降でしっかり見せる</li>
         </ul>
         <div class="banner-actions" style="margin-top:14px;">
           <a class="small-btn main" href="#">詳細を見る</a>
@@ -978,12 +1031,17 @@
       </article>
 
       <article class="feature-card">
+        <img
+          class="feature-image"
+          src="https://www.vjgroupaffiliation.com/wp-content/uploads/2021/12/DSGN-2408-YU-VJA-600x500-1.png"
+          alt="Yuugado official preview"
+        >
         <h3>游雅堂</h3>
-        <p>5番手として補助表示に配置。特集や関連記事まわりで自然に露出を積む想定です。</p>
+        <p>公開確認できた公式アフィリエイト素材のプレビュー画像を反映した枠です。ロゴキット導線も確認できています。</p>
         <ul class="feature-list">
+          <li>公開プレビュー素材あり</li>
+          <li>ロゴキット導線あり</li>
           <li>補助導線向け</li>
-          <li>関連記事と相性が良い</li>
-          <li>中段以降で整理して見せる</li>
         </ul>
         <div class="banner-actions" style="margin-top:14px;">
           <a class="small-btn main" href="#">詳細を見る</a>
@@ -996,7 +1054,7 @@
     <div class="cta-box">
       <h2>次は実バナー画像の差し替えフェーズ</h2>
       <p>
-        今はブランド名だけ先に反映しています。
+        今はブランド名と一部取得できた素材を先に反映しています。
         次はこの配置をベースにして、スロット天国・コニベット・STAKE・ベラジョン・游雅堂の実素材へ順番に差し替えていけばOKです。
       </p>
       <div class="banner-actions">
