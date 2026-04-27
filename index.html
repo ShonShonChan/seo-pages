@@ -212,7 +212,8 @@
     }
 
     .hero-actions,
-    .cta-actions {
+    .cta-actions,
+    .card-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
@@ -254,7 +255,7 @@
     }
 
     .hero-card {
-      background: rgba(255, 255, 255, 0.86);
+      background: rgba(255, 255, 255, 0.88);
       border: 1px solid rgba(215, 25, 32, 0.14);
       border-radius: 26px;
       padding: 22px;
@@ -352,6 +353,57 @@
       font-weight: 900;
       font-size: 12px;
       margin-bottom: 10px;
+    }
+
+    .usage-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .usage-card {
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.15);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: 0 12px 34px rgba(120, 20, 20, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .usage-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--red), var(--orange), var(--gold));
+    }
+
+    .usage-number {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--red), var(--orange));
+      color: #fff;
+      font-weight: 900;
+      box-shadow: 0 8px 18px rgba(215, 25, 32, 0.22);
+      margin-bottom: 14px;
+    }
+
+    .usage-card h3 {
+      margin: 0 0 8px;
+      color: var(--red-dark);
+      font-size: 20px;
+      line-height: 1.35;
+    }
+
+    .usage-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
     }
 
     .brand-grid {
@@ -533,7 +585,8 @@
       line-height: 1.75;
     }
 
-    .check-list {
+    .check-list,
+    .caution-list {
       display: grid;
       gap: 8px;
       margin: 0;
@@ -543,7 +596,8 @@
       color: #444;
     }
 
-    .check-list li {
+    .check-list li,
+    .caution-list li {
       padding-left: 22px;
       position: relative;
     }
@@ -554,6 +608,23 @@
       left: 0;
       top: 0;
       color: var(--red);
+      font-weight: 900;
+    }
+
+    .caution-list li::before {
+      content: "!";
+      position: absolute;
+      left: 0;
+      top: 2px;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--gold);
+      color: #4a2b00;
+      font-size: 11px;
+      line-height: 1;
       font-weight: 900;
     }
 
@@ -577,13 +648,13 @@
       border-color: var(--red);
     }
 
-    .casino-list-cta {
+    .comparison-strip {
       max-width: var(--max);
       margin: 44px auto;
       padding: 0 20px;
     }
 
-    .casino-list-cta__inner {
+    .comparison-strip__inner {
       display: grid;
       grid-template-columns: 1.4fr 0.8fr;
       gap: 24px;
@@ -599,35 +670,35 @@
       overflow: hidden;
     }
 
-    .casino-list-cta__inner::before {
+    .comparison-strip__inner::before {
       content: "";
       position: absolute;
       left: 0;
       top: 0;
       width: 7px;
       height: 100%;
-      background: linear-gradient(180deg, #d71920, #ff7a1a, #f6b73c);
+      background: linear-gradient(180deg, var(--red), var(--orange), var(--gold));
     }
 
-    .casino-list-cta__content,
-    .casino-list-cta__action {
+    .comparison-strip__content,
+    .comparison-strip__action {
       position: relative;
       z-index: 1;
     }
 
-    .casino-list-cta__label {
+    .comparison-strip__label {
       display: inline-flex;
       margin-bottom: 10px;
       padding: 5px 11px;
       border-radius: 999px;
       background: #fff0f0;
-      color: #a80f17;
+      color: var(--red-dark);
       border: 1px solid rgba(215, 25, 32, 0.16);
       font-size: 12px;
       font-weight: 900;
     }
 
-    .casino-list-cta h2 {
+    .comparison-strip h2 {
       margin: 0 0 10px;
       color: #2b2b2b;
       font-size: clamp(24px, 3vw, 34px);
@@ -635,31 +706,31 @@
       letter-spacing: -0.03em;
     }
 
-    .casino-list-cta p {
+    .comparison-strip p {
       margin: 0;
       color: #555;
       line-height: 1.8;
     }
 
-    .casino-list-cta__points {
+    .comparison-strip__points {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       margin-top: 18px;
     }
 
-    .casino-list-cta__points span {
+    .comparison-strip__points span {
       display: inline-flex;
       padding: 6px 10px;
       border-radius: 999px;
       background: #ffffff;
       border: 1px solid rgba(215, 25, 32, 0.14);
-      color: #a80f17;
+      color: var(--red-dark);
       font-size: 12px;
       font-weight: 800;
     }
 
-    .casino-list-cta__action {
+    .comparison-strip__action {
       padding: 22px;
       border-radius: 22px;
       background: #ffffff;
@@ -667,7 +738,7 @@
       box-shadow: 0 10px 28px rgba(120, 20, 20, 0.08);
     }
 
-    .casino-list-cta__button {
+    .comparison-strip__button {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -675,7 +746,7 @@
       margin-bottom: 12px;
       padding: 14px 18px;
       border-radius: 999px;
-      background: linear-gradient(135deg, #d71920, #a80f17);
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
       color: #ffffff;
       font-weight: 900;
       text-decoration: none;
@@ -685,23 +756,29 @@
       line-height: 1.45;
     }
 
-    .casino-list-cta__button:hover {
+    .comparison-strip__button:hover {
       transform: translateY(-2px);
       box-shadow: 0 16px 34px rgba(215, 25, 32, 0.32);
     }
 
-    .casino-list-cta__action p {
+    .comparison-strip__action p {
       font-size: 13px;
       color: #666;
     }
 
-    .guide-grid {
+    .guide-grid,
+    .link-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 16px;
     }
 
-    .guide-card {
+    .link-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .guide-card,
+    .link-card {
       background: #fff;
       border: 1px solid rgba(215, 25, 32, 0.15);
       border-radius: var(--radius-md);
@@ -721,50 +798,55 @@
       margin-bottom: 12px;
     }
 
-    .guide-card h3 {
+    .guide-card h3,
+    .link-card h3 {
       margin: 0 0 8px;
       font-size: 18px;
       color: var(--red-dark);
       line-height: 1.35;
     }
 
-    .guide-card p {
+    .guide-card p,
+    .link-card p {
       margin: 0;
       color: var(--muted);
       font-size: 14px;
       line-height: 1.7;
     }
 
-    .link-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .link-card {
-      background: #fff;
-      border: 1px solid rgba(215, 25, 32, 0.15);
-      border-radius: var(--radius-md);
-      padding: 20px;
-      box-shadow: 0 10px 28px rgba(120, 20, 20, 0.07);
-    }
-
-    .link-card h3 {
-      margin: 0 0 8px;
-      color: var(--red-dark);
-      font-size: 18px;
-    }
-
     .link-card p {
-      margin: 0 0 12px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.7;
+      margin-bottom: 12px;
     }
 
     .link-card a {
       color: var(--red);
       font-weight: 900;
+    }
+
+    .revenge-box {
+      background:
+        radial-gradient(circle at top right, rgba(246, 183, 60, 0.2), transparent 34%),
+        linear-gradient(135deg, #fff, #fff4ed);
+      border: 1px solid rgba(215, 25, 32, 0.18);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .revenge-box h2 {
+      margin: 0 0 12px;
+      color: var(--red-dark);
+      font-size: clamp(22px, 3vw, 32px);
+      line-height: 1.3;
+    }
+
+    .revenge-box p {
+      margin: 0 0 12px;
+      color: #555;
     }
 
     .warning-box {
@@ -911,7 +993,9 @@
         justify-content: flex-start;
       }
 
-      .hero-grid {
+      .hero-grid,
+      .revenge-box,
+      .comparison-strip__inner {
         grid-template-columns: 1fr;
       }
 
@@ -919,14 +1003,10 @@
         padding: 36px 24px;
       }
 
+      .usage-grid,
       .ranking-grid,
       .link-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .casino-list-cta__inner {
-        grid-template-columns: 1fr;
-        padding: 24px 20px;
       }
 
       .section-head {
@@ -962,7 +1042,8 @@
       }
 
       .hero-actions,
-      .cta-actions {
+      .cta-actions,
+      .card-actions {
         flex-direction: column;
       }
 
@@ -971,6 +1052,7 @@
       }
 
       .brand-grid,
+      .usage-grid,
       .ranking-grid,
       .guide-grid,
       .link-grid {
@@ -983,24 +1065,27 @@
 
       .hero,
       .notice,
-      .casino-list-cta,
+      .comparison-strip,
       .cta {
         padding-left: 16px;
         padding-right: 16px;
       }
 
-      .casino-list-cta {
+      .comparison-strip {
         margin: 34px auto;
       }
 
-      .casino-list-cta__inner {
+      .comparison-strip__inner {
         border-radius: 22px;
+        padding: 24px 20px;
       }
 
-      .casino-list-cta__action {
+      .comparison-strip__action {
         padding: 18px;
       }
 
+      .revenge-box,
+      .warning-box,
       .cta-box {
         padding: 26px 20px;
         border-radius: 24px;
@@ -1070,6 +1155,47 @@
         <strong>注意：</strong>
         本サイトはオンラインカジノの条件や特徴を比較するための情報メディアです。
         利用を推奨・保証するものではありません。利用前には、必ず各サイトの公式規約、対象地域、年齢制限、本人確認、出金条件、関連法規を確認してください。
+      </div>
+    </section>
+
+    <section class="section" id="how-to-use">
+      <div class="section-head">
+        <div>
+          <div class="label">使い方</div>
+          <h2 class="section-title">このサイトは<span>3ステップで比較</span>できます</h2>
+          <p class="section-desc">
+            初めて見る人でも迷わないように、比較の流れをシンプルに整理しています。
+            まずは一覧で候補を見て、気になるサイトのレビューを読み、最後にボーナスや入出金条件を確認しましょう。
+          </p>
+        </div>
+      </div>
+
+      <div class="usage-grid">
+        <div class="usage-card">
+          <div class="usage-number">1</div>
+          <h3>一覧で候補を見る</h3>
+          <p>
+            まずはカジノ一覧で、掲載中・掲載候補のサイトをざっくり確認します。
+            知名度やボーナスだけでなく、日本語対応や出金条件も比較しましょう。
+          </p>
+        </div>
+
+        <div class="usage-card">
+          <div class="usage-number">2</div>
+          <h3>レビューで注意点を見る</h3>
+          <p>
+            気になるサイトがあれば、個別レビューで特徴、ボーナス条件、入出金、本人確認、対象地域などを確認します。
+          </p>
+        </div>
+
+        <div class="usage-card">
+          <div class="usage-number">3</div>
+          <h3>条件を確認して判断する</h3>
+          <p>
+            最後に公式規約、対象地域、年齢制限、出金条件を確認します。
+            不明点がある状態で急いで登録しないことが大切です。
+          </p>
+        </div>
       </div>
     </section>
 
@@ -1150,11 +1276,11 @@
     <section class="section" id="ranking">
       <div class="section-head">
         <div>
-          <div class="label">比較ランキング</div>
-          <h2 class="section-title">注目サイトを<span>条件別にチェック</span></h2>
+          <div class="label">公開済みレビュー</div>
+          <h2 class="section-title">公開済みの<span>個別レビュー3本</span></h2>
           <p class="section-desc">
-            ランキングは「必ず選ぶべき順」ではなく、比較の入口です。
-            各サイトのボーナス条件、出金ルール、日本語対応、注意点を確認してから判断しましょう。
+            現在はスロット天国、コニベット、STAKEの個別レビューを公開済みです。
+            それぞれ確認すべきポイントが異なるため、目的に合わせて読み分けましょう。
           </p>
         </div>
       </div>
@@ -1171,7 +1297,7 @@
             </div>
           </div>
           <p>
-            個別レビュー公開済み。ボーナス条件・出金条件・初心者向けの確認ポイントを、注意点込みで整理しています。
+            通常レビュー型。ボーナス条件・出金条件・初心者向けの確認ポイントを、注意点込みで整理しています。
           </p>
           <ul class="check-list">
             <li>ボーナス条件を確認</li>
@@ -1192,7 +1318,7 @@
             </div>
           </div>
           <p>
-            個別レビュー公開済み。キャンペーン条件、日本語対応、入出金、公式規約の確認ポイントを整理しています。
+            キャンペーン条件、日本語対応、入出金、公式規約の確認ポイントを整理しています。
           </p>
           <ul class="check-list">
             <li>キャンペーン条件を確認</li>
@@ -1213,7 +1339,7 @@
             </div>
           </div>
           <p>
-            個別レビュー公開済み。知名度だけで判断せず、対象地域、暗号資産入出金、本人確認、規約を確認しましょう。
+            知名度だけで判断せず、対象地域、暗号資産入出金、本人確認、規約を確認したい人向けです。
           </p>
           <ul class="check-list">
             <li>対象地域を確認</li>
@@ -1225,10 +1351,10 @@
       </div>
     </section>
 
-    <section class="casino-list-cta">
-      <div class="casino-list-cta__inner">
-        <div class="casino-list-cta__content">
-          <span class="casino-list-cta__label">掲載サイトをもっと比較</span>
+    <section class="comparison-strip">
+      <div class="comparison-strip__inner">
+        <div class="comparison-strip__content">
+          <span class="comparison-strip__label">掲載サイトをもっと比較</span>
           <h2>主要カジノサイトを一覧で確認する</h2>
           <p>
             スロット天国、コニベット、STAKE、ベラジョン、游雅堂など、
@@ -1236,7 +1362,7 @@
             金額だけで選ばず、条件や注意点まで確認してから自分に合うサイトを探しましょう。
           </p>
 
-          <div class="casino-list-cta__points">
+          <div class="comparison-strip__points">
             <span>ライセンス確認</span>
             <span>ボーナス条件</span>
             <span>出金条件</span>
@@ -1244,8 +1370,8 @@
           </div>
         </div>
 
-        <div class="casino-list-cta__action">
-          <a href="casino-list.html" class="casino-list-cta__button">
+        <div class="comparison-strip__action">
+          <a href="casino-list.html" class="comparison-strip__button">
             掲載カジノを一覧で比較する
           </a>
           <p>各サイトの公式規約・対象地域・本人確認条件もあわせて確認しましょう。</p>
@@ -1253,14 +1379,14 @@
       </div>
     </section>
 
-    <section class="section" id="how-to-choose">
+    <section class="section" id="beginner-steps">
       <div class="section-head">
         <div>
-          <div class="label">選び方ガイド</div>
-          <h2 class="section-title">失敗を減らすための<span>比較ポイント</span></h2>
+          <div class="label">初心者向け</div>
+          <h2 class="section-title">初めて比較する人が<span>見るべき順番</span></h2>
           <p class="section-desc">
-            「リベンジ」は、負けを取り返す意味ではありません。
-            前回見落とした条件を学びに変え、次はより冷静に比較するという意味で扱います。
+            オンラインカジノを初めて比較する場合は、いきなりボーナス金額を見るのではなく、
+            安全性・出金条件・利用規約の順に確認するのがおすすめです。
           </p>
         </div>
       </div>
@@ -1268,26 +1394,54 @@
       <div class="guide-grid">
         <div class="guide-card">
           <div class="guide-number">1</div>
-          <h3>安全性を確認</h3>
-          <p>ライセンス、運営会社、利用規約、責任あるギャンブル対応を確認します。</p>
+          <h3>初心者ガイド</h3>
+          <p>まずは基本用語や比較の流れを確認します。登録前に見るべき項目を整理できます。</p>
         </div>
 
         <div class="guide-card">
           <div class="guide-number">2</div>
-          <h3>条件を確認</h3>
-          <p>ボーナス金額だけでなく、賭け条件、有効期限、対象ゲーム、最大出金を確認します。</p>
+          <h3>カジノ一覧</h3>
+          <p>掲載中のサイトを一覧で見て、どのサイトを深掘りするかを決めます。</p>
         </div>
 
         <div class="guide-card">
           <div class="guide-number">3</div>
-          <h3>出金を確認</h3>
-          <p>入金しやすさだけでなく、出金方法、最低額、本人確認、反映時間を確認します。</p>
+          <h3>個別レビュー</h3>
+          <p>気になるサイトの特徴、条件、注意点を確認します。公開済みレビューから読むのがおすすめです。</p>
         </div>
 
         <div class="guide-card">
           <div class="guide-number">4</div>
-          <h3>自分に合うか確認</h3>
-          <p>日本語対応、サポート、予算、遊び方に合うかを確認して選びます。</p>
+          <h3>入出金ガイド</h3>
+          <p>入金よりも出金条件が重要です。本人確認や最低出金額も事前に確認しましょう。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="revenge-meaning">
+      <div class="revenge-box">
+        <div>
+          <div class="label">サイト名の意味</div>
+          <h2>「リベンジ」は、負けを取り返す意味ではありません。</h2>
+          <p>
+            本サイトで使う「リベンジ」は、損失回収や勝利保証を意味するものではありません。
+            前回見落とした条件や、よく分からないまま選んでしまった経験を学びに変え、
+            次はより冷静に比較するという意味で使っています。
+          </p>
+          <p>
+            そのため、本サイトでは登録を急がせる表現ではなく、公式規約・出金条件・本人確認・対象地域の確認を重視します。
+          </p>
+        </div>
+
+        <div>
+          <h2>避けたい選び方</h2>
+          <ul class="caution-list">
+            <li>ボーナス金額だけで選ぶ</li>
+            <li>出金条件を読まずに登録する</li>
+            <li>対象地域や年齢制限を確認しない</li>
+            <li>負けを取り返す目的で利用する</li>
+            <li>公式規約を確認せずに判断する</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -1413,9 +1567,9 @@
           比較して納得することが、後悔を減らす第一歩です。
         </p>
         <div class="cta-actions">
-          <a href="review-slottenkoku.html" class="btn btn-gold">スロット天国レビューを見る</a>
-          <a href="review-konibet.html" class="btn btn-outline">コニベットレビューを見る</a>
-          <a href="review-stake.html" class="btn btn-outline">STAKEレビューを見る</a>
+          <a href="casino-list.html" class="btn btn-gold">カジノ一覧で比較する</a>
+          <a href="review.html" class="btn btn-outline">レビュー一覧を見る</a>
+          <a href="payments.html" class="btn btn-outline">入出金を確認する</a>
         </div>
       </div>
     </section>
