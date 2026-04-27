@@ -363,11 +363,11 @@
     }
 
     .brand-asset{
-      aspect-ratio:16 / 9;
       width:100%;
-      object-fit:cover;
+      height:100%;
+      object-fit:contain;
       display:block;
-      background:#fff;
+      background:transparent;
     }
 
     .brand-logo-box{
@@ -379,22 +379,24 @@
     }
 
     .brand-logo-box img{
-      max-width:180px;
-      max-height:42px;
+      max-width:200px;
+      max-height:72px;
       width:auto;
       height:auto;
       display:block;
+      object-fit:contain;
     }
 
     .feature-image{
       width:100%;
       aspect-ratio:16 / 9;
-      object-fit:cover;
+      object-fit:contain;
       display:block;
       border-radius:18px;
       margin-bottom:16px;
       background:#fff;
       border:1px solid rgba(148,163,184,.18);
+      padding:12px;
     }
 
     .banner-grid{
@@ -418,9 +420,17 @@
     }
 
     .banner-thumb{
-      aspect-ratio: 16 / 9;
+      aspect-ratio:16 / 9;
       background:#dbeafe center/cover no-repeat;
       border-bottom:1px solid #e5e7eb;
+    }
+
+    .banner-logo-only{
+      background:#ffffff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
     }
 
     .banner-content{
@@ -838,17 +848,19 @@
     <div class="section-head">
       <div>
         <h2><span class="accent-text">注目バナー</span>エリア</h2>
-        <p>ここは優先順位の高いブランドを強く見せる場所です。あとで実バナー画像に差し替えできます。</p>
+        <p>ここは優先順位の高いブランドを強く見せる場所です。ロゴ取得済みのブランドは反映済みです。</p>
       </div>
     </div>
 
     <div class="banner-grid">
       <article class="banner-card">
-        <div class="banner-thumb" style="background-image:url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop');"></div>
+        <div class="banner-thumb banner-logo-only">
+          <img class="brand-asset" src="slottenkoku-logo.png" alt="スロット天国 ロゴ">
+        </div>
         <div class="banner-content">
           <div class="banner-tag">Priority 01</div>
           <h3>スロット天国</h3>
-          <p>最優先で見せるメイン枠です。最上位訴求のブランドとして運用する前提です。</p>
+          <p>最優先で見せるメイン枠です。取得済みロゴを反映し、最上位訴求のブランドとして配置しています。</p>
           <div class="banner-actions">
             <a class="small-btn main" href="#">詳細を見る</a>
             <a class="small-btn sub" href="#">比較へ</a>
@@ -857,11 +869,13 @@
       </article>
 
       <article class="banner-card">
-        <div class="banner-thumb" style="background-image:url('https://images.unsplash.com/photo-1518546305927-5a555bb7020d?q=80&w=1200&auto=format&fit=crop');"></div>
+        <div class="banner-thumb banner-logo-only">
+          <img class="brand-asset" src="konibet-logo.png" alt="コニベット ロゴ">
+        </div>
         <div class="banner-content">
           <div class="banner-tag">Priority 02</div>
           <h3>コニベット</h3>
-          <p>中央の強い視認枠です。TOPでかなり目立たせたいブランドとして配置しています。</p>
+          <p>中央の強い視認枠です。取得済みロゴを反映し、TOPでかなり目立たせる位置に置いています。</p>
           <div class="banner-actions">
             <a class="small-btn main" href="#">詳細を見る</a>
             <a class="small-btn sub" href="#">比較へ</a>
@@ -870,18 +884,13 @@
       </article>
 
       <article class="banner-card">
-        <div class="banner-thumb" style="background:#0f172a; display:flex; align-items:center; justify-content:center; padding:24px;">
-          <img
-            class="brand-asset"
-            src="https://stake.com/_app/immutable/assets/stake-full.tLL7usOz.svg"
-            alt="Stake logo"
-            style="object-fit:contain; background:transparent;"
-          >
+        <div class="banner-thumb banner-logo-only" style="background:#10263b;">
+          <img class="brand-asset" src="stake-logo.png" alt="Stake ロゴ">
         </div>
         <div class="banner-content">
           <div class="banner-tag">Priority 03</div>
           <h3>STAKE</h3>
-          <p>公開確認できた公式ロゴを先に反映した枠です。バナー素材は後で公式テンプレ差し替えに置き換える想定です。</p>
+          <p>取得済みロゴを反映済みです。上位3枠の3番手として、注目エリア内で十分視認される位置にしています。</p>
           <div class="banner-actions">
             <a class="small-btn main" href="#">今すぐ見る</a>
             <a class="small-btn sub" href="#">関連記事へ</a>
@@ -895,7 +904,7 @@
     <div class="section-head">
       <div>
         <h2>おすすめランキング</h2>
-        <p>優先順位どおりに並べた主力導線です。TOPで最も分かりやすく見せる枠です。</p>
+        <p>優先順位どおりに並べた主力導線です。ロゴ取得済みブランドはここにも反映しています。</p>
       </div>
     </div>
 
@@ -906,6 +915,9 @@
           <div>最優先</div>
         </div>
         <div class="rank-body">
+          <div class="brand-logo-box">
+            <img src="slottenkoku-logo.png" alt="スロット天国 ロゴ">
+          </div>
           <h3>スロット天国</h3>
           <div class="rank-badges">
             <span>最上位</span>
@@ -926,6 +938,9 @@
           <div>上位表示</div>
         </div>
         <div class="rank-body">
+          <div class="brand-logo-box">
+            <img src="konibet-logo.png" alt="コニベット ロゴ">
+          </div>
           <h3>コニベット</h3>
           <div class="rank-badges">
             <span>上位</span>
@@ -947,10 +962,7 @@
         </div>
         <div class="rank-body">
           <div class="brand-logo-box">
-            <img
-              src="https://stake.com/_app/immutable/assets/stake-full.tLL7usOz.svg"
-              alt="Stake logo"
-            >
+            <img src="stake-logo.png" alt="Stake ロゴ">
           </div>
           <h3>STAKE</h3>
           <div class="rank-badges">
@@ -958,7 +970,7 @@
             <span>主力</span>
             <span>TOP露出</span>
           </div>
-          <p>公開確認できた公式ロゴを反映済み。今後は公式アフィリエイト側のバナー素材が取得できたら、この枠を差し替えます。</p>
+          <p>取得済みロゴを反映済み。上位3ブランドの一角として、ランキングと注目バナーの両方で見せています。</p>
           <div class="banner-actions">
             <a class="small-btn main" href="#">今すぐ見る</a>
             <a class="small-btn sub" href="#">関連記事へ</a>
@@ -1016,14 +1028,14 @@
         <img
           class="feature-image"
           src="https://www.vjgroupaffiliation.com/wp-content/uploads/2021/12/VJ-JP-wordpress-600x500-1.png"
-          alt="Vera&John official preview"
+          alt="ベラジョン preview"
         >
         <h3>ベラジョン</h3>
-        <p>公開確認できた公式アフィリエイト素材のプレビュー画像を反映した枠です。ロゴキット導線も確認できています。</p>
+        <p>公開確認できた素材導線を反映した補助枠です。特集や補助ピックアップでしっかり露出させる位置です。</p>
         <ul class="feature-list">
-          <li>公開プレビュー素材あり</li>
-          <li>ロゴキット導線あり</li>
           <li>補助ピックアップ枠向け</li>
+          <li>特集導線に入れやすい</li>
+          <li>中段以降でしっかり見せる</li>
         </ul>
         <div class="banner-actions" style="margin-top:14px;">
           <a class="small-btn main" href="#">詳細を見る</a>
@@ -1033,15 +1045,15 @@
       <article class="feature-card">
         <img
           class="feature-image"
-          src="https://www.vjgroupaffiliation.com/wp-content/uploads/2021/12/DSGN-2408-YU-VJA-600x500-1.png"
-          alt="Yuugado official preview"
+          src="yuugado-logo.png"
+          alt="游雅堂 ロゴ"
         >
         <h3>游雅堂</h3>
-        <p>公開確認できた公式アフィリエイト素材のプレビュー画像を反映した枠です。ロゴキット導線も確認できています。</p>
+        <p>取得済みロゴを反映した補助枠です。特集や関連記事まわりで自然に露出を積む想定にしています。</p>
         <ul class="feature-list">
-          <li>公開プレビュー素材あり</li>
-          <li>ロゴキット導線あり</li>
           <li>補助導線向け</li>
+          <li>関連記事と相性が良い</li>
+          <li>中段以降で整理して見せる</li>
         </ul>
         <div class="banner-actions" style="margin-top:14px;">
           <a class="small-btn main" href="#">詳細を見る</a>
@@ -1054,8 +1066,8 @@
     <div class="cta-box">
       <h2>次は実バナー画像の差し替えフェーズ</h2>
       <p>
-        今はブランド名と一部取得できた素材を先に反映しています。
-        次はこの配置をベースにして、スロット天国・コニベット・STAKE・ベラジョン・游雅堂の実素材へ順番に差し替えていけばOKです。
+        今はロゴ取得済みブランドを先に反映しています。
+        次は各ブランドの横長バナー画像を入れていけば、TOPページの完成度がさらに上がります。
       </p>
       <div class="banner-actions">
         <a class="small-btn main" href="#pickup">注目バナーを見る</a>
@@ -1067,7 +1079,7 @@
   <footer class="footer">
     <div class="footer-inner">
       <div>© SEO Pages</div>
-      <div>優先順位反映版 TOPページ</div>
+      <div>ロゴ反映版 TOPページ</div>
     </div>
   </footer>
 </body>
