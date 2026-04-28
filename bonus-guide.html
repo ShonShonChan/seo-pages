@@ -47,6 +47,12 @@
       text-decoration: none;
     }
 
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
     .site-header {
       position: sticky;
       top: 0;
@@ -168,7 +174,7 @@
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-columns: 1.12fr 0.88fr;
+      grid-template-columns: 1.05fr 0.95fr;
       gap: 34px;
       align-items: center;
     }
@@ -216,34 +222,6 @@
       color: #444;
       font-size: 17px;
       max-width: 720px;
-    }
-
-    .hero-card,
-    .card,
-    .term-card,
-    .link-card,
-    .warning-box {
-      background: #fff;
-      border: 1px solid rgba(215, 25, 32, 0.15);
-      border-radius: var(--radius-md);
-      padding: 20px;
-      box-shadow: 0 10px 28px rgba(120, 20, 20, 0.07);
-    }
-
-    .hero-card {
-      border-radius: 26px;
-      background: rgba(255, 255, 255, 0.9);
-      box-shadow: 0 16px 34px rgba(120, 20, 20, 0.12);
-    }
-
-    .hero-card h2,
-    .card h3,
-    .term-card h3,
-    .link-card h3 {
-      margin: 0 0 8px;
-      color: var(--red-dark);
-      font-size: 18px;
-      line-height: 1.35;
     }
 
     .hero-actions,
@@ -303,6 +281,136 @@
       border: 1px solid rgba(215, 25, 32, 0.24);
     }
 
+    .mascot-hero {
+      position: relative;
+      min-height: 500px;
+      border-radius: 30px;
+      overflow: visible;
+      display: grid;
+      place-items: end center;
+      padding: 8px 16px 0;
+    }
+
+    .mascot-hero::before {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, rgba(246, 183, 60, 0.34), rgba(255, 122, 26, 0.16) 42%, transparent 70%);
+      top: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 0;
+      filter: blur(2px);
+    }
+
+    .mascot-hero::after {
+      content: "";
+      position: absolute;
+      left: 36px;
+      right: 36px;
+      bottom: 10px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(120, 20, 20, 0.13);
+      filter: blur(14px);
+      z-index: 1;
+    }
+
+    .mascot-hero-img {
+      position: relative;
+      z-index: 2;
+      width: min(96%, 390px);
+      max-height: 500px;
+      object-fit: contain;
+      object-position: bottom center;
+      filter: drop-shadow(0 18px 22px rgba(80, 20, 20, 0.22));
+    }
+
+    .mascot-hero-bubble {
+      position: absolute;
+      z-index: 3;
+      left: 8px;
+      right: 8px;
+      bottom: 14px;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(215, 25, 32, 0.18);
+      border-left: 6px solid var(--red);
+      border-radius: 20px;
+      padding: 15px 17px;
+      box-shadow: 0 12px 28px rgba(120, 20, 20, 0.12);
+    }
+
+    .mascot-hero-bubble strong {
+      display: block;
+      color: var(--red-dark);
+      font-size: 14px;
+      margin-bottom: 3px;
+    }
+
+    .mascot-hero-bubble p {
+      margin: 0;
+      color: #444;
+      font-size: 14px;
+      line-height: 1.65;
+      font-weight: 700;
+    }
+
+    .mascot-note {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .mascot-note-inner {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 18px;
+      align-items: center;
+      background:
+        radial-gradient(circle at left center, rgba(246, 183, 60, 0.25), transparent 26%),
+        linear-gradient(135deg, #fff, #fff5f0);
+      border: 1px solid rgba(215, 25, 32, 0.16);
+      border-left: 7px solid var(--red);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 18px 22px;
+    }
+
+    .mascot-note-img {
+      width: 138px;
+      max-height: 170px;
+      object-fit: contain;
+      filter: drop-shadow(0 12px 16px rgba(80, 20, 20, 0.18));
+      justify-self: center;
+    }
+
+    .mascot-note-body strong {
+      display: inline-flex;
+      color: var(--red-dark);
+      font-size: 14px;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .mascot-note-body h2 {
+      margin: 0 0 6px;
+      font-size: clamp(20px, 2.4vw, 28px);
+      line-height: 1.35;
+      color: #222;
+      letter-spacing: -0.02em;
+    }
+
+    .mascot-note-body p {
+      margin: 0;
+      color: #444;
+      font-size: 15px;
+      line-height: 1.8;
+      font-weight: 700;
+    }
+
     .notice {
       max-width: var(--max);
       margin: 0 auto 20px;
@@ -358,6 +466,34 @@
     .link-grid,
     .term-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .hero-card,
+    .card,
+    .term-card,
+    .link-card,
+    .warning-box {
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.15);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: 0 10px 28px rgba(120, 20, 20, 0.07);
+    }
+
+    .hero-card {
+      border-radius: 26px;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 16px 34px rgba(120, 20, 20, 0.12);
+    }
+
+    .hero-card h2,
+    .card h3,
+    .term-card h3,
+    .link-card h3 {
+      margin: 0 0 8px;
+      color: var(--red-dark);
+      font-size: 18px;
+      line-height: 1.35;
     }
 
     .term-card,
@@ -605,6 +741,16 @@
       color: rgba(255, 255, 255, 0.86);
     }
 
+    @media (max-width: 1060px) {
+      .mascot-hero {
+        min-height: 455px;
+      }
+
+      .mascot-hero-img {
+        width: min(96%, 340px);
+      }
+    }
+
     @media (max-width: 980px) {
       .header-inner,
       .hero-grid,
@@ -630,6 +776,20 @@
 
       .hero-box {
         padding: 34px 24px;
+      }
+
+      .mascot-hero {
+        max-width: 460px;
+        margin: 0 auto;
+        min-height: 465px;
+      }
+
+      .mascot-note-inner {
+        grid-template-columns: 120px 1fr;
+      }
+
+      .mascot-note-img {
+        width: 112px;
       }
 
       .footer-links {
@@ -668,7 +828,8 @@
       .section,
       .hero,
       .notice,
-      .cta {
+      .cta,
+      .mascot-note {
         padding-left: 16px;
         padding-right: 16px;
       }
@@ -677,6 +838,48 @@
       .warning-box {
         padding: 26px 20px;
         border-radius: 24px;
+      }
+
+      .mascot-hero {
+        min-height: 405px;
+        padding: 8px 8px 0;
+      }
+
+      .mascot-hero::before {
+        width: 280px;
+        height: 280px;
+        top: 30px;
+      }
+
+      .mascot-hero-img {
+        width: min(98%, 285px);
+        max-height: 380px;
+      }
+
+      .mascot-hero-bubble {
+        left: 0;
+        right: 0;
+        bottom: 8px;
+        padding: 13px 14px;
+      }
+
+      .mascot-hero-bubble p {
+        font-size: 13px;
+      }
+
+      .mascot-note-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 22px 18px;
+      }
+
+      .mascot-note-img {
+        width: 118px;
+        margin: 0 auto;
+      }
+
+      .mascot-note-body p {
+        font-size: 14px;
       }
     }
   </style>
@@ -728,15 +931,14 @@
             </div>
           </div>
 
-          <aside class="hero-card">
-            <h2>ボーナス確認の基本</h2>
-            <ul class="check-list">
-              <li>金額だけで判断しない</li>
-              <li>賭け条件を確認する</li>
-              <li>最大出金を確認する</li>
-              <li>対象ゲームを確認する</li>
-              <li>出金条件と本人確認を見る</li>
-            </ul>
+          <aside class="mascot-hero" aria-label="リベ女の案内">
+            <img src="ribejo-transparent.png" alt="リベ女" class="mascot-hero-img" />
+            <div class="mascot-hero-bubble">
+              <strong>リベ女のひとこと</strong>
+              <p>
+                ボーナスは金額だけでなく、賭け条件・最大出金・対象ゲームまで確認しましょう。
+              </p>
+            </div>
           </aside>
         </div>
       </div>
@@ -747,6 +949,20 @@
         <strong>注意：</strong>
         本ページはボーナス条件の読み方を整理するための情報ページです。
         ボーナス利用を推奨・保証するものではありません。キャンペーン内容や規約は変更される可能性があるため、登録前には必ず公式キャンペーンページと利用規約を確認してください。
+      </div>
+    </section>
+
+    <section class="mascot-note" aria-label="リベ女のボーナス確認案内">
+      <div class="mascot-note-inner">
+        <img src="ribejo-transparent.png" alt="リベ女" class="mascot-note-img" />
+        <div class="mascot-note-body">
+          <strong>リベ女の条件チェック</strong>
+          <h2>ボーナスは「もらえる金額」より「出金できる条件」が大切です。</h2>
+          <p>
+            賭け条件、有効期限、対象ゲーム、最大出金、禁止ベットを確認してから判断しましょう。
+            入金前に出金条件と本人確認の有無も見ておくと安心です。
+          </p>
+        </div>
       </div>
     </section>
 
@@ -862,6 +1078,20 @@
             </tr>
           </tbody>
         </table>
+      </div>
+    </section>
+
+    <section class="mascot-note" aria-label="リベ女の注意ポイント">
+      <div class="mascot-note-inner">
+        <img src="ribejo-transparent.png" alt="リベ女" class="mascot-note-img" />
+        <div class="mascot-note-body">
+          <strong>リベ女の注意ポイント</strong>
+          <h2>「高額ボーナス」でも、条件が重いと使いにくい場合があります。</h2>
+          <p>
+            最大出金・禁止ベット・対象ゲーム・本人確認を見落とすと、思ったように出金できない可能性があります。
+            条件が分かりにくい場合は、利用を急がないことも大切です。
+          </p>
+        </div>
       </div>
     </section>
 
@@ -1095,6 +1325,7 @@
         <a href="bonus-guide.html">見方ガイド</a>
         <a href="guide.html">初心者ガイド</a>
         <a href="payments.html">入出金</a>
+        <a href="site-checklist.html">サイトチェックリスト</a>
       </div>
     </div>
   </footer>
