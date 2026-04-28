@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>オンラインカジノ 入出金ガイド｜出金条件・本人確認・暗号資産の注意点</title>
-  <meta name="description" content="オンラインカジノの入出金で確認したい最低出金額、本人確認、反映時間、手数料、ボーナス利用時の出金制限、暗号資産ネットワークの注意点を初心者向けに整理。STAKE、bitcasino、BC.Game、游雅堂、Bons Casino、Casino Secretなどのレビュー導線も掲載。" />
+  <title>オンラインカジノ入出金ガイド｜出金条件・本人確認・暗号資産の注意点</title>
+  <meta name="description" content="オンラインカジノの入金・出金を見るときに重要な最低出金額、本人確認、反映時間、手数料、暗号資産、送金ネットワーク、出金制限を初心者向けに整理。レビュー10本への導線も掲載。" />
 
   <style>
     :root {
@@ -45,6 +45,12 @@
     a {
       color: inherit;
       text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
     }
 
     .site-header {
@@ -168,7 +174,7 @@
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-columns: 1.12fr 0.88fr;
+      grid-template-columns: 1.05fr 0.95fr;
       gap: 34px;
       align-items: center;
     }
@@ -216,32 +222,6 @@
       color: #444;
       font-size: 17px;
       max-width: 720px;
-    }
-
-    .hero-card,
-    .card,
-    .link-card,
-    .warning-box {
-      background: #fff;
-      border: 1px solid rgba(215, 25, 32, 0.15);
-      border-radius: var(--radius-md);
-      padding: 20px;
-      box-shadow: 0 10px 28px rgba(120, 20, 20, 0.07);
-    }
-
-    .hero-card {
-      border-radius: 26px;
-      background: rgba(255, 255, 255, 0.9);
-      box-shadow: 0 16px 34px rgba(120, 20, 20, 0.12);
-    }
-
-    .hero-card h2,
-    .card h3,
-    .link-card h3 {
-      margin: 0 0 8px;
-      color: var(--red-dark);
-      font-size: 18px;
-      line-height: 1.35;
     }
 
     .hero-actions,
@@ -301,6 +281,136 @@
       border: 1px solid rgba(215, 25, 32, 0.24);
     }
 
+    .mascot-hero {
+      position: relative;
+      min-height: 500px;
+      border-radius: 30px;
+      overflow: visible;
+      display: grid;
+      place-items: end center;
+      padding: 8px 16px 0;
+    }
+
+    .mascot-hero::before {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, rgba(246, 183, 60, 0.34), rgba(255, 122, 26, 0.16) 42%, transparent 70%);
+      top: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 0;
+      filter: blur(2px);
+    }
+
+    .mascot-hero::after {
+      content: "";
+      position: absolute;
+      left: 36px;
+      right: 36px;
+      bottom: 10px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(120, 20, 20, 0.13);
+      filter: blur(14px);
+      z-index: 1;
+    }
+
+    .mascot-hero-img {
+      position: relative;
+      z-index: 2;
+      width: min(96%, 390px);
+      max-height: 500px;
+      object-fit: contain;
+      object-position: bottom center;
+      filter: drop-shadow(0 18px 22px rgba(80, 20, 20, 0.22));
+    }
+
+    .mascot-hero-bubble {
+      position: absolute;
+      z-index: 3;
+      left: 8px;
+      right: 8px;
+      bottom: 14px;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(215, 25, 32, 0.18);
+      border-left: 6px solid var(--red);
+      border-radius: 20px;
+      padding: 15px 17px;
+      box-shadow: 0 12px 28px rgba(120, 20, 20, 0.12);
+    }
+
+    .mascot-hero-bubble strong {
+      display: block;
+      color: var(--red-dark);
+      font-size: 14px;
+      margin-bottom: 3px;
+    }
+
+    .mascot-hero-bubble p {
+      margin: 0;
+      color: #444;
+      font-size: 14px;
+      line-height: 1.65;
+      font-weight: 700;
+    }
+
+    .mascot-note {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .mascot-note-inner {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 18px;
+      align-items: center;
+      background:
+        radial-gradient(circle at left center, rgba(246, 183, 60, 0.25), transparent 26%),
+        linear-gradient(135deg, #fff, #fff5f0);
+      border: 1px solid rgba(215, 25, 32, 0.16);
+      border-left: 7px solid var(--red);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 18px 22px;
+    }
+
+    .mascot-note-img {
+      width: 138px;
+      max-height: 170px;
+      object-fit: contain;
+      filter: drop-shadow(0 12px 16px rgba(80, 20, 20, 0.18));
+      justify-self: center;
+    }
+
+    .mascot-note-body strong {
+      display: inline-flex;
+      color: var(--red-dark);
+      font-size: 14px;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .mascot-note-body h2 {
+      margin: 0 0 6px;
+      font-size: clamp(20px, 2.4vw, 28px);
+      line-height: 1.35;
+      color: #222;
+      letter-spacing: -0.02em;
+    }
+
+    .mascot-note-body p {
+      margin: 0;
+      color: #444;
+      font-size: 15px;
+      line-height: 1.8;
+      font-weight: 700;
+    }
+
     .notice {
       max-width: var(--max);
       margin: 0 auto 20px;
@@ -340,25 +450,52 @@
       max-width: 780px;
     }
 
+    .grid-2,
     .grid-3,
-    .link-grid {
+    .link-grid,
+    .step-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
     }
 
-    .grid-4 {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .card {
+    .grid-3,
+    .link-grid,
+    .step-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card,
+    .step-card,
+    .link-card,
+    .warning-box {
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.15);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: 0 10px 28px rgba(120, 20, 20, 0.07);
+    }
+
+    .card h3,
+    .step-card h3,
+    .link-card h3 {
+      margin: 0 0 8px;
+      color: var(--red-dark);
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .step-card,
+    .card.featured {
       border-radius: var(--radius-lg);
       position: relative;
       overflow: hidden;
     }
 
+    .step-card::before,
     .card.featured::before {
       content: "";
       position: absolute;
@@ -381,6 +518,7 @@
     }
 
     .card p,
+    .step-card p,
     .link-card p {
       margin: 0;
       color: var(--muted);
@@ -596,14 +734,19 @@
     }
 
     @media (max-width: 1060px) {
-      .grid-4 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .mascot-hero {
+        min-height: 455px;
+      }
+
+      .mascot-hero-img {
+        width: min(96%, 340px);
       }
     }
 
     @media (max-width: 980px) {
       .header-inner,
       .hero-grid,
+      .grid-2,
       .footer-inner {
         grid-template-columns: 1fr;
       }
@@ -618,12 +761,27 @@
       }
 
       .grid-3,
-      .link-grid {
+      .link-grid,
+      .step-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .hero-box {
         padding: 34px 24px;
+      }
+
+      .mascot-hero {
+        max-width: 460px;
+        margin: 0 auto;
+        min-height: 465px;
+      }
+
+      .mascot-note-inner {
+        grid-template-columns: 120px 1fr;
+      }
+
+      .mascot-note-img {
+        width: 112px;
       }
 
       .footer-links {
@@ -654,15 +812,16 @@
       }
 
       .grid-3,
-      .grid-4,
-      .link-grid {
+      .link-grid,
+      .step-grid {
         grid-template-columns: 1fr;
       }
 
       .section,
       .hero,
       .notice,
-      .cta {
+      .cta,
+      .mascot-note {
         padding-left: 16px;
         padding-right: 16px;
       }
@@ -671,6 +830,48 @@
       .warning-box {
         padding: 26px 20px;
         border-radius: 24px;
+      }
+
+      .mascot-hero {
+        min-height: 405px;
+        padding: 8px 8px 0;
+      }
+
+      .mascot-hero::before {
+        width: 280px;
+        height: 280px;
+        top: 30px;
+      }
+
+      .mascot-hero-img {
+        width: min(98%, 285px);
+        max-height: 380px;
+      }
+
+      .mascot-hero-bubble {
+        left: 0;
+        right: 0;
+        bottom: 8px;
+        padding: 13px 14px;
+      }
+
+      .mascot-hero-bubble p {
+        font-size: 13px;
+      }
+
+      .mascot-note-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 22px 18px;
+      }
+
+      .mascot-note-img {
+        width: 118px;
+        margin: 0 auto;
+      }
+
+      .mascot-note-body p {
+        font-size: 14px;
       }
     }
   </style>
@@ -687,12 +888,11 @@
       <nav class="nav" aria-label="主要ナビゲーション">
         <a href="index.html">TOP</a>
         <a href="casino-list.html">カジノ一覧</a>
-        <a href="bonus.html">ボーナス比較</a>
         <a href="review.html">レビュー</a>
+        <a href="bonus.html">ボーナス比較</a>
         <a href="bonus-guide.html">見方ガイド</a>
         <a href="guide.html">初心者ガイド</a>
-        <a href="payments.html">入出金</a>
-        <a href="#payment-review-links" class="nav-cta">入出金レビュー</a>
+        <a href="#payment-check" class="nav-cta">確認ポイント</a>
       </nav>
     </div>
   </header>
@@ -706,32 +906,31 @@
       <div class="hero-box">
         <div class="hero-grid">
           <div>
-            <div class="eyebrow">入金前に、出金条件を見る</div>
+            <div class="eyebrow">初心者向け：入金前に出金条件を確認</div>
             <h1>
-              オンラインカジノ<br />
-              <span class="hero-highlight">入出金ガイド</span>
+              入出金条件を<br />
+              <span class="hero-highlight">先に確認</span>
             </h1>
             <p class="hero-lead">
-              オンラインカジノでは、入金できることと、スムーズに出金できることは別です。
-              最低出金額、本人確認、反映時間、手数料、暗号資産ネットワーク、ボーナス利用時の出金制限を事前に確認しましょう。
+              オンラインカジノでは、入金できることとスムーズに出金できることは別です。
+              最低出金額、本人確認、反映時間、手数料、暗号資産のネットワーク、ボーナス利用時の制限を事前に確認しましょう。
             </p>
 
             <div class="hero-actions">
-              <a href="#payment-points" class="btn btn-primary">確認ポイントを見る</a>
-              <a href="#crypto" class="btn btn-gold">暗号資産の注意点</a>
-              <a href="review.html" class="btn btn-outline">レビュー一覧へ</a>
+              <a href="#payment-check" class="btn btn-primary">確認ポイントを見る</a>
+              <a href="review.html" class="btn btn-gold">レビュー一覧へ</a>
+              <a href="casino-list.html" class="btn btn-outline">カジノ一覧へ</a>
             </div>
           </div>
 
-          <aside class="hero-card">
-            <h2>入出金の基本</h2>
-            <ul class="check-list">
-              <li>最低出金額を確認する</li>
-              <li>本人確認を確認する</li>
-              <li>反映時間を確認する</li>
-              <li>手数料を確認する</li>
-              <li>暗号資産はネットワークを確認する</li>
-            </ul>
+          <aside class="mascot-hero" aria-label="リベ女の案内">
+            <img src="ribejo-transparent.png" alt="リベ女" class="mascot-hero-img" />
+            <div class="mascot-hero-bubble">
+              <strong>リベ女のひとこと</strong>
+              <p>
+                入金前に、出金条件と本人確認を確認しましょう。暗号資産は通貨とネットワークの確認も大切です。
+              </p>
+            </div>
           </aside>
         </div>
       </div>
@@ -740,144 +939,179 @@
     <section class="notice">
       <div class="notice-box">
         <strong>注意：</strong>
-        本ページは入出金条件の見方を整理するための情報ページです。
-        決済方法や出金条件は変更される可能性があります。登録・入金前には、必ず各サイトの公式入出金ページ、利用規約、本人確認条件を確認してください。
+        本ページは入出金条件の見方を整理する情報ページです。
+        各サイトの入出金方法、手数料、反映時間、本人確認、対象地域、規約は変更される可能性があります。
+        利用前には必ず公式サイトの最新情報を確認してください。
       </div>
     </section>
 
-    <section class="section" id="payment-points">
+    <section class="mascot-note" aria-label="リベ女の入出金チェック案内">
+      <div class="mascot-note-inner">
+        <img src="ribejo-transparent.png" alt="リベ女" class="mascot-note-img" />
+        <div class="mascot-note-body">
+          <strong>リベ女の入出金チェック</strong>
+          <h2>入金前に「出金できる条件」まで確認しておきましょう。</h2>
+          <p>
+            最低出金額、本人確認、反映時間、手数料、ボーナス利用時の制限は必ず確認したい項目です。
+            暗号資産を使う場合は、送金ネットワークの間違いにも注意しましょう。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="payment-check">
       <div class="section-head">
         <div class="label">確認ポイント</div>
-        <h2 class="section-title">入出金は<span>この6項目を確認</span></h2>
+        <h2 class="section-title">入出金は<span>この順番で確認</span></h2>
         <p class="section-desc">
-          出金できる条件を確認してから入金することで、後から困るリスクを減らせます。
+          入出金ページでは、使える決済方法だけでなく、出金時の条件まで確認することが重要です。
         </p>
       </div>
 
-      <div class="grid-3">
-        <div class="card featured">
+      <div class="step-grid">
+        <div class="step-card">
           <div class="number">1</div>
-          <h3>最低出金額</h3>
-          <p>いくらから出金できるかを確認します。少額利用では特に重要です。</p>
+          <h3>最低入金額</h3>
+          <p>入金方法ごとに最低入金額が異なる場合があります。キャンペーン利用時は対象入金額も確認しましょう。</p>
         </div>
 
-        <div class="card featured">
+        <div class="step-card">
           <div class="number">2</div>
-          <h3>本人確認</h3>
-          <p>身分証、住所確認、決済方法確認などが必要になる場合があります。</p>
+          <h3>最低出金額</h3>
+          <p>出金できる最低額を確認します。少額では出金できない場合があります。</p>
         </div>
 
-        <div class="card featured">
+        <div class="step-card">
           <div class="number">3</div>
-          <h3>反映時間</h3>
-          <p>出金申請から着金までの目安を確認します。審査で遅れることもあります。</p>
+          <h3>本人確認</h3>
+          <p>出金前に身分証、住所確認、決済方法の確認が必要になる場合があります。</p>
         </div>
 
-        <div class="card featured">
+        <div class="step-card">
           <div class="number">4</div>
-          <h3>手数料</h3>
-          <p>サイト側や決済サービス側の手数料が発生する場合があります。</p>
+          <h3>反映時間</h3>
+          <p>入金は即時でも、出金は審査や処理時間がかかる場合があります。</p>
         </div>
 
-        <div class="card featured">
+        <div class="step-card">
           <div class="number">5</div>
-          <h3>出金方法</h3>
-          <p>入金方法と同じ方法で出金できるとは限りません。</p>
+          <h3>手数料</h3>
+          <p>サイト側の手数料だけでなく、銀行・決済サービス・暗号資産ネットワーク手数料も確認します。</p>
         </div>
 
-        <div class="card featured">
+        <div class="step-card">
           <div class="number">6</div>
           <h3>ボーナス制限</h3>
-          <p>ボーナス利用時は賭け条件や最大出金の制限が関係する場合があります。</p>
+          <p>ボーナス利用中は、賭け条件未達成だと出金できない場合があります。</p>
         </div>
-      </div>
-    </section>
-
-    <section class="section" id="payment-table">
-      <div class="section-head">
-        <div class="label">一覧表</div>
-        <h2 class="section-title">入出金確認項目を<span>一覧で整理</span></h2>
-      </div>
-
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>確認項目</th>
-              <th>見るべき内容</th>
-              <th>注意点</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>最低出金額</strong></td>
-              <td>いくらから出金できるか</td>
-              <td>少額利用の場合、最低額に届かない可能性があります。</td>
-            </tr>
-            <tr>
-              <td><strong>本人確認</strong></td>
-              <td>必要書類と確認タイミング</td>
-              <td>出金前にKYCが完了していないと処理が止まる場合があります。</td>
-            </tr>
-            <tr>
-              <td><strong>反映時間</strong></td>
-              <td>出金申請から着金までの目安</td>
-              <td>審査や決済方法によって遅れる場合があります。</td>
-            </tr>
-            <tr>
-              <td><strong>手数料</strong></td>
-              <td>出金手数料、決済手数料</td>
-              <td>出金額から差し引かれる場合があります。</td>
-            </tr>
-            <tr>
-              <td><strong>暗号資産</strong></td>
-              <td>対応通貨、ネットワーク、送金先</td>
-              <td>ネットワーク違いやアドレス間違いに注意が必要です。</td>
-            </tr>
-            <tr>
-              <td><strong>ボーナス利用時</strong></td>
-              <td>賭け条件、最大出金、対象ゲーム</td>
-              <td>条件未達成だと出金制限がかかる場合があります。</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </section>
 
     <section class="section" id="crypto">
       <div class="section-head">
         <div class="label">暗号資産</div>
-        <h2 class="section-title">暗号資産入出金は<span>ネットワーク確認が重要</span></h2>
+        <h2 class="section-title">暗号資産は<span>ネットワーク確認が重要</span></h2>
         <p class="section-desc">
-          暗号資産は便利に見えますが、送金ミスやネットワーク違いが起きると取り戻せない可能性があります。
+          暗号資産を使う場合、通貨名だけでなく、送金ネットワークとアドレスを必ず確認しましょう。
         </p>
       </div>
 
-      <div class="grid-3">
+      <div class="grid-2">
         <div class="card">
-          <h3>対応通貨</h3>
-          <p>BTC、ETH、USDTなど、入金・出金で使える通貨を確認します。</p>
+          <h3>確認したいこと</h3>
+          <ul class="check-list">
+            <li>対応している通貨</li>
+            <li>対応ネットワーク</li>
+            <li>送金先アドレス</li>
+            <li>最低入金額・最低出金額</li>
+            <li>ネットワーク手数料</li>
+            <li>価格変動リスク</li>
+          </ul>
         </div>
 
         <div class="card">
-          <h3>対応ネットワーク</h3>
-          <p>同じ通貨でもネットワークが異なる場合があります。送金前に必ず確認しましょう。</p>
-        </div>
-
-        <div class="card">
-          <h3>送金先アドレス</h3>
-          <p>一文字でも間違えると資金を失う可能性があります。コピー後の確認が重要です。</p>
+          <h3>注意したいこと</h3>
+          <ul class="caution-list">
+            <li>ネットワーク違いで送金しない</li>
+            <li>アドレスを手入力しない</li>
+            <li>テスト送金なしで大きな金額を送らない</li>
+            <li>送金履歴やTXIDを控える</li>
+            <li>価格変動を理解する</li>
+            <li>公式画面の案内を必ず確認する</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section class="section" id="payment-review-links">
+    <section class="mascot-note" aria-label="リベ女の暗号資産注意">
+      <div class="mascot-note-inner">
+        <img src="ribejo-transparent.png" alt="リベ女" class="mascot-note-img" />
+        <div class="mascot-note-body">
+          <strong>リベ女の暗号資産メモ</strong>
+          <h2>暗号資産は「通貨」と「ネットワーク」の両方を確認。</h2>
+          <p>
+            同じ通貨名でもネットワークが違うと、送金トラブルにつながる可能性があります。
+            送金前に公式画面の案内と送金先アドレスを必ず確認しましょう。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="payment-table">
       <div class="section-head">
-        <div class="label">入出金レビュー</div>
-        <h2 class="section-title">入出金条件は<span>個別レビューでも確認</span></h2>
+        <div class="label">比較表</div>
+        <h2 class="section-title">入出金で<span>見落としやすい項目</span></h2>
         <p class="section-desc">
-          入出金は、最低出金額、出金方法、本人確認、反映時間、手数料、暗号資産ネットワークの確認が重要です。
-          特に暗号資産系サイトは、送金ミスやネットワーク違いに注意しましょう。
+          決済方法ごとに確認すべきポイントが異なります。
+        </p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>項目</th>
+              <th>確認内容</th>
+              <th>注意点</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>銀行振込</strong></td>
+              <td>反映時間、名義、最低入出金額、手数料</td>
+              <td>本人名義以外の利用が禁止される場合があります。</td>
+            </tr>
+            <tr>
+              <td><strong>クレジットカード</strong></td>
+              <td>入金対応、出金可否、本人確認</td>
+              <td>入金できても同じ方法で出金できない場合があります。</td>
+            </tr>
+            <tr>
+              <td><strong>電子ウォレット</strong></td>
+              <td>対応サービス、手数料、反映時間</td>
+              <td>対応状況はサイトごとに異なるため、公式情報を確認します。</td>
+            </tr>
+            <tr>
+              <td><strong>暗号資産</strong></td>
+              <td>通貨、ネットワーク、アドレス、手数料</td>
+              <td>ネットワーク違い・アドレス間違いに注意が必要です。</td>
+            </tr>
+            <tr>
+              <td><strong>ボーナス利用時</strong></td>
+              <td>賭け条件、最大出金、出金制限</td>
+              <td>条件未達成だと出金できない場合があります。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="review-links">
+      <div class="section-head">
+        <div class="label">レビューで確認</div>
+        <h2 class="section-title">入出金条件は<span>個別レビューも確認</span></h2>
+        <p class="section-desc">
+          各サイトごとの出金条件、本人確認、暗号資産対応は個別レビューでも確認できます。
         </p>
       </div>
 
@@ -890,7 +1124,7 @@
 
         <div class="link-card">
           <h3>bitcasinoレビュー</h3>
-          <p>対応通貨、ネットワーク、暗号資産入出金、本人確認を確認できます。</p>
+          <p>暗号資産、対応通貨、ネットワーク、対象地域、本人確認を確認できます。</p>
           <a href="review-bitcasino.html">レビューを見る →</a>
         </div>
 
@@ -901,35 +1135,28 @@
         </div>
 
         <div class="link-card">
+          <h3>スロット天国レビュー</h3>
+          <p>ボーナス条件、入出金、本人確認、日本語対応をバランスよく確認できます。</p>
+          <a href="review-slottenkoku.html">レビューを見る →</a>
+        </div>
+
+        <div class="link-card">
           <h3>游雅堂レビュー</h3>
-          <p>日本語対応、入出金条件、サポート体制を確認できます。</p>
+          <p>日本語対応、入出金条件、サポート体制、ボーナス条件を確認できます。</p>
           <a href="review-yuugado.html">レビューを見る →</a>
         </div>
 
         <div class="link-card">
-          <h3>Bons Casinoレビュー</h3>
-          <p>運営情報、ライセンス、出金条件、本人確認を確認できます。</p>
-          <a href="review-bons-casino.html">レビューを見る →</a>
+          <h3>レビュー一覧</h3>
+          <p>公開済みレビュー10本をまとめて確認できます。</p>
+          <a href="review.html">レビュー一覧を見る →</a>
         </div>
-
-        <div class="link-card">
-          <h3>Casino Secretレビュー</h3>
-          <p>条件表記、出金条件、本人確認、サポート体制を確認できます。</p>
-          <a href="review-casino-secret.html">レビューを見る →</a>
-        </div>
-      </div>
-
-      <div class="notice-box" style="margin-top: 18px;">
-        <strong>入出金確認の注意：</strong>
-        入金できることと、スムーズに出金できることは別です。
-        最低出金額、出金方法、本人確認、反映時間、手数料、ボーナス利用時の出金制限を必ず確認してください。
-        暗号資産を使う場合は、通貨・ネットワーク・送金先アドレスを慎重に確認しましょう。
       </div>
 
       <div class="card-actions">
         <a href="review.html" class="mini-btn main">レビュー一覧を見る</a>
         <a href="casino-list.html" class="mini-btn">カジノ一覧を見る</a>
-        <a href="bonus-guide.html" class="mini-btn">ボーナス条件も確認する</a>
+        <a href="bonus.html" class="mini-btn">ボーナス比較を見る</a>
       </div>
     </section>
 
@@ -939,20 +1166,74 @@
         <h2 class="section-title">入出金で<span>避けたい失敗</span></h2>
       </div>
 
-      <div class="grid-3">
+      <div class="grid-2">
         <div class="card">
-          <h3>入金前に出金条件を見ない</h3>
-          <p>最低出金額や本人確認を知らないまま入金すると、後から困る可能性があります。</p>
+          <h3>避けたい見方</h3>
+          <ul class="caution-list">
+            <li>入金方法だけ見て出金条件を見ない</li>
+            <li>本人確認を後回しにする</li>
+            <li>最低出金額を確認しない</li>
+            <li>暗号資産のネットワークを見落とす</li>
+            <li>ボーナス利用中の出金制限を見ない</li>
+            <li>公式規約を確認しない</li>
+          </ul>
         </div>
 
         <div class="card">
-          <h3>本人確認を軽視する</h3>
-          <p>出金時に本人確認が必要になる場合があります。登録情報と書類情報の一致も重要です。</p>
+          <h3>安全寄りの見方</h3>
+          <ul class="check-list">
+            <li>入金前に出金条件を見る</li>
+            <li>本人確認の必要性を確認する</li>
+            <li>最低出金額と反映時間を確認する</li>
+            <li>暗号資産は通貨とネットワークを確認する</li>
+            <li>ボーナス条件と出金制限を確認する</li>
+            <li>不安なら利用を急がない</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="related">
+      <div class="section-head">
+        <div class="label">関連ページ</div>
+        <h2 class="section-title">入出金ガイドとあわせて<span>確認したいページ</span></h2>
+      </div>
+
+      <div class="link-grid">
+        <div class="link-card">
+          <h3>レビュー一覧</h3>
+          <p>公開済みレビュー10本をまとめて確認できます。</p>
+          <a href="review.html">レビュー一覧を見る →</a>
         </div>
 
-        <div class="card">
-          <h3>暗号資産ネットワークを間違える</h3>
-          <p>誤ったネットワークで送金すると、資金を失う可能性があります。</p>
+        <div class="link-card">
+          <h3>カジノ一覧</h3>
+          <p>掲載サイトを一覧で比較できます。</p>
+          <a href="casino-list.html">カジノ一覧を見る →</a>
+        </div>
+
+        <div class="link-card">
+          <h3>ボーナス比較</h3>
+          <p>賭け条件、有効期限、最大出金などを確認できます。</p>
+          <a href="bonus.html">ボーナス比較を見る →</a>
+        </div>
+
+        <div class="link-card">
+          <h3>ボーナスの見方ガイド</h3>
+          <p>ボーナス条件の読み方を確認できます。</p>
+          <a href="bonus-guide.html">見方ガイドを見る →</a>
+        </div>
+
+        <div class="link-card">
+          <h3>初心者ガイド</h3>
+          <p>登録前に見る順番を確認できます。</p>
+          <a href="guide.html">初心者ガイドを見る →</a>
+        </div>
+
+        <div class="link-card">
+          <h3>TOPページ</h3>
+          <p>サイト全体の主要導線を確認できます。</p>
+          <a href="index.html">TOPへ戻る →</a>
         </div>
       </div>
     </section>
@@ -961,15 +1242,15 @@
       <div class="warning-box">
         <h2>責任ある利用とリスク確認について</h2>
         <p>
-          入出金条件を理解せずに利用すると、出金できない・時間がかかる・本人確認で止まるといったトラブルにつながる可能性があります。
-          本サイトでは、損失回収や勝利保証を目的とした表現は行わず、条件確認とリスク理解を前提に情報を整理しています。
+          入出金条件を理解しないまま利用すると、思ったように出金できない、本人確認で止まる、ボーナス条件で制限されるなどの問題が起きる場合があります。
+          本サイトでは、利用を急がせるのではなく、条件確認とリスク理解を前提に情報を整理しています。
         </p>
         <ul>
           <li>入金前に出金条件を確認する</li>
-          <li>本人確認の必要書類を確認する</li>
+          <li>本人確認の必要性を確認する</li>
+          <li>ボーナス利用時の出金制限を確認する</li>
           <li>暗号資産は通貨・ネットワーク・アドレスを確認する</li>
-          <li>生活費や借入金を使わない</li>
-          <li>負けを取り返そうとする利用を避ける</li>
+          <li>不安がある場合は利用を中止し、公式サポートや相談先を確認する</li>
         </ul>
       </div>
     </section>
@@ -977,48 +1258,48 @@
     <section class="section" id="faq">
       <div class="section-head">
         <div class="label">FAQ</div>
-        <h2 class="section-title">入出金の<span>よくある質問</span></h2>
+        <h2 class="section-title">入出金ガイドの<span>よくある質問</span></h2>
       </div>
 
       <details>
-        <summary>入金できれば出金も簡単にできますか？</summary>
+        <summary>入金できれば出金も同じ方法でできますか？</summary>
         <p>
-          いいえ。出金には最低出金額、本人確認、ボーナス条件、反映時間などの条件が関係する場合があります。
+          必ずしも同じ方法で出金できるとは限りません。サイトごとの出金方法、本人確認、最低出金額を確認してください。
         </p>
       </details>
 
       <details>
         <summary>本人確認は必ず必要ですか？</summary>
         <p>
-          サイトや利用状況によって異なりますが、出金時や一定条件で本人確認が必要になる場合があります。
+          出金前や一定条件を満たした時点で本人確認が求められる場合があります。公式規約で確認しましょう。
         </p>
       </details>
 
       <details>
-        <summary>暗号資産の送金で注意することは何ですか？</summary>
+        <summary>暗号資産で注意することは何ですか？</summary>
         <p>
-          通貨、ネットワーク、送金先アドレス、最低入出金額、手数料を確認してください。誤送金は取り戻せない場合があります。
+          通貨、ネットワーク、送金先アドレス、手数料、価格変動を確認してください。ネットワーク違いには特に注意が必要です。
         </p>
       </details>
 
       <details>
-        <summary>このページは利用を推奨していますか？</summary>
+        <summary>ボーナス利用中でも出金できますか？</summary>
         <p>
-          いいえ。本ページは条件確認のための情報ページです。利用を推奨・保証するものではありません。
+          ボーナスの賭け条件や出金制限が未達成の場合、出金できない場合があります。ボーナス規約を確認してください。
         </p>
       </details>
     </section>
 
     <section class="cta">
       <div class="cta-box">
-        <h2>入金前に、出金できる条件を確認する。</h2>
+        <h2>入金前に、出金条件まで確認する。</h2>
         <p>
-          気になるサイトがあれば、個別レビュー、カジノ一覧、ボーナスの見方ガイドもあわせて確認しましょう。
+          気になるサイトがあれば、個別レビュー、カジノ一覧、ボーナス比較もあわせて確認しましょう。
         </p>
         <div class="cta-actions">
-          <a href="review.html" class="btn btn-gold">レビュー一覧へ</a>
+          <a href="review.html" class="btn btn-gold">レビュー一覧を見る</a>
           <a href="casino-list.html" class="btn btn-outline">カジノ一覧へ</a>
-          <a href="bonus-guide.html" class="btn btn-outline">ボーナス条件を見る</a>
+          <a href="bonus.html" class="btn btn-outline">ボーナス比較へ</a>
         </div>
       </div>
     </section>
@@ -1055,6 +1336,7 @@
         <a href="bonus-guide.html">見方ガイド</a>
         <a href="guide.html">初心者ガイド</a>
         <a href="payments.html">入出金</a>
+        <a href="site-checklist.html">サイトチェックリスト</a>
       </div>
     </div>
   </footer>
