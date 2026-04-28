@@ -4,24 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>マスコット画像パターン設計書｜リベンジカジノ比較ガイド</title>
-  <meta name="description" content="リベンジカジノ比較ガイドのマスコット、リベ男・リベ女の追加ポーズ、画像ファイル名、使用場所、表現ルール、透過PNG運用ルールを整理した運営用設計書。" />
+  <title>マスコット画像設計書｜リベンジカジノ比較ガイド</title>
+  <meta name="description" content="リベンジカジノ比較ガイドで使用するリベ男・リベ女のマスコット画像設計書です。画像ファイル名、役割、ページ別の使い分け、NG使用例、命名ルールを整理しています。" />
 
   <style>
     :root {
       --red: #d71920;
-      --red-dark: #a80f17;
+      --red-dark: #9f1017;
       --red-soft: #fff0f0;
-      --gold: #f6b73c;
-      --gold-soft: #fff6df;
-      --orange: #ff7a1a;
-      --text: #2b2b2b;
+      --gold: #d6a642;
+      --gold-soft: #fff8e6;
+      --text: #242424;
       --muted: #666;
-      --white: #fff;
-      --shadow: 0 18px 45px rgba(120, 20, 20, 0.12);
-      --radius-lg: 24px;
-      --radius-md: 16px;
-      --max: 1180px;
+      --line: #f0d8d8;
+      --bg: #fff8f6;
+      --white: #ffffff;
+      --shadow: 0 18px 45px rgba(150, 22, 24, 0.12);
+      --radius: 22px;
+      --max: 1120px;
     }
 
     * {
@@ -34,11 +34,11 @@
 
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(255, 122, 26, 0.16), transparent 28%),
-        linear-gradient(180deg, #fff7f2 0%, #ffffff 36%, #fff9f2 100%);
+        radial-gradient(circle at top left, rgba(215, 25, 32, 0.08), transparent 34%),
+        linear-gradient(180deg, #fff8f6 0%, #ffffff 44%, #fff8f6 100%);
       line-height: 1.8;
     }
 
@@ -48,73 +48,70 @@
     }
 
     img {
-      display: block;
       max-width: 100%;
-      height: auto;
+      display: block;
     }
 
     code {
-      display: inline-block;
-      background: #fff7f4;
-      border: 1px solid rgba(215, 25, 32, 0.12);
-      border-radius: 8px;
-      padding: 1px 6px;
-      color: var(--red-dark);
-      font-size: 13px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
     }
 
     .site-header {
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(215, 25, 32, 0.14);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(215, 25, 32, 0.12);
     }
 
     .header-inner {
       max-width: var(--max);
       margin: 0 auto;
-      padding: 14px 20px;
+      padding: 14px 18px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 18px;
+      flex-wrap: wrap;
     }
 
     .brand {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 10px;
       font-weight: 900;
-      color: var(--red-dark);
+      letter-spacing: -0.03em;
       white-space: nowrap;
     }
 
     .brand-mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--red), var(--orange));
-      display: grid;
-      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
       color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       font-weight: 900;
-      box-shadow: 0 8px 20px rgba(215, 25, 32, 0.24);
+      box-shadow: 0 8px 18px rgba(215, 25, 32, 0.22);
+      flex: 0 0 auto;
     }
 
     .nav {
       display: flex;
       align-items: center;
-      gap: 16px;
-      font-size: 14px;
-      color: #444;
-      flex-wrap: wrap;
       justify-content: flex-end;
+      gap: 14px;
+      flex-wrap: wrap;
+      color: #555;
+      font-size: 14px;
+      font-weight: 700;
     }
 
     .nav a {
-      font-weight: 700;
+      transition: color 0.2s ease;
     }
 
     .nav a:hover {
@@ -122,19 +119,19 @@
     }
 
     .nav-cta {
-      background: var(--red);
-      color: #fff !important;
       padding: 9px 14px;
       border-radius: 999px;
-      box-shadow: 0 8px 18px rgba(215, 25, 32, 0.22);
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      color: #fff !important;
+      box-shadow: 0 10px 20px rgba(215, 25, 32, 0.18);
     }
 
     .breadcrumb {
       max-width: var(--max);
       margin: 0 auto;
-      padding: 18px 20px 0;
-      color: var(--muted);
+      padding: 16px 18px 0;
       font-size: 13px;
+      color: #777;
     }
 
     .breadcrumb a {
@@ -142,105 +139,91 @@
       font-weight: 700;
     }
 
-    .hero,
-    .section,
-    .cta {
+    .hero {
       max-width: var(--max);
       margin: 0 auto;
-      padding-left: 20px;
-      padding-right: 20px;
-    }
-
-    .hero {
-      padding-top: 30px;
-      padding-bottom: 38px;
+      padding: 30px 18px 42px;
     }
 
     .hero-box {
       position: relative;
       overflow: hidden;
       border-radius: 34px;
+      padding: 44px;
       background:
-        radial-gradient(circle at 90% 8%, rgba(246, 183, 60, 0.42), transparent 26%),
-        radial-gradient(circle at 8% 16%, rgba(255, 122, 26, 0.26), transparent 30%),
-        linear-gradient(135deg, #ffffff 0%, #fff3f0 52%, #ffe1d6 100%);
-      border: 1px solid rgba(215, 25, 32, 0.14);
+        radial-gradient(circle at 82% 18%, rgba(255, 220, 120, 0.46), transparent 26%),
+        linear-gradient(135deg, #fff 0%, #fff4f2 46%, #ffe8e3 100%);
       box-shadow: var(--shadow);
-      padding: 48px;
+      border: 1px solid rgba(215, 25, 32, 0.12);
+    }
+
+    .hero-box::before {
+      content: "";
+      position: absolute;
+      inset: auto -80px -120px auto;
+      width: 300px;
+      height: 300px;
+      border-radius: 999px;
+      background: rgba(215, 25, 32, 0.09);
     }
 
     .hero-box::after {
       content: "";
       position: absolute;
-      left: 42px;
+      left: 44px;
       bottom: 0;
       width: 180px;
       height: 6px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--red), var(--orange), var(--gold));
+      border-radius: 999px 999px 0 0;
+      background: linear-gradient(90deg, var(--red), var(--gold));
     }
 
     .hero-grid {
       position: relative;
-      z-index: 1;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.12fr 0.88fr;
       gap: 34px;
       align-items: center;
+      z-index: 1;
     }
 
     .eyebrow,
     .label {
       display: inline-flex;
       align-items: center;
-      background: #fff;
-      border: 1px solid rgba(215, 25, 32, 0.18);
-      color: var(--red-dark);
-      font-weight: 900;
-      font-size: 13px;
+      gap: 8px;
       padding: 7px 12px;
+      margin-bottom: 16px;
       border-radius: 999px;
-      box-shadow: 0 8px 20px rgba(215, 25, 32, 0.08);
-      margin-bottom: 18px;
-    }
-
-    .label {
-      background: var(--red-soft);
-      box-shadow: none;
-      padding: 5px 11px;
-      font-size: 12px;
-      margin-bottom: 10px;
+      background: #fff;
+      color: var(--red-dark);
+      border: 1px solid rgba(215, 25, 32, 0.14);
+      font-size: 13px;
+      font-weight: 900;
     }
 
     h1 {
       margin: 0 0 18px;
-      font-size: clamp(31px, 5vw, 54px);
-      line-height: 1.14;
-      letter-spacing: -0.05em;
-      color: #1f1f1f;
-    }
-
-    .hero-highlight,
-    .section-title span {
-      background: linear-gradient(90deg, var(--red), var(--orange));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1.12;
+      letter-spacing: -0.06em;
     }
 
     .hero-lead {
       margin: 0;
-      color: #444;
-      font-size: 17px;
-      max-width: 760px;
+      max-width: 700px;
+      color: #4d4d4d;
+      font-size: 16px;
+      line-height: 1.9;
     }
 
     .hero-actions,
     .cta-actions,
     .card-actions {
       display: flex;
-      flex-wrap: wrap;
       gap: 12px;
-      margin-top: 22px;
+      flex-wrap: wrap;
+      margin-top: 24px;
     }
 
     .btn,
@@ -250,20 +233,25 @@
       justify-content: center;
       border-radius: 999px;
       font-weight: 900;
-      line-height: 1.2;
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
     }
 
     .btn {
-      padding: 13px 18px;
+      min-height: 48px;
+      padding: 13px 20px;
+      font-size: 14px;
     }
 
-    .mini-btn {
-      padding: 10px 13px;
-      font-size: 13px;
-      border: 1px solid rgba(215, 25, 32, 0.18);
+    .btn-primary {
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      color: #fff;
+      box-shadow: 0 12px 24px rgba(215, 25, 32, 0.22);
+    }
+
+    .btn-secondary {
       background: #fff;
       color: var(--red-dark);
+      border: 1px solid rgba(215, 25, 32, 0.2);
     }
 
     .btn:hover,
@@ -271,111 +259,81 @@
       transform: translateY(-2px);
     }
 
-    .btn-primary,
-    .mini-btn.main {
-      background: linear-gradient(135deg, var(--red), var(--red-dark));
-      color: #fff;
-      border-color: var(--red);
-      box-shadow: 0 12px 28px rgba(215, 25, 32, 0.28);
-    }
-
-    .btn-gold {
-      background: linear-gradient(135deg, var(--gold), #ffcf67);
-      color: #4a2b00;
-      box-shadow: 0 12px 28px rgba(246, 183, 60, 0.28);
-    }
-
-    .btn-outline {
-      background: #fff;
-      color: var(--red-dark);
-      border: 1px solid rgba(215, 25, 32, 0.24);
-    }
-
-    .hero-panel,
-    .card,
-    .pose-card,
-    .rule-card,
-    .warning-box,
-    .note-box {
-      background: #fff;
-      border: 1px solid rgba(215, 25, 32, 0.15);
-      border-radius: var(--radius-md);
-      padding: 20px;
-      box-shadow: 0 10px 28px rgba(120, 20, 20, 0.07);
-    }
-
-    .hero-panel {
-      border-radius: 26px;
-      background:
-        radial-gradient(circle at top right, rgba(246, 183, 60, 0.22), transparent 34%),
-        rgba(255, 255, 255, 0.9);
-      box-shadow: 0 16px 34px rgba(120, 20, 20, 0.12);
-    }
-
-    .hero-panel h2,
-    .card h3,
-    .pose-card h3,
-    .rule-card h3,
-    .note-box h3 {
-      margin: 0 0 8px;
-      color: var(--red-dark);
-      font-size: 18px;
-      line-height: 1.35;
-    }
-
-    .mascot-pair {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 18px;
-    }
-
-    .mascot-mini {
+    .hero-mascots {
       position: relative;
-      border-radius: 20px;
-      background: linear-gradient(180deg, #fff, #fff4ef);
-      border: 1px solid rgba(215, 25, 32, 0.12);
-      padding: 14px;
-      min-height: 230px;
-      display: grid;
-      align-items: end;
-      justify-items: center;
-      overflow: hidden;
+      min-height: 390px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 8px;
+      padding-top: 22px;
     }
 
-    .mascot-mini::before {
-      content: "";
+    .hero-mascots-bg {
       position: absolute;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(246, 183, 60, 0.26), transparent 70%);
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
+      width: min(94%, 360px);
+      aspect-ratio: 1;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle, rgba(255, 255, 255, 0.96) 0%, rgba(255, 248, 230, 0.92) 54%, rgba(215, 25, 32, 0.08) 100%);
+      box-shadow: inset 0 0 0 1px rgba(215, 25, 32, 0.08);
+      bottom: 12px;
     }
 
-    .mascot-mini img {
+    .hero-mascot-img {
       position: relative;
-      z-index: 1;
-      max-height: 200px;
+      width: min(42%, 170px);
+      max-height: 330px;
       object-fit: contain;
-      filter: drop-shadow(0 12px 16px rgba(80, 20, 20, 0.18));
+      z-index: 2;
+      filter: drop-shadow(0 16px 20px rgba(120, 20, 20, 0.16));
     }
 
-    .mascot-mini span {
-      position: relative;
-      z-index: 2;
-      display: inline-flex;
-      margin-top: 8px;
+    .hero-mascot-img:nth-of-type(2) {
+      transform: translateY(-8px);
+    }
+
+    .hero-bubble {
+      position: absolute;
+      left: 0;
+      bottom: 22px;
+      z-index: 3;
+      max-width: 270px;
+      padding: 14px 15px;
+      border-radius: 18px 18px 18px 6px;
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.16);
+      box-shadow: 0 12px 26px rgba(120, 20, 20, 0.12);
+      color: #555;
       font-size: 13px;
-      font-weight: 900;
+      line-height: 1.65;
+      font-weight: 700;
+    }
+
+    .notice {
+      max-width: var(--max);
+      margin: 0 auto 18px;
+      padding: 0 18px;
+    }
+
+    .notice-box {
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.16);
+      color: #555;
+      box-shadow: 0 10px 28px rgba(150, 22, 24, 0.08);
+      font-size: 14px;
+    }
+
+    .notice-box strong {
       color: var(--red-dark);
     }
 
     .section {
-      padding-top: 40px;
-      padding-bottom: 40px;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 42px 18px;
     }
 
     .section-head {
@@ -383,354 +341,808 @@
     }
 
     .section-title {
-      margin: 0;
-      font-size: clamp(24px, 3vw, 36px);
-      line-height: 1.25;
-      letter-spacing: -0.03em;
+      margin: 0 0 10px;
+      font-size: clamp(26px, 3.6vw, 40px);
+      line-height: 1.28;
+      letter-spacing: -0.04em;
     }
 
     .section-desc {
-      margin: 8px 0 0;
+      margin: 0;
       color: var(--muted);
       max-width: 820px;
-    }
-
-    .grid-2,
-    .grid-3,
-    .pose-grid,
-    .rule-grid {
-      display: grid;
-      gap: 18px;
+      font-size: 15px;
     }
 
     .grid-2 {
+      display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
     }
 
-    .grid-3,
-    .pose-grid,
-    .rule-grid {
+    .grid-3 {
+      display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
     }
 
-    .pose-card,
-    .rule-card {
-      border-radius: var(--radius-lg);
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card,
+    .role-card,
+    .image-card,
+    .rule-card,
+    .future-card,
+    .link-card,
+    .mascot-note,
+    .final-box {
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.12);
+      border-radius: var(--radius);
+      box-shadow: 0 12px 30px rgba(150, 22, 24, 0.08);
+    }
+
+    .card,
+    .role-card,
+    .rule-card,
+    .future-card,
+    .link-card {
+      padding: 22px;
+    }
+
+    .card h3,
+    .role-card h3,
+    .rule-card h3,
+    .future-card h3,
+    .link-card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      line-height: 1.45;
+    }
+
+    .card p,
+    .role-card p,
+    .rule-card p,
+    .future-card p,
+    .link-card p {
+      margin: 0;
+      color: #5f5f5f;
+      font-size: 14px;
+    }
+
+    .role-card {
       position: relative;
       overflow: hidden;
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 18px;
+      align-items: center;
     }
 
-    .pose-card::before,
-    .rule-card::before {
+    .role-card::before {
       content: "";
       position: absolute;
       inset: 0 0 auto 0;
       height: 5px;
-      background: linear-gradient(90deg, var(--red), var(--orange), var(--gold));
+      background: linear-gradient(90deg, var(--red), var(--gold));
     }
 
-    .number {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, var(--red), var(--orange));
-      color: #fff;
-      font-weight: 900;
-      margin-bottom: 12px;
-      box-shadow: 0 8px 18px rgba(215, 25, 32, 0.18);
+    .role-visual {
+      min-height: 170px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at center, rgba(255, 248, 230, 0.95), transparent 62%);
     }
 
-    .card p,
-    .pose-card p,
-    .rule-card p,
-    .note-box p {
-      margin: 0;
-      color: var(--muted);
+    .role-visual img {
+      height: 158px;
+      object-fit: contain;
+      filter: drop-shadow(0 12px 16px rgba(120, 20, 20, 0.12));
+    }
+
+    .role-body ul,
+    .rule-card ul,
+    .future-card ul,
+    .card ul {
+      margin: 12px 0 0;
+      padding-left: 1.2em;
+      color: #5f5f5f;
       font-size: 14px;
-      line-height: 1.7;
+    }
+
+    .role-body li,
+    .rule-card li,
+    .future-card li,
+    .card li {
+      margin: 5px 0;
+    }
+
+    .image-card {
+      overflow: hidden;
+      background: linear-gradient(180deg, #fff 0%, #fff8f6 100%);
+    }
+
+    .image-preview {
+      min-height: 210px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 20px 16px 0;
+      background:
+        radial-gradient(circle at center, rgba(255, 248, 230, 0.95), transparent 58%);
+    }
+
+    .image-preview img {
+      width: auto;
+      max-width: 100%;
+      height: 190px;
+      object-fit: contain;
+      filter: drop-shadow(0 12px 16px rgba(120, 20, 20, 0.12));
+    }
+
+    .image-body {
+      padding: 18px;
+      border-top: 1px solid rgba(215, 25, 32, 0.1);
+    }
+
+    .image-body h3 {
+      margin: 0 0 6px;
+      color: var(--red-dark);
+      font-size: 17px;
+      line-height: 1.4;
+    }
+
+    .image-body p {
+      margin: 0;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.65;
     }
 
     .file-name {
-      margin-top: 12px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      background: #fff7f4;
+      display: inline-flex;
+      margin-top: 10px;
+      padding: 5px 9px;
+      border-radius: 9px;
+      background: #fff;
       border: 1px solid rgba(215, 25, 32, 0.12);
-      font-size: 13px;
-      color: var(--red-dark);
-      font-weight: 900;
+      color: #555;
+      font-size: 12px;
+      font-weight: 800;
       word-break: break-all;
     }
 
-    .check-list,
-    .caution-list {
-      display: grid;
-      gap: 9px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      font-size: 14px;
-      color: #444;
-    }
-
-    .check-list li,
-    .caution-list li {
-      padding-left: 24px;
-      position: relative;
-    }
-
-    .check-list li::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: var(--red);
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 12px;
       font-weight: 900;
+      white-space: nowrap;
     }
 
-    .caution-list li::before {
-      content: "!";
-      position: absolute;
-      left: 0;
-      top: 2px;
-      width: 17px;
-      height: 17px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: var(--gold);
-      color: #4a2b00;
-      font-size: 11px;
-      line-height: 1;
-      font-weight: 900;
+    .badge-main {
+      background: var(--red-soft);
+      color: var(--red-dark);
+      border: 1px solid rgba(215, 25, 32, 0.14);
+    }
+
+    .badge-sub {
+      background: var(--gold-soft);
+      color: #8b6114;
+      border: 1px solid rgba(214, 166, 66, 0.28);
+    }
+
+    .badge-ok {
+      background: #eefaf0;
+      color: #26723b;
+      border: 1px solid rgba(38, 114, 59, 0.18);
     }
 
     .table-wrap {
-      overflow-x: auto;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid rgba(215, 25, 32, 0.14);
+      box-shadow: 0 14px 34px rgba(150, 22, 24, 0.08);
       background: #fff;
-      border: 1px solid rgba(215, 25, 32, 0.16);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow);
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 980px;
+      background: #fff;
       font-size: 14px;
+    }
+
+    thead {
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      color: #fff;
     }
 
     th,
     td {
       padding: 15px 14px;
       text-align: left;
-      border-bottom: 1px solid #f2dddd;
       vertical-align: top;
+      border-bottom: 1px solid #f2dddd;
     }
 
-    th {
-      background: linear-gradient(180deg, #fff0f0, #ffe7e4);
-      color: var(--red-dark);
-      font-weight: 900;
-      white-space: nowrap;
-    }
-
-    tr:last-child td {
+    tbody tr:last-child td {
       border-bottom: none;
     }
 
-    td strong,
-    td a {
-      color: #222;
+    tbody th {
+      color: var(--red-dark);
+      background: #fffafa;
       font-weight: 900;
     }
 
-    .status {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+    .check-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .check-list li {
+      position: relative;
+      padding: 14px 16px 14px 42px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.11);
+      color: #555;
+      font-size: 14px;
+    }
+
+    .check-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      width: 18px;
+      height: 18px;
       border-radius: 999px;
-      padding: 4px 9px;
-      font-weight: 900;
+      background: var(--red);
+      color: #fff;
       font-size: 12px;
-      white-space: nowrap;
+      line-height: 18px;
+      text-align: center;
+      font-weight: 900;
     }
 
-    .status.good {
-      color: var(--red-dark);
-      background: var(--red-soft);
+    .ng-list li::marker {
+      color: var(--red);
     }
 
-    .status.warn {
-      color: #6a4300;
-      background: var(--gold-soft);
+    .ok-list li::marker {
+      color: #26723b;
     }
 
-    .warning-box {
-      border-radius: var(--radius-lg);
+    .mascot-note {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 18px;
+      align-items: center;
+      padding: 20px;
       background:
-        radial-gradient(circle at top right, rgba(246, 183, 60, 0.22), transparent 34%),
-        linear-gradient(135deg, #fff, #fff4ed);
-      box-shadow: var(--shadow);
+        radial-gradient(circle at 40px 40px, rgba(255, 248, 230, 0.9), transparent 42%),
+        #fff;
     }
 
-    .warning-box h2 {
-      margin: 0 0 12px;
+    .mascot-note img {
+      width: 104px;
+      max-height: 128px;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 14px rgba(120, 20, 20, 0.12));
+    }
+
+    .mascot-note h3 {
+      margin: 0 0 8px;
       color: var(--red-dark);
-      font-size: clamp(22px, 3vw, 30px);
-      line-height: 1.3;
+      font-size: 18px;
+      line-height: 1.45;
     }
 
-    .warning-box p {
-      margin: 0 0 14px;
-      color: #4d4d4d;
+    .mascot-note p {
+      margin: 0;
+      color: #555;
+      font-size: 14px;
     }
 
-    .warning-box ul {
-      margin: 12px 0 0;
-      padding-left: 1.2em;
-      color: #4d4d4d;
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .link-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .link-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 32px rgba(150, 22, 24, 0.1);
+    }
+
+    .link-card strong {
+      display: block;
+      color: var(--red-dark);
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    .link-card span {
+      display: block;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .final-box {
+      padding: 26px;
+      background:
+        linear-gradient(135deg, #fff 0%, #fff8f6 100%);
+    }
+
+    .final-box h2 {
+      margin: 0 0 10px;
+      font-size: 24px;
+      line-height: 1.35;
+      color: var(--red-dark);
+    }
+
+    .final-box p {
+      margin: 0;
+      color: #555;
+      font-size: 14px;
     }
 
     .cta {
-      padding-top: 32px;
-      padding-bottom: 56px;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 30px 18px 58px;
     }
 
     .cta-box {
-      border-radius: 32px;
+      position: relative;
+      overflow: hidden;
       padding: 34px;
+      border-radius: 30px;
       background:
-        radial-gradient(circle at 15% 20%, rgba(255, 122, 26, 0.28), transparent 24%),
-        radial-gradient(circle at 85% 10%, rgba(246, 183, 60, 0.28), transparent 24%),
-        linear-gradient(135deg, var(--red-dark), var(--red));
+        radial-gradient(circle at 88% 20%, rgba(255, 224, 140, 0.35), transparent 28%),
+        linear-gradient(135deg, var(--red), var(--red-dark));
       color: #fff;
-      box-shadow: 0 20px 48px rgba(120, 20, 20, 0.24);
+      box-shadow: 0 18px 44px rgba(150, 22, 24, 0.18);
     }
 
     .cta-box h2 {
       margin: 0 0 10px;
-      font-size: clamp(24px, 3vw, 36px);
-      line-height: 1.25;
+      font-size: clamp(24px, 3.5vw, 38px);
+      line-height: 1.28;
+      letter-spacing: -0.04em;
     }
 
     .cta-box p {
-      margin: 0 0 22px;
+      margin: 0;
+      max-width: 780px;
       color: rgba(255, 255, 255, 0.88);
-      max-width: 760px;
+      font-size: 15px;
     }
 
-    .cta .btn-outline {
-      border-color: rgba(255, 255, 255, 0.5);
+    .cta-box .btn-secondary {
+      color: var(--red-dark);
+      background: #fff;
+      border: none;
+    }
+
+    .cta-box .btn-primary {
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      box-shadow: none;
     }
 
     .site-footer {
-      background: #2a0b0d;
-      color: #fff;
-      padding: 34px 20px;
+      padding: 36px 18px;
+      border-top: 1px solid rgba(215, 25, 32, 0.12);
+      background: #fff;
     }
 
     .footer-inner {
       max-width: var(--max);
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1.3fr 1fr;
-      gap: 28px;
-    }
-
-    .footer-inner p {
-      margin: 8px 0 0;
-      color: rgba(255, 255, 255, 0.76);
-      font-size: 13px;
+      gap: 14px;
     }
 
     .footer-links {
       display: flex;
-      gap: 12px;
+      gap: 12px 16px;
       flex-wrap: wrap;
-      justify-content: flex-end;
+      color: #666;
       font-size: 13px;
       font-weight: 700;
     }
 
-    .footer-links a {
-      color: rgba(255, 255, 255, 0.86);
+    .footer-links a:hover {
+      color: var(--red);
     }
 
-    @media (max-width: 980px) {
-      .header-inner,
-      .hero-grid,
-      .grid-2,
-      .footer-inner {
-        grid-template-columns: 1fr;
-      }
+    .footer-copy {
+      color: #777;
+      font-size: 12px;
+      line-height: 1.7;
+    }
 
-      .header-inner {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .nav {
-        justify-content: flex-start;
-      }
-
-      .grid-3,
-      .pose-grid,
-      .rule-grid {
+    @media (max-width: 1000px) {
+      .image-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .hero-box {
-        padding: 34px 24px;
-      }
-
-      .footer-links {
-        justify-content: flex-start;
+      .link-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-mascots {
+        min-height: 340px;
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      body {
+        line-height: 1.75;
+      }
+
+      .site-header {
+        position: static;
+      }
+
+      .header-inner {
+        padding: 12px 16px;
+        gap: 12px;
+      }
+
+      .brand {
+        font-size: 14px;
+        line-height: 1.35;
+        white-space: normal;
+      }
+
+      .brand-mark {
+        width: 30px;
+        height: 30px;
+        border-radius: 9px;
+        flex: 0 0 auto;
+      }
+
       .nav {
-        gap: 10px;
-        font-size: 13px;
+        width: 100%;
+        justify-content: flex-start;
+        gap: 8px 12px;
+        font-size: 12px;
+        line-height: 1.3;
+      }
+
+      .nav a {
+        padding: 5px 0;
+      }
+
+      .nav-cta {
+        padding: 7px 10px;
+        font-size: 12px;
+      }
+
+      .breadcrumb {
+        padding: 12px 16px 0;
+        font-size: 12px;
+      }
+
+      .hero {
+        padding: 20px 16px 26px;
       }
 
       .hero-box {
-        border-radius: 24px;
-        padding: 28px 20px;
+        padding: 24px 18px;
+        border-radius: 22px;
+      }
+
+      .hero-box::after {
+        left: 24px;
+        width: 130px;
+        height: 5px;
+      }
+
+      .hero-grid {
+        gap: 24px;
+      }
+
+      .eyebrow,
+      .label {
+        font-size: 12px;
+        padding: 6px 10px;
+        margin-bottom: 14px;
+      }
+
+      h1 {
+        font-size: clamp(28px, 9vw, 38px);
+        line-height: 1.18;
+        margin-bottom: 14px;
+        letter-spacing: -0.04em;
+      }
+
+      .hero-lead {
+        font-size: 15px;
+        line-height: 1.75;
       }
 
       .hero-actions,
       .cta-actions,
       .card-actions {
-        flex-direction: column;
+        gap: 10px;
+        margin-top: 18px;
       }
 
       .btn,
       .mini-btn {
         width: 100%;
+        min-height: 44px;
+        text-align: center;
       }
 
+      .btn {
+        padding: 12px 15px;
+        font-size: 14px;
+      }
+
+      .mini-btn {
+        padding: 10px 12px;
+        font-size: 13px;
+      }
+
+      .hero-mascots {
+        min-height: 330px;
+        padding-top: 6px;
+      }
+
+      .hero-mascots-bg {
+        width: min(90%, 300px);
+        bottom: 10px;
+      }
+
+      .hero-mascot-img {
+        width: min(41%, 132px);
+        max-height: 285px;
+      }
+
+      .hero-bubble {
+        left: 0;
+        right: 0;
+        bottom: 10px;
+        max-width: none;
+        margin: 0 auto;
+        padding: 12px 14px;
+        font-size: 12px;
+      }
+
+      .notice {
+        margin-bottom: 14px;
+        padding: 0 16px;
+      }
+
+      .notice-box {
+        padding: 15px 16px;
+        font-size: 13px;
+        line-height: 1.75;
+        border-radius: 14px;
+      }
+
+      .section {
+        padding: 30px 16px;
+      }
+
+      .section-head {
+        margin-bottom: 18px;
+      }
+
+      .section-title {
+        font-size: clamp(22px, 7vw, 30px);
+        line-height: 1.3;
+      }
+
+      .section-desc {
+        font-size: 14px;
+        line-height: 1.75;
+      }
+
+      .grid-2,
       .grid-3,
-      .pose-grid,
-      .rule-grid,
-      .mascot-pair {
+      .image-grid,
+      .link-grid {
         grid-template-columns: 1fr;
+        gap: 14px;
       }
 
-      .section,
-      .hero,
+      .card,
+      .role-card,
+      .rule-card,
+      .future-card,
+      .link-card {
+        padding: 18px;
+        border-radius: 18px;
+      }
+
+      .card h3,
+      .role-card h3,
+      .rule-card h3,
+      .future-card h3,
+      .link-card h3 {
+        font-size: 17px;
+      }
+
+      .role-card {
+        grid-template-columns: 92px 1fr;
+        gap: 14px;
+      }
+
+      .role-visual {
+        min-height: 126px;
+      }
+
+      .role-visual img {
+        height: 118px;
+      }
+
+      .image-preview {
+        min-height: 160px;
+      }
+
+      .image-preview img {
+        height: 148px;
+      }
+
+      .table-wrap {
+        border-radius: 18px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .table-wrap::after {
+        content: "横にスクロールできます →";
+        display: block;
+        padding: 8px 12px;
+        color: #777;
+        font-size: 12px;
+        background: #fffaf7;
+        border-top: 1px solid #f2dddd;
+      }
+
+      table {
+        min-width: 860px;
+        font-size: 13px;
+      }
+
+      th,
+      td {
+        padding: 12px 10px;
+      }
+
+      .mascot-note {
+        grid-template-columns: 82px 1fr;
+        gap: 12px;
+        padding: 16px;
+        border-radius: 18px;
+      }
+
+      .mascot-note img {
+        width: 82px;
+        max-height: 104px;
+      }
+
+      .mascot-note h3 {
+        font-size: 16px;
+        margin-bottom: 6px;
+      }
+
+      .mascot-note p {
+        font-size: 13px;
+        line-height: 1.7;
+      }
+
+      .final-box {
+        padding: 20px 18px;
+        border-radius: 20px;
+      }
+
+      .final-box h2 {
+        font-size: 21px;
+      }
+
       .cta {
-        padding-left: 16px;
-        padding-right: 16px;
+        padding: 24px 16px 42px;
       }
 
-      .cta-box,
-      .warning-box {
-        padding: 26px 20px;
-        border-radius: 24px;
+      .cta-box {
+        padding: 24px 18px;
+        border-radius: 22px;
+      }
+
+      .site-footer {
+        padding: 28px 16px;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+        gap: 8px 10px;
+        font-size: 12px;
+        line-height: 1.5;
+      }
+    }
+
+    @media (max-width: 420px) {
+      h1 {
+        font-size: clamp(26px, 10vw, 34px);
+      }
+
+      .hero-box {
+        padding: 22px 16px;
+      }
+
+      .hero-mascots {
+        min-height: 305px;
+      }
+
+      .hero-mascot-img {
+        width: min(42%, 116px);
+        max-height: 260px;
+      }
+
+      .hero-bubble {
+        padding: 11px 12px;
+      }
+
+      .role-card {
+        grid-template-columns: 74px 1fr;
+      }
+
+      .role-visual {
+        min-height: 106px;
+      }
+
+      .role-visual img {
+        height: 98px;
+      }
+
+      .mascot-note {
+        grid-template-columns: 70px 1fr;
+      }
+
+      .mascot-note img {
+        width: 70px;
+        max-height: 92px;
+      }
+
+      .badge {
+        font-size: 11px;
       }
     }
   </style>
@@ -739,24 +1151,24 @@
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <a href="index.html" class="brand" aria-label="リベンジカジノ比較ガイド TOPへ">
+      <a class="brand" href="index.html" aria-label="リベンジカジノ比較ガイド トップへ">
         <span class="brand-mark">R</span>
         <span>リベンジカジノ比較ガイド</span>
       </a>
 
       <nav class="nav" aria-label="主要ナビゲーション">
         <a href="index.html">TOP</a>
-        <a href="site-checklist.html">チェックリスト</a>
         <a href="casino-list.html">カジノ一覧</a>
         <a href="review.html">レビュー</a>
-        <a href="guide.html">初心者ガイド</a>
-        <a href="#pose-list" class="nav-cta">ポーズ一覧</a>
+        <a href="bonus.html">ボーナス比較</a>
+        <a href="payments.html">入出金</a>
+        <a class="nav-cta" href="guide.html">初心者ガイド</a>
       </nav>
     </div>
   </header>
 
   <div class="breadcrumb">
-    <a href="index.html">TOP</a> ＞ マスコット画像パターン設計書
+    <a href="index.html">TOP</a> &gt; マスコット画像設計書
   </div>
 
   <main>
@@ -764,284 +1176,356 @@
       <div class="hero-box">
         <div class="hero-grid">
           <div>
-            <div class="eyebrow">運営用：リベ男・リベ女の画像パターン設計</div>
-            <h1>
-              マスコット画像<br />
-              <span class="hero-highlight">パターン設計書</span>
-            </h1>
+            <span class="eyebrow">マスコット画像設計書</span>
+            <h1>リベ男・リベ女の使い分けを整理する管理ページです。</h1>
             <p class="hero-lead">
-              このページは、リベンジカジノ比較ガイドのマスコット「リベ男」と「リベ女」の追加ポーズ、画像ファイル名、使用場所、表現ルールをまとめた運営用仕様書です。
-              同じ立ち絵の使い回しを避け、ページごとの役割に合った自然な見せ方を管理します。
+              リベンジカジノ比較ガイドで使用するマスコット画像の役割、ファイル名、ページ別の使い分け、
+              NG使用例、今後の追加ポーズ案をまとめた設計書です。
+              キャラクターはサイトの信頼感と分かりやすさを補助する案内役として使用します。
             </p>
 
             <div class="hero-actions">
-              <a href="#pose-list" class="btn btn-primary">ポーズ一覧を見る</a>
-              <a href="#file-rule" class="btn btn-gold">ファイル名ルール</a>
-              <a href="#ng-rule" class="btn btn-outline">禁止表現を見る</a>
+              <a class="btn btn-primary" href="#character-role">役割を見る</a>
+              <a class="btn btn-secondary" href="#image-files">画像一覧へ</a>
             </div>
           </div>
 
-          <aside class="hero-panel">
-            <h2>現在の基準画像</h2>
-            <p>
-              現在は通常立ち絵のみを主要ページへ反映済みです。
-              次の段階では、指差し・案内・注意喚起・説明用のポーズを追加します。
-            </p>
-
-            <div class="mascot-pair">
-              <div class="mascot-mini">
-                <img src="ribedan-transparent.png" alt="リベ男 通常立ち絵" />
-                <span>リベ男</span>
-              </div>
-
-              <div class="mascot-mini">
-                <img src="ribejo-transparent.png" alt="リベ女 通常立ち絵" />
-                <span>リベ女</span>
-              </div>
+          <div class="hero-mascots" aria-label="リベ男とリベ女の画像設計案内">
+            <div class="hero-mascots-bg"></div>
+            <img class="hero-mascot-img" src="ribedan-guide.png" alt="案内役のリベ男" />
+            <img class="hero-mascot-img" src="ribejo-note.png" alt="説明役のリベ女" />
+            <div class="hero-bubble">
+              リベ男・リベ女：ページごとに役割を分けて、自然に案内していきます。
             </div>
-          </aside>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="purpose">
+    <section class="notice" aria-label="画像設計の基本方針">
+      <div class="notice-box">
+        <strong>基本方針：</strong>
+        マスコットは大きく出しすぎず、ユーザーが条件確認や比較の流れを理解しやすくするための補助役として使います。
+        ヒーローでは存在感を出してもよいですが、本文中では小さめの補足ボックスとして自然に配置します。
+      </div>
+    </section>
+
+    <section class="section" id="character-role">
       <div class="section-head">
-        <div class="label">目的</div>
-        <h2 class="section-title">追加ポーズを作る<span>理由</span></h2>
+        <span class="label">キャラクター設定</span>
+        <h2 class="section-title">リベ男・リベ女の役割</h2>
         <p class="section-desc">
-          マスコットをサイトの顔として使うには、同じ画像の使い回しではなく、ページの役割に合わせたポーズが必要です。
+          2体のマスコットは、同じ役割で重複させず、ページの目的に合わせて使い分けます。
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <article class="role-card">
+          <div class="role-visual">
+            <img src="ribedan-transparent.png" alt="リベ男の通常立ち絵" />
+          </div>
+          <div class="role-body">
+            <span class="badge badge-main">メインキャラクター</span>
+            <h3>リベ男（読み：リベだん）</h3>
+            <p>
+              サイト全体の案内役です。レビュー一覧、カジノ一覧、比較の入口、初心者向けの見る順番を案内します。
+            </p>
+            <ul>
+              <li>レビュー一覧への誘導</li>
+              <li>カジノ一覧への誘導</li>
+              <li>初心者向けの見る順番案内</li>
+              <li>比較表前の確認導線</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="role-card">
+          <div class="role-visual">
+            <img src="ribejo-transparent.png" alt="リベ女の通常立ち絵" />
+          </div>
+          <div class="role-body">
+            <span class="badge badge-sub">サブキャラクター</span>
+            <h3>リベ女（読み：リベじょ）</h3>
+            <p>
+              説明役・注意喚起役です。ボーナス条件、入出金、本人確認、禁止ベット、規約確認などを案内します。
+            </p>
+            <ul>
+              <li>ボーナス条件の説明</li>
+              <li>入出金や本人確認の注意</li>
+              <li>暗号資産や決済方法の確認</li>
+              <li>公式規約の確認案内</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="image-files">
+      <div class="section-head">
+        <span class="label">画像ファイル</span>
+        <h2 class="section-title">現在使用するマスコット画像一覧</h2>
+        <p class="section-desc">
+          画像はHTMLへ直接埋め込まず、同階層にアップロードしたPNGファイルを参照します。ファイル名は変更しません。
+        </p>
+      </div>
+
+      <div class="image-grid">
+        <article class="image-card">
+          <div class="image-preview">
+            <img src="ribedan-transparent.png" alt="リベ男の通常立ち絵" />
+          </div>
+          <div class="image-body">
+            <h3>リベ男 通常立ち絵</h3>
+            <p>基準画像。サイト紹介やキャラクター説明で使用します。</p>
+            <span class="file-name">ribedan-transparent.png</span>
+          </div>
+        </article>
+
+        <article class="image-card">
+          <div class="image-preview">
+            <img src="ribejo-transparent.png" alt="リベ女の通常立ち絵" />
+          </div>
+          <div class="image-body">
+            <h3>リベ女 通常立ち絵</h3>
+            <p>基準画像。説明役や補足案内の紹介で使用します。</p>
+            <span class="file-name">ribejo-transparent.png</span>
+          </div>
+        </article>
+
+        <article class="image-card">
+          <div class="image-preview">
+            <img src="ribedan-point.png" alt="指差しポーズのリベ男" />
+          </div>
+          <div class="image-body">
+            <h3>リベ男 指差しポーズ</h3>
+            <p>レビュー一覧、カジノ一覧、比較表前の確認導線で使用します。</p>
+            <span class="file-name">ribedan-point.png</span>
+          </div>
+        </article>
+
+        <article class="image-card">
+          <div class="image-preview">
+            <img src="ribedan-guide.png" alt="案内ポーズのリベ男" />
+          </div>
+          <div class="image-body">
+            <h3>リベ男 案内ポーズ</h3>
+            <p>TOP、初心者ガイド、見る順番の案内で使用します。</p>
+            <span class="file-name">ribedan-guide.png</span>
+          </div>
+        </article>
+
+        <article class="image-card">
+          <div class="image-preview">
+            <img src="ribejo-note.png" alt="説明ポーズのリベ女" />
+          </div>
+          <div class="image-body">
+            <h3>リベ女 説明ポーズ</h3>
+            <p>ボーナス条件、初心者チェック、補足説明で使用します。</p>
+            <span class="file-name">ribejo-note.png</span>
+          </div>
+        </article>
+
+        <article class="image-card">
+          <div class="image-preview">
+            <img src="ribejo-warning.png" alt="注意喚起ポーズのリベ女" />
+          </div>
+          <div class="image-body">
+            <h3>リベ女 注意喚起ポーズ</h3>
+            <p>入出金、本人確認、規約注意、禁止ベット、暗号資産注意で使用します。</p>
+            <span class="file-name">ribejo-warning.png</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="page-usage">
+      <div class="section-head">
+        <span class="label">ページ別ルール</span>
+        <h2 class="section-title">主要ページでの使い分け</h2>
+        <p class="section-desc">
+          ページごとにマスコットの役割を分けることで、サイト全体の見え方を統一します。
+        </p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ページ</th>
+              <th>使用キャラ</th>
+              <th>推奨画像</th>
+              <th>使い方</th>
+              <th>注意点</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>index.html</th>
+              <td>リベ男</td>
+              <td>ribedan-guide.png</td>
+              <td>サイト全体の入口として、見る順番や主要ページへの導線を案内。</td>
+              <td>ヒーローで大きめに使用してOK。ただしCTAを煽りすぎない。</td>
+            </tr>
+            <tr>
+              <th>review.html</th>
+              <td>リベ男</td>
+              <td>ribedan-point.png</td>
+              <td>レビュー一覧、個別レビューへの確認導線を案内。</td>
+              <td>「おすすめ」よりも「条件を確認する」文脈にする。</td>
+            </tr>
+            <tr>
+              <th>casino-list.html</th>
+              <td>リベ男</td>
+              <td>ribedan-point.png</td>
+              <td>掲載サイト一覧、比較表、レビューへの導線を案内。</td>
+              <td>ロゴ画像を消さず、一覧の可読性を優先する。</td>
+            </tr>
+            <tr>
+              <th>bonus.html</th>
+              <td>リベ女</td>
+              <td>ribejo-note.png / ribejo-warning.png</td>
+              <td>賭け条件、有効期限、最大出金、対象ゲーム、禁止ベットを説明。</td>
+              <td>ボーナス額で煽らず、条件確認中心にする。</td>
+            </tr>
+            <tr>
+              <th>bonus-guide.html</th>
+              <td>リベ女</td>
+              <td>ribejo-note.png / ribejo-warning.png</td>
+              <td>ボーナスの見方、賭け条件、出金制限の説明に使用。</td>
+              <td>初心者にも分かる丁寧語で説明する。</td>
+            </tr>
+            <tr>
+              <th>payments.html</th>
+              <td>リベ女</td>
+              <td>ribejo-warning.png</td>
+              <td>本人確認、入出金条件、暗号資産ネットワーク注意で使用。</td>
+              <td>出金保証のような表現は避ける。</td>
+            </tr>
+            <tr>
+              <th>guide.html</th>
+              <td>リベ男 / リベ女</td>
+              <td>ribedan-guide.png / ribejo-note.png</td>
+              <td>見る順番はリベ男、確認メモはリベ女が担当。</td>
+              <td>キャラを出しすぎず、本文の読みやすさを優先する。</td>
+            </tr>
+            <tr>
+              <th>site-checklist.html</th>
+              <td>リベ男 / リベ女</td>
+              <td>ribedan-point.png / ribejo-warning.png</td>
+              <td>運営用の確認案内、画像確認、責任ある利用チェックに使用。</td>
+              <td>管理ページなので訴求より確認性を優先する。</td>
+            </tr>
+            <tr>
+              <th>mascot-image-plan.html</th>
+              <td>リベ男 / リベ女</td>
+              <td>全マスコット画像</td>
+              <td>画像設計書として、役割と使い分けを一覧化。</td>
+              <td>画像カードがスマホで崩れないようにする。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="layout-rule">
+      <div class="section-head">
+        <span class="label">表示ルール</span>
+        <h2 class="section-title">マスコットの配置とサイズ感</h2>
+        <p class="section-desc">
+          マスコットは本文の邪魔にならない範囲で使用します。スマホでは特に画像サイズと余白に注意します。
         </p>
       </div>
 
       <div class="grid-3">
-        <div class="rule-card">
-          <div class="number">1</div>
-          <h3>使い回し感を減らす</h3>
-          <p>全ページで同じ画像を使うと単調に見えるため、場面ごとに自然なポーズへ分けます。</p>
-        </div>
+        <article class="card">
+          <h3>ヒーローでの使い方</h3>
+          <p>
+            ページ冒頭では、キャラクターをやや大きめに配置しても問題ありません。
+            ただし、見出しや本文より目立ちすぎないサイズにします。
+          </p>
+          <ul>
+            <li>PCでは280px前後を目安</li>
+            <li>スマホでは220〜250px前後を目安</li>
+            <li>吹き出しは短くする</li>
+          </ul>
+        </article>
 
-        <div class="rule-card">
-          <div class="number">2</div>
-          <h3>役割を明確にする</h3>
-          <p>リベ男は案内、リベ女は条件チェック・注意喚起という役割を画像でも表現します。</p>
-        </div>
+        <article class="card">
+          <h3>本文中での使い方</h3>
+          <p>
+            本文中では小型の補足ボックスとして使います。
+            説明文や注意点を補助する位置に置き、連続で多用しないようにします。
+          </p>
+          <ul>
+            <li>画像幅は70〜110px程度</li>
+            <li>文章は2〜3行程度</li>
+            <li>カードや表の直後に自然に配置</li>
+          </ul>
+        </article>
 
-        <div class="rule-card">
-          <div class="number">3</div>
-          <h3>SEO記事の邪魔をしない</h3>
-          <p>キャラを目立たせすぎず、本文理解を補助する位置づけにします。</p>
-        </div>
+        <article class="card">
+          <h3>スマホでの使い方</h3>
+          <p>
+            スマホではキャラクターが大きすぎると本文が読みにくくなります。
+            画像カードやメモボックスは1列表示にして余白を調整します。
+          </p>
+          <ul>
+            <li>ヘッダーのstickyは解除</li>
+            <li>カードは1列化</li>
+            <li>表は横スクロール対応</li>
+          </ul>
+        </article>
       </div>
     </section>
 
-    <section class="section" id="current-status">
+    <section class="section" id="naming-rule">
       <div class="section-head">
-        <div class="label">現在の反映状況</div>
-        <h2 class="section-title">第一段階は<span>主要ページへ反映済み</span></h2>
-      </div>
-
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>ページ</th>
-              <th>使用キャラ</th>
-              <th>現在の画像</th>
-              <th>今後の理想</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>index.html</strong></td>
-              <td>リベ男</td>
-              <td><code>ribedan-transparent.png</code></td>
-              <td>案内ポーズ or 笑顔ポーズへ差し替え</td>
-            </tr>
-            <tr>
-              <td><strong>guide.html</strong></td>
-              <td>リベ男＋リベ女</td>
-              <td><code>ribedan-transparent.png</code> / <code>ribejo-transparent.png</code></td>
-              <td>リベ男は案内、リベ女はチェック用へ分岐</td>
-            </tr>
-            <tr>
-              <td><strong>bonus-guide.html</strong></td>
-              <td>リベ女</td>
-              <td><code>ribejo-transparent.png</code></td>
-              <td>説明ポーズ・注意喚起ポーズへ差し替え</td>
-            </tr>
-            <tr>
-              <td><strong>payments.html</strong></td>
-              <td>リベ女</td>
-              <td><code>ribejo-transparent.png</code></td>
-              <td>入出金・規約確認ポーズへ差し替え</td>
-            </tr>
-            <tr>
-              <td><strong>review.html</strong></td>
-              <td>リベ男</td>
-              <td><code>ribedan-transparent.png</code></td>
-              <td>案内ポーズへ差し替え</td>
-            </tr>
-            <tr>
-              <td><strong>casino-list.html</strong></td>
-              <td>リベ男</td>
-              <td><code>ribedan-transparent.png</code></td>
-              <td>指差し・比較案内ポーズへ差し替え</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="section" id="pose-list">
-      <div class="section-head">
-        <div class="label">追加ポーズ一覧</div>
-        <h2 class="section-title">リベ男の<span>追加画像パターン</span></h2>
+        <span class="label">命名ルール</span>
+        <h2 class="section-title">画像ファイル名のルール</h2>
         <p class="section-desc">
-          リベ男は、サイト全体の案内役として使います。主にTOP、レビュー一覧、カジノ一覧、初心者ガイドで使用します。
-        </p>
-      </div>
-
-      <div class="pose-grid">
-        <div class="pose-card">
-          <div class="number">1</div>
-          <h3>通常立ち絵</h3>
-          <p>現在使用中の基準画像。全体の雰囲気確認用として残します。</p>
-          <div class="file-name">ribedan-transparent.png</div>
-        </div>
-
-        <div class="pose-card">
-          <div class="number">2</div>
-          <h3>指差しポーズ</h3>
-          <p>比較表、カジノ一覧、レビュー一覧への案内で使用します。右手または片手で方向を示すポーズ。</p>
-          <div class="file-name">ribedan-point.png</div>
-        </div>
-
-        <div class="pose-card">
-          <div class="number">3</div>
-          <h3>案内ポーズ</h3>
-          <p>TOP、初心者ガイド、レビュー一覧のヒーローで使用します。片手を広げて案内する印象。</p>
-          <div class="file-name">ribedan-guide.png</div>
-        </div>
-
-        <div class="pose-card">
-          <div class="number">4</div>
-          <h3>笑顔ポーズ</h3>
-          <p>サイトの親しみやすさを出すために使用します。煽りではなく、安心感のある笑顔。</p>
-          <div class="file-name">ribedan-smile.png</div>
-        </div>
-
-        <div class="pose-card">
-          <div class="number">5</div>
-          <h3>注意喚起ポーズ</h3>
-          <p>責任ある利用、注意点、リスク確認の前で使用します。強すぎず、落ち着いた注意表現。</p>
-          <div class="file-name">ribedan-caution.png</div>
-        </div>
-
-        <div class="pose-card">
-          <div class="number">6</div>
-          <h3>比較表チェックポーズ</h3>
-          <p>一覧表や比較ポイントの近くで使用します。表やチェックボードを見せるイメージ。</p>
-          <div class="file-name">ribedan-compare.png</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="ribejo-pose">
-      <div class="section-head">
-        <div class="label">追加ポーズ一覧</div>
-        <h2 class="section-title">リベ女の<span>追加画像パターン</span></h2>
-        <p class="section-desc">
-          リベ女は、ボーナス条件、入出金条件、本人確認、暗号資産、規約確認の補足役として使います。
-        </p>
-      </div>
-
-      <div class="pose-grid">
-        <div class="pose-card">
-          <div class="number">1</div>
-          <h3>通常立ち絵</h3>
-          <p>現在使用中の基準画像。リベ女の標準デザインとして残します。</p>
-          <div class="file-name">ribejo-transparent.png</div>
-        </div>
-
-        <div class="pose-card">
-          <div class="number">2</div>
-          <h3>説明ポーズ</h3>
-          <p>ボーナス用語、賭け条件、最大出金などの説明に使用します。片手で説明する印象。</p>
-          <div class="file-name">ribejo-note.png</div>
-        </div>
-
-        <div class="pose-card">
-          <div class="number">3</div>
-          <h3>注意喚起ポーズ</h3>
-          <p>禁止ベット、出金制限、規約違反の注意点に使用します。落ち着いた警告表現。</p>
-          <div class="file-name">ribejo-warning.png</div>
-        </div>
-
-        <div class="pose-card">
-          <div class="number">4</div>
-          <h3>チェックリスト確認ポーズ</h3>
-          <p>登録前チェック、初心者チェック、出金前チェックで使用します。チェックボードを持つイメージ。</p>
-          <div class="file-name">ribejo-check.png</div>
-        </div>
-
-        <div class="pose-card">
-          <div class="number">5</div>
-          <h3>入出金・規約確認ポーズ</h3>
-          <p>payments.html、個別レビューの入出金セクションで使用します。書類やスマホを確認するイメージ。</p>
-          <div class="file-name">ribejo-payment.png</div>
-        </div>
-
-        <div class="pose-card">
-          <div class="number">6</div>
-          <h3>暗号資産注意ポーズ</h3>
-          <p>暗号資産、ネットワーク、送金先アドレスの注意喚起に使用します。</p>
-          <div class="file-name">ribejo-crypto.png</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="file-rule">
-      <div class="section-head">
-        <div class="label">ファイル名ルール</div>
-        <h2 class="section-title">画像ファイル名は<span>英数字・ハイフンで統一</span></h2>
-        <p class="section-desc">
-          GitHub Pagesでの表示ミスを防ぐため、ファイル名は小文字英数字とハイフンで統一します。
+          GitHub Pagesで安定して表示できるよう、画像ファイル名は半角英数字とハイフンを基本にします。
         </p>
       </div>
 
       <div class="grid-2">
-        <div class="note-box">
-          <h3>基本ルール</h3>
-          <ul class="check-list">
-            <li>ファイル名はすべて小文字にする</li>
-            <li>日本語ファイル名は使わない</li>
-            <li>スペースは使わない</li>
-            <li>記号はハイフンのみを基本にする</li>
-            <li>透過PNGを基本にする</li>
-            <li>既存ロゴ画像は削除しない</li>
+        <article class="rule-card">
+          <h3>現在の基本ルール</h3>
+          <p>
+            キャラクター名は、リベ男を <code>ribedan</code>、リベ女を <code>ribejo</code> として管理します。
+          </p>
+          <ul class="ok-list">
+            <li><code>ribedan-transparent.png</code></li>
+            <li><code>ribejo-transparent.png</code></li>
+            <li><code>ribedan-point.png</code></li>
+            <li><code>ribedan-guide.png</code></li>
+            <li><code>ribejo-note.png</code></li>
+            <li><code>ribejo-warning.png</code></li>
           </ul>
-        </div>
+        </article>
 
-        <div class="note-box">
-          <h3>避けるファイル名</h3>
-          <ul class="caution-list">
+        <article class="rule-card">
+          <h3>避ける命名</h3>
+          <p>
+            日本語ファイル名、スペース入り、用途が分かりにくい連番だけの名前は避けます。
+          </p>
+          <ul class="ng-list">
             <li><code>リベ男.png</code></li>
-            <li><code>ribedan 1.png</code></li>
-            <li><code>ribedan.PNG</code></li>
-            <li><code>ribedan.png.png</code></li>
-            <li><code>ribejo warning.png</code></li>
-            <li><code>new-character-final-final.png</code></li>
+            <li><code>ribe dan.png</code></li>
+            <li><code>new-image.png</code></li>
+            <li><code>character1.png</code></li>
+            <li><code>final-final.png</code></li>
+            <li><code>sample.png</code></li>
           </ul>
-        </div>
+        </article>
       </div>
     </section>
 
-    <section class="section" id="usage-map">
+    <section class="section" id="alt-rule">
       <div class="section-head">
-        <div class="label">使用場所</div>
-        <h2 class="section-title">ページごとの<span>理想配置</span></h2>
+        <span class="label">altルール</span>
+        <h2 class="section-title">画像altの書き方</h2>
         <p class="section-desc">
-          同じ画像を使い回さず、ページの役割に合わせてポーズを割り当てます。
+          画像altでは、キャラクター名と役割が分かるようにします。読み方は本文で必要な場合のみ補足します。
         </p>
       </div>
 
@@ -1049,225 +1533,353 @@
         <table>
           <thead>
             <tr>
-              <th>ページ</th>
-              <th>使用キャラ</th>
-              <th>理想の画像</th>
-              <th>役割</th>
+              <th>画像</th>
+              <th>推奨alt</th>
+              <th>用途</th>
+              <th>注意点</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>index.html</strong></td>
-              <td>リベ男</td>
-              <td><code>ribedan-guide.png</code> または <code>ribedan-smile.png</code></td>
-              <td>サイト全体の案内役</td>
+              <th>ribedan-transparent.png</th>
+              <td>リベ男の通常立ち絵</td>
+              <td>キャラクター紹介、基準画像</td>
+              <td>「リベお」と書かない。読みはリベだん。</td>
             </tr>
             <tr>
-              <td><strong>guide.html</strong></td>
-              <td>リベ男＋リベ女</td>
-              <td><code>ribedan-guide.png</code> / <code>ribejo-check.png</code></td>
-              <td>初心者に見る順番と確認項目を案内</td>
+              <th>ribejo-transparent.png</th>
+              <td>リベ女の通常立ち絵</td>
+              <td>キャラクター紹介、説明役の紹介</td>
+              <td>読みはリベじょ。</td>
             </tr>
             <tr>
-              <td><strong>bonus-guide.html</strong></td>
-              <td>リベ女</td>
-              <td><code>ribejo-note.png</code> / <code>ribejo-warning.png</code></td>
-              <td>賭け条件・最大出金・禁止ベットの説明</td>
+              <th>ribedan-point.png</th>
+              <td>比較ポイントを案内するリベ男</td>
+              <td>レビュー一覧、カジノ一覧、確認導線</td>
+              <td>煽りではなく確認案内として使う。</td>
             </tr>
             <tr>
-              <td><strong>payments.html</strong></td>
-              <td>リベ女</td>
-              <td><code>ribejo-payment.png</code> / <code>ribejo-crypto.png</code></td>
-              <td>出金条件・本人確認・暗号資産の注意喚起</td>
+              <th>ribedan-guide.png</th>
+              <td>見る順番を案内するリベ男</td>
+              <td>TOP、初心者ガイド</td>
+              <td>初心者向けの案内に使う。</td>
             </tr>
             <tr>
-              <td><strong>review.html</strong></td>
-              <td>リベ男</td>
-              <td><code>ribedan-point.png</code> または <code>ribedan-guide.png</code></td>
-              <td>レビュー一覧の見方を案内</td>
+              <th>ribejo-note.png</th>
+              <td>条件確認を案内するリベ女</td>
+              <td>ボーナス説明、初心者チェック</td>
+              <td>説明や補足の文脈で使う。</td>
             </tr>
             <tr>
-              <td><strong>casino-list.html</strong></td>
-              <td>リベ男</td>
-              <td><code>ribedan-compare.png</code> または <code>ribedan-point.png</code></td>
-              <td>一覧比較の見方を案内</td>
-            </tr>
-            <tr>
-              <td><strong>個別レビュー10本</strong></td>
-              <td>基本はリベ女</td>
-              <td><code>ribejo-check.png</code> / <code>ribejo-warning.png</code></td>
-              <td>そのサイトの注意点・条件確認を補足</td>
+              <th>ribejo-warning.png</th>
+              <td>注意点を案内するリベ女</td>
+              <td>入出金、本人確認、規約注意</td>
+              <td>不安を煽りすぎず、確認を促す。</td>
             </tr>
           </tbody>
         </table>
-      </div>
-    </section>
-
-    <section class="section" id="design-rule">
-      <div class="section-head">
-        <div class="label">デザイン統一</div>
-        <h2 class="section-title">表情・服装・色味の<span>統一ルール</span></h2>
-      </div>
-
-      <div class="rule-grid">
-        <div class="rule-card">
-          <div class="number">1</div>
-          <h3>顔・髪型を固定</h3>
-          <p>リベ男・リベ女の顔、髪型、目の雰囲気は毎回変えない。別人に見えないことを最優先にします。</p>
-        </div>
-
-        <div class="rule-card">
-          <div class="number">2</div>
-          <h3>服装を固定</h3>
-          <p>現在の衣装、赤系の色味、炎モチーフ、リベンジ感は維持します。過度な露出や別衣装化は避けます。</p>
-        </div>
-
-        <div class="rule-card">
-          <div class="number">3</div>
-          <h3>色味を固定</h3>
-          <p>赤・白・黒・ゴールド系を中心にし、サイト全体の赤白デザインに合わせます。</p>
-        </div>
-
-        <div class="rule-card">
-          <div class="number">4</div>
-          <h3>背景は透明</h3>
-          <p>背景は必ず透過PNGにします。市松模様や白背景が画像内に焼き込まれていないか確認します。</p>
-        </div>
-
-        <div class="rule-card">
-          <div class="number">5</div>
-          <h3>余白を少なくする</h3>
-          <p>キャラの周囲に不要な余白を大きく残さず、Web配置しやすい切り抜きにします。</p>
-        </div>
-
-        <div class="rule-card">
-          <div class="number">6</div>
-          <h3>煽りすぎない</h3>
-          <p>強すぎる勝負感、ギャンブルを煽る表情、札束・チップ過多の演出は避けます。</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="prompt-rule">
-      <div class="section-head">
-        <div class="label">画像生成指示</div>
-        <h2 class="section-title">追加画像を作るときの<span>基本プロンプト</span></h2>
-        <p class="section-desc">
-          画像生成や外注時は、下記のような条件を固定します。
-        </p>
-      </div>
-
-      <div class="grid-2">
-        <div class="note-box">
-          <h3>リベ男の基本指示</h3>
-          <p>
-            現在のリベ男のキャラクターデザイン、髪型、表情、服装、赤と炎の雰囲気を維持。
-            オンラインカジノ比較サイトの案内役として、煽らず親しみやすい表情。
-            背景は完全透過。Webサイト配置用のキャラクター単体PNG。
-          </p>
-        </div>
-
-        <div class="note-box">
-          <h3>リベ女の基本指示</h3>
-          <p>
-            現在のリベ女のキャラクターデザイン、髪型、表情、服装、赤と炎の雰囲気を維持。
-            ボーナス条件・出金条件・本人確認を冷静に補足するガイド役。
-            背景は完全透過。Webサイト配置用のキャラクター単体PNG。
-          </p>
-        </div>
       </div>
     </section>
 
     <section class="section" id="ng-rule">
       <div class="section-head">
-        <div class="label">禁止表現</div>
-        <h2 class="section-title">作ってはいけない<span>画像表現</span></h2>
+        <span class="label">NG使用例</span>
+        <h2 class="section-title">マスコット使用時に避けること</h2>
         <p class="section-desc">
-          サイト方針とズレる表現は、キャラクター画像でも避けます。
+          キャラクターの親しみやすさは活かしつつ、ギャンブル感や煽りが強くなりすぎないようにします。
         </p>
       </div>
 
       <div class="grid-2">
-        <div class="note-box">
-          <h3>NG表現</h3>
-          <ul class="caution-list">
-            <li>札束を持って勝利を煽る表現</li>
-            <li>大量のカジノチップで射幸心を強く刺激する表現</li>
-            <li>「勝てる」「稼げる」「取り返せる」を連想させる表情やポーズ</li>
-            <li>過度に攻撃的な表情</li>
-            <li>未成年向けに見える幼すぎる表現</li>
-            <li>過度な露出や性的な見せ方</li>
+        <article class="rule-card">
+          <h3>表現面のNG</h3>
+          <p>
+            マスコットに保証表現や煽り表現を言わせないようにします。
+          </p>
+          <ul class="ng-list">
+            <li>勝てる、必ず勝てる</li>
+            <li>稼げる、儲かる</li>
+            <li>取り返せる、損失回収</li>
+            <li>勝利保証、出金保証</li>
+            <li>今すぐ登録しないと損</li>
+            <li>急いで参加、登録必須</li>
           </ul>
-        </div>
+        </article>
 
-        <div class="note-box">
-          <h3>OK表現</h3>
-          <ul class="check-list">
-            <li>比較表を案内する</li>
-            <li>チェックリストを持つ</li>
-            <li>注意点をやさしく伝える</li>
-            <li>公式規約や出金条件の確認を促す</li>
-            <li>ボーナス条件の見方を説明する</li>
-            <li>初心者に見る順番を案内する</li>
+        <article class="rule-card">
+          <h3>デザイン面のNG</h3>
+          <p>
+            マスコットを大きくしすぎたり、ページ全体を派手にしすぎたりしないようにします。
+          </p>
+          <ul class="ng-list">
+            <li>本文全体に炎演出を多用する</li>
+            <li>黒背景メインでギャンブル感を強くする</li>
+            <li>金ピカすぎる装飾にする</li>
+            <li>キャラクターが本文を圧迫する</li>
+            <li>CTAの近くで過度に煽る</li>
+            <li>画像ファイル名を勝手に変える</li>
           </ul>
-        </div>
+        </article>
       </div>
     </section>
 
-    <section class="section" id="next-flow">
+    <section class="section" id="ok-rule">
       <div class="section-head">
-        <div class="label">次の作業</div>
-        <h2 class="section-title">追加画像作成の<span>進め方</span></h2>
+        <span class="label">推奨使用例</span>
+        <h2 class="section-title">自然に使いやすいマスコット文言</h2>
+        <p class="section-desc">
+          比較・条件確認・慎重な判断を促す文脈であれば、マスコットの案内文として使いやすくなります。
+        </p>
       </div>
 
       <div class="grid-3">
-        <div class="rule-card">
-          <div class="number">1</div>
-          <h3>優先4枚を作る</h3>
-          <p>まずは <code>ribedan-point.png</code>、<code>ribedan-guide.png</code>、<code>ribejo-note.png</code>、<code>ribejo-warning.png</code> を作ります。</p>
-        </div>
+        <article class="card">
+          <h3>リベ男向け文言</h3>
+          <ul class="ok-list">
+            <li>まずはレビュー一覧で特徴を確認しましょう。</li>
+            <li>気になるサイトは、詳細レビューで条件を確認しましょう。</li>
+            <li>比較表で全体像を見てから、個別ページで確認しましょう。</li>
+            <li>初心者の方は、見る順番から確認すると分かりやすいです。</li>
+          </ul>
+        </article>
 
-        <div class="rule-card">
-          <div class="number">2</div>
-          <h3>主要ページで差し替え</h3>
-          <p>index、guide、bonus-guide、payments、review、casino-list の画像を役割別に差し替えます。</p>
-        </div>
+        <article class="card">
+          <h3>リベ女向け文言</h3>
+          <ul class="ok-list">
+            <li>ボーナスは金額だけでなく、賭け条件も確認しましょう。</li>
+            <li>出金前には本人確認が必要になる場合があります。</li>
+            <li>対象ゲームや禁止ベットは、事前に公式規約で確認しましょう。</li>
+            <li>不明点がある場合は、利用を急がないことが大切です。</li>
+          </ul>
+        </article>
 
-        <div class="rule-card">
-          <div class="number">3</div>
-          <h3>個別レビューへ展開</h3>
-          <p>追加ポーズが揃ってから、個別レビュー10本へリベ女のワンポイント案内を自然に追加します。</p>
+        <article class="card">
+          <h3>共通文言</h3>
+          <ul class="ok-list">
+            <li>公式ルールを確認しましょう。</li>
+            <li>条件を理解してから判断しましょう。</li>
+            <li>比較するときは、複数の項目を見ることが大切です。</li>
+            <li>不安がある場合は、無理に進めないようにしましょう。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="future-images">
+      <div class="section-head">
+        <span class="label">今後の追加案</span>
+        <h2 class="section-title">将来的に追加しやすいポーズ案</h2>
+        <p class="section-desc">
+          現在の6枚で主要ページは対応できます。今後追加する場合も、役割が重複しないようにします。
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <article class="future-card">
+          <span class="badge badge-main">リベ男</span>
+          <h3>比較表を見るポーズ</h3>
+          <p>
+            カジノ一覧やレビュー一覧の比較表前で使うポーズ。
+          </p>
+          <ul>
+            <li>想定名：<code>ribedan-compare.png</code></li>
+            <li>用途：比較表、一覧ページ</li>
+            <li>役割：候補を整理する案内</li>
+          </ul>
+        </article>
+
+        <article class="future-card">
+          <span class="badge badge-main">リベ男</span>
+          <h3>初心者案内ポーズ</h3>
+          <p>
+            初心者ガイドのステップ説明に使うポーズ。
+          </p>
+          <ul>
+            <li>想定名：<code>ribedan-beginner.png</code></li>
+            <li>用途：guide.html</li>
+            <li>役割：見る順番の案内</li>
+          </ul>
+        </article>
+
+        <article class="future-card">
+          <span class="badge badge-sub">リベ女</span>
+          <h3>規約確認ポーズ</h3>
+          <p>
+            公式規約、禁止ベット、出金条件の確認を促すポーズ。
+          </p>
+          <ul>
+            <li>想定名：<code>ribejo-rule.png</code></li>
+            <li>用途：bonus-guide、payments</li>
+            <li>役割：確認漏れ防止</li>
+          </ul>
+        </article>
+
+        <article class="future-card">
+          <span class="badge badge-sub">リベ女</span>
+          <h3>決済確認ポーズ</h3>
+          <p>
+            入金方法、出金方法、暗号資産ネットワーク注意に使うポーズ。
+          </p>
+          <ul>
+            <li>想定名：<code>ribejo-payment.png</code></li>
+            <li>用途：payments.html</li>
+            <li>役割：入出金確認</li>
+          </ul>
+        </article>
+
+        <article class="future-card">
+          <span class="badge badge-main">リベ男</span>
+          <h3>レビュー確認ポーズ</h3>
+          <p>
+            個別レビュー記事内で、確認ポイントへ誘導するポーズ。
+          </p>
+          <ul>
+            <li>想定名：<code>ribedan-review.png</code></li>
+            <li>用途：個別レビュー記事</li>
+            <li>役割：レビュー導線</li>
+          </ul>
+        </article>
+
+        <article class="future-card">
+          <span class="badge badge-sub">リベ女</span>
+          <h3>注意メモポーズ</h3>
+          <p>
+            FAQ前や注意ブロックで、確認事項を短く伝えるポーズ。
+          </p>
+          <ul>
+            <li>想定名：<code>ribejo-check.png</code></li>
+            <li>用途：FAQ、注意ボックス</li>
+            <li>役割：補足説明</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="implementation-check">
+      <div class="section-head">
+        <span class="label">実装チェック</span>
+        <h2 class="section-title">HTML反映時の確認項目</h2>
+        <p class="section-desc">
+          画像を追加・差し替えしたあとは、ファイル名、alt、スマホ表示、リンク切れを確認します。
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <ul class="check-list">
+          <li>画像ファイルがHTMLと同じ階層にある</li>
+          <li>ファイル名の大文字・小文字が一致している</li>
+          <li>PNG拡張子が正しく指定されている</li>
+          <li>altにキャラクター名と役割が入っている</li>
+          <li>スマホで画像が大きすぎない</li>
+        </ul>
+
+        <ul class="check-list">
+          <li>本文や表に画像が重なっていない</li>
+          <li>吹き出しがスマホで読める幅になっている</li>
+          <li>CTAが煽り表現になっていない</li>
+          <li>ロゴ画像を誤って削除していない</li>
+          <li>GitHub Pages上で実際に表示確認する</li>
+        </ul>
+      </div>
+
+      <div style="margin-top: 18px;">
+        <div class="mascot-note">
+          <img src="ribejo-warning.png" alt="画像実装時の注意点を案内するリベ女" />
+          <div>
+            <h3>画像表示で特に注意すること</h3>
+            <p>
+              GitHub Pagesでは、画像ファイル名の大文字・小文字や拡張子の違いで表示されないことがあります。
+              HTML側の <code>src</code> と実際のファイル名が完全に一致しているか確認してください。
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="responsible">
-      <div class="warning-box">
-        <h2>運営上の注意</h2>
-        <p>
-          リベ男・リベ女は、オンラインカジノ利用を煽るキャラクターではありません。
-          サイトの方針どおり、比較・条件確認・安全性確認・公式規約確認をサポートする案内役として使用します。
+    <section class="section" id="related-pages">
+      <div class="section-head">
+        <span class="label">関連ページ</span>
+        <h2 class="section-title">画像設計と一緒に確認するページ</h2>
+        <p class="section-desc">
+          マスコット画像の使い方は、各ページの役割や内部リンク設計とあわせて確認します。
         </p>
-        <ul>
-          <li>キャラクターに勝利保証や損失回収を連想させる役割を持たせない</li>
-          <li>「リベンジ」は取り返す意味ではなく、前回の失敗を学びに変える意味で扱う</li>
-          <li>画像は透過PNGで保存する</li>
-          <li>同じ画像を全ページで使い回しすぎない</li>
-          <li>ページごとの役割に合ったポーズを使う</li>
-        </ul>
+      </div>
+
+      <div class="link-grid">
+        <a class="link-card" href="index.html">
+          <strong>TOP</strong>
+          <span>リベ男の案内ポーズを確認。</span>
+        </a>
+
+        <a class="link-card" href="review.html">
+          <strong>レビュー一覧</strong>
+          <span>リベ男の指差しポーズを確認。</span>
+        </a>
+
+        <a class="link-card" href="casino-list.html">
+          <strong>カジノ一覧</strong>
+          <span>一覧・比較表前の導線を確認。</span>
+        </a>
+
+        <a class="link-card" href="bonus.html">
+          <strong>ボーナス比較</strong>
+          <span>リベ女の説明・注意喚起を確認。</span>
+        </a>
+
+        <a class="link-card" href="bonus-guide.html">
+          <strong>ボーナスの見方</strong>
+          <span>条件説明の使い方を確認。</span>
+        </a>
+
+        <a class="link-card" href="payments.html">
+          <strong>入出金ガイド</strong>
+          <span>注意喚起ポーズの使い方を確認。</span>
+        </a>
+
+        <a class="link-card" href="guide.html">
+          <strong>初心者ガイド</strong>
+          <span>見る順番と確認メモを確認。</span>
+        </a>
+
+        <a class="link-card" href="site-checklist.html">
+          <strong>サイト確認</strong>
+          <span>全体の反映状況を確認。</span>
+        </a>
+
+        <a class="link-card" href="#image-files">
+          <strong>画像一覧</strong>
+          <span>現在の画像ファイル名を確認。</span>
+        </a>
+
+        <a class="link-card" href="#implementation-check">
+          <strong>実装チェック</strong>
+          <span>画像反映後の確認項目を見る。</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="final-check">
+      <div class="final-box">
+        <h2>マスコット設計の最終方針</h2>
+        <p>
+          リベ男は案内役、リベ女は説明・注意喚起役として使い分けます。
+          画像はページの主役ではなく、比較・条件確認・慎重な判断を補助するための要素です。
+          既存の画像ファイル名は変更せず、スマホでは画像を大きくしすぎないようにします。
+        </p>
       </div>
     </section>
 
     <section class="cta">
       <div class="cta-box">
-        <h2>次は、優先4枚の追加ポーズを作る。</h2>
+        <h2>これで主要ページと管理ページのスマホ改善版がそろいました。</h2>
         <p>
-          まずはリベ男の指差し・案内ポーズ、リベ女の説明・注意喚起ポーズを作成し、主要ページの画像差し替えから進めます。
+          次の段階では、個別レビュー10本の完成度アップ、内部リンクの最終調整、
+          SEOタイトル・descriptionの見直し、GitHub Pages上でのリンク確認に進めます。
         </p>
+
         <div class="cta-actions">
-          <a href="#pose-list" class="btn btn-gold">ポーズ一覧へ</a>
-          <a href="site-checklist.html" class="btn btn-outline">サイトチェックリストへ</a>
-          <a href="index.html" class="btn btn-outline">TOPへ戻る</a>
+          <a class="btn btn-secondary" href="site-checklist.html">サイト確認へ戻る</a>
+          <a class="btn btn-primary" href="index.html">TOPへ戻る</a>
         </div>
       </div>
     </section>
@@ -1275,26 +1887,20 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <div>
-        <div class="brand">
-          <span class="brand-mark">R</span>
-          <span>リベンジカジノ比較ガイド</span>
-        </div>
-        <p>
-          本ページは、リベ男・リベ女の画像パターン、追加ポーズ、使用場所、表現ルールを整理するための運営用ページです。
-        </p>
-      </div>
-
       <div class="footer-links">
         <a href="index.html">TOP</a>
-        <a href="site-checklist.html">サイトチェックリスト</a>
         <a href="casino-list.html">カジノ一覧</a>
-        <a href="review.html">レビュー</a>
+        <a href="review.html">レビュー一覧</a>
         <a href="bonus.html">ボーナス比較</a>
-        <a href="bonus-guide.html">見方ガイド</a>
+        <a href="bonus-guide.html">ボーナスの見方</a>
+        <a href="payments.html">入出金ガイド</a>
         <a href="guide.html">初心者ガイド</a>
-        <a href="payments.html">入出金</a>
-        <a href="mascot-image-plan.html">マスコット画像設計書</a>
+        <a href="site-checklist.html">サイト確認</a>
+      </div>
+
+      <div class="footer-copy">
+        © リベンジカジノ比較ガイド｜このページはマスコット画像の設計・運用ルールを整理する管理ページです。
+        本サイトはオンラインカジノの条件確認・比較を目的とした情報メディアであり、利用や登録を推奨・保証するものではありません。
       </div>
     </div>
   </footer>
