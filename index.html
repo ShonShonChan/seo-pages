@@ -161,7 +161,7 @@
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-columns: 1.06fr 0.94fr;
+      grid-template-columns: 1.05fr 0.95fr;
       gap: 34px;
       align-items: center;
     }
@@ -209,137 +209,6 @@
       color: #444;
       font-size: 17px;
       max-width: 720px;
-    }
-
-    .hero-card,
-    .quick-card,
-    .review-card,
-    .link-card,
-    .policy-card,
-    .warning-box {
-      background: #fff;
-      border: 1px solid rgba(215, 25, 32, 0.15);
-      border-radius: var(--radius-md);
-      padding: 20px;
-      box-shadow: 0 10px 28px rgba(120, 20, 20, 0.07);
-    }
-
-    .hero-card {
-      border-radius: 26px;
-      background: rgba(255, 255, 255, 0.9);
-      box-shadow: 0 16px 34px rgba(120, 20, 20, 0.12);
-    }
-
-    .hero-card h2,
-    .quick-card h3,
-    .review-card h3,
-    .link-card h3,
-    .policy-card h3 {
-      margin: 0 0 8px;
-      color: var(--red-dark);
-      font-size: 18px;
-      line-height: 1.35;
-    }
-
-    .mascot-hero {
-      position: relative;
-      min-height: 470px;
-      border-radius: 30px;
-      background:
-        radial-gradient(circle at 50% 18%, rgba(246, 183, 60, 0.36), transparent 32%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 244, 238, 0.9));
-      border: 1px solid rgba(215, 25, 32, 0.16);
-      box-shadow: 0 18px 42px rgba(120, 20, 20, 0.13);
-      overflow: hidden;
-      display: grid;
-      place-items: end center;
-      padding: 20px 20px 0;
-    }
-
-    .mascot-hero::before {
-      content: "";
-      position: absolute;
-      width: 280px;
-      height: 280px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 122, 26, 0.26), transparent 65%);
-      top: 42px;
-      right: 52px;
-      z-index: 0;
-    }
-
-    .mascot-hero::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0 0;
-      height: 88px;
-      background: linear-gradient(180deg, transparent, rgba(215, 25, 32, 0.08));
-      z-index: 1;
-    }
-
-    .mascot-hero-img {
-      position: relative;
-      z-index: 2;
-      width: min(88%, 380px);
-      max-height: 455px;
-      object-fit: contain;
-      object-position: bottom center;
-      filter: drop-shadow(0 18px 22px rgba(80, 20, 20, 0.22));
-    }
-
-    .mascot-hero-bubble {
-      position: absolute;
-      z-index: 3;
-      left: 22px;
-      right: 22px;
-      bottom: 20px;
-      background: rgba(255, 255, 255, 0.94);
-      border: 1px solid rgba(215, 25, 32, 0.18);
-      border-left: 6px solid var(--red);
-      border-radius: 20px;
-      padding: 15px 17px;
-      box-shadow: 0 12px 28px rgba(120, 20, 20, 0.12);
-    }
-
-    .mascot-hero-bubble strong {
-      display: block;
-      color: var(--red-dark);
-      font-size: 14px;
-      margin-bottom: 3px;
-    }
-
-    .mascot-hero-bubble p {
-      margin: 0;
-      color: #444;
-      font-size: 14px;
-      line-height: 1.65;
-      font-weight: 700;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .stat-item {
-      background: #fff7f4;
-      border: 1px solid rgba(215, 25, 32, 0.14);
-      border-radius: 16px;
-      padding: 12px;
-    }
-
-    .stat-item span {
-      display: block;
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 800;
-      margin-bottom: 2px;
-    }
-
-    .stat-item strong {
-      color: var(--red-dark);
-      font-size: 16px;
     }
 
     .hero-actions,
@@ -399,6 +268,83 @@
       border: 1px solid rgba(215, 25, 32, 0.24);
     }
 
+    .mascot-hero {
+      position: relative;
+      min-height: 500px;
+      border-radius: 30px;
+      overflow: visible;
+      display: grid;
+      place-items: end center;
+      padding: 8px 16px 0;
+    }
+
+    .mascot-hero::before {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, rgba(246, 183, 60, 0.34), rgba(255, 122, 26, 0.16) 42%, transparent 70%);
+      top: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 0;
+      filter: blur(2px);
+    }
+
+    .mascot-hero::after {
+      content: "";
+      position: absolute;
+      left: 36px;
+      right: 36px;
+      bottom: 10px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(120, 20, 20, 0.13);
+      filter: blur(14px);
+      z-index: 1;
+    }
+
+    .mascot-hero-img {
+      position: relative;
+      z-index: 2;
+      width: min(96%, 390px);
+      max-height: 500px;
+      object-fit: contain;
+      object-position: bottom center;
+      filter: drop-shadow(0 18px 22px rgba(80, 20, 20, 0.22));
+    }
+
+    .mascot-hero-bubble {
+      position: absolute;
+      z-index: 3;
+      left: 8px;
+      right: 8px;
+      bottom: 14px;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(215, 25, 32, 0.18);
+      border-left: 6px solid var(--red);
+      border-radius: 20px;
+      padding: 15px 17px;
+      box-shadow: 0 12px 28px rgba(120, 20, 20, 0.12);
+    }
+
+    .mascot-hero-bubble strong {
+      display: block;
+      color: var(--red-dark);
+      font-size: 14px;
+      margin-bottom: 3px;
+    }
+
+    .mascot-hero-bubble p {
+      margin: 0;
+      color: #444;
+      font-size: 14px;
+      line-height: 1.65;
+      font-weight: 700;
+    }
+
     .notice {
       max-width: var(--max);
       margin: 0 auto 20px;
@@ -454,6 +400,50 @@
     .link-grid,
     .policy-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .quick-card,
+    .review-card,
+    .link-card,
+    .policy-card,
+    .warning-box {
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.15);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: 0 10px 28px rgba(120, 20, 20, 0.07);
+    }
+
+    .quick-card h3,
+    .review-card h3,
+    .link-card h3,
+    .policy-card h3 {
+      margin: 0 0 8px;
+      color: var(--red-dark);
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .quick-card p,
+    .review-card p,
+    .link-card p,
+    .policy-card p {
+      margin: 0;
+      color: #4d4d4d;
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .quick-card p,
+    .link-card p {
+      margin-bottom: 12px;
+    }
+
+    .quick-card a,
+    .link-card a {
+      color: var(--red);
+      font-weight: 900;
+      font-size: 14px;
     }
 
     .review-card {
@@ -567,52 +557,6 @@
       border-color: #e6e6e6;
     }
 
-    .quick-card p,
-    .review-card p,
-    .link-card p,
-    .policy-card p {
-      margin: 0;
-      color: #4d4d4d;
-      font-size: 14px;
-      line-height: 1.75;
-    }
-
-    .link-card p,
-    .quick-card p {
-      margin-bottom: 12px;
-    }
-
-    .link-card a,
-    .quick-card a {
-      color: var(--red);
-      font-weight: 900;
-      font-size: 14px;
-    }
-
-    .check-list {
-      display: grid;
-      gap: 8px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      font-size: 14px;
-      color: #444;
-    }
-
-    .check-list li {
-      padding-left: 22px;
-      position: relative;
-    }
-
-    .check-list li::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: var(--red);
-      font-weight: 900;
-    }
-
     .warning-box {
       border-radius: var(--radius-lg);
       background:
@@ -710,11 +654,11 @@
       }
 
       .mascot-hero {
-        min-height: 430px;
+        min-height: 455px;
       }
 
       .mascot-hero-img {
-        width: min(88%, 330px);
+        width: min(96%, 340px);
       }
     }
 
@@ -747,7 +691,7 @@
       .mascot-hero {
         max-width: 460px;
         margin: 0 auto;
-        min-height: 440px;
+        min-height: 465px;
       }
 
       .footer-links {
@@ -780,8 +724,7 @@
       .quick-nav,
       .review-grid,
       .link-grid,
-      .policy-grid,
-      .stats-grid {
+      .policy-grid {
         grid-template-columns: 1fr;
       }
 
@@ -804,20 +747,25 @@
       }
 
       .mascot-hero {
-        min-height: 390px;
-        border-radius: 24px;
-        padding: 16px 14px 0;
+        min-height: 405px;
+        padding: 8px 8px 0;
+      }
+
+      .mascot-hero::before {
+        width: 280px;
+        height: 280px;
+        top: 30px;
       }
 
       .mascot-hero-img {
-        width: min(94%, 280px);
-        max-height: 355px;
+        width: min(98%, 285px);
+        max-height: 380px;
       }
 
       .mascot-hero-bubble {
-        left: 14px;
-        right: 14px;
-        bottom: 14px;
+        left: 0;
+        right: 0;
+        bottom: 8px;
         padding: 13px 14px;
       }
 
@@ -872,7 +820,7 @@
           </div>
 
           <aside class="mascot-hero" aria-label="リベ男の案内">
-            <img src="ribedan.jpg" alt="リベ男" class="mascot-hero-img" />
+            <img src="ribedan.png" alt="リベ男" class="mascot-hero-img" />
             <div class="mascot-hero-bubble">
               <strong>リベ男のひとこと</strong>
               <p>
