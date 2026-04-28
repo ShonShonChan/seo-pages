@@ -174,7 +174,7 @@
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 34px;
       align-items: center;
     }
@@ -283,7 +283,7 @@
 
     .mascot-hero {
       position: relative;
-      min-height: 500px;
+      min-height: 430px;
       border-radius: 30px;
       overflow: visible;
       display: grid;
@@ -294,12 +294,12 @@
     .mascot-hero::before {
       content: "";
       position: absolute;
-      width: 360px;
-      height: 360px;
+      width: 320px;
+      height: 320px;
       border-radius: 50%;
       background:
         radial-gradient(circle, rgba(246, 183, 60, 0.34), rgba(255, 122, 26, 0.16) 42%, transparent 70%);
-      top: 28px;
+      top: 34px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 0;
@@ -309,12 +309,12 @@
     .mascot-hero::after {
       content: "";
       position: absolute;
-      left: 36px;
-      right: 36px;
-      bottom: 10px;
-      height: 42px;
+      left: 48px;
+      right: 48px;
+      bottom: 12px;
+      height: 36px;
       border-radius: 50%;
-      background: rgba(120, 20, 20, 0.13);
+      background: rgba(120, 20, 20, 0.12);
       filter: blur(14px);
       z-index: 1;
     }
@@ -322,8 +322,8 @@
     .mascot-hero-img {
       position: relative;
       z-index: 2;
-      width: min(96%, 390px);
-      max-height: 500px;
+      width: min(90%, 330px);
+      max-height: 430px;
       object-fit: contain;
       object-position: bottom center;
       filter: drop-shadow(0 18px 22px rgba(80, 20, 20, 0.22));
@@ -366,11 +366,11 @@
 
     .mascot-note-inner {
       display: grid;
-      grid-template-columns: 150px 1fr;
+      grid-template-columns: 120px 1fr;
       gap: 18px;
       align-items: center;
       background:
-        radial-gradient(circle at left center, rgba(246, 183, 60, 0.25), transparent 26%),
+        radial-gradient(circle at left center, rgba(246, 183, 60, 0.22), transparent 26%),
         linear-gradient(135deg, #fff, #fff5f0);
       border: 1px solid rgba(215, 25, 32, 0.16);
       border-left: 7px solid var(--red);
@@ -380,8 +380,8 @@
     }
 
     .mascot-note-img {
-      width: 138px;
-      max-height: 170px;
+      width: 108px;
+      max-height: 135px;
       object-fit: contain;
       filter: drop-shadow(0 12px 16px rgba(80, 20, 20, 0.18));
       justify-self: center;
@@ -468,7 +468,6 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .hero-card,
     .card,
     .term-card,
     .link-card,
@@ -480,13 +479,6 @@
       box-shadow: 0 10px 28px rgba(120, 20, 20, 0.07);
     }
 
-    .hero-card {
-      border-radius: 26px;
-      background: rgba(255, 255, 255, 0.9);
-      box-shadow: 0 16px 34px rgba(120, 20, 20, 0.12);
-    }
-
-    .hero-card h2,
     .card h3,
     .term-card h3,
     .link-card h3 {
@@ -743,11 +735,11 @@
 
     @media (max-width: 1060px) {
       .mascot-hero {
-        min-height: 455px;
+        min-height: 410px;
       }
 
       .mascot-hero-img {
-        width: min(96%, 340px);
+        width: min(90%, 305px);
       }
     }
 
@@ -779,17 +771,17 @@
       }
 
       .mascot-hero {
-        max-width: 460px;
+        max-width: 420px;
         margin: 0 auto;
-        min-height: 465px;
+        min-height: 420px;
       }
 
       .mascot-note-inner {
-        grid-template-columns: 120px 1fr;
+        grid-template-columns: 105px 1fr;
       }
 
       .mascot-note-img {
-        width: 112px;
+        width: 96px;
       }
 
       .footer-links {
@@ -841,19 +833,19 @@
       }
 
       .mascot-hero {
-        min-height: 405px;
+        min-height: 360px;
         padding: 8px 8px 0;
       }
 
       .mascot-hero::before {
-        width: 280px;
-        height: 280px;
+        width: 250px;
+        height: 250px;
         top: 30px;
       }
 
       .mascot-hero-img {
-        width: min(98%, 285px);
-        max-height: 380px;
+        width: min(94%, 250px);
+        max-height: 340px;
       }
 
       .mascot-hero-bubble {
@@ -874,7 +866,7 @@
       }
 
       .mascot-note-img {
-        width: 118px;
+        width: 102px;
         margin: 0 auto;
       }
 
@@ -932,7 +924,7 @@
           </div>
 
           <aside class="mascot-hero" aria-label="リベ女の案内">
-            <img src="ribejo-transparent.png" alt="リベ女" class="mascot-hero-img" />
+            <img src="ribejo-note.png" alt="リベ女" class="mascot-hero-img" />
             <div class="mascot-hero-bubble">
               <strong>リベ女のひとこと</strong>
               <p>
@@ -954,7 +946,7 @@
 
     <section class="mascot-note" aria-label="リベ女のボーナス確認案内">
       <div class="mascot-note-inner">
-        <img src="ribejo-transparent.png" alt="リベ女" class="mascot-note-img" />
+        <img src="ribejo-note.png" alt="リベ女" class="mascot-note-img" />
         <div class="mascot-note-body">
           <strong>リベ女の条件チェック</strong>
           <h2>ボーナスは「もらえる金額」より「出金できる条件」が大切です。</h2>
@@ -1083,7 +1075,7 @@
 
     <section class="mascot-note" aria-label="リベ女の注意ポイント">
       <div class="mascot-note-inner">
-        <img src="ribejo-transparent.png" alt="リベ女" class="mascot-note-img" />
+        <img src="ribejo-warning.png" alt="リベ女" class="mascot-note-img" />
         <div class="mascot-note-body">
           <strong>リベ女の注意ポイント</strong>
           <h2>「高額ボーナス」でも、条件が重いと使いにくい場合があります。</h2>
@@ -1326,6 +1318,7 @@
         <a href="guide.html">初心者ガイド</a>
         <a href="payments.html">入出金</a>
         <a href="site-checklist.html">サイトチェックリスト</a>
+        <a href="mascot-image-plan.html">マスコット画像設計書</a>
       </div>
     </div>
   </footer>
