@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>オンラインカジノレビュー一覧｜公開済み・準備中レビューをまとめて確認｜リベンジカジノ比較ガイド</title>
-  <meta name="description" content="オンラインカジノの個別レビュー一覧ページです。スロット天国、コニベット、STAKE、ベラジョン、游雅堂などの公開済みレビューに加え、bitcasino、Mystinoなどの準備中・調査中レビューもまとめて確認できます。" />
+  <title>オンラインカジノレビュー一覧｜公開済みレビューをまとめて確認｜リベンジカジノ比較ガイド</title>
+  <meta name="description" content="オンラインカジノの個別レビュー一覧ページです。スロット天国、コニベット、STAKE、ベラジョン、游雅堂、bitcasino、Mystino、Casino Secret、Bons Casino、BC.Gameのレビューをまとめて確認できます。" />
 
   <style>
     :root {
@@ -336,13 +336,6 @@
       border: 1px solid rgba(215, 25, 32, 0.24);
     }
 
-    .mini-btn.disabled {
-      background: #f4f4f4;
-      color: #777;
-      border-color: #e2e2e2;
-      pointer-events: none;
-    }
-
     .notice {
       max-width: var(--max);
       margin: 0 auto 20px;
@@ -535,8 +528,7 @@
       font-size: 14px;
     }
 
-    .check-list,
-    .caution-list {
+    .check-list {
       display: grid;
       gap: 8px;
       margin: 0;
@@ -546,8 +538,7 @@
       color: #444;
     }
 
-    .check-list li,
-    .caution-list li {
+    .check-list li {
       padding-left: 22px;
       position: relative;
     }
@@ -558,22 +549,6 @@
       left: 0;
       top: 0;
       color: var(--red);
-      font-weight: 900;
-    }
-
-    .caution-list li::before {
-      content: "!";
-      position: absolute;
-      left: 0;
-      top: 2px;
-      width: 17px;
-      height: 17px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: var(--gold);
-      color: #4a2b00;
-      font-size: 11px;
       font-weight: 900;
     }
 
@@ -631,11 +606,6 @@
     .status.good {
       color: var(--red-dark);
       background: var(--red-soft);
-    }
-
-    .status.check {
-      color: #6a4300;
-      background: var(--gold-soft);
     }
 
     .status.neutral {
@@ -881,13 +851,13 @@
               <span class="hero-highlight">レビュー一覧ハブ</span>
             </h1>
             <p class="hero-lead">
-              公開済みレビュー、準備中レビュー、調査中レビューをまとめて確認できるページです。
-              今後レビュー記事が増えても、まずはこのページとカジノ一覧を更新することで、サイト全体の導線を整理しやすくします。
+              公開済みレビューをまとめて確認できるページです。
+              新しい個別レビューを追加したあとは、このページとカジノ一覧を一括更新して、サイト全体の導線を整理します。
             </p>
 
             <div class="hero-actions">
               <a href="#published" class="btn btn-primary">公開済みレビューを見る</a>
-              <a href="#planned" class="btn btn-gold">準備中レビューを見る</a>
+              <a href="#review-table" class="btn btn-gold">レビュー管理表を見る</a>
               <a href="casino-list.html" class="btn btn-outline">カジノ一覧で比較</a>
             </div>
           </div>
@@ -897,11 +867,11 @@
             <div class="stats-grid">
               <div class="stat-item">
                 <span>公開済み</span>
-                <strong>5本</strong>
+                <strong>10本</strong>
               </div>
               <div class="stat-item">
-                <span>次の候補</span>
-                <strong>bitcasino</strong>
+                <span>一括更新対象</span>
+                <strong>完了</strong>
               </div>
               <div class="stat-item">
                 <span>中心ページ</span>
@@ -930,7 +900,7 @@
         <div class="label">レビューの探し方</div>
         <h2 class="section-title">目的に合わせて<span>レビューを探す</span></h2>
         <p class="section-desc">
-          レビューが増えても迷わないように、目的別の入口を用意しています。
+          レビュー数が増えても迷わないように、目的別の入口を用意しています。
         </p>
       </div>
 
@@ -942,9 +912,9 @@
         </div>
 
         <div class="quick-card">
-          <h3>準備中レビュー</h3>
-          <p>今後追加予定のレビュー候補を確認できます。</p>
-          <a href="#planned">準備中を見る →</a>
+          <h3>暗号資産系</h3>
+          <p>STAKE、bitcasino、BC.Gameなどを確認できます。</p>
+          <a href="#crypto-reviews">暗号資産系を見る →</a>
         </div>
 
         <div class="quick-card">
@@ -955,7 +925,7 @@
 
         <div class="quick-card">
           <h3>全カジノ一覧</h3>
-          <p>レビュー有無に関係なく、掲載候補を一覧で確認できます。</p>
+          <p>レビュー有無に関係なく、掲載サイトを一覧で確認できます。</p>
           <a href="casino-list.html">カジノ一覧へ →</a>
         </div>
       </div>
@@ -966,7 +936,7 @@
         <div class="label">公開済みレビュー</div>
         <h2 class="section-title">現在公開中の<span>個別レビュー</span></h2>
         <p class="section-desc">
-          現在はスロット天国、コニベット、STAKE、ベラジョン、游雅堂の5本を公開済みレビューとして扱います。
+          現在は10本の個別レビューを公開済みとして扱います。
         </p>
       </div>
 
@@ -974,31 +944,19 @@
         <article class="review-card ready">
           <div class="review-top">
             <div class="rank">1</div>
-            <div class="logo-box">
-              <img src="slottenkoku-logo.png" alt="スロット天国 ロゴ" />
-            </div>
+            <div class="logo-box"><img src="slottenkoku-logo.png" alt="スロット天国 ロゴ" /></div>
             <div>
               <h3 class="review-name">スロット天国</h3>
               <p class="review-sub">通常レビュー型</p>
             </div>
           </div>
-
           <div class="tag-row">
-            <span class="tag">公開済み</span>
-            <span class="tag gold">ボーナス確認</span>
-            <span class="tag gray">出金条件</span>
+            <span class="tag">公開済み</span><span class="tag gold">ボーナス確認</span><span class="tag gray">出金条件</span>
           </div>
-
-          <p>
-            ボーナス条件、入出金、本人確認、日本語対応、注意点をバランスよく整理した通常レビュー型です。
-          </p>
-
+          <p>ボーナス条件、入出金、本人確認、日本語対応、注意点をバランスよく整理したレビューです。</p>
           <ul class="check-list">
-            <li>ボーナス条件を確認</li>
-            <li>入出金と本人確認を確認</li>
-            <li>初心者向けの注意点を確認</li>
+            <li>ボーナス条件を確認</li><li>入出金と本人確認を確認</li><li>初心者向けの注意点を確認</li>
           </ul>
-
           <div class="card-actions">
             <a href="review-slottenkoku.html" class="mini-btn main">レビューを見る</a>
             <a href="bonus.html" class="mini-btn">ボーナス比較</a>
@@ -1008,65 +966,41 @@
         <article class="review-card ready">
           <div class="review-top">
             <div class="rank">2</div>
-            <div class="logo-box">
-              <img src="konibet-logo.png" alt="コニベット ロゴ" />
-            </div>
+            <div class="logo-box"><img src="konibet-logo.png" alt="コニベット ロゴ" /></div>
             <div>
               <h3 class="review-name">コニベット</h3>
               <p class="review-sub">キャンペーン・規約確認型</p>
             </div>
           </div>
-
           <div class="tag-row">
-            <span class="tag">公開済み</span>
-            <span class="tag gold">キャンペーン</span>
-            <span class="tag gray">規約確認</span>
+            <span class="tag">公開済み</span><span class="tag gold">キャンペーン</span><span class="tag gray">規約確認</span>
           </div>
-
-          <p>
-            キャンペーン条件、日本語対応、公式規約、出金条件を中心に整理したレビューです。
-          </p>
-
+          <p>キャンペーン条件、日本語対応、公式規約、出金条件を中心に整理したレビューです。</p>
           <ul class="check-list">
-            <li>キャンペーン条件を確認</li>
-            <li>日本語対応の範囲を確認</li>
-            <li>公式規約と出金条件を確認</li>
+            <li>キャンペーン条件を確認</li><li>日本語対応の範囲を確認</li><li>公式規約と出金条件を確認</li>
           </ul>
-
           <div class="card-actions">
             <a href="review-konibet.html" class="mini-btn main">レビューを見る</a>
             <a href="bonus.html" class="mini-btn">ボーナス比較</a>
           </div>
         </article>
 
-        <article class="review-card ready">
+        <article class="review-card ready" id="crypto-reviews">
           <div class="review-top">
             <div class="rank">3</div>
-            <div class="logo-box">
-              <img src="stake-logo.png" alt="STAKE ロゴ" />
-            </div>
+            <div class="logo-box"><img src="stake-logo.png" alt="STAKE ロゴ" /></div>
             <div>
               <h3 class="review-name">STAKE</h3>
               <p class="review-sub">暗号資産・対象地域確認型</p>
             </div>
           </div>
-
           <div class="tag-row">
-            <span class="tag">公開済み</span>
-            <span class="tag gold">暗号資産</span>
-            <span class="tag gray">対象地域</span>
+            <span class="tag">公開済み</span><span class="tag gold">暗号資産</span><span class="tag gray">対象地域</span>
           </div>
-
-          <p>
-            知名度、暗号資産入出金、対象地域、本人確認、規約確認を中心に整理したレビューです。
-          </p>
-
+          <p>知名度、暗号資産入出金、対象地域、本人確認、規約確認を中心に整理したレビューです。</p>
           <ul class="check-list">
-            <li>対象地域を確認</li>
-            <li>暗号資産入出金を確認</li>
-            <li>本人確認と規約を確認</li>
+            <li>対象地域を確認</li><li>暗号資産入出金を確認</li><li>本人確認と規約を確認</li>
           </ul>
-
           <div class="card-actions">
             <a href="review-stake.html" class="mini-btn main">レビューを見る</a>
             <a href="payments.html" class="mini-btn">入出金を見る</a>
@@ -1076,31 +1010,19 @@
         <article class="review-card ready">
           <div class="review-top">
             <div class="rank">4</div>
-            <div class="logo-box">
-              <div class="logo-placeholder">Vera<br />John</div>
-            </div>
+            <div class="logo-box"><div class="logo-placeholder">Vera<br />John</div></div>
             <div>
               <h3 class="review-name">ベラジョン</h3>
               <p class="review-sub">認知度・条件確認型</p>
             </div>
           </div>
-
           <div class="tag-row">
-            <span class="tag">公開済み</span>
-            <span class="tag gold">条件確認</span>
-            <span class="tag gray">公式規約確認</span>
+            <span class="tag">公開済み</span><span class="tag gold">条件確認</span><span class="tag gray">公式規約確認</span>
           </div>
-
-          <p>
-            認知度のある候補として、ボーナス条件、出金条件、本人確認、日本語対応を安全寄りに整理したレビューです。
-          </p>
-
+          <p>認知度のある候補として、ボーナス条件、出金条件、本人確認、日本語対応を安全寄りに整理したレビューです。</p>
           <ul class="check-list">
-            <li>ボーナス条件を確認</li>
-            <li>出金条件と本人確認を確認</li>
-            <li>公式規約と対象地域を確認</li>
+            <li>ボーナス条件を確認</li><li>出金条件と本人確認を確認</li><li>公式規約と対象地域を確認</li>
           </ul>
-
           <div class="card-actions">
             <a href="review-verajohn.html" class="mini-btn main">レビューを見る</a>
             <a href="bonus.html" class="mini-btn">ボーナス比較</a>
@@ -1110,115 +1032,132 @@
         <article class="review-card ready">
           <div class="review-top">
             <div class="rank">5</div>
-            <div class="logo-box">
-              <img src="yuugado-logo.png" alt="游雅堂 ロゴ" />
-            </div>
+            <div class="logo-box"><img src="yuugado-logo.png" alt="游雅堂 ロゴ" /></div>
             <div>
               <h3 class="review-name">游雅堂</h3>
               <p class="review-sub">日本語対応・入出金確認型</p>
             </div>
           </div>
-
           <div class="tag-row">
-            <span class="tag">公開済み</span>
-            <span class="tag gold">日本語対応</span>
-            <span class="tag gray">出金条件確認</span>
+            <span class="tag">公開済み</span><span class="tag gold">日本語対応</span><span class="tag gray">出金条件確認</span>
           </div>
-
-          <p>
-            日本語対応、入出金条件、サポート体制、ボーナス条件を中心に、安全寄りに整理したレビューです。
-          </p>
-
+          <p>日本語対応、入出金条件、サポート体制、ボーナス条件を中心に整理したレビューです。</p>
           <ul class="check-list">
-            <li>日本語対応の範囲を確認</li>
-            <li>出金条件と本人確認を確認</li>
-            <li>サポート体制と公式規約を確認</li>
+            <li>日本語対応の範囲を確認</li><li>出金条件と本人確認を確認</li><li>サポート体制と公式規約を確認</li>
           </ul>
-
           <div class="card-actions">
             <a href="review-yuugado.html" class="mini-btn main">レビューを見る</a>
             <a href="payments.html" class="mini-btn">入出金を見る</a>
           </div>
         </article>
-      </div>
-    </section>
 
-    <section class="section" id="planned">
-      <div class="section-head">
-        <div class="label">準備中・追加予定</div>
-        <h2 class="section-title">今後追加する<span>レビュー候補</span></h2>
-        <p class="section-desc">
-          次はbitcasinoを優先候補として個別レビュー化する想定です。
-          以降の候補は、公式情報や素材確認ができたものから順番に追加します。
-        </p>
-      </div>
-
-      <div class="review-grid">
-        <article class="review-card">
+        <article class="review-card ready">
           <div class="review-top">
             <div class="rank">6</div>
-            <div class="logo-box">
-              <div class="logo-placeholder">bit<br />casino</div>
-            </div>
+            <div class="logo-box"><div class="logo-placeholder">bit<br />casino</div></div>
             <div>
               <h3 class="review-name">bitcasino</h3>
-              <p class="review-sub">次の優先候補</p>
+              <p class="review-sub">暗号資産・対象地域確認型</p>
             </div>
           </div>
-
           <div class="tag-row">
-            <span class="tag">準備中</span>
-            <span class="tag gold">暗号資産</span>
-            <span class="tag gray">対象地域確認</span>
+            <span class="tag">公開済み</span><span class="tag gold">暗号資産</span><span class="tag gray">対象地域確認</span>
           </div>
-
-          <p>
-            暗号資産系の候補として、対象地域、対応通貨、出金条件、本人確認、公式規約を確認したうえで個別レビュー化します。
-          </p>
-
+          <p>暗号資産系の候補として、対応通貨、ネットワーク、出金条件、本人確認を整理したレビューです。</p>
           <ul class="check-list">
-            <li>対応通貨とネットワークを確認</li>
-            <li>対象地域と本人確認を確認</li>
-            <li>暗号資産入出金の条件を確認</li>
+            <li>対応通貨とネットワークを確認</li><li>対象地域と本人確認を確認</li><li>暗号資産入出金の条件を確認</li>
           </ul>
-
           <div class="card-actions">
-            <span class="mini-btn disabled">準備中</span>
+            <a href="review-bitcasino.html" class="mini-btn main">レビューを見る</a>
             <a href="payments.html" class="mini-btn">入出金を見る</a>
           </div>
         </article>
 
-        <article class="review-card">
+        <article class="review-card ready">
           <div class="review-top">
-            <div class="rank">+</div>
-            <div class="logo-box">
-              <div class="logo-placeholder">NEW</div>
-            </div>
+            <div class="rank">7</div>
+            <div class="logo-box"><div class="logo-placeholder">Mystino</div></div>
             <div>
-              <h3 class="review-name">追加レビュー候補</h3>
-              <p class="review-sub">調査中</p>
+              <h3 class="review-name">Mystino</h3>
+              <p class="review-sub">ボーナス・日本語対応確認型</p>
             </div>
           </div>
-
           <div class="tag-row">
-            <span class="tag">調査中</span>
-            <span class="tag gold">追加候補</span>
-            <span class="tag gray">公式情報確認</span>
+            <span class="tag">公開済み</span><span class="tag gold">ボーナス確認</span><span class="tag gray">日本語対応</span>
           </div>
-
-          <p>
-            Mystino、Casino Secret、Bons Casino、BC.Gameなどは、条件を整理できたものから追加します。
-          </p>
-
+          <p>ボーナス条件、日本語対応、出金条件、サポート体制を中心に整理したレビューです。</p>
           <ul class="check-list">
-            <li>運営会社を確認</li>
-            <li>ライセンス情報を確認</li>
-            <li>ボーナスと出金条件を確認</li>
+            <li>ボーナス条件を確認</li><li>日本語対応の範囲を確認</li><li>出金条件と本人確認を確認</li>
           </ul>
-
           <div class="card-actions">
-            <a href="casino-list.html" class="mini-btn main">掲載候補を見る</a>
-            <a href="#review-policy" class="mini-btn">方針を見る</a>
+            <a href="review-mystino.html" class="mini-btn main">レビューを見る</a>
+            <a href="bonus.html" class="mini-btn">ボーナス比較</a>
+          </div>
+        </article>
+
+        <article class="review-card ready">
+          <div class="review-top">
+            <div class="rank">8</div>
+            <div class="logo-box"><div class="logo-placeholder">Casino<br />Secret</div></div>
+            <div>
+              <h3 class="review-name">Casino Secret</h3>
+              <p class="review-sub">条件表記・出金確認型</p>
+            </div>
+          </div>
+          <div class="tag-row">
+            <span class="tag">公開済み</span><span class="tag gold">条件表記</span><span class="tag gray">出金確認</span>
+          </div>
+          <p>条件表記、ボーナス条件、入出金、本人確認、サポート体制を中心に整理したレビューです。</p>
+          <ul class="check-list">
+            <li>条件表記を確認</li><li>ボーナス規約を確認</li><li>出金条件と本人確認を確認</li>
+          </ul>
+          <div class="card-actions">
+            <a href="review-casino-secret.html" class="mini-btn main">レビューを見る</a>
+            <a href="bonus-guide.html" class="mini-btn">見方ガイド</a>
+          </div>
+        </article>
+
+        <article class="review-card ready">
+          <div class="review-top">
+            <div class="rank">9</div>
+            <div class="logo-box"><div class="logo-placeholder">Bons<br />Casino</div></div>
+            <div>
+              <h3 class="review-name">Bons Casino</h3>
+              <p class="review-sub">運営情報・出金条件確認型</p>
+            </div>
+          </div>
+          <div class="tag-row">
+            <span class="tag">公開済み</span><span class="tag gold">運営確認</span><span class="tag gray">出金条件確認</span>
+          </div>
+          <p>運営情報、ライセンス、ボーナス条件、出金条件、サポートを中心に整理したレビューです。</p>
+          <ul class="check-list">
+            <li>運営会社情報を確認</li><li>ライセンス情報を確認</li><li>出金条件と本人確認を確認</li>
+          </ul>
+          <div class="card-actions">
+            <a href="review-bons-casino.html" class="mini-btn main">レビューを見る</a>
+            <a href="payments.html" class="mini-btn">入出金を見る</a>
+          </div>
+        </article>
+
+        <article class="review-card ready">
+          <div class="review-top">
+            <div class="rank">10</div>
+            <div class="logo-box"><div class="logo-placeholder">BC<br />Game</div></div>
+            <div>
+              <h3 class="review-name">BC.Game</h3>
+              <p class="review-sub">暗号資産・規約確認型</p>
+            </div>
+          </div>
+          <div class="tag-row">
+            <span class="tag">公開済み</span><span class="tag gold">暗号資産</span><span class="tag gray">規約確認</span>
+          </div>
+          <p>暗号資産入出金、対象地域、本人確認、ボーナス条件、公式規約を中心に整理したレビューです。</p>
+          <ul class="check-list">
+            <li>対応通貨とネットワークを確認</li><li>対象地域と本人確認を確認</li><li>公式規約を確認</li>
+          </ul>
+          <div class="card-actions">
+            <a href="review-bcgame.html" class="mini-btn main">レビューを見る</a>
+            <a href="payments.html" class="mini-btn">入出金を見る</a>
           </div>
         </article>
       </div>
@@ -1229,8 +1168,7 @@
         <div class="label">レビュー管理表</div>
         <h2 class="section-title">レビュー状況を<span>一覧で管理</span></h2>
         <p class="section-desc">
-          新しいレビューを追加するときは、まずこの表に公開状況を反映します。
-          TOPやボーナスページは毎回更新せず、レビュー管理はこのページとカジノ一覧に集約します。
+          今後レビューを追加するときは、まず個別レビューをまとめて作り、最後にこのページとカジノ一覧を一括更新します。
         </p>
       </div>
 
@@ -1240,93 +1178,22 @@
             <tr>
               <th>サイト名</th>
               <th>レビュー状況</th>
-              <th>優先度</th>
+              <th>タイプ</th>
               <th>主な確認項目</th>
-              <th>更新対象</th>
               <th>関連ページ</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><strong><a href="review-slottenkoku.html">スロット天国</a></strong></td>
-              <td><span class="status good">公開済み</span></td>
-              <td>高</td>
-              <td>ボーナス条件、入出金、本人確認、日本語対応、注意点</td>
-              <td>既存維持</td>
-              <td><a href="review-slottenkoku.html">レビューを見る</a></td>
-            </tr>
-            <tr>
-              <td><strong><a href="review-konibet.html">コニベット</a></strong></td>
-              <td><span class="status good">公開済み</span></td>
-              <td>高</td>
-              <td>キャンペーン条件、日本語対応、公式規約、出金条件</td>
-              <td>既存維持</td>
-              <td><a href="review-konibet.html">レビューを見る</a></td>
-            </tr>
-            <tr>
-              <td><strong><a href="review-stake.html">STAKE</a></strong></td>
-              <td><span class="status good">公開済み</span></td>
-              <td>高</td>
-              <td>対象地域、暗号資産入出金、本人確認、規約確認</td>
-              <td>既存維持</td>
-              <td><a href="review-stake.html">レビューを見る</a></td>
-            </tr>
-            <tr>
-              <td><strong><a href="review-verajohn.html">ベラジョン</a></strong></td>
-              <td><span class="status good">公開済み</span></td>
-              <td>高</td>
-              <td>認知度、ボーナス条件、出金条件、本人確認、日本語対応</td>
-              <td>既存維持</td>
-              <td><a href="review-verajohn.html">レビューを見る</a></td>
-            </tr>
-            <tr>
-              <td><strong><a href="review-yuugado.html">游雅堂</a></strong></td>
-              <td><span class="status good">公開済み</span></td>
-              <td>高</td>
-              <td>日本語対応、出金条件、サポート、ボーナス条件</td>
-              <td>既存維持</td>
-              <td><a href="review-yuugado.html">レビューを見る</a></td>
-            </tr>
-            <tr>
-              <td><strong>bitcasino</strong></td>
-              <td><span class="status check">次の候補</span></td>
-              <td>高</td>
-              <td>暗号資産、対象地域、出金条件、本人確認</td>
-              <td>review-bitcasino.html 作成</td>
-              <td><a href="payments.html">入出金を見る</a></td>
-            </tr>
-            <tr>
-              <td><strong>Mystino</strong></td>
-              <td><span class="status neutral">調査中</span></td>
-              <td>中</td>
-              <td>ボーナス条件、日本語対応、入出金、規約</td>
-              <td>後回し</td>
-              <td><a href="casino-list.html">一覧で確認</a></td>
-            </tr>
-            <tr>
-              <td><strong>Casino Secret</strong></td>
-              <td><span class="status neutral">調査中</span></td>
-              <td>中</td>
-              <td>条件表記、出金条件、本人確認、サポート</td>
-              <td>後回し</td>
-              <td><a href="casino-list.html">一覧で確認</a></td>
-            </tr>
-            <tr>
-              <td><strong>Bons Casino</strong></td>
-              <td><span class="status neutral">調査中</span></td>
-              <td>低〜中</td>
-              <td>運営情報、サポート、ボーナス、出金条件</td>
-              <td>後回し</td>
-              <td><a href="casino-list.html">一覧で確認</a></td>
-            </tr>
-            <tr>
-              <td><strong>BC.Game</strong></td>
-              <td><span class="status neutral">調査中</span></td>
-              <td>中</td>
-              <td>暗号資産、対象地域、本人確認、規約</td>
-              <td>後回し</td>
-              <td><a href="casino-list.html">一覧で確認</a></td>
-            </tr>
+            <tr><td><strong><a href="review-slottenkoku.html">スロット天国</a></strong></td><td><span class="status good">公開済み</span></td><td>通常レビュー型</td><td>ボーナス条件、入出金、本人確認、日本語対応</td><td><a href="review-slottenkoku.html">レビューを見る</a></td></tr>
+            <tr><td><strong><a href="review-konibet.html">コニベット</a></strong></td><td><span class="status good">公開済み</span></td><td>キャンペーン確認型</td><td>キャンペーン条件、日本語対応、公式規約、出金条件</td><td><a href="review-konibet.html">レビューを見る</a></td></tr>
+            <tr><td><strong><a href="review-stake.html">STAKE</a></strong></td><td><span class="status good">公開済み</span></td><td>暗号資産確認型</td><td>対象地域、暗号資産入出金、本人確認、規約確認</td><td><a href="review-stake.html">レビューを見る</a></td></tr>
+            <tr><td><strong><a href="review-verajohn.html">ベラジョン</a></strong></td><td><span class="status good">公開済み</span></td><td>認知度・条件確認型</td><td>ボーナス条件、出金条件、本人確認、日本語対応</td><td><a href="review-verajohn.html">レビューを見る</a></td></tr>
+            <tr><td><strong><a href="review-yuugado.html">游雅堂</a></strong></td><td><span class="status good">公開済み</span></td><td>日本語対応確認型</td><td>日本語対応、出金条件、サポート、ボーナス条件</td><td><a href="review-yuugado.html">レビューを見る</a></td></tr>
+            <tr><td><strong><a href="review-bitcasino.html">bitcasino</a></strong></td><td><span class="status good">公開済み</span></td><td>暗号資産確認型</td><td>対応通貨、ネットワーク、対象地域、本人確認</td><td><a href="review-bitcasino.html">レビューを見る</a></td></tr>
+            <tr><td><strong><a href="review-mystino.html">Mystino</a></strong></td><td><span class="status good">公開済み</span></td><td>ボーナス・日本語確認型</td><td>ボーナス条件、日本語対応、出金条件、サポート</td><td><a href="review-mystino.html">レビューを見る</a></td></tr>
+            <tr><td><strong><a href="review-casino-secret.html">Casino Secret</a></strong></td><td><span class="status good">公開済み</span></td><td>条件表記確認型</td><td>条件表記、ボーナス条件、出金条件、本人確認</td><td><a href="review-casino-secret.html">レビューを見る</a></td></tr>
+            <tr><td><strong><a href="review-bons-casino.html">Bons Casino</a></strong></td><td><span class="status good">公開済み</span></td><td>運営情報確認型</td><td>運営情報、ライセンス、出金条件、サポート</td><td><a href="review-bons-casino.html">レビューを見る</a></td></tr>
+            <tr><td><strong><a href="review-bcgame.html">BC.Game</a></strong></td><td><span class="status good">公開済み</span></td><td>暗号資産・規約確認型</td><td>暗号資産入出金、対象地域、本人確認、公式規約</td><td><a href="review-bcgame.html">レビューを見る</a></td></tr>
           </tbody>
         </table>
       </div>
@@ -1334,83 +1201,44 @@
 
     <section class="section" id="review-policy">
       <div class="section-head">
-        <div class="label">レビュー方針</div>
-        <h2 class="section-title">レビュー記事は<span>この方針で増やす</span></h2>
+        <div class="label">更新方針</div>
+        <h2 class="section-title">今後は<span>個別ページ作成後に一括更新</span></h2>
         <p class="section-desc">
-          今後レビューを増やすときは、毎回TOPや土台ページを触るのではなく、
-          review.html と casino-list.html を中心に更新する方針にします。
+          1サイトごとに review.html と casino-list.html を更新せず、個別レビューをまとめて作ってから最後に一括反映します。
         </p>
       </div>
 
       <div class="policy-grid">
         <div class="policy-card">
-          <h3>1. 新規レビューを作る</h3>
-          <p>
-            `review-[slug].html` を作成します。注意書き、目次、レビュー要点、責任ある利用、FAQを入れます。
-          </p>
+          <h3>1. 個別レビューを作る</h3>
+          <p>`review-[slug].html` を先にまとめて作成します。</p>
         </div>
 
         <div class="policy-card">
-          <h3>2. review.html を更新</h3>
-          <p>
-            公開済みレビュー欄、レビュー管理表、関連リンクを更新します。レビュー管理の中心はこのページに集約します。
-          </p>
+          <h3>2. review.html を一括更新</h3>
+          <p>公開済みレビュー欄、レビュー管理表、関連リンクをまとめて更新します。</p>
         </div>
 
         <div class="policy-card">
-          <h3>3. casino-list.html を更新</h3>
-          <p>
-            該当サイトのカードと比較表を更新します。全カジノ掲載情報は casino-list.html に集約します。
-          </p>
+          <h3>3. casino-list.html を一括更新</h3>
+          <p>全カジノ掲載情報と比較表をまとめて更新します。</p>
         </div>
       </div>
     </section>
 
-    <section class="section" id="internal-links">
+    <section class="section" id="related">
       <div class="section-head">
         <div class="label">関連ページ</div>
         <h2 class="section-title">レビューとあわせて<span>確認したいページ</span></h2>
-        <p class="section-desc">
-          個別レビューだけで判断せず、一覧比較、ボーナス比較、入出金ガイドもあわせて確認しましょう。
-        </p>
       </div>
 
       <div class="link-grid">
-        <div class="link-card">
-          <h3>カジノ一覧</h3>
-          <p>レビュー有無に関係なく、掲載中・掲載候補のカジノサイトを一覧で確認できます。</p>
-          <a href="casino-list.html">一覧で比較する →</a>
-        </div>
-
-        <div class="link-card">
-          <h3>ボーナス比較</h3>
-          <p>賭け条件、有効期限、対象ゲーム、最大出金を中心に確認できます。</p>
-          <a href="bonus.html">ボーナス比較を見る →</a>
-        </div>
-
-        <div class="link-card">
-          <h3>入出金ガイド</h3>
-          <p>出金条件、本人確認、反映時間、暗号資産の注意点を確認できます。</p>
-          <a href="payments.html">入出金を見る →</a>
-        </div>
-
-        <div class="link-card">
-          <h3>初心者ガイド</h3>
-          <p>初めて比較する人向けに、見るべき順番や注意点を整理しています。</p>
-          <a href="guide.html">初心者ガイドを見る →</a>
-        </div>
-
-        <div class="link-card">
-          <h3>游雅堂レビュー</h3>
-          <p>日本語対応、入出金条件、サポート体制を確認できます。</p>
-          <a href="review-yuugado.html">レビューを見る →</a>
-        </div>
-
-        <div class="link-card">
-          <h3>TOPページ</h3>
-          <p>サイト全体の使い方と主要導線を確認できます。</p>
-          <a href="index.html">TOPへ戻る →</a>
-        </div>
+        <div class="link-card"><h3>カジノ一覧</h3><p>掲載中サイトを一覧で確認できます。</p><a href="casino-list.html">一覧で比較する →</a></div>
+        <div class="link-card"><h3>ボーナス比較</h3><p>賭け条件、有効期限、対象ゲーム、最大出金を確認できます。</p><a href="bonus.html">ボーナス比較を見る →</a></div>
+        <div class="link-card"><h3>入出金ガイド</h3><p>出金条件、本人確認、反映時間、暗号資産の注意点を確認できます。</p><a href="payments.html">入出金を見る →</a></div>
+        <div class="link-card"><h3>初心者ガイド</h3><p>初めて比較する人向けに、見るべき順番を整理しています。</p><a href="guide.html">初心者ガイドを見る →</a></div>
+        <div class="link-card"><h3>ボーナスの見方</h3><p>賭け条件や最大出金などの用語を確認できます。</p><a href="bonus-guide.html">見方ガイドを見る →</a></div>
+        <div class="link-card"><h3>TOPページ</h3><p>サイト全体の使い方と主要導線を確認できます。</p><a href="index.html">TOPへ戻る →</a></div>
       </div>
     </section>
 
@@ -1440,29 +1268,21 @@
       <details>
         <summary>今後レビューが増えたら、どのページを更新しますか？</summary>
         <p>
-          基本的には、新しい個別レビュー、review.html、casino-list.html の3つを更新します。
-          TOP、ボーナス比較、入出金、初心者ガイドは毎回更新しない方針です。
+          まず個別レビューをまとめて作成し、最後に review.html と casino-list.html を一括更新します。
         </p>
       </details>
 
       <details>
-        <summary>游雅堂は公開済みレビューになりましたか？</summary>
+        <summary>現在の公開済みレビューは何本ですか？</summary>
         <p>
-          はい。このページでは游雅堂を公開済みレビューとして扱い、review-yuugado.html へリンクしています。
+          現在は10本の個別レビューを公開済みとして整理しています。
         </p>
       </details>
 
       <details>
-        <summary>次に作るべきレビューはどれですか？</summary>
+        <summary>レビュー公開済みのサイトを選べば問題ありませんか？</summary>
         <p>
-          現時点では、bitcasinoが次の優先候補です。公式情報や素材確認の状況に応じて順番を変更しても問題ありません。
-        </p>
-      </details>
-
-      <details>
-        <summary>レビュー上位のサイトを選べば問題ありませんか？</summary>
-        <p>
-          いいえ。レビューは比較の入口です。最終的には公式規約、対象地域、出金条件、本人確認、関連法規を確認して判断してください。
+          いいえ。レビューは比較の入口です。最終的には公式規約、対象地域、出金条件、本人確認、関連法規を確認してください。
         </p>
       </details>
 
@@ -1479,7 +1299,6 @@
         <h2>レビューは、登録前の確認材料として読む。</h2>
         <p>
           気になるサイトを見つけたら、良い点だけでなく、ボーナス条件、出金条件、日本語対応、公式規約まで確認しましょう。
-          今後のレビュー追加も、このページを中心に整理していきます。
         </p>
         <div class="cta-actions">
           <a href="casino-list.html" class="btn btn-gold">カジノ一覧で比較する</a>
@@ -1512,6 +1331,11 @@
         <a href="review-stake.html">STAKEレビュー</a>
         <a href="review-verajohn.html">ベラジョンレビュー</a>
         <a href="review-yuugado.html">游雅堂レビュー</a>
+        <a href="review-bitcasino.html">bitcasinoレビュー</a>
+        <a href="review-mystino.html">Mystinoレビュー</a>
+        <a href="review-casino-secret.html">Casino Secretレビュー</a>
+        <a href="review-bons-casino.html">Bons Casinoレビュー</a>
+        <a href="review-bcgame.html">BC.Gameレビュー</a>
         <a href="bonus.html">ボーナス比較</a>
         <a href="bonus-guide.html">見方ガイド</a>
         <a href="guide.html">初心者ガイド</a>
