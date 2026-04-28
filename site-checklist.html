@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>サイトチェックリスト｜運営確認用｜リベンジカジノ比較ガイド</title>
-  <meta name="description" content="リベンジカジノ比較ガイドの運営確認用チェックリスト。全HTMLファイル、内部リンク、レビュー導線、画像ファイル、次回更新候補、bot引き継ぎ前チェックを整理。" />
+  <title>サイトチェックリスト｜リベンジカジノ比較ガイド</title>
+  <meta name="description" content="リベンジカジノ比較ガイドの運営用チェックリスト。ページ構成、内部リンク、レビュー記事、ロゴ画像、マスコット画像、注意文言、責任ある利用、SEO導線を確認するための管理ページ。" />
 
   <style>
     :root {
@@ -45,6 +45,23 @@
     a {
       color: inherit;
       text-decoration: none;
+    }
+
+    code {
+      display: inline-block;
+      background: #fff7f4;
+      border: 1px solid rgba(215, 25, 32, 0.12);
+      border-radius: 8px;
+      padding: 1px 6px;
+      color: var(--red-dark);
+      font-size: 13px;
+      word-break: break-all;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
     }
 
     .site-header {
@@ -164,15 +181,6 @@
       background: linear-gradient(90deg, var(--red), var(--orange), var(--gold));
     }
 
-    .hero-grid {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1.12fr 0.88fr;
-      gap: 34px;
-      align-items: center;
-    }
-
     .eyebrow,
     .label {
       display: inline-flex;
@@ -215,79 +223,35 @@
       margin: 0;
       color: #444;
       font-size: 17px;
-      max-width: 760px;
-    }
-
-    .hero-card,
-    .check-card,
-    .link-card,
-    .warning-box,
-    .note-box {
-      background: #fff;
-      border: 1px solid rgba(215, 25, 32, 0.15);
-      border-radius: var(--radius-md);
-      padding: 20px;
-      box-shadow: 0 10px 28px rgba(120, 20, 20, 0.07);
-    }
-
-    .hero-card {
-      border-radius: 26px;
-      background: rgba(255, 255, 255, 0.9);
-      box-shadow: 0 16px 34px rgba(120, 20, 20, 0.12);
-    }
-
-    .hero-card h2,
-    .check-card h3,
-    .link-card h3,
-    .note-box h3 {
-      margin: 0 0 8px;
-      color: var(--red-dark);
-      font-size: 18px;
-      line-height: 1.35;
+      max-width: 850px;
     }
 
     .hero-actions,
-    .cta-actions,
-    .card-actions {
+    .cta-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
       margin-top: 22px;
     }
 
-    .btn,
-    .mini-btn {
+    .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       border-radius: 999px;
       font-weight: 900;
       line-height: 1.2;
+      padding: 13px 18px;
       transition: transform 0.18s ease, box-shadow 0.18s ease;
     }
 
-    .btn {
-      padding: 13px 18px;
-    }
-
-    .mini-btn {
-      padding: 10px 13px;
-      font-size: 13px;
-      border: 1px solid rgba(215, 25, 32, 0.18);
-      background: #fff;
-      color: var(--red-dark);
-    }
-
-    .btn:hover,
-    .mini-btn:hover {
+    .btn:hover {
       transform: translateY(-2px);
     }
 
-    .btn-primary,
-    .mini-btn.main {
+    .btn-primary {
       background: linear-gradient(135deg, var(--red), var(--red-dark));
       color: #fff;
-      border-color: var(--red);
       box-shadow: 0 12px 28px rgba(215, 25, 32, 0.28);
     }
 
@@ -301,23 +265,6 @@
       background: #fff;
       color: var(--red-dark);
       border: 1px solid rgba(215, 25, 32, 0.24);
-    }
-
-    .notice {
-      max-width: var(--max);
-      margin: 0 auto 20px;
-      padding: 0 20px;
-    }
-
-    .notice-box {
-      background: #fff;
-      border: 1px solid rgba(215, 25, 32, 0.18);
-      border-left: 6px solid var(--red);
-      border-radius: var(--radius-md);
-      padding: 18px 20px;
-      color: #4a4a4a;
-      box-shadow: 0 10px 28px rgba(120, 20, 20, 0.07);
-      font-size: 14px;
     }
 
     .section {
@@ -343,9 +290,7 @@
     }
 
     .grid-2,
-    .grid-3,
-    .link-grid,
-    .check-grid {
+    .grid-3 {
       display: grid;
       gap: 18px;
     }
@@ -354,10 +299,18 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .grid-3,
-    .link-grid,
-    .check-grid {
+    .grid-3 {
       grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card,
+    .check-card,
+    .warning-box {
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.15);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: 0 10px 28px rgba(120, 20, 20, 0.07);
     }
 
     .check-card {
@@ -374,6 +327,22 @@
       background: linear-gradient(90deg, var(--red), var(--orange), var(--gold));
     }
 
+    .card h3,
+    .check-card h3 {
+      margin: 0 0 8px;
+      color: var(--red-dark);
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .card p,
+    .check-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
     .number {
       width: 36px;
       height: 36px;
@@ -385,24 +354,6 @@
       font-weight: 900;
       margin-bottom: 12px;
       box-shadow: 0 8px 18px rgba(215, 25, 32, 0.18);
-    }
-
-    .check-card p,
-    .link-card p,
-    .note-box p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    .link-card p {
-      margin-bottom: 12px;
-    }
-
-    .link-card a {
-      color: var(--red);
-      font-weight: 900;
     }
 
     .check-list,
@@ -459,7 +410,7 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 1120px;
+      min-width: 1000px;
       font-size: 14px;
     }
 
@@ -499,19 +450,68 @@
       white-space: nowrap;
     }
 
-    .status.good {
+    .status.done {
       color: var(--red-dark);
       background: var(--red-soft);
     }
 
-    .status.warn {
+    .status.todo {
       color: #6a4300;
       background: var(--gold-soft);
     }
 
-    .status.gray {
-      color: #555;
-      background: #f2f2f2;
+    .status.check {
+      color: #444;
+      background: #f5f5f5;
+    }
+
+    .image-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .image-card {
+      background:
+        radial-gradient(circle at top, rgba(246, 183, 60, 0.18), transparent 40%),
+        #fff;
+      border: 1px solid rgba(215, 25, 32, 0.14);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      box-shadow: 0 10px 28px rgba(120, 20, 20, 0.07);
+      text-align: center;
+    }
+
+    .image-card .image-box {
+      min-height: 190px;
+      display: grid;
+      place-items: end center;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fff, #fff7f2);
+      border: 1px solid rgba(215, 25, 32, 0.08);
+      padding: 10px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .image-card img {
+      max-height: 180px;
+      object-fit: contain;
+      filter: drop-shadow(0 12px 14px rgba(80, 20, 20, 0.16));
+    }
+
+    .image-card strong {
+      display: block;
+      color: var(--red-dark);
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .image-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
     }
 
     .warning-box {
@@ -538,40 +538,6 @@
       margin: 12px 0 0;
       padding-left: 1.2em;
       color: #4d4d4d;
-    }
-
-    details {
-      background: #fff;
-      border: 1px solid rgba(215, 25, 32, 0.15);
-      border-radius: var(--radius-md);
-      padding: 16px 18px;
-      box-shadow: 0 8px 22px rgba(120, 20, 20, 0.05);
-    }
-
-    details + details {
-      margin-top: 12px;
-    }
-
-    summary {
-      cursor: pointer;
-      font-weight: 900;
-      color: #333;
-    }
-
-    details p {
-      margin: 12px 0 0;
-      color: #555;
-      font-size: 14px;
-    }
-
-    code {
-      display: inline-block;
-      background: #fff7f4;
-      border: 1px solid rgba(215, 25, 32, 0.12);
-      border-radius: 8px;
-      padding: 1px 6px;
-      color: var(--red-dark);
-      font-size: 13px;
     }
 
     .cta {
@@ -641,7 +607,6 @@
 
     @media (max-width: 980px) {
       .header-inner,
-      .hero-grid,
       .grid-2,
       .footer-inner {
         grid-template-columns: 1fr;
@@ -657,8 +622,7 @@
       }
 
       .grid-3,
-      .link-grid,
-      .check-grid {
+      .image-preview-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
@@ -683,25 +647,21 @@
       }
 
       .hero-actions,
-      .cta-actions,
-      .card-actions {
+      .cta-actions {
         flex-direction: column;
       }
 
-      .btn,
-      .mini-btn {
+      .btn {
         width: 100%;
       }
 
       .grid-3,
-      .link-grid,
-      .check-grid {
+      .image-preview-grid {
         grid-template-columns: 1fr;
       }
 
       .section,
       .hero,
-      .notice,
       .cta {
         padding-left: 16px;
         padding-right: 16px;
@@ -711,6 +671,14 @@
       .warning-box {
         padding: 26px 20px;
         border-radius: 24px;
+      }
+
+      .image-card .image-box {
+        min-height: 170px;
+      }
+
+      .image-card img {
+        max-height: 160px;
       }
     }
   </style>
@@ -730,8 +698,8 @@
         <a href="review.html">レビュー</a>
         <a href="bonus.html">ボーナス比較</a>
         <a href="guide.html">初心者ガイド</a>
-        <a href="payments.html">入出金</a>
-        <a href="#html-files" class="nav-cta">チェック開始</a>
+        <a href="mascot-image-plan.html">画像設計書</a>
+        <a href="#image-check" class="nav-cta">画像チェック</a>
       </nav>
     </div>
   </header>
@@ -743,638 +711,411 @@
   <main>
     <section class="hero">
       <div class="hero-box">
-        <div class="hero-grid">
-          <div>
-            <div class="eyebrow">運営確認用：リンク切れ・導線・画像チェック</div>
-            <h1>
-              サイト全体<br />
-              <span class="hero-highlight">チェックリスト</span>
-            </h1>
-            <p class="hero-lead">
-              このページは、リベンジカジノ比較ガイドの運営確認用ページです。
-              全HTMLファイル、個別レビュー、内部リンク、画像ファイル、主要導線、bot引き継ぎ前の確認項目をまとめて管理します。
-            </p>
-
-            <div class="hero-actions">
-              <a href="#html-files" class="btn btn-primary">HTMLファイル確認</a>
-              <a href="#review-pages" class="btn btn-gold">レビュー10本確認</a>
-              <a href="#bot-handoff-check" class="btn btn-outline">bot引き継ぎ確認</a>
-            </div>
-          </div>
-
-          <aside class="hero-card">
-            <h2>現在の管理対象</h2>
-            <ul class="check-list">
-              <li>主要ページ 7本</li>
-              <li>個別レビュー 10本</li>
-              <li>管理用ページ 1本</li>
-              <li>ロゴ画像 4点以上</li>
-              <li>bot引き継ぎ前チェック</li>
-            </ul>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <section class="notice">
-      <div class="notice-box">
-        <strong>運営メモ：</strong>
-        このページは読者向けというより、管理・確認用です。
-        GitHub Pagesに公開されても問題ない内容にしていますが、運用上は「リンク確認・更新漏れ確認・bot引き継ぎ確認」のために使います。
-      </div>
-    </section>
-
-    <section class="section" id="html-files">
-      <div class="section-head">
-        <div class="label">HTMLファイル一覧</div>
-        <h2 class="section-title">現在作成済みの<span>主要HTMLファイル</span></h2>
-        <p class="section-desc">
-          まずは、存在しているべきHTMLファイルを確認します。リンクをクリックして404にならないか確認してください。
+        <div class="eyebrow">運営用：公開前・更新後チェック</div>
+        <h1>
+          サイト<br />
+          <span class="hero-highlight">チェックリスト</span>
+        </h1>
+        <p class="hero-lead">
+          リベンジカジノ比較ガイドのページ構成、内部リンク、レビュー記事、ロゴ画像、マスコット画像、注意文言、責任ある利用、SEO導線を確認するための運営用ページです。
+          新しい画像やページを追加した後は、このページで抜け漏れを確認します。
         </p>
-      </div>
 
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>区分</th>
-              <th>ファイル名</th>
-              <th>ページ内容</th>
-              <th>確認状況</th>
-              <th>リンク</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>主要ページ</td>
-              <td><code>index.html</code></td>
-              <td>TOPページ。レビュー10本、主要導線、比較方針を掲載。</td>
-              <td><span class="status good">作成済み想定</span></td>
-              <td><a href="index.html">開く</a></td>
-            </tr>
-            <tr>
-              <td>主要ページ</td>
-              <td><code>casino-list.html</code></td>
-              <td>掲載中カジノ10サイトの一覧・比較表。</td>
-              <td><span class="status good">作成済み想定</span></td>
-              <td><a href="casino-list.html">開く</a></td>
-            </tr>
-            <tr>
-              <td>主要ページ</td>
-              <td><code>review.html</code></td>
-              <td>公開済みレビュー10本の一覧ハブ。</td>
-              <td><span class="status good">作成済み想定</span></td>
-              <td><a href="review.html">開く</a></td>
-            </tr>
-            <tr>
-              <td>主要ページ</td>
-              <td><code>bonus.html</code></td>
-              <td>ボーナス比較。賭け条件・最大出金・レビュー導線。</td>
-              <td><span class="status good">作成済み想定</span></td>
-              <td><a href="bonus.html">開く</a></td>
-            </tr>
-            <tr>
-              <td>主要ページ</td>
-              <td><code>bonus-guide.html</code></td>
-              <td>ボーナスの見方ガイド。用語・条件の読み方。</td>
-              <td><span class="status good">作成済み想定</span></td>
-              <td><a href="bonus-guide.html">開く</a></td>
-            </tr>
-            <tr>
-              <td>主要ページ</td>
-              <td><code>guide.html</code></td>
-              <td>初心者ガイド。見る順番・注意点・レビュー導線。</td>
-              <td><span class="status good">作成済み想定</span></td>
-              <td><a href="guide.html">開く</a></td>
-            </tr>
-            <tr>
-              <td>主要ページ</td>
-              <td><code>payments.html</code></td>
-              <td>入出金ガイド。本人確認・暗号資産・出金条件。</td>
-              <td><span class="status good">作成済み想定</span></td>
-              <td><a href="payments.html">開く</a></td>
-            </tr>
-            <tr>
-              <td>管理ページ</td>
-              <td><code>site-checklist.html</code></td>
-              <td>このページ。リンク・画像・導線・bot引き継ぎ前確認。</td>
-              <td><span class="status good">今回作成</span></td>
-              <td><a href="site-checklist.html">開く</a></td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="hero-actions">
+          <a href="#image-check" class="btn btn-primary">画像チェックへ</a>
+          <a href="#page-check" class="btn btn-gold">ページ確認へ</a>
+          <a href="mascot-image-plan.html" class="btn btn-outline">画像設計書へ</a>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="review-pages">
+    <section class="section" id="summary">
       <div class="section-head">
-        <div class="label">レビュー10本</div>
-        <h2 class="section-title">個別レビューの<span>URL確認</span></h2>
+        <div class="label">現在の状態</div>
+        <h2 class="section-title">主要ページと画像は<span>管理対象に追加済み</span></h2>
         <p class="section-desc">
-          ここで10本すべてを開いて、ページが存在するか、デザイン崩れがないか、フッターリンクが入っているか確認します。
+          通常立ち絵に加えて、今回追加した4つのポーズ画像もチェック対象に含めます。
         </p>
-      </div>
-
-      <div class="check-grid">
-        <div class="check-card">
-          <div class="number">1</div>
-          <h3>スロット天国</h3>
-          <p><code>review-slottenkoku.html</code></p>
-          <div class="card-actions">
-            <a href="review-slottenkoku.html" class="mini-btn main">開く</a>
-          </div>
-        </div>
-
-        <div class="check-card">
-          <div class="number">2</div>
-          <h3>コニベット</h3>
-          <p><code>review-konibet.html</code></p>
-          <div class="card-actions">
-            <a href="review-konibet.html" class="mini-btn main">開く</a>
-          </div>
-        </div>
-
-        <div class="check-card">
-          <div class="number">3</div>
-          <h3>STAKE</h3>
-          <p><code>review-stake.html</code></p>
-          <div class="card-actions">
-            <a href="review-stake.html" class="mini-btn main">開く</a>
-          </div>
-        </div>
-
-        <div class="check-card">
-          <div class="number">4</div>
-          <h3>ベラジョン</h3>
-          <p><code>review-verajohn.html</code></p>
-          <div class="card-actions">
-            <a href="review-verajohn.html" class="mini-btn main">開く</a>
-          </div>
-        </div>
-
-        <div class="check-card">
-          <div class="number">5</div>
-          <h3>游雅堂</h3>
-          <p><code>review-yuugado.html</code></p>
-          <div class="card-actions">
-            <a href="review-yuugado.html" class="mini-btn main">開く</a>
-          </div>
-        </div>
-
-        <div class="check-card">
-          <div class="number">6</div>
-          <h3>bitcasino</h3>
-          <p><code>review-bitcasino.html</code></p>
-          <div class="card-actions">
-            <a href="review-bitcasino.html" class="mini-btn main">開く</a>
-          </div>
-        </div>
-
-        <div class="check-card">
-          <div class="number">7</div>
-          <h3>Mystino</h3>
-          <p><code>review-mystino.html</code></p>
-          <div class="card-actions">
-            <a href="review-mystino.html" class="mini-btn main">開く</a>
-          </div>
-        </div>
-
-        <div class="check-card">
-          <div class="number">8</div>
-          <h3>Casino Secret</h3>
-          <p><code>review-casino-secret.html</code></p>
-          <div class="card-actions">
-            <a href="review-casino-secret.html" class="mini-btn main">開く</a>
-          </div>
-        </div>
-
-        <div class="check-card">
-          <div class="number">9</div>
-          <h3>Bons Casino</h3>
-          <p><code>review-bons-casino.html</code></p>
-          <div class="card-actions">
-            <a href="review-bons-casino.html" class="mini-btn main">開く</a>
-          </div>
-        </div>
-
-        <div class="check-card">
-          <div class="number">10</div>
-          <h3>BC.Game</h3>
-          <p><code>review-bcgame.html</code></p>
-          <div class="card-actions">
-            <a href="review-bcgame.html" class="mini-btn main">開く</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="link-check">
-      <div class="section-head">
-        <div class="label">内部リンク確認</div>
-        <h2 class="section-title">主要導線の<span>リンク切れ確認</span></h2>
-        <p class="section-desc">
-          下記のリンクが各ページに入っているか、クリックして正しく遷移するか確認してください。
-        </p>
-      </div>
-
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>確認元ページ</th>
-              <th>確認するリンク</th>
-              <th>重要度</th>
-              <th>チェック内容</th>
-              <th>状態</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>index.html</code></td>
-              <td>レビュー10本、review.html、casino-list.html、bonus.html、payments.html</td>
-              <td><span class="status good">高</span></td>
-              <td>TOPから主要ページ・レビューへ移動できるか。</td>
-              <td><span class="status warn">手動確認</span></td>
-            </tr>
-            <tr>
-              <td><code>review.html</code></td>
-              <td>個別レビュー10本</td>
-              <td><span class="status good">高</span></td>
-              <td>レビュー一覧から10本すべてへ移動できるか。</td>
-              <td><span class="status warn">手動確認</span></td>
-            </tr>
-            <tr>
-              <td><code>casino-list.html</code></td>
-              <td>個別レビュー10本、bonus.html、payments.html</td>
-              <td><span class="status good">高</span></td>
-              <td>一覧カード・比較表からレビューへ移動できるか。</td>
-              <td><span class="status warn">手動確認</span></td>
-            </tr>
-            <tr>
-              <td><code>bonus.html</code></td>
-              <td>ボーナス確認系レビュー、bonus-guide.html、review.html</td>
-              <td><span class="status good">中</span></td>
-              <td>ボーナス理解からレビューへ移動できるか。</td>
-              <td><span class="status warn">手動確認</span></td>
-            </tr>
-            <tr>
-              <td><code>payments.html</code></td>
-              <td>暗号資産系レビュー、入出金関連レビュー、review.html</td>
-              <td><span class="status good">中</span></td>
-              <td>入出金ページから暗号資産系レビューへ移動できるか。</td>
-              <td><span class="status warn">手動確認</span></td>
-            </tr>
-            <tr>
-              <td><code>guide.html</code></td>
-              <td>review.html、casino-list.html、bonus.html、payments.html</td>
-              <td><span class="status good">中</span></td>
-              <td>初心者向けの見る順番が成立しているか。</td>
-              <td><span class="status warn">手動確認</span></td>
-            </tr>
-            <tr>
-              <td><code>bonus-guide.html</code></td>
-              <td>bonus.html、review.html、payments.html</td>
-              <td><span class="status good">中</span></td>
-              <td>ボーナス用語から比較・レビュー・入出金へ移動できるか。</td>
-              <td><span class="status warn">手動確認</span></td>
-            </tr>
-            <tr>
-              <td>全ページ共通</td>
-              <td>フッター内リンク</td>
-              <td><span class="status good">高</span></td>
-              <td>フッターから主要ページ・レビュー10本へ移動できるか。</td>
-              <td><span class="status warn">手動確認</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="section" id="image-check">
-      <div class="section-head">
-        <div class="label">画像確認</div>
-        <h2 class="section-title">ロゴ画像の<span>存在確認</span></h2>
-        <p class="section-desc">
-          画像はHTML埋め込みではなく、同階層の画像ファイル参照方式です。画像ファイルがGitHub上に存在するか確認してください。
-        </p>
-      </div>
-
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>画像ファイル名</th>
-              <th>使用ページ</th>
-              <th>確認内容</th>
-              <th>状態</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>slottenkoku-logo.png</code></td>
-              <td>index.html、review.html、casino-list.html、review-slottenkoku.html など</td>
-              <td>スロット天国ロゴが表示されるか。</td>
-              <td><span class="status warn">手動確認</span></td>
-            </tr>
-            <tr>
-              <td><code>konibet-logo.png</code></td>
-              <td>index.html、review.html、casino-list.html、review-konibet.html など</td>
-              <td>コニベットロゴが表示されるか。</td>
-              <td><span class="status warn">手動確認</span></td>
-            </tr>
-            <tr>
-              <td><code>stake-logo.png</code></td>
-              <td>index.html、review.html、casino-list.html、review-stake.html など</td>
-              <td>STAKEロゴが表示されるか。</td>
-              <td><span class="status warn">手動確認</span></td>
-            </tr>
-            <tr>
-              <td><code>yuugado-logo.png</code></td>
-              <td>index.html、review.html、casino-list.html、review-yuugado.html など</td>
-              <td>游雅堂ロゴが表示されるか。</td>
-              <td><span class="status warn">手動確認</span></td>
-            </tr>
-            <tr>
-              <td>プレースホルダー表示</td>
-              <td>ベラジョン、bitcasino、Mystino、Casino Secret、Bons Casino、BC.Game など</td>
-              <td>画像未配置でも文字ロゴ風の枠で崩れず表示されるか。</td>
-              <td><span class="status good">HTML内対応済み</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="notice-box" style="margin-top: 18px;">
-        <strong>画像ルール：</strong>
-        既存ロゴ画像は削除しないでください。
-        新規ロゴを追加する場合は、HTMLと同じ階層に画像を置き、ファイル名は英数字・ハイフン中心で統一します。
-      </div>
-    </section>
-
-    <section class="section" id="footer-check">
-      <div class="section-head">
-        <div class="label">フッター確認</div>
-        <h2 class="section-title">全ページ共通フッターの<span>リンク確認</span></h2>
-        <p class="section-desc">
-          主要ページとレビュー10本が、フッターから移動できるか確認します。
-        </p>
-      </div>
-
-      <div class="grid-2">
-        <div class="note-box">
-          <h3>入っているべき主要ページ</h3>
-          <ul class="check-list">
-            <li><code>index.html</code></li>
-            <li><code>casino-list.html</code></li>
-            <li><code>review.html</code></li>
-            <li><code>bonus.html</code></li>
-            <li><code>bonus-guide.html</code></li>
-            <li><code>guide.html</code></li>
-            <li><code>payments.html</code></li>
-          </ul>
-        </div>
-
-        <div class="note-box">
-          <h3>入っているべきレビュー</h3>
-          <ul class="check-list">
-            <li><code>review-slottenkoku.html</code></li>
-            <li><code>review-konibet.html</code></li>
-            <li><code>review-stake.html</code></li>
-            <li><code>review-verajohn.html</code></li>
-            <li><code>review-yuugado.html</code></li>
-            <li><code>review-bitcasino.html</code></li>
-            <li><code>review-mystino.html</code></li>
-            <li><code>review-casino-secret.html</code></li>
-            <li><code>review-bons-casino.html</code></li>
-            <li><code>review-bcgame.html</code></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="content-policy">
-      <div class="section-head">
-        <div class="label">表現チェック</div>
-        <h2 class="section-title">サイト全体の<span>表現ルール確認</span></h2>
-        <p class="section-desc">
-          リベンジカジノ比較ガイドの方針から外れた表現がないか確認します。
-        </p>
-      </div>
-
-      <div class="grid-2">
-        <div class="note-box">
-          <h3>使ってよい表現</h3>
-          <ul class="check-list">
-            <li>条件を確認する</li>
-            <li>公式規約を確認する</li>
-            <li>出金条件を確認する</li>
-            <li>本人確認を確認する</li>
-            <li>リスクを理解する</li>
-            <li>不安なら利用しない</li>
-          </ul>
-        </div>
-
-        <div class="note-box">
-          <h3>避ける表現</h3>
-          <ul class="caution-list">
-            <li>勝てる</li>
-            <li>稼げる</li>
-            <li>取り返せる</li>
-            <li>必ず出金できる</li>
-            <li>絶対安全</li>
-            <li>今すぐ登録すべき</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="next-pages">
-      <div class="section-head">
-        <div class="label">次回追加候補</div>
-        <h2 class="section-title">今後作ると良い<span>追加ページ候補</span></h2>
-        <p class="section-desc">
-          サイト全体の完成度をさらに上げる場合、次は以下のページ候補があります。
-        </p>
-      </div>
-
-      <div class="check-grid">
-        <div class="check-card">
-          <div class="number">1</div>
-          <h3>bot引き継ぎ仕様書</h3>
-          <p><code>bot-handoff.html</code></p>
-          <p>Telegram botに何を任せるか、GitHub更新の流れ、禁止事項を整理します。</p>
-        </div>
-
-        <div class="check-card">
-          <div class="number">2</div>
-          <h3>レビュー追加テンプレ</h3>
-          <p><code>review-template.html</code></p>
-          <p>新しいカジノレビューを追加するときの共通テンプレートとして使います。</p>
-        </div>
-
-        <div class="check-card">
-          <div class="number">3</div>
-          <h3>運営ルール</h3>
-          <p><code>operation-rules.html</code></p>
-          <p>表現ルール、画像命名、CTAルール、内部リンクルールを整理します。</p>
-        </div>
-
-        <div class="check-card">
-          <div class="number">4</div>
-          <h3>免責・責任ある利用</h3>
-          <p><code>responsible.html</code></p>
-          <p>免責文言、責任あるギャンブル案内、相談導線を独立ページ化します。</p>
-        </div>
-
-        <div class="check-card">
-          <div class="number">5</div>
-          <h3>サイトマップ</h3>
-          <p><code>sitemap.html</code></p>
-          <p>全ページへのリンクを一覧化して、ユーザーとbotの両方が把握しやすくします。</p>
-        </div>
-
-        <div class="check-card">
-          <div class="number">6</div>
-          <h3>新規レビュー追加</h3>
-          <p><code>review-[site-name].html</code></p>
-          <p>次の候補サイトをまとめて追加し、最後に一覧ページを一括更新します。</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="bot-handoff-check">
-      <div class="section-head">
-        <div class="label">bot引き継ぎ前チェック</div>
-        <h2 class="section-title">botに任せる前に<span>確認すること</span></h2>
-        <p class="section-desc">
-          Telegram botへ引き継ぐ前に、どこまで自動化できるか、どこは人間確認が必要かを整理します。
-        </p>
-      </div>
-
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>項目</th>
-              <th>botに任せられる可能性</th>
-              <th>人間確認が必要な理由</th>
-              <th>優先度</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>新規HTMLファイル作成</td>
-              <td>可能</td>
-              <td>GitHub API連携とテンプレート化が必要。</td>
-              <td><span class="status good">高</span></td>
-            </tr>
-            <tr>
-              <td>既存HTMLファイル更新</td>
-              <td>可能</td>
-              <td>上書きミス防止、差分確認、バックアップが必要。</td>
-              <td><span class="status good">高</span></td>
-            </tr>
-            <tr>
-              <td>リンク切れチェック</td>
-              <td>可能</td>
-              <td>GitHub Pages反映後のURL確認ロジックが必要。</td>
-              <td><span class="status good">高</span></td>
-            </tr>
-            <tr>
-              <td>カジノ情報の外部検索</td>
-              <td>一部可能</td>
-              <td>公式情報の真偽確認、規約変更、対象地域確認は慎重に扱う必要あり。</td>
-              <td><span class="status warn">中</span></td>
-            </tr>
-            <tr>
-              <td>ボーナス情報の自動更新</td>
-              <td>慎重に実施</td>
-              <td>ボーナス内容は頻繁に変わるため、公式確認と日付管理が必要。</td>
-              <td><span class="status warn">中</span></td>
-            </tr>
-            <tr>
-              <td>公開前の最終判断</td>
-              <td>人間確認推奨</td>
-              <td>表現、法的リスク、誇大表現、リンク先確認が必要。</td>
-              <td><span class="status good">高</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="section" id="manual-check-flow">
-      <div class="section-head">
-        <div class="label">手動確認手順</div>
-        <h2 class="section-title">このページを作ったあとに<span>やること</span></h2>
       </div>
 
       <div class="grid-3">
         <div class="check-card">
           <div class="number">1</div>
-          <h3>GitHubに追加</h3>
-          <p><code>site-checklist.html</code> を同階層に新規作成して保存します。</p>
+          <h3>主要ページ</h3>
+          <p>TOP、一覧、レビュー、初心者ガイド、ボーナス、入出金、画像設計書を管理します。</p>
         </div>
 
         <div class="check-card">
           <div class="number">2</div>
-          <h3>GitHub Pagesで開く</h3>
-          <p>公開URLでページを開き、デザイン崩れがないか確認します。</p>
+          <h3>レビュー10本</h3>
+          <p>個別レビュー記事のリンク、フッター、注意文言、内部導線を確認します。</p>
         </div>
 
         <div class="check-card">
           <div class="number">3</div>
-          <h3>主要リンクをクリック</h3>
-          <p>主要ページ7本とレビュー10本をすべてクリックして確認します。</p>
+          <h3>マスコット画像</h3>
+          <p>リベ男・リベ女の通常立ち絵と追加ポーズ4枚を管理します。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="image-check">
+      <div class="section-head">
+        <div class="label">画像チェック</div>
+        <h2 class="section-title">マスコット画像<span>追加4枚を確認</span></h2>
+        <p class="section-desc">
+          GitHubにアップロード済みの画像が正しく表示されるか、透過背景になっているかを確認します。
+        </p>
+      </div>
+
+      <div class="image-preview-grid">
+        <div class="image-card">
+          <div class="image-box">
+            <img src="ribedan-point.png" alt="リベ男 指差しポーズ" />
+          </div>
+          <strong>リベ男：指差し</strong>
+          <p><code>ribedan-point.png</code></p>
         </div>
 
-        <div class="check-card">
-          <div class="number">4</div>
-          <h3>画像表示を確認</h3>
-          <p>ロゴ画像が表示されているか、プレースホルダーが崩れていないか確認します。</p>
+        <div class="image-card">
+          <div class="image-box">
+            <img src="ribedan-guide.png" alt="リベ男 案内ポーズ" />
+          </div>
+          <strong>リベ男：案内</strong>
+          <p><code>ribedan-guide.png</code></p>
         </div>
 
-        <div class="check-card">
-          <div class="number">5</div>
-          <h3>フッターを確認</h3>
-          <p>全ページのフッターから主要ページとレビュー10本へ移動できるか確認します。</p>
+        <div class="image-card">
+          <div class="image-box">
+            <img src="ribejo-note.png" alt="リベ女 説明ポーズ" />
+          </div>
+          <strong>リベ女：説明</strong>
+          <p><code>ribejo-note.png</code></p>
         </div>
 
-        <div class="check-card">
-          <div class="number">6</div>
-          <h3>次の仕様書へ進む</h3>
-          <p>問題なければ、次に <code>bot-handoff.html</code> を作成します。</p>
+        <div class="image-card">
+          <div class="image-box">
+            <img src="ribejo-warning.png" alt="リベ女 注意喚起ポーズ" />
+          </div>
+          <strong>リベ女：注意喚起</strong>
+          <p><code>ribejo-warning.png</code></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="image-table">
+      <div class="section-head">
+        <div class="label">画像管理表</div>
+        <h2 class="section-title">マスコット画像の<span>ファイル名と用途</span></h2>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>画像ファイル</th>
+              <th>キャラ</th>
+              <th>用途</th>
+              <th>確認項目</th>
+              <th>状態</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>ribedan-transparent.png</code></td>
+              <td>リベ男</td>
+              <td>通常立ち絵・基準画像</td>
+              <td>透過PNG／市松模様なし／既存ページで表示確認</td>
+              <td><span class="status done">使用中</span></td>
+            </tr>
+            <tr>
+              <td><code>ribejo-transparent.png</code></td>
+              <td>リベ女</td>
+              <td>通常立ち絵・基準画像</td>
+              <td>透過PNG／市松模様なし／既存ページで表示確認</td>
+              <td><span class="status done">使用中</span></td>
+            </tr>
+            <tr>
+              <td><code>ribedan-point.png</code></td>
+              <td>リベ男</td>
+              <td>レビュー一覧・カジノ一覧・比較表前の小型訴求</td>
+              <td>透過PNG／市松模様なし／ファイル名完全一致</td>
+              <td><span class="status todo">差し替え予定</span></td>
+            </tr>
+            <tr>
+              <td><code>ribedan-guide.png</code></td>
+              <td>リベ男</td>
+              <td>TOP・初心者ガイド・導線案内</td>
+              <td>透過PNG／市松模様なし／ファイル名完全一致</td>
+              <td><span class="status todo">差し替え予定</span></td>
+            </tr>
+            <tr>
+              <td><code>ribejo-note.png</code></td>
+              <td>リベ女</td>
+              <td>ボーナス説明・初心者チェック・補足説明</td>
+              <td>透過PNG／市松模様なし／ファイル名完全一致</td>
+              <td><span class="status todo">差し替え予定</span></td>
+            </tr>
+            <tr>
+              <td><code>ribejo-warning.png</code></td>
+              <td>リベ女</td>
+              <td>入出金・本人確認・規約注意・禁止ベット</td>
+              <td>透過PNG／市松模様なし／ファイル名完全一致</td>
+              <td><span class="status todo">差し替え予定</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="page-check">
+      <div class="section-head">
+        <div class="label">ページチェック</div>
+        <h2 class="section-title">主要ページの<span>差し替え予定</span></h2>
+        <p class="section-desc">
+          追加ポーズは大きく使いすぎず、小型の説明ボックスや訴求ポイントにも使っていきます。
+        </p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ページ</th>
+              <th>現在の画像</th>
+              <th>次の理想画像</th>
+              <th>使い方</th>
+              <th>状態</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>index.html</strong></td>
+              <td><code>ribedan-transparent.png</code></td>
+              <td><code>ribedan-guide.png</code></td>
+              <td>ヒーロー右側の案内役として使用</td>
+              <td><span class="status todo">次に更新</span></td>
+            </tr>
+            <tr>
+              <td><strong>guide.html</strong></td>
+              <td><code>ribedan-transparent.png</code> / <code>ribejo-transparent.png</code></td>
+              <td><code>ribedan-guide.png</code> / <code>ribejo-note.png</code></td>
+              <td>見る順番・初心者チェックの補足に使用</td>
+              <td><span class="status todo">更新予定</span></td>
+            </tr>
+            <tr>
+              <td><strong>review.html</strong></td>
+              <td><code>ribedan-transparent.png</code></td>
+              <td><code>ribedan-point.png</code></td>
+              <td>レビュー一覧へ誘導する指差しポーズ</td>
+              <td><span class="status todo">更新予定</span></td>
+            </tr>
+            <tr>
+              <td><strong>casino-list.html</strong></td>
+              <td><code>ribedan-transparent.png</code></td>
+              <td><code>ribedan-point.png</code></td>
+              <td>一覧比較・比較表への案内</td>
+              <td><span class="status todo">更新予定</span></td>
+            </tr>
+            <tr>
+              <td><strong>bonus-guide.html</strong></td>
+              <td><code>ribejo-transparent.png</code></td>
+              <td><code>ribejo-note.png</code> / <code>ribejo-warning.png</code></td>
+              <td>説明ポーズと注意喚起ポーズを使い分け</td>
+              <td><span class="status todo">更新予定</span></td>
+            </tr>
+            <tr>
+              <td><strong>payments.html</strong></td>
+              <td><code>ribejo-transparent.png</code></td>
+              <td><code>ribejo-warning.png</code></td>
+              <td>出金条件・本人確認・暗号資産注意に使用</td>
+              <td><span class="status todo">更新予定</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="structure-check">
+      <div class="section-head">
+        <div class="label">構成チェック</div>
+        <h2 class="section-title">サイト全体の<span>確認項目</span></h2>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>ページ確認</h3>
+          <ul class="check-list">
+            <li><code>index.html</code> が表示される</li>
+            <li><code>casino-list.html</code> が表示される</li>
+            <li><code>review.html</code> が表示される</li>
+            <li><code>bonus.html</code> が表示される</li>
+            <li><code>bonus-guide.html</code> が表示される</li>
+            <li><code>guide.html</code> が表示される</li>
+            <li><code>payments.html</code> が表示される</li>
+            <li><code>mascot-image-plan.html</code> が表示される</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>内部リンク確認</h3>
+          <ul class="check-list">
+            <li>ヘッダーの主要リンクが開く</li>
+            <li>フッターリンクが開く</li>
+            <li>レビュー10本へのリンクが開く</li>
+            <li>ボーナス比較へのリンクが開く</li>
+            <li>入出金ガイドへのリンクが開く</li>
+            <li>初心者ガイドへのリンクが開く</li>
+            <li>サイトチェックリストへのリンクが必要箇所にある</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="review-check">
+      <div class="section-head">
+        <div class="label">レビュー記事</div>
+        <h2 class="section-title">レビュー10本の<span>リンク確認</span></h2>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>レビュー記事</th>
+              <th>ファイル名</th>
+              <th>確認項目</th>
+              <th>状態</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>スロット天国レビュー</td>
+              <td><code>review-slottenkoku.html</code></td>
+              <td>ロゴ・内部リンク・注意文言・CTA</td>
+              <td><span class="status check">確認対象</span></td>
+            </tr>
+            <tr>
+              <td>コニベットレビュー</td>
+              <td><code>review-konibet.html</code></td>
+              <td>ロゴ・内部リンク・注意文言・CTA</td>
+              <td><span class="status check">確認対象</span></td>
+            </tr>
+            <tr>
+              <td>STAKEレビュー</td>
+              <td><code>review-stake.html</code></td>
+              <td>ロゴ・暗号資産注意・対象地域・CTA</td>
+              <td><span class="status check">確認対象</span></td>
+            </tr>
+            <tr>
+              <td>ベラジョンレビュー</td>
+              <td><code>review-verajohn.html</code></td>
+              <td>条件確認・出金条件・本人確認</td>
+              <td><span class="status check">確認対象</span></td>
+            </tr>
+            <tr>
+              <td>游雅堂レビュー</td>
+              <td><code>review-yuugado.html</code></td>
+              <td>ロゴ・日本語対応・入出金条件</td>
+              <td><span class="status check">確認対象</span></td>
+            </tr>
+            <tr>
+              <td>bitcasinoレビュー</td>
+              <td><code>review-bitcasino.html</code></td>
+              <td>暗号資産・ネットワーク・対象地域</td>
+              <td><span class="status check">確認対象</span></td>
+            </tr>
+            <tr>
+              <td>Mystinoレビュー</td>
+              <td><code>review-mystino.html</code></td>
+              <td>ボーナス条件・日本語対応・出金条件</td>
+              <td><span class="status check">確認対象</span></td>
+            </tr>
+            <tr>
+              <td>Casino Secretレビュー</td>
+              <td><code>review-casino-secret.html</code></td>
+              <td>条件表記・最大出金・本人確認</td>
+              <td><span class="status check">確認対象</span></td>
+            </tr>
+            <tr>
+              <td>Bons Casinoレビュー</td>
+              <td><code>review-bons-casino.html</code></td>
+              <td>運営情報・ライセンス・出金条件</td>
+              <td><span class="status check">確認対象</span></td>
+            </tr>
+            <tr>
+              <td>BC.Gameレビュー</td>
+              <td><code>review-bcgame.html</code></td>
+              <td>暗号資産・対象地域・公式規約</td>
+              <td><span class="status check">確認対象</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="content-policy">
+      <div class="section-head">
+        <div class="label">表現ルール</div>
+        <h2 class="section-title">リベンジカジノ比較ガイドの<span>表現チェック</span></h2>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>OK表現</h3>
+          <ul class="check-list">
+            <li>条件で比較する</li>
+            <li>出金条件を確認する</li>
+            <li>本人確認を確認する</li>
+            <li>公式規約を確認する</li>
+            <li>ボーナス条件を理解する</li>
+            <li>前回の失敗を学びに変える</li>
+            <li>慎重に選ぶ</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>NG表現</h3>
+          <ul class="caution-list">
+            <li>勝てると断定する</li>
+            <li>稼げると訴求する</li>
+            <li>損失回収を保証する</li>
+            <li>取り返せると煽る</li>
+            <li>今すぐ登録を強く迫る</li>
+            <li>賞金獲得を保証する</li>
+            <li>ボーナスだけで選ばせる</li>
+          </ul>
         </div>
       </div>
     </section>
 
     <section class="section" id="responsible">
       <div class="warning-box">
-        <h2>運営上の注意</h2>
+        <h2>責任ある利用とリスク確認</h2>
         <p>
-          このサイトはオンラインカジノの比較メディアとして、条件確認・リスク理解・公式規約確認を重視します。
-          今後botへ作業を引き継ぐ場合も、以下の方針は維持してください。
+          本サイトはオンラインカジノの条件や特徴を比較するための情報メディアです。
+          利用を推奨・保証するものではなく、各サイトの公式情報・規約・関連法規の確認を前提としています。
         </p>
         <ul>
-          <li>勝利保証、損失回収、射幸心を煽る表現を避ける</li>
-          <li>ボーナス条件、出金条件、本人確認、対象地域の確認を必ず入れる</li>
-          <li>公式情報や規約が変わる前提で、断定しすぎない</li>
-          <li>新規レビューを追加するときは、個別ページをまとめて作ってから一覧ページを一括更新する</li>
-          <li>既存ロゴ画像を削除しない</li>
+          <li>勝利保証や損失回収を連想させる表現を使わない</li>
+          <li>ボーナス額だけで登録を促さない</li>
+          <li>出金条件・本人確認・公式規約への導線を残す</li>
+          <li>画像でも射幸心を強く煽らない</li>
+          <li>不安がある場合は利用を急がない文脈を残す</li>
         </ul>
       </div>
     </section>
 
     <section class="cta">
       <div class="cta-box">
-        <h2>チェックが終わったら、bot引き継ぎ仕様書へ。</h2>
+        <h2>次は、TOPページのリベ男を案内ポーズへ差し替える。</h2>
         <p>
-          まずはこのページでリンク切れ・画像・導線を確認し、問題なければ次に bot-handoff.html を作成して、Telegram botへ任せる作業範囲を整理します。
+          チェックリストに追加画像を登録したので、次は index.html のヒーロー画像を <code>ribedan-guide.png</code> に差し替えます。
         </p>
         <div class="cta-actions">
-          <a href="#html-files" class="btn btn-gold">チェックリスト上部へ</a>
-          <a href="review.html" class="btn btn-outline">レビュー一覧へ</a>
-          <a href="casino-list.html" class="btn btn-outline">カジノ一覧へ</a>
+          <a href="index.html" class="btn btn-gold">TOPを確認する</a>
+          <a href="mascot-image-plan.html" class="btn btn-outline">画像設計書を見る</a>
+          <a href="#image-check" class="btn btn-outline">画像チェックへ戻る</a>
         </div>
       </div>
     </section>
@@ -1388,8 +1129,7 @@
           <span>リベンジカジノ比較ガイド</span>
         </div>
         <p>
-          本サイトは、オンラインカジノの条件や特徴を比較するための情報メディアです。
-          利用を推奨・保証するものではなく、各サイトの公式情報・規約・関連法規の確認を前提としています。
+          本ページは、ページ構成、内部リンク、レビュー記事、マスコット画像、表現ルールを確認するための運営用チェックリストです。
         </p>
       </div>
 
@@ -1397,20 +1137,11 @@
         <a href="index.html">TOP</a>
         <a href="casino-list.html">カジノ一覧</a>
         <a href="review.html">レビュー</a>
-        <a href="review-slottenkoku.html">スロット天国レビュー</a>
-        <a href="review-konibet.html">コニベットレビュー</a>
-        <a href="review-stake.html">STAKEレビュー</a>
-        <a href="review-verajohn.html">ベラジョンレビュー</a>
-        <a href="review-yuugado.html">游雅堂レビュー</a>
-        <a href="review-bitcasino.html">bitcasinoレビュー</a>
-        <a href="review-mystino.html">Mystinoレビュー</a>
-        <a href="review-casino-secret.html">Casino Secretレビュー</a>
-        <a href="review-bons-casino.html">Bons Casinoレビュー</a>
-        <a href="review-bcgame.html">BC.Gameレビュー</a>
         <a href="bonus.html">ボーナス比較</a>
         <a href="bonus-guide.html">見方ガイド</a>
         <a href="guide.html">初心者ガイド</a>
         <a href="payments.html">入出金</a>
+        <a href="mascot-image-plan.html">マスコット画像設計書</a>
         <a href="site-checklist.html">サイトチェックリスト</a>
       </div>
     </div>
