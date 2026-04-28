@@ -4,24 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>オンラインカジノ初心者ガイド｜登録前に見る順番・条件確認・注意点</title>
-  <meta name="description" content="オンラインカジノ初心者向けに、登録前に確認すべき順番、レビューの見方、ボーナス条件、入出金条件、本人確認、公式規約、責任ある利用を整理。リベンジカジノ比較ガイドの初心者向け案内ページ。" />
+  <title>初心者ガイド｜登録前に見る順番と確認ポイント｜リベンジカジノ比較ガイド</title>
+  <meta name="description" content="オンラインカジノ初心者向けの確認ガイドです。カジノ一覧、レビュー、ボーナス比較、入出金ガイド、公式規約確認の順番で、登録前に見るべきポイントを整理しています。" />
 
   <style>
     :root {
       --red: #d71920;
-      --red-dark: #a80f17;
+      --red-dark: #9f1017;
       --red-soft: #fff0f0;
-      --gold: #f6b73c;
-      --gold-soft: #fff6df;
-      --orange: #ff7a1a;
-      --text: #2b2b2b;
+      --gold: #d6a642;
+      --gold-soft: #fff8e6;
+      --text: #242424;
       --muted: #666;
-      --white: #fff;
-      --shadow: 0 18px 45px rgba(120, 20, 20, 0.12);
-      --radius-lg: 24px;
-      --radius-md: 16px;
-      --max: 1180px;
+      --bg: #fff8f6;
+      --white: #ffffff;
+      --shadow: 0 18px 45px rgba(150, 22, 24, 0.12);
+      --radius: 22px;
+      --max: 1120px;
     }
 
     * {
@@ -34,11 +33,11 @@
 
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(255, 122, 26, 0.16), transparent 28%),
-        linear-gradient(180deg, #fff7f2 0%, #ffffff 36%, #fff9f2 100%);
+        radial-gradient(circle at top left, rgba(215, 25, 32, 0.08), transparent 34%),
+        linear-gradient(180deg, #fff8f6 0%, #ffffff 44%, #fff8f6 100%);
       line-height: 1.8;
     }
 
@@ -48,63 +47,66 @@
     }
 
     img {
-      display: block;
       max-width: 100%;
-      height: auto;
+      display: block;
     }
 
     .site-header {
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(215, 25, 32, 0.14);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(215, 25, 32, 0.12);
     }
 
     .header-inner {
       max-width: var(--max);
       margin: 0 auto;
-      padding: 14px 20px;
+      padding: 14px 18px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 18px;
+      flex-wrap: wrap;
     }
 
     .brand {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 10px;
       font-weight: 900;
-      color: var(--red-dark);
+      letter-spacing: -0.03em;
       white-space: nowrap;
     }
 
     .brand-mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--red), var(--orange));
-      display: grid;
-      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
       color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       font-weight: 900;
-      box-shadow: 0 8px 20px rgba(215, 25, 32, 0.24);
+      box-shadow: 0 8px 18px rgba(215, 25, 32, 0.22);
+      flex: 0 0 auto;
     }
 
     .nav {
       display: flex;
       align-items: center;
-      gap: 16px;
-      font-size: 14px;
-      color: #444;
-      flex-wrap: wrap;
       justify-content: flex-end;
+      gap: 14px;
+      flex-wrap: wrap;
+      color: #555;
+      font-size: 14px;
+      font-weight: 700;
     }
 
     .nav a {
-      font-weight: 700;
+      transition: color 0.2s ease;
     }
 
     .nav a:hover {
@@ -112,19 +114,19 @@
     }
 
     .nav-cta {
-      background: var(--red);
-      color: #fff !important;
       padding: 9px 14px;
       border-radius: 999px;
-      box-shadow: 0 8px 18px rgba(215, 25, 32, 0.22);
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      color: #fff !important;
+      box-shadow: 0 10px 20px rgba(215, 25, 32, 0.18);
     }
 
     .breadcrumb {
       max-width: var(--max);
       margin: 0 auto;
-      padding: 18px 20px 0;
-      color: var(--muted);
+      padding: 16px 18px 0;
       font-size: 13px;
+      color: #777;
     }
 
     .breadcrumb a {
@@ -132,42 +134,43 @@
       font-weight: 700;
     }
 
-    .hero,
-    .section,
-    .cta {
+    .hero {
       max-width: var(--max);
       margin: 0 auto;
-      padding-left: 20px;
-      padding-right: 20px;
-    }
-
-    .hero {
-      padding-top: 30px;
-      padding-bottom: 38px;
+      padding: 30px 18px 42px;
     }
 
     .hero-box {
       position: relative;
       overflow: hidden;
       border-radius: 34px;
+      padding: 44px;
       background:
-        radial-gradient(circle at 90% 8%, rgba(246, 183, 60, 0.42), transparent 26%),
-        radial-gradient(circle at 8% 16%, rgba(255, 122, 26, 0.26), transparent 30%),
-        linear-gradient(135deg, #ffffff 0%, #fff3f0 52%, #ffe1d6 100%);
-      border: 1px solid rgba(215, 25, 32, 0.14);
+        radial-gradient(circle at 84% 16%, rgba(255, 220, 120, 0.46), transparent 26%),
+        linear-gradient(135deg, #fff 0%, #fff4f2 46%, #ffe8e3 100%);
       box-shadow: var(--shadow);
-      padding: 48px;
+      border: 1px solid rgba(215, 25, 32, 0.12);
+    }
+
+    .hero-box::before {
+      content: "";
+      position: absolute;
+      inset: auto -80px -120px auto;
+      width: 300px;
+      height: 300px;
+      border-radius: 999px;
+      background: rgba(215, 25, 32, 0.09);
     }
 
     .hero-box::after {
       content: "";
       position: absolute;
-      left: 42px;
+      left: 44px;
       bottom: 0;
       width: 180px;
       height: 6px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--red), var(--orange), var(--gold));
+      border-radius: 999px 999px 0 0;
+      background: linear-gradient(90deg, var(--red), var(--gold));
     }
 
     .hero-grid {
@@ -183,54 +186,39 @@
     .label {
       display: inline-flex;
       align-items: center;
-      background: #fff;
-      border: 1px solid rgba(215, 25, 32, 0.18);
-      color: var(--red-dark);
-      font-weight: 900;
-      font-size: 13px;
+      gap: 8px;
       padding: 7px 12px;
+      margin-bottom: 16px;
       border-radius: 999px;
-      box-shadow: 0 8px 20px rgba(215, 25, 32, 0.08);
-      margin-bottom: 18px;
-    }
-
-    .label {
-      background: var(--red-soft);
-      box-shadow: none;
-      padding: 5px 11px;
-      font-size: 12px;
-      margin-bottom: 10px;
+      background: #fff;
+      color: var(--red-dark);
+      border: 1px solid rgba(215, 25, 32, 0.14);
+      font-size: 13px;
+      font-weight: 900;
     }
 
     h1 {
       margin: 0 0 18px;
-      font-size: clamp(31px, 5vw, 54px);
-      line-height: 1.14;
-      letter-spacing: -0.05em;
-      color: #1f1f1f;
-    }
-
-    .hero-highlight,
-    .section-title span {
-      background: linear-gradient(90deg, var(--red), var(--orange));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.12;
+      letter-spacing: -0.06em;
     }
 
     .hero-lead {
       margin: 0;
-      color: #444;
-      font-size: 17px;
       max-width: 720px;
+      color: #4d4d4d;
+      font-size: 16px;
+      line-height: 1.9;
     }
 
     .hero-actions,
     .cta-actions,
     .card-actions {
       display: flex;
-      flex-wrap: wrap;
       gap: 12px;
-      margin-top: 22px;
+      flex-wrap: wrap;
+      margin-top: 24px;
     }
 
     .btn,
@@ -240,20 +228,34 @@
       justify-content: center;
       border-radius: 999px;
       font-weight: 900;
-      line-height: 1.2;
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-align: center;
     }
 
     .btn {
-      padding: 13px 18px;
+      min-height: 48px;
+      padding: 13px 20px;
+      font-size: 14px;
     }
 
     .mini-btn {
-      padding: 10px 13px;
+      min-height: 40px;
+      padding: 9px 14px;
       font-size: 13px;
-      border: 1px solid rgba(215, 25, 32, 0.18);
+    }
+
+    .btn-primary,
+    .mini-primary {
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      color: #fff;
+      box-shadow: 0 12px 24px rgba(215, 25, 32, 0.22);
+    }
+
+    .btn-secondary,
+    .mini-secondary {
       background: #fff;
       color: var(--red-dark);
+      border: 1px solid rgba(215, 25, 32, 0.2);
     }
 
     .btn:hover,
@@ -261,176 +263,99 @@
       transform: translateY(-2px);
     }
 
-    .btn-primary,
-    .mini-btn.main {
-      background: linear-gradient(135deg, var(--red), var(--red-dark));
-      color: #fff;
-      border-color: var(--red);
-      box-shadow: 0 12px 28px rgba(215, 25, 32, 0.28);
-    }
-
-    .btn-gold {
-      background: linear-gradient(135deg, var(--gold), #ffcf67);
-      color: #4a2b00;
-      box-shadow: 0 12px 28px rgba(246, 183, 60, 0.28);
-    }
-
-    .btn-outline {
-      background: #fff;
-      color: var(--red-dark);
-      border: 1px solid rgba(215, 25, 32, 0.24);
-    }
-
-    .mascot-hero {
+    .hero-side {
       position: relative;
-      min-height: 430px;
-      border-radius: 30px;
-      overflow: visible;
-      display: grid;
-      place-items: end center;
-      padding: 8px 16px 0;
+      min-height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .mascot-hero::before {
-      content: "";
-      position: absolute;
-      width: 320px;
-      height: 320px;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle, rgba(246, 183, 60, 0.34), rgba(255, 122, 26, 0.16) 42%, transparent 70%);
-      top: 34px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 0;
-      filter: blur(2px);
-    }
-
-    .mascot-hero::after {
-      content: "";
-      position: absolute;
-      left: 48px;
-      right: 48px;
-      bottom: 12px;
-      height: 36px;
-      border-radius: 50%;
-      background: rgba(120, 20, 20, 0.12);
-      filter: blur(14px);
-      z-index: 1;
-    }
-
-    .mascot-hero-img {
+    .hero-card {
       position: relative;
       z-index: 2;
-      width: min(90%, 330px);
-      max-height: 430px;
-      object-fit: contain;
-      object-position: bottom center;
-      filter: drop-shadow(0 18px 22px rgba(80, 20, 20, 0.22));
+      width: min(100%, 360px);
+      padding: 28px;
+      border-radius: 28px;
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.13);
+      box-shadow: 0 18px 38px rgba(120, 20, 20, 0.12);
     }
 
-    .mascot-hero-bubble {
-      position: absolute;
-      z-index: 3;
-      left: 8px;
-      right: 8px;
-      bottom: 14px;
-      background: rgba(255, 255, 255, 0.94);
-      border: 1px solid rgba(215, 25, 32, 0.18);
-      border-left: 6px solid var(--red);
-      border-radius: 20px;
-      padding: 15px 17px;
-      box-shadow: 0 12px 28px rgba(120, 20, 20, 0.12);
+    .hero-card h2 {
+      margin: 0 0 10px;
+      font-size: 23px;
+      line-height: 1.35;
+      color: var(--red-dark);
     }
 
-    .mascot-hero-bubble strong {
+    .hero-card p {
+      margin: 0;
+      color: #666;
+      font-size: 14px;
+    }
+
+    .hero-stats {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .hero-stat {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: var(--red-soft);
+      border: 1px solid rgba(215, 25, 32, 0.12);
+    }
+
+    .hero-stat strong {
       display: block;
       color: var(--red-dark);
-      font-size: 14px;
-      margin-bottom: 3px;
+      font-size: 20px;
+      line-height: 1.1;
     }
 
-    .mascot-hero-bubble p {
-      margin: 0;
-      color: #444;
-      font-size: 14px;
-      line-height: 1.65;
-      font-weight: 700;
+    .hero-stat span {
+      display: block;
+      color: #666;
+      font-size: 12px;
+      font-weight: 800;
+      margin-top: 4px;
+    }
+
+    .mascot-mini {
+      position: absolute;
+      right: 4px;
+      bottom: 8px;
+      width: 108px;
+      z-index: 3;
+      filter: drop-shadow(0 12px 16px rgba(120, 20, 20, 0.12));
     }
 
     .notice {
       max-width: var(--max);
-      margin: 0 auto 20px;
-      padding: 0 20px;
+      margin: 0 auto 18px;
+      padding: 0 18px;
     }
 
     .notice-box {
-      background: #fff;
-      border: 1px solid rgba(215, 25, 32, 0.18);
-      border-left: 6px solid var(--red);
-      border-radius: var(--radius-md);
       padding: 18px 20px;
-      color: #4a4a4a;
-      box-shadow: 0 10px 28px rgba(120, 20, 20, 0.07);
-      font-size: 14px;
-    }
-
-    .mascot-note {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .mascot-note-inner {
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 18px;
-      align-items: center;
-      background:
-        radial-gradient(circle at left center, rgba(246, 183, 60, 0.22), transparent 26%),
-        linear-gradient(135deg, #fff, #fff5f0);
+      border-radius: 18px;
+      background: #fff;
       border: 1px solid rgba(215, 25, 32, 0.16);
-      border-left: 7px solid var(--red);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow);
-      padding: 18px 22px;
-    }
-
-    .mascot-note-img {
-      width: 108px;
-      max-height: 135px;
-      object-fit: contain;
-      filter: drop-shadow(0 12px 16px rgba(80, 20, 20, 0.18));
-      justify-self: center;
-    }
-
-    .mascot-note-body strong {
-      display: inline-flex;
-      color: var(--red-dark);
+      color: #555;
+      box-shadow: 0 10px 28px rgba(150, 22, 24, 0.08);
       font-size: 14px;
-      font-weight: 900;
-      margin-bottom: 6px;
     }
 
-    .mascot-note-body h2 {
-      margin: 0 0 6px;
-      font-size: clamp(20px, 2.4vw, 28px);
-      line-height: 1.35;
-      color: #222;
-      letter-spacing: -0.02em;
-    }
-
-    .mascot-note-body p {
-      margin: 0;
-      color: #444;
-      font-size: 15px;
-      line-height: 1.8;
-      font-weight: 700;
+    .notice-box strong {
+      color: var(--red-dark);
     }
 
     .section {
-      padding-top: 40px;
-      padding-bottom: 40px;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 42px 18px;
     }
 
     .section-head {
@@ -438,49 +363,47 @@
     }
 
     .section-title {
-      margin: 0;
-      font-size: clamp(24px, 3vw, 36px);
-      line-height: 1.25;
-      letter-spacing: -0.03em;
+      margin: 0 0 10px;
+      font-size: clamp(26px, 3.6vw, 40px);
+      line-height: 1.28;
+      letter-spacing: -0.04em;
     }
 
     .section-desc {
-      margin: 8px 0 0;
+      margin: 0;
       color: var(--muted);
-      max-width: 780px;
+      max-width: 860px;
+      font-size: 15px;
     }
 
-    .step-grid,
-    .grid-2,
-    .grid-3,
-    .link-grid {
+    .step-grid {
       display: grid;
-      gap: 18px;
-    }
-
-    .step-grid,
-    .grid-3,
-    .link-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .grid-2 {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
     }
 
     .step-card,
-    .card,
+    .mistake-card,
+    .review-card,
+    .responsible-box,
+    .mascot-note,
     .link-card,
-    .warning-box {
+    .check-card {
       background: #fff;
-      border: 1px solid rgba(215, 25, 32, 0.15);
-      border-radius: var(--radius-md);
-      padding: 20px;
-      box-shadow: 0 10px 28px rgba(120, 20, 20, 0.07);
+      border: 1px solid rgba(215, 25, 32, 0.12);
+      border-radius: var(--radius);
+      box-shadow: 0 12px 30px rgba(150, 22, 24, 0.08);
+    }
+
+    .step-card,
+    .mistake-card,
+    .review-card,
+    .link-card,
+    .check-card {
+      padding: 22px;
     }
 
     .step-card {
-      border-radius: var(--radius-lg);
       position: relative;
       overflow: hidden;
     }
@@ -490,393 +413,353 @@
       position: absolute;
       inset: 0 0 auto 0;
       height: 5px;
-      background: linear-gradient(90deg, var(--red), var(--orange), var(--gold));
+      background: linear-gradient(90deg, var(--red), var(--gold));
     }
 
-    .number {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, var(--red), var(--orange));
+    .step-number {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
       color: #fff;
       font-weight: 900;
       margin-bottom: 12px;
-      box-shadow: 0 8px 18px rgba(215, 25, 32, 0.18);
+      box-shadow: 0 8px 18px rgba(215, 25, 32, 0.2);
     }
 
     .step-card h3,
-    .card h3,
-    .link-card h3 {
-      margin: 0 0 8px;
-      color: var(--red-dark);
+    .mistake-card h3,
+    .review-card h3,
+    .check-card h3 {
+      margin: 0 0 10px;
       font-size: 18px;
-      line-height: 1.35;
+      line-height: 1.45;
+      color: var(--red-dark);
     }
 
     .step-card p,
-    .card p,
-    .link-card p {
+    .mistake-card p,
+    .review-card p,
+    .check-card p {
       margin: 0;
-      color: var(--muted);
+      color: #5f5f5f;
       font-size: 14px;
-      line-height: 1.7;
     }
 
-    .link-card p {
-      margin-bottom: 12px;
+    .step-card ul,
+    .mistake-card ul,
+    .check-card ul {
+      margin: 12px 0 0;
+      padding-left: 1.2em;
+      color: #5f5f5f;
+      font-size: 14px;
     }
 
-    .link-card a {
-      color: var(--red);
-      font-weight: 900;
+    .step-card li,
+    .mistake-card li,
+    .check-card li {
+      margin: 5px 0;
     }
 
-    .check-list,
-    .caution-list {
+    .grid-2 {
       display: grid;
-      gap: 9px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .review-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .review-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--red), var(--gold));
+    }
+
+    .review-card h3 {
+      margin-top: 8px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 9px;
+      margin-bottom: 12px;
+      border-radius: 999px;
+      background: var(--gold-soft);
+      color: #8b6114;
+      border: 1px solid rgba(214, 166, 66, 0.3);
+      font-size: 11px;
+      line-height: 1.2;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .tag-red {
+      background: var(--red-soft);
+      color: var(--red-dark);
+      border-color: rgba(215, 25, 32, 0.16);
+    }
+
+    .review-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .review-meta li {
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: #fff8f6;
+      border: 1px solid rgba(215, 25, 32, 0.12);
+      color: #666;
+      font-size: 11px;
+      font-weight: 800;
+      margin: 0;
+    }
+
+    .check-list {
+      display: grid;
+      gap: 12px;
       margin: 0;
       padding: 0;
       list-style: none;
-      font-size: 14px;
-      color: #444;
     }
 
-    .check-list li,
-    .caution-list li {
-      padding-left: 24px;
+    .check-list li {
       position: relative;
+      padding: 14px 16px 14px 42px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.11);
+      color: #555;
+      font-size: 14px;
     }
 
     .check-list li::before {
       content: "✓";
       position: absolute;
-      left: 0;
-      top: 0;
-      color: var(--red);
+      left: 16px;
+      top: 14px;
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: var(--red);
+      color: #fff;
+      font-size: 12px;
+      line-height: 18px;
+      text-align: center;
       font-weight: 900;
     }
 
-    .caution-list li::before {
-      content: "!";
-      position: absolute;
-      left: 0;
-      top: 2px;
-      width: 17px;
-      height: 17px;
-      border-radius: 50%;
+    .mascot-note {
       display: grid;
-      place-items: center;
-      background: var(--gold);
-      color: #4a2b00;
-      font-size: 11px;
-      line-height: 1;
-      font-weight: 900;
+      grid-template-columns: 110px 1fr;
+      gap: 18px;
+      align-items: center;
+      padding: 20px;
+      background:
+        radial-gradient(circle at 40px 40px, rgba(255, 248, 230, 0.9), transparent 42%),
+        #fff;
     }
 
-    .table-wrap {
-      overflow-x: auto;
-      background: #fff;
-      border: 1px solid rgba(215, 25, 32, 0.16);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow);
+    .mascot-note img {
+      width: 104px;
+      max-height: 128px;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 14px rgba(120, 20, 20, 0.12));
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 900px;
+    .mascot-note h2,
+    .mascot-note h3 {
+      margin: 0 0 8px;
+      color: var(--red-dark);
+      font-size: 20px;
+      line-height: 1.45;
+    }
+
+    .mascot-note p {
+      margin: 0;
+      color: #555;
       font-size: 14px;
     }
 
-    th,
-    td {
-      padding: 15px 14px;
-      text-align: left;
-      border-bottom: 1px solid #f2dddd;
-      vertical-align: top;
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
     }
 
-    th {
-      background: linear-gradient(180deg, #fff0f0, #ffe7e4);
+    .link-card {
+      display: block;
+      padding: 20px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .link-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 32px rgba(150, 22, 24, 0.1);
+    }
+
+    .link-card strong {
+      display: block;
       color: var(--red-dark);
-      font-weight: 900;
-      white-space: nowrap;
+      margin-bottom: 6px;
+      font-size: 14px;
     }
 
-    tr:last-child td {
-      border-bottom: none;
+    .link-card span {
+      display: block;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.6;
     }
 
-    td strong,
-    td a {
-      color: #222;
-      font-weight: 900;
-    }
-
-    .warning-box {
-      border-radius: var(--radius-lg);
+    .responsible-box {
+      padding: 24px;
       background:
-        radial-gradient(circle at top right, rgba(246, 183, 60, 0.22), transparent 34%),
-        linear-gradient(135deg, #fff, #fff4ed);
-      box-shadow: var(--shadow);
+        linear-gradient(135deg, #fff 0%, #fff8f6 100%);
     }
 
-    .warning-box h2 {
-      margin: 0 0 12px;
+    .responsible-box h2 {
+      margin: 0 0 10px;
+      font-size: 24px;
+      line-height: 1.35;
       color: var(--red-dark);
-      font-size: clamp(22px, 3vw, 30px);
-      line-height: 1.3;
     }
 
-    .warning-box p {
-      margin: 0 0 14px;
-      color: #4d4d4d;
-    }
-
-    .warning-box ul {
-      margin: 12px 0 0;
-      padding-left: 1.2em;
-      color: #4d4d4d;
-    }
-
-    details {
-      background: #fff;
-      border: 1px solid rgba(215, 25, 32, 0.15);
-      border-radius: var(--radius-md);
-      padding: 16px 18px;
-      box-shadow: 0 8px 22px rgba(120, 20, 20, 0.05);
-    }
-
-    details + details {
-      margin-top: 12px;
-    }
-
-    summary {
-      cursor: pointer;
-      font-weight: 900;
-      color: #333;
-    }
-
-    details p {
-      margin: 12px 0 0;
+    .responsible-box p {
+      margin: 0;
       color: #555;
       font-size: 14px;
     }
 
     .cta {
-      padding-top: 32px;
-      padding-bottom: 56px;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 30px 18px 58px;
     }
 
     .cta-box {
-      border-radius: 32px;
+      position: relative;
+      overflow: hidden;
       padding: 34px;
+      border-radius: 30px;
       background:
-        radial-gradient(circle at 15% 20%, rgba(255, 122, 26, 0.28), transparent 24%),
-        radial-gradient(circle at 85% 10%, rgba(246, 183, 60, 0.28), transparent 24%),
-        linear-gradient(135deg, var(--red-dark), var(--red));
+        radial-gradient(circle at 88% 20%, rgba(255, 224, 140, 0.35), transparent 28%),
+        linear-gradient(135deg, var(--red), var(--red-dark));
       color: #fff;
-      box-shadow: 0 20px 48px rgba(120, 20, 20, 0.24);
+      box-shadow: 0 18px 44px rgba(150, 22, 24, 0.18);
     }
 
     .cta-box h2 {
       margin: 0 0 10px;
-      font-size: clamp(24px, 3vw, 36px);
-      line-height: 1.25;
+      font-size: clamp(24px, 3.5vw, 38px);
+      line-height: 1.28;
+      letter-spacing: -0.04em;
     }
 
     .cta-box p {
-      margin: 0 0 22px;
+      margin: 0;
+      max-width: 780px;
       color: rgba(255, 255, 255, 0.88);
-      max-width: 760px;
+      font-size: 15px;
     }
 
-    .cta .btn-outline {
-      border-color: rgba(255, 255, 255, 0.5);
+    .cta-box .btn-secondary {
+      color: var(--red-dark);
+      background: #fff;
+      border: none;
+    }
+
+    .cta-box .btn-primary {
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      box-shadow: none;
     }
 
     .site-footer {
-      background: #2a0b0d;
-      color: #fff;
-      padding: 34px 20px;
+      padding: 36px 18px;
+      border-top: 1px solid rgba(215, 25, 32, 0.12);
+      background: #fff;
     }
 
     .footer-inner {
       max-width: var(--max);
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1.3fr 1fr;
-      gap: 28px;
-    }
-
-    .footer-inner p {
-      margin: 8px 0 0;
-      color: rgba(255, 255, 255, 0.76);
-      font-size: 13px;
+      gap: 14px;
     }
 
     .footer-links {
       display: flex;
-      gap: 12px;
+      gap: 12px 16px;
       flex-wrap: wrap;
-      justify-content: flex-end;
+      color: #666;
       font-size: 13px;
       font-weight: 700;
     }
 
-    .footer-links a {
-      color: rgba(255, 255, 255, 0.86);
+    .footer-links a:hover {
+      color: var(--red);
     }
 
-    @media (max-width: 1060px) {
-      .mascot-hero {
-        min-height: 410px;
-      }
-
-      .mascot-hero-img {
-        width: min(90%, 305px);
-      }
+    .footer-copy {
+      color: #777;
+      font-size: 12px;
+      line-height: 1.7;
     }
 
-    @media (max-width: 980px) {
-      .header-inner,
-      .hero-grid,
-      .grid-2,
-      .footer-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .header-inner {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .nav {
-        justify-content: flex-start;
-      }
-
-      .step-grid,
-      .grid-3,
-      .link-grid {
+    @media (max-width: 1040px) {
+      .step-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .hero-box {
-        padding: 34px 24px;
+      .review-grid {
+        grid-template-columns: 1fr;
       }
 
-      .mascot-hero {
-        max-width: 420px;
-        margin: 0 auto;
-        min-height: 420px;
+      .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .mascot-note-inner {
-        grid-template-columns: 105px 1fr;
-      }
-
-      .mascot-note-img {
-        width: 96px;
-      }
-
-      .footer-links {
-        justify-content: flex-start;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .nav {
-        gap: 10px;
-        font-size: 13px;
-      }
-
-      .hero-box {
-        border-radius: 24px;
-        padding: 28px 20px;
-      }
-
-      .hero-actions,
-      .cta-actions,
-      .card-actions {
-        flex-direction: column;
-      }
-
-      .btn,
-      .mini-btn {
-        width: 100%;
-      }
-
-      .step-grid,
-      .grid-3,
       .link-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .section,
-      .hero,
-      .notice,
-      .cta,
-      .mascot-note {
-        padding-left: 16px;
-        padding-right: 16px;
-      }
-
-      .cta-box,
-      .warning-box {
-        padding: 26px 20px;
-        border-radius: 24px;
-      }
-
-      .mascot-hero {
-        min-height: 360px;
-        padding: 8px 8px 0;
-      }
-
-      .mascot-hero::before {
-        width: 250px;
-        height: 250px;
-        top: 30px;
-      }
-
-      .mascot-hero-img {
-        width: min(94%, 250px);
-        max-height: 340px;
-      }
-
-      .mascot-hero-bubble {
-        left: 0;
-        right: 0;
-        bottom: 8px;
-        padding: 13px 14px;
-      }
-
-      .mascot-hero-bubble p {
-        font-size: 13px;
-      }
-
-      .mascot-note-inner {
-        grid-template-columns: 1fr;
-        text-align: center;
-        padding: 22px 18px;
-      }
-
-      .mascot-note-img {
-        width: 102px;
-        margin: 0 auto;
-      }
-
-      .mascot-note-body p {
-        font-size: 14px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
-    /* =========================================================
-       Mobile Polish CSS
-       スマホ表示の微調整用
-    ========================================================= */
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-side {
+        min-height: 330px;
+      }
+    }
 
     @media (max-width: 760px) {
       body {
@@ -907,7 +790,8 @@
 
       .nav {
         width: 100%;
-        gap: 8px;
+        justify-content: flex-start;
+        gap: 8px 12px;
         font-size: 12px;
         line-height: 1.3;
       }
@@ -927,8 +811,7 @@
       }
 
       .hero {
-        padding-top: 20px;
-        padding-bottom: 26px;
+        padding: 20px 16px 26px;
       }
 
       .hero-box {
@@ -989,8 +872,26 @@
         font-size: 13px;
       }
 
+      .hero-side {
+        min-height: 300px;
+        padding-top: 4px;
+      }
+
+      .hero-card {
+        width: min(100%, 300px);
+        padding: 22px 18px;
+        border-radius: 22px;
+      }
+
+      .mascot-mini {
+        width: 86px;
+        right: 0;
+        bottom: 2px;
+      }
+
       .notice {
         margin-bottom: 14px;
+        padding: 0 16px;
       }
 
       .notice-box {
@@ -1001,8 +902,7 @@
       }
 
       .section {
-        padding-top: 30px;
-        padding-bottom: 30px;
+        padding: 30px 16px;
       }
 
       .section-head {
@@ -1022,156 +922,51 @@
       .step-grid,
       .grid-2,
       .grid-3,
+      .review-grid,
       .link-grid {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: 1fr;
         gap: 14px;
       }
 
       .step-card,
-      .card,
+      .mistake-card,
+      .review-card,
+      .check-card,
       .link-card,
-      .warning-box {
-        padding: 17px;
+      .responsible-box {
+        padding: 18px;
         border-radius: 18px;
-      }
-
-      .number {
-        width: 32px;
-        height: 32px;
-        min-width: 32px;
-        font-size: 13px;
-      }
-
-      .mascot-hero {
-        min-height: 330px;
-        max-width: 360px;
-        margin: 0 auto;
-        padding: 0 8px;
-      }
-
-      .mascot-hero::before {
-        width: 230px;
-        height: 230px;
-        top: 28px;
-      }
-
-      .mascot-hero::after {
-        left: 52px;
-        right: 52px;
-        bottom: 6px;
-        height: 28px;
-      }
-
-      .mascot-hero-img {
-        width: min(88%, 240px);
-        max-height: 310px;
-      }
-
-      .mascot-hero-bubble {
-        left: 0;
-        right: 0;
-        bottom: 4px;
-        padding: 12px 13px;
-        border-radius: 16px;
-      }
-
-      .mascot-hero-bubble strong {
-        font-size: 13px;
-      }
-
-      .mascot-hero-bubble p {
-        font-size: 12.5px;
-        line-height: 1.6;
       }
 
       .mascot-note {
-        padding-left: 16px;
-        padding-right: 16px;
-      }
-
-      .mascot-note-inner {
-        grid-template-columns: 82px 1fr !important;
+        grid-template-columns: 82px 1fr;
         gap: 12px;
-        padding: 15px 16px;
+        padding: 16px;
         border-radius: 18px;
-        text-align: left;
       }
 
-      .mascot-note-img {
-        width: 78px !important;
-        max-height: 100px !important;
+      .mascot-note img {
+        width: 82px;
+        max-height: 104px;
       }
 
-      .mascot-note-body strong {
-        font-size: 12.5px;
-        margin-bottom: 4px;
+      .mascot-note h2,
+      .mascot-note h3 {
+        font-size: 16px;
+        margin-bottom: 6px;
       }
 
-      .mascot-note-body h2 {
-        font-size: 18px;
-        line-height: 1.35;
-      }
-
-      .mascot-note-body p {
+      .mascot-note p {
         font-size: 13px;
         line-height: 1.7;
       }
 
-      .table-wrap {
-        border-radius: 18px;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .table-wrap::after {
-        content: "横にスクロールできます →";
-        display: block;
-        padding: 8px 12px;
-        color: #777;
-        font-size: 12px;
-        background: #fffaf7;
-        border-top: 1px solid #f2dddd;
-      }
-
-      table {
-        min-width: 760px;
-        font-size: 13px;
-      }
-
-      th,
-      td {
-        padding: 12px 10px;
-      }
-
-      .warning-box h2 {
-        font-size: 22px;
-        line-height: 1.35;
-      }
-
-      .warning-box p,
-      .warning-box li {
-        font-size: 14px;
-        line-height: 1.75;
-      }
-
-      details {
-        padding: 14px 15px;
-        border-radius: 14px;
-      }
-
-      summary {
-        font-size: 14px;
-        line-height: 1.6;
-      }
-
-      details p {
-        font-size: 13px;
-        line-height: 1.75;
+      .responsible-box h2 {
+        font-size: 21px;
       }
 
       .cta {
-        padding-top: 24px;
-        padding-bottom: 42px;
+        padding: 24px 16px 42px;
       }
 
       .cta-box {
@@ -1179,27 +974,8 @@
         border-radius: 22px;
       }
 
-      .cta-box h2 {
-        font-size: 23px;
-        line-height: 1.35;
-      }
-
-      .cta-box p {
-        font-size: 14px;
-        line-height: 1.75;
-      }
-
       .site-footer {
         padding: 28px 16px;
-      }
-
-      .footer-inner {
-        gap: 18px;
-      }
-
-      .footer-inner p {
-        font-size: 12px;
-        line-height: 1.7;
       }
 
       .footer-links {
@@ -1207,11 +983,6 @@
         gap: 8px 10px;
         font-size: 12px;
         line-height: 1.5;
-      }
-
-      .footer-links a {
-        display: inline-flex;
-        padding: 2px 0;
       }
     }
 
@@ -1224,42 +995,25 @@
         padding: 22px 16px;
       }
 
-      .mascot-hero {
-        min-height: 305px;
+      .hero-side {
+        min-height: 280px;
       }
 
-      .mascot-hero-img {
-        width: min(86%, 220px);
-        max-height: 290px;
+      .hero-card {
+        padding: 20px 16px;
       }
 
-      .mascot-hero-bubble {
-        padding: 11px 12px;
+      .mascot-mini {
+        width: 74px;
       }
 
-      .mascot-note-inner {
-        grid-template-columns: 74px 1fr !important;
-        padding: 14px;
+      .mascot-note {
+        grid-template-columns: 70px 1fr;
       }
 
-      .mascot-note-img {
-        width: 70px !important;
-        max-height: 92px !important;
-      }
-
-      .mascot-note-body h2 {
-        font-size: 17px;
-      }
-
-      .mascot-note-body p {
-        font-size: 12.5px;
-      }
-
-      .step-card,
-      .card,
-      .link-card,
-      .warning-box {
-        padding: 16px;
+      .mascot-note img {
+        width: 70px;
+        max-height: 92px;
       }
     }
   </style>
@@ -1268,7 +1022,7 @@
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <a href="index.html" class="brand" aria-label="リベンジカジノ比較ガイド TOPへ">
+      <a class="brand" href="index.html" aria-label="リベンジカジノ比較ガイド トップへ">
         <span class="brand-mark">R</span>
         <span>リベンジカジノ比較ガイド</span>
       </a>
@@ -1278,15 +1032,15 @@
         <a href="casino-list.html">カジノ一覧</a>
         <a href="review.html">レビュー</a>
         <a href="bonus.html">ボーナス比較</a>
-        <a href="bonus-guide.html">見方ガイド</a>
         <a href="payments.html">入出金</a>
-        <a href="#start-flow" class="nav-cta">見る順番</a>
+        <a class="nav-cta" href="guide.html">初心者ガイド</a>
       </nav>
     </div>
   </header>
 
   <div class="breadcrumb">
-    <a href="index.html">TOP</a> ＞ 初心者ガイド
+    <a href="index.html">TOP</a> &gt;
+    初心者ガイド
   </div>
 
   <main>
@@ -1294,375 +1048,470 @@
       <div class="hero-box">
         <div class="hero-grid">
           <div>
-            <div class="eyebrow">初心者向け：登録前に見る順番を整理</div>
-            <h1>
-              はじめての<br />
-              <span class="hero-highlight">オンラインカジノ確認ガイド</span>
-            </h1>
+            <span class="eyebrow">初心者ガイド｜登録前に見る順番</span>
+            <h1>オンラインカジノ初心者ガイド</h1>
             <p class="hero-lead">
-              オンラインカジノは、登録前に確認すべき項目が多くあります。
-              知名度やボーナス額だけで判断せず、レビュー、ボーナス条件、入出金、本人確認、公式規約を順番に確認しましょう。
+              初めてオンラインカジノを比較する人向けに、登録前に確認する順番を整理したページです。
+              いきなり入金やボーナス参加を考えるのではなく、
+              カジノ一覧、レビュー、ボーナス条件、入出金、公式規約の順番で確認しましょう。
             </p>
 
             <div class="hero-actions">
-              <a href="#start-flow" class="btn btn-primary">見る順番を確認</a>
-              <a href="review.html" class="btn btn-gold">レビュー一覧へ</a>
-              <a href="bonus-guide.html" class="btn btn-outline">ボーナスの見方へ</a>
+              <a class="btn btn-primary" href="#start-steps">確認順を見る</a>
+              <a class="btn btn-secondary" href="casino-list.html">カジノ一覧へ</a>
             </div>
           </div>
 
-          <aside class="mascot-hero" aria-label="リベ男の案内">
-            <img src="ribedan-guide.png" alt="リベ男" class="mascot-hero-img" />
-            <div class="mascot-hero-bubble">
-              <strong>リベ男のひとこと</strong>
+          <div class="hero-side" aria-label="初心者向け確認ポイント">
+            <div class="hero-card">
+              <h2>登録前に見る順番が大事</h2>
               <p>
-                はじめてなら、まずは登録先を決める前に「見る順番」を押さえよう。焦らず条件確認やで。
+                ボーナスやキャンペーンだけで判断せず、出金条件と本人確認まで確認してから比較しましょう。
               </p>
+
+              <div class="hero-stats">
+                <div class="hero-stat">
+                  <strong>1</strong>
+                  <span>一覧で候補を確認</span>
+                </div>
+                <div class="hero-stat">
+                  <strong>2</strong>
+                  <span>レビューで条件確認</span>
+                </div>
+                <div class="hero-stat">
+                  <strong>3</strong>
+                  <span>入出金と規約を確認</span>
+                </div>
+              </div>
             </div>
-          </aside>
+            <img class="mascot-mini" src="ribedan-guide.png" alt="初心者向けの確認順を案内するリベ男" />
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="notice">
+    <section class="notice" aria-label="重要な注意事項">
       <div class="notice-box">
-        <strong>重要：</strong>
-        本ページは初心者向けに確認手順を整理した情報ページです。
-        オンラインカジノの利用を推奨・保証するものではありません。
-        登録前には必ず公式規約、対象地域、年齢制限、本人確認、出金条件、関連法規を確認してください。
+        <strong>注意：</strong>
+        このページはオンラインカジノの利用や登録を推奨・保証するものではありません。
+        初心者向けに確認順を整理した情報です。各サービスの対象地域、年齢制限、本人確認、入出金条件、公式規約、関連法規を必ず確認してください。
+        不明点がある場合は登録や入金を急がないでください。
       </div>
     </section>
 
-    <section class="mascot-note" aria-label="リベ女の初心者チェック">
-      <div class="mascot-note-inner">
-        <img src="ribejo-note.png" alt="リベ女" class="mascot-note-img" />
-        <div class="mascot-note-body">
-          <strong>リベ女の初心者チェック</strong>
-          <h2>最初に見るべきなのは、ボーナス額よりも条件です。</h2>
-          <p>
-            レビュー、出金条件、本人確認、賭け条件、公式規約を確認してから比較しましょう。
-            分からない条件がある場合は、登録を急がず確認することが大切です。
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="start-flow">
+    <section class="section" id="start-steps">
       <div class="section-head">
-        <div class="label">見る順番</div>
-        <h2 class="section-title">初心者は<span>この順番で確認</span></h2>
+        <span class="label">確認順</span>
+        <h2 class="section-title">登録前に見るべき5ステップ</h2>
         <p class="section-desc">
-          いきなり登録するのではなく、比較ページとガイドページを順番に見て、条件を確認しましょう。
+          初心者が失敗しやすいのは、ボーナスやキャンペーンだけを見て、出金条件や本人確認を後回しにすることです。
+          以下の順番で確認すると、見落としを減らしやすくなります。
         </p>
       </div>
 
       <div class="step-grid">
-        <div class="step-card">
-          <div class="number">1</div>
-          <h3>レビュー一覧を見る</h3>
-          <p>まずは各サイトの特徴、注意点、出金条件、本人確認の有無を大まかに確認します。</p>
+        <article class="step-card">
+          <span class="step-number">1</span>
+          <h3>カジノ一覧を見る</h3>
+          <p>
+            まずは掲載中カジノを一覧で確認します。名前やロゴだけで判断せず、確認ポイントを見ましょう。
+          </p>
+          <ul>
+            <li>掲載カジノ</li>
+            <li>特徴タグ</li>
+            <li>レビュー導線</li>
+          </ul>
           <div class="card-actions">
-            <a href="review.html" class="mini-btn main">レビュー一覧へ</a>
+            <a class="mini-btn mini-primary" href="casino-list.html">カジノ一覧へ</a>
           </div>
-        </div>
+        </article>
 
-        <div class="step-card">
-          <div class="number">2</div>
-          <h3>カジノ一覧で比較</h3>
-          <p>掲載サイトを一覧で見て、どのサイトが自分の確認したい条件に近いかを整理します。</p>
+        <article class="step-card">
+          <span class="step-number">2</span>
+          <h3>レビューを読む</h3>
+          <p>
+            気になるカジノがあれば、個別レビューで条件を確認します。良い点だけでなく注意点も見ましょう。
+          </p>
+          <ul>
+            <li>ボーナス条件</li>
+            <li>入出金</li>
+            <li>本人確認</li>
+          </ul>
           <div class="card-actions">
-            <a href="casino-list.html" class="mini-btn main">カジノ一覧へ</a>
+            <a class="mini-btn mini-primary" href="review.html">レビュー一覧へ</a>
           </div>
-        </div>
+        </article>
 
-        <div class="step-card">
-          <div class="number">3</div>
+        <article class="step-card">
+          <span class="step-number">3</span>
           <h3>ボーナス条件を見る</h3>
-          <p>ボーナス額ではなく、賭け条件、有効期限、最大出金、対象ゲームを確認します。</p>
+          <p>
+            ボーナスは金額ではなく、出金までの条件を確認します。賭け条件と最大出金は特に重要です。
+          </p>
+          <ul>
+            <li>賭け条件</li>
+            <li>最大出金</li>
+            <li>対象ゲーム</li>
+          </ul>
           <div class="card-actions">
-            <a href="bonus.html" class="mini-btn main">ボーナス比較へ</a>
+            <a class="mini-btn mini-primary" href="bonus.html">ボーナス比較へ</a>
           </div>
-        </div>
+        </article>
 
-        <div class="step-card">
-          <div class="number">4</div>
-          <h3>ボーナスの見方を理解</h3>
-          <p>賭け条件や最大出金など、ボーナスで見落としやすい用語を確認します。</p>
+        <article class="step-card">
+          <span class="step-number">4</span>
+          <h3>入出金を確認</h3>
+          <p>
+            入金前に、出金方法、本人確認、必要書類、手数料、反映時間を確認します。
+          </p>
+          <ul>
+            <li>最低入金額</li>
+            <li>最低出金額</li>
+            <li>本人確認</li>
+          </ul>
           <div class="card-actions">
-            <a href="bonus-guide.html" class="mini-btn main">見方ガイドへ</a>
+            <a class="mini-btn mini-primary" href="payments.html">入出金ガイドへ</a>
           </div>
-        </div>
+        </article>
 
-        <div class="step-card">
-          <div class="number">5</div>
-          <h3>入出金条件を見る</h3>
-          <p>入金方法だけでなく、最低出金額、本人確認、反映時間、暗号資産の注意点を確認します。</p>
-          <div class="card-actions">
-            <a href="payments.html" class="mini-btn main">入出金ガイドへ</a>
-          </div>
-        </div>
-
-        <div class="step-card">
-          <div class="number">6</div>
+        <article class="step-card">
+          <span class="step-number">5</span>
           <h3>公式規約を確認</h3>
-          <p>対象地域、年齢制限、禁止行為、本人確認、出金制限は公式サイトで必ず確認します。</p>
+          <p>
+            最後に公式ページで最新情報を確認します。対象地域、年齢制限、禁止事項も必ず見ましょう。
+          </p>
+          <ul>
+            <li>対象地域</li>
+            <li>年齢制限</li>
+            <li>禁止事項</li>
+          </ul>
           <div class="card-actions">
-            <a href="site-checklist.html" class="mini-btn">チェックリストへ</a>
+            <a class="mini-btn mini-primary" href="site-checklist.html">確認リストへ</a>
           </div>
-        </div>
+        </article>
       </div>
     </section>
 
-    <section class="section" id="beginner-points">
+    <section class="section" id="beginner-mistakes">
       <div class="section-head">
-        <div class="label">初心者の確認項目</div>
-        <h2 class="section-title">登録前に<span>必ず見るポイント</span></h2>
+        <span class="label">確認漏れ対策</span>
+        <h2 class="section-title">初心者が見落としやすいポイント</h2>
         <p class="section-desc">
-          初心者ほど、ボーナスや見た目の印象だけで判断しないことが大切です。
+          初心者向けに見えるサイトでも、利用条件を読み飛ばすと出金や本人確認で困る場合があります。
         </p>
       </div>
 
       <div class="grid-3">
-        <div class="card">
-          <h3>出金条件</h3>
-          <p>最低出金額、本人確認、反映時間、手数料、ボーナス利用中の出金制限を確認します。</p>
-        </div>
-
-        <div class="card">
-          <h3>本人確認</h3>
-          <p>出金前に身分証、住所確認、決済方法確認が必要になる場合があります。</p>
-        </div>
-
-        <div class="card">
-          <h3>ボーナス規約</h3>
-          <p>賭け条件、対象ゲーム、有効期限、最大出金、禁止ベットを確認します。</p>
-        </div>
-
-        <div class="card">
-          <h3>日本語対応</h3>
-          <p>サイト表示、サポート、規約の確認しやすさを見ます。</p>
-        </div>
-
-        <div class="card">
-          <h3>暗号資産</h3>
-          <p>通貨、ネットワーク、送金先アドレス、手数料、価格変動リスクを確認します。</p>
-        </div>
-
-        <div class="card">
-          <h3>公式規約</h3>
-          <p>対象地域、年齢制限、禁止行為、アカウント制限、本人確認基準を確認します。</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="mascot-note" aria-label="リベ女の注意メモ">
-      <div class="mascot-note-inner">
-        <img src="ribejo-note.png" alt="リベ女" class="mascot-note-img" />
-        <div class="mascot-note-body">
-          <strong>リベ女の確認メモ</strong>
-          <h2>分かりにくい条件がある時は、利用を急がない。</h2>
+        <article class="mistake-card">
+          <h3>ボーナス額だけで判断する</h3>
           <p>
-            ボーナス条件や出金条件が分かりにくい場合は、公式サポートや規約を確認しましょう。
-            不明点が残るまま入金するのは避けるのがおすすめです。
+            ボーナス額が大きく見えても、賭け条件、最大出金、有効期限、対象ゲームを確認しないと判断できません。
           </p>
+        </article>
+
+        <article class="mistake-card">
+          <h3>入金前に出金条件を見ない</h3>
+          <p>
+            入金方法と出金方法が同じとは限りません。出金前に本人確認や手数料が必要な場合があります。
+          </p>
+        </article>
+
+        <article class="mistake-card">
+          <h3>本人確認を後回しにする</h3>
+          <p>
+            出金時に本人確認が必要になる場合があります。登録情報と本人確認書類の内容が一致しているか確認しましょう。
+          </p>
+        </article>
+
+        <article class="mistake-card">
+          <h3>暗号資産のネットワークを間違える</h3>
+          <p>
+            通貨が同じでもネットワークが違うと着金しない場合があります。送金前に必ず確認しましょう。
+          </p>
+        </article>
+
+        <article class="mistake-card">
+          <h3>キャンペーンを保証と受け取る</h3>
+          <p>
+            キャンペーンやプロモーションは、特典や賞金の獲得を保証するものではありません。条件を確認しましょう。
+          </p>
+        </article>
+
+        <article class="mistake-card">
+          <h3>公式規約を読まない</h3>
+          <p>
+            比較ページは確認の入口です。最終的には公式規約、対象地域、年齢制限、関連法規を確認してください。
+          </p>
+        </article>
+      </div>
+
+      <div style="margin-top: 18px;">
+        <div class="mascot-note">
+          <img src="ribejo-warning.png" alt="初心者の確認漏れを案内するリベ女" />
+          <div>
+            <h2>リベ女の注意メモ</h2>
+            <p>
+              「分かりやすい」「有名」「ボーナスが大きい」だけで判断しないことが大切です。
+              出金条件、本人確認、公式規約まで確認してから比較しましょう。
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="mistakes">
+    <section class="section" id="review-links">
       <div class="section-head">
-        <div class="label">初心者が避けたい失敗</div>
-        <h2 class="section-title">よくある失敗を<span>先に確認</span></h2>
-      </div>
-
-      <div class="grid-2">
-        <div class="card">
-          <h3>避けたい見方</h3>
-          <ul class="caution-list">
-            <li>ボーナス額だけで選ぶ</li>
-            <li>レビューを読まずに登録する</li>
-            <li>出金条件を確認しない</li>
-            <li>本人確認を後回しにする</li>
-            <li>公式規約を読まない</li>
-            <li>負けを取り返そうとして利用する</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>安全寄りの見方</h3>
-          <ul class="check-list">
-            <li>レビューで特徴と注意点を見る</li>
-            <li>入金前に出金条件を確認する</li>
-            <li>ボーナス条件を理解してから使う</li>
-            <li>本人確認の必要性を確認する</li>
-            <li>不安があれば利用を急がない</li>
-            <li>予算を決めて無理をしない</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="compare-table">
-      <div class="section-head">
-        <div class="label">確認表</div>
-        <h2 class="section-title">初心者向け<span>登録前チェック表</span></h2>
+        <span class="label">10カジノレビュー</span>
+        <h2 class="section-title">初心者が確認しやすい個別レビュー</h2>
         <p class="section-desc">
-          登録前に、この表の項目を一通り確認しておきましょう。
+          各レビューでは、ボーナス、入出金、本人確認、規約確認のポイントを整理しています。
+          気になるカジノがある場合は、まずレビューから確認しましょう。
         </p>
       </div>
 
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>確認項目</th>
-              <th>見る内容</th>
-              <th>関連ページ</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>レビュー</strong></td>
-              <td>特徴、注意点、出金条件、本人確認、日本語対応</td>
-              <td><a href="review.html">レビュー一覧</a></td>
-            </tr>
-            <tr>
-              <td><strong>掲載サイト比較</strong></td>
-              <td>掲載10サイトの概要、確認ポイント、個別レビュー導線</td>
-              <td><a href="casino-list.html">カジノ一覧</a></td>
-            </tr>
-            <tr>
-              <td><strong>ボーナス条件</strong></td>
-              <td>賭け条件、有効期限、最大出金、対象ゲーム、禁止ベット</td>
-              <td><a href="bonus.html">ボーナス比較</a></td>
-            </tr>
-            <tr>
-              <td><strong>ボーナス用語</strong></td>
-              <td>賭け条件、最大出金、出金制限の意味</td>
-              <td><a href="bonus-guide.html">ボーナスの見方</a></td>
-            </tr>
-            <tr>
-              <td><strong>入出金</strong></td>
-              <td>最低出金額、本人確認、反映時間、手数料、暗号資産</td>
-              <td><a href="payments.html">入出金ガイド</a></td>
-            </tr>
-            <tr>
-              <td><strong>運営チェック</strong></td>
-              <td>サイト内リンク、画像、表現ルール、注意文言</td>
-              <td><a href="site-checklist.html">サイトチェックリスト</a></td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="review-grid">
+        <article class="review-card">
+          <span class="tag tag-red">条件確認</span>
+          <h3>スロッ天堂</h3>
+          <p>ボーナス条件、入出金、本人確認、対象ゲームを確認。</p>
+          <ul class="review-meta">
+            <li>ボーナス</li>
+            <li>入出金</li>
+            <li>本人確認</li>
+          </ul>
+          <div class="card-actions">
+            <a class="mini-btn mini-primary" href="review-slottenkoku.html">レビューを見る</a>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <span class="tag tag-red">条件確認</span>
+          <h3>コニベット</h3>
+          <p>ボーナス、出金条件、本人確認、規約確認を整理。</p>
+          <ul class="review-meta">
+            <li>出金条件</li>
+            <li>本人確認</li>
+            <li>規約確認</li>
+          </ul>
+          <div class="card-actions">
+            <a class="mini-btn mini-primary" href="review-konibet.html">レビューを見る</a>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <span class="tag">暗号資産</span>
+          <h3>Stake</h3>
+          <p>暗号資産の通貨、ネットワーク、入出金条件を重点確認。</p>
+          <ul class="review-meta">
+            <li>暗号資産</li>
+            <li>ネットワーク</li>
+            <li>出金条件</li>
+          </ul>
+          <div class="card-actions">
+            <a class="mini-btn mini-primary" href="review-stake.html">レビューを見る</a>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <span class="tag tag-red">日本語対応</span>
+          <h3>ベラジョン</h3>
+          <p>日本語対応、ボーナス条件、入出金、本人確認を確認。</p>
+          <ul class="review-meta">
+            <li>日本語対応</li>
+            <li>ボーナス</li>
+            <li>本人確認</li>
+          </ul>
+          <div class="card-actions">
+            <a class="mini-btn mini-primary" href="review-verajohn.html">レビューを見る</a>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <span class="tag tag-red">日本語対応</span>
+          <h3>遊雅堂</h3>
+          <p>日本語向け導線、入出金、本人確認、公式規約を確認。</p>
+          <ul class="review-meta">
+            <li>日本語対応</li>
+            <li>入出金</li>
+            <li>規約確認</li>
+          </ul>
+          <div class="card-actions">
+            <a class="mini-btn mini-primary" href="review-yuugado.html">レビューを見る</a>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <span class="tag">暗号資産</span>
+          <h3>ビットカジノ</h3>
+          <p>暗号資産入出金、ネットワーク、送金先アドレスを確認。</p>
+          <ul class="review-meta">
+            <li>暗号資産</li>
+            <li>ネットワーク</li>
+            <li>手数料</li>
+          </ul>
+          <div class="card-actions">
+            <a class="mini-btn mini-primary" href="review-bitcasino.html">レビューを見る</a>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <span class="tag tag-red">初心者向け確認</span>
+          <h3>ミスティーノ</h3>
+          <p>初心者向けの見やすさ、ボーナス条件、入出金を確認。</p>
+          <ul class="review-meta">
+            <li>初心者向け</li>
+            <li>ボーナス</li>
+            <li>入出金</li>
+          </ul>
+          <div class="card-actions">
+            <a class="mini-btn mini-primary" href="review-mystino.html">レビューを見る</a>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <span class="tag">キャンペーン</span>
+          <h3>カジノシークレット</h3>
+          <p>キャンペーン条件、対象者、最大出金、保証なしの考え方を確認。</p>
+          <ul class="review-meta">
+            <li>キャンペーン</li>
+            <li>最大出金</li>
+            <li>保証なし</li>
+          </ul>
+          <div class="card-actions">
+            <a class="mini-btn mini-primary" href="review-casino-secret.html">レビューを見る</a>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <span class="tag tag-red">入出金確認</span>
+          <h3>ボンズカジノ</h3>
+          <p>入出金条件、本人確認、サポート対応を重点確認。</p>
+          <ul class="review-meta">
+            <li>入出金</li>
+            <li>本人確認</li>
+            <li>サポート</li>
+          </ul>
+          <div class="card-actions">
+            <a class="mini-btn mini-primary" href="review-bons-casino.html">レビューを見る</a>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <span class="tag">暗号資産</span>
+          <h3>BC.GAME</h3>
+          <p>暗号資産、プロモーション条件、出金条件を確認。</p>
+          <ul class="review-meta">
+            <li>暗号資産</li>
+            <li>プロモ条件</li>
+            <li>出金条件</li>
+          </ul>
+          <div class="card-actions">
+            <a class="mini-btn mini-primary" href="review-bcgame.html">レビューを見る</a>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section class="section" id="related">
+    <section class="section" id="final-checklist">
       <div class="section-head">
-        <div class="label">関連ページ</div>
-        <h2 class="section-title">初心者ガイドとあわせて<span>確認したいページ</span></h2>
+        <span class="label">最終チェック</span>
+        <h2 class="section-title">登録・入金前の確認リスト</h2>
+        <p class="section-desc">
+          以下を確認できない場合は、登録や入金を急がないようにしましょう。
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <ul class="check-list">
+          <li>対象地域と年齢制限を確認した</li>
+          <li>公式規約とボーナス規約を確認した</li>
+          <li>賭け条件、最大出金、有効期限を確認した</li>
+          <li>対象ゲームと対象外ゲームを確認した</li>
+          <li>禁止ベットや最大ベット額を確認した</li>
+        </ul>
+
+        <ul class="check-list">
+          <li>最低入金額と最低出金額を確認した</li>
+          <li>本人確認の必要書類を確認した</li>
+          <li>出金方法と手数料を確認した</li>
+          <li>暗号資産の通貨・ネットワークを確認した</li>
+          <li>不明点を公式サポートで確認できる状態にした</li>
+        </ul>
+      </div>
+
+      <div style="margin-top: 18px;">
+        <div class="mascot-note">
+          <img src="ribedan-point.png" alt="最終確認を案内するリベ男" />
+          <div>
+            <h2>リベ男の最終確認メモ</h2>
+            <p>
+              初心者ほど、ボーナスやキャンペーンより先に「出金できる条件」を見るのが大切です。
+              不明点がある場合は、まず確認。分からないまま進めないようにしましょう。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="related-pages">
+      <div class="section-head">
+        <span class="label">関連ページ</span>
+        <h2 class="section-title">初心者ガイドと一緒に確認したいページ</h2>
+        <p class="section-desc">
+          このページで流れを確認したら、各ページで具体的な条件を確認してください。
+        </p>
       </div>
 
       <div class="link-grid">
-        <div class="link-card">
-          <h3>レビュー一覧</h3>
-          <p>公開済みレビュー10本をまとめて確認できます。</p>
-          <a href="review.html">レビュー一覧を見る →</a>
-        </div>
+        <a class="link-card" href="casino-list.html">
+          <strong>カジノ一覧</strong>
+          <span>掲載サイトを一覧で確認。</span>
+        </a>
 
-        <div class="link-card">
-          <h3>カジノ一覧</h3>
-          <p>掲載サイトを一覧で比較できます。</p>
-          <a href="casino-list.html">カジノ一覧を見る →</a>
-        </div>
+        <a class="link-card" href="review.html">
+          <strong>レビュー一覧</strong>
+          <span>10本の個別レビューを確認。</span>
+        </a>
 
-        <div class="link-card">
-          <h3>ボーナス比較</h3>
-          <p>賭け条件、有効期限、最大出金などを確認できます。</p>
-          <a href="bonus.html">ボーナス比較を見る →</a>
-        </div>
+        <a class="link-card" href="bonus.html">
+          <strong>ボーナス比較</strong>
+          <span>賭け条件や最大出金を確認。</span>
+        </a>
 
-        <div class="link-card">
-          <h3>ボーナスの見方ガイド</h3>
-          <p>ボーナス用語や条件の読み方を確認できます。</p>
-          <a href="bonus-guide.html">見方ガイドを見る →</a>
-        </div>
+        <a class="link-card" href="bonus-guide.html">
+          <strong>ボーナスの見方</strong>
+          <span>条件の読み方を確認。</span>
+        </a>
 
-        <div class="link-card">
-          <h3>入出金ガイド</h3>
-          <p>出金条件、本人確認、暗号資産の注意点を確認できます。</p>
-          <a href="payments.html">入出金を見る →</a>
-        </div>
-
-        <div class="link-card">
-          <h3>TOPページ</h3>
-          <p>サイト全体の主要導線を確認できます。</p>
-          <a href="index.html">TOPへ戻る →</a>
-        </div>
+        <a class="link-card" href="payments.html">
+          <strong>入出金ガイド</strong>
+          <span>本人確認や出金条件を確認。</span>
+        </a>
       </div>
     </section>
 
     <section class="section" id="responsible">
-      <div class="warning-box">
-        <h2>責任ある利用とリスク確認について</h2>
+      <div class="responsible-box">
+        <h2>責任ある利用について</h2>
         <p>
-          オンラインカジノは金銭的なリスクを伴います。
-          本サイトでは、勝利保証や損失回収をうたわず、条件確認とリスク理解を前提に情報を整理しています。
+          オンラインカジノを利用する場合は、年齢制限、対象地域、関連法規、公式規約を必ず確認してください。
+          このページは利用を推奨・保証するものではなく、初心者が確認すべき順番を整理したガイドです。
+          ボーナス、キャンペーン、プロモーションは、特典や賞金の獲得を保証するものではありません。
+          予算や時間を決められない場合、不安がある場合、生活に影響が出る可能性がある場合は、利用を急がないことが大切です。
         </p>
-        <ul>
-          <li>勝てる・稼げる・取り返せるという判断をしない</li>
-          <li>生活費や借入金を使わない</li>
-          <li>ボーナス条件や出金条件を必ず確認する</li>
-          <li>本人確認、対象地域、年齢制限、関連法規を確認する</li>
-          <li>不安がある場合は利用を中止し、相談窓口や専門機関の情報を確認する</li>
-        </ul>
       </div>
-    </section>
-
-    <section class="section" id="faq">
-      <div class="section-head">
-        <div class="label">FAQ</div>
-        <h2 class="section-title">初心者ガイドの<span>よくある質問</span></h2>
-      </div>
-
-      <details>
-        <summary>初心者は最初に何を見ればいいですか？</summary>
-        <p>
-          まずはレビュー一覧で全体像を確認し、その後にカジノ一覧、ボーナス比較、入出金ガイドの順で確認するのがおすすめです。
-        </p>
-      </details>
-
-      <details>
-        <summary>ボーナス額が大きいサイトを選べばいいですか？</summary>
-        <p>
-          いいえ。ボーナス額だけでなく、賭け条件、有効期限、最大出金、対象ゲーム、出金条件を確認してください。
-        </p>
-      </details>
-
-      <details>
-        <summary>入金前に何を確認すべきですか？</summary>
-        <p>
-          最低出金額、本人確認、反映時間、手数料、ボーナス利用時の出金制限、公式規約を確認してください。
-        </p>
-      </details>
-
-      <details>
-        <summary>このサイトは利用を推奨していますか？</summary>
-        <p>
-          いいえ。本サイトは比較と条件確認のための情報メディアです。利用を推奨・保証するものではありません。
-        </p>
-      </details>
     </section>
 
     <section class="cta">
       <div class="cta-box">
-        <h2>まずは、見る順番を決めてから比較する。</h2>
+        <h2>まずは一覧から、気になるカジノの条件を確認しましょう。</h2>
         <p>
-          レビュー、一覧比較、ボーナス条件、入出金条件を順番に確認し、分からない条件があれば利用を急がないようにしましょう。
+          初めて比較する場合は、カジノ一覧、レビュー、ボーナス比較、入出金ガイドの順番で見ると整理しやすくなります。
         </p>
+
         <div class="cta-actions">
-          <a href="review.html" class="btn btn-gold">レビュー一覧を見る</a>
-          <a href="casino-list.html" class="btn btn-outline">カジノ一覧へ</a>
-          <a href="payments.html" class="btn btn-outline">入出金を見る</a>
+          <a class="btn btn-secondary" href="casino-list.html">カジノ一覧を見る</a>
+          <a class="btn btn-primary" href="review.html">レビュー一覧を見る</a>
         </div>
       </div>
     </section>
@@ -1670,37 +1519,21 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <div>
-        <div class="brand">
-          <span class="brand-mark">R</span>
-          <span>リベンジカジノ比較ガイド</span>
-        </div>
-        <p>
-          本サイトは、オンラインカジノの条件や特徴を比較するための情報メディアです。
-          利用を推奨・保証するものではなく、各サイトの公式情報・規約・関連法規の確認を前提としています。
-        </p>
-      </div>
-
       <div class="footer-links">
         <a href="index.html">TOP</a>
         <a href="casino-list.html">カジノ一覧</a>
-        <a href="review.html">レビュー</a>
-        <a href="review-slottenkoku.html">スロット天国レビュー</a>
-        <a href="review-konibet.html">コニベットレビュー</a>
-        <a href="review-stake.html">STAKEレビュー</a>
-        <a href="review-verajohn.html">ベラジョンレビュー</a>
-        <a href="review-yuugado.html">游雅堂レビュー</a>
-        <a href="review-bitcasino.html">bitcasinoレビュー</a>
-        <a href="review-mystino.html">Mystinoレビュー</a>
-        <a href="review-casino-secret.html">Casino Secretレビュー</a>
-        <a href="review-bons-casino.html">Bons Casinoレビュー</a>
-        <a href="review-bcgame.html">BC.Gameレビュー</a>
+        <a href="review.html">レビュー一覧</a>
         <a href="bonus.html">ボーナス比較</a>
-        <a href="bonus-guide.html">見方ガイド</a>
+        <a href="bonus-guide.html">ボーナスの見方</a>
+        <a href="payments.html">入出金ガイド</a>
         <a href="guide.html">初心者ガイド</a>
-        <a href="payments.html">入出金</a>
-        <a href="site-checklist.html">サイトチェックリスト</a>
-        <a href="mascot-image-plan.html">マスコット画像設計書</a>
+        <a href="site-checklist.html">サイト確認</a>
+      </div>
+
+      <div class="footer-copy">
+        © リベンジカジノ比較ガイド｜本ページはオンラインカジノ初心者向けの確認ガイドです。
+        オンラインカジノの利用や登録を推奨・保証するものではありません。
+        各サービスの公式規約、対象地域、関連法規、年齢制限、本人確認、入出金条件を必ず確認してください。
       </div>
     </div>
   </footer>
