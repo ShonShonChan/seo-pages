@@ -119,3 +119,15 @@ botは作業前に以下を確認する。
 <a href="bonus.html">ボーナス比較</a>
 <a href="payments.html">入出金</a>
 <a class="nav-cta" href="guide.html">初心者ガイド</a>
+
+## 日本語HTML編集・一括置換時の安全ルール
+
+- 作業前に必ず git status を確認する
+- 作業前の理想状態は working tree clean
+- 日本語HTMLを一括置換する場合、Get-Content / Set-Content の安易な使用は避ける
+- 文字化け防止のため、System.IO.File.ReadAllText / WriteAllText と UTF8Encoding(false) を使う
+- 置換前に Select-String で対象件数と対象ファイルを確認する
+- 置換後に Select-String で誤表記が残っていないか確認する
+- git diff で文字化けや余計な変更がないか確認する
+- commit / push 前に必ずユーザー確認を取る
+- ユーザー承認なしで commit / push しない
