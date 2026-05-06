@@ -213,3 +213,30 @@ Telegram bot から Cloudflare Worker 経由で GitHub リポジトリ `ShonShon
 1. `github scan`
 2. 改善候補があるページだけ個別に確認する
 3. 差分候補がないページはapplyしない
+
+## Cloudflare Worker復旧手順
+
+### 目的
+
+Telegram bot のCloudflare Workerコードを誤って壊した場合に、正常動作していた状態へ戻すための手順。
+
+### 現行バックアップ
+
+現在の正常動作版Workerコードは以下に保存する。
+
+- `worker-backups/telegram-seo-worker-current.js`
+
+### 復旧手順
+
+1. Cloudflare Dashboardを開く
+2. 対象Workerを開く
+3. `Edit code` を開く
+4. `worker-backups/telegram-seo-worker-current.js` の中身を全コピーする
+5. Cloudflareの `worker.js` に全貼り替えする
+6. `Deploy` する
+7. Telegram botで以下を確認する
+
+```text
+github test
+github rules test
+github scan
