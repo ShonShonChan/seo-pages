@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://shonshonchan.github.io/seo-pages/sitemap.xml
+Sitemap: https://revenge-casino-guide.com/sitemap.xml
