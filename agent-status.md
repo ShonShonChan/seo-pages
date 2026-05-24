@@ -2,7 +2,7 @@
 
 ## リベンジカジノ比較ガイド 現在ステータス
 
-最終更新日: 2026-05-23  
+最終更新日: 2026-05-24  
 管理者: Both  
 対象サイト: リベンジカジノ比較ガイド  
 本番ドメイン: https://revenge-casino-guide.com  
@@ -13,7 +13,7 @@ branch: main
 
 ## 1. 現在の結論
 
-リベンジカジノ比較ガイドは、独自ドメインでの公開基盤がほぼ完成している。
+リベンジカジノ比較ガイドは、独自ドメインでの公開基盤、Cloudflare Pages公開、Telegram botエージェント化、Google Search Console初期登録まで完了している。
 
 現在の構成は以下。
 
@@ -21,10 +21,25 @@ branch: main
 - Cloudflare Pages: サイトの公開場所
 - Cloudflare Worker: Telegram bot / AIエージェントの実行場所
 - Telegram: 管理者がbotへ指示する操作画面
+- Google Search Console: Googleインデックス状況と検索パフォーマンス確認場所
 - 本番URL: https://revenge-casino-guide.com
 
 Cloudflareへ移行しても、GitHubは削除しない。  
 GitHubはコードと履歴の保管場所として残し、Cloudflare PagesがGitHubの内容を読み込んで公開する。
+
+現在は、以下まで完了済み。
+
+- 独自ドメイン公開
+- sitemap.xml 独自ドメイン化
+- robots.txt 独自ドメイン化
+- PUBLIC_SITE_BASE_URL 設定
+- Telegram botエージェント化
+- 既存ページ編集 draft / diff / apply 機能
+- SEOスキャン改善候補0件
+- Google Search Console所有権確認
+- sitemap.xml 送信
+- sitemap正常処理
+- 主要ページのインデックス登録リクエスト
 
 ---
 
@@ -41,6 +56,9 @@ GitHubはコードと履歴の保管場所として残し、Cloudflare PagesがG
 - robots.txtあり
 - bot-handoff.mdあり
 - auto-checklist.mdあり
+- agent-status.mdあり
+- cloudflare-handoff.mdあり
+- deployment-flow.mdあり
 
 主な既存ページ:
 
@@ -75,6 +93,12 @@ Cloudflare Pages / Workers側の仮URL:
 - 画像表示
 - 内部リンク動作
 - sitemap.xml表示
+
+現在の本番公開はCloudflare Pagesを使用する。
+
+本番URL:
+
+- https://revenge-casino-guide.com
 
 ---
 
