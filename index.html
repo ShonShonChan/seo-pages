@@ -1602,6 +1602,227 @@
   }
 }
 
+
+/* Latest bonus status block */
+.bonus-status-2026 {
+  width: min(1120px, calc(100% - 36px));
+  max-width: 1120px;
+  margin: 0 auto 44px;
+  box-sizing: border-box;
+}
+
+.bonus-status-panel {
+  background: #fff;
+  border: 1px solid #f0caca;
+  border-radius: 22px;
+  box-shadow: 0 14px 34px rgba(150, 22, 24, 0.08);
+  padding: 24px;
+}
+
+.bonus-status-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.bonus-status-kicker {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--gold-soft);
+  border: 1px solid rgba(214, 166, 66, 0.34);
+  color: #8b6114;
+  font-size: 12px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.bonus-status-panel h2 {
+  margin: 0;
+  color: #9f0000;
+  font-size: clamp(22px, 2.7vw, 32px);
+  line-height: 1.35;
+  letter-spacing: -0.03em;
+}
+
+.bonus-status-lead {
+  margin: 8px 0 0;
+  color: #5c4545;
+  font-size: 14px;
+  line-height: 1.8;
+  max-width: 850px;
+}
+
+.bonus-status-date {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 6px 11px;
+  border-radius: 999px;
+  background: #fff7f7;
+  border: 1px solid #f2c2c2;
+  color: #9f0000;
+  font-size: 12px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.bonus-status-table {
+  display: grid;
+  gap: 10px;
+}
+
+.bonus-status-row {
+  display: grid;
+  grid-template-columns: 150px 170px minmax(230px, 1fr) minmax(210px, 1fr) 150px;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 16px;
+  border: 1px solid #f2cccc;
+  border-radius: 16px;
+  background: #fffafa;
+}
+
+.bonus-status-row:nth-child(even) {
+  background: #fff;
+}
+
+.bonus-status-casino {
+  color: #9f0000;
+  font-weight: 900;
+  line-height: 1.5;
+}
+
+.bonus-status-type {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: #fff0f0;
+  border: 1px solid #f2c2c2;
+  color: #b60000;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.bonus-status-copy,
+.bonus-status-check {
+  color: #5c4545;
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.bonus-status-row a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: #d90000;
+  color: #fff;
+  font-weight: 900;
+  text-decoration: none;
+  text-align: center;
+}
+
+.bonus-status-note {
+  margin: 16px 0 0;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: #fffbea;
+  border: 1px solid #f0d36c;
+  color: #594000;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.bonus-status-next {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 14px;
+  align-items: stretch;
+}
+
+.bonus-status-next-card {
+  padding: 18px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #fff, #fff7f7);
+  border: 1px solid #f2cccc;
+}
+
+.bonus-status-next-card b {
+  display: block;
+  color: #9f0000;
+  margin-bottom: 6px;
+  font-size: 16px;
+}
+
+.bonus-status-next-card p {
+  margin: 0;
+  color: #5c4545;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.bonus-status-next-card a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+  min-height: 42px;
+  padding: 9px 15px;
+  border-radius: 999px;
+  background: #d90000;
+  color: #fff;
+  font-weight: 900;
+}
+
+@media (max-width: 1040px) {
+  .bonus-status-row {
+    grid-template-columns: 150px 1fr 1fr;
+  }
+
+  .bonus-status-row a {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  .bonus-status-2026 {
+    width: min(100% - 24px, 1120px);
+    margin-bottom: 34px;
+  }
+
+  .bonus-status-panel {
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .bonus-status-head {
+    display: block;
+  }
+
+  .bonus-status-date {
+    margin-top: 12px;
+  }
+
+  .bonus-status-row {
+    grid-template-columns: 1fr;
+  }
+
+  .bonus-status-next {
+    grid-template-columns: 1fr;
+  }
+}
+
 </style>
 </head>
 
@@ -2015,6 +2236,123 @@
             <div class="bonus-copy">日本語対応や初心者向けの確認導線</div>
             <div class="bonus-check">初回特典 / 本人確認 / 規約確認</div>
             <a href="review.html">レビュー一覧へ</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="bonus-status-2026" id="latest-bonus-status">
+      <div class="bonus-status-panel">
+        <div class="bonus-status-head">
+          <div>
+            <span class="bonus-status-kicker">最新ボーナス確認表</span>
+            <h2>掲載カジノのボーナス状況を早見表で確認</h2>
+            <p class="bonus-status-lead">
+              ここでは、掲載カジノごとに確認されやすいボーナス種別と、登録前に見るべき条件を整理しています。
+              ボーナス内容は変更される可能性があるため、金額や付与条件は必ず公式ページで最新情報を確認してください。
+            </p>
+          </div>
+          <span class="bonus-status-date">確認目安：2026年5月</span>
+        </div>
+
+        <div class="bonus-status-table" aria-label="掲載カジノの最新ボーナス確認表">
+          <div class="bonus-status-row">
+            <div class="bonus-status-casino">スロット天国</div>
+            <div><span class="bonus-status-type">独自チケット・還元型</span></div>
+            <div class="bonus-status-copy">入金不要ボーナスよりも、ドリームポット系チケットやVIP・リベート系の確認が中心。</div>
+            <div class="bonus-status-check">抽選条件 / VIP還元 / 入出金 / 本人確認 / 公式規約</div>
+            <a href="review-slottenkoku.html">詳細を見る</a>
+          </div>
+
+          <div class="bonus-status-row">
+            <div class="bonus-status-casino">コニベット</div>
+            <div><span class="bonus-status-type">複数ボーナス確認</span></div>
+            <div class="bonus-status-copy">入金ボーナス、リベート、キャッシュバックなど複数特典の有無を確認したい候補。</div>
+            <div class="bonus-status-check">対象者 / 賭け条件 / 入出金 / 対象ゲーム / 最新規約</div>
+            <a href="review-konibet.html">詳細を見る</a>
+          </div>
+
+          <div class="bonus-status-row">
+            <div class="bonus-status-casino">Stake</div>
+            <div><span class="bonus-status-type">暗号資産系</span></div>
+            <div class="bonus-status-copy">暗号資産入出金と、ウェルカム系プロモーションの条件確認向け。</div>
+            <div class="bonus-status-check">対応通貨 / ネットワーク / 賭け条件 / 出金条件</div>
+            <a href="review-stake.html">詳細を見る</a>
+          </div>
+
+          <div class="bonus-status-row">
+            <div class="bonus-status-casino">遊雅堂</div>
+            <div><span class="bonus-status-type">日本語対応・入金特典</span></div>
+            <div class="bonus-status-copy">日本語導線で、入金ボーナスや特典資金の条件を確認したい方向け。</div>
+            <div class="bonus-status-check">自己資金条件 / 特典資金条件 / 本人確認 / 規約確認</div>
+            <a href="review-yuugado.html">詳細を見る</a>
+          </div>
+
+          <div class="bonus-status-row">
+            <div class="bonus-status-casino">ベラジョン</div>
+            <div><span class="bonus-status-type">ビギナーズボーナス</span></div>
+            <div class="bonus-status-copy">ビギナーズボーナスや新規向け特典の条件を確認したい候補。</div>
+            <div class="bonus-status-check">初回特典 / 複数回入金 / 賭け条件 / 最大出金 / 本人確認</div>
+            <a href="review-verajohn.html">詳細を見る</a>
+          </div>
+
+          <div class="bonus-status-row">
+            <div class="bonus-status-casino">ビットカジノ</div>
+            <div><span class="bonus-status-type">USDT・暗号資産</span></div>
+            <div class="bonus-status-copy">暗号資産入金ボーナスやUSDT系特典の条件確認向け。</div>
+            <div class="bonus-status-check">最低入金 / 賭け条件 / 有効期限 / ネットワーク / 出金条件</div>
+            <a href="review-bitcasino.html">詳細を見る</a>
+          </div>
+
+          <div class="bonus-status-row">
+            <div class="bonus-status-casino">ミスティーノ</div>
+            <div><span class="bonus-status-type">初心者向け入金特典</span></div>
+            <div class="bonus-status-copy">入金ボーナス、受け取り方、出金賭け条件を確認したい初心者向け候補。</div>
+            <div class="bonus-status-check">受け取り方法 / 賭け条件 / 出金条件 / 入出金 / 本人確認</div>
+            <a href="review-mystino.html">詳細を見る</a>
+          </div>
+
+          <div class="bonus-status-row">
+            <div class="bonus-status-casino">カジノシークレット</div>
+            <div><span class="bonus-status-type">キャッシュバック・FS</span></div>
+            <div class="bonus-status-copy">初回入金キャッシュバックやフリースピン系特典の確認向け。</div>
+            <div class="bonus-status-check">キャッシュバック条件 / FS対象 / 賭け条件 / 出金条件</div>
+            <a href="review-casino-secret.html">詳細を見る</a>
+          </div>
+
+          <div class="bonus-status-row">
+            <div class="bonus-status-casino">ボンズカジノ</div>
+            <div><span class="bonus-status-type">入金不要・ウェルカム</span></div>
+            <div class="bonus-status-copy">入金不要コード、ウェルカムボーナス、フリースピンの確認向け。</div>
+            <div class="bonus-status-check">ボーナスコード / 初回入金 / FS / 出金条件 / 本人確認</div>
+            <a href="review-bons-casino.html">詳細を見る</a>
+          </div>
+
+          <div class="bonus-status-row">
+            <div class="bonus-status-casino">BC.GAME</div>
+            <div><span class="bonus-status-type">高額ウェルカム・暗号資産</span></div>
+            <div class="bonus-status-copy">高額ウェルカムボーナス、フリースピン、暗号資産入出金の確認向け。</div>
+            <div class="bonus-status-check">ボーナス倍率 / FS / 暗号資産 / 賭け条件 / 出金条件</div>
+            <a href="review-bcgame.html">詳細を見る</a>
+          </div>
+        </div>
+
+        <p class="bonus-status-note">
+          <strong>注意：</strong>この表は比較前の確認用です。ボーナスの金額、対象者、賭け条件、最大出金、有効期限、対象ゲームは変更される可能性があります。
+          利用前に必ず各公式サイトの最新規約とプロモーション詳細を確認してください。
+        </p>
+
+        <div class="bonus-status-next">
+          <div class="bonus-status-next-card">
+            <b>次に見るべきポイント</b>
+            <p>ボーナスが大きく見える場合ほど、賭け条件、最大出金、対象ゲーム、出金条件、本人確認を先に確認しましょう。</p>
+          </div>
+          <div class="bonus-status-next-card">
+            <b>詳しい比較へ進む</b>
+            <p>ボーナスの見方や注意点は、専用ページでまとめて確認できます。</p>
+            <a href="bonus.html">ボーナス比較を見る</a>
           </div>
         </div>
       </div>
@@ -2525,6 +2863,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "最低入金額、反映時間、出金条件、本人確認、必要書類、公式規約を確認しましょう。特にボーナス利用時は出金条件まで見る必要があります。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "最新ボーナスを見るときの注意点は何ですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ボーナス内容は変更される可能性があるため、金額だけでなく、対象者、賭け条件、最大出金、有効期限、対象ゲーム、本人確認、公式規約を確認することが大切です。"
         }
       }
     ]
