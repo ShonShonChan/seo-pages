@@ -1033,7 +1033,10 @@
 @media (max-width: 640px){.home-featured-casinos .casino-card{min-height:auto}.home-featured-casinos .casino-card-logo{height:72px}.home-featured-casinos .casino-card-logo img{max-width:170px;max-height:52px}}
 /* Agent ranking section 2026 */
 .agent-ranking-2026 {
-  margin: 48px 0 44px;
+  width: min(1120px, calc(100% - 36px));
+  max-width: 1120px;
+  margin: 48px auto 44px;
+  box-sizing: border-box;
 }
 .agent-ranking-2026 .ranking-head {
   margin-bottom: 18px;
@@ -1224,6 +1227,15 @@
   }
   .ranking-cta a {
     flex: 1 1 150px;
+  }
+}
+
+/* Ranking section container width fix */
+@media (max-width: 640px) {
+  .agent-ranking-2026 {
+    width: min(100% - 24px, 1120px);
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 </style>
