@@ -726,6 +726,168 @@
       line-height: 1.7;
     }
 
+
+    /* ===== レビュー一覧CTA強化 ===== */
+    .review-toolbar {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 18px;
+      padding: 16px 18px;
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.12);
+      box-shadow: 0 10px 26px rgba(150, 22, 24, 0.07);
+    }
+
+    .review-toolbar p {
+      margin: 0;
+      color: #5f5f5f;
+      font-size: 14px;
+    }
+
+    .review-toolbar strong {
+      color: var(--red-dark);
+    }
+
+    .toolbar-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .toolbar-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--red-soft);
+      color: var(--red-dark);
+      border: 1px solid rgba(215, 25, 32, 0.14);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .review-card.recommended::after {
+      content: "注目レビュー";
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--gold), #f1c96b);
+      color: #6b4300;
+      font-size: 11px;
+      font-weight: 900;
+      box-shadow: 0 8px 16px rgba(214, 166, 66, 0.2);
+    }
+
+    .logo-box .casino-logo,
+    .logo-box img {
+      max-width: 116px;
+      max-height: 76px;
+      object-fit: contain;
+      margin: 0 auto;
+    }
+
+    .review-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .review-meta-item {
+      padding: 9px 10px;
+      border-radius: 14px;
+      background: #fffaf7;
+      border: 1px solid rgba(215, 25, 32, 0.1);
+    }
+
+    .review-meta-item b {
+      display: block;
+      color: var(--red-dark);
+      font-size: 11px;
+      line-height: 1.3;
+      margin-bottom: 3px;
+    }
+
+    .review-meta-item span {
+      display: block;
+      color: #666;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .review-route-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .review-route-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.12);
+      box-shadow: 0 12px 30px rgba(150, 22, 24, 0.08);
+    }
+
+    .review-route-card strong {
+      display: block;
+      color: var(--red-dark);
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+
+    .review-route-card span {
+      display: block;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .review-category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .review-category-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.12);
+      box-shadow: 0 12px 30px rgba(150, 22, 24, 0.08);
+    }
+
+    .review-category-card h3 {
+      margin: 0 0 8px;
+      color: var(--red-dark);
+      font-size: 17px;
+      line-height: 1.4;
+    }
+
+    .review-category-card p {
+      margin: 0;
+      color: #5f5f5f;
+      font-size: 14px;
+    }
+
+    .review-category-card a {
+      display: inline-flex;
+      margin-top: 12px;
+      color: var(--red-dark);
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+
     @media (max-width: 1040px) {
       .review-grid {
         grid-template-columns: 1fr;
@@ -1002,6 +1164,24 @@
         font-size: 12px;
         line-height: 1.5;
       }
+
+      .review-toolbar {
+        grid-template-columns: 1fr;
+        padding: 15px;
+      }
+
+      .toolbar-links {
+        justify-content: flex-start;
+      }
+
+      .review-meta {
+        grid-template-columns: 1fr;
+      }
+
+      .review-route-grid,
+      .review-category-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 420px) {
@@ -1127,246 +1307,478 @@
         </p>
       </div>
 
+      <div class="review-toolbar">
+        <p>
+          <strong>レビュー一覧から個別ページへ。</strong>
+          気になるカジノは、まずレビューでボーナス条件・入出金・本人確認・注意点を確認してください。
+        </p>
+        <div class="toolbar-links" aria-label="レビュー確認カテゴリ">
+          <span class="toolbar-chip">ボーナス条件</span>
+          <span class="toolbar-chip">入出金</span>
+          <span class="toolbar-chip">本人確認</span>
+          <span class="toolbar-chip">暗号資産</span>
+          <span class="toolbar-chip">日本語対応</span>
+        </div>
+      </div>
+
       <div class="review-grid">
-        <article class="review-card">
+        <article class="review-card recommended">
           <div class="logo-box">
-            <img class="casino-logo" src="slottenkoku-logo.png" alt="スロット天国のロゴ" />
+            <img class="casino-logo" src="slottenkoku-logo.png" alt="スロット天国のロゴ" loading="lazy" />
           </div>
           <div class="review-content">
             <div class="review-top">
-              <div class="logo-box"><img src="slottenkoku-logo.png" alt="スロット天国 ロゴ" loading="lazy" /></div>
-<h2>スロット天国</h2>
-              <span class="tag tag-red">条件確認</span>
+              <h2>スロット天国</h2>
+              <span class="tag tag-red">ランキング1位</span>
             </div>
-            <p>
-              ボーナス条件、入出金、本人確認、対象ゲームを中心に確認。スロット系の比較導線を作りやすいレビューです。
-            </p>
+            <p>スロット・パチスロ系の確認導線を作りやすいレビュー。独自プロモ、ボーナス条件、入出金、本人確認をまとめて確認できます。</p>
             <ul class="review-points">
-              <li>ボーナス条件</li>
+              <li>スロット系</li>
+              <li>独自プロモ</li>
               <li>入出金</li>
-              <li>本人確認</li>
             </ul>
+            <div class="review-meta">
+              <div class="review-meta-item">
+                <b>向いている確認軸</b>
+                <span>スロット・独自プロモ重視</span>
+              </div>
+              <div class="review-meta-item">
+                <b>重点確認</b>
+                <span>ボーナス条件、対象ゲーム、出金条件</span>
+              </div>
+              <div class="review-meta-item">
+                <b>ボーナス</b>
+                <span>金額より条件確認を重視</span>
+              </div>
+              <div class="review-meta-item">
+                <b>次の導線</b>
+                <span>レビューで詳細確認</span>
+              </div>
+            </div>
             <div class="card-actions">
               <a class="mini-btn mini-primary" href="review-slottenkoku.html">レビューを見る</a>
+              <a class="mini-btn mini-secondary" href="bonus.html">ボーナス比較</a>
             </div>
           </div>
         </article>
 
         <article class="review-card">
           <div class="logo-box">
-            <img class="casino-logo" src="konibet-logo.png" alt="コニベットのロゴ" />
+            <img class="casino-logo" src="konibet-logo.png" alt="コニベットのロゴ" loading="lazy" />
           </div>
           <div class="review-content">
             <div class="review-top">
-              <div class="logo-box"><img src="konibet-logo.png" alt="KONIBET ロゴ" loading="lazy" /></div>
-<h2>コニベット</h2>
-              <span class="tag tag-red">条件確認</span>
+              <h2>コニベット</h2>
+              <span class="tag tag-red">リベート確認</span>
             </div>
-            <p>
-              ボーナス、入出金、本人確認、サポート確認を整理。登録前に見るべき基本項目を確認できます。
-            </p>
+            <p>リベート率、出金速度、日本語サポートを比較しやすいレビュー。登録前の基本条件と規約確認に向いています。</p>
             <ul class="review-points">
-              <li>ボーナス</li>
-              <li>入出金</li>
+              <li>リベート</li>
+              <li>日本語対応</li>
               <li>規約確認</li>
             </ul>
+            <div class="review-meta">
+              <div class="review-meta-item">
+                <b>向いている確認軸</b>
+                <span>リベート・出金速度重視</span>
+              </div>
+              <div class="review-meta-item">
+                <b>重点確認</b>
+                <span>本人確認、出金条件、リベート条件</span>
+              </div>
+              <div class="review-meta-item">
+                <b>ボーナス</b>
+                <span>金額より条件確認を重視</span>
+              </div>
+              <div class="review-meta-item">
+                <b>次の導線</b>
+                <span>レビューで詳細確認</span>
+              </div>
+            </div>
             <div class="card-actions">
               <a class="mini-btn mini-primary" href="review-konibet.html">レビューを見る</a>
+              <a class="mini-btn mini-secondary" href="payments.html">入出金確認</a>
             </div>
           </div>
         </article>
 
         <article class="review-card">
           <div class="logo-box">
-            <img class="casino-logo" src="stake-logo.png" alt="Stakeのロゴ" />
+            <img class="casino-logo" src="stake-logo.png" alt="Stakeのロゴ" loading="lazy" />
           </div>
           <div class="review-content">
             <div class="review-top">
-              <div class="logo-box"><img src="stake-logo.png" alt="Stake ロゴ" loading="lazy" /></div>
-<h2>Stake</h2>
+              <h2>Stake</h2>
               <span class="tag">暗号資産</span>
             </div>
-            <p>
-              暗号資産の通貨、ネットワーク、入出金条件を重点確認。送金前の確認ポイントも整理しています。
-            </p>
+            <p>暗号資産入出金、スポーツベット、ゲーム数を確認したい人向け。通貨、ネットワーク、出金条件の確認が重要です。</p>
             <ul class="review-points">
               <li>暗号資産</li>
               <li>ネットワーク</li>
-              <li>出金条件</li>
+              <li>スポーツ</li>
             </ul>
+            <div class="review-meta">
+              <div class="review-meta-item">
+                <b>向いている確認軸</b>
+                <span>暗号資産・スポーツ重視</span>
+              </div>
+              <div class="review-meta-item">
+                <b>重点確認</b>
+                <span>対象通貨、ネットワーク、出金条件</span>
+              </div>
+              <div class="review-meta-item">
+                <b>ボーナス</b>
+                <span>金額より条件確認を重視</span>
+              </div>
+              <div class="review-meta-item">
+                <b>次の導線</b>
+                <span>レビューで詳細確認</span>
+              </div>
+            </div>
             <div class="card-actions">
               <a class="mini-btn mini-primary" href="review-stake.html">レビューを見る</a>
+              <a class="mini-btn mini-secondary" href="payments.html">入出金確認</a>
             </div>
           </div>
         </article>
 
         <article class="review-card">
           <div class="logo-box">
-            <img src="verajohn-logo.jpg" alt="ベラジョン ロゴ" loading="lazy" />
+            <img class="casino-logo" src="yuugado-logo.png" alt="遊雅堂のロゴ" loading="lazy" />
           </div>
           <div class="review-content">
             <div class="review-top">
-              <div class="logo-box"><img src="verajohn-logo.jpg" alt="ベラジョン ロゴ" loading="lazy" /></div>
-<h2>ベラジョン</h2>
+              <h2>遊雅堂</h2>
               <span class="tag tag-red">日本語対応</span>
             </div>
-            <p>
-              日本語対応、ボーナス条件、入出金、本人確認を確認。知名度だけでなく規約確認を重視します。
-            </p>
+            <p>日本語向け導線、スポーツベット、パチスロ・パチンコ系の確認に向いたレビュー。入出金と規約確認も重視します。</p>
             <ul class="review-points">
               <li>日本語対応</li>
-              <li>ボーナス</li>
-              <li>本人確認</li>
-            </ul>
-            <div class="card-actions">
-              <a class="mini-btn mini-primary" href="review-verajohn.html">レビューを見る</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="review-card">
-          <div class="logo-box">
-            <img class="casino-logo" src="yuugado-logo.png" alt="遊雅堂のロゴ" />
-          </div>
-          <div class="review-content">
-            <div class="review-top">
-              <div class="logo-box"><img src="yuugado-logo.png" alt="遊雅堂 ロゴ" loading="lazy" /></div>
-<h2>遊雅堂</h2>
-              <span class="tag tag-red">日本語対応</span>
-            </div>
-            <p>
-              日本語向け導線、入出金、本人確認、ボーナス条件を確認。国内向け表示だけで判断しないためのレビューです。
-            </p>
-            <ul class="review-points">
-              <li>日本語対応</li>
+              <li>スポーツ</li>
               <li>入出金</li>
-              <li>規約確認</li>
             </ul>
+            <div class="review-meta">
+              <div class="review-meta-item">
+                <b>向いている確認軸</b>
+                <span>日本語対応・スポーツ重視</span>
+              </div>
+              <div class="review-meta-item">
+                <b>重点確認</b>
+                <span>本人確認、手数料、ボーナス規約</span>
+              </div>
+              <div class="review-meta-item">
+                <b>ボーナス</b>
+                <span>金額より条件確認を重視</span>
+              </div>
+              <div class="review-meta-item">
+                <b>次の導線</b>
+                <span>レビューで詳細確認</span>
+              </div>
+            </div>
             <div class="card-actions">
               <a class="mini-btn mini-primary" href="review-yuugado.html">レビューを見る</a>
+              <a class="mini-btn mini-secondary" href="payments.html">入出金確認</a>
             </div>
           </div>
         </article>
 
         <article class="review-card">
           <div class="logo-box">
-            <img src="bitcasino.png" alt="ビットカジノ ロゴ" loading="lazy" />
+            <img class="casino-logo" src="verajohn-logo.jpg" alt="ベラジョンのロゴ" loading="lazy" />
           </div>
           <div class="review-content">
             <div class="review-top">
-              <div class="logo-box"><img src="bitcasino.png" alt="ビットカジノ ロゴ" loading="lazy" /></div>
-<h2>ビットカジノ</h2>
+              <h2>ベラジョン</h2>
+              <span class="tag tag-red">老舗候補</span>
+            </div>
+            <p>知名度の高い老舗系レビュー。ゲーム数、ビギナーズボーナス、日本語対応を見つつ、最新規約を確認します。</p>
+            <ul class="review-points">
+              <li>老舗候補</li>
+              <li>日本語対応</li>
+              <li>ボーナス</li>
+            </ul>
+            <div class="review-meta">
+              <div class="review-meta-item">
+                <b>向いている確認軸</b>
+                <span>知名度・日本語対応重視</span>
+              </div>
+              <div class="review-meta-item">
+                <b>重点確認</b>
+                <span>最新運営情報、本人確認、規約確認</span>
+              </div>
+              <div class="review-meta-item">
+                <b>ボーナス</b>
+                <span>金額より条件確認を重視</span>
+              </div>
+              <div class="review-meta-item">
+                <b>次の導線</b>
+                <span>レビューで詳細確認</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <a class="mini-btn mini-primary" href="review-verajohn.html">レビューを見る</a>
+              <a class="mini-btn mini-secondary" href="guide.html">初心者ガイド</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="logo-box">
+            <img class="casino-logo" src="bitcasino.png" alt="ビットカジノのロゴ" loading="lazy" />
+          </div>
+          <div class="review-content">
+            <div class="review-top">
+              <h2>ビットカジノ</h2>
               <span class="tag">暗号資産</span>
             </div>
-            <p>
-              暗号資産入出金、ネットワーク、送金先アドレス、ボーナス条件を確認。送金ミス防止の観点を重視します。
-            </p>
+            <p>暗号資産入出金を重視する人向け。通貨、ネットワーク、送金先アドレス、ボーナス条件を確認できます。</p>
             <ul class="review-points">
               <li>暗号資産</li>
               <li>入出金</li>
               <li>ネットワーク</li>
             </ul>
+            <div class="review-meta">
+              <div class="review-meta-item">
+                <b>向いている確認軸</b>
+                <span>暗号資産入出金重視</span>
+              </div>
+              <div class="review-meta-item">
+                <b>重点確認</b>
+                <span>送金先、ネットワーク、最低出金額</span>
+              </div>
+              <div class="review-meta-item">
+                <b>ボーナス</b>
+                <span>金額より条件確認を重視</span>
+              </div>
+              <div class="review-meta-item">
+                <b>次の導線</b>
+                <span>レビューで詳細確認</span>
+              </div>
+            </div>
             <div class="card-actions">
               <a class="mini-btn mini-primary" href="review-bitcasino.html">レビューを見る</a>
+              <a class="mini-btn mini-secondary" href="payments.html">入出金確認</a>
             </div>
           </div>
         </article>
 
         <article class="review-card">
           <div class="logo-box">
-            <img src="mystino.jpg" alt="ミスティーノ ロゴ" loading="lazy" />
+            <img class="casino-logo" src="mystino.jpg" alt="ミスティーノのロゴ" loading="lazy" />
           </div>
           <div class="review-content">
             <div class="review-top">
-              <div class="logo-box"><img src="mystino.jpg" alt="ミスティーノ ロゴ" loading="lazy" /></div>
-<h2>ミスティーノ</h2>
+              <h2>ミスティーノ</h2>
               <span class="tag tag-red">初心者向け確認</span>
             </div>
-            <p>
-              初心者向けの見やすさ、ボーナス条件、入出金、本人確認を確認。登録前に見る順番を整理しています。
-            </p>
+            <p>初心者向けの見やすさ、ボーナス条件、入出金、日本語サポートを確認したい人向けのレビューです。</p>
             <ul class="review-points">
               <li>初心者向け</li>
               <li>ボーナス</li>
-              <li>入出金</li>
+              <li>サポート</li>
             </ul>
+            <div class="review-meta">
+              <div class="review-meta-item">
+                <b>向いている確認軸</b>
+                <span>初心者向け・サポート重視</span>
+              </div>
+              <div class="review-meta-item">
+                <b>重点確認</b>
+                <span>出金条件、本人確認、サポート時間</span>
+              </div>
+              <div class="review-meta-item">
+                <b>ボーナス</b>
+                <span>金額より条件確認を重視</span>
+              </div>
+              <div class="review-meta-item">
+                <b>次の導線</b>
+                <span>レビューで詳細確認</span>
+              </div>
+            </div>
             <div class="card-actions">
               <a class="mini-btn mini-primary" href="review-mystino.html">レビューを見る</a>
+              <a class="mini-btn mini-secondary" href="guide.html">初心者ガイド</a>
             </div>
           </div>
         </article>
 
         <article class="review-card">
           <div class="logo-box">
-            <img src="casino-secret-logo.jpg" alt="カジノシークレット ロゴ" loading="lazy" />
+            <img class="casino-logo" src="casino-secret-logo.jpg" alt="カジノシークレットのロゴ" loading="lazy" />
           </div>
           <div class="review-content">
             <div class="review-top">
-              <div class="logo-box"><img src="casino-secret-logo.jpg" alt="カジノシークレット ロゴ" loading="lazy" /></div>
-<h2>カジノシークレット</h2>
+              <h2>カジノシークレット</h2>
               <span class="tag">キャンペーン</span>
             </div>
-            <p>
-              キャンペーン条件、対象者、賭け条件、最大出金を確認。特典や賞金保証のように受け取らないための確認ページです。
-            </p>
+            <p>キャッシュバックやフリースピンなど、キャンペーン条件を確認したい人向け。対象条件と出金制限を確認します。</p>
             <ul class="review-points">
               <li>キャンペーン</li>
               <li>出金条件</li>
               <li>規約確認</li>
             </ul>
+            <div class="review-meta">
+              <div class="review-meta-item">
+                <b>向いている確認軸</b>
+                <span>キャンペーン条件重視</span>
+              </div>
+              <div class="review-meta-item">
+                <b>重点確認</b>
+                <span>対象者、対象ゲーム、最大出金</span>
+              </div>
+              <div class="review-meta-item">
+                <b>ボーナス</b>
+                <span>金額より条件確認を重視</span>
+              </div>
+              <div class="review-meta-item">
+                <b>次の導線</b>
+                <span>レビューで詳細確認</span>
+              </div>
+            </div>
             <div class="card-actions">
               <a class="mini-btn mini-primary" href="review-casino-secret.html">レビューを見る</a>
+              <a class="mini-btn mini-secondary" href="bonus-guide.html">条件の見方</a>
             </div>
           </div>
         </article>
 
         <article class="review-card">
           <div class="logo-box">
-            <img src="bons-casino-logo.png" alt="ボンズカジノ ロゴ" loading="lazy" />
+            <img class="casino-logo" src="bons-casino-logo.png" alt="ボンズカジノのロゴ" loading="lazy" />
           </div>
           <div class="review-content">
             <div class="review-top">
-              <div class="logo-box"><img src="bons-casino-logo.png" alt="ボンズカジノ ロゴ" loading="lazy" /></div>
-<h2>ボンズカジノ</h2>
+              <h2>ボンズカジノ</h2>
               <span class="tag tag-red">入出金確認</span>
             </div>
-            <p>
-              入出金条件、本人確認、サポート対応を重点確認。入金前に出金条件まで見るためのレビューです。
-            </p>
+            <p>入金不要系やウェルカム系の条件、入出金、本人確認、サポート対応を整理して確認したい人向けです。</p>
             <ul class="review-points">
-              <li>入出金</li>
+              <li>入金不要系</li>
               <li>本人確認</li>
               <li>サポート</li>
             </ul>
+            <div class="review-meta">
+              <div class="review-meta-item">
+                <b>向いている確認軸</b>
+                <span>入金不要・入出金重視</span>
+              </div>
+              <div class="review-meta-item">
+                <b>重点確認</b>
+                <span>賭け条件、最大出金、本人確認</span>
+              </div>
+              <div class="review-meta-item">
+                <b>ボーナス</b>
+                <span>金額より条件確認を重視</span>
+              </div>
+              <div class="review-meta-item">
+                <b>次の導線</b>
+                <span>レビューで詳細確認</span>
+              </div>
+            </div>
             <div class="card-actions">
               <a class="mini-btn mini-primary" href="review-bons-casino.html">レビューを見る</a>
+              <a class="mini-btn mini-secondary" href="payments.html">入出金確認</a>
             </div>
           </div>
         </article>
 
         <article class="review-card">
           <div class="logo-box">
-            <img src="stake-logo.png" alt="BC.GAME ロゴ" loading="lazy" />
+            <div class="logo-placeholder">BC.GAME</div>
           </div>
           <div class="review-content">
             <div class="review-top">
-              <div class="logo-box"><img src="stake-logo.png" alt="BC.GAME ロゴ" loading="lazy" /></div>
-<h2>BC.GAME</h2>
+              <h2>BC.GAME</h2>
               <span class="tag">暗号資産</span>
             </div>
-            <p>
-              暗号資産入出金、ネットワーク、プロモーション条件を確認。ゲーム数や表示だけで判断しないためのレビューです。
-            </p>
+            <p>暗号資産入出金と高額プロモーション条件を確認したい人向け。通貨、ネットワーク、プロモ条件を分けて確認します。</p>
             <ul class="review-points">
               <li>暗号資産</li>
               <li>プロモ条件</li>
               <li>出金条件</li>
             </ul>
+            <div class="review-meta">
+              <div class="review-meta-item">
+                <b>向いている確認軸</b>
+                <span>暗号資産・プロモ確認重視</span>
+              </div>
+              <div class="review-meta-item">
+                <b>重点確認</b>
+                <span>対象通貨、最大出金、本人確認</span>
+              </div>
+              <div class="review-meta-item">
+                <b>ボーナス</b>
+                <span>金額より条件確認を重視</span>
+              </div>
+              <div class="review-meta-item">
+                <b>次の導線</b>
+                <span>レビューで詳細確認</span>
+              </div>
+            </div>
             <div class="card-actions">
               <a class="mini-btn mini-primary" href="review-bcgame.html">レビューを見る</a>
+              <a class="mini-btn mini-secondary" href="payments.html">入出金確認</a>
             </div>
           </div>
         </article>
+      </div>
+    </section>
+
+
+    <section class="section" id="review-route">
+      <div class="section-head">
+        <span class="label">CTA導線</span>
+        <h2 class="section-title">レビュー一覧から条件確認へ進む流れ</h2>
+        <p class="section-desc">
+          レビュー一覧では、気になるカジノを見つけたあと、個別レビューで条件を確認し、必要に応じてボーナス・入出金ページへ進みます。
+        </p>
+      </div>
+
+      <div class="review-route-grid">
+        <div class="review-route-card">
+          <strong>1. 気になるカジノを選ぶ</strong>
+          <span>特徴、確認軸、タグを見て、自分が確認したい条件に近いレビューを選びます。</span>
+        </div>
+        <div class="review-route-card">
+          <strong>2. 個別レビューを見る</strong>
+          <span>運営情報、ボーナス条件、入出金、本人確認、注意点を確認します。</span>
+        </div>
+        <div class="review-route-card">
+          <strong>3. 条件別ページへ進む</strong>
+          <span>ボーナス比較や入出金ガイドで、複数カジノを横断して確認します。</span>
+        </div>
+        <div class="review-route-card">
+          <strong>4. 公式規約で最終確認</strong>
+          <span>条件は変更される可能性があるため、入金前に公式情報を確認します。</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="review-categories">
+      <div class="section-head">
+        <span class="label">目的別</span>
+        <h2 class="section-title">目的別にレビューを選ぶ</h2>
+        <p class="section-desc">
+          迷った場合は、確認したい内容ごとにレビューを見るのがおすすめです。
+        </p>
+      </div>
+
+      <div class="review-category-grid">
+        <div class="review-category-card">
+          <h3>ボーナス条件を確認したい</h3>
+          <p>スロット天国、コニベット、ミスティーノ、ボンズカジノなどの条件確認から見ると整理しやすいです。</p>
+          <a href="bonus.html">ボーナス比較へ</a>
+        </div>
+        <div class="review-category-card">
+          <h3>暗号資産を確認したい</h3>
+          <p>Stake、ビットカジノ、BC.GAMEは、通貨・ネットワーク・送金先の確認が重要です。</p>
+          <a href="payments.html">入出金ガイドへ</a>
+        </div>
+        <div class="review-category-card">
+          <h3>初心者向けに確認したい</h3>
+          <p>ミスティーノ、ベラジョン、遊雅堂などは、日本語対応や登録前チェックの観点で確認しやすいです。</p>
+          <a href="guide.html">初心者ガイドへ</a>
+        </div>
       </div>
     </section>
 
