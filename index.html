@@ -2352,34 +2352,160 @@
   }
 }
 
+
+/* ===== 左右ボーナスCTAバナー枠：縦増設版 ===== */
+.bonus-side-banner-stack {
+  display: grid;
+  gap: 14px;
+}
+
+.bonus-side-banner {
+  width: 148px;
+}
+
+.bonus-side-banner.mini {
+  background:
+    radial-gradient(circle at 80% 12%, rgba(255, 232, 140, 0.32), transparent 32%),
+    linear-gradient(160deg, #b90016 0%, #84090f 68%, #540508 100%);
+}
+
+.bonus-side-banner.mini .bonus-side-banner-inner {
+  padding: 12px;
+}
+
+.bonus-side-banner.mini .bonus-side-blank {
+  aspect-ratio: 1 / .72;
+  margin-bottom: 10px;
+  font-size: 11px;
+}
+
+.bonus-side-banner.mini h2 {
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+.bonus-side-banner.mini p {
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+
+.bonus-side-banner.mini .bonus-side-cta {
+  min-height: 34px;
+  font-size: 11.5px;
+  margin-top: 10px;
+}
+
+.bonus-side-banner.left,
+.bonus-side-banner.right {
+  position: static;
+}
+
+.bonus-side-stack-left,
+.bonus-side-stack-right {
+  pointer-events: auto;
+  position: fixed;
+  top: 104px;
+  z-index: 35;
+}
+
+.bonus-side-stack-left {
+  left: max(14px, calc((100vw - 1460px) / 2));
+}
+
+.bonus-side-stack-right {
+  right: max(14px, calc((100vw - 1460px) / 2));
+}
+
+@media (max-height: 820px) {
+  .bonus-side-banner.mini:nth-child(n+3) {
+    display: none;
+  }
+}
+
+@media (max-width: 1460px) {
+  .bonus-side-stack-left,
+  .bonus-side-stack-right {
+    display: none;
+  }
+}
+
 </style>
 </head>
 
 <body>
 
   <aside class="bonus-side-rails" aria-label="ボーナスCTAサイドバナー">
-    <div class="bonus-side-banner left">
-      <div class="bonus-side-banner-inner">
-        <span class="bonus-side-label">初回ボーナス</span>
-        <div class="bonus-side-blank">バナー画像<br />差し替え枠</div>
-        <h2>初回特典をチェック</h2>
-        <p>ウェルカム特典・入金ボーナスを登録前に確認。</p>
-        <a class="bonus-side-cta" href="bonus.html">ボーナスを見る</a>
-        <a class="bonus-side-sub" href="bonus-guide.html">条件の見方も確認</a>
+    <div class="bonus-side-stack-left">
+      <div class="bonus-side-banner-stack">
+        <div class="bonus-side-banner left">
+          <div class="bonus-side-banner-inner">
+            <span class="bonus-side-label">初回ボーナス</span>
+            <div class="bonus-side-blank">バナー画像<br />差し替え枠</div>
+            <h2>初回特典をチェック</h2>
+            <p>ウェルカム特典・入金ボーナスを登録前に確認。</p>
+            <a class="bonus-side-cta" href="bonus.html">ボーナスを見る</a>
+            <a class="bonus-side-sub" href="bonus-guide.html">条件の見方も確認</a>
+          </div>
+        </div>
+
+        <div class="bonus-side-banner mini">
+          <div class="bonus-side-banner-inner">
+            <span class="bonus-side-label">入金特典</span>
+            <div class="bonus-side-blank">画像枠</div>
+            <h2>入金ボーナス</h2>
+            <p>対象カジノの特典をまとめて確認。</p>
+            <a class="bonus-side-cta" href="bonus-best.html">特典を見る</a>
+          </div>
+        </div>
+
+        <div class="bonus-side-banner mini">
+          <div class="bonus-side-banner-inner">
+            <span class="bonus-side-label">FS特典</span>
+            <div class="bonus-side-blank">画像枠</div>
+            <h2>フリースピン</h2>
+            <p>対象ゲームや受け取り条件を確認。</p>
+            <a class="bonus-side-cta" href="bonus.html">FSを見る</a>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="bonus-side-banner right">
-      <div class="bonus-side-banner-inner">
-        <span class="bonus-side-label">おすすめ特典</span>
-        <div class="bonus-side-blank">バナー画像<br />差し替え枠</div>
-        <h2>特典まとめを確認</h2>
-        <p>入金ボーナス・FS・限定プロモをまとめてチェック。</p>
-        <a class="bonus-side-cta" href="bonus-best.html">特典を確認</a>
-        <a class="bonus-side-sub" href="review-slottenkoku.html">1位レビューへ</a>
+    <div class="bonus-side-stack-right">
+      <div class="bonus-side-banner-stack">
+        <div class="bonus-side-banner right">
+          <div class="bonus-side-banner-inner">
+            <span class="bonus-side-label">おすすめ特典</span>
+            <div class="bonus-side-blank">バナー画像<br />差し替え枠</div>
+            <h2>特典まとめを確認</h2>
+            <p>入金ボーナス・FS・限定プロモをまとめてチェック。</p>
+            <a class="bonus-side-cta" href="bonus-best.html">特典を確認</a>
+            <a class="bonus-side-sub" href="review-slottenkoku.html">1位レビューへ</a>
+          </div>
+        </div>
+
+        <div class="bonus-side-banner mini">
+          <div class="bonus-side-banner-inner">
+            <span class="bonus-side-label">1位候補</span>
+            <div class="bonus-side-blank">画像枠</div>
+            <h2>スロット天国</h2>
+            <p>初回特典・限定プロモを確認。</p>
+            <a class="bonus-side-cta" href="review-slottenkoku.html">特典を見る</a>
+          </div>
+        </div>
+
+        <div class="bonus-side-banner mini">
+          <div class="bonus-side-banner-inner">
+            <span class="bonus-side-label">初心者向け</span>
+            <div class="bonus-side-blank">画像枠</div>
+            <h2>登録前チェック</h2>
+            <p>ボーナス前に確認する項目を整理。</p>
+            <a class="bonus-side-cta" href="site-checklist.html">確認する</a>
+          </div>
+        </div>
       </div>
     </div>
   </aside>
+
 
   <header class="site-header">
     <div class="header-inner">
@@ -2503,6 +2629,19 @@
             </div>
             <img class="mascot-mini" src="ribedan-point.png" alt="確認ポイントを案内するリベ男" />
           </div>
+        </div>
+
+        <div class="bonus-mobile-banner">
+          <div class="bonus-mobile-blank">バナー画像 差し替え枠</div>
+          <strong>入金ボーナスを確認</strong>
+          <span>対象カジノの入金特典・受け取り条件をチェック。</span>
+          <a href="bonus-best.html">入金特典を見る</a>
+        </div>
+        <div class="bonus-mobile-banner">
+          <div class="bonus-mobile-blank">バナー画像 差し替え枠</div>
+          <strong>スロット天国の特典</strong>
+          <span>初回特典・限定プロモを登録前に確認。</span>
+          <a href="review-slottenkoku.html">特典を見る</a>
         </div>
       </div>
     </section>
