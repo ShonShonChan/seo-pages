@@ -733,6 +733,91 @@
       line-height: 1.7;
     }
 
+
+    /* ===== 目的逆算CTA強化ブロック ===== */
+    .purpose-cta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .purpose-cta-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.12);
+      box-shadow: 0 12px 30px rgba(150, 22, 24, 0.08);
+    }
+
+    .purpose-cta-card strong {
+      display: block;
+      color: var(--red-dark);
+      margin-bottom: 6px;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .purpose-cta-card span {
+      display: block;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .purpose-cta-card a {
+      display: inline-flex;
+      margin-top: 12px;
+      color: var(--red-dark);
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .final-route-box {
+      padding: 24px;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at top right, rgba(255, 248, 230, 0.95), transparent 46%),
+        #fff;
+      border: 1px solid rgba(215, 25, 32, 0.16);
+      box-shadow: 0 12px 30px rgba(150, 22, 24, 0.08);
+    }
+
+    .final-route-box h3 {
+      margin: 0 0 10px;
+      color: var(--red-dark);
+      font-size: 22px;
+      line-height: 1.35;
+    }
+
+    .final-route-box p {
+      margin: 0;
+      color: #555;
+      font-size: 14px;
+    }
+
+    @media (max-width: 1040px) {
+      .purpose-cta-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .purpose-cta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .purpose-cta-card,
+      .final-route-box {
+        padding: 18px;
+        border-radius: 18px;
+      }
+
+      .final-route-box h3 {
+        font-size: 20px;
+      }
+    }
+
     @media (max-width: 1040px) {
       .step-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1112,7 +1197,6 @@
       <div class="step-grid">
         <article class="step-card">
           <span class="step-number">1</span>
-          <div class="logo-box"><img src="stake-logo.png" alt="Stake ロゴ" loading="lazy" /></div>
 <h3>カジノ一覧を見る</h3>
           <p>
             まずは掲載中カジノを一覧で確認します。名前やロゴだけで判断せず、確認ポイントを見ましょう。
@@ -1129,7 +1213,6 @@
 
         <article class="step-card">
           <span class="step-number">2</span>
-          <div class="logo-box"><img src="stake-logo.png" alt="Stake ロゴ" loading="lazy" /></div>
 <h3>レビューを読む</h3>
           <p>
             気になるカジノがあれば、個別レビューで条件を確認します。良い点だけでなく注意点も見ましょう。
@@ -1146,7 +1229,6 @@
 
         <article class="step-card">
           <span class="step-number">3</span>
-          <div class="logo-box"><img src="stake-logo.png" alt="Stake ロゴ" loading="lazy" /></div>
 <h3>ボーナス条件を見る</h3>
           <p>
             ボーナスは金額ではなく、出金までの条件を確認します。賭け条件と最大出金は特に重要です。
@@ -1163,7 +1245,6 @@
 
         <article class="step-card">
           <span class="step-number">4</span>
-          <div class="logo-box"><img src="stake-logo.png" alt="Stake ロゴ" loading="lazy" /></div>
 <h3>入出金を確認</h3>
           <p>
             入金前に、出金方法、本人確認、必要書類、手数料、反映時間を確認します。
@@ -1180,7 +1261,6 @@
 
         <article class="step-card">
           <span class="step-number">5</span>
-          <div class="logo-box"><img src="stake-logo.png" alt="Stake ロゴ" loading="lazy" /></div>
 <h3>公式規約を確認</h3>
           <p>
             最後に公式ページで最新情報を確認します。対象地域、年齢制限、禁止事項も必ず見ましょう。
@@ -1200,7 +1280,6 @@
     <section class="section" id="beginner-mistakes">
       <div class="section-head">
         <span class="label">確認漏れ対策</span>
-        <div class="logo-box"><img src="stake-logo.png" alt="Stake ロゴ" loading="lazy" /></div>
 <h2 class="section-title">初心者が見落としやすいポイント</h2>
         <p class="section-desc">
           初心者向けに見えるサイトでも、利用条件を読み飛ばすと出金や本人確認で困る場合があります。
@@ -1209,7 +1288,6 @@
 
       <div class="grid-3">
         <article class="mistake-card">
-          <div class="logo-box"><img src="stake-logo.png" alt="Stake ロゴ" loading="lazy" /></div>
 <h3>ボーナス額だけで判断する</h3>
           <p>
             ボーナス額が大きく見えても、賭け条件、最大出金、有効期限、対象ゲームを確認しないと判断できません。
@@ -1279,7 +1357,6 @@
       <div class="review-grid">
         <article class="review-card">
           <span class="tag tag-red">条件確認</span>
-          <div class="logo-box"><img src="slottenkoku-logo.png" alt="スロット天国 ロゴ" loading="lazy" /></div>
 <h3>スロット天国</h3>
           <p>ボーナス条件、入出金、本人確認、対象ゲームを確認。</p>
           <ul class="review-meta">
@@ -1294,7 +1371,6 @@
 
         <article class="review-card">
           <span class="tag tag-red">条件確認</span>
-          <div class="logo-box"><img src="konibet-logo.png" alt="KONIBET ロゴ" loading="lazy" /></div>
 <h3>コニベット</h3>
           <p>ボーナス、出金条件、本人確認、規約確認を整理。</p>
           <ul class="review-meta">
@@ -1309,7 +1385,6 @@
 
         <article class="review-card">
           <span class="tag">暗号資産</span>
-          <div class="logo-box"><img src="stake-logo.png" alt="Stake ロゴ" loading="lazy" /></div>
 <h3>Stake</h3>
           <p>暗号資産の通貨、ネットワーク、入出金条件を重点確認。</p>
           <ul class="review-meta">
@@ -1324,7 +1399,6 @@
 
         <article class="review-card">
           <span class="tag tag-red">日本語対応</span>
-          <div class="logo-box"><img src="verajohn-logo.jpg" alt="ベラジョン ロゴ" loading="lazy" /></div>
 <h3>ベラジョン</h3>
           <p>日本語対応、ボーナス条件、入出金、本人確認を確認。</p>
           <ul class="review-meta">
@@ -1339,7 +1413,6 @@
 
         <article class="review-card">
           <span class="tag tag-red">日本語対応</span>
-          <div class="logo-box"><img src="yuugado-logo.png" alt="遊雅堂 ロゴ" loading="lazy" /></div>
 <h3>遊雅堂</h3>
           <p>日本語向け導線、入出金、本人確認、公式規約を確認。</p>
           <ul class="review-meta">
@@ -1354,7 +1427,6 @@
 
         <article class="review-card">
           <span class="tag">暗号資産</span>
-          <div class="logo-box"><img src="bitcasino.png" alt="ビットカジノ ロゴ" loading="lazy" /></div>
 <h3>ビットカジノ</h3>
           <p>暗号資産入出金、ネットワーク、送金先アドレスを確認。</p>
           <ul class="review-meta">
@@ -1369,7 +1441,6 @@
 
         <article class="review-card">
           <span class="tag tag-red">初心者向け確認</span>
-          <div class="logo-box"><img src="mystino.jpg" alt="ミスティーノ ロゴ" loading="lazy" /></div>
 <h3>ミスティーノ</h3>
           <p>初心者向けの見やすさ、ボーナス条件、入出金を確認。</p>
           <ul class="review-meta">
@@ -1384,7 +1455,6 @@
 
         <article class="review-card">
           <span class="tag">キャンペーン</span>
-          <div class="logo-box"><img src="casino-secret-logo.jpg" alt="カジノシークレット ロゴ" loading="lazy" /></div>
 <h3>カジノシークレット</h3>
           <p>キャンペーン条件、対象者、最大出金、保証なしの考え方を確認。</p>
           <ul class="review-meta">
@@ -1399,7 +1469,6 @@
 
         <article class="review-card">
           <span class="tag tag-red">入出金確認</span>
-          <div class="logo-box"><img src="bons-casino-logo.png" alt="ボンズカジノ ロゴ" loading="lazy" /></div>
 <h3>ボンズカジノ</h3>
           <p>入出金条件、本人確認、サポート対応を重点確認。</p>
           <ul class="review-meta">
@@ -1414,7 +1483,6 @@
 
         <article class="review-card">
           <span class="tag">暗号資産</span>
-          <div class="logo-box"><img src="stake-logo.png" alt="BC.GAME ロゴ" loading="lazy" /></div>
 <h3>BC.GAME</h3>
           <p>暗号資産、プロモーション条件、出金条件を確認。</p>
           <ul class="review-meta">
@@ -1467,6 +1535,51 @@
             </p>
           </div>
         </div>
+      </div>
+    </section>
+
+
+    <section class="section" id="beginner-route">
+      <div class="section-head">
+        <span class="label">次に進む導線</span>
+        <h2 class="section-title">初心者ガイドを読んだ後の確認順</h2>
+        <p class="section-desc">
+          このページは入口です。次は目的に合わせて、一覧・レビュー・ボーナス・入出金・最終チェックへ進みましょう。
+        </p>
+      </div>
+
+      <div class="purpose-cta-grid">
+        <div class="purpose-cta-card">
+          <strong>1. 候補を一覧で見る</strong>
+          <span>掲載カジノをロゴ・特徴・確認ポイントで整理して見ます。</span>
+          <a href="casino-list.html">カジノ一覧へ</a>
+        </div>
+        <div class="purpose-cta-card">
+          <strong>2. 個別レビューを見る</strong>
+          <span>気になるカジノのボーナス、入出金、本人確認、注意点を確認します。</span>
+          <a href="review.html">レビュー一覧へ</a>
+        </div>
+        <div class="purpose-cta-card">
+          <strong>3. ボーナス条件を見る</strong>
+          <span>金額ではなく、賭け条件・最大出金・対象ゲームを確認します。</span>
+          <a href="bonus.html">ボーナス比較へ</a>
+        </div>
+        <div class="purpose-cta-card">
+          <strong>4. 入出金を確認する</strong>
+          <span>入金前に、出金方法・本人確認・手数料・反映時間まで確認します。</span>
+          <a href="payments.html">入出金ガイドへ</a>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section" id="final-route-summary">
+      <div class="final-route-box">
+        <h3>このページの役割</h3>
+        <p>
+          このページは、CTAの直前で不安を解消するための確認ページです。
+          不明点が残る場合は、登録・入金を急がず、レビュー、ボーナス比較、入出金ガイド、公式規約へ戻って確認してください。
+        </p>
       </div>
     </section>
 

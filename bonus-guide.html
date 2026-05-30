@@ -733,6 +733,91 @@
       color: rgba(255, 255, 255, 0.86);
     }
 
+
+    /* ===== 目的逆算CTA強化ブロック ===== */
+    .purpose-cta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .purpose-cta-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.12);
+      box-shadow: 0 12px 30px rgba(150, 22, 24, 0.08);
+    }
+
+    .purpose-cta-card strong {
+      display: block;
+      color: var(--red-dark);
+      margin-bottom: 6px;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .purpose-cta-card span {
+      display: block;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .purpose-cta-card a {
+      display: inline-flex;
+      margin-top: 12px;
+      color: var(--red-dark);
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .final-route-box {
+      padding: 24px;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at top right, rgba(255, 248, 230, 0.95), transparent 46%),
+        #fff;
+      border: 1px solid rgba(215, 25, 32, 0.16);
+      box-shadow: 0 12px 30px rgba(150, 22, 24, 0.08);
+    }
+
+    .final-route-box h3 {
+      margin: 0 0 10px;
+      color: var(--red-dark);
+      font-size: 22px;
+      line-height: 1.35;
+    }
+
+    .final-route-box p {
+      margin: 0;
+      color: #555;
+      font-size: 14px;
+    }
+
+    @media (max-width: 1040px) {
+      .purpose-cta-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .purpose-cta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .purpose-cta-card,
+      .final-route-box {
+        padding: 18px;
+        border-radius: 18px;
+      }
+
+      .final-route-box h3 {
+        font-size: 20px;
+      }
+    }
+
     @media (max-width: 1060px) {
       .mascot-hero {
         min-height: 410px;
@@ -1468,7 +1553,6 @@
         <img src="ribejo-warning.png" alt="リベ女" class="mascot-note-img" />
         <div class="mascot-note-body">
           <strong>リベ女の注意ポイント</strong>
-          <div class="logo-box"><img src="verajohn-logo.jpg" alt="ベラジョン ロゴ" loading="lazy" /></div>
 <h2>「高額ボーナス」でも、条件が重いと使いにくい場合があります。</h2>
           <p>
             最大出金・禁止ベット・対象ゲーム・本人確認を見落とすと、思ったように出金できない可能性があります。
@@ -1481,7 +1565,6 @@
     <section class="section" id="bonus-review-links">
       <div class="section-head">
         <div class="label">レビューで確認</div>
-        <div class="logo-box"><img src="verajohn-logo.jpg" alt="ベラジョン ロゴ" loading="lazy" /></div>
 <h2 class="section-title">ボーナス条件は<span>個別レビューもあわせて確認</span></h2>
         <p class="section-desc">
           サイトごとのボーナス条件や注意点は、個別レビューでも確認できます。
@@ -1490,28 +1573,25 @@
 
       <div class="link-grid">
         <div class="link-card">
-          <div class="logo-box"><img src="verajohn-logo.jpg" alt="ベラジョン ロゴ" loading="lazy" /></div>
 <h3>スロット天国レビュー</h3>
           <p>ボーナス条件、入出金、本人確認、初心者向けの注意点を確認できます。</p>
           <a href="review-slottenkoku.html">レビューを見る →</a>
         </div>
 
         <div class="link-card">
-          <div class="logo-box"><img src="verajohn-logo.jpg" alt="ベラジョン ロゴ" loading="lazy" /></div>
 <h3>コニベットレビュー</h3>
           <p>キャンペーン条件、日本語対応、公式規約、出金条件を確認できます。</p>
           <a href="review-konibet.html">レビューを見る →</a>
         </div>
 
         <div class="link-card">
-          <div class="logo-box"><img src="verajohn-logo.jpg" alt="ベラジョン ロゴ" loading="lazy" /></div>
 <h3>ベラジョンレビュー</h3>
           <p>認知度だけでなく、ボーナス条件や出金条件を安全寄りに確認できます。</p>
           <a href="review-verajohn.html">レビューを見る →</a>
         </div>
 
         <div class="link-card">
-          <h3>游雅堂レビュー</h3>
+          <h3>遊雅堂レビュー</h3>
           <p>日本語対応、入出金条件、ボーナス条件、サポート体制を確認できます。</p>
           <a href="review-yuugado.html">レビューを見る →</a>
         </div>
@@ -1566,6 +1646,51 @@
             <li>不安なら利用しない</li>
           </ul>
         </div>
+      </div>
+    </section>
+
+
+    <section class="section" id="bonus-route">
+      <div class="section-head">
+        <div class="label">次に進む導線</div>
+        <h2 class="section-title">ボーナスの見方を確認した後の進み方</h2>
+        <p class="section-desc">
+          用語を理解したら、実際のボーナス比較・個別レビュー・入出金確認へ進みましょう。
+        </p>
+      </div>
+
+      <div class="purpose-cta-grid">
+        <div class="purpose-cta-card">
+          <strong>1. ボーナス比較を見る</strong>
+          <span>10カジノのボーナス傾向、確認条件、注意点を一覧で確認します。</span>
+          <a href="bonus.html">ボーナス比較へ</a>
+        </div>
+        <div class="purpose-cta-card">
+          <strong>2. おすすめ候補を見る</strong>
+          <span>おすすめボーナス候補を、金額ではなく条件重視で確認します。</span>
+          <a href="bonus-best.html">おすすめボーナス比較へ</a>
+        </div>
+        <div class="purpose-cta-card">
+          <strong>3. 個別レビューへ進む</strong>
+          <span>気になるカジノの条件、入出金、本人確認、注意点を深掘りします。</span>
+          <a href="review.html">レビュー一覧へ</a>
+        </div>
+        <div class="purpose-cta-card">
+          <strong>4. 出金条件を見る</strong>
+          <span>ボーナス利用時は、出金条件・本人確認・反映時間まで確認します。</span>
+          <a href="payments.html">入出金ガイドへ</a>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section" id="final-route-summary">
+      <div class="final-route-box">
+        <h3>このページの役割</h3>
+        <p>
+          このページは、CTAの直前で不安を解消するための確認ページです。
+          不明点が残る場合は、登録・入金を急がず、レビュー、ボーナス比較、入出金ガイド、公式規約へ戻って確認してください。
+        </p>
       </div>
     </section>
 
@@ -1668,7 +1793,6 @@
 
     <section class="cta">
       <div class="cta-box">
-        <div class="logo-box"><img src="verajohn-logo.jpg" alt="ベラジョン ロゴ" loading="lazy" /></div>
 <h2>ボーナスは、条件を読んでから判断する。</h2>
         <p>
           気になるボーナスがあれば、ボーナス比較、個別レビュー、入出金ガイドをあわせて確認しましょう。
@@ -1682,10 +1806,8 @@
     </section>
   
     <section class="related-auto-links">
-      <div class="logo-box"><img src="verajohn-logo.jpg" alt="ベラジョン ロゴ" loading="lazy" /></div>
 <h2>関連して確認したいページ</h2>
       <div class="card">
-        <div class="logo-box"><img src="verajohn-logo.jpg" alt="ベラジョン ロゴ" loading="lazy" /></div>
 <h3><a href="bonus-guide-beginner-check-202605061438.html">ボーナス選びの注意点 | 条件確認・比較ガイド</a></h3>
         <p>オンラインカジノのボーナスを選ぶ前に、賭け条件、最大出金、対象ゲーム、有効期限、禁止ベットを確認するためのガイドです。</p>
       </div>
@@ -1693,10 +1815,8 @@
 
   
     <section class="related-auto-links">
-      <div class="logo-box"><img src="verajohn-logo.jpg" alt="ベラジョン ロゴ" loading="lazy" /></div>
 <h2>関連して確認したいページ</h2>
       <div class="card">
-        <div class="logo-box"><img src="verajohn-logo.jpg" alt="ベラジョン ロゴ" loading="lazy" /></div>
 <h3><a href="bonus-guide-beginner-check-202605080454.html">ボーナス選びの注意点 | 条件確認・比較ガイド</a></h3>
         <p>オンラインカジノのボーナスを選ぶ前に、賭け条件、最大出金、対象ゲーム、有効期限、禁止ベットを確認するためのガイドです。</p>
       </div>
@@ -1704,10 +1824,8 @@
 
   
     <section class="related-auto-links">
-      <div class="logo-box"><img src="verajohn-logo.jpg" alt="ベラジョン ロゴ" loading="lazy" /></div>
 <h2>関連して確認したいページ</h2>
       <div class="card">
-        <div class="logo-box"><img src="verajohn-logo.jpg" alt="ベラジョン ロゴ" loading="lazy" /></div>
 <h3><a href="beginner-guide-202605080518.html">初心者向け確認ガイド | 失敗しないための条件整理</a></h3>
         <p>オンラインカジノを利用前に確認したい条件、安全性、入出金、本人確認、公式規約の確認ポイントを初心者向けに整理しています。</p>
       </div>
@@ -1736,7 +1854,7 @@
         <a href="review-konibet.html">コニベットレビュー</a>
         <a href="review-stake.html">STAKEレビュー</a>
         <a href="review-verajohn.html">ベラジョンレビュー</a>
-        <a href="review-yuugado.html">游雅堂レビュー</a>
+        <a href="review-yuugado.html">遊雅堂レビュー</a>
         <a href="review-bitcasino.html">bitcasinoレビュー</a>
         <a href="review-mystino.html">Mystinoレビュー</a>
         <a href="review-casino-secret.html">Casino Secretレビュー</a>

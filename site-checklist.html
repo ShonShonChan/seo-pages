@@ -703,6 +703,91 @@
       line-height: 1.7;
     }
 
+
+    /* ===== 目的逆算CTA強化ブロック ===== */
+    .purpose-cta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .purpose-cta-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.12);
+      box-shadow: 0 12px 30px rgba(150, 22, 24, 0.08);
+    }
+
+    .purpose-cta-card strong {
+      display: block;
+      color: var(--red-dark);
+      margin-bottom: 6px;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .purpose-cta-card span {
+      display: block;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .purpose-cta-card a {
+      display: inline-flex;
+      margin-top: 12px;
+      color: var(--red-dark);
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .final-route-box {
+      padding: 24px;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at top right, rgba(255, 248, 230, 0.95), transparent 46%),
+        #fff;
+      border: 1px solid rgba(215, 25, 32, 0.16);
+      box-shadow: 0 12px 30px rgba(150, 22, 24, 0.08);
+    }
+
+    .final-route-box h3 {
+      margin: 0 0 10px;
+      color: var(--red-dark);
+      font-size: 22px;
+      line-height: 1.35;
+    }
+
+    .final-route-box p {
+      margin: 0;
+      color: #555;
+      font-size: 14px;
+    }
+
+    @media (max-width: 1040px) {
+      .purpose-cta-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .purpose-cta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .purpose-cta-card,
+      .final-route-box {
+        padding: 18px;
+        border-radius: 18px;
+      }
+
+      .final-route-box h3 {
+        font-size: 20px;
+      }
+    }
+
     @media (max-width: 1040px) {
       .mini-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1349,6 +1434,51 @@
             <a class="mini-btn mini-primary" href="review-bcgame.html">レビューを見る</a>
           </div>
         </article>
+      </div>
+    </section>
+
+
+    <section class="section" id="checklist-route">
+      <div class="section-head">
+        <span class="label">チェック後の導線</span>
+        <h2 class="section-title">不明点があった場合に戻るページ</h2>
+        <p class="section-desc">
+          チェックリストで不明点が出た場合は、そのまま進まず、該当ページで条件を確認してください。
+        </p>
+      </div>
+
+      <div class="purpose-cta-grid">
+        <div class="purpose-cta-card">
+          <strong>カジノ選びに迷う</strong>
+          <span>掲載サイトの特徴、確認ポイント、レビュー導線を一覧で確認します。</span>
+          <a href="casino-list.html">カジノ一覧へ</a>
+        </div>
+        <div class="purpose-cta-card">
+          <strong>個別条件が分からない</strong>
+          <span>各レビューで、運営情報・ボーナス・入出金・注意点を確認します。</span>
+          <a href="review.html">レビュー一覧へ</a>
+        </div>
+        <div class="purpose-cta-card">
+          <strong>ボーナス条件が不明</strong>
+          <span>賭け条件、最大出金、有効期限、対象ゲーム、禁止ベットを確認します。</span>
+          <a href="bonus.html">ボーナス比較へ</a>
+        </div>
+        <div class="purpose-cta-card">
+          <strong>出金条件が不明</strong>
+          <span>出金方法、本人確認、手数料、反映時間、暗号資産の注意点を確認します。</span>
+          <a href="payments.html">入出金ガイドへ</a>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section" id="final-route-summary">
+      <div class="final-route-box">
+        <h3>このページの役割</h3>
+        <p>
+          このページは、CTAの直前で不安を解消するための確認ページです。
+          不明点が残る場合は、登録・入金を急がず、レビュー、ボーナス比較、入出金ガイド、公式規約へ戻って確認してください。
+        </p>
       </div>
     </section>
 
