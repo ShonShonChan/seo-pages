@@ -2036,6 +2036,129 @@
   }
 }
 
+
+/* ===== TOP最終導線調整 ===== */
+.final-home-route {
+  width: min(1120px, calc(100% - 36px));
+  max-width: 1120px;
+  margin: 0 auto 44px;
+  box-sizing: border-box;
+}
+
+.final-home-route-panel {
+  background: #fff;
+  border: 1px solid #f0caca;
+  border-radius: 22px;
+  box-shadow: 0 14px 34px rgba(150, 22, 24, 0.08);
+  padding: 24px;
+}
+
+.final-home-route-kicker {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--red-soft);
+  border: 1px solid rgba(215, 25, 32, 0.16);
+  color: var(--red-dark);
+  font-size: 12px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.final-home-route h2 {
+  margin: 0;
+  color: #9f0000;
+  font-size: clamp(22px, 2.7vw, 32px);
+  line-height: 1.35;
+  letter-spacing: -0.03em;
+}
+
+.final-home-route-lead {
+  margin: 8px 0 0;
+  color: #5c4545;
+  font-size: 14px;
+  line-height: 1.8;
+  max-width: 860px;
+}
+
+.final-home-route-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.final-home-route-card {
+  padding: 18px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #fff, #fff8f8);
+  border: 1px solid #f2cccc;
+}
+
+.final-home-route-card strong {
+  display: block;
+  color: #9f0000;
+  margin-bottom: 6px;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.final-home-route-card span {
+  display: block;
+  color: #5c4545;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.final-home-route-card a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+  min-height: 38px;
+  padding: 8px 13px;
+  border-radius: 999px;
+  background: #d90000;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.final-home-route-note {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: #fffbea;
+  border: 1px solid #f0d36c;
+  color: #594000;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+@media (max-width: 980px) {
+  .final-home-route-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .final-home-route {
+    width: min(100% - 24px, 1120px);
+    margin-bottom: 34px;
+  }
+
+  .final-home-route-panel {
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .final-home-route-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 </style>
 </head>
 
@@ -2133,7 +2256,8 @@
 
             <div class="hero-actions">
               <a class="btn btn-primary" href="casino-list.html">カジノ一覧を見る</a>
-              <a class="btn btn-secondary" href="guide.html">初心者ガイドを見る</a>
+              <a class="btn btn-secondary" href="review.html">レビュー一覧を見る</a>
+              <a class="btn btn-secondary" href="bonus.html">ボーナス比較を見る</a>
             </div>
           </div>
 
@@ -2190,7 +2314,7 @@
           </div>
           <div class="ranking-cta">
             <a href="review-slottenkoku.html">レビューを見る</a>
-            <a class="ranking-sub" href="bonus.html">条件を確認</a>
+            <a class="ranking-sub" href="bonus.html">ボーナス条件</a>
           </div>
         </article>
         <article class="ranking-row ranking-rank-2" role="listitem">
@@ -2212,7 +2336,7 @@
           </div>
           <div class="ranking-cta">
             <a href="review-konibet.html">レビューを見る</a>
-            <a class="ranking-sub" href="bonus.html">条件を確認</a>
+            <a class="ranking-sub" href="bonus.html">ボーナス条件</a>
           </div>
         </article>
         <article class="ranking-row ranking-rank-3" role="listitem">
@@ -2234,7 +2358,7 @@
           </div>
           <div class="ranking-cta">
             <a href="review-stake.html">レビューを見る</a>
-            <a class="ranking-sub" href="bonus.html">条件を確認</a>
+            <a class="ranking-sub" href="bonus.html">ボーナス条件</a>
           </div>
         </article>
         <article class="ranking-row ranking-rank-4" role="listitem">
@@ -2256,7 +2380,7 @@
           </div>
           <div class="ranking-cta">
             <a href="review-yuugado.html">レビューを見る</a>
-            <a class="ranking-sub" href="bonus.html">条件を確認</a>
+            <a class="ranking-sub" href="bonus.html">ボーナス条件</a>
           </div>
         </article>
         <article class="ranking-row ranking-rank-5" role="listitem">
@@ -2278,7 +2402,7 @@
           </div>
           <div class="ranking-cta">
             <a href="review-verajohn.html">レビューを見る</a>
-            <a class="ranking-sub" href="bonus.html">条件を確認</a>
+            <a class="ranking-sub" href="bonus.html">ボーナス条件</a>
           </div>
         </article>
         <article class="ranking-row ranking-rank-6" role="listitem">
@@ -2300,7 +2424,7 @@
           </div>
           <div class="ranking-cta">
             <a href="review-bitcasino.html">レビューを見る</a>
-            <a class="ranking-sub" href="bonus.html">条件を確認</a>
+            <a class="ranking-sub" href="bonus.html">ボーナス条件</a>
           </div>
         </article>
         <article class="ranking-row ranking-rank-7" role="listitem">
@@ -2322,7 +2446,7 @@
           </div>
           <div class="ranking-cta">
             <a href="review-mystino.html">レビューを見る</a>
-            <a class="ranking-sub" href="bonus.html">条件を確認</a>
+            <a class="ranking-sub" href="bonus.html">ボーナス条件</a>
           </div>
         </article>
         <article class="ranking-row ranking-rank-8" role="listitem">
@@ -2344,7 +2468,7 @@
           </div>
           <div class="ranking-cta">
             <a href="review-casino-secret.html">レビューを見る</a>
-            <a class="ranking-sub" href="bonus.html">条件を確認</a>
+            <a class="ranking-sub" href="bonus.html">ボーナス条件</a>
           </div>
         </article>
         <article class="ranking-row ranking-rank-9" role="listitem">
@@ -2366,7 +2490,7 @@
           </div>
           <div class="ranking-cta">
             <a href="review-bons-casino.html">レビューを見る</a>
-            <a class="ranking-sub" href="bonus.html">条件を確認</a>
+            <a class="ranking-sub" href="bonus.html">ボーナス条件</a>
           </div>
         </article>
         <article class="ranking-row ranking-rank-10" role="listitem">
@@ -2388,7 +2512,7 @@
           </div>
           <div class="ranking-cta">
             <a href="review-bcgame.html">レビューを見る</a>
-            <a class="ranking-sub" href="bonus.html">条件を確認</a>
+            <a class="ranking-sub" href="bonus.html">ボーナス条件</a>
           </div>
         </article>
       </div>
@@ -2628,6 +2752,48 @@
             <a href="bonus.html">ボーナス比較を見る</a>
           </div>
         </div>
+      </div>
+    </section>
+
+
+
+    <section class="final-home-route" id="final-home-route">
+      <div class="final-home-route-panel">
+        <span class="final-home-route-kicker">TOP最終導線</span>
+        <h2>迷ったら、この順番で確認する</h2>
+        <p class="final-home-route-lead">
+          トップページは入口です。気になるサイトがある場合は、ランキングだけで判断せず、
+          一覧・レビュー・ボーナス・入出金・最終チェックの順番で条件を確認してください。
+        </p>
+
+        <div class="final-home-route-grid">
+          <div class="final-home-route-card">
+            <strong>1. 掲載カジノを一覧で見る</strong>
+            <span>10カジノの特徴、確認ポイント、レビュー導線を一覧で整理しています。</span>
+            <a href="casino-list.html">カジノ一覧へ</a>
+          </div>
+          <div class="final-home-route-card">
+            <strong>2. 個別レビューを見る</strong>
+            <span>気になるカジノのボーナス、入出金、本人確認、注意点を確認します。</span>
+            <a href="review.html">レビュー一覧へ</a>
+          </div>
+          <div class="final-home-route-card">
+            <strong>3. ボーナス条件を見る</strong>
+            <span>金額ではなく、賭け条件・最大出金・対象ゲーム・有効期限を確認します。</span>
+            <a href="bonus.html">ボーナス比較へ</a>
+          </div>
+          <div class="final-home-route-card">
+            <strong>4. 入出金と最終チェック</strong>
+            <span>入金前に出金条件、本人確認、手数料、公式規約を確認します。</span>
+            <a href="site-checklist.html">最終チェックへ</a>
+          </div>
+        </div>
+
+        <p class="final-home-route-note">
+          <strong>注意：</strong>
+          ランキングやおすすめ表現は、勝利・出金・利益を保証するものではありません。
+          最終判断の前に、必ず公式規約、対象地域、年齢制限、本人確認、入出金条件を確認してください。
+        </p>
       </div>
     </section>
 
@@ -2876,7 +3042,6 @@
       <div class="casino-grid">
         <article class="casino-card">
           <span class="tag tag-red">条件確認</span>
-          <div class="logo-box"><img src="slottenkoku-logo.png" alt="スロット天国 ロゴ" loading="lazy" /></div>
 <h3>スロット天国</h3>
           <p>ボーナス条件、入出金、本人確認、対象ゲームを確認。</p>
           <ul class="casino-meta">
@@ -2891,7 +3056,6 @@
 
         <article class="casino-card">
           <span class="tag">暗号資産</span>
-          <div class="logo-box"><img src="stake-logo.png" alt="Stake ロゴ" loading="lazy" /></div>
 <h3>Stake</h3>
           <p>暗号資産の通貨、ネットワーク、入出金条件を確認。</p>
           <ul class="casino-meta">
@@ -2906,7 +3070,6 @@
 
         <article class="casino-card">
           <span class="tag tag-red">日本語対応</span>
-          <div class="logo-box"><img src="yuugado-logo.png" alt="遊雅堂 ロゴ" loading="lazy" /></div>
 <h3>遊雅堂</h3>
           <p>日本語向け導線、入出金、本人確認、公式規約を確認。</p>
           <ul class="casino-meta">
@@ -3028,6 +3191,11 @@
           <strong>初心者ガイド</strong>
           <span>登録前に見る順番を確認。</span>
         </a>
+
+        <a class="link-card" href="site-checklist.html">
+          <strong>登録前チェック</strong>
+          <span>登録前・入金前・出金前の確認リスト。</span>
+        </a>
       </div>
     </section>
 
@@ -3086,13 +3254,7 @@
         </div>
       </div>
     </section>
-  
-    <section class="responsible-use-note">
-      <h2>責任ある利用のために</h2>
-      <p>このページは比較・条件確認を目的とした情報整理ページです。勝利、出金、利益を保証するものではありません。利用する場合は、居住地域の法令、年齢制限、公式規約、予算管理を必ず確認してください。</p>
-    </section>
-
-  </main>
+</main>
 
   <footer class="site-footer">
     <div class="footer-inner">
