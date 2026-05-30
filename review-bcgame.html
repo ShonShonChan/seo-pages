@@ -973,6 +973,31 @@
         font-size: 12px;
         line-height: 1.5;
       }
+
+      .research-panel-head {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 20px 18px;
+      }
+
+      .research-panel-logo {
+        width: 120px;
+        min-height: 64px;
+      }
+
+      .research-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .research-box {
+        padding: 18px;
+        border-right: none;
+      }
+
+      .research-cta {
+        padding: 18px;
+        align-items: stretch;
+      }
     }
 
     @media (max-width: 420px) {
@@ -1015,6 +1040,111 @@
         font-size: 26px;
       }
     }
+
+    /* ===== 調査レポート反映・レビュー強化ブロック ===== */
+    .research-review {
+      position: relative;
+    }
+
+    .research-panel {
+      background:
+        radial-gradient(circle at 92% 10%, rgba(255, 248, 230, 0.9), transparent 28%),
+        linear-gradient(135deg, #ffffff 0%, #fff8f6 100%);
+      border: 1px solid rgba(215, 25, 32, 0.14);
+      border-radius: 26px;
+      box-shadow: 0 14px 34px rgba(150, 22, 24, 0.08);
+      overflow: hidden;
+    }
+
+    .research-panel-head {
+      padding: 24px;
+      border-bottom: 1px solid #f2dddd;
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .research-panel-logo {
+      width: 88px;
+      min-height: 64px;
+      padding: 10px;
+      object-fit: contain;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.12);
+      box-shadow: 0 10px 20px rgba(150, 22, 24, 0.08);
+    }
+
+    .research-panel-head h3 {
+      margin: 0 0 6px;
+      color: var(--red-dark);
+      font-size: 22px;
+      line-height: 1.35;
+    }
+
+    .research-panel-head p {
+      margin: 0;
+      color: #5f5f5f;
+      font-size: 14px;
+    }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0;
+    }
+
+    .research-box {
+      padding: 22px 24px;
+      border-bottom: 1px solid #f2dddd;
+      border-right: 1px solid #f2dddd;
+    }
+
+    .research-box:nth-child(2n) {
+      border-right: none;
+    }
+
+    .research-box h4 {
+      margin: 0 0 10px;
+      color: var(--red-dark);
+      font-size: 16px;
+      line-height: 1.45;
+    }
+
+    .research-box p,
+    .research-box li {
+      color: #5f5f5f;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .research-box p {
+      margin: 0;
+    }
+
+    .research-box ul {
+      margin: 0;
+      padding-left: 1.2em;
+    }
+
+    .research-cta {
+      padding: 24px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+    }
+
+    .research-cta p {
+      margin: 0;
+      color: #5f5f5f;
+      font-size: 14px;
+      max-width: 620px;
+    }
+
   </style>
 </head>
 
@@ -1064,7 +1194,7 @@
 
           <div class="hero-side" aria-label="BC.GAMEの表示と確認案内">
             <div class="logo-panel">
-              <img src="stake-logo.png" alt="BC.GAME ロゴ" loading="lazy" />
+              <img src="bcgame-logo.png" alt="BC.GAME ロゴ" loading="lazy" />
               <h2>BC.GAME</h2>
               <p>
                 暗号資産の対応通貨、ネットワーク、プロモーション条件、入出金条件は変更される可能性があります。
@@ -1089,7 +1219,7 @@
     <section class="section" id="review-summary">
       <div class="section-head">
         <span class="label">レビュー概要</span>
-        <div class="logo-box"><img src="stake-logo.png" alt="BC.GAME ロゴ" loading="lazy" /></div>
+        <div class="logo-box"><img src="bcgame-logo.png" alt="BC.GAME ロゴ" loading="lazy" /></div>
 <h2 class="section-title">BC.GAMEで確認したい主なポイント</h2>
         <p class="section-desc">
           BC.GAMEを比較するときは、ゲーム数やプロモーションだけでなく、
@@ -1101,7 +1231,7 @@
         <article class="score-card">
           <span class="score-label">確認項目</span>
           <span class="score-value">暗号資産</span>
-          <div class="logo-box"><img src="stake-logo.png" alt="BC.GAME ロゴ" loading="lazy" /></div>
+          <div class="logo-box"><img src="bcgame-logo.png" alt="BC.GAME ロゴ" loading="lazy" /></div>
 <h3>通貨とネットワーク</h3>
           <p>
             対応通貨、入金アドレス、送金ネットワーク、最低入金額、反映時間を確認しましょう。
@@ -1131,7 +1261,7 @@
     <section class="section" id="basic-info">
       <div class="section-head">
         <span class="label">基本情報</span>
-        <div class="logo-box"><img src="stake-logo.png" alt="BC.GAME ロゴ" loading="lazy" /></div>
+        <div class="logo-box"><img src="bcgame-logo.png" alt="BC.GAME ロゴ" loading="lazy" /></div>
 <h2 class="section-title">BC.GAMEの基本確認表</h2>
         <p class="section-desc">
           具体的な条件は変更される可能性があるため、以下は確認項目として整理しています。
@@ -1210,7 +1340,7 @@
         <div class="mascot-note">
           <img src="ribejo-warning.png" alt="暗号資産入出金の注意点を案内するリベ女" />
           <div>
-            <div class="logo-box"><img src="stake-logo.png" alt="BC.GAME ロゴ" loading="lazy" /></div>
+            <div class="logo-box"><img src="bcgame-logo.png" alt="BC.GAME ロゴ" loading="lazy" /></div>
 <h3>リベ女の暗号資産メモ</h3>
             <p>
               暗号資産は、通貨が同じでもネットワークが違うと着金しない場合があります。
@@ -1224,7 +1354,7 @@
     <section class="section" id="promo-check">
       <div class="section-head">
         <span class="label">プロモーション確認</span>
-        <div class="logo-box"><img src="stake-logo.png" alt="BC.GAME ロゴ" loading="lazy" /></div>
+        <div class="logo-box"><img src="bcgame-logo.png" alt="BC.GAME ロゴ" loading="lazy" /></div>
 <h2 class="section-title">プロモーションで見落としやすい条件</h2>
         <p class="section-desc">
           プロモーションは魅力的に見える場合がありますが、対象条件や出金条件まで確認してから判断することが大切です。
@@ -1233,7 +1363,7 @@
 
       <div class="grid-2">
         <article class="point-card">
-          <div class="logo-box"><img src="stake-logo.png" alt="BC.GAME ロゴ" loading="lazy" /></div>
+          <div class="logo-box"><img src="bcgame-logo.png" alt="BC.GAME ロゴ" loading="lazy" /></div>
 <h3>参加前に確認すること</h3>
           <ul>
             <li>対象期間</li>
@@ -1262,7 +1392,7 @@
         <div class="mascot-note">
           <img src="ribejo-note.png" alt="プロモーション条件の確認を案内するリベ女" />
           <div>
-            <div class="logo-box"><img src="stake-logo.png" alt="BC.GAME ロゴ" loading="lazy" /></div>
+            <div class="logo-box"><img src="bcgame-logo.png" alt="BC.GAME ロゴ" loading="lazy" /></div>
 <h3>プロモーションは条件とセットで確認</h3>
             <p>
               プロモーションは、参加条件を満たしても特典や賞金の獲得が保証されるわけではありません。
@@ -1276,7 +1406,7 @@
     <section class="section" id="bonus-check">
       <div class="section-head">
         <span class="label">ボーナス確認</span>
-        <div class="logo-box"><img src="stake-logo.png" alt="BC.GAME ロゴ" loading="lazy" /></div>
+        <div class="logo-box"><img src="bcgame-logo.png" alt="BC.GAME ロゴ" loading="lazy" /></div>
 <h2 class="section-title">BC.GAMEのボーナス確認で見るべき項目</h2>
         <p class="section-desc">
           キャンペーンやボーナスがある場合は、表示内容だけでなく、対象者や対象地域、賭け条件、出金条件を確認しましょう。
@@ -1487,7 +1617,7 @@
 
     <section class="section" id="responsible">
       <div class="responsible-box">
-        <div class="logo-box"><img src="stake-logo.png" alt="BC.GAME ロゴ" loading="lazy" /></div>
+        <div class="logo-box"><img src="bcgame-logo.png" alt="BC.GAME ロゴ" loading="lazy" /></div>
 <h2>責任ある利用について</h2>
         <p>
           オンラインカジノを利用する場合は、年齢制限、対象地域、関連法規、公式規約を必ず確認してください。
@@ -1502,7 +1632,7 @@
     <section class="section" id="faq">
       <div class="section-head">
         <span class="label">FAQ</span>
-        <div class="logo-box"><img src="stake-logo.png" alt="BC.GAME ロゴ" loading="lazy" /></div>
+        <div class="logo-box"><img src="bcgame-logo.png" alt="BC.GAME ロゴ" loading="lazy" /></div>
 <h2 class="section-title">BC.GAMEレビューでよくある確認事項</h2>
         <p class="section-desc">
           利用前に迷いやすい項目を、確認ポイントとして整理しています。
@@ -1511,7 +1641,7 @@
 
       <div class="faq-list">
         <article class="faq-item">
-          <div class="logo-box"><img src="stake-logo.png" alt="BC.GAME ロゴ" loading="lazy" /></div>
+          <div class="logo-box"><img src="bcgame-logo.png" alt="BC.GAME ロゴ" loading="lazy" /></div>
 <h3>Q. BC.GAMEでは何を重点的に確認すればよいですか？</h3>
           <p>
             暗号資産の対応通貨、送金ネットワーク、入出金条件、本人確認、プロモーション条件、対象地域、公式規約を確認しましょう。
@@ -1553,9 +1683,105 @@
       </div>
     </section>
 
-    <section class="cta">
+    
+    <section class="section research-review" id="research-review">
+      <div class="section-head">
+        <span class="label">調査レポート反映</span>
+        <h2 class="section-title">BC.GAMEのレビュー素材まとめ</h2>
+        <p class="section-desc">
+          CTAにつなげるために、運営情報、ボーナス、入出金、サポート、メリットと注意点を
+          利用前の確認項目として整理しました。内容は変更される可能性があるため、最終確認は公式規約で行ってください。
+        </p>
+      </div>
+
+      <div class="research-panel">
+        <div class="research-panel-head">
+          <img class="research-panel-logo" src="bcgame-logo.png" alt="BC.GAME ロゴ" loading="lazy" />
+          <div>
+            <h3>BC.GAMEはどんな人向けに確認すべき？</h3>
+            <p>暗号資産入出金と高額プロモーション条件を確認したい人向けのレビュー候補</p>
+          </div>
+        </div>
+
+        <div class="research-grid">
+          <div class="research-box">
+            <h4>運営会社・ライセンス確認</h4>
+            <p>運営情報：公式サイト・規約で最新情報を確認<br />ライセンス：公式表記・利用規約で確認</p>
+          </div>
+
+          <div class="research-box">
+            <h4>主な強み</h4>
+            <ul>
+              <li>暗号資産の通貨・ネットワーク確認を整理しやすい</li>
+              <li>プロモーション条件と出金条件を分けて確認しやすい</li>
+              <li>ゲーム数やキャンペーン表示だけでなく、規約確認へ誘導しやすい</li>
+            </ul>
+          </div>
+
+          <div class="research-box">
+            <h4>ボーナス確認</h4>
+            <p>ウェルカム系、フリースピン、期間限定プロモーションなどは、対象者・賭け条件・最大出金・参加条件を公式規約で確認する前提で掲載します。</p>
+          </div>
+
+          <div class="research-box">
+            <h4>入出金・サポート確認</h4>
+            <p>暗号資産入出金では、対応通貨、ネットワーク、最低入出金額、手数料、反映時間、送金先アドレスを確認します。</p>
+            <p>日本語対応やサポート方法は変更される可能性があるため、登録前に公式ページで確認します。</p>
+          </div>
+
+          <div class="research-box">
+            <h4>メリット</h4>
+            <ul>
+              <li>暗号資産入出金を重視する読者に訴求しやすい</li>
+              <li>高額プロモーション表示を条件確認へつなげやすい</li>
+              <li>入金前チェックリストとの相性が良い</li>
+            </ul>
+          </div>
+
+          <div class="research-box">
+            <h4>注意点</h4>
+            <ul>
+              <li>高額表示だけで判断せず、賭け条件・最大出金・対象ゲームを確認する必要があります</li>
+              <li>暗号資産の送金ミスやネットワーク違いに注意が必要です</li>
+              <li>本人確認や地域制限の条件は変更される可能性があります</li>
+            </ul>
+          </div>
+
+          <div class="research-box">
+            <h4>向いている人</h4>
+            <ul>
+              <li>暗号資産での入出金を確認したい人</li>
+              <li>プロモーションの条件を細かく確認したい人</li>
+              <li>通貨・ネットワーク・出金条件を比較して選びたい人</li>
+            </ul>
+          </div>
+
+          <div class="research-box">
+            <h4>登録前チェック</h4>
+            <ul>
+              <li>公式規約と対象地域を確認する</li>
+              <li>ボーナスの賭け条件と最大出金を確認する</li>
+              <li>本人確認と出金条件を確認する</li>
+              <li>入金前に決済方法ごとの制限を確認する</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="research-cta">
+          <p>
+            ボーナスやキャンペーンの表示だけで判断せず、入金前に条件・本人確認・出金条件まで確認しましょう。
+          </p>
+          <div class="cta-actions">
+            <a class="btn btn-primary" href="#crypto-check">暗号資産の確認ポイントへ</a>
+            <a class="btn btn-secondary" href="bonus.html">ボーナス比較へ</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="cta">
       <div class="cta-box">
-        <div class="logo-box"><img src="stake-logo.png" alt="BC.GAME ロゴ" loading="lazy" /></div>
+        <div class="logo-box"><img src="bcgame-logo.png" alt="BC.GAME ロゴ" loading="lazy" /></div>
 <h2>BC.GAMEの条件を確認したら、他サイトとも比較しましょう。</h2>
         <p>
           1つのレビューだけで判断せず、カジノ一覧、ボーナス比較、入出金ガイドもあわせて確認すると、
