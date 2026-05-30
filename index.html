@@ -2429,6 +2429,90 @@
   }
 }
 
+
+/* ===== 左右ボーナスCTAバナー枠：ロング縦積み版 ===== */
+.bonus-side-stack-left,
+.bonus-side-stack-right {
+  max-height: calc(100vh - 118px);
+  overflow: hidden;
+}
+
+.bonus-side-banner-stack {
+  gap: 12px;
+}
+
+.bonus-side-banner.compact {
+  background:
+    radial-gradient(circle at 82% 10%, rgba(255, 232, 140, 0.28), transparent 34%),
+    linear-gradient(160deg, #c9101a 0%, #8a080f 70%, #5d0508 100%);
+}
+
+.bonus-side-banner.compact .bonus-side-banner-inner {
+  padding: 11px;
+}
+
+.bonus-side-banner.compact .bonus-side-label {
+  font-size: 10.5px;
+  padding: 3px 7px;
+  margin-bottom: 8px;
+}
+
+.bonus-side-banner.compact .bonus-side-blank {
+  aspect-ratio: 1 / .58;
+  min-height: 54px;
+  margin-bottom: 8px;
+  font-size: 10.5px;
+  border-radius: 13px;
+}
+
+.bonus-side-banner.compact h2 {
+  font-size: 14px;
+  line-height: 1.28;
+  margin-bottom: 5px;
+}
+
+.bonus-side-banner.compact p {
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.bonus-side-banner.compact .bonus-side-cta {
+  min-height: 31px;
+  font-size: 11px;
+  margin-top: 8px;
+  padding: 6px 8px;
+}
+
+.bonus-side-banner.compact .bonus-side-sub {
+  display: none;
+}
+
+@media (max-height: 980px) {
+  .bonus-side-banner.compact:nth-child(n+6) {
+    display: none;
+  }
+}
+
+@media (max-height: 860px) {
+  .bonus-side-banner.compact:nth-child(n+5) {
+    display: none;
+  }
+}
+
+@media (max-height: 760px) {
+  .bonus-side-banner.compact:nth-child(n+4) {
+    display: none;
+  }
+}
+
+@media (max-width: 1460px) {
+  .bonus-side-stack-left,
+  .bonus-side-stack-right {
+    max-height: none;
+    overflow: visible;
+  }
+}
+
 </style>
 </head>
 
@@ -2448,23 +2532,53 @@
           </div>
         </div>
 
-        <div class="bonus-side-banner mini">
+        <div class="bonus-side-banner compact">
           <div class="bonus-side-banner-inner">
             <span class="bonus-side-label">入金特典</span>
             <div class="bonus-side-blank">画像枠</div>
             <h2>入金ボーナス</h2>
-            <p>対象カジノの特典をまとめて確認。</p>
+            <p>対象カジノの特典を確認。</p>
             <a class="bonus-side-cta" href="bonus-best.html">特典を見る</a>
           </div>
         </div>
 
-        <div class="bonus-side-banner mini">
+        <div class="bonus-side-banner compact">
           <div class="bonus-side-banner-inner">
             <span class="bonus-side-label">FS特典</span>
             <div class="bonus-side-blank">画像枠</div>
             <h2>フリースピン</h2>
-            <p>対象ゲームや受け取り条件を確認。</p>
+            <p>対象ゲームと条件を確認。</p>
             <a class="bonus-side-cta" href="bonus.html">FSを見る</a>
+          </div>
+        </div>
+
+        <div class="bonus-side-banner compact">
+          <div class="bonus-side-banner-inner">
+            <span class="bonus-side-label">入金不要</span>
+            <div class="bonus-side-blank">画像枠</div>
+            <h2>入金不要系</h2>
+            <p>対象条件と出金条件を確認。</p>
+            <a class="bonus-side-cta" href="bonus-best.html">確認する</a>
+          </div>
+        </div>
+
+        <div class="bonus-side-banner compact">
+          <div class="bonus-side-banner-inner">
+            <span class="bonus-side-label">リベート</span>
+            <div class="bonus-side-blank">画像枠</div>
+            <h2>還元特典</h2>
+            <p>リベート・還元系を確認。</p>
+            <a class="bonus-side-cta" href="bonus.html">見る</a>
+          </div>
+        </div>
+
+        <div class="bonus-side-banner compact">
+          <div class="bonus-side-banner-inner">
+            <span class="bonus-side-label">限定プロモ</span>
+            <div class="bonus-side-blank">画像枠</div>
+            <h2>限定特典</h2>
+            <p>期間限定プロモを確認。</p>
+            <a class="bonus-side-cta" href="bonus-best.html">確認</a>
           </div>
         </div>
       </div>
@@ -2483,28 +2597,59 @@
           </div>
         </div>
 
-        <div class="bonus-side-banner mini">
+        <div class="bonus-side-banner compact">
           <div class="bonus-side-banner-inner">
             <span class="bonus-side-label">1位候補</span>
             <div class="bonus-side-blank">画像枠</div>
             <h2>スロット天国</h2>
-            <p>初回特典・限定プロモを確認。</p>
+            <p>初回特典・限定プロモ。</p>
             <a class="bonus-side-cta" href="review-slottenkoku.html">特典を見る</a>
           </div>
         </div>
 
-        <div class="bonus-side-banner mini">
+        <div class="bonus-side-banner compact">
           <div class="bonus-side-banner-inner">
             <span class="bonus-side-label">初心者向け</span>
             <div class="bonus-side-blank">画像枠</div>
-            <h2>登録前チェック</h2>
-            <p>ボーナス前に確認する項目を整理。</p>
-            <a class="bonus-side-cta" href="site-checklist.html">確認する</a>
+            <h2>ミスティーノ</h2>
+            <p>初回特典とFSを確認。</p>
+            <a class="bonus-side-cta" href="review-mystino.html">見る</a>
+          </div>
+        </div>
+
+        <div class="bonus-side-banner compact">
+          <div class="bonus-side-banner-inner">
+            <span class="bonus-side-label">定番候補</span>
+            <div class="bonus-side-blank">画像枠</div>
+            <h2>ベラジョン</h2>
+            <p>ウェルカム特典を確認。</p>
+            <a class="bonus-side-cta" href="review-verajohn.html">見る</a>
+          </div>
+        </div>
+
+        <div class="bonus-side-banner compact">
+          <div class="bonus-side-banner-inner">
+            <span class="bonus-side-label">暗号資産</span>
+            <div class="bonus-side-blank">画像枠</div>
+            <h2>仮想通貨特典</h2>
+            <p>暗号資産ボーナスを確認。</p>
+            <a class="bonus-side-cta" href="payments.html">確認</a>
+          </div>
+        </div>
+
+        <div class="bonus-side-banner compact">
+          <div class="bonus-side-banner-inner">
+            <span class="bonus-side-label">登録前</span>
+            <div class="bonus-side-blank">画像枠</div>
+            <h2>最終チェック</h2>
+            <p>ボーナス前に確認。</p>
+            <a class="bonus-side-cta" href="site-checklist.html">確認</a>
           </div>
         </div>
       </div>
     </div>
   </aside>
+
 
 
   <header class="site-header">
@@ -2642,6 +2787,19 @@
           <strong>スロット天国の特典</strong>
           <span>初回特典・限定プロモを登録前に確認。</span>
           <a href="review-slottenkoku.html">特典を見る</a>
+        </div>
+
+        <div class="bonus-mobile-banner">
+          <div class="bonus-mobile-blank">バナー画像 差し替え枠</div>
+          <strong>キャッシュバック特典</strong>
+          <span>還元系・リベート系の特典内容を確認。</span>
+          <a href="bonus.html">還元特典を見る</a>
+        </div>
+        <div class="bonus-mobile-banner">
+          <div class="bonus-mobile-blank">バナー画像 差し替え枠</div>
+          <strong>登録前の最終チェック</strong>
+          <span>ボーナス前に本人確認・出金条件を確認。</span>
+          <a href="site-checklist.html">確認する</a>
         </div>
       </div>
     </section>
