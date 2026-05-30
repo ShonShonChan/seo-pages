@@ -2159,10 +2159,228 @@
   }
 }
 
+
+/* ===== 左右ボーナスCTAバナー枠 ===== */
+.bonus-side-rails {
+  pointer-events: none;
+  position: fixed;
+  inset: 96px 0 auto 0;
+  z-index: 35;
+  display: block;
+}
+
+.bonus-side-banner {
+  pointer-events: auto;
+  position: fixed;
+  top: 112px;
+  width: 148px;
+  border-radius: 22px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 80% 12%, rgba(255, 232, 140, 0.38), transparent 30%),
+    linear-gradient(160deg, #d71920 0%, #9f1017 62%, #6d070c 100%);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  box-shadow: 0 18px 42px rgba(120, 20, 20, 0.24);
+}
+
+.bonus-side-banner.left {
+  left: max(14px, calc((100vw - 1460px) / 2));
+}
+
+.bonus-side-banner.right {
+  right: max(14px, calc((100vw - 1460px) / 2));
+}
+
+.bonus-side-banner-inner {
+  padding: 14px;
+}
+
+.bonus-side-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #9f1017;
+  font-size: 11px;
+  line-height: 1.2;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.bonus-side-blank {
+  width: 100%;
+  aspect-ratio: 1 / 1.05;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08));
+  border: 1.5px dashed rgba(255, 255, 255, 0.58);
+  color: rgba(255, 255, 255, 0.86);
+  text-align: center;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.45;
+}
+
+.bonus-side-banner h2 {
+  margin: 0 0 7px;
+  font-size: 18px;
+  line-height: 1.28;
+  letter-spacing: -0.04em;
+}
+
+.bonus-side-banner p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.bonus-side-cta {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 38px;
+  margin-top: 12px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: #fff;
+  color: #9f1017;
+  font-size: 12px;
+  font-weight: 900;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(60, 0, 0, 0.18);
+}
+
+.bonus-side-sub {
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.bonus-mobile-banners {
+  display: none;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 18px 24px;
+}
+
+.bonus-mobile-banner-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.bonus-mobile-banner {
+  border-radius: 20px;
+  padding: 16px;
+  background:
+    radial-gradient(circle at 88% 12%, rgba(255, 232, 140, 0.34), transparent 34%),
+    linear-gradient(150deg, #d71920 0%, #9f1017 72%);
+  color: #fff;
+  box-shadow: 0 14px 32px rgba(150, 22, 24, 0.18);
+}
+
+.bonus-mobile-blank {
+  min-height: 92px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  margin-bottom: 12px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1.5px dashed rgba(255, 255, 255, 0.55);
+  font-size: 12px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.bonus-mobile-banner strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.bonus-mobile-banner span {
+  display: block;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.bonus-mobile-banner a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 40px;
+  margin-top: 12px;
+  border-radius: 999px;
+  background: #fff;
+  color: #9f1017;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+@media (max-width: 1460px) {
+  .bonus-side-rails {
+    display: none;
+  }
+
+  .bonus-mobile-banners {
+    display: block;
+  }
+}
+
+@media (max-width: 640px) {
+  .bonus-mobile-banners {
+    padding: 0 16px 22px;
+  }
+
+  .bonus-mobile-banner-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 </style>
 </head>
 
 <body>
+
+  <aside class="bonus-side-rails" aria-label="ボーナスCTAサイドバナー">
+    <div class="bonus-side-banner left">
+      <div class="bonus-side-banner-inner">
+        <span class="bonus-side-label">初回ボーナス</span>
+        <div class="bonus-side-blank">バナー画像<br />差し替え枠</div>
+        <h2>初回特典をチェック</h2>
+        <p>ウェルカム特典・入金ボーナスを登録前に確認。</p>
+        <a class="bonus-side-cta" href="bonus.html">ボーナスを見る</a>
+        <a class="bonus-side-sub" href="bonus-guide.html">条件の見方も確認</a>
+      </div>
+    </div>
+
+    <div class="bonus-side-banner right">
+      <div class="bonus-side-banner-inner">
+        <span class="bonus-side-label">おすすめ特典</span>
+        <div class="bonus-side-blank">バナー画像<br />差し替え枠</div>
+        <h2>特典まとめを確認</h2>
+        <p>入金ボーナス・FS・限定プロモをまとめてチェック。</p>
+        <a class="bonus-side-cta" href="bonus-best.html">特典を確認</a>
+        <a class="bonus-side-sub" href="review-slottenkoku.html">1位レビューへ</a>
+      </div>
+    </div>
+  </aside>
+
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="index.html" aria-label="リベンジカジノ比較ガイド トップへ">
@@ -2288,6 +2506,24 @@
         </div>
       </div>
     </section>
+
+    <section class="bonus-mobile-banners" aria-label="スマホ用ボーナスCTAバナー">
+      <div class="bonus-mobile-banner-grid">
+        <div class="bonus-mobile-banner">
+          <div class="bonus-mobile-blank">バナー画像 差し替え枠</div>
+          <strong>初回ボーナスをチェック</strong>
+          <span>ウェルカム特典・入金ボーナスを登録前に確認。</span>
+          <a href="bonus.html">ボーナスを見る</a>
+        </div>
+        <div class="bonus-mobile-banner">
+          <div class="bonus-mobile-blank">バナー画像 差し替え枠</div>
+          <strong>おすすめ特典まとめ</strong>
+          <span>入金ボーナス・FS・限定プロモをまとめて確認。</span>
+          <a href="bonus-best.html">特典を確認</a>
+        </div>
+      </div>
+    </section>
+
     <section class="agent-ranking-2026" id="recommended-ranking-2026">
       <div class="ranking-head">
         <span class="ranking-kicker">2026年版・条件確認重視</span>
