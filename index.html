@@ -1823,6 +1823,219 @@
   }
 }
 
+
+/* FV 2-column pickup redesign */
+.fv-enhanced-grid {
+  grid-template-columns: minmax(260px, 0.82fr) minmax(360px, 1.08fr) minmax(270px, 0.88fr);
+  gap: 24px;
+  align-items: center;
+}
+
+.fv-pickup-panel {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 12px;
+  align-self: stretch;
+  padding: 20px;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(215, 25, 32, 0.14);
+  box-shadow: 0 16px 34px rgba(150, 22, 24, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.fv-pickup-head {
+  margin-bottom: 2px;
+}
+
+.fv-pickup-kicker {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--red-soft);
+  border: 1px solid rgba(215, 25, 32, 0.16);
+  color: var(--red-dark);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.fv-pickup-panel h2 {
+  margin: 10px 0 4px;
+  color: var(--red-dark);
+  font-size: clamp(18px, 2.1vw, 24px);
+  line-height: 1.35;
+  letter-spacing: -0.03em;
+}
+
+.fv-pickup-lead {
+  margin: 0;
+  color: #5d4545;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.fv-pickup-list {
+  display: grid;
+  gap: 10px;
+}
+
+.fv-pickup-card {
+  display: grid;
+  grid-template-columns: 78px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid #f2cccc;
+  box-shadow: 0 8px 20px rgba(150, 22, 24, 0.07);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fv-pickup-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(150, 22, 24, 0.12);
+}
+
+.fv-pickup-logo {
+  width: 78px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: #fffafa;
+  border: 1px solid #f4d7d7;
+  padding: 8px;
+  overflow: hidden;
+}
+
+.fv-pickup-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.fv-pickup-name {
+  display: block;
+  color: #1f1f1f;
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1.35;
+  margin-bottom: 3px;
+}
+
+.fv-pickup-desc {
+  margin: 0;
+  color: #5c4545;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.fv-pickup-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 7px 0 0;
+}
+
+.fv-pickup-tags span {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: #fff3f3;
+  border: 1px solid #f2cccc;
+  color: #9f0000;
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.fv-pickup-cta {
+  grid-column: 1 / -1;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 34px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--red), var(--red-dark));
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+  box-shadow: 0 10px 18px rgba(215, 25, 32, 0.16);
+}
+
+.hero-copy-panel {
+  position: relative;
+  z-index: 2;
+}
+
+.fv-enhanced-grid .hero-side {
+  min-height: 360px;
+}
+
+@media (max-width: 1100px) {
+  .fv-enhanced-grid {
+    grid-template-columns: 1fr 0.9fr;
+  }
+
+  .fv-pickup-panel {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .fv-pickup-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .fv-enhanced-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy-panel {
+    order: 1;
+  }
+
+  .fv-pickup-panel {
+    order: 2;
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .fv-enhanced-grid .hero-side {
+    order: 3;
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 640px) {
+  .fv-pickup-panel {
+    padding: 16px;
+    border-radius: 20px;
+  }
+
+  .fv-pickup-list {
+    grid-template-columns: 1fr;
+  }
+
+  .fv-pickup-card {
+    grid-template-columns: 72px 1fr;
+    padding: 11px;
+  }
+
+  .fv-pickup-logo {
+    width: 72px;
+    height: 54px;
+  }
+}
+
 </style>
 </head>
 
@@ -1848,8 +2061,68 @@
   <main>
     <section class="hero">
       <div class="hero-box">
-        <div class="hero-grid">
-          <div>
+        <div class="hero-grid fv-enhanced-grid">
+          <div class="fv-pickup-panel" aria-label="注目カジノ比較カード">
+            <div class="fv-pickup-head">
+              <span class="fv-pickup-kicker">注目比較・条件確認</span>
+              <h2>まず見たい候補をFVで比較</h2>
+              <p class="fv-pickup-lead">
+                ボーナス額だけでなく、入出金・本人確認・公式規約まで確認するための入口です。
+              </p>
+            </div>
+
+            <div class="fv-pickup-list">
+              <article class="fv-pickup-card">
+                <div class="fv-pickup-logo">
+                  <img src="slottenkoku-logo.png" alt="スロット天国 ロゴ" loading="lazy" />
+                </div>
+                <div>
+                  <strong class="fv-pickup-name">スロット天国</strong>
+                  <p class="fv-pickup-desc">初回特典・限定プロモの条件確認向け。</p>
+                  <div class="fv-pickup-tags"><span>1位候補</span><span>条件確認</span></div>
+                </div>
+                <a class="fv-pickup-cta" href="review-slottenkoku.html">条件を確認する</a>
+              </article>
+
+              <article class="fv-pickup-card">
+                <div class="fv-pickup-logo">
+                  <img src="konibet-logo.png" alt="コニベット ロゴ" loading="lazy" />
+                </div>
+                <div>
+                  <strong class="fv-pickup-name">コニベット</strong>
+                  <p class="fv-pickup-desc">キャンペーン条件や入出金を比較。</p>
+                  <div class="fv-pickup-tags"><span>比較候補</span><span>ボーナス</span></div>
+                </div>
+                <a class="fv-pickup-cta" href="review-konibet.html">条件を確認する</a>
+              </article>
+
+              <article class="fv-pickup-card">
+                <div class="fv-pickup-logo">
+                  <img src="stake-logo.png" alt="Stake ロゴ" loading="lazy" />
+                </div>
+                <div>
+                  <strong class="fv-pickup-name">Stake</strong>
+                  <p class="fv-pickup-desc">暗号資産入出金・ネットワーク確認向け。</p>
+                  <div class="fv-pickup-tags"><span>暗号資産</span><span>入出金</span></div>
+                </div>
+                <a class="fv-pickup-cta" href="review-stake.html">条件を確認する</a>
+              </article>
+
+              <article class="fv-pickup-card">
+                <div class="fv-pickup-logo">
+                  <img src="yuugado-logo.png" alt="遊雅堂 ロゴ" loading="lazy" />
+                </div>
+                <div>
+                  <strong class="fv-pickup-name">遊雅堂</strong>
+                  <p class="fv-pickup-desc">日本語対応・本人確認・規約確認向け。</p>
+                  <div class="fv-pickup-tags"><span>日本語対応</span><span>初心者</span></div>
+                </div>
+                <a class="fv-pickup-cta" href="review-yuugado.html">条件を確認する</a>
+              </article>
+            </div>
+          </div>
+
+          <div class="hero-copy-panel">
             <span class="eyebrow">条件確認・比較・安全性確認を重視</span>
             <h1>失敗を学びに変える。<br class="hero-title-break">次は条件を見て選ぶ。</h1>
             <p class="hero-lead">
