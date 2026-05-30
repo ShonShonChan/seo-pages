@@ -1048,7 +1048,195 @@
         font-size: 26px;
       }
     }
-  </style>
+  
+/* Research-based review upgrade block */
+.research-upgrade {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 24px 18px 18px;
+}
+.research-panel {
+  background: #fff;
+  border: 1px solid rgba(215,25,32,.14);
+  border-radius: 24px;
+  box-shadow: 0 16px 36px rgba(150,22,24,.08);
+  padding: 24px;
+}
+.research-head {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.research-logo {
+  min-height: 92px;
+  border-radius: 18px;
+  border: 1px solid #f1d1d1;
+  background: #fffafa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+}
+.research-logo img {
+  max-width: 100%;
+  max-height: 64px;
+  object-fit: contain;
+}
+.research-kicker {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--gold-soft);
+  border: 1px solid rgba(214,166,66,.34);
+  color: #8b6114;
+  font-size: 12px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+.research-panel h2 {
+  margin: 0;
+  color: var(--red-dark);
+  font-size: clamp(23px, 2.8vw, 34px);
+  line-height: 1.35;
+  letter-spacing: -0.03em;
+}
+.research-lead {
+  margin: 8px 0 0;
+  color: #5c4545;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.research-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 12px;
+  margin: 18px 0;
+}
+.research-fact {
+  border: 1px solid #f2cccc;
+  background: linear-gradient(180deg,#fff,#fff8f8);
+  border-radius: 16px;
+  padding: 14px;
+}
+.research-fact b {
+  display: block;
+  color: var(--red-dark);
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+.research-fact span {
+  display: block;
+  color: #5c4545;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 14px;
+}
+.research-card {
+  border: 1px solid #f2cccc;
+  background: #fffafa;
+  border-radius: 18px;
+  padding: 16px;
+}
+.research-card h3 {
+  margin: 0 0 8px;
+  color: var(--red-dark);
+  font-size: 17px;
+  line-height: 1.45;
+}
+.research-card p {
+  margin: 0;
+  color: #5c4545;
+  font-size: 14px;
+  line-height: 1.75;
+}
+.research-card ul {
+  margin: 8px 0 0;
+  padding-left: 1.2em;
+  color: #5c4545;
+  font-size: 14px;
+  line-height: 1.75;
+}
+.research-cta {
+  margin-top: 16px;
+  padding: 18px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--red), var(--red-dark));
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.research-cta p {
+  margin: 0;
+  color: rgba(255,255,255,.9);
+  font-size: 14px;
+  line-height: 1.75;
+}
+.research-cta a {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--red-dark);
+  font-weight: 900;
+}
+.research-note {
+  margin: 14px 0 0;
+  padding: 13px 15px;
+  border-radius: 14px;
+  background: #fffbea;
+  border: 1px solid #f0d36c;
+  color: #594000;
+  font-size: 13px;
+  line-height: 1.8;
+}
+@media (max-width: 900px) {
+  .research-facts {
+    grid-template-columns: 1fr;
+  }
+  .research-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .research-upgrade {
+    padding: 18px 12px;
+  }
+  .research-panel {
+    padding: 18px;
+    border-radius: 18px;
+  }
+  .research-head {
+    grid-template-columns: 1fr;
+  }
+  .research-logo {
+    justify-content: flex-start;
+  }
+  .research-logo img {
+    max-width: 190px;
+  }
+  .research-cta {
+    display: block;
+  }
+  .research-cta a {
+    width: 100%;
+    margin-top: 12px;
+  }
+}
+
+</style>
 </head>
 
 <body>
@@ -1118,6 +1306,99 @@
         利用前には必ず公式情報を確認し、不明点がある場合は利用を急がないでください。
       </div>
     </section>
+
+    <section class="research-upgrade" id="research-review-upgrade">
+      <div class="research-panel">
+        <div class="research-head">
+          <div class="research-logo">
+            <img src="verajohn-logo.jpg" alt="ベラジョン ロゴ" loading="lazy" />
+          </div>
+          <div>
+            <span class="research-kicker">調査レポート反映・レビュー強化</span>
+            <h2>ベラジョンの特徴とCTA前に確認したいポイント</h2>
+            <p class="research-lead">
+              日本市場での知名度、豊富なゲーム数、UIの使いやすさ、新規向けボーナスを確認したいユーザー向けです。
+              ここでは、レビュー記事の判断材料として、運営会社、ライセンス、ボーナス、入出金、サポート、メリット・注意点を整理しています。
+            </p>
+          </div>
+        </div>
+
+        <div class="research-facts" aria-label="ベラジョンの基本情報">
+          <div class="research-fact">
+            <b>運営会社</b>
+            <span>Breckenridge Curaçao B.V.</span>
+          </div>
+          <div class="research-fact">
+            <b>ライセンス</b>
+            <span>キュラソー（Curacao）/ ライセンス番号: OGL/2024/175/0182</span>
+          </div>
+          <div class="research-fact">
+            <b>評価・位置づけ</b>
+            <span>4.5/5 - 日本市場で人気の老舗カジノとして整理</span>
+          </div>
+        </div>
+
+        <div class="research-grid">
+          <article class="research-card">
+            <h3>主な強み</h3>
+            <ul><li>4000種類以上のゲーム数に関する情報あり</li>
+<li>NetEntやBetsoftなど有名プロバイダーと提携</li>
+<li>トーナメントや抽選キャンペーンを頻繁に開催する情報あり</li></ul>
+          </article>
+          <article class="research-card">
+            <h3>ボーナス確認</h3>
+            <p>初回から3回目までの入金ボーナスや、入金不要フリースピンに関する情報があります。</p>
+          </article>
+          <article class="research-card">
+            <h3>入出金方法</h3>
+            <p>Visa、Mastercard、JCB、Amex、銀行振込、Payz、Vega Wallet、MuchBetter、Jeton、Bitcoin、Ethereum、Litecoin、Ripple、Bitcoin Cash、Cardano</p>
+          </article>
+          <article class="research-card">
+            <h3>サポート・モバイル対応</h3>
+            <p>日本語完全対応、ライブチャットとメールサポート。スマホブラウザ対応とされています。</p>
+          </article>
+          <article class="research-card">
+            <h3>メリット</h3>
+            <ul><li>知名度と操作性を重視して比較しやすい</li>
+<li>ゲーム数とプロモーションの種類を確認しやすい</li>
+<li>日本語サポートの情報がある</li></ul>
+          </article>
+          <article class="research-card">
+            <h3>注意点</h3>
+            <ul><li>過去の日本向け事業に関する報道は確認が必要</li>
+<li>ライブチャット時間は24時間ではない情報あり</li>
+<li>ボーナスの上限や賭け条件は公式確認</li></ul>
+          </article>
+          <article class="research-card">
+            <h3>向いている人</h3>
+            <ul><li>老舗カジノを比較候補に入れたい人</li>
+<li>ゲーム数や操作性を重視する人</li>
+<li>日本語対応を確認したい人</li></ul>
+          </article>
+          <article class="research-card">
+            <h3>登録前チェック</h3>
+            <ul>
+              <li>最新のボーナス条件、賭け条件、最大出金を確認</li>
+              <li>入金方法と出金方法が同じ条件で使えるか確認</li>
+              <li>本人確認、対象地域、公式規約を確認</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="research-cta">
+          <p>
+            ベラジョンが気になる場合は、ボーナス額だけでなく、賭け条件・入出金・本人確認・公式規約まで確認してから比較しましょう。
+          </p>
+          <a href="#basic-info">ベラジョンの条件を確認する</a>
+        </div>
+
+        <p class="research-note">
+          <strong>注意：</strong>このブロックは添付の市場調査レポートをもとにしたレビュー素材です。
+          ボーナス内容、入出金条件、サポート時間、ライセンス表記は変更される可能性があるため、最終確認は必ず公式サイトで行ってください。
+        </p>
+      </div>
+    </section>
+
 
     <section class="section" id="review-summary">
       <div class="section-head">
