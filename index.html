@@ -2818,6 +2818,88 @@ body {
   }
 }
 
+
+/* ===== CTA導線最終整理：サイド画像主役化 ===== */
+.bonus-side-card {
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+
+.bonus-side-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 48px rgba(120, 20, 20, 0.24);
+  filter: saturate(1.04);
+}
+
+.bonus-side-card-inner {
+  padding: 9px;
+}
+
+.bonus-side-image-slot {
+  margin-bottom: 8px;
+}
+
+.bonus-side-body {
+  padding: 0 2px 2px;
+}
+
+.bonus-side-label {
+  font-size: 10px;
+  padding: 3px 8px;
+  margin-bottom: 4px;
+}
+
+.bonus-side-card h2 {
+  font-size: 16px;
+  margin-bottom: 2px;
+}
+
+.bonus-side-card.featured h2 {
+  font-size: 17px;
+}
+
+.bonus-side-card p {
+  font-size: 11px;
+  line-height: 1.38;
+}
+
+.bonus-side-button {
+  min-height: 34px;
+  margin-top: 7px;
+  font-size: 12px;
+  letter-spacing: .02em;
+}
+
+.bonus-side-button::after {
+  content: " →";
+  font-weight: 900;
+}
+
+/* 中央FVと左右CTAの境界を少し上品に分ける */
+.hero {
+  position: relative;
+  z-index: 2;
+}
+
+.bonus-side-rails {
+  z-index: 1;
+}
+
+/* FVの視線誘導：ボーナスCTAを下段でも見つけやすく */
+.hero .btn,
+.hero a[class*="btn"] {
+  white-space: nowrap;
+}
+
+/* スマホではサイド画像の実物感を残しつつ縦に見やすく */
+.bonus-mobile-banner {
+  overflow: hidden;
+}
+
+.bonus-mobile-blank.has-image img {
+  object-fit: contain;
+  background: #fff;
+}
+
 </style>
 </head>
 
@@ -2832,8 +2914,8 @@ body {
             <div class="bonus-side-body">
               <span class="bonus-side-label">初回特典</span>
               <h2>登録で$20</h2>
-              <p>登録特典・限定プロモを確認。</p>
-              <a class="bonus-side-button" href="review-slottenkoku.html">特典を見る</a>
+              <p>登録前に特典を確認。</p>
+              <a class="bonus-side-button" href="review-slottenkoku.html">ボーナスを見る</a>
             </div>
           </div>
         </div>
@@ -2843,8 +2925,8 @@ body {
             <div class="bonus-side-body">
               <span class="bonus-side-label">入金特典</span>
               <h2>コニベット</h2>
-              <p>限定66ドル特典を確認。</p>
-              <a class="bonus-side-button" href="review-konibet.html">特典を見る</a>
+              <p>限定特典を確認。</p>
+              <a class="bonus-side-button" href="review-konibet.html">ボーナスを見る</a>
             </div>
           </div>
         </div>
@@ -2854,8 +2936,8 @@ body {
             <div class="bonus-side-body">
               <span class="bonus-side-label">人気候補</span>
               <h2>Roobet</h2>
-              <p>最新プロモ・抽選系特典を確認。</p>
-              <a class="bonus-side-button" href="#">特典を見る</a>
+              <p>最新特典を確認。</p>
+              <a class="bonus-side-button" href="bonus-best.html">ボーナスを見る</a>
             </div>
           </div>
         </div>
@@ -2866,7 +2948,7 @@ body {
               <span class="bonus-side-label">人気候補</span>
               <h2>BitStarz</h2>
               <p>100%ボーナス＋180FSを確認。</p>
-              <a class="bonus-side-button" href="#">特典を見る</a>
+              <a class="bonus-side-button" href="bonus-best.html">ボーナスを見る</a>
             </div>
           </div>
         </div>
@@ -2876,8 +2958,8 @@ body {
             <div class="bonus-side-body">
               <span class="bonus-side-label">クリプト</span>
               <h2>7Bit Casino</h2>
-              <p>325%＋250FSの特典を確認。</p>
-              <a class="bonus-side-button" href="#">特典を見る</a>
+              <p>初回特典を確認。</p>
+              <a class="bonus-side-button" href="bonus-best.html">ボーナスを見る</a>
             </div>
           </div>
         </div>
@@ -2887,8 +2969,8 @@ body {
             <div class="bonus-side-body">
               <span class="bonus-side-label">クリプト</span>
               <h2>FortuneJack</h2>
-              <p>ウェルカム特典・ミッション型ボーナス。</p>
-              <a class="bonus-side-button" href="#">特典を見る</a>
+              <p>ウェルカム特典を確認。</p>
+              <a class="bonus-side-button" href="bonus-best.html">ボーナスを見る</a>
             </div>
           </div>
         </div>
@@ -2898,8 +2980,8 @@ body {
             <div class="bonus-side-body">
               <span class="bonus-side-label">新規候補</span>
               <h2>Vave</h2>
-              <p>暗号資産入金ボーナスを確認。</p>
-              <a class="bonus-side-button" href="#">特典を見る</a>
+              <p>暗号資産特典を確認。</p>
+              <a class="bonus-side-button" href="bonus-best.html">ボーナスを見る</a>
             </div>
           </div>
         </div>
@@ -2914,7 +2996,7 @@ body {
             <div class="bonus-side-body">
               <span class="bonus-side-label">おすすめ</span>
               <h2>BitStarz</h2>
-              <p>初回100%＋180FSを確認。</p>
+              <p>初回特典を確認。</p>
               <a class="bonus-side-button" href="bonus-best.html">特典を確認</a>
             </div>
           </div>
@@ -2925,8 +3007,8 @@ body {
             <div class="bonus-side-body">
               <span class="bonus-side-label">1位候補</span>
               <h2>スロット天国</h2>
-              <p>初回特典・限定プロモ。</p>
-              <a class="bonus-side-button" href="review-slottenkoku.html">見る</a>
+              <p>初回特典を確認。</p>
+              <a class="bonus-side-button" href="review-slottenkoku.html">ボーナスを見る</a>
             </div>
           </div>
         </div>
@@ -2936,8 +3018,8 @@ body {
             <div class="bonus-side-body">
               <span class="bonus-side-label">限定特典</span>
               <h2>Stake</h2>
-              <p>登録後7日間の特典。</p>
-              <a class="bonus-side-button" href="review-stake.html">確認</a>
+              <p>限定特典を確認。</p>
+              <a class="bonus-side-button" href="review-stake.html">特典を確認</a>
             </div>
           </div>
         </div>
@@ -2948,7 +3030,7 @@ body {
               <span class="bonus-side-label">初心者</span>
               <h2>ミスティーノ</h2>
               <p>初回特典とFSを確認。</p>
-              <a class="bonus-side-button" href="review-mystino.html">見る</a>
+              <a class="bonus-side-button" href="review-mystino.html">ボーナスを見る</a>
             </div>
           </div>
         </div>
@@ -2958,8 +3040,8 @@ body {
             <div class="bonus-side-body">
               <span class="bonus-side-label">定番</span>
               <h2>ベラジョン</h2>
-              <p>ウェルカム特典。</p>
-              <a class="bonus-side-button" href="review-verajohn.html">見る</a>
+              <p>ウェルカム特典を確認。</p>
+              <a class="bonus-side-button" href="review-verajohn.html">ボーナスを見る</a>
             </div>
           </div>
         </div>
@@ -2970,7 +3052,7 @@ body {
               <span class="bonus-side-label">暗号資産</span>
               <h2>仮想通貨特典</h2>
               <p>暗号資産特典を確認。</p>
-              <a class="bonus-side-button" href="payments.html">確認</a>
+              <a class="bonus-side-button" href="payments.html">特典を確認</a>
             </div>
           </div>
         </div>
@@ -2980,8 +3062,8 @@ body {
             <div class="bonus-side-body">
               <span class="bonus-side-label">登録前</span>
               <h2>最終チェック</h2>
-              <p>ボーナス前に確認。</p>
-              <a class="bonus-side-button" href="site-checklist.html">確認</a>
+              <p>登録前に条件確認。</p>
+              <a class="bonus-side-button" href="site-checklist.html">特典を確認</a>
             </div>
           </div>
         </div>
@@ -3128,7 +3210,7 @@ body {
           <div class="bonus-mobile-blank">バナー画像 差し替え枠</div>
           <strong>スロット天国の特典</strong>
           <span>初回特典・限定プロモを登録前に確認。</span>
-          <a href="review-slottenkoku.html">特典を見る</a>
+          <a href="review-slottenkoku.html">ボーナスを見る</a>
         </div>
 
         <div class="bonus-mobile-banner">
@@ -3853,7 +3935,7 @@ body {
           <h3>一覧</h3>
           <p>掲載カジノを確認。</p>
           <div class="card-actions">
-            <a class="mini-btn mini-primary" href="casino-list.html">見る</a>
+            <a class="mini-btn mini-primary" href="casino-list.html">ボーナスを見る</a>
           </div>
         </article>
 
@@ -3862,7 +3944,7 @@ body {
           <h3>レビュー</h3>
           <p>個別条件を確認。</p>
           <div class="card-actions">
-            <a class="mini-btn mini-primary" href="review.html">見る</a>
+            <a class="mini-btn mini-primary" href="review.html">ボーナスを見る</a>
           </div>
         </article>
 
@@ -3871,7 +3953,7 @@ body {
           <h3>ボーナス</h3>
           <p>賭け条件を確認。</p>
           <div class="card-actions">
-            <a class="mini-btn mini-primary" href="bonus.html">見る</a>
+            <a class="mini-btn mini-primary" href="bonus.html">ボーナスを見る</a>
           </div>
         </article>
 
@@ -3880,7 +3962,7 @@ body {
           <h3>入出金</h3>
           <p>本人確認も確認。</p>
           <div class="card-actions">
-            <a class="mini-btn mini-primary" href="payments.html">見る</a>
+            <a class="mini-btn mini-primary" href="payments.html">ボーナスを見る</a>
           </div>
         </article>
 
@@ -3889,7 +3971,7 @@ body {
           <h3>最終確認</h3>
           <p>登録前にチェック。</p>
           <div class="card-actions">
-            <a class="mini-btn mini-primary" href="site-checklist.html">見る</a>
+            <a class="mini-btn mini-primary" href="site-checklist.html">ボーナスを見る</a>
           </div>
         </article>
       </div>
