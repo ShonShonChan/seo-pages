@@ -2163,17 +2163,18 @@
 
 /* ===== 左右余白ボーナスCTAバナー：サイド埋め込み版 ===== */
 .bonus-side-rails {
-  position: fixed;
-  inset: 76px 0 16px 0;
+  position: absolute;
+  top: 76px;
+  left: 0;
+  right: 0;
   z-index: 34;
   pointer-events: none;
 }
 
 .bonus-side-column {
   pointer-events: auto;
-  position: fixed;
-  top: 88px;
-  bottom: 18px;
+  position: absolute;
+  top: 12px;
   width: 154px;
   overflow: hidden;
 }
@@ -2365,22 +2366,25 @@
   }
 }
 
-@media (max-height: 940px) {
-  .bonus-side-card:nth-child(n+7) {
-    display: none;
-  }
+
+
+
+
+/* ===== 左右余白バナー：スクロール連動化 ===== */
+body {
+  position: relative;
 }
 
-@media (max-height: 820px) {
-  .bonus-side-card:nth-child(n+6) {
-    display: none;
-  }
+.bonus-side-rails {
+  height: 0;
 }
 
-@media (max-height: 700px) {
-  .bonus-side-card:nth-child(n+5) {
-    display: none;
-  }
+.bonus-side-column {
+  bottom: auto;
+}
+
+.bonus-side-stack {
+  padding-bottom: 40px;
 }
 
 </style>
