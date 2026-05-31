@@ -2587,6 +2587,40 @@ body {
   }
 }
 
+
+/* ===== サイドCTA実画像表示 ===== */
+.bonus-side-image-slot.has-image {
+  padding: 0;
+  border-style: solid;
+  border-color: rgba(255,255,255,.34);
+  background: rgba(255,255,255,.08);
+  overflow: hidden;
+}
+
+.bonus-side-image-slot.has-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.bonus-mobile-blank.has-image {
+  padding: 0;
+  border-style: solid;
+  border-color: rgba(255,255,255,.34);
+  background: rgba(255,255,255,.08);
+  overflow: hidden;
+}
+
+.bonus-mobile-blank.has-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
 </style>
 </head>
 
@@ -2597,7 +2631,7 @@ body {
       <div class="bonus-side-stack">
         <div class="bonus-side-card featured">
           <div class="bonus-side-card-inner">
-            <div class="bonus-side-image-slot">横長バナー<br />画像差し替え枠</div>
+            <div class="bonus-side-image-slot has-image"><img src="side-banner-slottenkoku-bonus.png" alt="スロット天国の登録ボーナスバナー" loading="lazy"></div>
             <div class="bonus-side-body">
               <span class="bonus-side-label">初回特典</span>
               <h2>登録で$20</h2>
@@ -2608,12 +2642,12 @@ body {
         </div>
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <div class="bonus-side-image-slot">横長バナー<br />画像差し替え枠</div>
+            <div class="bonus-side-image-slot has-image"><img src="side-banner-konibet-bonus.png" alt="コニベットの限定ボーナスバナー" loading="lazy"></div>
             <div class="bonus-side-body">
               <span class="bonus-side-label">入金特典</span>
-              <h2>入金ボーナス</h2>
-              <p>入金特典をまとめて確認。</p>
-              <a class="bonus-side-button" href="bonus-best.html">確認</a>
+              <h2>コニベット</h2>
+              <p>限定66ドル特典を確認。</p>
+              <a class="bonus-side-button" href="review-konibet.html">特典を見る</a>
             </div>
           </div>
         </div>
@@ -2690,7 +2724,7 @@ body {
         </div>
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <div class="bonus-side-image-slot">横長バナー<br />画像差し替え枠</div>
+            <div class="bonus-side-image-slot has-image"><img src="side-banner-slottenkoku-bonus.png" alt="スロット天国の初回特典バナー" loading="lazy"></div>
             <div class="bonus-side-body">
               <span class="bonus-side-label">1位候補</span>
               <h2>スロット天国</h2>
@@ -2701,7 +2735,7 @@ body {
         </div>
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <div class="bonus-side-image-slot">横長バナー<br />画像差し替え枠</div>
+            <div class="bonus-side-image-slot has-image"><img src="side-banner-stake-bonus.png" alt="Stakeの限定特典バナー" loading="lazy"></div>
             <div class="bonus-side-body">
               <span class="bonus-side-label">限定特典</span>
               <h2>Stake</h2>
@@ -2712,7 +2746,7 @@ body {
         </div>
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <div class="bonus-side-image-slot">横長バナー<br />画像差し替え枠</div>
+            <div class="bonus-side-image-slot has-image"><img src="side-banner-mystino-bonus.png" alt="ミスティーノのボーナスバナー" loading="lazy"></div>
             <div class="bonus-side-body">
               <span class="bonus-side-label">初心者</span>
               <h2>ミスティーノ</h2>
@@ -2723,7 +2757,7 @@ body {
         </div>
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <div class="bonus-side-image-slot">横長バナー<br />画像差し替え枠</div>
+            <div class="bonus-side-image-slot has-image"><img src="side-banner-verajohn-bonus.png" alt="ベラジョンのウェルカム特典バナー" loading="lazy"></div>
             <div class="bonus-side-body">
               <span class="bonus-side-label">定番</span>
               <h2>ベラジョン</h2>
@@ -2918,13 +2952,13 @@ body {
     <section class="bonus-mobile-banners" aria-label="スマホ用ボーナスCTAバナー">
       <div class="bonus-mobile-banner-grid">
         <div class="bonus-mobile-banner">
-          <div class="bonus-mobile-blank">横長バナー画像 差し替え枠</div>
+          <div class="bonus-mobile-blank has-image"><img src="side-banner-slottenkoku-bonus.png" alt="スロット天国の登録ボーナスバナー" loading="lazy"></div>
           <strong>初回ボーナスをチェック</strong>
           <span>ウェルカム特典・入金ボーナスを登録前に確認。</span>
           <a href="bonus.html">ボーナスを見る</a>
         </div>
         <div class="bonus-mobile-banner">
-          <div class="bonus-mobile-blank">横長バナー画像 差し替え枠</div>
+          <div class="bonus-mobile-blank has-image"><img src="side-banner-stake-bonus.png" alt="Stakeの限定特典バナー" loading="lazy"></div>
           <strong>おすすめ特典まとめ</strong>
           <span>入金ボーナス・FS・限定プロモをまとめて確認。</span>
           <a href="bonus-best.html">特典を確認</a>
