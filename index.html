@@ -2767,6 +2767,57 @@ body {
   }
 }
 
+
+/* ===== サイドCTA画像枠：実バナー比率フィット調整 ===== */
+.bonus-side-image-slot {
+  width: 100%;
+  aspect-ratio: 1200 / 465;
+  min-height: auto;
+  height: auto;
+  display: block;
+  padding: 0;
+}
+
+.bonus-side-image-slot.has-image {
+  background: #fff;
+}
+
+.bonus-side-image-slot.has-image img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1200 / 465;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+  border-radius: inherit;
+}
+
+.bonus-side-card.featured .bonus-side-image-slot {
+  min-height: auto;
+}
+
+.bonus-side-card-inner {
+  padding: 10px;
+}
+
+.bonus-side-card {
+  overflow: hidden;
+}
+
+@media (max-width: 1760px) {
+  .bonus-side-image-slot,
+  .bonus-side-card.featured .bonus-side-image-slot {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 1540px) {
+  .bonus-side-image-slot,
+  .bonus-side-card.featured .bonus-side-image-slot {
+    min-height: auto;
+  }
+}
+
 </style>
 </head>
 
@@ -2859,11 +2910,11 @@ body {
       <div class="bonus-side-stack">
         <div class="bonus-side-card featured">
           <div class="bonus-side-card-inner">
-            <div class="bonus-side-image-slot">1200×465<br />画像枠</div>
+            <div class="bonus-side-image-slot has-image"><img src="side-banner-bitstarz-bonus.png" alt="BitStarzのウェルカムボーナスバナー" loading="lazy"></div>
             <div class="bonus-side-body">
               <span class="bonus-side-label">おすすめ</span>
-              <h2>特典まとめ</h2>
-              <p>人気特典をまとめて確認。</p>
+              <h2>BitStarz</h2>
+              <p>初回100%＋180FSを確認。</p>
               <a class="bonus-side-button" href="bonus-best.html">特典を確認</a>
             </div>
           </div>
@@ -2914,7 +2965,7 @@ body {
         </div>
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <div class="bonus-side-image-slot">1200×465<br />画像枠</div>
+            <div class="bonus-side-image-slot has-image"><img src="side-banner-fortunejack-bonus.png" alt="FortuneJackのウェルカムボーナスバナー" loading="lazy"></div>
             <div class="bonus-side-body">
               <span class="bonus-side-label">暗号資産</span>
               <h2>仮想通貨特典</h2>
@@ -2925,7 +2976,7 @@ body {
         </div>
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <div class="bonus-side-image-slot">1200×465<br />画像枠</div>
+            <div class="bonus-side-image-slot has-image"><img src="side-banner-vave-bonus.png" alt="Vaveの暗号資産ボーナスバナー" loading="lazy"></div>
             <div class="bonus-side-body">
               <span class="bonus-side-label">登録前</span>
               <h2>最終チェック</h2>
