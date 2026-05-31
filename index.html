@@ -3205,6 +3205,17 @@ body {
   }
 }
 
+
+/* ===== ランキング位置整理：上部集約 ===== */
+.fv-ranking-section {
+  margin-top: 24px;
+  margin-bottom: 42px;
+}
+
+.fv-ranking-section + section {
+  margin-top: 34px;
+}
+
 </style>
 </head>
 
@@ -3506,9 +3517,54 @@ body {
         </div>
 
         <div class="bonus-mobile-banner">
-          
 
-    <section class="fv-ranking-section" id="ranking">
+
+
+
+
+
+
+    <section class="ranking-criteria" id="ranking-criteria">
+      <div class="ranking-criteria-card">
+        <div class="ranking-criteria-head">
+          <div>
+            <span class="ranking-criteria-kicker">選定基準</span>
+            <h2>ランキングの選定基準</h2>
+            <p class="ranking-criteria-lead">
+              このランキングは、勝てる順や利益を保証する順ではありません。
+              利用前に確認しやすい情報が整理されているかを重視し、比較前の入口として並べています。
+            </p>
+          </div>
+        </div>
+        <div class="ranking-criteria-grid" aria-label="ランキング選定基準">
+          <div class="ranking-criteria-item">
+            <b>条件確認のしやすさ</b>
+            <p>賭け条件、最大出金、対象ゲーム、禁止事項を確認しやすいか。</p>
+          </div>
+          <div class="ranking-criteria-item">
+            <b>ボーナス条件</b>
+            <p>初回特典やキャンペーンの条件を、金額だけでなく内容まで見やすいか。</p>
+          </div>
+          <div class="ranking-criteria-item">
+            <b>入出金の確認</b>
+            <p>最低入金額、反映時間、出金条件、手数料などを確認しやすいか。</p>
+          </div>
+          <div class="ranking-criteria-item">
+            <b>本人確認</b>
+            <p>登録前後に必要な本人確認や書類提出の流れを確認しやすいか。</p>
+          </div>
+          <div class="ranking-criteria-item">
+            <b>公式規約の確認</b>
+            <p>最終条件を公式規約で確認する導線を意識して比較できるか。</p>
+          </div>
+        </div>
+        <p class="ranking-criteria-note">
+          <strong>注意：</strong>掲載順位やおすすめ表現は、勝利、出金、利益を保証するものではありません。
+          利用前に必ず各公式サイトの最新規約、対象地域、年齢制限、本人確認、入出金条件を確認してください。
+        </p>
+      </div>
+    </section>
+<section class="fv-ranking-section" id="ranking">
       <div class="fv-ranking-head">
         <div>
           <span class="fv-ranking-kicker">2026年版・ボーナス重視ランキング</span>
@@ -3615,279 +3671,6 @@ body {
       </div>
     </section>
 
-<section class="agent-ranking-2026" id="recommended-ranking-2026">
-      <div class="ranking-head">
-        <span class="ranking-kicker">2026年版・条件確認重視</span>
-        <h2>条件を見て選ぶおすすめランキング2026年版</h2>
-        <p>評価の見やすさ、ボーナス条件、入出金や本人確認の確認ポイントを、比較前の早見表として整理しています。</p>
-      </div>
-      <div class="ranking-table" role="list">
-        <article class="ranking-row ranking-rank-1" role="listitem">
-          <div class="ranking-rank">
-            <span>1</span>
-            <small>位</small>
-          </div>
-          <div class="ranking-logo">
-            <img src="slottenkoku-logo.png" alt="スロット天国 ロゴ" loading="lazy" />
-          </div>
-          <div class="ranking-summary">
-            <h3>スロット天国</h3>
-            <span class="ranking-label">注目候補</span>
-            <p>初回ボーナス条件・入金ボーナス・賭け条件・最大出金・入出金・本人確認をまとめて確認</p>
-          </div>
-          <div class="ranking-bonus">
-            <span>ボーナス確認</span>
-            <p>初回ボーナスや限定プロモは、賭け条件・最大出金・対象ゲーム・出金条件まで確認しやすい候補です。</p>
-          </div>
-          <div class="ranking-cta">
-            <a href="review-slottenkoku.html">レビューを見る</a>
-            <a class="ranking-sub" href="bonus.html">ボーナス条件</a>
-          </div>
-        </article>
-        <article class="ranking-row ranking-rank-2" role="listitem">
-          <div class="ranking-rank">
-            <span>2</span>
-            <small>位</small>
-          </div>
-          <div class="ranking-logo">
-            <img src="konibet-logo.png" alt="KONIBET ロゴ" loading="lazy" />
-          </div>
-          <div class="ranking-summary">
-            <h3>コニベット</h3>
-            <span class="ranking-label">比較候補</span>
-            <p>入金ボーナス・キャンペーン条件・入出金・対象ゲームを確認</p>
-          </div>
-          <div class="ranking-bonus">
-            <span>ボーナス確認</span>
-            <p>入金ボーナス、キャンペーン条件、賭け条件、入出金の流れを比較したい方向けです。</p>
-          </div>
-          <div class="ranking-cta">
-            <a href="review-konibet.html">レビューを見る</a>
-            <a class="ranking-sub" href="bonus.html">ボーナス条件</a>
-          </div>
-        </article>
-        <article class="ranking-row ranking-rank-3" role="listitem">
-          <div class="ranking-rank">
-            <span>3</span>
-            <small>位</small>
-          </div>
-          <div class="ranking-logo">
-            <img src="stake-logo.png" alt="Stake ロゴ" loading="lazy" />
-          </div>
-          <div class="ranking-summary">
-            <h3>Stake</h3>
-            <span class="ranking-label">暗号資産対応</span>
-            <p>暗号資産入出金・ネットワーク・出金条件・本人確認を確認</p>
-          </div>
-          <div class="ranking-bonus">
-            <span>ボーナス確認</span>
-            <p>暗号資産入出金では、対応通貨、ネットワーク、送金条件、出金時の確認事項を重点確認できます。</p>
-          </div>
-          <div class="ranking-cta">
-            <a href="review-stake.html">レビューを見る</a>
-            <a class="ranking-sub" href="bonus.html">ボーナス条件</a>
-          </div>
-        </article>
-        <article class="ranking-row ranking-rank-4" role="listitem">
-          <div class="ranking-rank">
-            <span>4</span>
-            <small>位</small>
-          </div>
-          <div class="ranking-logo">
-            <img src="yuugado-logo.png" alt="遊雅堂 ロゴ" loading="lazy" />
-          </div>
-          <div class="ranking-summary">
-            <h3>遊雅堂</h3>
-            <span class="ranking-label">日本語対応</span>
-            <p>日本語対応・入金ボーナス・入出金・公式規約を確認</p>
-          </div>
-          <div class="ranking-bonus">
-            <span>ボーナス確認</span>
-            <p>登録前に初回ボーナス条件、本人確認、入出金、公式規約を比較したい候補です。</p>
-          </div>
-          <div class="ranking-cta">
-            <a href="review-yuugado.html">レビューを見る</a>
-            <a class="ranking-sub" href="bonus.html">ボーナス条件</a>
-          </div>
-        </article>
-        <article class="ranking-row ranking-rank-5" role="listitem">
-          <div class="ranking-rank">
-            <span>5</span>
-            <small>位</small>
-          </div>
-          <div class="ranking-logo">
-            <img src="verajohn-logo.jpg" alt="ベラジョン ロゴ" loading="lazy" />
-          </div>
-          <div class="ranking-summary">
-            <h3>ベラジョン</h3>
-            <span class="ranking-label">日本語対応</span>
-            <p>初回ボーナス条件・本人確認・公式規約確認</p>
-          </div>
-          <div class="ranking-bonus">
-            <span>ボーナス確認</span>
-            <p>初回ボーナス、入金ボーナス、賭け条件、入出金、本人確認を事前に確認したい方向けです。</p>
-          </div>
-          <div class="ranking-cta">
-            <a href="review-verajohn.html">レビューを見る</a>
-            <a class="ranking-sub" href="bonus.html">ボーナス条件</a>
-          </div>
-        </article>
-        <article class="ranking-row ranking-rank-6" role="listitem">
-          <div class="ranking-rank">
-            <span>6</span>
-            <small>位</small>
-          </div>
-          <div class="ranking-logo">
-            <img src="bitcasino.png" alt="ビットカジノ ロゴ" loading="lazy" />
-          </div>
-          <div class="ranking-summary">
-            <h3>ビットカジノ</h3>
-            <span class="ranking-label">暗号資産対応</span>
-            <p>暗号資産入出金・ネットワーク・出金条件確認</p>
-          </div>
-          <div class="ranking-bonus">
-            <span>ボーナス確認</span>
-            <p>暗号資産入出金では、対応通貨、ネットワーク、送金先アドレス、出金条件を確認できます。</p>
-          </div>
-          <div class="ranking-cta">
-            <a href="review-bitcasino.html">レビューを見る</a>
-            <a class="ranking-sub" href="bonus.html">ボーナス条件</a>
-          </div>
-        </article>
-        <article class="ranking-row ranking-rank-7" role="listitem">
-          <div class="ranking-rank">
-            <span>7</span>
-            <small>位</small>
-          </div>
-          <div class="ranking-logo">
-            <img src="mystino.jpg" alt="ミスティーノ ロゴ" loading="lazy" />
-          </div>
-          <div class="ranking-summary">
-            <h3>ミスティーノ</h3>
-            <span class="ranking-label">初心者向け確認</span>
-            <p>初心者向け・初回ボーナス・入出金確認</p>
-          </div>
-          <div class="ranking-bonus">
-            <span>ボーナス確認</span>
-            <p>初心者向けの見やすさ、初回ボーナス条件、賭け条件、入出金、本人確認を確認できます。</p>
-          </div>
-          <div class="ranking-cta">
-            <a href="review-mystino.html">レビューを見る</a>
-            <a class="ranking-sub" href="bonus.html">ボーナス条件</a>
-          </div>
-        </article>
-        <article class="ranking-row ranking-rank-8" role="listitem">
-          <div class="ranking-rank">
-            <span>8</span>
-            <small>位</small>
-          </div>
-          <div class="ranking-logo">
-            <img src="casino-secret-logo.jpg" alt="カジノシークレット ロゴ" loading="lazy" />
-          </div>
-          <div class="ranking-summary">
-            <h3>カジノシークレット</h3>
-            <span class="ranking-label">条件確認</span>
-            <p>キャンペーン条件・賭け条件・出金条件・規約確認</p>
-          </div>
-          <div class="ranking-bonus">
-            <span>ボーナス確認</span>
-            <p>キャンペーン条件、対象者、賭け条件、最大出金、出金条件を確認できます。</p>
-          </div>
-          <div class="ranking-cta">
-            <a href="review-casino-secret.html">レビューを見る</a>
-            <a class="ranking-sub" href="bonus.html">ボーナス条件</a>
-          </div>
-        </article>
-        <article class="ranking-row ranking-rank-9" role="listitem">
-          <div class="ranking-rank">
-            <span>9</span>
-            <small>位</small>
-          </div>
-          <div class="ranking-logo">
-            <img src="bons-casino-logo.png" alt="ボンズカジノ ロゴ" loading="lazy" />
-          </div>
-          <div class="ranking-summary">
-            <h3>ボンズカジノ</h3>
-            <span class="ranking-label">入出金確認</span>
-            <p>入出金・本人確認・ボーナス条件確認</p>
-          </div>
-          <div class="ranking-bonus">
-            <span>ボーナス確認</span>
-            <p>入出金条件、本人確認、ボーナス条件、サポート対応を確認したい方向けです。</p>
-          </div>
-          <div class="ranking-cta">
-            <a href="review-bons-casino.html">レビューを見る</a>
-            <a class="ranking-sub" href="bonus.html">ボーナス条件</a>
-          </div>
-        </article>
-        <article class="ranking-row ranking-rank-10" role="listitem">
-          <div class="ranking-rank">
-            <span>10</span>
-            <small>位</small>
-          </div>
-          <div class="ranking-logo">
-            <span class="ranking-logo-placeholder">BC.GAME</span>
-          </div>
-          <div class="ranking-summary">
-            <h3>BC.GAME</h3>
-            <span class="ranking-label">暗号資産対応</span>
-            <p>暗号資産入出金・プロモ条件・出金条件確認</p>
-          </div>
-          <div class="ranking-bonus">
-            <span>ボーナス確認</span>
-            <p>暗号資産入出金、プロモーション条件、賭け条件、出金条件を確認できます。</p>
-          </div>
-          <div class="ranking-cta">
-            <a href="review-bcgame.html">レビューを見る</a>
-            <a class="ranking-sub" href="bonus.html">ボーナス条件</a>
-          </div>
-        </article>
-      </div>
-      <p class="ranking-note"><strong>注意：</strong>順位は当サイト内で条件確認しやすい入口として整理したものです。勝利、出金、利益を保証するものではありません。利用前に必ず公式規約、対象地域、年齢制限、本人確認、入出金条件を確認してください。</p>
-    </section>
-
-
-
-    <section class="ranking-criteria" id="ranking-criteria">
-      <div class="ranking-criteria-card">
-        <div class="ranking-criteria-head">
-          <div>
-            <span class="ranking-criteria-kicker">選定基準</span>
-            <h2>ランキングの選定基準</h2>
-            <p class="ranking-criteria-lead">
-              このランキングは、勝てる順や利益を保証する順ではありません。
-              利用前に確認しやすい情報が整理されているかを重視し、比較前の入口として並べています。
-            </p>
-          </div>
-        </div>
-        <div class="ranking-criteria-grid" aria-label="ランキング選定基準">
-          <div class="ranking-criteria-item">
-            <b>条件確認のしやすさ</b>
-            <p>賭け条件、最大出金、対象ゲーム、禁止事項を確認しやすいか。</p>
-          </div>
-          <div class="ranking-criteria-item">
-            <b>ボーナス条件</b>
-            <p>初回特典やキャンペーンの条件を、金額だけでなく内容まで見やすいか。</p>
-          </div>
-          <div class="ranking-criteria-item">
-            <b>入出金の確認</b>
-            <p>最低入金額、反映時間、出金条件、手数料などを確認しやすいか。</p>
-          </div>
-          <div class="ranking-criteria-item">
-            <b>本人確認</b>
-            <p>登録前後に必要な本人確認や書類提出の流れを確認しやすいか。</p>
-          </div>
-          <div class="ranking-criteria-item">
-            <b>公式規約の確認</b>
-            <p>最終条件を公式規約で確認する導線を意識して比較できるか。</p>
-          </div>
-        </div>
-        <p class="ranking-criteria-note">
-          <strong>注意：</strong>掲載順位やおすすめ表現は、勝利、出金、利益を保証するものではありません。
-          利用前に必ず各公式サイトの最新規約、対象地域、年齢制限、本人確認、入出金条件を確認してください。
-        </p>
-      </div>
-    </section>
 
 
 
