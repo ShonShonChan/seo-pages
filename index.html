@@ -155,7 +155,7 @@
       position: absolute;
       left: 44px;
       bottom: 0;
-      width: 190px;
+      width: 250px;
       height: 6px;
       border-radius: 999px 999px 0 0;
       background: linear-gradient(90deg, var(--red), var(--gold));
@@ -2181,16 +2181,16 @@ body {
   pointer-events: auto;
   position: absolute;
   top: 12px;
-  width: 220px;
+  width: 300px;
   overflow: visible;
 }
 
 .bonus-side-column.left {
-  left: max(10px, calc((100vw - 1480px) / 2));
+  left: max(10px, calc((100vw - 1680px) / 2));
 }
 
 .bonus-side-column.right {
-  right: max(10px, calc((100vw - 1480px) / 2));
+  right: max(10px, calc((100vw - 1680px) / 2));
 }
 
 .bonus-side-stack {
@@ -2200,7 +2200,7 @@ body {
 }
 
 .bonus-side-card {
-  width: 220px;
+  width: 300px;
   min-height: 116px;
   border-radius: 20px;
   overflow: hidden;
@@ -2384,11 +2384,11 @@ body {
 
 @media (max-width: 1540px) {
   .bonus-side-column {
-    width: 190px;
+    width: 250px;
   }
 
   .bonus-side-card {
-    width: 190px;
+    width: 250px;
   }
 
   .bonus-side-card-inner,
@@ -2412,11 +2412,6 @@ body {
   }
 }
 
-@media (max-width: 1280px) {
-  .bonus-side-rails {
-    display: none;
-  }
-}
 
 @media (max-width: 760px) {
   .bonus-mobile-banners {
@@ -2428,6 +2423,67 @@ body {
 @media (max-width: 460px) {
   .bonus-mobile-banner {
     grid-template-columns: 1fr;
+  }
+}
+
+
+/* ===== 左右CTA横長バナー：横幅拡張 ===== */
+.bonus-side-card-inner {
+  grid-template-columns: 112px 1fr;
+  gap: 12px;
+  padding: 11px;
+}
+
+.bonus-side-card.featured .bonus-side-card-inner {
+  grid-template-columns: 120px 1fr;
+}
+
+.bonus-side-image-slot {
+  min-height: 94px;
+  font-size: 10.5px;
+}
+
+.bonus-side-card.featured .bonus-side-image-slot {
+  min-height: 112px;
+}
+
+.bonus-side-card h2 {
+  font-size: 16px;
+}
+
+.bonus-side-card.featured h2 {
+  font-size: 17px;
+}
+
+.bonus-side-card p {
+  font-size: 11.4px;
+}
+
+.bonus-side-button {
+  min-height: 32px;
+  font-size: 11.5px;
+}
+
+@media (max-width: 1540px) {
+  .bonus-side-card-inner,
+  .bonus-side-card.featured .bonus-side-card-inner {
+    grid-template-columns: 92px 1fr;
+  }
+
+  .bonus-side-image-slot,
+  .bonus-side-card.featured .bonus-side-image-slot {
+    min-height: 86px;
+  }
+
+  .bonus-side-card h2,
+  .bonus-side-card.featured h2 {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 1420px) {
+  .bonus-side-rails {
+    display: none;
   }
 }
 
