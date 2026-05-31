@@ -2161,7 +2161,12 @@
 
 
 
-/* ===== 左右余白ボーナスCTAバナー：サイド埋め込み版 ===== */
+
+/* ===== 左右余白CTA：横長バナー積み版 ===== */
+body {
+  position: relative;
+}
+
 .bonus-side-rails {
   position: absolute;
   top: 76px;
@@ -2169,124 +2174,144 @@
   right: 0;
   z-index: 34;
   pointer-events: none;
+  height: 0;
 }
 
 .bonus-side-column {
   pointer-events: auto;
   position: absolute;
   top: 12px;
-  width: 154px;
-  overflow: hidden;
+  width: 220px;
+  overflow: visible;
 }
 
 .bonus-side-column.left {
-  left: max(10px, calc((100vw - 1440px) / 2));
+  left: max(10px, calc((100vw - 1480px) / 2));
 }
 
 .bonus-side-column.right {
-  right: max(10px, calc((100vw - 1440px) / 2));
+  right: max(10px, calc((100vw - 1480px) / 2));
 }
 
 .bonus-side-stack {
   display: grid;
   gap: 12px;
+  padding-bottom: 40px;
 }
 
 .bonus-side-card {
-  width: 154px;
-  border-radius: 22px;
+  width: 220px;
+  min-height: 116px;
+  border-radius: 20px;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 82% 10%, rgba(255, 232, 140, 0.32), transparent 34%),
-    linear-gradient(160deg, #d71920 0%, #9f1017 66%, #65070b 100%);
   color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.32);
-  box-shadow: 0 18px 42px rgba(120, 20, 20, 0.22);
+  background:
+    radial-gradient(circle at 92% 8%, rgba(255, 232, 140, 0.32), transparent 28%),
+    linear-gradient(135deg, #d71920 0%, #b10e18 48%, #7a060b 100%);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  box-shadow: 0 16px 34px rgba(120, 20, 20, 0.2);
 }
 
 .bonus-side-card-inner {
-  padding: 12px;
+  display: grid;
+  grid-template-columns: 74px 1fr;
+  gap: 10px;
+  align-items: stretch;
+  padding: 10px;
+}
+
+.bonus-side-image-slot {
+  min-height: 92px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.22), rgba(255,255,255,.08));
+  border: 1.5px dashed rgba(255,255,255,.6);
+  color: rgba(255,255,255,.9);
+  text-align: center;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 1.35;
+  padding: 6px;
+}
+
+.bonus-side-body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .bonus-side-label {
   display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
   align-items: center;
   justify-content: center;
-  max-width: 100%;
-  padding: 4px 8px;
+  padding: 3px 7px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255,255,255,.95);
   color: #9f1017;
-  font-size: 10.5px;
+  font-size: 10px;
   line-height: 1.2;
   font-weight: 900;
-  margin-bottom: 8px;
-}
-
-.bonus-side-image-slot {
-  width: 100%;
-  min-height: 66px;
-  display: grid;
-  place-items: center;
-  border-radius: 15px;
-  margin-bottom: 10px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08));
-  border: 1.5px dashed rgba(255, 255, 255, 0.58);
-  color: rgba(255, 255, 255, 0.86);
-  text-align: center;
-  font-size: 11px;
-  font-weight: 900;
-  line-height: 1.45;
-}
-
-.bonus-side-card.featured .bonus-side-image-slot {
-  min-height: 92px;
+  margin-bottom: 5px;
 }
 
 .bonus-side-card h2 {
-  margin: 0 0 5px;
+  margin: 0 0 4px;
   color: #fff;
-  font-size: 14.5px;
-  line-height: 1.3;
-  letter-spacing: -0.035em;
-}
-
-.bonus-side-card.featured h2 {
-  font-size: 17px;
+  font-size: 15px;
+  line-height: 1.22;
+  letter-spacing: -0.04em;
 }
 
 .bonus-side-card p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 11px;
-  line-height: 1.48;
+  color: rgba(255,255,255,.9);
+  font-size: 10.8px;
+  line-height: 1.42;
 }
 
 .bonus-side-button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  min-height: 32px;
-  margin-top: 9px;
-  padding: 7px 9px;
+  min-height: 30px;
+  margin-top: 7px;
+  padding: 6px 9px;
   border-radius: 999px;
   background: #fff;
   color: #9f1017;
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 900;
   text-align: center;
-  box-shadow: 0 10px 20px rgba(60, 0, 0, 0.18);
+  box-shadow: 0 10px 18px rgba(60,0,0,.18);
 }
 
 .bonus-side-sub {
-  display: inline-flex;
-  justify-content: center;
-  width: 100%;
-  margin-top: 7px;
-  color: rgba(255, 255, 255, 0.86);
-  font-size: 10.5px;
-  font-weight: 800;
+  display: none;
+}
+
+.bonus-side-card.featured {
+  min-height: 130px;
+  background:
+    radial-gradient(circle at 92% 8%, rgba(255, 235, 135, 0.42), transparent 30%),
+    linear-gradient(135deg, #e11b23 0%, #b70f18 50%, #78060a 100%);
+}
+
+.bonus-side-card.featured .bonus-side-card-inner {
+  grid-template-columns: 82px 1fr;
+  padding: 11px;
+}
+
+.bonus-side-card.featured .bonus-side-image-slot {
+  min-height: 108px;
+}
+
+.bonus-side-card.featured h2 {
+  font-size: 16px;
 }
 
 .bonus-mobile-banners {
@@ -2303,38 +2328,42 @@
 }
 
 .bonus-mobile-banner {
-  border-radius: 20px;
-  padding: 16px;
+  border-radius: 18px;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 12px;
+  align-items: center;
   background:
     radial-gradient(circle at 88% 12%, rgba(255, 232, 140, 0.34), transparent 34%),
-    linear-gradient(150deg, #d71920 0%, #9f1017 72%);
+    linear-gradient(135deg, #d71920 0%, #9f1017 72%);
   color: #fff;
-  box-shadow: 0 14px 32px rgba(150, 22, 24, 0.18);
+  box-shadow: 0 14px 32px rgba(150,22,24,.18);
 }
 
 .bonus-mobile-blank {
   min-height: 86px;
   display: grid;
   place-items: center;
-  border-radius: 15px;
-  margin-bottom: 12px;
-  background: rgba(255, 255, 255, 0.14);
-  border: 1.5px dashed rgba(255, 255, 255, 0.55);
-  font-size: 12px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.14);
+  border: 1.5px dashed rgba(255,255,255,.55);
+  font-size: 11px;
   font-weight: 900;
-  color: rgba(255, 255, 255, 0.86);
+  color: rgba(255,255,255,.88);
+  text-align: center;
 }
 
 .bonus-mobile-banner strong {
   display: block;
-  margin-bottom: 6px;
-  font-size: 17px;
+  margin-bottom: 5px;
+  font-size: 16px;
   line-height: 1.35;
 }
 
 .bonus-mobile-banner span {
   display: block;
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255,255,255,.88);
   font-size: 12px;
   line-height: 1.55;
 }
@@ -2343,14 +2372,44 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  min-height: 40px;
-  margin-top: 12px;
+  min-height: 38px;
+  margin-top: 10px;
+  padding: 7px 12px;
   border-radius: 999px;
   background: #fff;
   color: #9f1017;
   font-size: 13px;
   font-weight: 900;
+}
+
+@media (max-width: 1540px) {
+  .bonus-side-column {
+    width: 190px;
+  }
+
+  .bonus-side-card {
+    width: 190px;
+  }
+
+  .bonus-side-card-inner,
+  .bonus-side-card.featured .bonus-side-card-inner {
+    grid-template-columns: 66px 1fr;
+    gap: 8px;
+  }
+
+  .bonus-side-image-slot,
+  .bonus-side-card.featured .bonus-side-image-slot {
+    min-height: 82px;
+  }
+
+  .bonus-side-card h2,
+  .bonus-side-card.featured h2 {
+    font-size: 14px;
+  }
+
+  .bonus-side-card p {
+    font-size: 10.2px;
+  }
 }
 
 @media (max-width: 1280px) {
@@ -2366,25 +2425,10 @@
   }
 }
 
-
-
-
-
-/* ===== 左右余白バナー：スクロール連動化 ===== */
-body {
-  position: relative;
-}
-
-.bonus-side-rails {
-  height: 0;
-}
-
-.bonus-side-column {
-  bottom: auto;
-}
-
-.bonus-side-stack {
-  padding-bottom: 40px;
+@media (max-width: 460px) {
+  .bonus-mobile-banner {
+    grid-template-columns: 1fr;
+  }
 }
 
 </style>
@@ -2397,72 +2441,79 @@ body {
       <div class="bonus-side-stack">
         <div class="bonus-side-card featured">
           <div class="bonus-side-card-inner">
-            <span class="bonus-side-label">初回ボーナス</span>
-            <div class="bonus-side-image-slot">バナー画像<br />差し替え枠</div>
-            <h2>初回特典をチェック</h2>
-            <p>ウェルカム特典・入金ボーナスを登録前に確認。</p>
-            <a class="bonus-side-button" href="bonus.html">ボーナスを見る</a>
-            <a class="bonus-side-sub" href="bonus-guide.html">条件の見方も確認</a>
+            <div class="bonus-side-image-slot">横長バナー<br />画像枠</div>
+            <div class="bonus-side-body">
+              <span class="bonus-side-label">初回特典</span>
+              <h2>登録で$20</h2>
+              <p>スロット天国の特典を確認。</p>
+              <a class="bonus-side-button" href="review-slottenkoku.html">特典を見る</a>
+            </div>
           </div>
         </div>
-
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <span class="bonus-side-label">入金特典</span>
-            <div class="bonus-side-image-slot">画像枠</div>
-            <h2>入金ボーナス</h2>
-            <p>対象カジノの特典を確認。</p>
-            <a class="bonus-side-button" href="bonus-best.html">特典を見る</a>
+            <div class="bonus-side-image-slot">横長バナー<br />画像枠</div>
+            <div class="bonus-side-body">
+              <span class="bonus-side-label">入金特典</span>
+              <h2>入金ボーナス</h2>
+              <p>対象カジノの入金特典。</p>
+              <a class="bonus-side-button" href="bonus-best.html">確認</a>
+            </div>
           </div>
         </div>
-
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <span class="bonus-side-label">FS特典</span>
-            <div class="bonus-side-image-slot">画像枠</div>
-            <h2>フリースピン</h2>
-            <p>対象ゲームと条件を確認。</p>
-            <a class="bonus-side-button" href="bonus.html">FSを見る</a>
+            <div class="bonus-side-image-slot">横長バナー<br />画像枠</div>
+            <div class="bonus-side-body">
+              <span class="bonus-side-label">FS特典</span>
+              <h2>フリースピン</h2>
+              <p>対象ゲームと条件を確認。</p>
+              <a class="bonus-side-button" href="bonus.html">FSを見る</a>
+            </div>
           </div>
         </div>
-
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <span class="bonus-side-label">入金不要</span>
-            <div class="bonus-side-image-slot">画像枠</div>
-            <h2>入金不要系</h2>
-            <p>対象条件と出金条件を確認。</p>
-            <a class="bonus-side-button" href="bonus-best.html">確認する</a>
+            <div class="bonus-side-image-slot">横長バナー<br />画像枠</div>
+            <div class="bonus-side-body">
+              <span class="bonus-side-label">入金不要</span>
+              <h2>入金不要系</h2>
+              <p>対象条件と出金条件を確認。</p>
+              <a class="bonus-side-button" href="bonus-best.html">見る</a>
+            </div>
           </div>
         </div>
-
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <span class="bonus-side-label">リベート</span>
-            <div class="bonus-side-image-slot">画像枠</div>
-            <h2>還元特典</h2>
-            <p>リベート・還元系を確認。</p>
-            <a class="bonus-side-button" href="bonus.html">見る</a>
+            <div class="bonus-side-image-slot">横長バナー<br />画像枠</div>
+            <div class="bonus-side-body">
+              <span class="bonus-side-label">還元特典</span>
+              <h2>リベート</h2>
+              <p>還元・キャッシュバック系。</p>
+              <a class="bonus-side-button" href="bonus.html">確認</a>
+            </div>
           </div>
         </div>
-
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <span class="bonus-side-label">限定プロモ</span>
-            <div class="bonus-side-image-slot">画像枠</div>
-            <h2>限定特典</h2>
-            <p>期間限定プロモを確認。</p>
-            <a class="bonus-side-button" href="bonus-best.html">確認</a>
+            <div class="bonus-side-image-slot">横長バナー<br />画像枠</div>
+            <div class="bonus-side-body">
+              <span class="bonus-side-label">限定特典</span>
+              <h2>限定プロモ</h2>
+              <p>期間限定系をチェック。</p>
+              <a class="bonus-side-button" href="bonus-best.html">確認</a>
+            </div>
           </div>
         </div>
-
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <span class="bonus-side-label">条件の見方</span>
-            <div class="bonus-side-image-slot">画像枠</div>
-            <h2>受け取り前に</h2>
-            <p>賭け条件や最大出金を確認。</p>
-            <a class="bonus-side-button" href="bonus-guide.html">見る</a>
+            <div class="bonus-side-image-slot">横長バナー<br />画像枠</div>
+            <div class="bonus-side-body">
+              <span class="bonus-side-label">見方</span>
+              <h2>条件の見方</h2>
+              <p>賭け条件・最大出金を確認。</p>
+              <a class="bonus-side-button" href="bonus-guide.html">見る</a>
+            </div>
           </div>
         </div>
       </div>
@@ -2472,77 +2523,85 @@ body {
       <div class="bonus-side-stack">
         <div class="bonus-side-card featured">
           <div class="bonus-side-card-inner">
-            <span class="bonus-side-label">おすすめ特典</span>
-            <div class="bonus-side-image-slot">バナー画像<br />差し替え枠</div>
-            <h2>特典まとめを確認</h2>
-            <p>入金ボーナス・FS・限定プロモをまとめてチェック。</p>
-            <a class="bonus-side-button" href="bonus-best.html">特典を確認</a>
-            <a class="bonus-side-sub" href="review-slottenkoku.html">1位レビューへ</a>
+            <div class="bonus-side-image-slot">横長バナー<br />画像枠</div>
+            <div class="bonus-side-body">
+              <span class="bonus-side-label">おすすめ</span>
+              <h2>特典まとめ</h2>
+              <p>入金ボーナス・FSを確認。</p>
+              <a class="bonus-side-button" href="bonus-best.html">特典を確認</a>
+            </div>
           </div>
         </div>
-
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <span class="bonus-side-label">1位候補</span>
-            <div class="bonus-side-image-slot">画像枠</div>
-            <h2>スロット天国</h2>
-            <p>初回特典・限定プロモ。</p>
-            <a class="bonus-side-button" href="review-slottenkoku.html">特典を見る</a>
+            <div class="bonus-side-image-slot">横長バナー<br />画像枠</div>
+            <div class="bonus-side-body">
+              <span class="bonus-side-label">1位候補</span>
+              <h2>スロット天国</h2>
+              <p>初回特典・限定プロモ。</p>
+              <a class="bonus-side-button" href="review-slottenkoku.html">見る</a>
+            </div>
           </div>
         </div>
-
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <span class="bonus-side-label">初心者向け</span>
-            <div class="bonus-side-image-slot">画像枠</div>
-            <h2>ミスティーノ</h2>
-            <p>初回特典とFSを確認。</p>
-            <a class="bonus-side-button" href="review-mystino.html">見る</a>
+            <div class="bonus-side-image-slot">横長バナー<br />画像枠</div>
+            <div class="bonus-side-body">
+              <span class="bonus-side-label">限定特典</span>
+              <h2>Stake</h2>
+              <p>登録後7日間の特典を確認。</p>
+              <a class="bonus-side-button" href="review-stake.html">確認</a>
+            </div>
           </div>
         </div>
-
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <span class="bonus-side-label">定番候補</span>
-            <div class="bonus-side-image-slot">画像枠</div>
-            <h2>ベラジョン</h2>
-            <p>ウェルカム特典を確認。</p>
-            <a class="bonus-side-button" href="review-verajohn.html">見る</a>
+            <div class="bonus-side-image-slot">横長バナー<br />画像枠</div>
+            <div class="bonus-side-body">
+              <span class="bonus-side-label">初心者</span>
+              <h2>ミスティーノ</h2>
+              <p>初回特典とFSを確認。</p>
+              <a class="bonus-side-button" href="review-mystino.html">見る</a>
+            </div>
           </div>
         </div>
-
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <span class="bonus-side-label">暗号資産</span>
-            <div class="bonus-side-image-slot">画像枠</div>
-            <h2>仮想通貨特典</h2>
-            <p>暗号資産ボーナスを確認。</p>
-            <a class="bonus-side-button" href="payments.html">確認</a>
+            <div class="bonus-side-image-slot">横長バナー<br />画像枠</div>
+            <div class="bonus-side-body">
+              <span class="bonus-side-label">定番</span>
+              <h2>ベラジョン</h2>
+              <p>ウェルカム特典を確認。</p>
+              <a class="bonus-side-button" href="review-verajohn.html">見る</a>
+            </div>
           </div>
         </div>
-
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <span class="bonus-side-label">登録前</span>
-            <div class="bonus-side-image-slot">画像枠</div>
-            <h2>最終チェック</h2>
-            <p>ボーナス前に確認。</p>
-            <a class="bonus-side-button" href="site-checklist.html">確認</a>
+            <div class="bonus-side-image-slot">横長バナー<br />画像枠</div>
+            <div class="bonus-side-body">
+              <span class="bonus-side-label">暗号資産</span>
+              <h2>仮想通貨特典</h2>
+              <p>暗号資産ボーナスを確認。</p>
+              <a class="bonus-side-button" href="payments.html">確認</a>
+            </div>
           </div>
         </div>
-
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <span class="bonus-side-label">レビュー</span>
-            <div class="bonus-side-image-slot">画像枠</div>
-            <h2>10件レビュー</h2>
-            <p>各社の特典と条件を見る。</p>
-            <a class="bonus-side-button" href="review.html">一覧へ</a>
+            <div class="bonus-side-image-slot">横長バナー<br />画像枠</div>
+            <div class="bonus-side-body">
+              <span class="bonus-side-label">登録前</span>
+              <h2>最終チェック</h2>
+              <p>ボーナス前に確認。</p>
+              <a class="bonus-side-button" href="site-checklist.html">確認</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </aside>
+
 
 
 
@@ -2702,19 +2761,24 @@ body {
     <section class="bonus-mobile-banners" aria-label="スマホ用ボーナスCTAバナー">
       <div class="bonus-mobile-banner-grid">
         <div class="bonus-mobile-banner">
-          <div class="bonus-mobile-blank">バナー画像 差し替え枠</div>
-          <strong>初回ボーナスをチェック</strong>
-          <span>ウェルカム特典・入金ボーナスを登録前に確認。</span>
-          <a href="bonus.html">ボーナスを見る</a>
+          <div class="bonus-mobile-blank">横長バナー画像枠</div>
+          <div>
+            <strong>初回ボーナスをチェック</strong>
+            <span>ウェルカム特典・入金ボーナスを登録前に確認。</span>
+            <a href="bonus.html">ボーナスを見る</a>
+          </div>
         </div>
         <div class="bonus-mobile-banner">
-          <div class="bonus-mobile-blank">バナー画像 差し替え枠</div>
-          <strong>おすすめ特典まとめ</strong>
-          <span>入金ボーナス・FS・限定プロモをまとめて確認。</span>
-          <a href="bonus-best.html">特典を確認</a>
+          <div class="bonus-mobile-blank">横長バナー画像枠</div>
+          <div>
+            <strong>おすすめ特典まとめ</strong>
+            <span>入金ボーナス・FS・限定プロモをまとめて確認。</span>
+            <a href="bonus-best.html">特典を確認</a>
+          </div>
         </div>
       </div>
     </section>
+
 
 
     <section class="agent-ranking-2026" id="recommended-ranking-2026">
