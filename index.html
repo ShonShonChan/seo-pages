@@ -2160,99 +2160,119 @@
 }
 
 
-/* ===== 左右ボーナスCTAバナー枠 ===== */
+
+/* ===== 左右余白ボーナスCTAバナー：サイド埋め込み版 ===== */
 .bonus-side-rails {
-  pointer-events: none;
   position: fixed;
-  inset: 96px 0 auto 0;
-  z-index: 35;
-  display: block;
+  inset: 76px 0 16px 0;
+  z-index: 34;
+  pointer-events: none;
 }
 
-.bonus-side-banner {
+.bonus-side-column {
   pointer-events: auto;
   position: fixed;
-  top: 112px;
-  width: 148px;
+  top: 88px;
+  bottom: 18px;
+  width: 154px;
+  overflow: hidden;
+}
+
+.bonus-side-column.left {
+  left: max(10px, calc((100vw - 1440px) / 2));
+}
+
+.bonus-side-column.right {
+  right: max(10px, calc((100vw - 1440px) / 2));
+}
+
+.bonus-side-stack {
+  display: grid;
+  gap: 12px;
+}
+
+.bonus-side-card {
+  width: 154px;
   border-radius: 22px;
   overflow: hidden;
   background:
-    radial-gradient(circle at 80% 12%, rgba(255, 232, 140, 0.38), transparent 30%),
-    linear-gradient(160deg, #d71920 0%, #9f1017 62%, #6d070c 100%);
+    radial-gradient(circle at 82% 10%, rgba(255, 232, 140, 0.32), transparent 34%),
+    linear-gradient(160deg, #d71920 0%, #9f1017 66%, #65070b 100%);
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.32);
-  box-shadow: 0 18px 42px rgba(120, 20, 20, 0.24);
+  box-shadow: 0 18px 42px rgba(120, 20, 20, 0.22);
 }
 
-.bonus-side-banner.left {
-  left: max(14px, calc((100vw - 1460px) / 2));
-}
-
-.bonus-side-banner.right {
-  right: max(14px, calc((100vw - 1460px) / 2));
-}
-
-.bonus-side-banner-inner {
-  padding: 14px;
+.bonus-side-card-inner {
+  padding: 12px;
 }
 
 .bonus-side-label {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  max-width: 100%;
   padding: 4px 8px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.95);
   color: #9f1017;
-  font-size: 11px;
+  font-size: 10.5px;
   line-height: 1.2;
   font-weight: 900;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
-.bonus-side-blank {
+.bonus-side-image-slot {
   width: 100%;
-  aspect-ratio: 1 / 1.05;
+  min-height: 66px;
   display: grid;
   place-items: center;
-  border-radius: 16px;
-  margin-bottom: 12px;
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08));
+  border-radius: 15px;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08));
   border: 1.5px dashed rgba(255, 255, 255, 0.58);
   color: rgba(255, 255, 255, 0.86);
   text-align: center;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 900;
   line-height: 1.45;
 }
 
-.bonus-side-banner h2 {
-  margin: 0 0 7px;
-  font-size: 18px;
-  line-height: 1.28;
-  letter-spacing: -0.04em;
+.bonus-side-card.featured .bonus-side-image-slot {
+  min-height: 92px;
 }
 
-.bonus-side-banner p {
+.bonus-side-card h2 {
+  margin: 0 0 5px;
+  color: #fff;
+  font-size: 14.5px;
+  line-height: 1.3;
+  letter-spacing: -0.035em;
+}
+
+.bonus-side-card.featured h2 {
+  font-size: 17px;
+}
+
+.bonus-side-card p {
   margin: 0;
   color: rgba(255, 255, 255, 0.88);
-  font-size: 12px;
-  line-height: 1.55;
+  font-size: 11px;
+  line-height: 1.48;
 }
 
-.bonus-side-cta {
+.bonus-side-button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: 38px;
-  margin-top: 12px;
-  padding: 8px 10px;
+  min-height: 32px;
+  margin-top: 9px;
+  padding: 7px 9px;
   border-radius: 999px;
   background: #fff;
   color: #9f1017;
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 900;
   text-align: center;
   box-shadow: 0 10px 20px rgba(60, 0, 0, 0.18);
@@ -2262,9 +2282,9 @@
   display: inline-flex;
   justify-content: center;
   width: 100%;
-  margin-top: 8px;
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 11px;
+  margin-top: 7px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 10.5px;
   font-weight: 800;
 }
 
@@ -2277,8 +2297,8 @@
 
 .bonus-mobile-banner-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  grid-template-columns: 1fr;
+  gap: 12px;
 }
 
 .bonus-mobile-banner {
@@ -2292,7 +2312,7 @@
 }
 
 .bonus-mobile-blank {
-  min-height: 92px;
+  min-height: 86px;
   display: grid;
   place-items: center;
   border-radius: 15px;
@@ -2332,184 +2352,34 @@
   font-weight: 900;
 }
 
-@media (max-width: 1460px) {
+@media (max-width: 1280px) {
   .bonus-side-rails {
     display: none;
   }
+}
 
+@media (max-width: 760px) {
   .bonus-mobile-banners {
     display: block;
-  }
-}
-
-@media (max-width: 640px) {
-  .bonus-mobile-banners {
     padding: 0 16px 22px;
   }
+}
 
-  .bonus-mobile-banner-grid {
-    grid-template-columns: 1fr;
+@media (max-height: 940px) {
+  .bonus-side-card:nth-child(n+7) {
+    display: none;
   }
-}
-
-
-/* ===== 左右ボーナスCTAバナー枠：縦増設版 ===== */
-.bonus-side-banner-stack {
-  display: grid;
-  gap: 14px;
-}
-
-.bonus-side-banner {
-  width: 148px;
-}
-
-.bonus-side-banner.mini {
-  background:
-    radial-gradient(circle at 80% 12%, rgba(255, 232, 140, 0.32), transparent 32%),
-    linear-gradient(160deg, #b90016 0%, #84090f 68%, #540508 100%);
-}
-
-.bonus-side-banner.mini .bonus-side-banner-inner {
-  padding: 12px;
-}
-
-.bonus-side-banner.mini .bonus-side-blank {
-  aspect-ratio: 1 / .72;
-  margin-bottom: 10px;
-  font-size: 11px;
-}
-
-.bonus-side-banner.mini h2 {
-  font-size: 15px;
-  line-height: 1.3;
-}
-
-.bonus-side-banner.mini p {
-  font-size: 11.5px;
-  line-height: 1.5;
-}
-
-.bonus-side-banner.mini .bonus-side-cta {
-  min-height: 34px;
-  font-size: 11.5px;
-  margin-top: 10px;
-}
-
-.bonus-side-banner.left,
-.bonus-side-banner.right {
-  position: static;
-}
-
-.bonus-side-stack-left,
-.bonus-side-stack-right {
-  pointer-events: auto;
-  position: fixed;
-  top: 104px;
-  z-index: 35;
-}
-
-.bonus-side-stack-left {
-  left: max(14px, calc((100vw - 1460px) / 2));
-}
-
-.bonus-side-stack-right {
-  right: max(14px, calc((100vw - 1460px) / 2));
 }
 
 @media (max-height: 820px) {
-  .bonus-side-banner.mini:nth-child(n+3) {
+  .bonus-side-card:nth-child(n+6) {
     display: none;
   }
 }
 
-@media (max-width: 1460px) {
-  .bonus-side-stack-left,
-  .bonus-side-stack-right {
+@media (max-height: 700px) {
+  .bonus-side-card:nth-child(n+5) {
     display: none;
-  }
-}
-
-
-/* ===== 左右ボーナスCTAバナー枠：ロング縦積み版 ===== */
-.bonus-side-stack-left,
-.bonus-side-stack-right {
-  max-height: calc(100vh - 118px);
-  overflow: hidden;
-}
-
-.bonus-side-banner-stack {
-  gap: 12px;
-}
-
-.bonus-side-banner.compact {
-  background:
-    radial-gradient(circle at 82% 10%, rgba(255, 232, 140, 0.28), transparent 34%),
-    linear-gradient(160deg, #c9101a 0%, #8a080f 70%, #5d0508 100%);
-}
-
-.bonus-side-banner.compact .bonus-side-banner-inner {
-  padding: 11px;
-}
-
-.bonus-side-banner.compact .bonus-side-label {
-  font-size: 10.5px;
-  padding: 3px 7px;
-  margin-bottom: 8px;
-}
-
-.bonus-side-banner.compact .bonus-side-blank {
-  aspect-ratio: 1 / .58;
-  min-height: 54px;
-  margin-bottom: 8px;
-  font-size: 10.5px;
-  border-radius: 13px;
-}
-
-.bonus-side-banner.compact h2 {
-  font-size: 14px;
-  line-height: 1.28;
-  margin-bottom: 5px;
-}
-
-.bonus-side-banner.compact p {
-  font-size: 11px;
-  line-height: 1.45;
-}
-
-.bonus-side-banner.compact .bonus-side-cta {
-  min-height: 31px;
-  font-size: 11px;
-  margin-top: 8px;
-  padding: 6px 8px;
-}
-
-.bonus-side-banner.compact .bonus-side-sub {
-  display: none;
-}
-
-@media (max-height: 980px) {
-  .bonus-side-banner.compact:nth-child(n+6) {
-    display: none;
-  }
-}
-
-@media (max-height: 860px) {
-  .bonus-side-banner.compact:nth-child(n+5) {
-    display: none;
-  }
-}
-
-@media (max-height: 760px) {
-  .bonus-side-banner.compact:nth-child(n+4) {
-    display: none;
-  }
-}
-
-@media (max-width: 1460px) {
-  .bonus-side-stack-left,
-  .bonus-side-stack-right {
-    max-height: none;
-    overflow: visible;
   }
 }
 
@@ -2519,136 +2389,157 @@
 <body>
 
   <aside class="bonus-side-rails" aria-label="ボーナスCTAサイドバナー">
-    <div class="bonus-side-stack-left">
-      <div class="bonus-side-banner-stack">
-        <div class="bonus-side-banner left">
-          <div class="bonus-side-banner-inner">
+    <div class="bonus-side-column left">
+      <div class="bonus-side-stack">
+        <div class="bonus-side-card featured">
+          <div class="bonus-side-card-inner">
             <span class="bonus-side-label">初回ボーナス</span>
-            <div class="bonus-side-blank">バナー画像<br />差し替え枠</div>
+            <div class="bonus-side-image-slot">バナー画像<br />差し替え枠</div>
             <h2>初回特典をチェック</h2>
             <p>ウェルカム特典・入金ボーナスを登録前に確認。</p>
-            <a class="bonus-side-cta" href="bonus.html">ボーナスを見る</a>
+            <a class="bonus-side-button" href="bonus.html">ボーナスを見る</a>
             <a class="bonus-side-sub" href="bonus-guide.html">条件の見方も確認</a>
           </div>
         </div>
 
-        <div class="bonus-side-banner compact">
-          <div class="bonus-side-banner-inner">
+        <div class="bonus-side-card">
+          <div class="bonus-side-card-inner">
             <span class="bonus-side-label">入金特典</span>
-            <div class="bonus-side-blank">画像枠</div>
+            <div class="bonus-side-image-slot">画像枠</div>
             <h2>入金ボーナス</h2>
             <p>対象カジノの特典を確認。</p>
-            <a class="bonus-side-cta" href="bonus-best.html">特典を見る</a>
+            <a class="bonus-side-button" href="bonus-best.html">特典を見る</a>
           </div>
         </div>
 
-        <div class="bonus-side-banner compact">
-          <div class="bonus-side-banner-inner">
+        <div class="bonus-side-card">
+          <div class="bonus-side-card-inner">
             <span class="bonus-side-label">FS特典</span>
-            <div class="bonus-side-blank">画像枠</div>
+            <div class="bonus-side-image-slot">画像枠</div>
             <h2>フリースピン</h2>
             <p>対象ゲームと条件を確認。</p>
-            <a class="bonus-side-cta" href="bonus.html">FSを見る</a>
+            <a class="bonus-side-button" href="bonus.html">FSを見る</a>
           </div>
         </div>
 
-        <div class="bonus-side-banner compact">
-          <div class="bonus-side-banner-inner">
+        <div class="bonus-side-card">
+          <div class="bonus-side-card-inner">
             <span class="bonus-side-label">入金不要</span>
-            <div class="bonus-side-blank">画像枠</div>
+            <div class="bonus-side-image-slot">画像枠</div>
             <h2>入金不要系</h2>
             <p>対象条件と出金条件を確認。</p>
-            <a class="bonus-side-cta" href="bonus-best.html">確認する</a>
+            <a class="bonus-side-button" href="bonus-best.html">確認する</a>
           </div>
         </div>
 
-        <div class="bonus-side-banner compact">
-          <div class="bonus-side-banner-inner">
+        <div class="bonus-side-card">
+          <div class="bonus-side-card-inner">
             <span class="bonus-side-label">リベート</span>
-            <div class="bonus-side-blank">画像枠</div>
+            <div class="bonus-side-image-slot">画像枠</div>
             <h2>還元特典</h2>
             <p>リベート・還元系を確認。</p>
-            <a class="bonus-side-cta" href="bonus.html">見る</a>
+            <a class="bonus-side-button" href="bonus.html">見る</a>
           </div>
         </div>
 
-        <div class="bonus-side-banner compact">
-          <div class="bonus-side-banner-inner">
+        <div class="bonus-side-card">
+          <div class="bonus-side-card-inner">
             <span class="bonus-side-label">限定プロモ</span>
-            <div class="bonus-side-blank">画像枠</div>
+            <div class="bonus-side-image-slot">画像枠</div>
             <h2>限定特典</h2>
             <p>期間限定プロモを確認。</p>
-            <a class="bonus-side-cta" href="bonus-best.html">確認</a>
+            <a class="bonus-side-button" href="bonus-best.html">確認</a>
+          </div>
+        </div>
+
+        <div class="bonus-side-card">
+          <div class="bonus-side-card-inner">
+            <span class="bonus-side-label">条件の見方</span>
+            <div class="bonus-side-image-slot">画像枠</div>
+            <h2>受け取り前に</h2>
+            <p>賭け条件や最大出金を確認。</p>
+            <a class="bonus-side-button" href="bonus-guide.html">見る</a>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="bonus-side-stack-right">
-      <div class="bonus-side-banner-stack">
-        <div class="bonus-side-banner right">
-          <div class="bonus-side-banner-inner">
+    <div class="bonus-side-column right">
+      <div class="bonus-side-stack">
+        <div class="bonus-side-card featured">
+          <div class="bonus-side-card-inner">
             <span class="bonus-side-label">おすすめ特典</span>
-            <div class="bonus-side-blank">バナー画像<br />差し替え枠</div>
+            <div class="bonus-side-image-slot">バナー画像<br />差し替え枠</div>
             <h2>特典まとめを確認</h2>
             <p>入金ボーナス・FS・限定プロモをまとめてチェック。</p>
-            <a class="bonus-side-cta" href="bonus-best.html">特典を確認</a>
+            <a class="bonus-side-button" href="bonus-best.html">特典を確認</a>
             <a class="bonus-side-sub" href="review-slottenkoku.html">1位レビューへ</a>
           </div>
         </div>
 
-        <div class="bonus-side-banner compact">
-          <div class="bonus-side-banner-inner">
+        <div class="bonus-side-card">
+          <div class="bonus-side-card-inner">
             <span class="bonus-side-label">1位候補</span>
-            <div class="bonus-side-blank">画像枠</div>
+            <div class="bonus-side-image-slot">画像枠</div>
             <h2>スロット天国</h2>
             <p>初回特典・限定プロモ。</p>
-            <a class="bonus-side-cta" href="review-slottenkoku.html">特典を見る</a>
+            <a class="bonus-side-button" href="review-slottenkoku.html">特典を見る</a>
           </div>
         </div>
 
-        <div class="bonus-side-banner compact">
-          <div class="bonus-side-banner-inner">
+        <div class="bonus-side-card">
+          <div class="bonus-side-card-inner">
             <span class="bonus-side-label">初心者向け</span>
-            <div class="bonus-side-blank">画像枠</div>
+            <div class="bonus-side-image-slot">画像枠</div>
             <h2>ミスティーノ</h2>
             <p>初回特典とFSを確認。</p>
-            <a class="bonus-side-cta" href="review-mystino.html">見る</a>
+            <a class="bonus-side-button" href="review-mystino.html">見る</a>
           </div>
         </div>
 
-        <div class="bonus-side-banner compact">
-          <div class="bonus-side-banner-inner">
+        <div class="bonus-side-card">
+          <div class="bonus-side-card-inner">
             <span class="bonus-side-label">定番候補</span>
-            <div class="bonus-side-blank">画像枠</div>
+            <div class="bonus-side-image-slot">画像枠</div>
             <h2>ベラジョン</h2>
             <p>ウェルカム特典を確認。</p>
-            <a class="bonus-side-cta" href="review-verajohn.html">見る</a>
+            <a class="bonus-side-button" href="review-verajohn.html">見る</a>
           </div>
         </div>
 
-        <div class="bonus-side-banner compact">
-          <div class="bonus-side-banner-inner">
+        <div class="bonus-side-card">
+          <div class="bonus-side-card-inner">
             <span class="bonus-side-label">暗号資産</span>
-            <div class="bonus-side-blank">画像枠</div>
+            <div class="bonus-side-image-slot">画像枠</div>
             <h2>仮想通貨特典</h2>
             <p>暗号資産ボーナスを確認。</p>
-            <a class="bonus-side-cta" href="payments.html">確認</a>
+            <a class="bonus-side-button" href="payments.html">確認</a>
           </div>
         </div>
 
-        <div class="bonus-side-banner compact">
-          <div class="bonus-side-banner-inner">
+        <div class="bonus-side-card">
+          <div class="bonus-side-card-inner">
             <span class="bonus-side-label">登録前</span>
-            <div class="bonus-side-blank">画像枠</div>
+            <div class="bonus-side-image-slot">画像枠</div>
             <h2>最終チェック</h2>
             <p>ボーナス前に確認。</p>
-            <a class="bonus-side-cta" href="site-checklist.html">確認</a>
+            <a class="bonus-side-button" href="site-checklist.html">確認</a>
+          </div>
+        </div>
+
+        <div class="bonus-side-card">
+          <div class="bonus-side-card-inner">
+            <span class="bonus-side-label">レビュー</span>
+            <div class="bonus-side-image-slot">画像枠</div>
+            <h2>10件レビュー</h2>
+            <p>各社の特典と条件を見る。</p>
+            <a class="bonus-side-button" href="review.html">一覧へ</a>
           </div>
         </div>
       </div>
     </div>
   </aside>
+
 
 
 
@@ -2820,6 +2711,7 @@
         </div>
       </div>
     </section>
+
 
     <section class="agent-ranking-2026" id="recommended-ranking-2026">
       <div class="ranking-head">
