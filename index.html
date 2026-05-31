@@ -3216,6 +3216,104 @@ body {
   margin-top: 34px;
 }
 
+
+/* ===== ランキングロゴ：サイズ統一・拡大調整 ===== */
+.fv-ranking-card {
+  grid-template-columns: 76px 180px minmax(0, 1fr) 260px 180px;
+}
+
+.fv-ranking-logo {
+  width: 180px;
+  min-height: 104px;
+  padding: 10px;
+  border-radius: 18px;
+  background: #fff;
+}
+
+.fv-ranking-logo img {
+  width: 150px;
+  height: 74px;
+  max-width: none;
+  max-height: none;
+  object-fit: contain;
+  display: block;
+}
+
+/* 横長ロゴも正方形ロゴも、同じ見え方になるように白余白を統一 */
+.fv-ranking-logo img[src*="stake"],
+.fv-ranking-logo img[src*="Stake"] {
+  width: 88px;
+  height: 74px;
+}
+
+.fv-ranking-logo img[src*="yuugado"],
+.fv-ranking-logo img[src*="yugado"],
+.fv-ranking-logo img[src*="遊雅堂"] {
+  width: 118px;
+  height: 74px;
+}
+
+.fv-ranking-logo img[src*="konibet"] {
+  width: 132px;
+  height: 74px;
+}
+
+.fv-ranking-logo img[src*="slottenkoku"],
+.fv-ranking-logo img[src*="slottengoku"] {
+  width: 150px;
+  height: 74px;
+}
+
+.fv-ranking-logo img[src*="verajohn"] {
+  width: 150px;
+  height: 74px;
+}
+
+@media (max-width: 980px) {
+  .fv-ranking-card {
+    grid-template-columns: 60px 150px 1fr;
+  }
+
+  .fv-ranking-logo {
+    width: 150px;
+    min-height: 92px;
+    padding: 9px;
+  }
+
+  .fv-ranking-logo img {
+    width: 128px;
+    height: 64px;
+  }
+
+  .fv-ranking-logo img[src*="stake"],
+  .fv-ranking-logo img[src*="Stake"] {
+    width: 76px;
+    height: 64px;
+  }
+}
+
+@media (max-width: 640px) {
+  .fv-ranking-card {
+    grid-template-columns: 52px 1fr;
+  }
+
+  .fv-ranking-logo {
+    width: 100%;
+    min-height: 92px;
+  }
+
+  .fv-ranking-logo img {
+    width: 150px;
+    height: 68px;
+  }
+
+  .fv-ranking-logo img[src*="stake"],
+  .fv-ranking-logo img[src*="Stake"] {
+    width: 84px;
+    height: 68px;
+  }
+}
+
 </style>
 </head>
 
