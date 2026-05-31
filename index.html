@@ -2428,6 +2428,165 @@ body {
   }
 }
 
+
+/* ===== 画像挿入前：FV/左右CTA/余白の最終整え ===== */
+body {
+  background:
+    linear-gradient(90deg,
+      rgba(255, 235, 235, 0.92) 0%,
+      rgba(255, 246, 246, 0.86) 12%,
+      #fff7f7 23%,
+      #fff7f7 77%,
+      rgba(255, 246, 246, 0.86) 88%,
+      rgba(255, 235, 235, 0.92) 100%);
+}
+
+/* 左右バナーが中央FVに食い込んで見えないよう、サイドを一段外側に寄せる */
+.bonus-side-column {
+  top: 22px;
+  width: 320px;
+}
+
+.bonus-side-column.left {
+  left: max(18px, calc((100vw - 1840px) / 2));
+}
+
+.bonus-side-column.right {
+  right: max(18px, calc((100vw - 1840px) / 2));
+}
+
+.bonus-side-card {
+  width: 320px;
+  border-radius: 20px;
+  box-shadow: 0 16px 36px rgba(120, 20, 20, 0.16);
+}
+
+.bonus-side-stack {
+  gap: 13px;
+}
+
+/* 画像を差し込んだ時に自然に見えるよう、画像枠を少し落ち着かせる */
+.bonus-side-image-slot {
+  aspect-ratio: 16 / 6.2;
+  min-height: 116px;
+  border-radius: 15px;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,.20), transparent 34%),
+    linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.06));
+}
+
+.bonus-side-card.featured .bonus-side-image-slot {
+  min-height: 122px;
+}
+
+/* テキスト部分は短く強く見せる */
+.bonus-side-label {
+  margin-bottom: 6px;
+}
+
+.bonus-side-card h2 {
+  font-size: 18px;
+  line-height: 1.24;
+  margin-bottom: 4px;
+}
+
+.bonus-side-card.featured h2 {
+  font-size: 19px;
+}
+
+.bonus-side-card p {
+  font-size: 12px;
+  line-height: 1.48;
+}
+
+.bonus-side-button {
+  min-height: 37px;
+  margin-top: 9px;
+}
+
+/* FV中央の見え方を少し上品に整理 */
+.hero {
+  width: min(1120px, calc(100% - 36px));
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 30px;
+  box-shadow: 0 20px 58px rgba(150, 22, 24, 0.10);
+}
+
+.hero-box {
+  gap: 28px;
+}
+
+.hero h1 {
+  letter-spacing: -0.055em;
+}
+
+.hero p {
+  max-width: 620px;
+}
+
+.hero-panel {
+  box-shadow: 0 18px 42px rgba(150, 22, 24, 0.10);
+}
+
+/* FV左の候補カードを少し締めて、バナーCTAと喧嘩しないようにする */
+.hero-picks,
+.hero-picks-card,
+.fv-pick-card {
+  box-shadow: 0 12px 28px rgba(150, 22, 24, 0.07);
+}
+
+.fv-pick-card {
+  border-radius: 18px;
+}
+
+/* FV直下のスマホ/狭幅CTAの余白を整える */
+.bonus-mobile-banners {
+  margin-top: -8px;
+}
+
+/* 横幅が足りない時は中央コンテンツ優先 */
+@media (max-width: 1540px) {
+  .bonus-side-column {
+    width: 280px;
+  }
+
+  .bonus-side-card {
+    width: 280px;
+  }
+
+  .bonus-side-image-slot,
+  .bonus-side-card.featured .bonus-side-image-slot {
+    min-height: 104px;
+  }
+
+  .bonus-side-card h2,
+  .bonus-side-card.featured h2 {
+    font-size: 16px;
+  }
+
+  .bonus-side-card p {
+    font-size: 11.4px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .bonus-side-rails {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  body {
+    background: #fff7f7;
+  }
+
+  .hero {
+    width: min(100% - 24px, 1120px);
+    border-radius: 22px;
+  }
+}
+
 </style>
 </head>
 
@@ -2438,77 +2597,77 @@ body {
       <div class="bonus-side-stack">
         <div class="bonus-side-card featured">
           <div class="bonus-side-card-inner">
-            <div class="bonus-side-image-slot">横長バナー画像<br />差し替え枠</div>
+            <div class="bonus-side-image-slot">横長バナー<br />画像差し替え枠</div>
             <div class="bonus-side-body">
               <span class="bonus-side-label">初回特典</span>
               <h2>登録で$20</h2>
-              <p>スロット天国の初回特典・限定プロモを確認。</p>
+              <p>登録特典・限定プロモを確認。</p>
               <a class="bonus-side-button" href="review-slottenkoku.html">特典を見る</a>
             </div>
           </div>
         </div>
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <div class="bonus-side-image-slot">横長バナー画像<br />差し替え枠</div>
+            <div class="bonus-side-image-slot">横長バナー<br />画像差し替え枠</div>
             <div class="bonus-side-body">
               <span class="bonus-side-label">入金特典</span>
               <h2>入金ボーナス</h2>
-              <p>対象カジノの入金特典をチェック。</p>
+              <p>入金特典をまとめて確認。</p>
               <a class="bonus-side-button" href="bonus-best.html">確認</a>
             </div>
           </div>
         </div>
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <div class="bonus-side-image-slot">横長バナー画像<br />差し替え枠</div>
+            <div class="bonus-side-image-slot">横長バナー<br />画像差し替え枠</div>
             <div class="bonus-side-body">
               <span class="bonus-side-label">FS特典</span>
               <h2>フリースピン</h2>
-              <p>対象ゲームと受け取り条件を確認。</p>
+              <p>FS対象ゲームをチェック。</p>
               <a class="bonus-side-button" href="bonus.html">FSを見る</a>
             </div>
           </div>
         </div>
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <div class="bonus-side-image-slot">横長バナー画像<br />差し替え枠</div>
+            <div class="bonus-side-image-slot">横長バナー<br />画像差し替え枠</div>
             <div class="bonus-side-body">
               <span class="bonus-side-label">入金不要</span>
               <h2>入金不要系</h2>
-              <p>対象条件と出金条件を確認。</p>
+              <p>登録前に対象条件を確認。</p>
               <a class="bonus-side-button" href="bonus-best.html">見る</a>
             </div>
           </div>
         </div>
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <div class="bonus-side-image-slot">横長バナー画像<br />差し替え枠</div>
+            <div class="bonus-side-image-slot">横長バナー<br />画像差し替え枠</div>
             <div class="bonus-side-body">
               <span class="bonus-side-label">還元特典</span>
               <h2>リベート</h2>
-              <p>還元・キャッシュバック系を確認。</p>
+              <p>還元系特典をチェック。</p>
               <a class="bonus-side-button" href="bonus.html">確認</a>
             </div>
           </div>
         </div>
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <div class="bonus-side-image-slot">横長バナー画像<br />差し替え枠</div>
+            <div class="bonus-side-image-slot">横長バナー<br />画像差し替え枠</div>
             <div class="bonus-side-body">
               <span class="bonus-side-label">限定特典</span>
               <h2>限定プロモ</h2>
-              <p>期間限定系の特典をチェック。</p>
+              <p>限定プロモを確認。</p>
               <a class="bonus-side-button" href="bonus-best.html">確認</a>
             </div>
           </div>
         </div>
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <div class="bonus-side-image-slot">横長バナー画像<br />差し替え枠</div>
+            <div class="bonus-side-image-slot">横長バナー<br />画像差し替え枠</div>
             <div class="bonus-side-body">
               <span class="bonus-side-label">条件確認</span>
               <h2>条件の見方</h2>
-              <p>賭け条件・最大出金を確認。</p>
+              <p>受け取り前に条件確認。</p>
               <a class="bonus-side-button" href="bonus-guide.html">見る</a>
             </div>
           </div>
@@ -2520,40 +2679,40 @@ body {
       <div class="bonus-side-stack">
         <div class="bonus-side-card featured">
           <div class="bonus-side-card-inner">
-            <div class="bonus-side-image-slot">横長バナー画像<br />差し替え枠</div>
+            <div class="bonus-side-image-slot">横長バナー<br />画像差し替え枠</div>
             <div class="bonus-side-body">
               <span class="bonus-side-label">おすすめ</span>
               <h2>特典まとめ</h2>
-              <p>入金ボーナス・FS・限定プロモを確認。</p>
+              <p>人気特典をまとめて確認。</p>
               <a class="bonus-side-button" href="bonus-best.html">特典を確認</a>
             </div>
           </div>
         </div>
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <div class="bonus-side-image-slot">横長バナー画像<br />差し替え枠</div>
+            <div class="bonus-side-image-slot">横長バナー<br />画像差し替え枠</div>
             <div class="bonus-side-body">
               <span class="bonus-side-label">1位候補</span>
               <h2>スロット天国</h2>
-              <p>初回特典・限定プロモを確認。</p>
+              <p>初回特典・限定プロモ。</p>
               <a class="bonus-side-button" href="review-slottenkoku.html">見る</a>
             </div>
           </div>
         </div>
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <div class="bonus-side-image-slot">横長バナー画像<br />差し替え枠</div>
+            <div class="bonus-side-image-slot">横長バナー<br />画像差し替え枠</div>
             <div class="bonus-side-body">
               <span class="bonus-side-label">限定特典</span>
               <h2>Stake</h2>
-              <p>登録後7日間の特典を確認。</p>
+              <p>登録後7日間の特典。</p>
               <a class="bonus-side-button" href="review-stake.html">確認</a>
             </div>
           </div>
         </div>
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <div class="bonus-side-image-slot">横長バナー画像<br />差し替え枠</div>
+            <div class="bonus-side-image-slot">横長バナー<br />画像差し替え枠</div>
             <div class="bonus-side-body">
               <span class="bonus-side-label">初心者</span>
               <h2>ミスティーノ</h2>
@@ -2564,29 +2723,29 @@ body {
         </div>
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <div class="bonus-side-image-slot">横長バナー画像<br />差し替え枠</div>
+            <div class="bonus-side-image-slot">横長バナー<br />画像差し替え枠</div>
             <div class="bonus-side-body">
               <span class="bonus-side-label">定番</span>
               <h2>ベラジョン</h2>
-              <p>ウェルカム特典を確認。</p>
+              <p>ウェルカム特典。</p>
               <a class="bonus-side-button" href="review-verajohn.html">見る</a>
             </div>
           </div>
         </div>
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <div class="bonus-side-image-slot">横長バナー画像<br />差し替え枠</div>
+            <div class="bonus-side-image-slot">横長バナー<br />画像差し替え枠</div>
             <div class="bonus-side-body">
               <span class="bonus-side-label">暗号資産</span>
               <h2>仮想通貨特典</h2>
-              <p>暗号資産ボーナスを確認。</p>
+              <p>暗号資産特典を確認。</p>
               <a class="bonus-side-button" href="payments.html">確認</a>
             </div>
           </div>
         </div>
         <div class="bonus-side-card">
           <div class="bonus-side-card-inner">
-            <div class="bonus-side-image-slot">横長バナー画像<br />差し替え枠</div>
+            <div class="bonus-side-image-slot">横長バナー<br />画像差し替え枠</div>
             <div class="bonus-side-body">
               <span class="bonus-side-label">登録前</span>
               <h2>最終チェック</h2>
@@ -2698,7 +2857,7 @@ body {
             <div class="hero-actions">
               <a class="btn btn-primary" href="casino-list.html">カジノ一覧を見る</a>
               <a class="btn btn-secondary" href="review.html">レビュー一覧を見る</a>
-              <a class="btn btn-secondary" href="bonus.html">ボーナス比較を見る</a>
+              <a class="btn btn-secondary" href="bonus.html">ボーナスを見る</a>
             </div>
           </div>
 
@@ -3237,7 +3396,7 @@ body {
           <div class="bonus-status-next-card">
             <b>詳しい比較へ進む</b>
             <p>ボーナスの見方や注意点は、専用ページでまとめて確認できます。</p>
-            <a href="bonus.html">ボーナス比較を見る</a>
+            <a href="bonus.html">ボーナスを見る</a>
           </div>
         </div>
       </div>
@@ -3694,7 +3853,7 @@ body {
           <span class="faq-kicker">よくある確認ポイント</span>
           <h2>おすすめランキングを見る前のFAQ</h2>
           <p class="faq-lead">
-            ランキングやボーナス比較を見るときに、初心者が確認しやすい項目をまとめました。
+            ランキングやボーナスを見るときに、初心者が確認しやすい項目をまとめました。
           </p>
         </div>
         <div class="faq-list">
