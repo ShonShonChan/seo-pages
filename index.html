@@ -4109,6 +4109,67 @@ main th,
   }
 }
 
+
+/* ===== 中央ランキングロゴ：差し替え画像対応 ===== */
+.fv-ranking-logo {
+  width: 160px;
+  height: 92px;
+  padding: 6px;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid #f0caca;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.fv-ranking-logo img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+.fv-ranking-logo img[src*="ranking-logo-"] {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 900px) {
+  .fv-ranking-logo {
+    width: 144px;
+    height: 84px;
+    padding: 5px;
+  }
+}
+
+@media (max-width: 640px) {
+  .fv-ranking-logo {
+    width: 132px;
+    height: 78px;
+    padding: 4px;
+  }
+}
+
+
+/* ===== 中央ランキングロゴ：JPG画像対応 ===== */
+.fv-ranking-logo {
+  background: #fff;
+}
+
+.fv-ranking-logo img[src*="ranking-logo-"] {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  background: #fff;
+}
+
 </style>
 </head>
 
@@ -4470,7 +4531,7 @@ main th,
       <div class="fv-ranking-list">
         <article class="fv-ranking-card">
           <div class="fv-rank-badge"><div><strong>1</strong><span>位</span></div></div>
-          <div class="fv-ranking-logo"><img src="slottenkoku-logo.png" alt="スロット天国 ロゴ" loading="lazy"></div>
+          <div class="fv-ranking-logo"><img src="ranking-logo-slottenkoku.jpg" alt="スロット天国 ロゴ" loading="lazy"></div>
           <div class="fv-ranking-main">
             <h3>スロット天国</h3>
             <div class="fv-ranking-tags"><span>初回特典</span><span>注目候補</span><span>日本語対応</span></div>
@@ -4488,7 +4549,7 @@ main th,
 
         <article class="fv-ranking-card">
           <div class="fv-rank-badge"><div><strong>2</strong><span>位</span></div></div>
-          <div class="fv-ranking-logo"><img src="konibet-logo.png" alt="コニベット ロゴ" loading="lazy"></div>
+          <div class="fv-ranking-logo"><img src="ranking-logo-konibet.jpg" alt="コニベット ロゴ" loading="lazy"></div>
           <div class="fv-ranking-main">
             <h3>コニベット</h3>
             <div class="fv-ranking-tags"><span>限定特典</span><span>FSあり</span><span>比較候補</span></div>
@@ -4506,7 +4567,7 @@ main th,
 
         <article class="fv-ranking-card">
           <div class="fv-rank-badge"><div><strong>3</strong><span>位</span></div></div>
-          <div class="fv-ranking-logo"><img src="stake-logo.png" alt="Stake ロゴ" loading="lazy"></div>
+          <div class="fv-ranking-logo"><img src="ranking-logo-stake.jpg" alt="Stake ロゴ" loading="lazy"></div>
           <div class="fv-ranking-main">
             <h3>Stake</h3>
             <div class="fv-ranking-tags"><span>暗号資産</span><span>限定特典</span><span>上級者向け</span></div>
@@ -4524,7 +4585,7 @@ main th,
 
         <article class="fv-ranking-card">
           <div class="fv-rank-badge"><div><strong>4</strong><span>位</span></div></div>
-          <div class="fv-ranking-logo"><img src="yuugado-logo.png" alt="遊雅堂 ロゴ" loading="lazy"></div>
+          <div class="fv-ranking-logo"><img src="ranking-logo-yuugado.jpg" alt="遊雅堂 ロゴ" loading="lazy"></div>
           <div class="fv-ranking-main">
             <h3>遊雅堂</h3>
             <div class="fv-ranking-tags"><span>日本語対応</span><span>初心者</span><span>入金特典</span></div>
