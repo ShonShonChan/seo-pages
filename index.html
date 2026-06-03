@@ -3605,6 +3605,231 @@ body {
   }
 }
 
+
+/* ===== TOPページ完成度アップ：全体統一・CTA導線整理 ===== */
+:root {
+  --top-red: #d90000;
+  --top-red-dark: #9f0000;
+  --top-red-soft: #fff3f3;
+  --top-border: #ffc9c9;
+  --top-text: #2a1f1f;
+  --top-muted: #6b5555;
+  --top-gold: #ffb23f;
+}
+
+body {
+  background:
+    radial-gradient(circle at 8% 8%, rgba(255, 230, 230, .78), transparent 26%),
+    radial-gradient(circle at 92% 18%, rgba(255, 241, 207, .78), transparent 28%),
+    linear-gradient(180deg, #fff7f7 0%, #fff 48%, #fff8f8 100%);
+}
+
+main {
+  overflow: visible;
+}
+
+.hero {
+  border: 1px solid rgba(255, 185, 185, .78);
+  background:
+    radial-gradient(circle at 88% 8%, rgba(255, 222, 120, .26), transparent 34%),
+    linear-gradient(135deg, #fff 0%, #fff7f7 56%, #fff 100%);
+}
+
+.hero h1 {
+  text-wrap: balance;
+}
+
+.hero p {
+  color: #594747;
+}
+
+.bonus-side-card {
+  border-color: rgba(255,255,255,.36);
+  box-shadow: 0 18px 42px rgba(120, 20, 20, .16);
+}
+
+.bonus-side-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 52px rgba(120, 20, 20, .22);
+}
+
+.bonus-side-button {
+  transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+}
+
+.bonus-side-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 24px rgba(60,0,0,.22);
+}
+
+.fv-ranking-section {
+  margin-top: 28px;
+  margin-bottom: 34px;
+}
+
+.fv-ranking-head {
+  padding: 4px 2px 2px;
+}
+
+.fv-ranking-head h2 {
+  text-wrap: balance;
+}
+
+.fv-ranking-card {
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+.fv-ranking-card:hover {
+  transform: translateY(-2px);
+  border-color: #ffaaaa;
+  box-shadow: 0 18px 44px rgba(150, 22, 24, .12);
+}
+
+.fv-ranking-actions .primary,
+.fv-ranking-more {
+  transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+}
+
+.fv-ranking-actions .primary:hover,
+.fv-ranking-more:hover {
+  transform: translateY(-1px);
+  background: #c80000;
+}
+
+.fv-ranking-logo {
+  background:
+    linear-gradient(180deg, #fff, #fffafa);
+  border-color: #ffd1d1;
+}
+
+.fv-ranking-logo img {
+  object-fit: contain;
+}
+
+.after-ranking-clean {
+  width: min(1120px, calc(100% - 36px));
+  margin: 0 auto 56px;
+  position: relative;
+  z-index: 2;
+}
+
+.after-section {
+  margin-top: 26px;
+  border: 1px solid var(--top-border);
+  border-radius: 28px;
+  background: rgba(255,255,255,.96);
+  box-shadow: 0 16px 42px rgba(150,22,24,.08);
+  overflow: hidden;
+}
+
+.after-section-inner {
+  padding: 28px;
+}
+
+.after-section h2 {
+  color: var(--top-red-dark);
+  text-wrap: balance;
+}
+
+.after-lead {
+  color: var(--top-muted);
+}
+
+.after-card,
+.after-row,
+.after-flow-step {
+  transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+}
+
+.after-card:hover,
+.after-row:hover,
+.after-flow-step:hover {
+  transform: translateY(-1px);
+  border-color: #ffb0b0;
+  box-shadow: 0 12px 28px rgba(150,22,24,.08);
+}
+
+.after-row a,
+.after-final-actions a {
+  transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+}
+
+.after-row a:hover,
+.after-final-actions a:hover {
+  transform: translateY(-1px);
+}
+
+.after-row a::after,
+.after-final-actions a::after,
+.fv-ranking-actions .primary::after,
+.fv-ranking-actions .secondary::after,
+.fv-ranking-more::after {
+  content: " →";
+  font-weight: 950;
+}
+
+.after-note {
+  border-left: 4px solid var(--top-red);
+}
+
+.after-final {
+  background:
+    radial-gradient(circle at 90% 10%, rgba(255, 222, 120, .34), transparent 36%),
+    linear-gradient(135deg, #d90000 0%, #9d0000 100%);
+}
+
+.after-final .secondary {
+  background: rgba(255,255,255,.98);
+}
+
+.notice,
+.home-faq-2026,
+.section#responsible,
+.cta {
+  width: min(1120px, calc(100% - 36px));
+  margin: 28px auto 44px;
+}
+
+.notice-box,
+.faq-panel,
+.responsible-box,
+.cta-box {
+  border-radius: 24px;
+  border: 1px solid var(--top-border);
+  box-shadow: 0 14px 34px rgba(150,22,24,.08);
+}
+
+@media (max-width: 980px) {
+  .fv-ranking-section {
+    margin-top: 22px;
+  }
+
+  .fv-ranking-card {
+    align-items: start;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero,
+  .fv-ranking-section,
+  .after-ranking-clean,
+  .notice,
+  .home-faq-2026,
+  .section#responsible,
+  .cta {
+    width: min(100% - 24px, 1120px);
+  }
+
+  .fv-ranking-head h2,
+  .after-section h2 {
+    letter-spacing: -0.045em;
+  }
+
+  .after-section-inner {
+    padding: 20px;
+  }
+}
+
 </style>
 </head>
 
@@ -4068,20 +4293,10 @@ body {
           <p class="after-lead">
             ランキングで気になる候補を見つけたら、次は「ボーナス金額」だけでなく、受け取り条件・出金条件・本人確認・入出金方法まで確認する流れが大切です。
           </p>
-
           <div class="after-grid">
-            <div class="after-card">
-              <strong>1. ボーナス内容</strong>
-              <p>登録特典、初回入金、フリースピン、限定プロモのどれが対象かを確認します。</p>
-            </div>
-            <div class="after-card">
-              <strong>2. 条件確認</strong>
-              <p>賭け条件、最大出金、対象ゲーム、有効期限、本人確認の有無を見ます。</p>
-            </div>
-            <div class="after-card">
-              <strong>3. 詳細CTAへ進む</strong>
-              <p>気になる候補はレビューやボーナス詳細へ進み、登録前に公式条件を確認します。</p>
-            </div>
+            <div class="after-card"><strong>1. ボーナス内容</strong><p>登録特典、初回入金、フリースピン、限定プロモのどれが対象かを確認します。</p></div>
+            <div class="after-card"><strong>2. 条件確認</strong><p>賭け条件、最大出金、対象ゲーム、有効期限、本人確認の有無を見ます。</p></div>
+            <div class="after-card"><strong>3. 詳細CTAへ進む</strong><p>気になる候補はレビューやボーナス詳細へ進み、登録前に公式条件を確認します。</p></div>
           </div>
         </div>
       </section>
@@ -4089,42 +4304,14 @@ body {
       <section class="after-section" id="bonus-check-table">
         <div class="after-section-inner">
           <span class="after-kicker">ボーナス確認早見表</span>
-          <h2>候補ごとに、確認すべき特典を整理</h2>
-          <p class="after-lead">
-            CTA前に迷わないよう、ランキング上位のカジノで見るべきボーナス項目を一覧化しています。
-          </p>
-
+          <h2>候補ごとに、見るべきボーナスを整理</h2>
+          <p class="after-lead">CTA前に迷わないよう、ランキング上位のカジノで見るべきボーナス項目を一覧化しています。</p>
           <div class="after-table" aria-label="ボーナス確認早見表">
-            <div class="after-row">
-              <b>スロット天国</b>
-              <p>登録$20、初回入金特典、限定プロモを確認。</p>
-              <span class="check">賭け条件 / 入出金</span>
-              <a href="review-slottenkoku.html">詳細を見る</a>
-            </div>
-            <div class="after-row">
-              <b>コニベット</b>
-              <p>66ドル特典、$60ボーナス、30回FSを確認。</p>
-              <span class="check">対象ゲーム / 最大出金</span>
-              <a href="review-konibet.html">詳細を見る</a>
-            </div>
-            <div class="after-row">
-              <b>Stake</b>
-              <p>7日間で合計$7、暗号資産対応、入金特典を確認。</p>
-              <span class="check">通貨 / ネットワーク</span>
-              <a href="review-stake.html">詳細を見る</a>
-            </div>
-            <div class="after-row">
-              <b>遊雅堂</b>
-              <p>初回100%最大5万円、登録特典、日本語対応を確認。</p>
-              <span class="check">本人確認 / 規約</span>
-              <a href="review-yuugado.html">詳細を見る</a>
-            </div>
-            <div class="after-row">
-              <b>ベラジョン</b>
-              <p>150回FS、最大15万円、複数回入金特典を確認。</p>
-              <span class="check">FS / 有効期限</span>
-              <a href="review-verajohn.html">詳細を見る</a>
-            </div>
+            <div class="after-row"><b>スロット天国</b><p>登録$20、初回入金特典、限定プロモを確認。</p><span class="check">賭け条件 / 入出金</span><a href="review-slottenkoku.html">詳細を見る</a></div>
+            <div class="after-row"><b>コニベット</b><p>66ドル特典、$60ボーナス、30回FSを確認。</p><span class="check">対象ゲーム / 最大出金</span><a href="review-konibet.html">詳細を見る</a></div>
+            <div class="after-row"><b>Stake</b><p>7日間で合計$7、暗号資産対応、入金特典を確認。</p><span class="check">通貨 / ネットワーク</span><a href="review-stake.html">詳細を見る</a></div>
+            <div class="after-row"><b>遊雅堂</b><p>初回100%最大5万円、登録特典、日本語対応を確認。</p><span class="check">本人確認 / 規約</span><a href="review-yuugado.html">詳細を見る</a></div>
+            <div class="after-row"><b>ベラジョン</b><p>150回FS、最大15万円、複数回入金特典を確認。</p><span class="check">FS / 有効期限</span><a href="review-verajohn.html">詳細を見る</a></div>
           </div>
         </div>
       </section>
@@ -4132,37 +4319,15 @@ body {
       <section class="after-section" id="safe-check-flow">
         <div class="after-section-inner">
           <span class="after-kicker">登録前チェック導線</span>
-          <h2>CTAへ進む前に、この順番で確認</h2>
-          <p class="after-lead">
-            ボーナス訴求からそのまま登録へ進むのではなく、最低限の確認ポイントを踏んでから詳細ページへ進める構成にしています。
-          </p>
-
+          <h2>登録・CTAへ進む前に、この順番で確認</h2>
+          <p class="after-lead">ボーナス訴求からそのまま登録へ進むのではなく、最低限の確認ポイントを踏んでから詳細ページへ進める構成にしています。</p>
           <div class="after-flow">
-            <div class="after-flow-step">
-              <em>1</em>
-              <strong>レビューを見る</strong>
-              <span>特徴、強み、注意点、対象ユーザーを確認。</span>
-            </div>
-            <div class="after-flow-step">
-              <em>2</em>
-              <strong>ボーナス条件</strong>
-              <span>賭け条件、最大出金、対象ゲームを確認。</span>
-            </div>
-            <div class="after-flow-step">
-              <em>3</em>
-              <strong>入出金</strong>
-              <span>反映時間、出金条件、本人確認を確認。</span>
-            </div>
-            <div class="after-flow-step">
-              <em>4</em>
-              <strong>公式確認</strong>
-              <span>最後に公式規約と対象地域を確認。</span>
-            </div>
+            <div class="after-flow-step"><em>1</em><strong>レビューを見る</strong><span>特徴、強み、注意点、対象ユーザーを確認。</span></div>
+            <div class="after-flow-step"><em>2</em><strong>ボーナス条件</strong><span>賭け条件、最大出金、対象ゲームを確認。</span></div>
+            <div class="after-flow-step"><em>3</em><strong>入出金</strong><span>反映時間、出金条件、本人確認を確認。</span></div>
+            <div class="after-flow-step"><em>4</em><strong>公式確認</strong><span>最後に公式規約と対象地域を確認。</span></div>
           </div>
-
-          <div class="after-note">
-            本サイトのランキングやバナーは、勝利・利益・出金を保証するものではありません。登録前に必ず公式規約と条件を確認してください。
-          </div>
+          <div class="after-note">本サイトのランキングやバナーは、勝利・利益・出金を保証するものではありません。登録前に必ず公式規約と条件を確認してください。</div>
         </div>
       </section>
 
@@ -4170,9 +4335,7 @@ body {
         <div class="after-section-inner">
           <span class="after-kicker">TOP最終導線</span>
           <h2>迷ったら、まずはレビューとボーナス条件へ</h2>
-          <p class="after-lead">
-            気になる候補が決まったら、レビュー一覧またはボーナス比較から、詳細条件を確認してください。
-          </p>
+          <p class="after-lead">気になる候補が決まったら、レビュー一覧またはボーナス比較から、詳細条件を確認してから次へ進みましょう。</p>
           <div class="after-final-actions">
             <a class="primary" href="review.html">レビュー一覧を見る</a>
             <a class="secondary" href="bonus.html">ボーナス比較を見る</a>
