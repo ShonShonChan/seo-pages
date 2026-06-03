@@ -4416,6 +4416,202 @@ section:has(> .selection-criteria) {
   }
 }
 
+
+
+/* ===== ランキング上位訴求強化 ===== */
+.fv-ranking-list .fv-ranking-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.fv-ranking-list .fv-ranking-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0));
+  pointer-events: none;
+  z-index: 0;
+}
+
+.fv-ranking-list .fv-ranking-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(-n+3) {
+  border-width: 2px;
+  padding-top: 28px;
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(-n+3)::before {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .04em;
+  box-shadow: 0 10px 24px rgba(0,0,0,.10);
+  z-index: 2;
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(1) {
+  border-color: #ffd15a;
+  background: linear-gradient(135deg, #fffdf5 0%, #fff6df 38%, #ffffff 100%);
+  box-shadow: 0 18px 40px rgba(207, 120, 0, .16);
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(1)::before {
+  content: "👑 1位 注目No.1";
+  background: linear-gradient(135deg, #ff8c00, #ffd95a);
+  color: #7d2500;
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(1) .fv-rank-badge {
+  width: 74px;
+  height: 74px;
+  background: radial-gradient(circle at 30% 30%, #fff3b5 0%, #ffd54f 38%, #ff8c00 100%);
+  color: #8a2500;
+  box-shadow: 0 16px 34px rgba(255, 153, 0, .30);
+  border: 4px solid rgba(255,255,255,.92);
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(1) .fv-rank-badge strong {
+  font-size: 31px;
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(1) .fv-ranking-main h3 {
+  font-size: 29px;
+  color: #8c0000;
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(1) .fv-ranking-bonus {
+  border-color: #ffcc6a;
+  background: linear-gradient(135deg, #fff7db, #fffdf6);
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(1) .fv-ranking-actions .primary {
+  min-height: 48px;
+  background: linear-gradient(135deg, #e10000, #ff5b00);
+  box-shadow: 0 14px 28px rgba(225, 0, 0, .22);
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(2) {
+  border-color: #d7dbe3;
+  background: linear-gradient(135deg, #fcfdff 0%, #f4f7fb 46%, #ffffff 100%);
+  box-shadow: 0 16px 34px rgba(98, 110, 132, .13);
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(2)::before {
+  content: "★ 2位 人気上位";
+  background: linear-gradient(135deg, #d9dee6, #f9fbff);
+  color: #4f5a68;
+  border: 1px solid #cfd6e1;
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(2) .fv-rank-badge {
+  width: 68px;
+  height: 68px;
+  background: linear-gradient(135deg, #c7d0db, #f8fbff);
+  color: #4f5a68;
+  border: 4px solid rgba(255,255,255,.96);
+  box-shadow: 0 14px 30px rgba(116, 126, 141, .20);
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(2) .fv-rank-badge strong {
+  font-size: 28px;
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(2) .fv-ranking-main h3 {
+  color: #243447;
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(3) {
+  border-color: #e8c3a8;
+  background: linear-gradient(135deg, #fffaf6 0%, #fff2e8 45%, #ffffff 100%);
+  box-shadow: 0 16px 34px rgba(165, 92, 45, .12);
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(3)::before {
+  content: "▲ 3位 定番候補";
+  background: linear-gradient(135deg, #d89b6a, #f5d4b8);
+  color: #6c2f06;
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(3) .fv-rank-badge {
+  width: 66px;
+  height: 66px;
+  background: linear-gradient(135deg, #c96a29, #f0b17a);
+  color: #fff7f0;
+  border: 4px solid rgba(255,255,255,.95);
+  box-shadow: 0 14px 28px rgba(176, 89, 39, .18);
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(3) .fv-rank-badge strong {
+  font-size: 27px;
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(1) .fv-ranking-tags span,
+.fv-ranking-list .fv-ranking-card:nth-child(2) .fv-ranking-tags span,
+.fv-ranking-list .fv-ranking-card:nth-child(3) .fv-ranking-tags span {
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.35);
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(1) .fv-ranking-main p,
+.fv-ranking-list .fv-ranking-card:nth-child(2) .fv-ranking-main p,
+.fv-ranking-list .fv-ranking-card:nth-child(3) .fv-ranking-main p,
+.fv-ranking-list .fv-ranking-card:nth-child(1) .fv-ranking-bonus span,
+.fv-ranking-list .fv-ranking-card:nth-child(2) .fv-ranking-bonus span,
+.fv-ranking-list .fv-ranking-card:nth-child(3) .fv-ranking-bonus span {
+  font-weight: 600;
+}
+
+@media (max-width: 980px) {
+  .fv-ranking-list .fv-ranking-card:nth-child(-n+3) {
+    padding-top: 44px;
+  }
+
+  .fv-ranking-list .fv-ranking-card:nth-child(-n+3)::before {
+    top: 12px;
+    right: 12px;
+  }
+
+  .fv-ranking-list .fv-ranking-card:nth-child(1) .fv-rank-badge,
+  .fv-ranking-list .fv-ranking-card:nth-child(2) .fv-rank-badge,
+  .fv-ranking-list .fv-ranking-card:nth-child(3) .fv-rank-badge {
+    width: 62px;
+    height: 62px;
+  }
+
+  .fv-ranking-list .fv-ranking-card:nth-child(1) .fv-ranking-main h3 {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 640px) {
+  .fv-ranking-list .fv-ranking-card:nth-child(-n+3) {
+    padding-top: 46px;
+  }
+
+  .fv-ranking-list .fv-ranking-card:nth-child(-n+3)::before {
+    left: 14px;
+    right: auto;
+    min-height: 28px;
+    padding: 0 12px;
+    font-size: 11px;
+  }
+
+  .fv-ranking-list .fv-ranking-card:nth-child(1) .fv-ranking-main h3 {
+    font-size: 23px;
+  }
+}
+
 </style>
   <!-- Site icons / favicon -->
   <link rel="icon" href="favicon.ico" sizes="any">
