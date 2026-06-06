@@ -4950,6 +4950,52 @@ section:has(> .selection-criteria) {
   }
 }
 
+
+/* ===== ランキング6〜10位：アップロード済みロゴ画像対応 ===== */
+.fv-ranking-logo img[src*="ranking-logo-mystino"],
+.fv-ranking-logo img[src*="ranking-logo-bitstarz"],
+.fv-ranking-logo img[src*="ranking-logo-roobet"],
+.fv-ranking-logo img[src*="ranking-logo-7bitcasino"],
+.fv-ranking-logo img[src*="ranking-logo-fortunejack"] {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(n+6) .fv-ranking-logo {
+  width: 178px;
+  height: 106px;
+  min-height: 106px;
+  padding: 6px;
+  background: #fff;
+  border: 1px solid #ffd1d1;
+  border-radius: 18px;
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(n+6) .fv-ranking-logo img {
+  background: #fff;
+}
+
+@media (max-width: 980px) {
+  .fv-ranking-list .fv-ranking-card:nth-child(n+6) .fv-ranking-logo {
+    width: 150px;
+    height: 90px;
+    min-height: 90px;
+  }
+}
+
+@media (max-width: 640px) {
+  .fv-ranking-list .fv-ranking-card:nth-child(n+6) .fv-ranking-logo {
+    width: 100%;
+    height: 88px;
+    min-height: 88px;
+  }
+}
+
 </style>
   <!-- Site icons / favicon -->
   <link rel="icon" href="favicon.ico" sizes="any">
@@ -5406,7 +5452,7 @@ section:has(> .selection-criteria) {
 
         <article class="fv-ranking-card">
           <div class="fv-rank-badge"><div><strong>6</strong><span>位</span></div></div>
-          <div class="fv-ranking-logo"><span class="fv-ranking-logo-text">Mystino</span></div>
+          <div class="fv-ranking-logo"><img src="ranking-logo-mystino.png" alt="ミスティーノ ロゴ" loading="lazy"></div>
           <div class="fv-ranking-main">
             <h3>ミスティーノ</h3>
             <div class="fv-ranking-tags"><span>初心者向け</span><span>円建て</span><span>FSあり</span></div>
@@ -5424,7 +5470,7 @@ section:has(> .selection-criteria) {
 
         <article class="fv-ranking-card">
           <div class="fv-rank-badge"><div><strong>7</strong><span>位</span></div></div>
-          <div class="fv-ranking-logo"><span class="fv-ranking-logo-text">BitStarz</span></div>
+          <div class="fv-ranking-logo"><img src="ranking-logo-bitstarz.png" alt="BitStarz ロゴ" loading="lazy"></div>
           <div class="fv-ranking-main">
             <h3>BitStarz</h3>
             <div class="fv-ranking-tags"><span>初回特典</span><span>FSあり</span><span>暗号資産</span></div>
@@ -5442,7 +5488,7 @@ section:has(> .selection-criteria) {
 
         <article class="fv-ranking-card">
           <div class="fv-rank-badge"><div><strong>8</strong><span>位</span></div></div>
-          <div class="fv-ranking-logo"><span class="fv-ranking-logo-text">Roobet</span></div>
+          <div class="fv-ranking-logo"><img src="ranking-logo-roobet.png" alt="Roobet ロゴ" loading="lazy"></div>
           <div class="fv-ranking-main">
             <h3>Roobet</h3>
             <div class="fv-ranking-tags"><span>人気候補</span><span>プロモ</span><span>抽選系</span></div>
@@ -5460,7 +5506,7 @@ section:has(> .selection-criteria) {
 
         <article class="fv-ranking-card">
           <div class="fv-rank-badge"><div><strong>9</strong><span>位</span></div></div>
-          <div class="fv-ranking-logo"><span class="fv-ranking-logo-text">7Bit</span></div>
+          <div class="fv-ranking-logo"><img src="ranking-logo-7bitcasino.png" alt="7Bit Casino ロゴ" loading="lazy"></div>
           <div class="fv-ranking-main">
             <h3>7Bit Casino</h3>
             <div class="fv-ranking-tags"><span>クリプト</span><span>大型特典</span><span>FSあり</span></div>
@@ -5478,7 +5524,7 @@ section:has(> .selection-criteria) {
 
         <article class="fv-ranking-card">
           <div class="fv-rank-badge"><div><strong>10</strong><span>位</span></div></div>
-          <div class="fv-ranking-logo"><span class="fv-ranking-logo-text">FortuneJack</span></div>
+          <div class="fv-ranking-logo"><img src="ranking-logo-fortunejack.png" alt="FortuneJack ロゴ" loading="lazy"></div>
           <div class="fv-ranking-main">
             <h3>FortuneJack</h3>
             <div class="fv-ranking-tags"><span>暗号資産</span><span>ウェルカム</span><span>ミッション</span></div>
