@@ -4996,6 +4996,30 @@ section:has(> .selection-criteria) {
   }
 }
 
+
+/* ===== ヘッダー内ブランドアイコン：新サイトアイコン反映 ===== */
+.brand-mark {
+  overflow: hidden;
+  padding: 0;
+  background: transparent;
+}
+
+.brand-mark img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+@media (max-width: 640px) {
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 11px;
+  }
+}
+
 </style>
   <!-- Site icons / favicon -->
   <link rel="icon" href="favicon.ico" sizes="any">
@@ -5180,7 +5204,7 @@ section:has(> .selection-criteria) {
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="index.html" aria-label="リベンジカジノ比較ガイド トップへ">
-        <span class="brand-mark">R</span>
+        <span class="brand-mark"><img src="apple-touch-icon.png" alt="リベンジカジノ比較ガイド アイコン" loading="eager"></span>
         <span>リベンジカジノ比較ガイド</span>
       </a>
 
