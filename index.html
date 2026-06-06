@@ -4886,6 +4886,70 @@ section:has(> .selection-criteria) {
   }
 }
 
+
+/* ===== ランキング10位対応：下位カード整列・ロゴ文字対応 ===== */
+.fv-ranking-logo-text {
+  width: 100%;
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #fff, #fff7f7);
+  color: #202020;
+  font-size: 20px;
+  font-weight: 950;
+  letter-spacing: -0.02em;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(n+4) {
+  border-color: #ffcaca;
+  background: linear-gradient(135deg, #fff, #fff8f8);
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(n+4) .fv-rank-badge {
+  background: linear-gradient(135deg, #e60000, #ff8a00);
+  color: #fff;
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(n+4) .fv-ranking-main h3 {
+  writing-mode: horizontal-tb;
+  word-break: keep-all;
+  overflow-wrap: normal;
+  white-space: normal;
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(10) .fv-rank-badge strong {
+  font-size: 21px;
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(n+6) .fv-ranking-actions .primary {
+  background: #d90000;
+}
+
+.fv-ranking-list .fv-ranking-card:nth-child(n+6) .fv-ranking-actions .secondary {
+  background: #fff;
+  color: #c00000;
+  border: 1px solid #ffb7b7;
+}
+
+@media (max-width: 980px) {
+  .fv-ranking-logo-text {
+    min-height: 58px;
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 640px) {
+  .fv-ranking-logo-text {
+    min-height: 56px;
+    font-size: 16px;
+  }
+}
+
 </style>
   <!-- Site icons / favicon -->
   <link rel="icon" href="favicon.ico" sizes="any">
@@ -5244,7 +5308,7 @@ section:has(> .selection-criteria) {
         <div>
           <span class="fv-ranking-kicker">2026年版・ボーナス重視ランキング</span>
           <h2>まず見たい候補をランキングで比較</h2>
-          <p>ボーナスの見やすさ、登録特典、入金特典、条件確認のしやすさを軸に、登録前に確認しやすい候補を整理しています。</p>
+          <p>ボーナスの見やすさ、登録特典、入金特典、条件確認のしやすさを軸に、登録前に確認しやすい候補を10位まで整理しています。</p>
         </div>
         <a class="fv-ranking-more" href="review.html">レビュー一覧を見る</a>
       </div>
@@ -5263,8 +5327,8 @@ section:has(> .selection-criteria) {
             <span>ヘブンズショット無料参加チケットなど、登録前に条件確認。</span>
           </div>
           <div class="fv-ranking-actions">
-            <a class="primary" href="review-slottenkoku.html">ボーナスを見る</a>
-            <a class="secondary" href="review-slottenkoku.html">レビューを見る</a>
+            <a class="primary" href="review-slottenkoku.html">1位特典を確認</a>
+            <a class="secondary" href="review-slottenkoku.html">1位の詳細を見る</a>
           </div>
         </article>
 
@@ -5339,9 +5403,100 @@ section:has(> .selection-criteria) {
             <a class="secondary" href="review-verajohn.html">レビューを見る</a>
           </div>
         </article>
+
+        <article class="fv-ranking-card">
+          <div class="fv-rank-badge"><div><strong>6</strong><span>位</span></div></div>
+          <div class="fv-ranking-logo"><span class="fv-ranking-logo-text">Mystino</span></div>
+          <div class="fv-ranking-main">
+            <h3>ミスティーノ</h3>
+            <div class="fv-ranking-tags"><span>初心者向け</span><span>円建て</span><span>FSあり</span></div>
+            <p>初回特典やフリースピンを日本語で確認したい人向け。</p>
+          </div>
+          <div class="fv-ranking-bonus">
+            <strong>3,500円特典</strong>
+            <span>初回100%ボーナスやFS条件を登録前に確認。</span>
+          </div>
+          <div class="fv-ranking-actions">
+            <a class="primary" href="review-mystino.html">特典を見る</a>
+            <a class="secondary" href="review-mystino.html">レビューを見る</a>
+          </div>
+        </article>
+
+        <article class="fv-ranking-card">
+          <div class="fv-rank-badge"><div><strong>7</strong><span>位</span></div></div>
+          <div class="fv-ranking-logo"><span class="fv-ranking-logo-text">BitStarz</span></div>
+          <div class="fv-ranking-main">
+            <h3>BitStarz</h3>
+            <div class="fv-ranking-tags"><span>初回特典</span><span>FSあり</span><span>暗号資産</span></div>
+            <p>初回入金特典とフリースピンをまとめて見たい人向け。</p>
+          </div>
+          <div class="fv-ranking-bonus">
+            <strong>100%＋180FS</strong>
+            <span>初回入金特典と追加入金ボーナスを確認。</span>
+          </div>
+          <div class="fv-ranking-actions">
+            <a class="primary" href="bonus-best.html">特典を見る</a>
+            <a class="secondary" href="bonus-best.html">条件を見る</a>
+          </div>
+        </article>
+
+        <article class="fv-ranking-card">
+          <div class="fv-rank-badge"><div><strong>8</strong><span>位</span></div></div>
+          <div class="fv-ranking-logo"><span class="fv-ranking-logo-text">Roobet</span></div>
+          <div class="fv-ranking-main">
+            <h3>Roobet</h3>
+            <div class="fv-ranking-tags"><span>人気候補</span><span>プロモ</span><span>抽選系</span></div>
+            <p>最新プロモやフリースピン、限定コードをチェックしたい人向け。</p>
+          </div>
+          <div class="fv-ranking-bonus">
+            <strong>$100,000抽選</strong>
+            <span>プロモ内容・参加条件・対象条件を確認。</span>
+          </div>
+          <div class="fv-ranking-actions">
+            <a class="primary" href="bonus-best.html">最新特典を見る</a>
+            <a class="secondary" href="bonus-best.html">条件を見る</a>
+          </div>
+        </article>
+
+        <article class="fv-ranking-card">
+          <div class="fv-rank-badge"><div><strong>9</strong><span>位</span></div></div>
+          <div class="fv-ranking-logo"><span class="fv-ranking-logo-text">7Bit</span></div>
+          <div class="fv-ranking-main">
+            <h3>7Bit Casino</h3>
+            <div class="fv-ranking-tags"><span>クリプト</span><span>大型特典</span><span>FSあり</span></div>
+            <p>暗号資産系の大型ウェルカム特典を確認したい人向け。</p>
+          </div>
+          <div class="fv-ranking-bonus">
+            <strong>325%＋250FS</strong>
+            <span>最大5.25BTCのウェルカム特典を確認。</span>
+          </div>
+          <div class="fv-ranking-actions">
+            <a class="primary" href="bonus-best.html">特典を見る</a>
+            <a class="secondary" href="bonus-best.html">条件を見る</a>
+          </div>
+        </article>
+
+        <article class="fv-ranking-card">
+          <div class="fv-rank-badge"><div><strong>10</strong><span>位</span></div></div>
+          <div class="fv-ranking-logo"><span class="fv-ranking-logo-text">FortuneJack</span></div>
+          <div class="fv-ranking-main">
+            <h3>FortuneJack</h3>
+            <div class="fv-ranking-tags"><span>暗号資産</span><span>ウェルカム</span><span>ミッション</span></div>
+            <p>暗号資産カジノの段階型ウェルカム特典を見たい人向け。</p>
+          </div>
+          <div class="fv-ranking-bonus">
+            <strong>4ミッション特典</strong>
+            <span>段階型ウェルカムボーナスの内容を確認。</span>
+          </div>
+          <div class="fv-ranking-actions">
+            <a class="primary" href="bonus-best.html">特典を見る</a>
+            <a class="secondary" href="bonus-best.html">条件を見る</a>
+          </div>
+        </article>
       </div>
 
-      <div class="fv-ranking-note">
+
+      <div class="fv-ranking-note"
         掲載内容は確認時点の情報をもとに整理しています。登録前には、必ず公式ページでボーナス対象ゲーム、賭け条件、最大出金、本人確認、出金条件を確認してください。
       </div>
     </section>
