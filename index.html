@@ -5514,7 +5514,7 @@ section:has(> .selection-criteria) {
 }
 .slottenkoku-route-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 14px;
   margin-top: 16px;
 }
@@ -5580,6 +5580,9 @@ section:has(> .selection-criteria) {
   padding: 12px 14px;
   font-size: 13px;
   line-height: 1.75;
+}
+@media (max-width: 1100px) {
+  .slottenkoku-route-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 900px) {
   .slottenkoku-conversion-head,
@@ -5939,9 +5942,21 @@ section:has(> .selection-criteria) {
             <p>決済方法だけで判断せず、ボーナス条件、賭け条件、最大出金、本人確認までレビューで整理します。</p>
             <a href="review-slottenkoku.html">スロット天国レビューへ</a>
           </article>
+          <article class="slottenkoku-route-card">
+            <strong>専用ボーナスページ</strong>
+            <p>入金不要ボーナス、初回入金、フリースピン、賭け条件、最大出金をスロット天国専用で確認できます。</p>
+            <a href="slottenkoku-bonus.html">スロット天国ボーナスへ</a>
+          </article>
+          <article class="slottenkoku-route-card">
+            <strong>専用入出金ページ</strong>
+            <p>コンビニ決済、PayPay、仮想通貨、ATM、銀行振込、本人確認をスロット天国専用で整理しています。</p>
+            <a href="slottenkoku-payment.html">スロット天国入出金へ</a>
+          </article>
         </div>
         <div class="slottenkoku-conversion-actions">
           <a class="primary" href="review-slottenkoku.html">スロット天国の条件を確認する</a>
+          <a class="secondary" href="slottenkoku-bonus.html">ボーナス条件を見る</a>
+          <a class="secondary" href="slottenkoku-payment.html">入出金条件を見る</a>
           <a class="secondary" href="convenience-store-deposit.html">コンビニ決済を見る</a>
           <a class="secondary" href="paypay-casino.html">PayPay条件を見る</a>
         </div>
