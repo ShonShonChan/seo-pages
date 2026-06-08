@@ -5435,7 +5435,165 @@ section:has(> .selection-criteria) {
   }
 }
 
-  </style>
+  
+
+/* ===== Slottenkoku conversion upgrade: TOP / list payment route ===== */
+.slottenkoku-conversion-section {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 34px 18px;
+}
+.slottenkoku-conversion-panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 92% 12%, rgba(214,166,66,.28), transparent 30%),
+    linear-gradient(135deg, #fff 0%, #fff6f3 52%, #ffe8e4 100%);
+  border: 1px solid rgba(215,25,32,.14);
+  box-shadow: 0 18px 44px rgba(150,22,24,.11);
+  padding: 28px;
+}
+.slottenkoku-conversion-panel::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 7px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--red), var(--gold));
+}
+.slottenkoku-conversion-head {
+  display: grid;
+  grid-template-columns: 118px 1fr;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.slottenkoku-conversion-logo {
+  min-height: 92px;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid rgba(215,25,32,.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  box-shadow: 0 12px 26px rgba(150,22,24,.08);
+}
+.slottenkoku-conversion-logo img {
+  max-width: 100%;
+  max-height: 68px;
+  object-fit: contain;
+}
+.slottenkoku-conversion-kicker {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 11px;
+  border-radius: 999px;
+  background: var(--gold-soft);
+  border: 1px solid rgba(214,166,66,.34);
+  color: #8b6114;
+  font-size: 12px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+.slottenkoku-conversion-panel h2 {
+  margin: 0;
+  color: var(--red-dark);
+  font-size: clamp(24px, 3.4vw, 38px);
+  line-height: 1.32;
+  letter-spacing: -0.04em;
+}
+.slottenkoku-conversion-lead {
+  margin: 8px 0 0;
+  color: #5a4444;
+  font-size: 15px;
+  line-height: 1.85;
+  max-width: 880px;
+}
+.slottenkoku-route-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+.slottenkoku-route-card {
+  background: #fff;
+  border: 1px solid rgba(215,25,32,.12);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 10px 26px rgba(150,22,24,.07);
+}
+.slottenkoku-route-card strong {
+  display: block;
+  color: var(--red-dark);
+  font-size: 17px;
+  line-height: 1.45;
+  margin-bottom: 7px;
+}
+.slottenkoku-route-card p {
+  margin: 0;
+  color: #5f5f5f;
+  font-size: 14px;
+  line-height: 1.75;
+}
+.slottenkoku-route-card a {
+  display: inline-flex;
+  margin-top: 12px;
+  color: var(--red-dark);
+  font-weight: 900;
+  font-size: 14px;
+}
+.slottenkoku-conversion-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+.slottenkoku-conversion-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 14px;
+}
+.slottenkoku-conversion-actions .primary {
+  background: linear-gradient(135deg, var(--red), var(--red-dark));
+  color: #fff;
+  box-shadow: 0 12px 24px rgba(215,25,32,.22);
+}
+.slottenkoku-conversion-actions .secondary {
+  background: #fff;
+  color: var(--red-dark);
+  border: 1px solid rgba(215,25,32,.18);
+}
+.slottenkoku-conversion-note {
+  margin: 14px 0 0;
+  color: #765200;
+  background: #fffbea;
+  border: 1px solid #efd36a;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-size: 13px;
+  line-height: 1.75;
+}
+@media (max-width: 900px) {
+  .slottenkoku-conversion-head,
+  .slottenkoku-route-grid { grid-template-columns: 1fr; }
+  .slottenkoku-conversion-logo { justify-content: flex-start; }
+  .slottenkoku-conversion-logo img { max-width: 200px; }
+}
+@media (max-width: 640px) {
+  .slottenkoku-conversion-section { padding: 26px 16px; }
+  .slottenkoku-conversion-panel { padding: 22px 18px; border-radius: 22px; }
+  .slottenkoku-conversion-actions a { width: 100%; }
+}
+
+</style>
   <!-- Site icons / favicon -->
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -5654,8 +5812,8 @@ section:has(> .selection-criteria) {
                 </div>
                 <div>
                   <strong class="fv-pickup-name">スロット天国</strong>
-                  <p class="fv-pickup-desc">初回特典・限定プロモの条件確認向け。</p>
-                  <div class="fv-pickup-tags"><span>1位候補</span><span>条件確認</span></div>
+                  <p class="fv-pickup-desc">コンビニ決済・PayPay条件も含めて登録前に確認。</p>
+                  <div class="fv-pickup-tags"><span>1位候補</span><span>決済確認</span><span>条件確認</span></div>
                 </div>
                 <a class="fv-pickup-cta" href="review-slottenkoku.html">条件を確認する</a>
               </article>
@@ -5747,6 +5905,51 @@ section:has(> .selection-criteria) {
 
 
 
+
+
+
+    <section class="slottenkoku-conversion-section" id="slottenkoku-payment-route">
+      <div class="slottenkoku-conversion-panel">
+        <div class="slottenkoku-conversion-head">
+          <div class="slottenkoku-conversion-logo">
+            <img src="slottenkoku-logo.png" alt="スロット天国 ロゴ" loading="lazy" />
+          </div>
+          <div>
+            <span class="slottenkoku-conversion-kicker">決済条件から選ぶなら</span>
+            <h2>コンビニ決済・PayPayを確認したい人は、スロット天国の条件もチェック</h2>
+            <p class="slottenkoku-conversion-lead">
+              入金前に見るべきポイントは、ボーナス額だけではありません。最低入金額、反映時間、対象キャンペーン、本人確認、出金時の条件まで確認してから比較しましょう。
+              スロット天国は、コンビニ決済やPayPay導線を重視したい人が確認候補に入れやすいページとして整理しています。
+            </p>
+          </div>
+        </div>
+        <div class="slottenkoku-route-grid">
+          <article class="slottenkoku-route-card">
+            <strong>コンビニ決済を確認</strong>
+            <p>コンビニ入金を使う前に、最低入金額、反映時間、ボーナス対象条件、出金時の本人確認を確認します。</p>
+            <a href="convenience-store-deposit.html">コンビニ決済ガイドへ</a>
+          </article>
+          <article class="slottenkoku-route-card">
+            <strong>PayPay条件を確認</strong>
+            <p>PayPayは利用可能状況や対象条件が変わる場合があります。登録前に最新の対応状況を確認しましょう。</p>
+            <a href="paypay-casino.html">PayPay確認ガイドへ</a>
+          </article>
+          <article class="slottenkoku-route-card">
+            <strong>スロット天国で最終確認</strong>
+            <p>決済方法だけで判断せず、ボーナス条件、賭け条件、最大出金、本人確認までレビューで整理します。</p>
+            <a href="review-slottenkoku.html">スロット天国レビューへ</a>
+          </article>
+        </div>
+        <div class="slottenkoku-conversion-actions">
+          <a class="primary" href="review-slottenkoku.html">スロット天国の条件を確認する</a>
+          <a class="secondary" href="convenience-store-deposit.html">コンビニ決済を見る</a>
+          <a class="secondary" href="paypay-casino.html">PayPay条件を見る</a>
+        </div>
+        <p class="slottenkoku-conversion-note">
+          ※ 決済方法や特典内容は変更される可能性があります。利用前には必ず公式規約と最新条件を確認してください。
+        </p>
+      </div>
+    </section>
 
     <section class="ranking-criteria-2026 ranking-criteria" id="ranking-criteria">
       <div class="ranking-criteria-card">
@@ -5844,7 +6047,7 @@ section:has(> .selection-criteria) {
             <span>ヘブンズショット無料参加チケットなど、登録前に条件確認。</span>
           </div>
           <div class="fv-ranking-actions">
-            <a class="primary" href="review-slottenkoku.html">1位特典を確認</a>
+            <a class="primary" href="review-slottenkoku.html">決済条件も確認</a>
             <a class="secondary" href="review-slottenkoku.html">1位の詳細を見る</a>
           </div>
         </article>
@@ -6040,7 +6243,7 @@ section:has(> .selection-criteria) {
           <h2>候補ごとに、見るべきボーナスを整理</h2>
           <p class="after-lead">CTA前に迷わないよう、ランキング上位のカジノで見るべきボーナス項目を一覧化しています。</p>
           <div class="after-table" aria-label="ボーナス確認早見表">
-            <div class="after-row"><b>スロット天国</b><p>登録$20、初回入金特典、限定プロモを確認。</p><span class="check">賭け条件 / 入出金</span><a href="review-slottenkoku.html">詳細を見る</a></div>
+            <div class="after-row"><b>スロット天国</b><p>登録特典、初回入金特典、コンビニ決済・PayPay条件を確認。</p><span class="check">決済 / ボーナス</span><a href="review-slottenkoku.html">詳細を見る</a></div>
             <div class="after-row"><b>コニベット</b><p>66ドル特典、$60ボーナス、30回FSを確認。</p><span class="check">対象ゲーム / 最大出金</span><a href="review-konibet.html">詳細を見る</a></div>
             <div class="after-row"><b>Stake</b><p>7日間で合計$7、暗号資産対応、入金特典を確認。</p><span class="check">通貨 / ネットワーク</span><a href="review-stake.html">詳細を見る</a></div>
             <div class="after-row"><b>遊雅堂</b><p>初回100%最大5万円、登録特典、日本語対応を確認。</p><span class="check">本人確認 / 規約</span><a href="review-yuugado.html">詳細を見る</a></div>
