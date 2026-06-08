@@ -1,61 +1,177 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://revenge-casino-guide.com/</loc><priority>1.0</priority></url>
-  <url><loc>https://revenge-casino-guide.com/casino-list.html</loc><priority>0.9</priority></url>
-  <url><loc>https://revenge-casino-guide.com/review.html</loc><priority>0.9</priority></url>
-  <url><loc>https://revenge-casino-guide.com/bonus.html</loc><priority>0.9</priority></url>
-  <url><loc>https://revenge-casino-guide.com/bonus-guide.html</loc><priority>0.8</priority></url>
-  <url><loc>https://revenge-casino-guide.com/payments.html</loc><priority>0.8</priority></url>
-  <url><loc>https://revenge-casino-guide.com/guide.html</loc><priority>0.8</priority></url>
-  <url><loc>https://revenge-casino-guide.com/site-checklist.html</loc><priority>0.8</priority></url>
-  <url><loc>https://revenge-casino-guide.com/no-deposit-bonus.html</loc><priority>0.85</priority></url>
-  <url><loc>https://revenge-casino-guide.com/first-deposit-bonus.html</loc><priority>0.85</priority></url>
-  <url><loc>https://revenge-casino-guide.com/free-spins-bonus.html</loc><priority>0.85</priority></url>
-  <url><loc>https://revenge-casino-guide.com/bonus-best.html</loc><priority>0.7</priority></url>
-  <url><loc>https://revenge-casino-guide.com/review-slottenkoku.html</loc><priority>0.8</priority></url>
-  <url><loc>https://revenge-casino-guide.com/review-konibet.html</loc><priority>0.8</priority></url>
-  <url><loc>https://revenge-casino-guide.com/review-stake.html</loc><priority>0.8</priority></url>
-  <url><loc>https://revenge-casino-guide.com/review-yuugado.html</loc><priority>0.8</priority></url>
-  <url><loc>https://revenge-casino-guide.com/review-verajohn.html</loc><priority>0.8</priority></url>
-  <url><loc>https://revenge-casino-guide.com/review-mystino.html</loc><priority>0.8</priority></url>
-  <url><loc>https://revenge-casino-guide.com/review-bitstarz.html</loc><priority>0.75</priority></url>
-  <url><loc>https://revenge-casino-guide.com/review-roobet.html</loc><priority>0.75</priority></url>
-  <url><loc>https://revenge-casino-guide.com/review-7bitcasino.html</loc><priority>0.75</priority></url>
-  <url><loc>https://revenge-casino-guide.com/review-fortunejack.html</loc><priority>0.75</priority></url>
-  <url><loc>https://revenge-casino-guide.com/review-vave.html</loc><priority>0.75</priority></url>
   <url>
-    <loc>https://revenge-casino-guide.com/crypto-casino.html</loc>
+    <loc>https://revenge-casino-guide.com/</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.70</priority>
+    <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://revenge-casino-guide.com/withdrawal-condition.html</loc>
+    <loc>https://revenge-casino-guide.com/casino-list.html</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.70</priority>
+    <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://revenge-casino-guide.com/identity-verification.html</loc>
+    <loc>https://revenge-casino-guide.com/review.html</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.70</priority>
+    <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://revenge-casino-guide.com/convenience-store-deposit.html</loc>
+    <loc>https://revenge-casino-guide.com/bonus.html</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.70</priority>
+    <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://revenge-casino-guide.com/paypay-casino.html</loc>
+    <loc>https://revenge-casino-guide.com/bonus-guide.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://revenge-casino-guide.com/payments.html</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.70</priority>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://revenge-casino-guide.com/guide.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://revenge-casino-guide.com/site-checklist.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://revenge-casino-guide.com/review-slottenkoku.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
   </url>
   <url>
     <loc>https://revenge-casino-guide.com/slottenkoku-bonus.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://revenge-casino-guide.com/slottenkoku-payment.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://revenge-casino-guide.com/convenience-store-deposit.html</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://revenge-casino-guide.com/slottenkoku-payment.html</loc>
+    <loc>https://revenge-casino-guide.com/paypay-casino.html</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://revenge-casino-guide.com/crypto-casino.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://revenge-casino-guide.com/withdrawal-condition.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://revenge-casino-guide.com/identity-verification.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://revenge-casino-guide.com/no-deposit-bonus.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://revenge-casino-guide.com/first-deposit-bonus.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://revenge-casino-guide.com/free-spins-bonus.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://revenge-casino-guide.com/review-konibet.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://revenge-casino-guide.com/review-stake.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://revenge-casino-guide.com/review-yuugado.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://revenge-casino-guide.com/review-verajohn.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://revenge-casino-guide.com/review-mystino.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://revenge-casino-guide.com/review-bitstarz.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://revenge-casino-guide.com/review-roobet.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://revenge-casino-guide.com/review-7bitcasino.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://revenge-casino-guide.com/review-fortunejack.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://revenge-casino-guide.com/review-vave.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
   </url>
 </urlset>
