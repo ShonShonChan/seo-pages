@@ -1465,6 +1465,163 @@
       }
     }
 
+
+/* ===== payments page final internal-link upgrade ===== */
+    .slottenkoku-payment-final {
+      max-width: var(--max);
+      margin: 0 auto 18px;
+      padding: 0 18px;
+    }
+
+    .slottenkoku-payment-final-panel {
+      position: relative;
+      overflow: hidden;
+      padding: 24px;
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at 92% 8%, rgba(255, 224, 140, 0.42), transparent 30%),
+        linear-gradient(135deg, #fff 0%, #fff8f6 56%, #ffecea 100%);
+      border: 1px solid rgba(215, 25, 32, 0.14);
+      box-shadow: 0 16px 36px rgba(150, 22, 24, 0.1);
+    }
+
+    .slottenkoku-payment-final-head {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .slottenkoku-payment-final-logo {
+      min-height: 82px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+
+    .slottenkoku-payment-final-logo img {
+      max-width: 100%;
+      max-height: 58px;
+      object-fit: contain;
+    }
+
+    .slottenkoku-payment-final-panel h2 {
+      margin: 0 0 8px;
+      color: var(--red-dark);
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.35;
+      letter-spacing: -0.04em;
+    }
+
+    .slottenkoku-payment-final-panel p {
+      margin: 0;
+      color: #5a4a4a;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .slottenkoku-payment-final-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .slottenkoku-payment-final-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.12);
+      box-shadow: 0 10px 24px rgba(150, 22, 24, 0.07);
+    }
+
+    .slottenkoku-payment-final-card strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--red-dark);
+      font-size: 16px;
+      line-height: 1.45;
+    }
+
+    .slottenkoku-payment-final-card span {
+      display: block;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .slottenkoku-payment-final-card a,
+    .final-link-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      color: #fff;
+      font-weight: 900;
+      font-size: 13px;
+      box-shadow: 0 10px 20px rgba(215, 25, 32, 0.16);
+    }
+
+    .payment-final-review-links {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .payment-final-review-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.12);
+      box-shadow: 0 10px 24px rgba(150, 22, 24, 0.07);
+    }
+
+    .payment-final-review-card strong {
+      display: block;
+      color: var(--red-dark);
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+
+    .payment-final-review-card span {
+      display: block;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.65;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 760px) {
+      .slottenkoku-payment-final-head,
+      .slottenkoku-payment-final-grid,
+      .payment-final-review-links {
+        grid-template-columns: 1fr;
+      }
+
+      .slottenkoku-payment-final {
+        padding: 0 16px;
+      }
+
+      .slottenkoku-payment-final-panel {
+        padding: 18px;
+        border-radius: 20px;
+      }
+
+      .slottenkoku-payment-final-logo {
+        justify-content: flex-start;
+      }
+    }
+
   </style>
 </head>
 
@@ -1547,6 +1704,43 @@
         掲載内容は入出金条件を確認するための一般的な情報です。
         決済方法、手数料、反映時間、本人確認、出金制限、対象地域、利用規約は変更される可能性があります。
         利用前には必ず公式情報を確認してください。
+      </div>
+    </section>
+
+
+    <section class="slottenkoku-payment-final" aria-label="スロット天国の入出金確認導線">
+      <div class="slottenkoku-payment-final-panel">
+        <div class="slottenkoku-payment-final-head">
+          <div class="slottenkoku-payment-final-logo">
+            <img src="slottenkoku-logo.png" alt="スロット天国 ロゴ" loading="lazy" />
+          </div>
+          <div>
+            <span class="label">スロット天国の入出金を先に確認</span>
+            <h2>コンビニ決済・PayPay・仮想通貨まで、登録前に確認しましょう。</h2>
+            <p>
+              スロット天国を検討する場合は、入金方法だけでなく、出金方法、本人確認、ボーナス対象条件までセットで確認することが大切です。
+              専用ページ、ボーナス確認、レビューの順に見ると判断材料を整理しやすくなります。
+            </p>
+          </div>
+        </div>
+
+        <div class="slottenkoku-payment-final-grid">
+          <div class="slottenkoku-payment-final-card">
+            <strong>入出金専用ページ</strong>
+            <span>コンビニ決済、PayPay、仮想通貨、ATM、銀行振込、本人確認をまとめて確認。</span>
+            <a href="slottenkoku-payment.html">入出金条件を見る</a>
+          </div>
+          <div class="slottenkoku-payment-final-card">
+            <strong>ボーナス専用ページ</strong>
+            <span>入金不要、初回入金、フリースピン、賭け条件、最大出金を確認。</span>
+            <a href="slottenkoku-bonus.html">ボーナス条件を見る</a>
+          </div>
+          <div class="slottenkoku-payment-final-card">
+            <strong>レビューで最終確認</strong>
+            <span>決済条件だけでなく、登録前チェック、本人確認、公式規約まで整理。</span>
+            <a href="review-slottenkoku.html">レビューを見る</a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1861,8 +2055,9 @@
               </div>
             </div>
             <div class="card-actions">
-              <a class="mini-btn mini-primary" href="review-slottenkoku.html">レビューを見る</a>
-              <a class="mini-btn mini-secondary" href="bonus.html">ボーナス条件を見る</a>
+              <a class="mini-btn mini-primary" href="slottenkoku-payment.html">入出金専用ページ</a>
+              <a class="mini-btn mini-secondary" href="slottenkoku-bonus.html">ボーナス専用ページ</a>
+              <a class="mini-btn mini-secondary" href="review-slottenkoku.html">レビューを見る</a>
             </div>
           </div>
         </article>
@@ -2193,6 +2388,36 @@
       </div>
     </section>
 
+
+    <section class="section" id="payment-review-final-links">
+      <div class="section-head">
+        <span class="label">入出金で見たいレビュー</span>
+        <h2 class="section-title">決済・本人確認の文脈で確認したいレビュー</h2>
+        <p class="section-desc">
+          入出金面を重視する場合は、決済方法、本人確認、出金条件、暗号資産ネットワークの確認が重要です。
+          以下のレビューもあわせて確認しましょう。
+        </p>
+      </div>
+
+      <div class="payment-final-review-links">
+        <div class="payment-final-review-card">
+          <strong>ビットカジノレビュー</strong>
+          <span>暗号資産入出金、ネットワーク、送金前チェックを確認。</span>
+          <a class="final-link-button" href="review-bitcasino.html">レビューを見る</a>
+        </div>
+        <div class="payment-final-review-card">
+          <strong>ボンズカジノレビュー</strong>
+          <span>入出金条件、本人確認、サポート対応を確認。</span>
+          <a class="final-link-button" href="review-bons-casino.html">レビューを見る</a>
+        </div>
+        <div class="payment-final-review-card">
+          <strong>BC.GAMEレビュー</strong>
+          <span>暗号資産、プロモーション対象通貨、出金条件を確認。</span>
+          <a class="final-link-button" href="review-bcgame.html">レビューを見る</a>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="related-pages">
       <div class="section-head">
         <span class="label">関連ページ</span>
@@ -2203,6 +2428,26 @@
       </div>
 
       <div class="link-grid">
+        <a class="link-card" href="slottenkoku-payment.html">
+          <strong>スロット天国入出金確認</strong>
+          <span>コンビニ決済・PayPay・仮想通貨・本人確認を確認。</span>
+        </a>
+
+        <a class="link-card" href="slottenkoku-bonus.html">
+          <strong>スロット天国ボーナス確認</strong>
+          <span>入金不要・初回入金・FS・賭け条件を確認。</span>
+        </a>
+
+        <a class="link-card" href="convenience-store-deposit.html">
+          <strong>コンビニ決済ガイド</strong>
+          <span>最低入金額、反映時間、対象条件を確認。</span>
+        </a>
+
+        <a class="link-card" href="paypay-casino.html">
+          <strong>PayPay決済ガイド</strong>
+          <span>利用可否、制限、対象条件の確認ポイント。</span>
+        </a>
+
         <a class="link-card" href="bonus.html">
           <strong>ボーナス比較</strong>
           <span>賭け条件や最大出金を確認。</span>
