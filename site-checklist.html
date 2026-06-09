@@ -1304,6 +1304,89 @@
       }
     }
 
+
+    /* ===== Site checklist final Slottenkoku route polish ===== */
+    .slottenkoku-final-box {
+      position: relative;
+      overflow: hidden;
+      padding: 24px;
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(255, 228, 146, 0.42), transparent 30%),
+        linear-gradient(135deg, #fff 0%, #fff7f7 62%, #fff 100%);
+      border: 1px solid rgba(215, 25, 32, 0.16);
+      box-shadow: 0 14px 34px rgba(150, 22, 24, 0.09);
+    }
+
+    .slottenkoku-final-box h2 {
+      margin: 0 0 10px;
+      color: var(--red-dark);
+      font-size: clamp(22px, 3.4vw, 34px);
+      line-height: 1.35;
+      letter-spacing: -0.04em;
+    }
+
+    .slottenkoku-final-box p {
+      margin: 0;
+      color: #555;
+      font-size: 14px;
+    }
+
+    .final-route-mini-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .final-route-mini-card {
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.12);
+      box-shadow: 0 10px 24px rgba(150, 22, 24, 0.07);
+    }
+
+    .final-route-mini-card strong {
+      display: block;
+      color: var(--red-dark);
+      font-size: 14px;
+      line-height: 1.45;
+      margin-bottom: 5px;
+    }
+
+    .final-route-mini-card span {
+      display: block;
+      color: #666;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .final-route-mini-card a {
+      display: inline-flex;
+      margin-top: 10px;
+      color: var(--red-dark);
+      font-weight: 900;
+      font-size: 12px;
+    }
+
+    @media (max-width: 1040px) {
+      .final-route-mini-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .slottenkoku-final-box {
+        padding: 18px;
+        border-radius: 20px;
+      }
+
+      .final-route-mini-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
 </head>
 
@@ -1386,6 +1469,40 @@
         各サービスの対象地域、年齢制限、公式規約、本人確認、入出金条件、関連法規は必ず公式情報で確認してください。
       </div>
     </section>
+
+    <section class="section" id="slottenkoku-final-check-route">
+      <div class="slottenkoku-final-box">
+        <span class="label">スロット天国 最終確認ルート</span>
+        <h2>登録前に、ボーナス・入出金・本人確認をまとめて確認</h2>
+        <p>
+          スロット天国を候補にする場合は、レビューだけで判断せず、専用ボーナスページ、専用入出金ページ、
+          コンビニ決済・PayPayの確認ページまで見てから進めると、見落としを減らしやすくなります。
+        </p>
+        <div class="final-route-mini-grid">
+          <div class="final-route-mini-card">
+            <strong>1. レビューで全体確認</strong>
+            <span>登録特典、入出金、本人確認、公式規約の確認ポイントを見る。</span>
+            <a href="review-slottenkoku.html">スロット天国レビューへ</a>
+          </div>
+          <div class="final-route-mini-card">
+            <strong>2. ボーナス条件確認</strong>
+            <span>入金不要、初回入金、フリースピン、賭け条件、最大出金を確認。</span>
+            <a href="slottenkoku-bonus.html">専用ボーナスページへ</a>
+          </div>
+          <div class="final-route-mini-card">
+            <strong>3. 入出金条件確認</strong>
+            <span>コンビニ、PayPay、仮想通貨、ATM、銀行振込、本人確認を確認。</span>
+            <a href="slottenkoku-payment.html">専用入出金ページへ</a>
+          </div>
+          <div class="final-route-mini-card">
+            <strong>4. 決済別に確認</strong>
+            <span>コンビニ決済・PayPayの条件、反映時間、対象条件を確認。</span>
+            <a href="convenience-store-deposit.html">コンビニ決済ガイドへ</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
     <section class="section" id="main-checks">
       <div class="section-head">
@@ -1531,6 +1648,8 @@
           </ul>
           <div class="card-actions">
             <a class="mini-btn mini-primary" href="review-slottenkoku.html">レビューを見る</a>
+            <a class="mini-btn mini-secondary" href="slottenkoku-bonus.html">ボーナス確認</a>
+            <a class="mini-btn mini-secondary" href="slottenkoku-payment.html">入出金確認</a>
           </div>
         </article>
 
@@ -1707,6 +1826,46 @@
       </div>
     </section>
 
+
+
+    <section class="section" id="payment-method-final-links">
+      <div class="section-head">
+        <span class="label">決済別チェック</span>
+        <h2 class="section-title">コンビニ・PayPay・仮想通貨・本人確認の最終確認</h2>
+        <p class="section-desc">
+          入金方法によって、ボーナス対象条件や確認すべき項目が変わる場合があります。
+          決済方法ごとの確認ページも合わせて確認してください。
+        </p>
+      </div>
+
+      <div class="link-grid">
+        <a class="link-card" href="convenience-store-deposit.html">
+          <strong>コンビニ決済ガイド</strong>
+          <span>最低入金額、反映時間、ボーナス対象、本人確認を確認。</span>
+        </a>
+        <a class="link-card" href="paypay-casino.html">
+          <strong>PayPay決済ガイド</strong>
+          <span>PayPayの利用可否、入金条件、出金方法、対象条件を確認。</span>
+        </a>
+        <a class="link-card" href="crypto-casino.html">
+          <strong>仮想通貨カジノガイド</strong>
+          <span>通貨、ネットワーク、ウォレット、送金ミス防止を確認。</span>
+        </a>
+        <a class="link-card" href="withdrawal-condition.html">
+          <strong>出金条件ガイド</strong>
+          <span>賭け条件、最低・最大出金、手数料、本人確認を確認。</span>
+        </a>
+        <a class="link-card" href="identity-verification.html">
+          <strong>本人確認ガイド</strong>
+          <span>必要書類、提出タイミング、審査前の注意点を確認。</span>
+        </a>
+        <a class="link-card" href="slottenkoku-payment.html">
+          <strong>スロット天国入出金</strong>
+          <span>専用ページで決済方法と本人確認をまとめて確認。</span>
+        </a>
+      </div>
+    </section>
+
     <section class="section" id="related-pages">
       <div class="section-head">
         <span class="label">関連ページ</span>
@@ -1746,6 +1905,21 @@
           <strong>入出金ガイド</strong>
           <span>本人確認や出金条件を確認。</span>
         </a>
+
+        <a class="link-card" href="review-slottenkoku.html">
+          <strong>スロット天国レビュー</strong>
+          <span>登録前の全体条件を確認。</span>
+        </a>
+
+        <a class="link-card" href="slottenkoku-bonus.html">
+          <strong>スロット天国ボーナス</strong>
+          <span>特典条件・賭け条件を確認。</span>
+        </a>
+
+        <a class="link-card" href="slottenkoku-payment.html">
+          <strong>スロット天国入出金</strong>
+          <span>決済方法・本人確認を確認。</span>
+        </a>
       </div>
     </section>
 
@@ -1770,8 +1944,9 @@
         </p>
 
         <div class="cta-actions">
-          <a class="btn btn-secondary" href="review.html">レビュー一覧を見る</a>
-          <a class="btn btn-primary" href="payments.html">入出金ガイドを見る</a>
+          <a class="btn btn-secondary" href="review-slottenkoku.html">スロット天国レビューを見る</a>
+          <a class="btn btn-secondary" href="slottenkoku-bonus.html">ボーナス条件を見る</a>
+          <a class="btn btn-primary" href="slottenkoku-payment.html">入出金条件を見る</a>
         </div>
       </div>
     </section>
