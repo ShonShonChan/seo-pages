@@ -1326,140 +1326,21 @@
       }
     }
 
-
-
-    /* ===== 初心者ガイド：スロット天国導線・登録前チェック強化 ===== */
-    .beginner-slottenkoku-route {
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 18px;
-      align-items: stretch;
-    }
-
-    .beginner-route-main,
-    .beginner-route-side,
-    .beginner-flow-card {
-      background: #fff;
-      border: 1px solid rgba(215, 25, 32, 0.13);
-      border-radius: 24px;
-      box-shadow: 0 12px 30px rgba(150, 22, 24, 0.08);
-    }
-
-    .beginner-route-main {
-      padding: 26px;
-      background:
-        radial-gradient(circle at 92% 12%, rgba(255, 248, 230, 0.9), transparent 34%),
-        linear-gradient(180deg, #fff, #fff8f8);
-    }
-
-    .beginner-route-main h3,
-    .beginner-route-side h3,
-    .beginner-flow-card h3 {
-      margin: 0 0 10px;
-      color: var(--red-dark);
-      font-size: 21px;
-      line-height: 1.4;
-      letter-spacing: -0.03em;
-    }
-
-    .beginner-route-main p,
-    .beginner-route-side p,
-    .beginner-flow-card p {
-      margin: 0;
-      color: #555;
-      font-size: 14px;
-      line-height: 1.8;
-    }
-
-    .beginner-route-side {
-      padding: 22px;
-    }
-
-    .beginner-route-list {
-      display: grid;
-      gap: 10px;
-      margin: 14px 0 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .beginner-route-list li {
-      padding: 12px 14px;
-      border-radius: 16px;
-      background: #fff8f6;
-      border: 1px solid rgba(215, 25, 32, 0.11);
-      color: #5a4a4a;
-      font-size: 13px;
-      font-weight: 750;
-      line-height: 1.65;
-    }
-
-    .beginner-flow-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .beginner-flow-card {
-      padding: 20px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .beginner-flow-card::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 5px;
-      background: linear-gradient(90deg, var(--red), var(--gold));
-    }
-
-    .beginner-flow-card .tag {
-      margin-top: 4px;
-    }
-
-    .guide-emphasis-box {
-      padding: 24px;
-      border-radius: 24px;
-      background:
-        radial-gradient(circle at 86% 12%, rgba(255, 248, 230, 0.92), transparent 34%),
-        #fff;
-      border: 1px solid rgba(215, 25, 32, 0.14);
-      box-shadow: 0 12px 30px rgba(150, 22, 24, 0.08);
-    }
-
-    .guide-emphasis-box h3 {
-      margin: 0 0 10px;
-      color: var(--red-dark);
-      font-size: 22px;
-      line-height: 1.35;
-    }
-
-    .guide-emphasis-box p {
-      margin: 0;
-      color: #555;
-      font-size: 14px;
-      line-height: 1.8;
-    }
-
-    @media (max-width: 980px) {
-      .beginner-slottenkoku-route,
-      .beginner-flow-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 760px) {
-      .beginner-route-main,
-      .beginner-route-side,
-      .beginner-flow-card,
-      .guide-emphasis-box {
-        padding: 18px;
-        border-radius: 18px;
-      }
-    }
-
   </style>
+
+<style>
+  .slottenkoku-aff-guide-cta{margin:28px auto;padding:22px;border-radius:22px;border:1px solid rgba(215,25,32,.20);background:linear-gradient(135deg,#fff7f1 0%,#fff 52%,#fff0f0 100%);box-shadow:0 12px 30px rgba(40,20,20,.08)}
+  .slottenkoku-aff-guide-cta__kicker{display:inline-flex;align-items:center;gap:.35em;margin-bottom:10px;padding:6px 10px;border-radius:999px;background:#fff;color:#a80f17;border:1px solid rgba(215,25,32,.18);font-size:.82rem;font-weight:800}
+  .slottenkoku-aff-guide-cta h2{margin:0 0 8px;font-size:clamp(1.25rem,3.2vw,1.7rem);line-height:1.35;color:#1f1a17}
+  .slottenkoku-aff-guide-cta p{margin:0 0 14px;color:#4a3f3a;line-height:1.8}
+  .slottenkoku-aff-guide-cta__actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .slottenkoku-aff-guide-cta__btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:12px 16px;border-radius:999px;font-weight:900;text-decoration:none;border:1px solid rgba(215,25,32,.18)}
+  .slottenkoku-aff-guide-cta__btn--primary{background:linear-gradient(135deg,#d71920,#ff6a2a);color:#fff;box-shadow:0 10px 22px rgba(215,25,32,.22)}
+  .slottenkoku-aff-guide-cta__btn--secondary{background:#fff;color:#a80f17}
+  .slottenkoku-aff-guide-cta__mini{margin-top:12px;font-size:.84rem;color:#6d5f58}
+  @media(max-width:640px){.slottenkoku-aff-guide-cta{padding:18px;border-radius:18px}.slottenkoku-aff-guide-cta__actions{display:grid}.slottenkoku-aff-guide-cta__btn{width:100%}}
+</style>
+
 </head>
 
 <body>
@@ -1487,6 +1368,19 @@
   </div>
 
   <main>
+
+<section class="slottenkoku-aff-guide-cta" aria-label="スロット天国の登録前チェック">
+  <span class="slottenkoku-aff-guide-cta__kicker">初心者ガイドからのおすすめ導線</span>
+  <h2>登録前に条件を確認したら、スロット天国の公式サイトへ進めます</h2>
+  <p>初心者ガイドで確認した「レビュー・ボーナス・入出金・本人確認」の流れに沿って、スロット天国の条件を確認してから公式サイトへ進めるCTAを追加しました。</p>
+  <div class="slottenkoku-aff-guide-cta__actions">
+    <a class="slottenkoku-aff-guide-cta__btn slottenkoku-aff-guide-cta__btn--primary" href="https://sloten.io?referral=0ZjM" target="_blank" rel="nofollow sponsored noopener">条件を確認してスロット天国へ進む</a>
+    <a class="slottenkoku-aff-guide-cta__btn slottenkoku-aff-guide-cta__btn--secondary" href="review-slottenkoku.html">レビューを先に確認する</a>
+    <a class="slottenkoku-aff-guide-cta__btn slottenkoku-aff-guide-cta__btn--secondary" href="slottenkoku-payment.html">入出金方法を確認する</a>
+  </div>
+  <p class="slottenkoku-aff-guide-cta__mini">広告リンクを含みます。利用前に公式条件・対象地域・年齢制限・本人確認・出金条件を確認してください。</p>
+</section>
+
     <section class="hero">
       <div class="hero-box">
         <div class="hero-grid">
@@ -1501,7 +1395,6 @@
 
             <div class="hero-actions">
               <a class="btn btn-primary" href="#start-steps">確認順を見る</a>
-              <a class="btn btn-secondary" href="review-slottenkoku.html">スロット天国を確認</a>
               <a class="btn btn-secondary" href="casino-list.html">カジノ一覧へ</a>
             </div>
           </div>
@@ -1540,45 +1433,6 @@
         このページはオンラインカジノの利用や登録を推奨・保証するものではありません。
         初心者向けに確認順を整理した情報です。各サービスの対象地域、年齢制限、本人確認、入出金条件、公式規約、関連法規を必ず確認してください。
         不明点がある場合は登録や入金を急がないでください。
-      </div>
-    </section>
-
-    <section class="section" id="slottenkoku-beginner-route">
-      <div class="section-head">
-        <span class="label">初心者向け最短ルート</span>
-        <h2 class="section-title">スロット天国を確認する前に見る順番</h2>
-        <p class="section-desc">
-          初心者の場合は、いきなり登録画面へ進むのではなく、レビュー、ボーナス、入出金、本人確認を順番に確認すると判断しやすくなります。
-          スロット天国を候補にする場合も、以下の順番で条件を確認してください。
-        </p>
-      </div>
-
-      <div class="beginner-slottenkoku-route">
-        <div class="beginner-route-main">
-          <span class="tag tag-red">登録前チェック</span>
-          <h3>まずはスロット天国レビューで全体条件を確認</h3>
-          <p>
-            スロット天国は、ボーナス、入出金、本人確認、対象ゲーム、公式規約をまとめて確認してから判断するのがおすすめです。
-            特典内容だけで判断せず、出金条件と本人確認まで見ておきましょう。
-          </p>
-          <div class="card-actions">
-            <a class="mini-btn mini-primary" href="review-slottenkoku.html">スロット天国レビューを見る</a>
-            <a class="mini-btn mini-secondary" href="slottenkoku-bonus.html">ボーナス条件を見る</a>
-            <a class="mini-btn mini-secondary" href="slottenkoku-payment.html">入出金条件を見る</a>
-          </div>
-        </div>
-
-        <div class="beginner-route-side">
-          <h3>確認する順番</h3>
-          <p>初心者は、以下の順番で見ると条件の見落としを減らしやすくなります。</p>
-          <ul class="beginner-route-list">
-            <li>1. レビューで全体像を確認</li>
-            <li>2. ボーナスの賭け条件・最大出金を確認</li>
-            <li>3. 入金方法・出金方法・本人確認を確認</li>
-            <li>4. コンビニ決済・PayPayなど使いたい決済の条件を確認</li>
-            <li>5. 最後に公式規約で最新条件を確認</li>
-          </ul>
-        </div>
       </div>
     </section>
 
@@ -1622,7 +1476,6 @@
           </ul>
           <div class="card-actions">
             <a class="mini-btn mini-primary" href="review.html">レビュー一覧へ</a>
-            <a class="mini-btn mini-secondary" href="review-slottenkoku.html">スロット天国レビューへ</a>
           </div>
         </article>
 
@@ -1639,7 +1492,6 @@
           </ul>
           <div class="card-actions">
             <a class="mini-btn mini-primary" href="bonus.html">ボーナス比較へ</a>
-            <a class="mini-btn mini-secondary" href="slottenkoku-bonus.html">スロット天国ボーナスへ</a>
           </div>
         </article>
 
@@ -1656,7 +1508,6 @@
           </ul>
           <div class="card-actions">
             <a class="mini-btn mini-primary" href="payments.html">入出金ガイドへ</a>
-            <a class="mini-btn mini-secondary" href="slottenkoku-payment.html">スロット天国入出金へ</a>
           </div>
         </article>
 
@@ -1767,8 +1618,6 @@
           </ul>
           <div class="card-actions">
             <a class="mini-btn mini-primary" href="review-slottenkoku.html">レビューを見る</a>
-            <a class="mini-btn mini-secondary" href="slottenkoku-bonus.html">ボーナスを見る</a>
-            <a class="mini-btn mini-secondary" href="slottenkoku-payment.html">入出金を見る</a>
           </div>
         </article>
 
@@ -1900,47 +1749,6 @@
       </div>
     </section>
 
-    <section class="section" id="beginner-slottenkoku-flow">
-      <div class="section-head">
-        <span class="label">目的別ガイド</span>
-        <h2 class="section-title">登録前に迷いやすいポイントを個別に確認</h2>
-        <p class="section-desc">
-          初心者が迷いやすいボーナス、入出金、決済方法は、個別ページで確認できます。
-          スロット天国を検討する場合も、特典内容だけでなく決済条件と本人確認まで確認しましょう。
-        </p>
-      </div>
-
-      <div class="beginner-flow-grid">
-        <article class="beginner-flow-card">
-          <span class="tag tag-red">ボーナス</span>
-          <h3>スロット天国ボーナス確認</h3>
-          <p>入金不要、初回入金、フリースピン、賭け条件、最大出金を整理しています。</p>
-          <div class="card-actions">
-            <a class="mini-btn mini-primary" href="slottenkoku-bonus.html">ボーナスを見る</a>
-          </div>
-        </article>
-
-        <article class="beginner-flow-card">
-          <span class="tag tag-red">入出金</span>
-          <h3>スロット天国入出金確認</h3>
-          <p>コンビニ決済、PayPay、仮想通貨、ATM、銀行振込、本人確認をまとめて確認できます。</p>
-          <div class="card-actions">
-            <a class="mini-btn mini-primary" href="slottenkoku-payment.html">入出金を見る</a>
-          </div>
-        </article>
-
-        <article class="beginner-flow-card">
-          <span class="tag">決済方法</span>
-          <h3>コンビニ決済・PayPay確認</h3>
-          <p>使いたい決済方法がある場合は、入金条件、反映時間、出金方法まで確認しましょう。</p>
-          <div class="card-actions">
-            <a class="mini-btn mini-primary" href="convenience-store-deposit.html">コンビニ決済</a>
-            <a class="mini-btn mini-secondary" href="paypay-casino.html">PayPay確認</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
     <section class="section" id="final-checklist">
       <div class="section-head">
         <span class="label">最終チェック</span>
@@ -2061,46 +1869,6 @@
           <strong>入出金ガイド</strong>
           <span>本人確認や出金条件を確認。</span>
         </a>
-
-        <a class="link-card" href="review-slottenkoku.html">
-          <strong>スロット天国レビュー</strong>
-          <span>登録前に全体条件を確認。</span>
-        </a>
-
-        <a class="link-card" href="slottenkoku-bonus.html">
-          <strong>スロット天国ボーナス</strong>
-          <span>賭け条件や最大出金を確認。</span>
-        </a>
-
-        <a class="link-card" href="slottenkoku-payment.html">
-          <strong>スロット天国入出金</strong>
-          <span>決済方法と本人確認を確認。</span>
-        </a>
-
-        <a class="link-card" href="convenience-store-deposit.html">
-          <strong>コンビニ決済ガイド</strong>
-          <span>入金前の条件を確認。</span>
-        </a>
-
-        <a class="link-card" href="paypay-casino.html">
-          <strong>PayPay決済ガイド</strong>
-          <span>利用可否と条件を確認。</span>
-        </a>
-      </div>
-    </section>
-
-    <section class="section" id="guide-final-emphasis">
-      <div class="guide-emphasis-box">
-        <h3>初心者は「登録前チェック → ボーナス確認 → 入出金確認」の順番がおすすめです。</h3>
-        <p>
-          スロット天国に限らず、どのカジノでもボーナス条件、本人確認、出金条件をセットで確認することが大切です。
-          条件が分からないまま登録や入金へ進まず、レビューと専用ガイドで確認してから判断しましょう。
-        </p>
-        <div class="card-actions">
-          <a class="mini-btn mini-primary" href="review-slottenkoku.html">スロット天国レビュー</a>
-          <a class="mini-btn mini-secondary" href="slottenkoku-bonus.html">ボーナス確認</a>
-          <a class="mini-btn mini-secondary" href="slottenkoku-payment.html">入出金確認</a>
-        </div>
       </div>
     </section>
 
@@ -2125,13 +1893,21 @@
 
         <div class="cta-actions">
           <a class="btn btn-secondary" href="casino-list.html">カジノ一覧を見る</a>
-          <a class="btn btn-primary" href="review-slottenkoku.html">スロット天国レビューを見る</a>
-          <a class="btn btn-secondary" href="slottenkoku-bonus.html">ボーナス条件を見る</a>
-          <a class="btn btn-secondary" href="slottenkoku-payment.html">入出金条件を見る</a>
+          <a class="btn btn-primary" href="review.html">レビュー一覧を見る</a>
         </div>
       </div>
     </section>
-  </main>
+  
+<section class="slottenkoku-aff-guide-cta" aria-label="広告リンクについて">
+  <span class="slottenkoku-aff-guide-cta__kicker">広告表記</span>
+  <h2>このページには広告リンクが含まれます</h2>
+  <p>当サイトでは、読者が条件を確認しやすいように公式サイトへの広告リンクを掲載する場合があります。掲載内容は比較・条件確認を目的としており、勝利や出金を保証するものではありません。</p>
+  <div class="slottenkoku-aff-guide-cta__actions">
+    <a class="slottenkoku-aff-guide-cta__btn slottenkoku-aff-guide-cta__btn--secondary" href="advertising-policy.html">広告リンクについて確認する</a>
+  </div>
+</section>
+
+</main>
 
   <footer class="site-footer">
     <div class="footer-inner">
@@ -2144,9 +1920,6 @@
         <a href="payments.html">入出金ガイド</a>
         <a href="guide.html">初心者ガイド</a>
         <a href="site-checklist.html">サイト確認</a>
-        <a href="review-slottenkoku.html">スロット天国レビュー</a>
-        <a href="slottenkoku-bonus.html">スロット天国ボーナス</a>
-        <a href="slottenkoku-payment.html">スロット天国入出金</a>
       </div>
 
       <div class="footer-copy">
@@ -2173,7 +1946,7 @@
           対象条件・賭け条件・本人確認の流れは、登録前に公式情報で確認してください。
         </p>
         <div class="slottenkoku-popup-actions">
-          <a class="slottenkoku-popup-cta" href="review-slottenkoku.html">限定特典を確認する</a>
+          <a class="slottenkoku-popup-cta" href="https://sloten.io?referral=0ZjM" target="_blank" rel="nofollow sponsored noopener">限定特典を確認する</a>
           <button class="slottenkoku-popup-sub" type="button" data-slottenkoku-popup-close>あとで見る</button>
         </div>
         <p class="slottenkoku-popup-note">
