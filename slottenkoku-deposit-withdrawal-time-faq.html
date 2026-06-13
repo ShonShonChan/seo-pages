@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="スロット天国の入金・出金時間に関するFAQ。反映が遅い、出金が保留、KYC不要時の注意点、問い合わせ前の確認を整理します。" name="description"/>
+<link href="favicon.ico" rel="icon"/>
+<link href="apple-touch-icon.png" rel="apple-touch-icon"/>
+<style>
+    :root {
+      --red: #d71920;
+      --red-dark: #9f1017;
+      --red-soft: #fff0f0;
+      --gold: #d6a642;
+      --gold-soft: #fff8e6;
+      --text: #242424;
+      --muted: #666;
+      --line: #f0d8d8;
+      --bg: #fff8f6;
+      --white: #ffffff;
+      --shadow: 0 18px 45px rgba(150, 22, 24, 0.12);
+      --radius: 22px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(215, 25, 32, 0.08), transparent 34%),
+        linear-gradient(180deg, #fff8f6 0%, #ffffff 44%, #fff8f6 100%);
+      line-height: 1.8;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(215, 25, 32, 0.12);
+    }
+
+    .header-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      box-shadow: 0 8px 18px rgba(215, 25, 32, 0.22);
+      flex: 0 0 auto;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 14px;
+      flex-wrap: wrap;
+      color: #555;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav a {
+      transition: color 0.2s ease;
+    }
+
+    .nav a:hover {
+      color: var(--red);
+    }
+
+    .nav-cta {
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      color: #fff !important;
+      box-shadow: 0 10px 20px rgba(215, 25, 32, 0.18);
+    }
+
+    .breadcrumb {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 16px 18px 0;
+      font-size: 13px;
+      color: #777;
+    }
+
+    .breadcrumb a {
+      color: var(--red-dark);
+      font-weight: 700;
+    }
+
+    .hero {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 30px 18px 42px;
+    }
+
+    .hero-box {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      padding: 44px;
+      background:
+        radial-gradient(circle at 84% 16%, rgba(255, 220, 120, 0.46), transparent 26%),
+        linear-gradient(135deg, #fff 0%, #fff4f2 46%, #ffe8e3 100%);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(215, 25, 32, 0.12);
+    }
+
+    .hero-box::before {
+      content: "";
+      position: absolute;
+      inset: auto -80px -120px auto;
+      width: 300px;
+      height: 300px;
+      border-radius: 999px;
+      background: rgba(215, 25, 32, 0.09);
+    }
+
+    .hero-box::after {
+      content: "";
+      position: absolute;
+      left: 44px;
+      bottom: 0;
+      width: 180px;
+      height: 6px;
+      border-radius: 999px 999px 0 0;
+      background: linear-gradient(90deg, var(--red), var(--gold));
+    }
+
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 34px;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .eyebrow,
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      margin-bottom: 16px;
+      border-radius: 999px;
+      background: #fff;
+      color: var(--red-dark);
+      border: 1px solid rgba(215, 25, 32, 0.14);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.12;
+      letter-spacing: -0.06em;
+    }
+
+    .hero-lead {
+      margin: 0;
+      max-width: 700px;
+      color: #4d4d4d;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .hero-actions,
+    .cta-actions,
+    .card-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .btn,
+    .mini-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      font-weight: 900;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn {
+      min-height: 48px;
+      padding: 13px 20px;
+      font-size: 14px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      color: #fff;
+      box-shadow: 0 12px 24px rgba(215, 25, 32, 0.22);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--red-dark);
+      border: 1px solid rgba(215, 25, 32, 0.2);
+    }
+
+    .btn:hover,
+    .mini-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero-side {
+      position: relative;
+      min-height: 390px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 22px;
+    }
+
+    .logo-panel {
+      position: relative;
+      z-index: 2;
+      width: min(100%, 330px);
+      padding: 28px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at top right, rgba(255, 248, 230, 0.96), transparent 48%),
+        #fff;
+      border: 1px solid rgba(215, 25, 32, 0.13);
+      box-shadow: 0 18px 38px rgba(120, 20, 20, 0.12);
+      text-align: center;
+    }
+
+    .casino-logo {
+      width: min(100%, 220px);
+      max-height: 110px;
+      object-fit: contain;
+      margin: 0 auto 18px;
+    }
+
+    .logo-panel h2 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      line-height: 1.35;
+      color: var(--red-dark);
+    }
+
+    .logo-panel p {
+      margin: 0;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .mascot-mini {
+      position: absolute;
+      right: 4px;
+      bottom: 8px;
+      width: 112px;
+      z-index: 3;
+      filter: drop-shadow(0 12px 16px rgba(120, 20, 20, 0.12));
+    }
+
+    .notice {
+      max-width: var(--max);
+      margin: 0 auto 18px;
+      padding: 0 18px;
+    }
+
+    .notice-box {
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.16);
+      color: #555;
+      box-shadow: 0 10px 28px rgba(150, 22, 24, 0.08);
+      font-size: 14px;
+    }
+
+    .notice-box strong {
+      color: var(--red-dark);
+    }
+
+    .section {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 42px 18px;
+    }
+
+    .section-head {
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      margin: 0 0 10px;
+      font-size: clamp(26px, 3.6vw, 40px);
+      line-height: 1.28;
+      letter-spacing: -0.04em;
+    }
+
+    .section-desc {
+      margin: 0;
+      color: var(--muted);
+      max-width: 820px;
+      font-size: 15px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card,
+    .score-card,
+    .point-card,
+    .faq-item,
+    .mascot-note,
+    .responsible-box,
+    .link-card {
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.12);
+      border-radius: var(--radius);
+      box-shadow: 0 12px 30px rgba(150, 22, 24, 0.08);
+    }
+
+    .card,
+    .score-card,
+    .point-card,
+    .faq-item,
+    .link-card {
+      padding: 22px;
+    }
+
+    .card h3,
+    .score-card h3,
+    .point-card h3,
+    .faq-item h3,
+    .link-card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      line-height: 1.45;
+    }
+
+    .card p,
+    .score-card p,
+    .point-card p,
+    .faq-item p,
+    .link-card p {
+      margin: 0;
+      color: #5f5f5f;
+      font-size: 14px;
+    }
+
+    .score-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .score-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--red), var(--gold));
+    }
+
+    .score-label {
+      display: inline-flex;
+      margin-bottom: 12px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: var(--gold-soft);
+      color: #8b6114;
+      border: 1px solid rgba(214, 166, 66, 0.28);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .score-value {
+      display: block;
+      color: var(--red-dark);
+      font-size: 30px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: var(--gold-soft);
+      color: #8b6114;
+      border: 1px solid rgba(214, 166, 66, 0.28);
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .tag-red {
+      background: var(--red-soft);
+      color: var(--red-dark);
+      border-color: rgba(215, 25, 32, 0.14);
+    }
+
+    .table-wrap {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid rgba(215, 25, 32, 0.14);
+      box-shadow: 0 14px 34px rgba(150, 22, 24, 0.08);
+      background: #fff;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      font-size: 14px;
+    }
+
+    thead {
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      color: #fff;
+    }
+
+    th,
+    td {
+      padding: 15px 14px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid #f2dddd;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tbody th {
+      color: var(--red-dark);
+      background: #fffafa;
+      font-weight: 900;
+      width: 24%;
+    }
+
+    .check-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .check-list li {
+      position: relative;
+      padding: 14px 16px 14px 42px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.11);
+      color: #555;
+      font-size: 14px;
+    }
+
+    .check-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: var(--red);
+      color: #fff;
+      font-size: 12px;
+      line-height: 18px;
+      text-align: center;
+      font-weight: 900;
+    }
+
+    .point-card ul,
+    .card ul {
+      margin: 12px 0 0;
+      padding-left: 1.2em;
+      color: #5f5f5f;
+      font-size: 14px;
+    }
+
+    .point-card li,
+    .card li {
+      margin: 5px 0;
+    }
+
+    .mascot-note {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 18px;
+      align-items: center;
+      padding: 20px;
+      background:
+        radial-gradient(circle at 40px 40px, rgba(255, 248, 230, 0.9), transparent 42%),
+        #fff;
+    }
+
+    .mascot-note img {
+      width: 104px;
+      max-height: 128px;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 14px rgba(120, 20, 20, 0.12));
+    }
+
+    .mascot-note h3 {
+      margin: 0 0 8px;
+      color: var(--red-dark);
+      font-size: 18px;
+      line-height: 1.45;
+    }
+
+    .mascot-note p {
+      margin: 0;
+      color: #555;
+      font-size: 14px;
+    }
+
+    .responsible-box {
+      padding: 24px;
+      background:
+        linear-gradient(135deg, #fff 0%, #fff8f6 100%);
+    }
+
+    .responsible-box h2 {
+      margin: 0 0 10px;
+      font-size: 24px;
+      line-height: 1.35;
+      color: var(--red-dark);
+    }
+
+    .responsible-box p {
+      margin: 0;
+      color: #555;
+      font-size: 14px;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .faq-item h3 {
+      color: var(--red-dark);
+    }
+
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .link-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .link-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 32px rgba(150, 22, 24, 0.1);
+    }
+
+    .link-card strong {
+      display: block;
+      color: var(--red-dark);
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    .link-card span {
+      display: block;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .cta {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 30px 18px 58px;
+    }
+
+    .cta-box {
+      position: relative;
+      overflow: hidden;
+      padding: 34px;
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at 88% 20%, rgba(255, 224, 140, 0.35), transparent 28%),
+        linear-gradient(135deg, var(--red), var(--red-dark));
+      color: #fff;
+      box-shadow: 0 18px 44px rgba(150, 22, 24, 0.18);
+    }
+
+    .cta-box h2 {
+      margin: 0 0 10px;
+      font-size: clamp(24px, 3.5vw, 38px);
+      line-height: 1.28;
+      letter-spacing: -0.04em;
+    }
+
+    .cta-box p {
+      margin: 0;
+      max-width: 780px;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 15px;
+    }
+
+    .cta-box .btn-secondary {
+      color: var(--red-dark);
+      background: #fff;
+      border: none;
+    }
+
+    .cta-box .btn-primary {
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      box-shadow: none;
+    }
+
+    .site-footer {
+      padding: 36px 18px;
+      border-top: 1px solid rgba(215, 25, 32, 0.12);
+      background: #fff;
+    }
+
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      gap: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 12px 16px;
+      flex-wrap: wrap;
+      color: #666;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .footer-links a:hover {
+      color: var(--red);
+    }
+
+    .footer-copy {
+      color: #777;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 1000px) {
+      .link-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-side {
+        min-height: 340px;
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      body {
+        line-height: 1.75;
+      }
+
+      .site-header {
+        position: static;
+      }
+
+      .header-inner {
+        padding: 12px 16px;
+        gap: 12px;
+      }
+
+      .brand {
+        font-size: 14px;
+        line-height: 1.35;
+        white-space: normal;
+      }
+
+      .brand-mark {
+        width: 30px;
+        height: 30px;
+        border-radius: 9px;
+        flex: 0 0 auto;
+      }
+
+      .nav {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 8px 12px;
+        font-size: 12px;
+        line-height: 1.3;
+      }
+
+      .nav a {
+        padding: 5px 0;
+      }
+
+      .nav-cta {
+        padding: 7px 10px;
+        font-size: 12px;
+      }
+
+      .breadcrumb {
+        padding: 12px 16px 0;
+        font-size: 12px;
+      }
+
+      .hero {
+        padding: 20px 16px 26px;
+      }
+
+      .hero-box {
+        padding: 24px 18px;
+        border-radius: 22px;
+      }
+
+      .hero-box::after {
+        left: 24px;
+        width: 130px;
+        height: 5px;
+      }
+
+      .hero-grid {
+        gap: 24px;
+      }
+
+      .eyebrow,
+      .label {
+        font-size: 12px;
+        padding: 6px 10px;
+        margin-bottom: 14px;
+      }
+
+      h1 {
+        font-size: clamp(28px, 9vw, 38px);
+        line-height: 1.18;
+        margin-bottom: 14px;
+        letter-spacing: -0.04em;
+      }
+
+      .hero-lead {
+        font-size: 15px;
+        line-height: 1.75;
+      }
+
+      .hero-actions,
+      .cta-actions,
+      .card-actions {
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .btn,
+      .mini-btn {
+        width: 100%;
+        min-height: 44px;
+        text-align: center;
+      }
+
+      .btn {
+        padding: 12px 15px;
+        font-size: 14px;
+      }
+
+      .mini-btn {
+        padding: 10px 12px;
+        font-size: 13px;
+      }
+
+      .hero-side {
+        min-height: 300px;
+        padding-top: 4px;
+      }
+
+      .logo-panel {
+        width: min(100%, 300px);
+        padding: 22px 18px;
+        border-radius: 22px;
+      }
+
+      .casino-logo {
+        max-width: 190px;
+        max-height: 90px;
+      }
+
+      .mascot-mini {
+        width: 86px;
+        right: 0;
+        bottom: 2px;
+      }
+
+      .notice {
+        margin-bottom: 14px;
+        padding: 0 16px;
+      }
+
+      .notice-box {
+        padding: 15px 16px;
+        font-size: 13px;
+        line-height: 1.75;
+        border-radius: 14px;
+      }
+
+      .section {
+        padding: 30px 16px;
+      }
+
+      .section-head {
+        margin-bottom: 18px;
+      }
+
+      .section-title {
+        font-size: clamp(22px, 7vw, 30px);
+        line-height: 1.3;
+      }
+
+      .section-desc {
+        font-size: 14px;
+        line-height: 1.75;
+      }
+
+      .grid-2,
+      .grid-3,
+      .link-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .card,
+      .score-card,
+      .point-card,
+      .faq-item,
+      .link-card {
+        padding: 18px;
+        border-radius: 18px;
+      }
+
+      .card h3,
+      .score-card h3,
+      .point-card h3,
+      .faq-item h3,
+      .link-card h3 {
+        font-size: 17px;
+      }
+
+      .table-wrap {
+        border-radius: 18px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .table-wrap::after {
+        content: "横にスクロールできます →";
+        display: block;
+        padding: 8px 12px;
+        color: #777;
+        font-size: 12px;
+        background: #fffaf7;
+        border-top: 1px solid #f2dddd;
+      }
+
+      table {
+        min-width: 820px;
+        font-size: 13px;
+      }
+
+      th,
+      td {
+        padding: 12px 10px;
+      }
+
+      .mascot-note {
+        grid-template-columns: 82px 1fr;
+        gap: 12px;
+        padding: 16px;
+        border-radius: 18px;
+      }
+
+      .mascot-note img {
+        width: 82px;
+        max-height: 104px;
+      }
+
+      .mascot-note h3 {
+        font-size: 16px;
+        margin-bottom: 6px;
+      }
+
+      .mascot-note p {
+        font-size: 13px;
+        line-height: 1.7;
+      }
+
+      .responsible-box {
+        padding: 20px 18px;
+        border-radius: 20px;
+      }
+
+      .responsible-box h2 {
+        font-size: 21px;
+      }
+
+      .cta {
+        padding: 24px 16px 42px;
+      }
+
+      .cta-box {
+        padding: 24px 18px;
+        border-radius: 22px;
+      }
+
+      .site-footer {
+        padding: 28px 16px;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+        gap: 8px 10px;
+        font-size: 12px;
+        line-height: 1.5;
+      }
+    }
+
+    @media (max-width: 420px) {
+      h1 {
+        font-size: clamp(26px, 10vw, 34px);
+      }
+
+      .hero-box {
+        padding: 22px 16px;
+      }
+
+      .hero-side {
+        min-height: 280px;
+      }
+
+      .logo-panel {
+        padding: 20px 16px;
+      }
+
+      .casino-logo {
+        max-width: 170px;
+      }
+
+      .mascot-mini {
+        width: 74px;
+      }
+
+      .mascot-note {
+        grid-template-columns: 70px 1fr;
+      }
+
+      .mascot-note img {
+        width: 70px;
+        max-height: 92px;
+      }
+
+      .tag {
+        font-size: 11px;
+      }
+
+      .score-value {
+        font-size: 26px;
+      }
+    }
+  
+/* Research-based review upgrade block */
+.research-upgrade {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 24px 18px 18px;
+}
+.research-panel {
+  background: #fff;
+  border: 1px solid rgba(215,25,32,.14);
+  border-radius: 24px;
+  box-shadow: 0 16px 36px rgba(150,22,24,.08);
+  padding: 24px;
+}
+.research-head {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.research-logo {
+  min-height: 92px;
+  border-radius: 18px;
+  border: 1px solid #f1d1d1;
+  background: #fffafa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+}
+.research-logo img {
+  max-width: 100%;
+  max-height: 64px;
+  object-fit: contain;
+}
+.research-kicker {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--gold-soft);
+  border: 1px solid rgba(214,166,66,.34);
+  color: #8b6114;
+  font-size: 12px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+.research-panel h2 {
+  margin: 0;
+  color: var(--red-dark);
+  font-size: clamp(23px, 2.8vw, 34px);
+  line-height: 1.35;
+  letter-spacing: -0.03em;
+}
+.research-lead {
+  margin: 8px 0 0;
+  color: #5c4545;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.research-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 12px;
+  margin: 18px 0;
+}
+.research-fact {
+  border: 1px solid #f2cccc;
+  background: linear-gradient(180deg,#fff,#fff8f8);
+  border-radius: 16px;
+  padding: 14px;
+}
+.research-fact b {
+  display: block;
+  color: var(--red-dark);
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+.research-fact span {
+  display: block;
+  color: #5c4545;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 14px;
+}
+.research-card {
+  border: 1px solid #f2cccc;
+  background: #fffafa;
+  border-radius: 18px;
+  padding: 16px;
+}
+.research-card h3 {
+  margin: 0 0 8px;
+  color: var(--red-dark);
+  font-size: 17px;
+  line-height: 1.45;
+}
+.research-card p {
+  margin: 0;
+  color: #5c4545;
+  font-size: 14px;
+  line-height: 1.75;
+}
+.research-card ul {
+  margin: 8px 0 0;
+  padding-left: 1.2em;
+  color: #5c4545;
+  font-size: 14px;
+  line-height: 1.75;
+}
+.research-cta {
+  margin-top: 16px;
+  padding: 18px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--red), var(--red-dark));
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.research-cta p {
+  margin: 0;
+  color: rgba(255,255,255,.9);
+  font-size: 14px;
+  line-height: 1.75;
+}
+.research-cta a {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--red-dark);
+  font-weight: 900;
+}
+.research-note {
+  margin: 14px 0 0;
+  padding: 13px 15px;
+  border-radius: 14px;
+  background: #fffbea;
+  border: 1px solid #f0d36c;
+  color: #594000;
+  font-size: 13px;
+  line-height: 1.8;
+}
+@media (max-width: 900px) {
+  .research-facts {
+    grid-template-columns: 1fr;
+  }
+  .research-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .research-upgrade {
+    padding: 18px 12px;
+  }
+  .research-panel {
+    padding: 18px;
+    border-radius: 18px;
+  }
+  .research-head {
+    grid-template-columns: 1fr;
+  }
+  .research-logo {
+    justify-content: flex-start;
+  }
+  .research-logo img {
+    max-width: 190px;
+  }
+  .research-cta {
+    display: block;
+  }
+  .research-cta a {
+    width: 100%;
+    margin-top: 12px;
+  }
+}
+
+
+    /* ===== Slottenkoku conversion upgrade ===== */
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+    }
+
+    .logo-box {
+      width: fit-content;
+      max-width: 190px;
+      min-height: 54px;
+      margin: 0 0 12px;
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: #fffafa;
+      border: 1px solid rgba(215, 25, 32, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-box img {
+      width: auto;
+      max-width: 160px;
+      max-height: 54px;
+      object-fit: contain;
+    }
+
+    .slottenkoku-quick-cta {
+      max-width: var(--max);
+      margin: 0 auto 18px;
+      padding: 0 18px;
+    }
+
+    .quick-cta-box {
+      position: relative;
+      overflow: hidden;
+      padding: 24px;
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(255, 224, 140, 0.42), transparent 28%),
+        linear-gradient(135deg, #fff 0%, #fff8f6 56%, #ffecea 100%);
+      border: 1px solid rgba(215, 25, 32, 0.14);
+      box-shadow: 0 16px 36px rgba(150, 22, 24, 0.1);
+    }
+
+    .quick-cta-head {
+      display: grid;
+      grid-template-columns: 94px 1fr;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .quick-cta-logo {
+      min-height: 82px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+
+    .quick-cta-logo img {
+      max-width: 100%;
+      max-height: 58px;
+      object-fit: contain;
+    }
+
+    .quick-cta-box h2 {
+      margin: 0 0 8px;
+      color: var(--red-dark);
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.35;
+      letter-spacing: -0.04em;
+    }
+
+    .quick-cta-box p {
+      margin: 0;
+      color: #5a4a4a;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .quick-cta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .quick-cta-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.12);
+      box-shadow: 0 10px 24px rgba(150, 22, 24, 0.07);
+    }
+
+    .quick-cta-card strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--red-dark);
+      font-size: 16px;
+      line-height: 1.45;
+    }
+
+    .quick-cta-card span {
+      display: block;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .quick-cta-card a,
+    .route-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      color: #fff;
+      font-weight: 900;
+      font-size: 13px;
+      box-shadow: 0 10px 20px rgba(215, 25, 32, 0.16);
+    }
+
+    .slottenkoku-payment-route {
+      margin-top: 18px;
+      padding: 22px;
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at top right, rgba(255, 248, 230, 0.95), transparent 42%),
+        #fff;
+      border: 1px solid rgba(215, 25, 32, 0.14);
+      box-shadow: 0 12px 30px rgba(150, 22, 24, 0.08);
+    }
+
+    .slottenkoku-payment-route h3 {
+      margin: 0 0 10px;
+      color: var(--red-dark);
+      font-size: 21px;
+      line-height: 1.4;
+    }
+
+    .slottenkoku-payment-route p {
+      margin: 0;
+      color: #555;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .route-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .route-card {
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff8f6;
+      border: 1px solid rgba(215, 25, 32, 0.12);
+    }
+
+    .route-card b {
+      display: block;
+      color: var(--red-dark);
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+
+    .route-card span {
+      display: block;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.65;
+      margin-bottom: 10px;
+    }
+
+    .slottenkoku-final-check {
+      padding: 24px;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 88% 16%, rgba(255, 224, 140, 0.35), transparent 28%),
+        linear-gradient(135deg, #fff, #fff5f2);
+      border: 1px solid rgba(215, 25, 32, 0.16);
+      box-shadow: 0 12px 30px rgba(150, 22, 24, 0.08);
+    }
+
+    .slottenkoku-final-check h2 {
+      margin: 0 0 10px;
+      color: var(--red-dark);
+      font-size: clamp(22px, 3vw, 32px);
+      line-height: 1.35;
+    }
+
+    .final-check-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .final-check-item {
+      padding: 15px;
+      border-radius: 17px;
+      background: #fff;
+      border: 1px solid rgba(215, 25, 32, 0.11);
+    }
+
+    .final-check-item b {
+      display: block;
+      color: var(--red-dark);
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .final-check-item span {
+      display: block;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .slottenkoku-popup-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(20, 6, 7, 0.62);
+      backdrop-filter: blur(5px);
+    }
+
+    .slottenkoku-popup-overlay.is-visible {
+      display: flex;
+    }
+
+    .slottenkoku-popup {
+      position: relative;
+      width: min(100%, 560px);
+      max-height: calc(100vh - 36px);
+      overflow-y: auto;
+      border-radius: 26px;
+      background: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+    }
+
+    .slottenkoku-popup-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 2;
+      width: 36px;
+      height: 36px;
+      border: none;
+      border-radius: 999px;
+      background: rgba(255,255,255,.94);
+      color: var(--red-dark);
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(0,0,0,.12);
+    }
+
+    .slottenkoku-popup-image {
+      width: 100%;
+      aspect-ratio: 960 / 420;
+      background:
+        radial-gradient(circle at 85% 15%, rgba(255, 224, 140, 0.5), transparent 30%),
+        linear-gradient(135deg, var(--red), var(--red-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .slottenkoku-popup-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slottenkoku-popup-body {
+      padding: 22px;
+    }
+
+    .slottenkoku-popup-body h2 {
+      margin: 0 0 8px;
+      color: var(--red-dark);
+      font-size: 24px;
+      line-height: 1.35;
+    }
+
+    .slottenkoku-popup-body p {
+      margin: 0;
+      color: #555;
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .slottenkoku-popup-body .btn {
+      width: 100%;
+      margin-top: 16px;
+    }
+
+    .slottenkoku-popup-note {
+      margin-top: 12px !important;
+      color: #777 !important;
+      font-size: 12px !important;
+    }
+
+    @media (max-width: 760px) {
+      .quick-cta-head,
+      .quick-cta-grid,
+      .route-grid,
+      .final-check-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-cta-box,
+      .slottenkoku-payment-route,
+      .slottenkoku-final-check {
+        padding: 18px;
+        border-radius: 20px;
+      }
+
+      .quick-cta-logo {
+        justify-content: flex-start;
+      }
+
+      .slottenkoku-popup-body {
+        padding: 18px;
+      }
+
+      .logo-box {
+        max-width: 170px;
+      }
+    }
+
+</style>
+<title>スロット天国の入出金時間FAQ｜反映が遅い時の確認まとめ</title>
+</head>
+<body>
+<header class="site-header">
+<div class="header-inner">
+<a aria-label="リベンジカジノ比較ガイド トップへ" class="brand" href="index.html">
+<span class="brand-mark"><img alt="" src="apple-touch-icon.png"/></span>
+<span>リベンジカジノ比較ガイド</span>
+</a>
+<nav aria-label="主要ナビゲーション" class="nav">
+<a href="index.html">TOP</a>
+<a href="casino-list.html">カジノ一覧</a>
+<a href="review.html">レビュー</a>
+<a href="bonus.html">ボーナス比較</a>
+<a href="payments.html">入出金</a>
+<a class="nav-cta" href="guide.html">初心者ガイド</a>
+</nav>
+</div>
+</header>
+<div class="breadcrumb"><a href="index.html">TOP</a> &gt; <a href="review-slottenkoku.html">スロット天国レビュー</a> &gt; スロット天国の入出金時間FAQ｜反映が遅い時の確認まとめ</div>
+<main>
+<section class="hero"><div class="hero-box"><div class="hero-grid"><div><span class="eyebrow">Payment time FAQ</span><h1>スロット天国の入出金時間FAQ｜反映が遅い時の確認まとめ</h1><p class="hero-lead">入金反映や出金保留で迷った時に、決済方法別の確認ポイントと問い合わせ前に整理する内容をまとめます。</p><div class="hero-actions"><a class="btn btn-primary aff-cta" href="https://sloten.io?referral=0ZjM" rel="nofollow sponsored noopener" target="_blank">入出金条件を公式で確認する</a><a class="btn btn-secondary" href="slottenkoku-instant-deposit.html">入金反映</a><a class="btn btn-secondary" href="slottenkoku-fast-withdrawal.html">出金スピード</a></div></div><aside class="hero-card"><span class="label">Speed check</span><h2>焦らず条件と履歴を確認</h2><p>反映遅れの多くは、処理時間・入力内容・条件未達・確認待ちが原因になります。</p></aside></div></div></section><section class="section"><div class="section-title"><span class="eyebrow">FAQ</span><h2>よくある確認ポイント</h2><p>入出金時間で迷いやすい内容を整理します。</p></div><div class="cards three"><article class="card"><h3>入金が反映されない</h3><p>決済完了履歴、金額、名義、処理時間を確認します。</p></article><article class="card"><h3>出金が保留になる</h3><p>賭け条件、上限、登録情報、追加確認の有無を見ます。</p></article><article class="card"><h3>KYC不要でも確認はある？</h3><p>原則KYC永続不要でも、不正防止や名義不一致時は追加確認の可能性があります。</p></article></div></section><section class="section soft-section"><div class="section-title"><span class="eyebrow">Before support</span><h2>問い合わせ前に用意する情報</h2><p>サポートへ確認する前に、必要情報を整理しておくとスムーズです。</p></div><div class="check-list"><div class="check-item"><strong>日時：</strong>入金・出金申請した日時を控えます。</div><div class="check-item"><strong>金額：</strong>申請金額や手数料を確認します。</div><div class="check-item"><strong>決済方法：</strong>PayPay、コンビニ、仮想通貨などを明確にします。</div><div class="check-item"><strong>履歴：</strong>決済完了画面、TxID、レシートなどを保存します。</div></div></section><section class="section"><div class="cta-panel"><span class="eyebrow">Official check</span><h2>反映時間・出金条件を確認してからスロット天国へ進む</h2><p>入金や出金のスピードは、決済方法・混雑状況・入力内容・規約確認によって変わります。最新条件は公式ページで確認してください。</p><div class="hero-actions"><a class="btn btn-primary aff-cta" href="https://sloten.io?referral=0ZjM" rel="nofollow sponsored noopener" target="_blank">スロット天国を公式サイトで確認する</a><a class="btn btn-secondary" href="slottenkoku-payment.html">入出金ガイドを見る</a><a class="btn btn-secondary" href="slottenkoku-withdrawal.html">出金条件を見る</a></div></div></section><section class="section soft-section"><div class="section-title"><span class="eyebrow">Speed cluster</span><h2>反映時間・出金スピードの関連ページ</h2><p>決済方法別の反映時間や、出金前に見たい条件をまとめています。</p></div><div class="quick-grid"><a class="quick-card" href="slottenkoku-instant-deposit.html"><strong>入金反映時間ガイド</strong><span>詳しく確認する</span></a><a class="quick-card" href="slottenkoku-fast-withdrawal.html"><strong>出金スピード確認</strong><span>詳しく確認する</span></a><a class="quick-card" href="slottenkoku-paypay-speed-guide.html"><strong>PayPay反映時間</strong><span>詳しく確認する</span></a><a class="quick-card" href="slottenkoku-convenience-deposit-time.html"><strong>コンビニ入金時間</strong><span>詳しく確認する</span></a><a class="quick-card" href="slottenkoku-crypto-deposit-time.html"><strong>仮想通貨反映時間</strong><span>詳しく確認する</span></a><a class="quick-card" href="slottenkoku-deposit-withdrawal-time-faq.html"><strong>入出金時間FAQ</strong><span>詳しく確認する</span></a><a class="quick-card" href="slottenkoku-no-kyc-casino.html"><strong>KYC不要カジノ確認</strong><span>詳しく確認する</span></a><a class="quick-card" href="slottenkoku-payment.html"><strong>入出金ガイド</strong><span>詳しく確認する</span></a></div></section><section class="section notice-block"><h2>広告リンク・アフィリエイトリンクについて</h2><p>このページには広告リンク・アフィリエイトリンクが含まれます。掲載内容は条件確認を目的としており、特典付与や勝利金、出金を保証するものではありません。</p><p><a href="advertising-policy.html">広告掲載・アフィリエイト方針を見る</a></p></section>
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<div class="footer-links">
+<a href="index.html">TOP</a>
+<a href="casino-list.html">カジノ一覧</a>
+<a href="review.html">レビュー一覧</a>
+<a href="bonus.html">ボーナス比較</a>
+<a href="bonus-guide.html">ボーナスの見方</a>
+<a href="payments.html">入出金ガイド</a>
+<a href="guide.html">初心者ガイド</a>
+<a href="site-checklist.html">サイト確認</a>
+<a href="advertising-policy.html">広告掲載・アフィリエイト表記</a>
+<a href="advertising-policy.html">広告掲載・アフィリエイト表記</a>
+</div>
+<div class="footer-copy">
+        © リベンジカジノ比較ガイド｜本ページはスロット天国の条件確認・比較を目的としたレビュー記事です。
+        オンラインカジノの利用や登録を推奨・保証するものではありません。
+        各サービスの公式規約、対象地域、関連法規、年齢制限、KYC不要の基本方針、入出金条件を必ず確認してください。
+      </div>
+</div>
+</footer>
+<div aria-hidden="true" class="slottenkoku-popup-overlay" id="slottenkokuPopupOverlay">
+<div aria-labelledby="slottenkokuPopupTitle" aria-modal="true" class="slottenkoku-popup" role="dialog">
+<button aria-label="ポップアップを閉じる" class="slottenkoku-popup-close" type="button">×</button>
+<div class="slottenkoku-popup-image">
+<img alt="スロット天国 限定特典" loading="lazy" src="popup-slottenkoku-bonus.png"/>
+</div>
+<div class="slottenkoku-popup-body">
+<h2 id="slottenkokuPopupTitle">スロット天国の限定特典を確認</h2>
+<p>
+          リベンジカジノ比較ガイド経由で、スロット天国の登録特典・初回特典・参加条件を確認できます。
+          対象条件・賭け条件・本人確認の流れは、登録前に公式情報で確認してください。
+        </p>
+<a class="btn btn-primary" href="https://sloten.io?referral=0ZjM" rel="nofollow sponsored noopener" target="_blank">条件を確認して公式サイトへ進む →</a>
+<p class="slottenkoku-popup-note">※ 特典内容・対象条件は変更される場合があります。登録前に公式規約をご確認ください。</p>
+</div>
+</div>
+</div>
+<script>
+    (function () {
+      var overlay = document.getElementById('slottenkokuPopupOverlay');
+      if (!overlay) return;
+      var closeButton = overlay.querySelector('.slottenkoku-popup-close');
+      var storageKey = 'slottenkokuPopupClosedAt';
+      var hideHours = 24;
+
+      function shouldShowPopup() {
+        try {
+          var closedAt = localStorage.getItem(storageKey);
+          if (!closedAt) return true;
+          var elapsed = Date.now() - parseInt(closedAt, 10);
+          return elapsed > hideHours * 60 * 60 * 1000;
+        } catch (e) {
+          return true;
+        }
+      }
+
+      function showPopup() {
+        overlay.classList.add('is-visible');
+        overlay.setAttribute('aria-hidden', 'false');
+      }
+
+      function closePopup() {
+        overlay.classList.remove('is-visible');
+        overlay.setAttribute('aria-hidden', 'true');
+        try {
+          localStorage.setItem(storageKey, String(Date.now()));
+        } catch (e) {}
+      }
+
+      if (shouldShowPopup()) {
+        window.setTimeout(showPopup, 3000);
+      }
+
+      closeButton.addEventListener('click', closePopup);
+      overlay.addEventListener('click', function (event) {
+        if (event.target === overlay) closePopup();
+      });
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && overlay.classList.contains('is-visible')) closePopup();
+      });
+    })();
+  </script>
+</body>
+</html>
