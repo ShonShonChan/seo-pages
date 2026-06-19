@@ -5615,250 +5615,212 @@ section:has(> .selection-criteria) {
 
 
 
-/* ===== Mobile visual polish: top page / side banners / FV ===== */
-html, body {
-  max-width: 100%;
-  overflow-x: hidden;
-}
+/* ===== Mobile polish phase 2: common responsive fixes ===== */
+html, body { max-width: 100%; overflow-x: hidden; }
+body { -webkit-text-size-adjust: 100%; }
+img, svg, video, iframe { max-width: 100%; height: auto; }
+main, section, .section, .container, .wrap, .hero, .hero-box, .card, .panel { max-width: 100%; }
 
-@media (max-width: 1024px) {
-  .bonus-side-rails {
+/* PC side rails must never push mobile layout sideways. */
+@media (max-width: 1180px) {
+  .bonus-side-rails,
+  .side-rails,
+  .side-banner,
+  .floating-side,
+  .pc-side-banner,
+  [class*="side-rail"],
+  [class*="side-column"] {
     display: none !important;
   }
 }
 
-@media (min-width: 761px) {
+/* Show the side banner content as clean stacked cards on mobile. */
+.mobile-polish-banners { display: none; }
+@media (max-width: 1180px) {
   .mobile-polish-banners {
-    display: none !important;
+    display: block !important;
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 14px 16px 20px;
+  }
+  .mobile-polish-banners .bonus-mobile-banner-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .mobile-polish-banners .bonus-mobile-banner {
+    min-width: 0;
+    border-radius: 18px;
+    padding: 12px;
+    background: radial-gradient(circle at 88% 12%, rgba(255,232,140,.34), transparent 34%), linear-gradient(135deg, #d71920 0%, #9f1017 72%);
+    color: #fff;
+    box-shadow: 0 14px 30px rgba(150,22,24,.16);
+  }
+  .mobile-polish-banners .bonus-mobile-blank {
+    width: 100%;
+    aspect-ratio: 16 / 7;
+    min-height: 92px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 14px;
+    margin-bottom: 10px;
+    background: rgba(255,255,255,.14);
+    border: 1px solid rgba(255,255,255,.32);
+  }
+  .mobile-polish-banners .bonus-mobile-blank img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .mobile-polish-banners strong {
+    display: block;
+    font-size: 16px;
+    line-height: 1.35;
+    margin: 0 0 5px;
+  }
+  .mobile-polish-banners span {
+    display: block;
+    font-size: 12px;
+    line-height: 1.65;
+    color: rgba(255,255,255,.9);
+  }
+  .mobile-polish-banners a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 42px;
+    margin-top: 10px;
+    padding: 9px 12px;
+    border-radius: 999px;
+    background: #fff;
+    color: #9f1017;
+    font-weight: 900;
+    font-size: 13px;
+    text-align: center;
   }
 }
 
 @media (max-width: 760px) {
-  body {
-    background: linear-gradient(180deg, #fff8f6 0%, #ffffff 46%, #fff8f6 100%) !important;
+  .mobile-polish-banners {
+    padding: 12px 14px 18px;
   }
-
-  .site-header {
-    position: sticky !important;
-    top: 0;
-    z-index: 80;
+  .mobile-polish-banners .bonus-mobile-banner-grid {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 2px 2px 8px;
   }
+  .mobile-polish-banners .bonus-mobile-banner {
+    flex: 0 0 86%;
+    scroll-snap-align: start;
+  }
+  .mobile-polish-banners .bonus-mobile-banner-grid::-webkit-scrollbar { display: none; }
+}
 
+/* Header/nav: compact, scrollable, and not crushed by iOS viewport. */
+@media (max-width: 760px) {
+  .site-header { position: sticky; top: 0; z-index: 90; }
   .header-inner {
-    padding: 10px 12px !important;
-    gap: 8px !important;
-  }
-
-  .brand {
     width: 100%;
-    font-size: 14px !important;
-    white-space: normal !important;
+    padding: 10px 12px 9px !important;
+    gap: 8px !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    align-items: start !important;
   }
-
+  .brand {
+    max-width: 100%;
+    font-size: 14px !important;
+    line-height: 1.3 !important;
+    white-space: normal !important;
+    word-break: keep-all;
+  }
+  .brand-mark { width: 34px !important; height: 34px !important; border-radius: 10px !important; flex: 0 0 auto; }
   .nav {
     width: 100%;
     display: flex !important;
-    flex-wrap: nowrap !important;
     justify-content: flex-start !important;
+    flex-wrap: nowrap !important;
     gap: 8px !important;
-    overflow-x: auto !important;
+    overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    padding: 2px 2px 6px !important;
+    padding: 0 2px 5px;
     scrollbar-width: none;
   }
-
   .nav::-webkit-scrollbar { display: none; }
-
   .nav a {
     flex: 0 0 auto;
     white-space: nowrap;
-    font-size: 12px !important;
-    line-height: 1.2;
-    padding: 8px 10px !important;
+    min-height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 10px;
     border-radius: 999px;
-    background: #fff;
-    border: 1px solid rgba(215,25,32,.12);
+    background: rgba(255,255,255,.8);
+    border: 1px solid rgba(215,25,32,.10);
+    font-size: 12px !important;
   }
+  .nav .nav-cta, .nav-cta { padding: 7px 12px !important; }
+}
 
-  .nav a.nav-cta {
-    background: linear-gradient(135deg, var(--red, #d71920), var(--red-dark, #9f1017));
-    color: #fff;
-    border-color: transparent;
-  }
-
-  .hero {
-    width: min(100% - 20px, 1120px) !important;
-    padding: 14px 0 20px !important;
-    border-radius: 22px !important;
-    margin-top: 8px !important;
-  }
-
-  .hero-box,
-  .hero-copy-panel,
-  .hero-card,
-  .slottenkoku-conversion-panel,
-  .ranking-criteria-card,
-  .home-section,
-  .section-card,
-  .content-card {
-    max-width: 100%;
-  }
-
-  .hero-box {
-    padding: 22px 16px !important;
+/* Hero/card readability on mobile. */
+@media (max-width: 760px) {
+  .hero { padding: 14px 12px 20px !important; }
+  .hero-box, .hero-panel, .hero-copy-panel, .fv-pickup-panel, .panel, .card {
     border-radius: 20px !important;
   }
-
-  .hero h1,
-  .hero-title,
-  .hero-copy h1 {
-    font-size: clamp(28px, 9.2vw, 36px) !important;
+  .hero-box { padding: 14px !important; }
+  .hero-grid, .fv-enhanced-grid, .grid, .cards-grid, .comparison-grid, .feature-grid, .cta-grid {
+    grid-template-columns: 1fr !important;
+  }
+  h1 {
+    font-size: clamp(30px, 9vw, 42px) !important;
     line-height: 1.22 !important;
-    letter-spacing: -0.04em !important;
-    word-break: keep-all;
-    overflow-wrap: anywhere;
+    letter-spacing: -0.055em !important;
   }
+  h2 { font-size: clamp(22px, 6.2vw, 30px) !important; line-height: 1.35 !important; }
+  h3 { font-size: clamp(18px, 5.3vw, 24px) !important; line-height: 1.45 !important; }
+  p, li { font-size: 14px !important; line-height: 1.85 !important; }
+  .hero-lead { font-size: 15px !important; line-height: 1.9 !important; }
+  .eyebrow, .kicker, .label, .badge { max-width: 100%; white-space: normal !important; }
+}
 
-  .hero-title-break {
-    display: block !important;
-  }
-
-  .hero-lead,
-  .hero p {
-    font-size: 14px !important;
-    line-height: 1.78 !important;
-  }
-
-  .hero-actions,
-  .cta-actions,
-  .card-actions {
+/* Buttons and CTA blocks should become thumb-friendly full width. */
+@media (max-width: 760px) {
+  .hero-actions, .cta-actions, .actions, .button-row, .btn-row, .link-row {
     display: grid !important;
     grid-template-columns: 1fr !important;
     gap: 10px !important;
+    width: 100%;
   }
-
-  .hero-actions .btn,
-  .cta-actions .btn,
-  .card-actions .btn,
-  .btn,
-  .mini-btn {
-    width: 100% !important;
-    justify-content: center !important;
-    text-align: center !important;
-    white-space: normal !important;
-  }
-
-  .hero-side {
-    min-height: auto !important;
-    padding: 0 !important;
-  }
-
-  .mascot-mini {
-    position: static !important;
-    width: 88px !important;
-    margin: 12px auto 0 !important;
-  }
-
-  .mobile-polish-banners {
-    display: block !important;
-    width: min(100% - 20px, 1120px);
-    margin: 0 auto 24px;
-    padding: 0 !important;
-  }
-
-  .mobile-polish-banners .bonus-mobile-banner-grid {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 12px !important;
-  }
-
-  .mobile-polish-banners .bonus-mobile-banner {
-    display: block !important;
-    border-radius: 20px !important;
-    padding: 12px !important;
-    overflow: hidden;
-  }
-
-  .mobile-polish-banners .bonus-mobile-blank {
-    min-height: auto !important;
-    aspect-ratio: 1200 / 465 !important;
-    border: 1px solid rgba(255,255,255,.38) !important;
-    background: #fff !important;
-    padding: 0 !important;
-    overflow: hidden;
-  }
-
-  .mobile-polish-banners .bonus-mobile-blank img {
-    width: 100% !important;
-    height: 100% !important;
-    display: block !important;
-    object-fit: contain !important;
-    background: #fff !important;
-  }
-
-  .mobile-polish-banners .bonus-mobile-banner strong {
-    font-size: 16px !important;
-    line-height: 1.35 !important;
-  }
-
-  .mobile-polish-banners .bonus-mobile-banner span {
-    font-size: 12px !important;
-    line-height: 1.6 !important;
-  }
-
-  .mobile-polish-banners .bonus-mobile-banner a {
-    min-height: 42px !important;
-  }
-
-  .casino-card-grid,
-  .feature-grid,
-  .check-grid,
-  .link-grid,
-  .slottenkoku-route-grid,
-  .home-route-grid,
-  .final-home-route-grid,
-  .ranking-criteria-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .home-section,
-  section,
-  .section,
-  .content-section {
-    padding-left: 12px !important;
-    padding-right: 12px !important;
-  }
-
-  .table-wrap,
-  .comparison-table-wrap,
-  .scroll-table {
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  table {
-    min-width: 620px;
+  .btn, .button, .cta, .primary-btn, .secondary-btn, .fv-pickup-cta,
+  a[class*="btn"], a[class*="button"], a[class*="cta"] {
+    max-width: 100%;
+    min-height: 46px;
+    text-align: center;
   }
 }
 
+/* Tables and long content must scroll inside, not push the page wider. */
+.table-wrap, .comparison-table, .ranking-table, .data-table { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table { max-width: 100%; }
+@media (max-width: 760px) {
+  table { display: block; overflow-x: auto; white-space: nowrap; }
+  pre, code { white-space: pre-wrap; word-break: break-word; }
+}
+
+/* Extra small iPhone widths. */
 @media (max-width: 420px) {
-  .hero {
-    width: min(100% - 16px, 1120px) !important;
-  }
-
-  .hero-box {
-    padding: 20px 14px !important;
-  }
-
-  .hero h1,
-  .hero-title,
-  .hero-copy h1 {
-    font-size: clamp(26px, 9.6vw, 34px) !important;
-  }
-
-  .mobile-polish-banners {
-    width: min(100% - 16px, 1120px);
-  }
+  .hero { padding-left: 10px !important; padding-right: 10px !important; }
+  .hero-box { padding: 12px !important; }
+  .section, section { padding-left: 12px; padding-right: 12px; }
+  .mobile-polish-banners .bonus-mobile-banner { flex-basis: 90%; }
 }
 
 </style>
@@ -6146,28 +6108,7 @@ html, body {
 <img alt="確認ポイントを案内するリベ男" class="mascot-mini" src="ribedan-point.png">
 </img></div>
 </div>
-<section aria-label="スマホ用注目ボーナス" class="bonus-mobile-banners mobile-polish-banners">
-  <div class="bonus-mobile-banner-grid">
-    <article class="bonus-mobile-banner featured">
-      <div class="bonus-mobile-blank has-image"><img alt="スロット天国の登録ボーナスバナー" loading="lazy" src="side-banner-slottenkoku-bonus.png"/></div>
-      <strong>スロット天国の条件をスマホで確認</strong>
-      <span>登録特典・入金方法・KYC不要訴求を、スマホでも見やすく整理しています。</span>
-      <a href="https://sloten.io?referral=0ZjM" rel="nofollow sponsored noopener" target="_blank">公式サイトで条件を確認</a>
-    </article>
-    <article class="bonus-mobile-banner">
-      <div class="bonus-mobile-blank has-image"><img alt="コニベットの限定ボーナスバナー" loading="lazy" src="side-banner-konibet-bonus.png"/></div>
-      <strong>KONIBETの条件も比較</strong>
-      <span>ボーナス・入出金・安全性を確認してから比較できます。</span>
-      <a href="review-konibet.html">KONIBETレビューを見る</a>
-    </article>
-    <article class="bonus-mobile-banner">
-      <div class="bonus-mobile-blank has-image"><img alt="Roobetのプロモーションバナー" loading="lazy" src="side-banner-roobet-bonus.png"/></div>
-      <strong>他サイトも条件で比較</strong>
-      <span>ボーナス額だけでなく、賭け条件・最大出金・本人確認まで見て選びましょう。</span>
-      <a href="casino-list.html">カジノ一覧を見る</a>
-    </article>
-  </div>
-</section>
+<div class="bonus-mobile-banner">
 <section class="slottenkoku-conversion-section" id="slottenkoku-payment-route">
 <div class="slottenkoku-conversion-panel">
 <div class="slottenkoku-conversion-head">
