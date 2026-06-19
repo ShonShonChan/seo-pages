@@ -5613,6 +5613,254 @@ section:has(> .selection-criteria) {
 @media(max-width:960px){.slottenkoku-ab-cta-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
 @media(max-width:640px){.slottenkoku-ab-cta-section{padding:24px 16px 8px}.slottenkoku-ab-cta-panel{padding:24px 18px;border-radius:22px}.slottenkoku-ab-cta-grid{grid-template-columns:1fr}.slottenkoku-ab-cta-link{width:100%;}}
 
+
+
+/* ===== Mobile visual polish: top page / side banners / FV ===== */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+@media (max-width: 1024px) {
+  .bonus-side-rails {
+    display: none !important;
+  }
+}
+
+@media (min-width: 761px) {
+  .mobile-polish-banners {
+    display: none !important;
+  }
+}
+
+@media (max-width: 760px) {
+  body {
+    background: linear-gradient(180deg, #fff8f6 0%, #ffffff 46%, #fff8f6 100%) !important;
+  }
+
+  .site-header {
+    position: sticky !important;
+    top: 0;
+    z-index: 80;
+  }
+
+  .header-inner {
+    padding: 10px 12px !important;
+    gap: 8px !important;
+  }
+
+  .brand {
+    width: 100%;
+    font-size: 14px !important;
+    white-space: normal !important;
+  }
+
+  .nav {
+    width: 100%;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    padding: 2px 2px 6px !important;
+    scrollbar-width: none;
+  }
+
+  .nav::-webkit-scrollbar { display: none; }
+
+  .nav a {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    font-size: 12px !important;
+    line-height: 1.2;
+    padding: 8px 10px !important;
+    border-radius: 999px;
+    background: #fff;
+    border: 1px solid rgba(215,25,32,.12);
+  }
+
+  .nav a.nav-cta {
+    background: linear-gradient(135deg, var(--red, #d71920), var(--red-dark, #9f1017));
+    color: #fff;
+    border-color: transparent;
+  }
+
+  .hero {
+    width: min(100% - 20px, 1120px) !important;
+    padding: 14px 0 20px !important;
+    border-radius: 22px !important;
+    margin-top: 8px !important;
+  }
+
+  .hero-box,
+  .hero-copy-panel,
+  .hero-card,
+  .slottenkoku-conversion-panel,
+  .ranking-criteria-card,
+  .home-section,
+  .section-card,
+  .content-card {
+    max-width: 100%;
+  }
+
+  .hero-box {
+    padding: 22px 16px !important;
+    border-radius: 20px !important;
+  }
+
+  .hero h1,
+  .hero-title,
+  .hero-copy h1 {
+    font-size: clamp(28px, 9.2vw, 36px) !important;
+    line-height: 1.22 !important;
+    letter-spacing: -0.04em !important;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+
+  .hero-title-break {
+    display: block !important;
+  }
+
+  .hero-lead,
+  .hero p {
+    font-size: 14px !important;
+    line-height: 1.78 !important;
+  }
+
+  .hero-actions,
+  .cta-actions,
+  .card-actions {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .hero-actions .btn,
+  .cta-actions .btn,
+  .card-actions .btn,
+  .btn,
+  .mini-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    white-space: normal !important;
+  }
+
+  .hero-side {
+    min-height: auto !important;
+    padding: 0 !important;
+  }
+
+  .mascot-mini {
+    position: static !important;
+    width: 88px !important;
+    margin: 12px auto 0 !important;
+  }
+
+  .mobile-polish-banners {
+    display: block !important;
+    width: min(100% - 20px, 1120px);
+    margin: 0 auto 24px;
+    padding: 0 !important;
+  }
+
+  .mobile-polish-banners .bonus-mobile-banner-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .mobile-polish-banners .bonus-mobile-banner {
+    display: block !important;
+    border-radius: 20px !important;
+    padding: 12px !important;
+    overflow: hidden;
+  }
+
+  .mobile-polish-banners .bonus-mobile-blank {
+    min-height: auto !important;
+    aspect-ratio: 1200 / 465 !important;
+    border: 1px solid rgba(255,255,255,.38) !important;
+    background: #fff !important;
+    padding: 0 !important;
+    overflow: hidden;
+  }
+
+  .mobile-polish-banners .bonus-mobile-blank img {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    object-fit: contain !important;
+    background: #fff !important;
+  }
+
+  .mobile-polish-banners .bonus-mobile-banner strong {
+    font-size: 16px !important;
+    line-height: 1.35 !important;
+  }
+
+  .mobile-polish-banners .bonus-mobile-banner span {
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+  }
+
+  .mobile-polish-banners .bonus-mobile-banner a {
+    min-height: 42px !important;
+  }
+
+  .casino-card-grid,
+  .feature-grid,
+  .check-grid,
+  .link-grid,
+  .slottenkoku-route-grid,
+  .home-route-grid,
+  .final-home-route-grid,
+  .ranking-criteria-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .home-section,
+  section,
+  .section,
+  .content-section {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .table-wrap,
+  .comparison-table-wrap,
+  .scroll-table {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    min-width: 620px;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero {
+    width: min(100% - 16px, 1120px) !important;
+  }
+
+  .hero-box {
+    padding: 20px 14px !important;
+  }
+
+  .hero h1,
+  .hero-title,
+  .hero-copy h1 {
+    font-size: clamp(26px, 9.6vw, 34px) !important;
+  }
+
+  .mobile-polish-banners {
+    width: min(100% - 16px, 1120px);
+  }
+}
+
 </style>
 <!-- Site icons / favicon -->
 <link href="favicon.ico" rel="icon" sizes="any"/>
@@ -5898,7 +6146,28 @@ section:has(> .selection-criteria) {
 <img alt="確認ポイントを案内するリベ男" class="mascot-mini" src="ribedan-point.png">
 </img></div>
 </div>
-<div class="bonus-mobile-banner">
+<section aria-label="スマホ用注目ボーナス" class="bonus-mobile-banners mobile-polish-banners">
+  <div class="bonus-mobile-banner-grid">
+    <article class="bonus-mobile-banner featured">
+      <div class="bonus-mobile-blank has-image"><img alt="スロット天国の登録ボーナスバナー" loading="lazy" src="side-banner-slottenkoku-bonus.png"/></div>
+      <strong>スロット天国の条件をスマホで確認</strong>
+      <span>登録特典・入金方法・KYC不要訴求を、スマホでも見やすく整理しています。</span>
+      <a href="https://sloten.io?referral=0ZjM" rel="nofollow sponsored noopener" target="_blank">公式サイトで条件を確認</a>
+    </article>
+    <article class="bonus-mobile-banner">
+      <div class="bonus-mobile-blank has-image"><img alt="コニベットの限定ボーナスバナー" loading="lazy" src="side-banner-konibet-bonus.png"/></div>
+      <strong>KONIBETの条件も比較</strong>
+      <span>ボーナス・入出金・安全性を確認してから比較できます。</span>
+      <a href="review-konibet.html">KONIBETレビューを見る</a>
+    </article>
+    <article class="bonus-mobile-banner">
+      <div class="bonus-mobile-blank has-image"><img alt="Roobetのプロモーションバナー" loading="lazy" src="side-banner-roobet-bonus.png"/></div>
+      <strong>他サイトも条件で比較</strong>
+      <span>ボーナス額だけでなく、賭け条件・最大出金・本人確認まで見て選びましょう。</span>
+      <a href="casino-list.html">カジノ一覧を見る</a>
+    </article>
+  </div>
+</section>
 <section class="slottenkoku-conversion-section" id="slottenkoku-payment-route">
 <div class="slottenkoku-conversion-panel">
 <div class="slottenkoku-conversion-head">
@@ -6358,6 +6627,28 @@ section:has(> .selection-criteria) {
     <a style="display:inline-flex;border-radius:999px;padding:10px 16px;background:#d71920;color:#fff;text-decoration:none;font-weight:900" href="review-konibet.html">コニベットレビューを見る</a>
     <a style="display:inline-flex;border-radius:999px;padding:10px 16px;background:#fff;color:#d71920;border:1px solid #ffb3a8;text-decoration:none;font-weight:900" href="konibet-bonus.html">ボーナス条件を見る</a>
     <a style="display:inline-flex;border-radius:999px;padding:10px 16px;background:#fff;color:#d71920;border:1px solid #ffb3a8;text-decoration:none;font-weight:900" href="konibet-payment.html">入出金を見る</a>
+  </div>
+</section>
+
+
+<section class="section konibet-safety-cluster" style="background:#fff;border:1px solid #f0d8d4;border-radius:22px;padding:24px;margin:24px 0;box-shadow:0 12px 28px rgba(120,20,10,.05)">
+  <h2>KONIBETの安全性・規約・出金条件も確認</h2>
+  <p>ボーナスを見る前後で、安全性・公式規約・本人確認・出金条件も合わせて確認しておくと安心です。</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap">
+    <a style="display:inline-flex;border-radius:999px;padding:10px 16px;background:#d71920;color:#fff;text-decoration:none;font-weight:900" href="konibet-safety-check.html">安全性を見る</a>
+    <a style="display:inline-flex;border-radius:999px;padding:10px 16px;background:#fff;color:#d71920;border:1px solid #ffb3a8;text-decoration:none;font-weight:900" href="konibet-withdrawal-condition.html">出金条件を見る</a>
+    <a style="display:inline-flex;border-radius:999px;padding:10px 16px;background:#fff;color:#d71920;border:1px solid #ffb3a8;text-decoration:none;font-weight:900" href="konibet-wagering-requirements.html">賭け条件を見る</a>
+  </div>
+</section>
+
+
+<section class="section konibet-payment-cluster" style="background:#fff;border:1px solid #f0d8d4;border-radius:22px;padding:24px;margin:24px auto;max-width:1120px;box-shadow:0 12px 28px rgba(120,20,10,.05)">
+  <h2>KONIBETの入金方法・出金時間を比較</h2>
+  <p>登録前に、入金方法の選び方・反映時間・出金条件をまとめて確認できます。</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap">
+    <a style="display:inline-flex;border-radius:999px;padding:10px 16px;background:#d71920;color:#fff;text-decoration:none;font-weight:900" href="konibet-deposit-method-comparison.html">入金方法を比較</a>
+    <a style="display:inline-flex;border-radius:999px;padding:10px 16px;background:#fff;color:#d71920;border:1px solid #ffb3a8;text-decoration:none;font-weight:900" href="konibet-best-deposit-method.html">おすすめ入金方法</a>
+    <a style="display:inline-flex;border-radius:999px;padding:10px 16px;background:#fff;color:#d71920;border:1px solid #ffb3a8;text-decoration:none;font-weight:900" href="konibet-withdrawal-time-guide.html">出金時間を確認</a>
   </div>
 </section>
 
