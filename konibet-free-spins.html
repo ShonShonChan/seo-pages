@@ -353,6 +353,54 @@ table { width: 100%; max-width: 100%; border-collapse: collapse; }
 </style>
 <!-- mobile-final-visual-phase10-end -->
 
+
+<style id="mobile-polish-phase11-ux-performance">
+/* mobile polish phase11: UX/performance/accessibility hardening */
+@media (max-width: 768px){
+  html{overflow-x:hidden!important;text-size-adjust:100%;-webkit-text-size-adjust:100%;scroll-padding-top:86px;}
+  body{overflow-x:hidden!important;touch-action:manipulation;padding-bottom:calc(104px + env(safe-area-inset-bottom,0px))!important;}
+  main,section,article,header,footer,.container,.wrap,.inner,.content,.site-main{max-width:100%!important;}
+  p,li,td,th,dd,dt,figcaption,.card,.box,.notice,.note{overflow-wrap:anywhere;word-break:normal;}
+  h1,h2,h3{overflow-wrap:break-word;text-wrap:balance;}
+  p,li{font-size:15.5px;line-height:1.85;}
+  small,.small,.muted{line-height:1.65;}
+  a,button,[role="button"],input,select,textarea,summary{font-size:16px;touch-action:manipulation;}
+  a[href],button,.btn,.cta,.cta-button,.primary-cta,.secondary-cta,.mobile-bottom-cta a{min-height:44px;}
+  img,picture,video,canvas,svg,iframe{max-width:100%!important;height:auto!important;}
+  iframe{border-radius:14px;}
+  figure{margin-left:0!important;margin-right:0!important;max-width:100%!important;}
+  table{display:block!important;width:100%!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch;white-space:nowrap;border-collapse:separate;}
+  table th,table td{white-space:normal;min-width:118px;}
+  table th:first-child,table td:first-child{position:sticky;left:0;z-index:1;background:#fff;}
+  .table-wrap,.comparison-table,.compare-table,.scroll-table{max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch;}
+  .site-header{max-width:100vw!important;}
+  .header-inner{width:100%!important;max-width:100%!important;padding-left:12px!important;padding-right:12px!important;gap:10px!important;}
+  .brand{max-width:100%;white-space:normal!important;line-height:1.25;}
+  nav,.nav,.site-nav,.header-nav{max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  nav::-webkit-scrollbar,.nav::-webkit-scrollbar,.site-nav::-webkit-scrollbar,.header-nav::-webkit-scrollbar{display:none;}
+  .hero,.fv,.main-visual{padding-top:22px!important;padding-bottom:24px!important;}
+  .hero h1,.fv h1,.main-visual h1{font-size:clamp(26px,8.3vw,38px)!important;line-height:1.18!important;}
+  .hero p,.fv p,.lead{font-size:15.5px!important;line-height:1.85!important;}
+  .grid,.cards,.card-grid,.review-grid,.bonus-grid,.payment-grid{grid-template-columns:1fr!important;}
+  .card,.box,.notice,.summary-box,.review-card,.casino-card{padding:16px!important;border-radius:18px!important;}
+  .side-banner,.side-banners,.fixed-banner,.floating-banner,.pc-banner,.desktop-banner,[class*="sideBanner"],[class*="floating"]{display:none!important;}
+  .mobile-bottom-cta{left:8px!important;right:8px!important;bottom:calc(7px + env(safe-area-inset-bottom,0px))!important;padding:8px!important;gap:7px!important;max-width:calc(100vw - 16px)!important;}
+  .mobile-bottom-cta a{border-radius:13px!important;padding:9px 8px!important;line-height:1.22!important;white-space:normal!important;}
+  .mobile-bottom-cta__label{font-size:9px!important;}
+  .modal,.popup,.dialog,[role="dialog"]{max-width:calc(100vw - 24px)!important;max-height:calc(100dvh - 120px)!important;overflow:auto!important;}
+  .sticky,.sticky-cta{max-width:calc(100vw - 16px)!important;}
+  :focus-visible{outline:3px solid rgba(214,0,0,.55)!important;outline-offset:3px!important;border-radius:8px;}
+}
+@media (max-width: 380px){
+  .header-inner{padding-left:10px!important;padding-right:10px!important;}
+  .hero h1,.fv h1,.main-visual h1{font-size:clamp(24px,8vw,32px)!important;}
+  .mobile-bottom-cta{gap:6px!important;}
+  .mobile-bottom-cta a{font-size:12px!important;padding-left:6px!important;padding-right:6px!important;}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important;}
+}
+</style>
 </head>
 <body class="page-body">
 <header class="site-header"><div class="header-inner"><a class="brand" href="index.html">リベンジカジノ比較ガイド</a><nav class="nav"><a href="casino-list.html">カジノ一覧</a><a href="bonus.html">ボーナス</a><a href="payments.html">入出金</a><a href="review.html">レビュー</a><a href="site-checklist.html">確認リスト</a></nav></div></header>
