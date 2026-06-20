@@ -2833,6 +2833,61 @@ pre, code, kbd, samp {
 }
 /* === /Mobile Polish Phase18 === */
 </style>
+
+
+<!-- Mobile Phase19: final CSS cascade consolidation -->
+<style id="mobile-phase19-final-css-consolidation">
+@media (max-width: 768px){
+  :root{--mobile-page-pad:clamp(14px,4vw,18px);--mobile-card-pad:clamp(14px,4vw,18px);--mobile-radius:18px;--mobile-sticky-h:72px;}
+  html{width:100%;max-width:100%;overflow-x:hidden;scroll-padding-top:96px;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+  body{width:100%;max-width:100%;overflow-x:hidden;margin:0;touch-action:pan-y;background-attachment:scroll!important;}
+  body:has(.mobile-sticky-cta),body:has(.sticky-mobile-cta),body:has(.bottom-cta){padding-bottom:calc(var(--mobile-sticky-h) + env(safe-area-inset-bottom) + 18px)!important;}
+  main,.main,.site-main,.page,.page-wrap,.page-wrapper,.content,.container,.wrap,.wrapper,.inner,.section-inner,.layout,.layout-main,.main-container{max-width:100%!important;width:100%!important;box-sizing:border-box!important;overflow-x:clip;}
+  .container,.wrap,.wrapper,.inner,.section-inner,.content{padding-left:var(--mobile-page-pad)!important;padding-right:var(--mobile-page-pad)!important;}
+  section,article,header,footer,nav,aside,div{box-sizing:border-box;}
+  .hero,.fv,.keyvisual,.ranking-card,.casino-card,.review-card,.article-card,.card,.box,.panel,.cta-box,.notice,.faq,.faq-item,.checklist,.summary,.comparison,.table-card{max-width:100%!important;min-width:0!important;border-radius:min(var(--mobile-radius),24px);}
+  .hero,.fv,.keyvisual{padding-left:var(--mobile-page-pad)!important;padding-right:var(--mobile-page-pad)!important;overflow:hidden;}
+  h1,h2,h3,h4,p,li,dt,dd,figcaption,summary,a,span,strong,em,small{overflow-wrap:anywhere;word-break:normal;line-break:strict;}
+  h1{font-size:clamp(25px,7.2vw,34px)!important;line-height:1.18!important;letter-spacing:-.02em;}
+  h2{font-size:clamp(21px,5.8vw,28px)!important;line-height:1.25!important;}
+  h3{font-size:clamp(18px,5vw,23px)!important;line-height:1.32!important;}
+  p,li,td,th,dd{font-size:clamp(15px,4.05vw,17px);line-height:1.78;}
+  img,svg,video,canvas,iframe,picture{max-width:100%!important;height:auto!important;box-sizing:border-box;}
+  iframe{display:block;width:100%!important;border:0;}
+  .logo img,.site-logo img,.brand-logo img{max-width:min(180px,70vw)!important;height:auto!important;object-fit:contain;}
+  .nav,.global-nav,.header-nav,.site-nav,.breadcrumb,.breadcrumbs,.tabs,.chip-nav,.mobile-banner-row{max-width:100%!important;overflow-x:auto!important;overflow-y:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;scrollbar-width:none;white-space:nowrap;}
+  .nav::-webkit-scrollbar,.global-nav::-webkit-scrollbar,.header-nav::-webkit-scrollbar,.site-nav::-webkit-scrollbar,.breadcrumb::-webkit-scrollbar,.breadcrumbs::-webkit-scrollbar,.tabs::-webkit-scrollbar,.chip-nav::-webkit-scrollbar,.mobile-banner-row::-webkit-scrollbar{display:none;}
+  .nav a,.global-nav a,.header-nav a,.site-nav a,.tabs a,.chip-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 13px;border-radius:999px;white-space:nowrap;}
+  .grid,.cards,.card-grid,.ranking-grid,.review-grid,.bonus-grid,.payment-grid,.article-grid,.columns,.two-column,.three-column{display:grid!important;grid-template-columns:1fr!important;gap:14px!important;max-width:100%!important;}
+  .flex,.cta-row,.button-row,.btn-row,.actions,.cta-buttons{flex-wrap:wrap!important;gap:10px!important;max-width:100%!important;}
+  .cta-row a,.button-row a,.btn-row a,.actions a,.cta-buttons a,.btn,.button,.cta-button,a[class*="btn"],a[class*="cta"]{max-width:100%!important;min-height:46px;white-space:normal!important;text-align:center;line-height:1.35;overflow-wrap:anywhere;}
+  @supports (width: 100dvw){.mobile-sticky-cta,.sticky-mobile-cta,.bottom-cta,.fixed-cta{max-width:calc(100dvw - 20px)!important;}}
+  .mobile-sticky-cta,.sticky-mobile-cta,.bottom-cta,.fixed-cta{left:10px!important;right:10px!important;bottom:calc(10px + env(safe-area-inset-bottom))!important;width:auto!important;max-width:calc(100vw - 20px)!important;box-sizing:border-box!important;z-index:9999;}
+  .mobile-sticky-cta a,.sticky-mobile-cta a,.bottom-cta a,.fixed-cta a{min-width:0!important;min-height:44px!important;padding:10px 12px!important;font-size:14px!important;line-height:1.25!important;}
+  table{width:max-content;min-width:100%;border-collapse:collapse;}
+  .table-wrap,.table-scroll,.responsive-table,.comparison-table,.scroll-table,div:has(> table){max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;}
+  th,td{min-width:96px;vertical-align:top;}
+  pre,code,kbd,samp{white-space:pre-wrap!important;word-break:break-word!important;overflow-wrap:anywhere!important;max-width:100%!important;}
+  pre{overflow-x:auto!important;padding:12px;border-radius:12px;}
+  .side-banner,.side-banners,.floating-banner,.pc-side-banner,.left-banner,.right-banner,.desktop-only,.ad-side,.side-fixed{display:none!important;}
+  .modal,.popup,.dialog,.overlay-content,[role="dialog"]{max-width:calc(100vw - 24px)!important;max-height:calc(100dvh - 72px)!important;overflow:auto!important;box-sizing:border-box!important;}
+  input,select,textarea,button{font-size:16px!important;max-width:100%!important;box-sizing:border-box!important;}
+  a,button,input,select,textarea,summary{touch-action:manipulation;}
+  :focus-visible{outline:3px solid rgba(220,38,38,.65);outline-offset:3px;border-radius:10px;}
+}
+@media (max-width: 380px){
+  @media (max-width: 768px){
+    :root{--mobile-page-pad:12px;--mobile-card-pad:13px;}
+    .mobile-sticky-cta,.sticky-mobile-cta,.bottom-cta,.fixed-cta{left:8px!important;right:8px!important;max-width:calc(100vw - 16px)!important;}
+    .mobile-sticky-cta a,.sticky-mobile-cta a,.bottom-cta a,.fixed-cta a{font-size:13px!important;padding:9px 8px!important;}
+  }
+}
+@media (max-width: 768px) and (orientation: landscape){
+  .mobile-sticky-cta,.sticky-mobile-cta,.bottom-cta,.fixed-cta{position:fixed!important;transform:scale(.94);transform-origin:bottom center;}
+  .hero,.fv,.keyvisual{padding-top:18px!important;padding-bottom:18px!important;}
+}
+</style>
+
 </head>
 <body>
 <header class="site-header">
