@@ -3319,6 +3319,44 @@ pre, code, kbd, samp {
 }
 </style>
 
+
+<!-- mobile phase23 final verification guard -->
+<style id="mobile-phase23-final-verification-guard">
+@media (max-width: 768px) {
+  :root { --mobile-page-pad: clamp(14px, 4vw, 18px); }
+  html { width: 100%; max-width: 100%; overflow-x: clip; -webkit-text-size-adjust: 100%; scroll-padding-top: 84px; }
+  body { width: 100%; max-width: 100vw; overflow-x: clip; touch-action: manipulation; }
+  body, main, section, article, header, footer, .container, .wrap, .wrapper, .content, .main, .page, .page-wrap, .site-main { box-sizing: border-box; max-width: 100%; }
+  .container, .wrap, .wrapper, .content, .main, .page-wrap, .site-main { padding-left: var(--mobile-page-pad); padding-right: var(--mobile-page-pad); }
+  .hero, .fv, .section, .card, .rank-card, .review-card, .bonus-card, .casino-card, .cta-box, .notice, .summary, .comparison, .faq, .guide-box { max-width: 100%; min-width: 0; overflow-wrap: anywhere; word-break: normal; }
+  img, picture, video, canvas, svg, iframe { max-width: 100% !important; height: auto; box-sizing: border-box; }
+  iframe { width: 100% !important; }
+  table { width: max-content; min-width: 100%; border-collapse: collapse; }
+  .table-wrap, .table-scroll, .comparison-table, .scroll-table, .responsive-table, .rate-table, .bonus-table { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
+  .table-wrap::before, .table-scroll::before, .comparison-table::before, .scroll-table::before, .responsive-table::before { content: "横にスクロールできます"; display: block; margin: 0 0 8px; color: #7a1f1f; font-size: 12px; font-weight: 700; }
+  a, p, li, dd, dt, td, th, span, strong, small, code, pre { overflow-wrap: anywhere; word-break: normal; }
+  pre, code { white-space: pre-wrap; max-width: 100%; }
+  .btn, .button, .cta, .cta-button, .primary-cta, .secondary-cta, a[class*="btn"], a[class*="cta"] { min-height: 44px; max-width: 100%; white-space: normal; text-align: center; line-height: 1.35; }
+  .cta-row, .cta-buttons, .button-row, .actions, .hero-actions { display: grid; grid-template-columns: 1fr; gap: 10px; width: 100%; max-width: 100%; }
+  nav, .nav, .site-nav, .header-nav, .breadcrumbs, .breadcrumb { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  nav::-webkit-scrollbar, .nav::-webkit-scrollbar, .site-nav::-webkit-scrollbar, .header-nav::-webkit-scrollbar, .breadcrumbs::-webkit-scrollbar, .breadcrumb::-webkit-scrollbar { display: none; }
+  .mobile-sticky-cta, .sticky-cta, .bottom-cta, .fixed-cta { left: max(10px, env(safe-area-inset-left)); right: max(10px, env(safe-area-inset-right)); bottom: max(10px, env(safe-area-inset-bottom)); width: auto; max-width: calc(100vw - 20px); box-sizing: border-box; z-index: 900; }
+  body:has(.mobile-sticky-cta), body:has(.sticky-cta), body:has(.bottom-cta), body:has(.fixed-cta) { padding-bottom: calc(84px + env(safe-area-inset-bottom)); }
+  .side-banner, .side-banners, .floating-banner, .floating-cta, .pc-side-banner, .left-banner, .right-banner { display: none !important; }
+  .modal, .popup, .overlay-content, .dialog, [role="dialog"] { max-width: calc(100vw - 28px) !important; max-height: calc(100dvh - 28px) !important; overflow: auto; box-sizing: border-box; }
+}
+@media (max-width: 380px) {
+  h1 { font-size: clamp(25px, 7vw, 34px) !important; line-height: 1.18 !important; }
+  h2 { font-size: clamp(20px, 5.8vw, 28px) !important; line-height: 1.25 !important; }
+  h3 { font-size: clamp(17px, 5vw, 22px) !important; line-height: 1.3 !important; }
+  .container, .wrap, .wrapper, .content, .main, .page-wrap, .site-main { padding-left: 12px; padding-right: 12px; }
+  .mobile-sticky-cta, .sticky-cta, .bottom-cta, .fixed-cta { font-size: 13px; }
+}
+@media (orientation: landscape) and (max-height: 520px) {
+  .mobile-sticky-cta, .sticky-cta, .bottom-cta, .fixed-cta { transform: scale(.96); transform-origin: bottom center; }
+}
+</style>
+
 </head>
 
 <body>
