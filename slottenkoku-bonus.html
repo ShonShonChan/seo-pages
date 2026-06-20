@@ -35,6 +35,50 @@
   .bonus-mobile-banners,.mobile-banners,.mobile-spotlight-banner{display:none;}
 }
 
+
+/* mobile final hardening phase5 */
+html, body { max-width: 100%; overflow-x: hidden; }
+body { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+img, video, iframe, svg { max-width: 100%; height: auto; }
+pre, code { white-space: pre-wrap; word-break: break-word; }
+table { width: 100%; max-width: 100%; border-collapse: collapse; }
+.table-wrap, .table-scroll, .comparison-table, .ranking-table, .bonus-table, .payment-table { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+section, main, article, .container, .wrap, .section, .card, .hero, .hero-card, .content-card { max-width: 100%; }
+@media (max-width: 768px) {
+  :root { --radius: 18px; }
+  body { overflow-x: hidden; }
+  .site-header { position: sticky; top: 0; }
+  .header-inner { padding: 10px 12px !important; gap: 10px !important; align-items: flex-start !important; }
+  .brand { width: 100%; min-width: 0; font-size: 14px !important; white-space: normal !important; line-height: 1.35 !important; }
+  .brand-mark { width: 34px !important; height: 34px !important; border-radius: 10px !important; flex: 0 0 auto; }
+  .nav { width: 100%; display: flex !important; flex-wrap: nowrap !important; justify-content: flex-start !important; gap: 8px !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch; padding: 2px 2px 8px !important; scrollbar-width: none; }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav a { flex: 0 0 auto; white-space: nowrap; padding: 7px 10px; border-radius: 999px; background: #fff; border: 1px solid rgba(215,25,32,.12); font-size: 12px !important; line-height: 1.2; }
+  .nav .nav-cta, .nav-cta { background: linear-gradient(135deg, var(--red), var(--red-dark)) !important; color: #fff !important; }
+  .hero, .hero-card, .section, section, main { padding-left: 12px !important; padding-right: 12px !important; }
+  .hero { padding-top: 14px !important; }
+  .hero-card, .card, .content-card, .ranking-card, .casino-card, .bonus-card { border-radius: 18px !important; padding: 18px !important; }
+  h1 { font-size: clamp(28px, 8.6vw, 40px) !important; line-height: 1.18 !important; letter-spacing: -0.05em !important; word-break: keep-all; overflow-wrap: anywhere; }
+  h2 { font-size: clamp(22px, 6.2vw, 30px) !important; line-height: 1.25 !important; overflow-wrap: anywhere; }
+  h3 { font-size: clamp(18px, 5vw, 23px) !important; line-height: 1.32 !important; overflow-wrap: anywhere; }
+  p, li, td, th { font-size: 15px; line-height: 1.85; overflow-wrap: anywhere; }
+  .cta-row, .hero-actions, .actions, .btn-row, .button-row { display: grid !important; grid-template-columns: 1fr !important; gap: 10px !important; width: 100% !important; }
+  .btn, .button, .cta, .primary-btn, .secondary-btn, a[class*="btn"], a[class*="cta"] { width: 100%; max-width: 100%; min-height: 48px; display: inline-flex; align-items: center; justify-content: center; text-align: center; padding: 13px 16px !important; white-space: normal !important; line-height: 1.35 !important; }
+  .grid, .cards, .ranking-grid, .casino-grid, .bonus-grid, .payment-grid, .article-grid { display: grid !important; grid-template-columns: 1fr !important; gap: 14px !important; }
+  table { display: block; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; border-radius: 14px; }
+  th, td { white-space: normal; min-width: 120px; }
+  .side-banner, .side-banners, .pc-side-banner, .floating-banner, .fixed-banner, [class*="sideBanner"], [class*="floating"] { display: none !important; }
+  .mobile-banner-strip, .mobile-focus-strip, .sp-banner-strip { display: flex !important; gap: 10px !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch; padding: 8px 2px 14px !important; scrollbar-width: none; }
+  .mobile-banner-strip::-webkit-scrollbar, .mobile-focus-strip::-webkit-scrollbar, .sp-banner-strip::-webkit-scrollbar { display: none; }
+  .mobile-banner-strip > *, .mobile-focus-strip > *, .sp-banner-strip > * { flex: 0 0 86%; max-width: 86%; }
+  .popup, .modal, .campaign-popup, .slottenkoku-popup { max-width: calc(100vw - 24px) !important; left: 12px !important; right: 12px !important; bottom: calc(12px + env(safe-area-inset-bottom)) !important; }
+  .site-footer, footer { padding-bottom: calc(28px + env(safe-area-inset-bottom)) !important; }
+}
+@media (max-width: 430px) {
+  .hero-card, .card, .content-card { padding: 16px !important; }
+  h1 { font-size: clamp(26px, 9.5vw, 36px) !important; }
+  .section, section { padding-top: 28px !important; padding-bottom: 28px !important; }
+}
 </style>
 <style id="mobile-polish-phase4">
   html, body { max-width: 100%; overflow-x: hidden; }
