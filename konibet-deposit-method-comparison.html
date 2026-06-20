@@ -1737,6 +1737,134 @@ pre, code, kbd, samp {
 }
 </style>
 
+
+
+<!-- mobile-polish-phase24-regression-guard -->
+<style>
+@media (max-width: 768px){
+  :root{ --mobile-edge: clamp(14px,4vw,18px); --mobile-radius:16px; }
+  html,body{ width:100%; max-width:100%; overflow-x:hidden; }
+  body{ -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+  body *{ box-sizing:border-box; min-width:0; }
+  main, header, footer, section, article, aside, nav,
+  .container,.wrap,.wrapper,.content,.main,.page,.site,.inner,
+  .card,.box,.panel,.ranking,.rank-card,.review-card,.casino-card,.bonus-card,.payment-card{
+    max-width:100% !important;
+  }
+  .container,.wrap,.wrapper,.inner,.content,.main-content,.page-content{
+    width:min(100%, 100vw) !important;
+    padding-left:var(--mobile-edge) !important;
+    padding-right:var(--mobile-edge) !important;
+  }
+  .hero,.fv,.first-view,.mv,.lead,.intro{
+    max-width:100% !important;
+    overflow:hidden !important;
+    border-radius:min(var(--mobile-radius), 5vw);
+  }
+  h1,h2,h3,p,li,td,th,span,a,strong,em,small,div{
+    overflow-wrap:anywhere;
+    word-break:normal;
+  }
+  h1{ font-size:clamp(1.55rem, 7vw, 2.15rem) !important; line-height:1.18 !important; }
+  h2{ font-size:clamp(1.3rem, 5.8vw, 1.75rem) !important; line-height:1.26 !important; }
+  h3{ font-size:clamp(1.08rem, 4.8vw, 1.35rem) !important; line-height:1.32 !important; }
+  p,li,td,th{ line-height:1.78; }
+  img,picture,svg,video,canvas,iframe{ max-width:100% !important; height:auto; }
+  iframe,video{ display:block; width:100% !important; }
+  table{ width:max-content; min-width:100%; border-collapse:collapse; }
+  .table-wrap,.scroll-table,.comparison-table,.compare-table,.responsive-table,
+  .ranking-table,.bonus-table,.payment-table,.info-table{
+    display:block !important;
+    max-width:100% !important;
+    overflow-x:auto !important;
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior-x:contain;
+    scrollbar-width:thin;
+  }
+  .table-wrap::before,.scroll-table::before,.comparison-table::before,.compare-table::before,
+  .responsive-table::before,.ranking-table::before,.bonus-table::before,.payment-table::before,.info-table::before{
+    content:'横にスクロールできます';
+    display:block;
+    margin:0 0 8px;
+    font-size:.78rem;
+    color:#7a2b2b;
+    background:#fff7f0;
+    border:1px solid rgba(220,38,38,.18);
+    border-radius:999px;
+    padding:5px 10px;
+    width:max-content;
+    max-width:100%;
+  }
+  .grid,.cards,.card-grid,.ranking-grid,.review-grid,.bonus-grid,.payment-grid,
+  .casino-grid,.article-grid,.post-grid,.columns,.two-col,.three-col{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:14px !important;
+  }
+  .btn,.button,.cta,.cta-btn,.primary-btn,.secondary-btn,a[class*="btn"],a[class*="cta"]{
+    max-width:100% !important;
+    min-height:44px;
+    white-space:normal !important;
+    text-align:center;
+    line-height:1.35;
+    touch-action:manipulation;
+  }
+  .cta-row,.cta-group,.button-row,.button-group,.actions,.action-row{
+    display:flex !important;
+    flex-direction:column !important;
+    gap:10px !important;
+    align-items:stretch !important;
+  }
+  nav,.nav,.global-nav,.header-nav,.breadcrumb,.breadcrumbs,.toc,.toc-list{
+    max-width:100% !important;
+    overflow-x:auto !important;
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior-x:contain;
+  }
+  nav a,.nav a,.global-nav a,.header-nav a,.breadcrumb a,.breadcrumbs a{
+    min-height:40px;
+    display:inline-flex;
+    align-items:center;
+  }
+  .side-banner,.side-fixed,.left-banner,.right-banner,.fixed-side,.floating-side,
+  .pc-side-banner,.desktop-banner,.sticky-side,.ad-side,.sidebar-fixed{
+    display:none !important;
+    visibility:hidden !important;
+  }
+  .mobile-sticky-cta,.sticky-cta,.fixed-cta,.bottom-cta{
+    max-width:calc(100vw - 18px) !important;
+    left:9px !important;
+    right:9px !important;
+    bottom:max(10px, env(safe-area-inset-bottom)) !important;
+    z-index:9999;
+  }
+  body:has(.mobile-sticky-cta), body:has(.sticky-cta), body:has(.fixed-cta), body:has(.bottom-cta){
+    padding-bottom:calc(92px + env(safe-area-inset-bottom));
+  }
+  .modal,.popup,.dialog,[role="dialog"],.overlay-content,.popup-content{
+    max-width:calc(100vw - 24px) !important;
+    max-height:calc(100dvh - 32px) !important;
+    overflow:auto !important;
+    -webkit-overflow-scrolling:touch;
+  }
+  input,select,textarea,button{ font-size:16px !important; }
+  pre,code,kbd,samp{ white-space:pre-wrap; overflow-wrap:anywhere; word-break:break-word; max-width:100%; }
+  [style*="width:"]{ max-width:100% !important; }
+  [style*="min-width"]{ min-width:0 !important; }
+}
+@media (max-width: 390px){
+  @media (max-width:768px){
+    .container,.wrap,.wrapper,.inner,.content,.main-content,.page-content{ padding-left:12px !important; padding-right:12px !important; }
+    h1{ font-size:clamp(1.42rem, 7.4vw, 1.9rem) !important; }
+    .mobile-sticky-cta,.sticky-cta,.fixed-cta,.bottom-cta{ max-width:calc(100vw - 12px) !important; left:6px !important; right:6px !important; }
+  }
+}
+@media (max-width: 768px) and (orientation: landscape){
+  .mobile-sticky-cta,.sticky-cta,.fixed-cta,.bottom-cta{ position:static !important; margin:12px auto !important; }
+  body{ padding-bottom:0 !important; }
+}
+</style>
+
 </head>
 <body class="page-body"><header class="site-header"><div class="header-inner"><a class="brand" href="index.html">リベンジカジノ比較ガイド</a><nav class="nav"><a href="casino-list.html">カジノ一覧</a><a href="bonus.html">ボーナス</a><a href="payments.html">入出金</a><a href="review.html">レビュー</a><a href="site-checklist.html">確認リスト</a></nav></div></header><main><section class="hero"><div class="hero-inner"><div><span class="label">KONIBET入出金ガイド</span><h1>KONIBETの入金方法を比較</h1><p>どの決済を選ぶかで、入金のしやすさ・確認すべき条件・ボーナス対象が変わります。登録前に比較しておきましょう。</p><div class="cta-row"><a class="btn btn-primary" href="review-konibet.html">KONIBETの条件を確認する</a><a class="btn btn-secondary" href="konibet-payment.html">入出金まとめを見る</a></div><p class="note">※KONIBETのAFFリンクは未設定のため、公式送客CTAは一旦レビュー確認ページへ集約しています。</p></div><div class="logo-card"><img src="konibet-logo.png" alt="KONIBET ロゴ" loading="lazy"></div></div></section><div class="container"><section class="section"><h2>先に確認したいポイント</h2><table class="table"><tbody><tr><th>比較軸</th><td>反映時間、最低入金額、手数料、ボーナス対象、出金時の確認をセットで見る</td></tr><tr><th>おすすめ確認</th><td>公式画面で利用可能な決済と条件を必ず確認</td></tr><tr><th>注意</th><td>決済側の混雑やメンテナンスで反映時間が変わる場合があります</td></tr></tbody></table></section><section class="section"><h2>決済選びのチェック</h2><div class="grid"><div class="card"><strong>PayPay系</strong><p>スマホ操作に慣れている人が確認しやすい決済候補。</p></div><div class="card"><strong>コンビニ決済</strong><p>カード情報を使いたくない人が検討しやすい方法。</p></div><div class="card"><strong>仮想通貨</strong><p>送金ネットワークやアドレス確認が必要な上級者向け。</p></div></div></section><section class="section"><h2>KONIBETの入出金関連ページ</h2><div class="grid"><div class="card"><strong>入金方法比較</strong><p><a href="konibet-deposit-method-comparison.html">決済ごとの違いを見る</a></p></div><div class="card"><strong>おすすめ入金方法</strong><p><a href="konibet-best-deposit-method.html">初心者向けの選び方を見る</a></p></div><div class="card"><strong>出金時間</strong><p><a href="konibet-withdrawal-time-guide.html">出金前の注意点を見る</a></p></div></div></section><section class="cta-box"><h2>入金前にKONIBETの条件を確認</h2><p>決済方法だけで判断せず、ボーナス条件・出金条件・本人確認の可能性も合わせて確認してから進みましょう。</p><div class="cta-row"><a class="btn btn-primary" href="review-konibet.html">KONIBETレビューを見る</a><a class="btn btn-secondary" href="konibet-bonus.html">ボーナス条件を見る</a><a class="btn btn-secondary" href="konibet-checklist.html">登録前チェックリスト</a></div><p class="note">広告リンク・アフィリエイトリンクを含む場合があります。詳しくは <a href="advertising-policy.html">広告掲載ポリシー</a> を確認してください。</p></section></div></main><footer class="footer"><a href="index.html">TOP</a> / <a href="advertising-policy.html">広告掲載ポリシー</a></footer>
 <div class="mobile-bottom-cta" aria-label="スマホ固定CTA">
