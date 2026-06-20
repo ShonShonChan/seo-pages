@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ja">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta charset="utf-8">
 <title>コニベットの入出金方法｜決済・反映時間・出金条件を確認</title>
 <meta name="description" content="コニベットの入金方法、出金方法、反映時間、本人確認、出金条件を初心者向けに整理。">
@@ -2245,6 +2245,202 @@ body {
   }
 }
 </style>
+
+<style id="mobile-polish-phase27">
+/* Phase27: runtime guard and final interaction stability for mobile */
+@supports (overflow: clip) {
+  html, body { overflow-x: clip; }
+}
+html {
+  max-width: 100%;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body {
+  max-width: 100%;
+  min-width: 0;
+  overscroll-behavior-x: none;
+  -webkit-overflow-scrolling: touch;
+}
+*, *::before, *::after { box-sizing: border-box; }
+:where(main, .main, .container, .wrap, .inner, .content, .page, .page-content, section, article, header, footer) {
+  max-width: 100%;
+  min-width: 0;
+}
+:where(.card, .box, .panel, .ranking-card, .review-card, .bonus-card, .casino-card, .payment-card, .guide-card, .faq, .faq-item, .cta, .cta-box, .hero, .fv) {
+  max-width: 100%;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+:where(img, picture, video, canvas, svg, iframe, embed, object) {
+  max-width: 100%;
+  height: auto;
+}
+:where(iframe, embed, object) {
+  display: block;
+  border: 0;
+}
+:where(a, p, li, dd, dt, th, td, span, strong, em, small, code, pre) {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+:where(pre, code, kbd, samp) {
+  white-space: pre-wrap;
+  max-width: 100%;
+}
+:where(table) {
+  max-width: 100%;
+  border-collapse: collapse;
+}
+:where(.table-wrap, .table-scroll, .comparison-table, .scroll-table, .table-container) {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-inline: contain;
+}
+:where(button, .btn, .button, .cta-button, .primary-btn, .secondary-btn, a[class*="btn"], a[class*="cta"]) {
+  max-width: 100%;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+  text-align: center;
+  touch-action: manipulation;
+}
+:where(input, select, textarea) {
+  max-width: 100%;
+  min-width: 0;
+  font-size: 16px;
+}
+:where(.site-header, .header, .global-nav, nav, .breadcrumb, .breadcrumbs) {
+  min-width: 0;
+  max-width: 100%;
+}
+:where(.mobile-bottom-cta, .sticky-cta, .fixed-cta) {
+  max-width: 100%;
+  contain: layout paint;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+@supports (height: 100svh) {
+  :where(.modal, .popup, .popup-content, .dialog, [role="dialog"]) {
+    max-height: calc(100svh - 24px);
+  }
+}
+@supports (height: 100dvh) {
+  :where(.modal, .popup, .popup-content, .dialog, [role="dialog"]) {
+    max-height: calc(100dvh - 24px);
+  }
+}
+@media (max-width: 767px) {
+  html { scroll-padding-top: 96px; }
+  body {
+    width: 100%;
+    max-width: 100vw;
+    padding-bottom: calc(92px + env(safe-area-inset-bottom, 0px));
+  }
+  :where(.container, .wrap, .inner, .content, main, section, article) {
+    width: 100%;
+    max-width: 100%;
+  }
+  :where(.grid, .cards, .columns, .layout, .two-column, .three-column, .ranking-list, .review-list) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 14px;
+    max-width: 100%;
+  }
+  :where(.site-header, .header, .global-nav, nav, .breadcrumb, .breadcrumbs) {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-inline: contain;
+  }
+  :where(.site-header a, .header a, .global-nav a, nav a, .breadcrumb a, .breadcrumbs a) {
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+  }
+  :where(.hero, .fv, .first-view) {
+    overflow: hidden;
+    border-radius: min(18px, 5vw);
+  }
+  :where(.hero img, .fv img, .first-view img, .banner img, .logo img) {
+    object-fit: contain;
+  }
+  :where(.table-wrap, .table-scroll, .comparison-table, .scroll-table, .table-container) {
+    border-radius: 14px;
+    scrollbar-width: thin;
+  }
+  :where(.table-wrap, .table-scroll, .comparison-table, .scroll-table, .table-container)::before {
+    content: "横スクロールできます";
+    display: block;
+    font-size: 12px;
+    line-height: 1.4;
+    color: #7a4b00;
+    background: #fff7df;
+    border: 1px solid rgba(214, 151, 35, .34);
+    border-radius: 999px;
+    padding: 5px 10px;
+    margin: 0 0 8px;
+    width: fit-content;
+    max-width: 100%;
+  }
+  :where(table) { min-width: 620px; }
+  :where(th, td) { min-width: 96px; }
+  :where(.btn, .button, .cta-button, .primary-btn, .secondary-btn, a[class*="btn"], a[class*="cta"], button) {
+    min-height: 44px;
+    padding-inline: 14px;
+  }
+  :where(.mobile-bottom-cta, .sticky-cta, .fixed-cta) {
+    left: max(10px, env(safe-area-inset-left, 0px));
+    right: max(10px, env(safe-area-inset-right, 0px));
+    bottom: max(10px, env(safe-area-inset-bottom, 0px));
+    width: auto;
+    max-width: calc(100vw - 20px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
+  }
+  :where(.modal, .popup, .popup-content, .dialog, [role="dialog"]) {
+    width: min(94vw, 560px);
+    max-width: calc(100vw - 24px);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+@media (max-width: 390px) {
+  :where(h1) { font-size: clamp(25px, 7vw, 34px); }
+  :where(h2) { font-size: clamp(21px, 6vw, 28px); }
+  :where(.container, .wrap, .inner, .content, main, section, article) {
+    padding-left: min(14px, 4vw);
+    padding-right: min(14px, 4vw);
+  }
+  :where(.mobile-bottom-cta, .sticky-cta, .fixed-cta) {
+    font-size: 13px;
+  }
+  :where(.mobile-bottom-cta a, .sticky-cta a, .fixed-cta a, .mobile-bottom-cta button, .sticky-cta button, .fixed-cta button) {
+    min-height: 42px;
+    padding-inline: 10px;
+  }
+}
+@media (max-width: 767px) and (orientation: landscape) {
+  body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
+  :where(.mobile-bottom-cta, .sticky-cta, .fixed-cta) {
+    padding: 8px;
+  }
+  :where(.mobile-bottom-cta a, .sticky-cta a, .fixed-cta a, .mobile-bottom-cta button, .sticky-cta button, .fixed-cta button) {
+    min-height: 38px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+
 </head>
 <body class="page-body">
 <header class="site-header"><div class="header-inner"><a class="brand" href="index.html">リベンジカジノ比較ガイド</a><nav class="nav"><a href="casino-list.html">カジノ一覧</a><a href="bonus.html">ボーナス</a><a href="payments.html">入出金</a><a href="review.html">レビュー</a><a href="site-checklist.html">確認リスト</a></nav></div></header>
