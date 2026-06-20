@@ -451,6 +451,52 @@ table { width: 100%; max-width: 100%; border-collapse: collapse; }
 }
 </style>
 <!-- mobile-micro-layout-phase12-end -->
+
+
+<!-- mobile-final-audit-phase13-start -->
+<style id="mobile-polish-phase13-final-audit">
+/* Phase13: final mobile audit layer for viewport, visual stability, and touch UX */
+@media (max-width: 768px){
+  :root{--mobile-gutter:clamp(14px,4vw,20px);--mobile-radius:18px;--mobile-shadow:0 10px 30px rgba(15,23,42,.10);}
+  html{width:100%;max-width:100%;overflow-x:clip;}
+  body{width:100%;max-width:100dvw;min-width:0;overflow-x:clip;background-clip:border-box;}
+  *,*::before,*::after{box-sizing:border-box;}
+  body > *{max-width:100dvw;}
+  main,.container,.wrap,.content,.site-main,.main-content,.page-wrap{width:100%!important;max-width:100%!important;margin-left:auto!important;margin-right:auto!important;padding-left:var(--mobile-gutter)!important;padding-right:var(--mobile-gutter)!important;}
+  .container .container,.wrap .wrap,.content .content,main .container{padding-left:0!important;padding-right:0!important;}
+  .hero,.fv,.main-visual,.keyvisual,.hero-section{margin-left:calc(var(--mobile-gutter) * -1)!important;margin-right:calc(var(--mobile-gutter) * -1)!important;padding-left:var(--mobile-gutter)!important;padding-right:var(--mobile-gutter)!important;border-radius:0 0 24px 24px;}
+  .hero img,.fv img,.main-visual img,.keyvisual img{object-fit:contain;}
+  .card,.box,.panel,.notice,.rank-card,.casino-card,.article-card,.cta-box,.faq-item,.comparison-card{border-radius:var(--mobile-radius)!important;box-shadow:var(--mobile-shadow);}
+  .grid,.cards,.card-grid,.ranking-grid,.article-grid,.casino-grid,.bonus-grid,.payment-grid,.review-grid{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:14px!important;}
+  .grid > *,.cards > *,.card-grid > *,.ranking-grid > *,.article-grid > *,.casino-grid > *,.bonus-grid > *,.payment-grid > *,.review-grid > *{min-width:0!important;max-width:100%!important;}
+  .nav,.navbar,.site-nav,.global-nav,.header-nav,.menu,.nav-links{max-width:100%;overflow-x:auto!important;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain;}
+  .nav::-webkit-scrollbar,.navbar::-webkit-scrollbar,.site-nav::-webkit-scrollbar,.global-nav::-webkit-scrollbar,.header-nav::-webkit-scrollbar,.menu::-webkit-scrollbar,.nav-links::-webkit-scrollbar{display:none;}
+  .nav a,.navbar a,.site-nav a,.global-nav a,.header-nav a,.menu a,.nav-links a{white-space:nowrap;flex:0 0 auto;}
+  .table-wrap,.table-scroll,.compare-table-wrap,.comparison-table-wrap,.responsive-table{box-shadow:inset -18px 0 18px -18px rgba(15,23,42,.25);}
+  th,td{min-width:96px;vertical-align:top;}
+  th:first-child,td:first-child{min-width:112px;}
+  .btn,.button,.cta,.cta-button,.primary-cta,.secondary-cta,a[class*="btn"],a[class*="button"],a[class*="cta"]{max-width:100%!important;min-height:46px;line-height:1.25;display:inline-flex;align-items:center;justify-content:center;text-align:center;white-space:normal!important;border-radius:14px;}
+  .cta-group,.btn-group,.button-group,.hero-actions,.fv-actions,.actions{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:10px!important;width:100%;}
+  .cta-group a,.btn-group a,.button-group a,.hero-actions a,.fv-actions a,.actions a{width:100%;}
+  .mobile-bottom-cta{left:10px!important;right:10px!important;width:auto!important;max-width:calc(100dvw - 20px)!important;border-radius:18px 18px 0 0!important;box-shadow:0 -10px 28px rgba(15,23,42,.18)!important;backdrop-filter:blur(12px);}
+  .mobile-bottom-cta a{min-width:0!important;overflow-wrap:anywhere;}
+  .popup,.modal,.dialog,.overlay-content,[role="dialog"]{max-width:calc(100dvw - 24px)!important;max-height:calc(100dvh - 32px)!important;overflow:auto!important;-webkit-overflow-scrolling:touch;}
+  .side-banner,.side-rail,.side-rails,.floating-banner,.floating-cta,.fixed-banner,.bonus-side-rails{display:none!important;}
+  img[width],img[height]{height:auto!important;}
+  .logo img,.site-logo img,.brand-logo img{max-height:48px!important;width:auto!important;object-fit:contain;}
+  .badge,.tag,.label,.chip{max-width:100%;white-space:normal;overflow-wrap:anywhere;}
+}
+@media (max-width: 360px){
+  @media (max-width: 768px){
+    :root{--mobile-gutter:12px;}
+    h1{font-size:clamp(23px,7.2vw,29px)!important;}
+    .mobile-bottom-cta{left:6px!important;right:6px!important;max-width:calc(100dvw - 12px)!important;}
+    .mobile-bottom-cta a{font-size:11px!important;padding-left:8px!important;padding-right:8px!important;}
+  }
+}
+</style>
+<!-- mobile-final-audit-phase13-end -->
+
 </head>
 <body>
 <header class="site-header"><div class="header-inner"><a aria-label="リベンジカジノ比較ガイド トップへ" class="brand" href="index.html"><span class="brand-mark"><img alt="" src="apple-touch-icon.png"/ loading="lazy" decoding="async"></span><span>リベンジカジノ比較ガイド</span></a><nav aria-label="主要ナビゲーション" class="nav"><a href="index.html">TOP</a><a href="casino-list.html">カジノ一覧</a><a href="review.html">レビュー</a><a href="bonus.html">ボーナス比較</a><a href="payments.html">入出金</a><a class="nav-cta" href="guide.html">初心者ガイド</a></nav></div></header>
