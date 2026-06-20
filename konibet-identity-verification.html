@@ -394,6 +394,53 @@ table { width: 100%; max-width: 100%; border-collapse: collapse; }
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important;}
 }
 </style>
+
+<!-- mobile-micro-layout-phase12-start -->
+<style id="mobile-polish-phase12-micro-layout">
+/* Phase12: micro layout, long-text, anchors, and mobile UX final pass */
+@media (max-width: 768px){
+  html{scroll-behavior:smooth;scroll-padding-top:92px;overflow-x:hidden;}
+  body{overflow-x:hidden;overscroll-behavior-x:none;-webkit-tap-highlight-color:rgba(220,38,38,.16);}
+  main,section,article,.container,.wrap,.page,.content,.site-main,.main-content{max-width:100%!important;box-sizing:border-box;}
+  section,article,.card,.box,.panel,.notice,.faq-item,.rank-card,.casino-card,.article-card,.cta-box{contain:layout paint;overflow-wrap:anywhere;}
+  p,li,td,th,dd,figcaption,.small,.note,.caption{overflow-wrap:anywhere;word-break:normal;}
+  a{overflow-wrap:anywhere;}
+  code,pre,kbd,samp{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;}
+  pre{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:14px;}
+  img,picture,video,canvas,svg,iframe{max-width:100%!important;height:auto!important;}
+  iframe{aspect-ratio:16/9;border-radius:14px;}
+  figure{margin-left:0!important;margin-right:0!important;max-width:100%;}
+  table{width:max-content;min-width:100%;border-collapse:separate;border-spacing:0;}
+  .table-wrap,.table-scroll,.compare-table-wrap,.comparison-table-wrap,.responsive-table{position:relative;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;border-radius:14px;}
+  .table-wrap::after,.table-scroll::after,.compare-table-wrap::after,.comparison-table-wrap::after,.responsive-table::after{content:'横にスクロールできます';position:sticky;right:8px;bottom:6px;display:inline-block;margin:6px 0 0 auto;padding:4px 8px;border-radius:999px;background:rgba(17,24,39,.72);color:#fff;font-size:10px;font-weight:800;pointer-events:none;}
+  details{border-radius:16px;overflow:hidden;}
+  summary{cursor:pointer;min-height:44px;display:flex;align-items:center;gap:8px;padding:12px 14px;touch-action:manipulation;}
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:'⌄';margin-left:auto;font-weight:900;transition:transform .18s ease;}
+  details[open] summary::after{transform:rotate(180deg);}
+  input,select,textarea,button{font-size:16px!important;max-width:100%;}
+  input,select,textarea{border-radius:12px;min-height:44px;}
+  .btn,.button,.cta,.cta-button,.primary-cta,.secondary-cta,.mobile-bottom-cta a{touch-action:manipulation;}
+  .hero,.fv,.main-visual,.keyvisual{isolation:isolate;overflow:hidden;}
+  .hero *,.fv *,.main-visual *,.keyvisual *{max-width:100%;}
+  .breadcrumb,.breadcrumbs{overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:nowrap;padding-bottom:4px;}
+  .breadcrumb a,.breadcrumbs a{display:inline-flex;align-items:center;min-height:34px;}
+  [id]{scroll-margin-top:96px;}
+  .mobile-bottom-cta{z-index:9999!important;}
+  body:has(.mobile-bottom-cta){padding-bottom:calc(104px + env(safe-area-inset-bottom,0px))!important;}
+}
+@media (max-width: 390px){
+  @media (max-width: 768px){
+    h1{font-size:clamp(24px,7vw,31px)!important;}
+    h2{font-size:clamp(20px,5.8vw,26px)!important;}
+    .mobile-bottom-cta a{font-size:11.5px!important;letter-spacing:-.02em;}
+  }
+}
+@media (hover:none) and (pointer:coarse){
+  a:hover,button:hover{filter:none!important;transform:none!important;}
+}
+</style>
+<!-- mobile-micro-layout-phase12-end -->
 </head>
 <body class="page-body"><header class="site-header"><div class="header-inner"><a class="brand" href="index.html">リベンジカジノ比較ガイド</a><nav class="nav"><a href="casino-list.html">カジノ一覧</a><a href="bonus.html">ボーナス</a><a href="payments.html">入出金</a><a href="review.html">レビュー</a><a href="site-checklist.html">確認リスト</a></nav></div></header>
 <main><section class="hero"><div class="hero-inner"><div><span class="label">KONIBET安全確認ガイド</span><h1>コニベットの本人確認で見るべきポイント</h1><p>本人確認は出金時や追加確認時に関係する場合があります。登録前に必要になる可能性を把握しておきましょう。</p><div class="cta-row"><a class="btn btn-primary" href="review-konibet.html">コニベットのレビューを確認する</a><a class="btn btn-secondary" href="konibet-checklist.html">登録前チェックを見る</a></div><p class="note">※KONIBETのAFFリンクは未設定のため、公式CTAは一旦レビュー確認ページへ集約しています。</p></div><div class="logo-card"><img src="konibet-logo.png" alt="コニベット ロゴ" loading="lazy"></div></div></section>
