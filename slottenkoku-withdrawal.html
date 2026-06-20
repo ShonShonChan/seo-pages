@@ -2,6 +2,7 @@
 
 <html lang="ja">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>スロット天国の出金条件ガイド｜本人確認・賭け条件・最大出金を確認</title>
@@ -146,6 +147,137 @@ table { width: 100%; max-width: 100%; border-collapse: collapse; }
   .mobile-sticky-cta a, .sticky-mobile-cta a { font-size: 13px; line-height: 1.35; }
   header nav, .nav, .global-nav, .site-nav { -webkit-overflow-scrolling: touch; scrollbar-width: none; }
   header nav::-webkit-scrollbar, .nav::-webkit-scrollbar, .global-nav::-webkit-scrollbar, .site-nav::-webkit-scrollbar { display: none; }
+}
+</style>
+<style>
+
+/* === Mobile polish phase 8: readability / tap target / sticky CTA hardening === */
+@media (max-width: 768px) {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    overflow-x: hidden;
+    scroll-padding-top: 78px;
+  }
+  body {
+    overflow-x: hidden;
+    min-width: 0;
+    line-height: 1.72;
+    letter-spacing: 0.01em;
+    padding-bottom: calc(92px + env(safe-area-inset-bottom));
+  }
+  main, .container, .wrap, .page, .section, section, article, header, footer {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
+  }
+  h1 {
+    font-size: clamp(1.72rem, 7.1vw, 2.25rem) !important;
+    line-height: 1.22 !important;
+    letter-spacing: -0.03em;
+    overflow-wrap: anywhere;
+  }
+  h2 {
+    font-size: clamp(1.28rem, 5.4vw, 1.72rem) !important;
+    line-height: 1.32 !important;
+    overflow-wrap: anywhere;
+  }
+  h3 {
+    font-size: clamp(1.08rem, 4.6vw, 1.34rem) !important;
+    line-height: 1.42 !important;
+  }
+  p, li, dd, dt, td, th, .note, .small, .lead, .card, .copy {
+    font-size: max(15.5px, 0.98rem);
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+  a, button, .btn, .cta, .button, [class*="btn"], [class*="cta"] {
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+  .btn, .cta, .button, [class*="btn"], [class*="cta"] {
+    white-space: normal !important;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.35;
+  }
+  .hero, .fv, .kv, .firstview, .mainvisual {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    border-radius: 0 0 24px 24px;
+  }
+  .hero img, .fv img, .kv img, .mainvisual img, .banner img, .ad img, img {
+    height: auto !important;
+    max-width: 100% !important;
+  }
+  nav, .nav, .global-nav, .header-nav, .menu, .tabs, .chip-row {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+  }
+  nav a, .nav a, .global-nav a, .header-nav a, .menu a, .tabs a, .chip-row a {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+  }
+  table {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-collapse: separate;
+  }
+  thead, tbody, tr {
+    width: max-content;
+    min-width: 100%;
+  }
+  th, td {
+    min-width: 120px;
+    vertical-align: top;
+  }
+  .table-wrap, .scroll-table, .comparison-table, .compare-table, .rank-table {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100% !important;
+  }
+  .grid, .cards, .card-grid, .ranking-grid, .compare-grid, .columns, .two-column, .three-column {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+  .card, .box, .panel, .rank-card, .casino-card, .review-card, .cta-box {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+    border-radius: 18px;
+  }
+  .side-banner, .left-banner, .right-banner, .floating-banner, .fixed-banner, .pc-banner, .desktop-banner {
+    display: none !important;
+  }
+  .mobile-sticky-cta, .sticky-cta, .bottom-cta, .mobile-bottom-cta {
+    left: 10px !important;
+    right: 10px !important;
+    bottom: calc(10px + env(safe-area-inset-bottom)) !important;
+    width: auto !important;
+    max-width: calc(100vw - 20px) !important;
+    border-radius: 18px !important;
+    z-index: 9998 !important;
+  }
+  .popup, .modal, .dialog, [role="dialog"] {
+    max-width: calc(100vw - 24px) !important;
+    max-height: calc(100vh - 120px) !important;
+    overflow-y: auto !important;
+  }
+}
+@media (max-width: 390px) {
+  body { font-size: 15.5px; }
+  .btn, .cta, .button, [class*="btn"], [class*="cta"] {
+    font-size: 0.94rem !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+  th, td { min-width: 108px; }
 }
 </style>
 </head>

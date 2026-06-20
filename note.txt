@@ -1,0 +1,91 @@
+mobile-polish-readability-phase8-package
+
+目的:
+スマホ表示の最終読みやすさ・タップしやすさ・表の見やすさをさらに補強するパッケージです。
+
+対象HTML数: 54
+
+主な変更:
+- viewport meta を width=device-width, initial-scale=1 に統一
+- スマホ本文の行間・文字サイズ・見出しサイズを調整
+- CTA / ボタンの最小タップ領域を44px以上に補強
+- テーブル・比較表の横スクロール処理を補強
+- 画像・バナー・カードの横はみ出しを追加抑制
+- PC用サイドバナー / 固定バナー類はスマホで非表示
+- 下部固定CTAの safe-area 対応を補強
+- 既存ロゴ・画像名・AFFリンク・内部リンクは維持
+
+GitHubアップロード対象:
+以下のHTMLファイルすべて。note.txtは確認用なのでアップロード不要です。
+
+- bonus.html
+- casino-list.html
+- index.html
+- konibet-best-deposit-method.html
+- konibet-bonus.html
+- konibet-checklist.html
+- konibet-convenience-deposit-guide.html
+- konibet-crypto-deposit-guide.html
+- konibet-deposit-method-comparison.html
+- konibet-free-spins.html
+- konibet-game-restrictions.html
+- konibet-identity-verification.html
+- konibet-login-guide.html
+- konibet-no-deposit-bonus.html
+- konibet-official-rules.html
+- konibet-payment.html
+- konibet-paypay-guide.html
+- konibet-registration-guide.html
+- konibet-safety-check.html
+- konibet-support-guide.html
+- konibet-wagering-requirements.html
+- konibet-withdrawal-condition.html
+- konibet-withdrawal-time-guide.html
+- payments.html
+- review-konibet.html
+- review-slottenkoku.html
+- review.html
+- site-checklist.html
+- slottenkoku-beginner-deposit-guide.html
+- slottenkoku-best-deposit-method.html
+- slottenkoku-bonus.html
+- slottenkoku-convenience-deposit-time.html
+- slottenkoku-crypto-deposit-time.html
+- slottenkoku-crypto-vs-paypay.html
+- slottenkoku-deposit-campaign-choice.html
+- slottenkoku-deposit-method-comparison.html
+- slottenkoku-deposit-withdrawal-time-faq.html
+- slottenkoku-fast-withdrawal.html
+- slottenkoku-identity-verification.html
+- slottenkoku-instant-deposit.html
+- slottenkoku-kyc-documents-guide.html
+- slottenkoku-no-kyc-bonus.html
+- slottenkoku-no-kyc-casino.html
+- slottenkoku-no-kyc-faq.html
+- slottenkoku-no-kyc-registration.html
+- slottenkoku-no-kyc-vs-kyc-casino.html
+- slottenkoku-no-kyc-withdrawal.html
+- slottenkoku-payment.html
+- slottenkoku-paypay-speed-guide.html
+- slottenkoku-paypay-vs-convenience.html
+- slottenkoku-support-faq.html
+- slottenkoku-trouble-checklist.html
+- slottenkoku-withdrawal-pending-guide.html
+- slottenkoku-withdrawal.html
+
+確認推奨URL:
+- https://revenge-casino-guide.com/
+- https://revenge-casino-guide.com/casino-list.html
+- https://revenge-casino-guide.com/review-slottenkoku.html
+- https://revenge-casino-guide.com/slottenkoku-payment.html
+- https://revenge-casino-guide.com/slottenkoku-no-kyc-casino.html
+- https://revenge-casino-guide.com/review-konibet.html
+- https://revenge-casino-guide.com/konibet-payment.html
+
+チェックポイント:
+- iPhone幅で横スクロールが発生しない
+- 文字が小さすぎず読みやすい
+- CTAボタンが押しやすい
+- 表や比較表が画面外に突き抜けない
+- 下部固定CTAがiPhone下部UIに隠れない
+- Cloudflare Deployments が緑チェックになる
