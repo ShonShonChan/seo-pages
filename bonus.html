@@ -3698,6 +3698,183 @@ body {
 }
 </style>
 
+<style id="mobile-polish-phase26">
+/* Mobile Polish Phase26: render stability / final micro interaction guard */
+html {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
+  text-rendering: optimizeLegibility;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+:where(main, .main, .container, .wrap, .inner, .content, article, section, header, footer) {
+  min-width: 0;
+  max-width: 100%;
+}
+:where(img, picture, video, canvas, svg, iframe) {
+  max-width: 100%;
+  height: auto;
+}
+:where(iframe, embed, object) {
+  display: block;
+  width: 100%;
+  border: 0;
+}
+:where(a, p, li, dd, dt, th, td, span, strong, em, small, code, pre) {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+:where(pre, code, kbd, samp) {
+  white-space: pre-wrap;
+}
+:where(button, .btn, .button, .cta, .cta-button, a[class*="btn"], a[class*="cta"]) {
+  max-width: 100%;
+  white-space: normal;
+  line-height: 1.35;
+  text-align: center;
+  -webkit-user-select: none;
+  user-select: none;
+}
+:where(.table-wrap, .table-scroll, .comparison-table, .responsive-table, .scroll-table) {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-inline: contain;
+  touch-action: pan-x pan-y;
+}
+:where(table) {
+  border-collapse: collapse;
+  max-width: none;
+}
+:where(.mobile-bottom-cta, .sticky-cta, .bottom-cta, [class*="fixed-cta"]) {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+@media (max-width: 767px) {
+  body {
+    position: relative;
+    width: 100%;
+    padding-bottom: max(92px, calc(82px + env(safe-area-inset-bottom)));
+  }
+  :where(.container, .wrap, .inner, .content, main, article, section) {
+    width: 100%;
+    padding-left: min(16px, 4vw);
+    padding-right: min(16px, 4vw);
+  }
+  :where(.container .container, .wrap .wrap, .inner .inner, section section) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  :where(.grid, .cards, .card-grid, .review-grid, .bonus-grid, .casino-grid, .features, .columns) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: clamp(12px, 3.5vw, 18px);
+  }
+  :where(.card, .box, .panel, .review-card, .bonus-card, .casino-card, .feature-card, .ranking-card) {
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  :where(h1) { font-size: clamp(1.55rem, 7vw, 2.15rem); line-height: 1.16; }
+  :where(h2) { font-size: clamp(1.3rem, 5.8vw, 1.75rem); line-height: 1.22; }
+  :where(h3) { font-size: clamp(1.08rem, 4.8vw, 1.35rem); line-height: 1.28; }
+  :where(p, li, dd, dt) { line-height: 1.78; }
+  :where(.site-header, header, nav, .nav, .global-nav, .breadcrumb, .breadcrumbs) {
+    max-width: 100%;
+  }
+  :where(nav, .nav, .global-nav, .breadcrumb, .breadcrumbs) {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  :where(nav a, .nav a, .global-nav a, .breadcrumb a, .breadcrumbs a) {
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+  }
+  :where(.table-wrap, .table-scroll, .comparison-table, .responsive-table, .scroll-table) {
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 14px;
+  }
+  :where(.table-wrap, .table-scroll, .comparison-table, .responsive-table, .scroll-table)::before {
+    content: "横スクロールで確認できます";
+    display: block;
+    font-size: 12px;
+    line-height: 1.4;
+    color: #6b7280;
+    padding: 6px 4px 8px;
+  }
+  :where(table) {
+    min-width: 640px;
+  }
+  :where(.mobile-bottom-cta, .sticky-cta, .bottom-cta, [class*="fixed-cta"]) {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-bottom: max(10px, env(safe-area-inset-bottom));
+    z-index: 9990;
+  }
+  :where(.mobile-bottom-cta a, .sticky-cta a, .bottom-cta a, [class*="fixed-cta"] a) {
+    min-height: 46px;
+  }
+  :where(.modal, .popup, .dialog, [role="dialog"], .modal-content, .popup-content) {
+    max-width: calc(100vw - 24px);
+    max-height: min(88vh, calc(100dvh - 28px));
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+@media (max-width: 390px) {
+  body { padding-bottom: max(112px, calc(104px + env(safe-area-inset-bottom))); }
+  :where(.container, .wrap, .inner, .content, main, article, section) {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  :where(.mobile-bottom-cta, .sticky-cta, .bottom-cta, [class*="fixed-cta"]) {
+    font-size: 13px;
+  }
+}
+@media (orientation: landscape) and (max-height: 520px) {
+  body { padding-bottom: max(70px, calc(58px + env(safe-area-inset-bottom))); }
+  :where(.mobile-bottom-cta, .sticky-cta, .bottom-cta, [class*="fixed-cta"]) {
+    padding-top: 6px;
+    padding-bottom: max(6px, env(safe-area-inset-bottom));
+  }
+  :where(.mobile-bottom-cta a, .sticky-cta a, .bottom-cta a, [class*="fixed-cta"] a) {
+    min-height: 40px;
+  }
+}
+@supports (height: 100svh) {
+  @media (max-width: 767px) {
+    :where(.modal, .popup, .dialog, [role="dialog"], .modal-content, .popup-content) {
+      max-height: calc(100svh - 28px);
+    }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
 </head>
 
 <body>
