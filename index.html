@@ -5726,6 +5726,34 @@ section, main, article, .container, .wrap, .section, .card, .hero, .hero-card, .
 @media (min-width: 769px){.mobile-bottom-cta{display:none!important;}}
 </style>
 
+
+<style id="mobile-performance-polish-phase7">
+/* Phase7: mobile image/banner/performance polish */
+html, body { max-width: 100%; overflow-x: hidden; }
+img, picture, video, svg, canvas, iframe { max-width: 100%; height: auto; }
+img { object-fit: contain; }
+a, p, li, td, th, h1, h2, h3, h4 { overflow-wrap: anywhere; word-break: normal; }
+table { width: 100%; max-width: 100%; border-collapse: collapse; }
+@media (max-width: 768px) {
+  body { -webkit-text-size-adjust: 100%; padding-bottom: calc(92px + env(safe-area-inset-bottom)); }
+  main, section, article, .container, .wrap, .content, .page, .site-main { max-width: 100%; overflow-x: hidden; }
+  table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; font-size: 13px; }
+  th, td { min-width: 118px; }
+  .btn, .button, .cta, .cta-button, .primary-cta, .secondary-cta, a[class*="btn"], a[class*="cta"] {
+    max-width: 100%; min-height: 44px; white-space: normal; text-align: center;
+  }
+  .hero, .fv, .mv, .section, section { max-width: 100%; }
+  .side-banner, .floating-banner, .fixed-banner, .left-banner, .right-banner, [class*="side-banner"], [class*="floating"], [class*="fixed-ad"] {
+    display: none !important;
+  }
+  .mobile-sticky-cta, .sticky-mobile-cta, [id*="mobile-sticky"] {
+    max-width: calc(100vw - 16px); left: 8px !important; right: 8px !important; bottom: env(safe-area-inset-bottom);
+  }
+  .mobile-sticky-cta a, .sticky-mobile-cta a { font-size: 13px; line-height: 1.35; }
+  header nav, .nav, .global-nav, .site-nav { -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  header nav::-webkit-scrollbar, .nav::-webkit-scrollbar, .global-nav::-webkit-scrollbar, .site-nav::-webkit-scrollbar { display: none; }
+}
+</style>
 </head>
 <body>
 <aside aria-label="ボーナスCTAサイドバナー" class="bonus-side-rails">
@@ -6002,7 +6030,7 @@ section, main, article, .container, .wrap, .section, .card, .hero, .hero-card, .
 </div>
 </div>
 </div>
-<img alt="確認ポイントを案内するリベ男" class="mascot-mini" src="ribedan-point.png">
+<img alt="確認ポイントを案内するリベ男" class="mascot-mini" src="ribedan-point.png" loading="lazy" decoding="async">
 </img></div>
 </div>
 <div class="bonus-mobile-banner">
