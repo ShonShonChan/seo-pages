@@ -2125,6 +2125,179 @@ table { width: 100%; max-width: 100%; border-collapse: collapse; }
 </style>
 <!-- mobile-final-audit-phase13-end -->
 
+
+<!-- MOBILE_POLISH_PHASE14_START -->
+<style>
+/* === Mobile polish phase 14: real-device QA, tap feedback and overflow sentry === */
+:root{
+  --rv-mobile-gutter: clamp(14px, 4vw, 18px);
+  --rv-mobile-safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (max-width: 768px){
+  html{
+    width:100%;
+    max-width:100%;
+    overflow-x:hidden;
+    scroll-padding-top:88px;
+    -webkit-text-size-adjust:100%;
+    text-size-adjust:100%;
+  }
+  body{
+    width:100%;
+    max-width:100vw;
+    overflow-x:clip;
+    overscroll-behavior-x:none;
+    padding-bottom:calc(92px + var(--rv-mobile-safe-bottom));
+  }
+  main, article, section, header, footer, aside{
+    max-width:100%;
+    min-width:0;
+  }
+  .container, .wrap, .wrapper, .page-wrap, .content-wrap, .main-wrap, .section-inner, .inner, .layout, .page, .site-main{
+    width:min(100% - (var(--rv-mobile-gutter) * 2), 100%);
+    max-width:100%;
+    margin-left:auto;
+    margin-right:auto;
+    min-width:0;
+  }
+  .content, .main-content, .article-body, .post-body, .entry-content, .card, .box, .panel, .ranking-card, .review-card, .casino-card, .bonus-card, .payment-card{
+    max-width:100%;
+    min-width:0;
+    overflow-wrap:anywhere;
+  }
+  p, li, dd, td, th, figcaption, .note, .small, .badge, .label{
+    overflow-wrap:anywhere;
+    word-break:normal;
+  }
+  a, button, summary, input, select, textarea, .btn, .button, .cta, .cta-button, .nav-link{
+    touch-action:manipulation;
+    -webkit-tap-highlight-color:rgba(220,38,38,.18);
+  }
+  a:active, button:active, .btn:active, .button:active, .cta:active, .cta-button:active{
+    transform:translateY(1px);
+  }
+  img, picture, video, canvas, svg, iframe{
+    max-width:100% !important;
+    height:auto;
+  }
+  iframe, video{
+    border-radius:14px;
+  }
+  figure{
+    margin-left:0;
+    margin-right:0;
+    max-width:100%;
+  }
+  .hero, .fv, .first-view, .kv, .main-visual, .hero-section{
+    overflow:hidden;
+    border-radius:0 0 22px 22px;
+  }
+  .hero img, .fv img, .first-view img, .kv img, .main-visual img{
+    object-fit:cover;
+  }
+  .hero .btn, .hero .button, .hero .cta-button,
+  .fv .btn, .fv .button, .fv .cta-button,
+  .cta-area .btn, .cta-area .button, .cta-area .cta-button{
+    width:100%;
+    justify-content:center;
+    text-align:center;
+  }
+  .button-row, .btn-row, .cta-row, .cta-buttons, .actions, .action-row{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    width:100%;
+  }
+  table{
+    width:max-content;
+    min-width:100%;
+    border-collapse:separate;
+    border-spacing:0;
+  }
+  .table-wrap, .table-scroll, .comparison-table, .compare-table, .ranking-table, .scroll-table{
+    max-width:100%;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior-inline:contain;
+    scrollbar-width:thin;
+  }
+  .table-wrap::after, .table-scroll::after, .comparison-table::after, .compare-table::after, .ranking-table::after, .scroll-table::after{
+    content:'横スクロールできます';
+    display:block;
+    margin:6px 0 0;
+    color:#7f1d1d;
+    font-size:12px;
+    text-align:right;
+  }
+  th:first-child, td:first-child{
+    max-width:42vw;
+  }
+  .mobile-sticky-cta, .sticky-cta, .sp-fixed-cta, .fixed-cta, .bottom-cta{
+    max-width:calc(100vw - 16px) !important;
+    left:8px !important;
+    right:8px !important;
+    bottom:calc(8px + var(--rv-mobile-safe-bottom)) !important;
+    border-radius:18px !important;
+    box-shadow:0 12px 34px rgba(15,23,42,.22) !important;
+  }
+  .mobile-sticky-cta a, .sticky-cta a, .sp-fixed-cta a, .fixed-cta a, .bottom-cta a{
+    min-height:46px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    line-height:1.25;
+    white-space:normal;
+  }
+  .popup, .modal, .dialog, .overlay-content, .campaign-popup, .bonus-popup{
+    width:min(94vw, 420px) !important;
+    max-width:94vw !important;
+    max-height:calc(100dvh - 28px - var(--rv-mobile-safe-bottom)) !important;
+    overflow:auto !important;
+  }
+  .breadcrumb, .breadcrumbs, .bread, .topic-path{
+    display:flex;
+    gap:6px;
+    max-width:100%;
+    overflow-x:auto;
+    white-space:nowrap;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .breadcrumb::-webkit-scrollbar, .breadcrumbs::-webkit-scrollbar, .bread::-webkit-scrollbar, .topic-path::-webkit-scrollbar{
+    display:none;
+  }
+  .site-header, header[role="banner"], .header{
+    max-width:100vw;
+  }
+  .site-nav, .global-nav, nav ul, .nav-list, .header-nav{
+    max-width:100%;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .site-nav::-webkit-scrollbar, .global-nav::-webkit-scrollbar, nav ul::-webkit-scrollbar, .nav-list::-webkit-scrollbar, .header-nav::-webkit-scrollbar{
+    display:none;
+  }
+}
+@media (max-width: 390px){
+  :root{--rv-mobile-gutter:12px;}
+  h1{font-size:clamp(25px, 8vw, 34px) !important;}
+  h2{font-size:clamp(21px, 6.3vw, 28px) !important;}
+  h3{font-size:clamp(18px, 5.2vw, 23px) !important;}
+  .card, .box, .panel, .ranking-card, .review-card, .casino-card, .bonus-card, .payment-card{
+    border-radius:16px !important;
+  }
+  .mobile-sticky-cta, .sticky-cta, .sp-fixed-cta, .fixed-cta, .bottom-cta{
+    gap:6px !important;
+    padding:8px !important;
+  }
+}
+@supports not (overflow: clip){
+  @media (max-width: 768px){ body{overflow-x:hidden;} }
+}
+</style>
+<!-- MOBILE_POLISH_PHASE14_END -->
+
 </head>
 
 <body>
