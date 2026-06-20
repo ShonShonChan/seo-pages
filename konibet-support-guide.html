@@ -1538,6 +1538,167 @@ pre, code, kbd, samp {
 }
 </style>
 
+
+
+<!-- Mobile Phase22: release hardening guardrails -->
+<style id="mobile-phase22-release-hardening">
+@media (max-width: 768px) {
+  :root {
+    --mobile-edge: clamp(14px, 4vw, 18px);
+    --mobile-radius: 18px;
+    --mobile-tap: 46px;
+  }
+  html, body {
+    max-width: 100% !important;
+    overflow-x: clip !important;
+    overscroll-behavior-x: none;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  body {
+    min-width: 0 !important;
+    touch-action: pan-y;
+  }
+  main, .site-main, .main, .wrap, .wrapper, .container, .content, .page, .page-wrap, .layout, .layout-main, .article, article, section {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .container, .wrap, .wrapper, .content, .section, section, article {
+    padding-left: min(var(--mobile-edge), 5vw) !important;
+    padding-right: min(var(--mobile-edge), 5vw) !important;
+  }
+  .hero, .fv, .first-view, .ranking-card, .casino-card, .review-card, .bonus-card, .payment-card, .guide-card, .article-card, .check-card, .cta-box, .box, .panel, .card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    border-radius: min(var(--mobile-radius), 5vw) !important;
+  }
+  img, picture, source, video, canvas, svg, iframe {
+    max-width: 100% !important;
+    height: auto !important;
+    box-sizing: border-box !important;
+  }
+  iframe, video {
+    width: 100% !important;
+    aspect-ratio: 16 / 9;
+  }
+  table {
+    max-width: none !important;
+    min-width: 620px;
+    border-collapse: collapse;
+  }
+  .table-wrap, .scroll-table, .comparison-table, .responsive-table, .table-responsive, .spec-table, .ranking-table {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    border-radius: 14px;
+  }
+  .table-wrap::before, .scroll-table::before, .comparison-table::before, .responsive-table::before, .table-responsive::before, .spec-table::before, .ranking-table::before {
+    content: '横にスクロールできます';
+    display: inline-block;
+    margin: 0 0 8px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: rgba(120, 20, 20, .08);
+    color: #7a1111;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  a, button, input, select, textarea, summary, .btn, .button, .cta, .cta-button, .nav a, .menu a {
+    min-height: var(--mobile-tap) !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    -webkit-tap-highlight-color: rgba(190, 0, 0, .16);
+  }
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+  .cta, .cta-box, .cta-buttons, .button-row, .btn-row, .actions, .action-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    align-items: stretch !important;
+    width: 100% !important;
+  }
+  .cta a, .cta button, .cta-box a, .cta-box button, .cta-buttons a, .cta-buttons button, .button-row a, .button-row button, .btn-row a, .btn-row button, .actions a, .actions button {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    white-space: normal !important;
+  }
+  header, .site-header, .header, nav, .nav, .global-nav, .site-nav, .menu, .breadcrumb, .breadcrumbs {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .nav, .global-nav, .site-nav, .menu, .breadcrumb, .breadcrumbs {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+  .nav::-webkit-scrollbar, .global-nav::-webkit-scrollbar, .site-nav::-webkit-scrollbar, .menu::-webkit-scrollbar, .breadcrumb::-webkit-scrollbar, .breadcrumbs::-webkit-scrollbar { display: none; }
+  .side-banner, .side-banners, .fixed-banner, .floating-banner, .pc-banner, .left-banner, .right-banner, [class*="side-banner"], [class*="floating"] {
+    display: none !important;
+  }
+  .mobile-sticky-cta, .sticky-cta, .bottom-cta, .fixed-cta {
+    left: max(10px, env(safe-area-inset-left)) !important;
+    right: max(10px, env(safe-area-inset-right)) !important;
+    bottom: max(10px, env(safe-area-inset-bottom)) !important;
+    width: auto !important;
+    max-width: calc(100vw - 20px) !important;
+    box-sizing: border-box !important;
+    z-index: 999 !important;
+  }
+  .modal, .popup, .dialog, .overlay-content, [role="dialog"] {
+    width: calc(100vw - 28px) !important;
+    max-width: calc(100vw - 28px) !important;
+    max-height: min(82vh, 720px) !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box !important;
+  }
+  h1, h2, h3, h4, p, li, dd, dt, th, td, a, span, strong, small, code, pre {
+    overflow-wrap: anywhere;
+  }
+  pre, code, kbd, samp {
+    white-space: pre-wrap !important;
+    word-break: break-word !important;
+  }
+  * {
+    scroll-margin-top: 84px;
+  }
+}
+@media (max-width: 380px) {
+  .container, .wrap, .wrapper, .content, .section, section, article {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+  h1 { font-size: clamp(25px, 8vw, 34px) !important; }
+  h2 { font-size: clamp(21px, 6.4vw, 28px) !important; }
+  h3 { font-size: clamp(18px, 5.4vw, 23px) !important; }
+  .mobile-sticky-cta, .sticky-cta, .bottom-cta, .fixed-cta {
+    font-size: 13px !important;
+  }
+}
+@media (max-width: 768px) and (orientation: landscape) {
+  .mobile-sticky-cta, .sticky-cta, .bottom-cta, .fixed-cta {
+    transform: scale(.96);
+    transform-origin: bottom center;
+  }
+}
+</style>
+
 </head>
 <body class="page-body"><header class="site-header"><div class="header-inner"><a class="brand" href="index.html">リベンジカジノ比較ガイド</a><nav class="nav"><a href="casino-list.html">カジノ一覧</a><a href="bonus.html">ボーナス</a><a href="payments.html">入出金</a><a href="review.html">レビュー</a><a href="site-checklist.html">確認リスト</a></nav></div></header>
 <main><section class="hero"><div class="hero-inner"><div><span class="label">KONIBET安全確認ガイド</span><h1>コニベット問い合わせ前に整理すること</h1><p>問い合わせ前に、登録メール・取引日時・ボーナス名・スクショなどを整理しておくと確認がスムーズです。</p><div class="cta-row"><a class="btn btn-primary" href="review-konibet.html">コニベットのレビューを確認する</a><a class="btn btn-secondary" href="konibet-checklist.html">登録前チェックを見る</a></div><p class="note">※KONIBETのAFFリンクは未設定のため、公式CTAは一旦レビュー確認ページへ集約しています。</p></div><div class="logo-card"><img src="konibet-logo.png" alt="コニベット ロゴ" loading="lazy"></div></div></section>
