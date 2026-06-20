@@ -1661,6 +1661,32 @@ section, main, article, .container, .wrap, .section, .card, .hero, .hero-card, .
   }
 </style>
 
+
+<style id="mobile-sticky-cta-phase6">
+@media (max-width: 768px){
+  html, body{max-width:100%; overflow-x:hidden;}
+  body{padding-bottom:calc(82px + env(safe-area-inset-bottom));}
+  .mobile-bottom-cta{
+    position:fixed; left:0; right:0; bottom:0; z-index:9998;
+    display:flex; gap:8px; align-items:center; justify-content:center;
+    padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+    background:rgba(255,255,255,.96); border-top:1px solid rgba(122,0,0,.16);
+    box-shadow:0 -10px 28px rgba(20,0,0,.18); backdrop-filter:blur(10px);
+  }
+  .mobile-bottom-cta a{
+    min-height:44px; border-radius:999px; padding:11px 12px; box-sizing:border-box;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    font-weight:900; font-size:13px; line-height:1.25; text-decoration:none; white-space:normal;
+  }
+  .mobile-bottom-cta__main{flex:1.1; color:#fff; background:linear-gradient(135deg,#d60000,#ff5a1f); box-shadow:0 8px 18px rgba(214,0,0,.24);}
+  .mobile-bottom-cta__sub{flex:.9; color:#8b0000; background:#fff7f4; border:1px solid rgba(214,0,0,.22);}
+  .mobile-bottom-cta__label{display:block; font-size:10px; opacity:.82; font-weight:800; margin-right:3px;}
+  table{max-width:100%;}
+  .table-wrap,.comparison-table,.ranking-table,.bonus-table,.payment-table{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+}
+@media (min-width: 769px){.mobile-bottom-cta{display:none!important;}}
+</style>
+
 </head>
 <body>
 <header class="site-header">
@@ -2573,5 +2599,11 @@ section, main, article, .container, .wrap, .section, .card, .hero, .hero-card, .
       });
     })();
   </script>
+
+<div class="mobile-bottom-cta" aria-label="スマホ固定CTA">
+  <a class="mobile-bottom-cta__main" href="https://sloten.io?referral=0ZjM" target="_blank" rel="nofollow sponsored noopener">公式サイトへ進む</a>
+  <a class="mobile-bottom-cta__sub" href="review-slottenkoku.html">条件を確認</a>
+</div>
+
 </body>
 </html>
