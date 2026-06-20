@@ -1056,6 +1056,387 @@ pre, code, kbd, samp {
 }
 </style>
 
+<style id="mobile-polish-phase18-css">
+
+/* === Mobile Polish Phase18: quality guardrails / final overflow and UX safety === */
+@media (max-width: 768px) {
+  :root {
+    --mobile-page-gutter: clamp(14px, 4vw, 18px);
+    --mobile-card-radius: 18px;
+    --mobile-touch-size: 46px;
+  }
+
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+    overscroll-behavior-x: none;
+    scroll-padding-top: 92px;
+  }
+
+  body {
+    min-width: 0;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  main,
+  .page,
+  .site,
+  .site-main,
+  .container,
+  .wrap,
+  .wrapper,
+  .content,
+  .main-content,
+  .section,
+  section,
+  article,
+  header,
+  footer {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .container,
+  .wrap,
+  .wrapper,
+  .content,
+  .main-content,
+  .section,
+  section,
+  article {
+    padding-left: min(var(--mobile-page-gutter), 5vw);
+    padding-right: min(var(--mobile-page-gutter), 5vw);
+  }
+
+  .hero,
+  .fv,
+  .main-visual,
+  .ranking-card,
+  .casino-card,
+  .bonus-card,
+  .review-card,
+  .info-card,
+  .guide-card,
+  .article-card,
+  .comparison-card,
+  .cta-box,
+  .notice-box,
+  .summary-box,
+  .faq-box,
+  .toc,
+  .toc-box {
+    max-width: 100%;
+    border-radius: min(var(--mobile-card-radius), 5vw);
+    box-sizing: border-box;
+  }
+
+  .hero,
+  .fv,
+  .main-visual {
+    overflow: hidden;
+  }
+
+  .hero h1,
+  .fv h1,
+  h1 {
+    overflow-wrap: anywhere;
+    word-break: auto-phrase;
+    text-wrap: balance;
+  }
+
+  h2,
+  h3,
+  .lead,
+  .summary,
+  p,
+  li,
+  dd,
+  dt {
+    overflow-wrap: anywhere;
+  }
+
+  a,
+  button,
+  input[type="button"],
+  input[type="submit"],
+  .btn,
+  .button,
+  .cta,
+  .cta-button,
+  .primary-btn,
+  .secondary-btn,
+  .nav a,
+  nav a {
+    min-height: var(--mobile-touch-size);
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(220, 38, 38, 0.18);
+  }
+
+  .btn,
+  .button,
+  .cta-button,
+  .primary-btn,
+  .secondary-btn,
+  .cta a,
+  .cta-box a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.35;
+  }
+
+  .cta,
+  .cta-group,
+  .button-group,
+  .btn-group,
+  .actions,
+  .action-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    width: 100%;
+  }
+
+  img,
+  picture,
+  video,
+  canvas,
+  svg,
+  iframe,
+  embed,
+  object {
+    max-width: 100% !important;
+    height: auto;
+    box-sizing: border-box;
+  }
+
+  iframe,
+  embed,
+  object {
+    width: 100% !important;
+    min-height: 220px;
+    border-radius: 14px;
+  }
+
+  .logo img,
+  .site-logo img,
+  header img,
+  .brand-logo img {
+    object-fit: contain;
+  }
+
+  table {
+    width: max-content;
+    min-width: 100%;
+    max-width: none;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  .table-wrap,
+  .table-wrapper,
+  .comparison-table,
+  .compare-table,
+  .scroll-table,
+  .ranking-table,
+  .payment-table,
+  .bonus-table,
+  .content table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+  }
+
+  th,
+  td {
+    min-width: 118px;
+    white-space: normal;
+    vertical-align: top;
+  }
+
+  th:first-child,
+  td:first-child {
+    min-width: 132px;
+  }
+
+  pre,
+  code,
+  kbd,
+  samp,
+  .url,
+  .coupon,
+  .promo-code {
+    max-width: 100%;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  pre {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  .breadcrumb,
+  .breadcrumbs,
+  .breadcrumb-list,
+  .mobile-nav,
+  .site-nav,
+  .global-nav,
+  nav ul {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+
+  .breadcrumb::-webkit-scrollbar,
+  .breadcrumbs::-webkit-scrollbar,
+  .mobile-nav::-webkit-scrollbar,
+  .site-nav::-webkit-scrollbar,
+  .global-nav::-webkit-scrollbar,
+  nav ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  details > summary {
+    min-height: var(--mobile-touch-size);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+
+  .mobile-sticky-cta,
+  .sticky-cta,
+  .bottom-cta,
+  .floating-cta-mobile {
+    left: max(10px, env(safe-area-inset-left));
+    right: max(10px, env(safe-area-inset-right));
+    bottom: max(10px, env(safe-area-inset-bottom));
+    width: auto;
+    max-width: calc(100vw - 20px - env(safe-area-inset-left) - env(safe-area-inset-right));
+    box-sizing: border-box;
+    z-index: 9998;
+  }
+
+  .mobile-sticky-cta a,
+  .sticky-cta a,
+  .bottom-cta a,
+  .floating-cta-mobile a {
+    min-height: 44px;
+    padding: 10px 12px;
+    font-size: clamp(12px, 3.4vw, 14px);
+    line-height: 1.25;
+  }
+
+  .popup,
+  .modal,
+  .dialog,
+  [role="dialog"],
+  .overlay-content,
+  .popup-content {
+    width: min(94vw, 420px) !important;
+    max-width: 94vw !important;
+    max-height: min(82vh, 640px) !important;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    box-sizing: border-box;
+  }
+
+  .pc-only,
+  .desktop-only,
+  .side-banner,
+  .side-banners,
+  .left-banner,
+  .right-banner,
+  .floating-banner:not(.mobile-sticky-cta):not(.floating-cta-mobile),
+  .fixed-banner:not(.mobile-sticky-cta):not(.bottom-cta) {
+    display: none !important;
+  }
+
+  .mobile-scroll-snap,
+  .mobile-banner-row,
+  .featured-row,
+  .card-scroll {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px;
+  }
+
+  .mobile-scroll-snap > *,
+  .mobile-banner-row > *,
+  .featured-row > *,
+  .card-scroll > * {
+    flex: 0 0 min(86vw, 340px);
+    scroll-snap-align: start;
+  }
+}
+
+@media (max-width: 390px) {
+  :root {
+    --mobile-page-gutter: 12px;
+    --mobile-touch-size: 44px;
+  }
+  h1 { font-size: clamp(24px, 8vw, 31px); }
+  h2 { font-size: clamp(20px, 6.4vw, 26px); }
+  h3 { font-size: clamp(18px, 5.6vw, 22px); }
+  .mobile-sticky-cta,
+  .sticky-cta,
+  .bottom-cta,
+  .floating-cta-mobile {
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+  .mobile-sticky-cta,
+  .sticky-cta,
+  .bottom-cta,
+  .floating-cta-mobile {
+    transform: scale(0.94);
+    transform-origin: bottom center;
+  }
+  .popup,
+  .modal,
+  .dialog,
+  [role="dialog"],
+  .overlay-content,
+  .popup-content {
+    max-height: 76vh !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+/* === /Mobile Polish Phase18 === */
+</style>
 </head>
 <body class="page-body"><header class="site-header"><div class="header-inner"><a class="brand" href="index.html">リベンジカジノ比較ガイド</a><nav class="nav"><a href="casino-list.html">カジノ一覧</a><a href="bonus.html">ボーナス</a><a href="payments.html">入出金</a><a href="review.html">レビュー</a><a href="site-checklist.html">確認リスト</a></nav></div></header>
 <main><section class="hero"><div class="hero-inner"><div><span class="label">KONIBET安全確認ガイド</span><h1>コニベット問い合わせ前に整理すること</h1><p>問い合わせ前に、登録メール・取引日時・ボーナス名・スクショなどを整理しておくと確認がスムーズです。</p><div class="cta-row"><a class="btn btn-primary" href="review-konibet.html">コニベットのレビューを確認する</a><a class="btn btn-secondary" href="konibet-checklist.html">登録前チェックを見る</a></div><p class="note">※KONIBETのAFFリンクは未設定のため、公式CTAは一旦レビュー確認ページへ集約しています。</p></div><div class="logo-card"><img src="konibet-logo.png" alt="コニベット ロゴ" loading="lazy"></div></div></section>
@@ -1064,5 +1445,30 @@ pre, code, kbd, samp {
   <a class="mobile-bottom-cta__main" href="review-konibet.html">KONIBETレビュー</a>
   <a class="mobile-bottom-cta__sub" href="konibet-checklist.html">確認リスト</a>
 </div>
+
+
+<script id="mobile-polish-phase18-js">
+(function(){
+  try {
+    document.documentElement.classList.add('mobile-polish-ready');
+    var tables = document.querySelectorAll('table');
+    tables.forEach(function(table){
+      if (table.closest('.table-wrap, .table-wrapper, .scroll-table, .comparison-table, .compare-table')) return;
+      var wrapper = document.createElement('div');
+      wrapper.className = 'table-wrap mobile-table-wrap';
+      wrapper.setAttribute('role','region');
+      wrapper.setAttribute('aria-label','横スクロールできる表');
+      table.parentNode.insertBefore(wrapper, table);
+      wrapper.appendChild(table);
+    });
+    document.querySelectorAll('img:not([loading])').forEach(function(img){
+      img.setAttribute('loading','lazy');
+    });
+    document.querySelectorAll('img:not([decoding])').forEach(function(img){
+      img.setAttribute('decoding','async');
+    });
+  } catch(e) {}
+})();
+</script>
 
 </body></html>
