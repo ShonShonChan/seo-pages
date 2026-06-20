@@ -1499,6 +1499,52 @@ pre, code, kbd, samp {
 }
 </style>
 
+
+
+<style id="mobile-phase21-qa-stabilizer">
+/* Phase21: final QA stabilizer for real mobile viewing */
+@media (max-width: 768px){
+  :root{--mobile-page-pad:clamp(14px,4vw,20px);--mobile-radius:18px;--mobile-tap:46px;}
+  html{overflow-x:hidden!important;scroll-padding-top:84px;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+  body{width:100%!important;max-width:100vw!important;overflow-x:hidden!important;margin:0!important;}
+  body *{box-sizing:border-box;min-width:0;}
+  main,article,section,header,footer,.container,.wrap,.wrapper,.inner,.content,.page,.main,.layout,.rankings,.ranking,.cards,.grid,.list,.article-body{max-width:100%!important;}
+  .container,.wrap,.wrapper,.inner,.content,.page,.article-body{padding-left:var(--mobile-page-pad)!important;padding-right:var(--mobile-page-pad)!important;}
+  img,picture,video,canvas,svg,iframe{max-width:100%!important;height:auto!important;}
+  iframe{display:block;border:0;}
+  table{width:max-content;min-width:100%;border-collapse:collapse;}
+  .table-wrap,.table-scroll,.comparison-table,.compare-table,.ranking-table,.spec-table,.bonus-table,.payment-table{display:block!important;width:100%!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;}
+  .table-wrap::before,.table-scroll::before,.comparison-table::before,.compare-table::before,.ranking-table::before,.spec-table::before{content:"横にスクロールできます";display:block;margin:0 0 8px;font-size:12px;font-weight:700;color:#7a261d;background:#fff4ec;border:1px solid #ffd5c2;border-radius:999px;padding:6px 10px;width:max-content;max-width:100%;}
+  a,button,.btn,.button,[class*="btn"],[class*="cta"],input,select,textarea,summary{min-height:var(--mobile-tap);touch-action:manipulation;}
+  .btn,.button,[class*="btn"],[class*="cta"]{white-space:normal!important;line-height:1.35!important;text-align:center;word-break:keep-all;overflow-wrap:anywhere;}
+  .cta-row,.cta-group,.button-row,.actions,.hero-cta,.entry-cta,.cta-buttons{display:flex!important;flex-direction:column!important;gap:10px!important;align-items:stretch!important;}
+  .cta-row a,.cta-group a,.button-row a,.actions a,.hero-cta a,.entry-cta a,.cta-buttons a{width:100%!important;max-width:100%!important;}
+  nav,.nav,.global-nav,.site-nav,.header-nav,.breadcrumb,.breadcrumbs{max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;scrollbar-width:none;}
+  nav::-webkit-scrollbar,.nav::-webkit-scrollbar,.global-nav::-webkit-scrollbar,.site-nav::-webkit-scrollbar,.breadcrumb::-webkit-scrollbar,.breadcrumbs::-webkit-scrollbar{display:none;}
+  h1,h2,h3{overflow-wrap:anywhere;word-break:normal;line-height:1.22;}
+  p,li,dd,td,th,figcaption,summary{overflow-wrap:anywhere;word-break:normal;}
+  pre,code,kbd,samp{white-space:pre-wrap!important;overflow-wrap:anywhere!important;word-break:break-word!important;max-width:100%!important;}
+  .card,.box,.panel,.ranking-card,.review-card,.bonus-card,.payment-card,.article-card,.guide-card{width:100%!important;max-width:100%!important;border-radius:var(--mobile-radius);}
+  .side-banner,.floating-banner,.pc-banner,.desktop-banner,.left-banner,.right-banner,[class*="side-ad"],[class*="floating"]{display:none!important;}
+  .mobile-sticky-cta,.sticky-cta,.bottom-cta,[class*="sticky-cta"]{max-width:calc(100vw - 20px)!important;left:10px!important;right:10px!important;bottom:calc(env(safe-area-inset-bottom,0px) + 10px)!important;border-radius:18px!important;z-index:9999;}
+  .modal,.popup,.dialog,.overlay-content,[class*="modal"],[class*="popup"]{max-width:calc(100vw - 24px)!important;max-height:calc(100dvh - 32px)!important;overflow:auto!important;-webkit-overflow-scrolling:touch;}
+  [id]{scroll-margin-top:92px;}
+}
+@media (max-width: 380px){
+  :root{--mobile-page-pad:12px;--mobile-tap:44px;}
+  h1{font-size:clamp(24px,7.2vw,30px)!important;}
+  h2{font-size:clamp(20px,6vw,26px)!important;}
+  h3{font-size:clamp(18px,5.2vw,22px)!important;}
+  .mobile-sticky-cta,.sticky-cta,.bottom-cta,[class*="sticky-cta"]{left:8px!important;right:8px!important;max-width:calc(100vw - 16px)!important;}
+}
+@media (max-width: 768px) and (orientation: landscape){
+  .mobile-sticky-cta,.sticky-cta,.bottom-cta,[class*="sticky-cta"]{padding:8px 10px!important;gap:8px!important;}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important;}
+}
+</style>
+
 </head>
 <body class="page-body">
 <header class="site-header"><div class="header-inner"><a class="brand" href="index.html">リベンジカジノ比較ガイド</a><nav class="nav"><a href="casino-list.html">カジノ一覧</a><a href="bonus.html">ボーナス</a><a href="payments.html">入出金</a><a href="review.html">レビュー</a><a href="site-checklist.html">確認リスト</a></nav></div></header>
