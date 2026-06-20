@@ -318,6 +318,44 @@ table { width: 100%; max-width: 100%; border-collapse: collapse; }
   th, td { min-width: 108px; }
 }
 </style>
+
+<!-- mobile-final-visual-phase10-start -->
+<style>
+@media (max-width: 768px){
+  :root{--mobile-page-pad:14px;--mobile-card-radius:18px;--mobile-safe-bottom:calc(86px + env(safe-area-inset-bottom,0px));}
+  html{overflow-x:hidden;scroll-padding-bottom:var(--mobile-safe-bottom);}
+  body{overflow-x:hidden;word-break:normal;-webkit-text-size-adjust:100%;padding-bottom:var(--mobile-safe-bottom);}
+  main, .container, .wrap, .page, .content, .section, section, article{max-width:100% !important;box-sizing:border-box;}
+  .container, .wrap, .page, .content{padding-left:var(--mobile-page-pad) !important;padding-right:var(--mobile-page-pad) !important;}
+  .hero, .fv, .hero-section, .main-visual{border-radius:22px !important;margin-left:0 !important;margin-right:0 !important;overflow:hidden;}
+  h1{font-size:clamp(1.62rem,7vw,2.25rem) !important;line-height:1.18 !important;letter-spacing:-.02em;}
+  h2{font-size:clamp(1.25rem,5.4vw,1.7rem) !important;line-height:1.28 !important;}
+  h3{font-size:clamp(1.08rem,4.8vw,1.35rem) !important;line-height:1.32 !important;}
+  p, li, td, th{font-size:15.5px;line-height:1.82;}
+  .card, .box, .panel, .rank-card, .casino-card, .article-card, .cta-box, .notice, .faq-item{border-radius:var(--mobile-card-radius) !important;max-width:100% !important;box-sizing:border-box;}
+  .grid, .cards, .rank-grid, .casino-grid, .article-grid, .comparison-grid{display:grid !important;grid-template-columns:1fr !important;gap:14px !important;}
+  a[class*="btn"], .btn, .button, .cta, .cta-button, .primary-btn, .secondary-btn{min-height:46px;display:inline-flex;align-items:center;justify-content:center;text-align:center;white-space:normal;line-height:1.35;padding:12px 16px;border-radius:999px;max-width:100%;box-sizing:border-box;}
+  .cta-row, .btn-row, .button-row, .hero-actions, .actions{display:flex !important;flex-direction:column !important;gap:10px !important;align-items:stretch !important;}
+  .cta-row a, .btn-row a, .button-row a, .hero-actions a, .actions a{width:100% !important;}
+  img, picture, video, iframe{max-width:100% !important;height:auto !important;}
+  table{width:100% !important;min-width:640px;border-collapse:collapse;}
+  .table-wrap, .scroll-table, .comparison-table, .responsive-table, .table-scroll{overflow-x:auto !important;-webkit-overflow-scrolling:touch;padding-bottom:6px;}
+  .table-wrap::after, .scroll-table::after, .comparison-table::after{content:"横にスクロールできます";display:block;font-size:12px;color:#777;margin-top:4px;text-align:right;}
+  header nav, .nav, .global-nav, .header-nav{overflow-x:auto !important;-webkit-overflow-scrolling:touch;scrollbar-width:none;white-space:nowrap;gap:8px;}
+  header nav::-webkit-scrollbar, .nav::-webkit-scrollbar, .global-nav::-webkit-scrollbar, .header-nav::-webkit-scrollbar{display:none;}
+  .side-banner, .fixed-banner, .floating-banner, .left-banner, .right-banner, .pc-side-banner{display:none !important;}
+  .mobile-sticky-cta, .sticky-cta, .bottom-cta, .mobile-bottom-cta{padding-bottom:calc(10px + env(safe-area-inset-bottom,0px)) !important;box-shadow:0 -10px 26px rgba(0,0,0,.16);backdrop-filter:blur(10px);}
+  .mobile-sticky-cta a, .sticky-cta a, .bottom-cta a, .mobile-bottom-cta a{min-height:48px !important;}
+  .popup, .modal, .campaign-popup{max-width:calc(100vw - 28px) !important;max-height:calc(100dvh - 110px) !important;overflow:auto !important;border-radius:20px !important;}
+}
+@media (max-width: 420px){
+  :root{--mobile-page-pad:12px;}
+  p, li, td, th{font-size:15px;}
+  .card, .box, .panel, .rank-card, .casino-card, .article-card{padding:14px !important;}
+}
+</style>
+<!-- mobile-final-visual-phase10-end -->
+
 </head>
 <body>
 <header class="site-header"><div class="header-inner"><a aria-label="リベンジカジノ比較ガイド トップへ" class="brand" href="index.html"><span class="brand-mark"><img alt="" src="apple-touch-icon.png"/ loading="lazy" decoding="async"></span><span>リベンジカジノ比較ガイド</span></a><nav aria-label="主要ナビゲーション" class="nav"><a href="index.html">TOP</a><a href="casino-list.html">カジノ一覧</a><a href="review.html">レビュー</a><a href="bonus.html">ボーナス比較</a><a href="payments.html">入出金</a><a class="nav-cta" href="guide.html">初心者ガイド</a></nav></div></header>

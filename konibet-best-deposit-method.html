@@ -308,6 +308,44 @@ table { width: 100%; max-width: 100%; border-collapse: collapse; }
   th, td { min-width: 108px; }
 }
 </style>
+
+<!-- mobile-final-visual-phase10-start -->
+<style>
+@media (max-width: 768px){
+  :root{--mobile-page-pad:14px;--mobile-card-radius:18px;--mobile-safe-bottom:calc(86px + env(safe-area-inset-bottom,0px));}
+  html{overflow-x:hidden;scroll-padding-bottom:var(--mobile-safe-bottom);}
+  body{overflow-x:hidden;word-break:normal;-webkit-text-size-adjust:100%;padding-bottom:var(--mobile-safe-bottom);}
+  main, .container, .wrap, .page, .content, .section, section, article{max-width:100% !important;box-sizing:border-box;}
+  .container, .wrap, .page, .content{padding-left:var(--mobile-page-pad) !important;padding-right:var(--mobile-page-pad) !important;}
+  .hero, .fv, .hero-section, .main-visual{border-radius:22px !important;margin-left:0 !important;margin-right:0 !important;overflow:hidden;}
+  h1{font-size:clamp(1.62rem,7vw,2.25rem) !important;line-height:1.18 !important;letter-spacing:-.02em;}
+  h2{font-size:clamp(1.25rem,5.4vw,1.7rem) !important;line-height:1.28 !important;}
+  h3{font-size:clamp(1.08rem,4.8vw,1.35rem) !important;line-height:1.32 !important;}
+  p, li, td, th{font-size:15.5px;line-height:1.82;}
+  .card, .box, .panel, .rank-card, .casino-card, .article-card, .cta-box, .notice, .faq-item{border-radius:var(--mobile-card-radius) !important;max-width:100% !important;box-sizing:border-box;}
+  .grid, .cards, .rank-grid, .casino-grid, .article-grid, .comparison-grid{display:grid !important;grid-template-columns:1fr !important;gap:14px !important;}
+  a[class*="btn"], .btn, .button, .cta, .cta-button, .primary-btn, .secondary-btn{min-height:46px;display:inline-flex;align-items:center;justify-content:center;text-align:center;white-space:normal;line-height:1.35;padding:12px 16px;border-radius:999px;max-width:100%;box-sizing:border-box;}
+  .cta-row, .btn-row, .button-row, .hero-actions, .actions{display:flex !important;flex-direction:column !important;gap:10px !important;align-items:stretch !important;}
+  .cta-row a, .btn-row a, .button-row a, .hero-actions a, .actions a{width:100% !important;}
+  img, picture, video, iframe{max-width:100% !important;height:auto !important;}
+  table{width:100% !important;min-width:640px;border-collapse:collapse;}
+  .table-wrap, .scroll-table, .comparison-table, .responsive-table, .table-scroll{overflow-x:auto !important;-webkit-overflow-scrolling:touch;padding-bottom:6px;}
+  .table-wrap::after, .scroll-table::after, .comparison-table::after{content:"横にスクロールできます";display:block;font-size:12px;color:#777;margin-top:4px;text-align:right;}
+  header nav, .nav, .global-nav, .header-nav{overflow-x:auto !important;-webkit-overflow-scrolling:touch;scrollbar-width:none;white-space:nowrap;gap:8px;}
+  header nav::-webkit-scrollbar, .nav::-webkit-scrollbar, .global-nav::-webkit-scrollbar, .header-nav::-webkit-scrollbar{display:none;}
+  .side-banner, .fixed-banner, .floating-banner, .left-banner, .right-banner, .pc-side-banner{display:none !important;}
+  .mobile-sticky-cta, .sticky-cta, .bottom-cta, .mobile-bottom-cta{padding-bottom:calc(10px + env(safe-area-inset-bottom,0px)) !important;box-shadow:0 -10px 26px rgba(0,0,0,.16);backdrop-filter:blur(10px);}
+  .mobile-sticky-cta a, .sticky-cta a, .bottom-cta a, .mobile-bottom-cta a{min-height:48px !important;}
+  .popup, .modal, .campaign-popup{max-width:calc(100vw - 28px) !important;max-height:calc(100dvh - 110px) !important;overflow:auto !important;border-radius:20px !important;}
+}
+@media (max-width: 420px){
+  :root{--mobile-page-pad:12px;}
+  p, li, td, th{font-size:15px;}
+  .card, .box, .panel, .rank-card, .casino-card, .article-card{padding:14px !important;}
+}
+</style>
+<!-- mobile-final-visual-phase10-end -->
+
 </head>
 <body class="page-body"><header class="site-header"><div class="header-inner"><a class="brand" href="index.html">リベンジカジノ比較ガイド</a><nav class="nav"><a href="casino-list.html">カジノ一覧</a><a href="bonus.html">ボーナス</a><a href="payments.html">入出金</a><a href="review.html">レビュー</a><a href="site-checklist.html">確認リスト</a></nav></div></header><main><section class="hero"><div class="hero-inner"><div><span class="label">KONIBET入出金ガイド</span><h1>KONIBETのおすすめ入金方法を確認</h1><p>おすすめの決済は人によって変わります。スピードだけでなく、使いやすさ・条件・出金時の確認まで見て選びましょう。</p><div class="cta-row"><a class="btn btn-primary" href="review-konibet.html">KONIBETの条件を確認する</a><a class="btn btn-secondary" href="konibet-payment.html">入出金まとめを見る</a></div><p class="note">※KONIBETのAFFリンクは未設定のため、公式送客CTAは一旦レビュー確認ページへ集約しています。</p></div><div class="logo-card"><img src="konibet-logo.png" alt="KONIBET ロゴ" loading="lazy"></div></div></section><div class="container"><section class="section"><h2>先に確認したいポイント</h2><table class="table"><tbody><tr><th>初心者向け</th><td>操作が分かりやすく、明細を確認しやすい方法を優先</td></tr><tr><th>ボーナス重視</th><td>対象決済かどうか、最低入金額を事前に確認</td></tr><tr><th>安全重視</th><td>名義一致・決済履歴・サポート導線を確認</td></tr></tbody></table></section><section class="section"><h2>決済選びのチェック</h2><div class="grid"><div class="card"><strong>迷ったら比較</strong><p>決済ごとのメリットだけでなく注意点も見る。</p></div><div class="card"><strong>反映時間</strong><p>早さは重要だが保証表現は避け、公式画面で確認。</p></div><div class="card"><strong>出金条件</strong><p>入金方法と出金方法の関係も確認。</p></div></div></section><section class="section"><h2>KONIBETの入出金関連ページ</h2><div class="grid"><div class="card"><strong>入金方法比較</strong><p><a href="konibet-deposit-method-comparison.html">決済ごとの違いを見る</a></p></div><div class="card"><strong>おすすめ入金方法</strong><p><a href="konibet-best-deposit-method.html">初心者向けの選び方を見る</a></p></div><div class="card"><strong>出金時間</strong><p><a href="konibet-withdrawal-time-guide.html">出金前の注意点を見る</a></p></div></div></section><section class="cta-box"><h2>入金前にKONIBETの条件を確認</h2><p>決済方法だけで判断せず、ボーナス条件・出金条件・本人確認の可能性も合わせて確認してから進みましょう。</p><div class="cta-row"><a class="btn btn-primary" href="review-konibet.html">KONIBETレビューを見る</a><a class="btn btn-secondary" href="konibet-bonus.html">ボーナス条件を見る</a><a class="btn btn-secondary" href="konibet-checklist.html">登録前チェックリスト</a></div><p class="note">広告リンク・アフィリエイトリンクを含む場合があります。詳しくは <a href="advertising-policy.html">広告掲載ポリシー</a> を確認してください。</p></section></div></main><footer class="footer"><a href="index.html">TOP</a> / <a href="advertising-policy.html">広告掲載ポリシー</a></footer>
 <div class="mobile-bottom-cta" aria-label="スマホ固定CTA">
