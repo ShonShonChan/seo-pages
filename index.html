@@ -8316,10 +8316,10 @@ iframe{display:block;border:0;}
   font-weight: 900;
   text-align: center;
 }
-@media (max-width: 1540px) {
+@media (max-width: 1279px) {
   .phase30-promo-rail { display: block; }
 }
-@media (min-width: 1100px) and (max-width: 1540px) {
+@media (min-width: 1100px) and (max-width: 1279px) {
   .phase30-promo-scroll {
     grid-auto-flow: initial;
     grid-auto-columns: initial;
@@ -8344,6 +8344,148 @@ iframe{display:block;border:0;}
 }
 </style>
 <!-- PHASE30_RESPONSIVE_BANNER_VISIBILITY_END -->
+
+
+<!-- PHASE30_STRUCTURAL_SIDE_BANNER_LAYOUT_START -->
+<style id="phase30-structural-side-banner-layout">
+/* Phase30 structural repair: side banners participate in layout instead of absolute positioning. */
+.bonus-side-rails { display: none !important; }
+.phase30-hero-shell {
+  width: min(1600px, calc(100% - 28px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(205px, 245px) minmax(0, 1fr) minmax(205px, 245px);
+  gap: clamp(14px, 1.4vw, 24px);
+  align-items: start;
+}
+.phase30-hero-stage { min-width: 0; }
+.phase30-hero-stage .hero {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.phase30-desktop-rail {
+  display: grid;
+  gap: 14px;
+  padding-top: 22px;
+  min-width: 0;
+}
+.phase30-side-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(215,25,32,.22);
+  border-radius: 18px;
+  background: linear-gradient(145deg,#d71920 0%,#a70e16 58%,#76060b 100%);
+  color: #fff;
+  box-shadow: 0 14px 32px rgba(120,20,20,.16);
+}
+.phase30-side-card-featured { box-shadow: 0 18px 38px rgba(120,20,20,.22); }
+.phase30-side-image {
+  width: 100%;
+  aspect-ratio: 1200 / 465;
+  overflow: hidden;
+  background: #fff;
+}
+.phase30-side-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+.phase30-side-body { padding: 10px; }
+.phase30-side-body > span {
+  display: inline-flex;
+  padding: 3px 8px;
+  margin-bottom: 4px;
+  border-radius: 999px;
+  background: #fff;
+  color: #9f1017;
+  font-size: 10px;
+  line-height: 1.2;
+  font-weight: 900;
+}
+.phase30-side-body strong {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 15px;
+  line-height: 1.3;
+}
+.phase30-side-body p {
+  margin: 0;
+  color: rgba(255,255,255,.92);
+  font-size: 11px;
+  line-height: 1.45;
+}
+.phase30-side-body a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 36px;
+  margin-top: 8px;
+  padding: 7px 9px;
+  border-radius: 999px;
+  background: #fff;
+  color: #9f1017;
+  font-size: 11.5px;
+  line-height: 1.25;
+  font-weight: 900;
+  text-align: center;
+}
+/* The center FV is simplified while side promotions are visible. */
+@media (min-width: 1280px) {
+  .phase30-promo-rail { display: none !important; }
+  .phase30-hero-stage .fv-enhanced-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(230px, .62fr) !important;
+    gap: clamp(18px, 2vw, 30px) !important;
+  }
+  .phase30-hero-stage .fv-pickup-panel { display: none !important; }
+  .phase30-hero-stage .hero-box { padding: clamp(30px, 3vw, 46px) !important; }
+  .phase30-hero-stage .hero h1,
+  .phase30-hero-stage .hero-title,
+  .phase30-hero-stage .hero-copy h1 {
+    font-size: clamp(40px, 4vw, 58px) !important;
+  }
+}
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .phase30-hero-shell {
+    width: calc(100% - 20px);
+    grid-template-columns: 190px minmax(0, 1fr) 190px;
+    gap: 12px;
+  }
+  .phase30-desktop-rail { gap: 10px; padding-top: 18px; }
+  .phase30-side-body { padding: 8px; }
+  .phase30-side-body strong { font-size: 13.5px; }
+  .phase30-side-body p { font-size: 10px; }
+  .phase30-side-body a { min-height: 33px; font-size: 10.5px; }
+  .phase30-hero-stage .fv-enhanced-grid { grid-template-columns: 1fr !important; }
+  .phase30-hero-stage .hero-side { display: none !important; }
+  .phase30-hero-stage .hero h1,
+  .phase30-hero-stage .hero-title,
+  .phase30-hero-stage .hero-copy h1 { font-size: clamp(38px, 4.2vw, 52px) !important; }
+}
+@media (max-width: 1279px) {
+  .phase30-hero-shell {
+    width: 100%;
+    display: block;
+  }
+  .phase30-desktop-rail { display: none !important; }
+  .phase30-hero-stage .hero {
+    width: min(1120px, calc(100% - 36px)) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .phase30-promo-rail { display: block !important; }
+}
+@media (max-width: 760px) {
+  .phase30-hero-stage .hero {
+    width: min(100% - 24px, 1120px) !important;
+  }
+}
+</style>
+<!-- PHASE30_STRUCTURAL_SIDE_BANNER_LAYOUT_END -->
 
 </head>
 <body>
@@ -8528,6 +8670,23 @@ iframe{display:block;border:0;}
 </div>
 </header>
 <main>
+<div class="phase30-hero-shell">
+
+<aside class="phase30-desktop-rail phase30-desktop-rail-left" aria-label="左側注目特典">
+  <article class="phase30-side-card phase30-side-card-featured">
+    <div class="phase30-side-image"><img src="side-banner-slottenkoku-bonus.png" alt="スロット天国の登録ボーナスバナー" loading="eager"></div>
+    <div class="phase30-side-body"><span>初回特典</span><strong>登録で$20</strong><p>登録特典と条件を確認。</p><a href="https://sloten.io?referral=0ZjM" target="_blank" rel="nofollow sponsored noopener">公式サイトで確認</a></div>
+  </article>
+  <article class="phase30-side-card">
+    <div class="phase30-side-image"><img src="side-banner-konibet-bonus.png" alt="コニベットの限定ボーナスバナー" loading="lazy"></div>
+    <div class="phase30-side-body"><span>限定特典</span><strong>66ドル特典</strong><p>登録前に条件を確認。</p><a href="review-konibet.html">限定特典を見る</a></div>
+  </article>
+  <article class="phase30-side-card">
+    <div class="phase30-side-image"><img src="side-banner-roobet-bonus.png" alt="Roobetのプロモーションバナー" loading="lazy"></div>
+    <div class="phase30-side-body"><span>人気候補</span><strong>$100,000抽選</strong><p>最新プロモを確認。</p><a href="review-roobet.html">最新特典を見る</a></div>
+  </article>
+</aside>
+<div class="phase30-hero-stage">
 <section class="hero">
 <div class="hero-box">
 <div class="hero-grid fv-enhanced-grid">
@@ -8679,6 +8838,23 @@ iframe{display:block;border:0;}
         </p>
 </div>
 </section>
+</div>
+
+<aside class="phase30-desktop-rail phase30-desktop-rail-right" aria-label="右側注目特典">
+  <article class="phase30-side-card phase30-side-card-featured">
+    <div class="phase30-side-image"><img src="side-banner-bitstarz-bonus.png" alt="BitStarzのウェルカムボーナスバナー" loading="eager"></div>
+    <div class="phase30-side-body"><span>初回特典</span><strong>100%＋180FS</strong><p>入金特典と条件を確認。</p><a href="review-bitstarz.html">特典を見る</a></div>
+  </article>
+  <article class="phase30-side-card">
+    <div class="phase30-side-image"><img src="side-banner-slottenkoku-bonus.png" alt="スロット天国の初回特典バナー" loading="lazy"></div>
+    <div class="phase30-side-body"><span>1位候補</span><strong>スロット天国</strong><p>登録・入金特典を確認。</p><a href="https://sloten.io?referral=0ZjM" target="_blank" rel="nofollow sponsored noopener">公式サイトで確認</a></div>
+  </article>
+  <article class="phase30-side-card">
+    <div class="phase30-side-image"><img src="side-banner-stake-bonus.png" alt="Stakeの限定特典バナー" loading="lazy"></div>
+    <div class="phase30-side-body"><span>限定特典</span><strong>Stake</strong><p>暗号資産と条件を確認。</p><a href="review-stake.html">特典を確認</a></div>
+  </article>
+</aside>
+</div>
 
 <section class="phase30-promo-rail" aria-labelledby="phase30-promo-title">
   <div class="phase30-promo-head">
