@@ -8212,6 +8212,139 @@ iframe{display:block;border:0;}
 }
 </style>
 
+
+
+<!-- PHASE30_RESPONSIVE_BANNER_VISIBILITY_START -->
+<style id="phase30-responsive-banner-visibility">
+/* Phase30: large-monitor side banners are preserved; regular PC/mobile get an in-flow banner rail. */
+.phase30-promo-rail {
+  display: none;
+  width: min(1120px, calc(100% - 36px));
+  margin: 8px auto 34px;
+  position: relative;
+  z-index: 3;
+}
+.phase30-promo-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+.phase30-promo-head h2 {
+  margin: 0;
+  color: #9f1017;
+  font-size: clamp(20px, 2.3vw, 28px);
+  line-height: 1.3;
+}
+.phase30-promo-head p {
+  margin: 4px 0 0;
+  color: #665050;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.phase30-promo-scroll {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(245px, 1fr);
+  gap: 14px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 2px 2px 12px;
+  scroll-snap-type: x proximity;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.phase30-promo-card {
+  scroll-snap-align: start;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #efc4c4;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #d71920 0%, #a70e16 58%, #76060b 100%);
+  color: #fff;
+  box-shadow: 0 13px 30px rgba(120, 20, 20, .15);
+}
+.phase30-promo-image {
+  aspect-ratio: 1200 / 465;
+  background: #fff;
+  overflow: hidden;
+}
+.phase30-promo-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.phase30-promo-body { padding: 12px; }
+.phase30-promo-label {
+  display: inline-flex;
+  padding: 3px 8px;
+  margin-bottom: 5px;
+  border-radius: 999px;
+  background: #fff;
+  color: #9f1017;
+  font-size: 10.5px;
+  font-weight: 900;
+}
+.phase30-promo-card strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 16px;
+  line-height: 1.35;
+}
+.phase30-promo-card p {
+  margin: 0;
+  min-height: 42px;
+  color: rgba(255,255,255,.92);
+  font-size: 12px;
+  line-height: 1.55;
+}
+.phase30-promo-card a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 40px;
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #fff;
+  color: #9f1017;
+  font-size: 12.5px;
+  font-weight: 900;
+  text-align: center;
+}
+@media (max-width: 1540px) {
+  .phase30-promo-rail { display: block; }
+}
+@media (min-width: 1100px) and (max-width: 1540px) {
+  .phase30-promo-scroll {
+    grid-auto-flow: initial;
+    grid-auto-columns: initial;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    overflow: visible;
+  }
+}
+@media (max-width: 760px) {
+  .phase30-promo-rail {
+    width: 100%;
+    margin: 4px auto 26px;
+    padding-left: 16px;
+  }
+  .phase30-promo-head { padding-right: 16px; }
+  .phase30-promo-head h2 { font-size: 21px !important; }
+  .phase30-promo-head p { font-size: 12px; }
+  .phase30-promo-scroll {
+    grid-auto-columns: min(78vw, 300px);
+    padding-right: 16px;
+  }
+  .phase30-promo-card p { min-height: auto; }
+}
+</style>
+<!-- PHASE30_RESPONSIVE_BANNER_VISIBILITY_END -->
+
 </head>
 <body>
 <aside aria-label="ボーナスCTAサイドバナー" class="bonus-side-rails">
@@ -8546,6 +8679,42 @@ iframe{display:block;border:0;}
         </p>
 </div>
 </section>
+
+<section class="phase30-promo-rail" aria-labelledby="phase30-promo-title">
+  <div class="phase30-promo-head">
+    <div>
+      <h2 id="phase30-promo-title">注目特典を比較</h2>
+      <p>通常PCでは一覧表示、スマホでは横にスワイプして確認できます。</p>
+    </div>
+  </div>
+  <div class="phase30-promo-scroll" aria-label="注目ボーナスバナー一覧">
+    <article class="phase30-promo-card">
+      <div class="phase30-promo-image"><img src="side-banner-slottenkoku-bonus.png" alt="スロット天国の登録ボーナスバナー" loading="eager" decoding="async"></div>
+      <div class="phase30-promo-body"><span class="phase30-promo-label">初回特典</span><strong>スロット天国</strong><p>登録特典と初回入金特典を、参加前に確認。</p><a href="https://sloten.io?referral=0ZjM" target="_blank" rel="nofollow sponsored noopener">公式サイトで特典を確認</a></div>
+    </article>
+    <article class="phase30-promo-card">
+      <div class="phase30-promo-image"><img src="side-banner-konibet-bonus.png" alt="KONIBETの限定ボーナスバナー" loading="lazy" decoding="async"></div>
+      <div class="phase30-promo-body"><span class="phase30-promo-label">限定特典</span><strong>KONIBET</strong><p>ボーナス内容と入出金条件をレビューで確認。</p><a href="review-konibet.html">KONIBETレビューを見る</a></div>
+    </article>
+    <article class="phase30-promo-card">
+      <div class="phase30-promo-image"><img src="side-banner-stake-bonus.png" alt="Stakeの限定特典バナー" loading="lazy" decoding="async"></div>
+      <div class="phase30-promo-body"><span class="phase30-promo-label">限定特典</span><strong>Stake</strong><p>特典内容と条件を確認してから比較。</p><a href="review-stake.html">特典を確認</a></div>
+    </article>
+    <article class="phase30-promo-card">
+      <div class="phase30-promo-image"><img src="side-banner-bitstarz-bonus.png" alt="BitStarzのウェルカムボーナスバナー" loading="lazy" decoding="async"></div>
+      <div class="phase30-promo-body"><span class="phase30-promo-label">初回特典</span><strong>BitStarz</strong><p>ウェルカム特典と追加条件を確認。</p><a href="review-bitstarz.html">特典を見る</a></div>
+    </article>
+    <article class="phase30-promo-card">
+      <div class="phase30-promo-image"><img src="side-banner-roobet-bonus.png" alt="Roobetのプロモーションバナー" loading="lazy" decoding="async"></div>
+      <div class="phase30-promo-body"><span class="phase30-promo-label">人気候補</span><strong>Roobet</strong><p>最新プロモーションと参加条件を確認。</p><a href="review-roobet.html">最新特典を見る</a></div>
+    </article>
+    <article class="phase30-promo-card">
+      <div class="phase30-promo-image"><img src="side-banner-verajohn-bonus.png" alt="ベラジョンのウェルカム特典バナー" loading="lazy" decoding="async"></div>
+      <div class="phase30-promo-body"><span class="phase30-promo-label">定番候補</span><strong>ベラジョン</strong><p>フリースピンと入金特典の条件を確認。</p><a href="review-verajohn.html">特典を見る</a></div>
+    </article>
+  </div>
+</section>
+
 <section class="ranking-criteria-2026 ranking-criteria" id="ranking-criteria">
 <div class="ranking-criteria-card">
 <div class="ranking-criteria-head">
