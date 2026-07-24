@@ -8523,6 +8523,246 @@ iframe{display:block;border:0;}
 </style>
 <!-- PHASE31_TOP_PROMO_SLIDER_END -->
 
+
+<!-- PHASE32_TOP_PAGE_VISUAL_CLEANUP_START -->
+<style>
+/* ===== Phase32: TOPページ全体の表示整理・はみ出し防止 ===== */
+html, body { max-width: 100%; overflow-x: clip; }
+body { min-width: 0; }
+img, svg, video, iframe { max-width: 100%; height: auto; }
+
+/* 旧左右固定バナーは完全停止。上部横スライダーへ一本化 */
+.bonus-side-rails { display: none !important; }
+
+/* 共通コンテナ */
+.hero,
+.fv-ranking-section,
+.after-ranking-clean,
+.agent-ranking-2026,
+.ranking-criteria,
+.search-intent-2026,
+.bonus-intent-2026,
+.home-faq-2026,
+.bonus-status-2026,
+.final-home-route {
+  width: min(1180px, calc(100% - 32px)) !important;
+  max-width: 1180px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  min-width: 0;
+}
+
+/* 上部プロモスライダー */
+.phase30-promo-rail {
+  width: min(1180px, calc(100% - 32px)) !important;
+  max-width: 1180px !important;
+  margin: 18px auto 22px !important;
+}
+.phase30-promo-scroll {
+  grid-auto-columns: clamp(270px, 30vw, 350px) !important;
+  gap: 14px !important;
+}
+.phase30-promo-card,
+.phase30-promo-body,
+.phase30-promo-card strong,
+.phase30-promo-card p,
+.phase30-promo-card a {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* FV */
+.hero { padding-left: 0 !important; padding-right: 0 !important; }
+.hero-box { min-width: 0; }
+.hero-grid,
+.fv-enhanced-grid { min-width: 0; }
+.hero-copy-panel,
+.hero-side,
+.fv-pickup-panel { min-width: 0; }
+.hero h1 {
+  max-width: 100%;
+  font-size: clamp(38px, 4.4vw, 62px) !important;
+  line-height: 1.14 !important;
+  overflow-wrap: normal;
+  word-break: keep-all;
+}
+.hero-lead { max-width: 720px !important; }
+.hero-actions { align-items: stretch; }
+.hero-actions .btn { min-width: 0; white-space: normal !important; }
+
+/* ランキング共通：固定列幅を廃止 */
+.fv-ranking-list { min-width: 0; }
+.fv-ranking-list .fv-ranking-card {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  grid-template-columns: 72px minmax(130px, 170px) minmax(190px, 1fr) minmax(190px, .9fr) minmax(150px, 176px) !important;
+  gap: clamp(12px, 1.3vw, 20px) !important;
+  padding: 26px 20px 20px !important;
+  box-sizing: border-box;
+  overflow: hidden !important;
+}
+.fv-ranking-list .fv-ranking-card > * { min-width: 0; max-width: 100%; }
+.fv-ranking-logo {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 170px !important;
+  min-height: 88px !important;
+  padding: 10px !important;
+}
+.fv-ranking-logo img {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 70px !important;
+  object-fit: contain !important;
+}
+.fv-ranking-main h3 {
+  max-width: 100%;
+  font-size: clamp(22px, 2vw, 29px) !important;
+  line-height: 1.2 !important;
+  word-break: keep-all !important;
+  overflow-wrap: anywhere !important;
+}
+.fv-ranking-main p,
+.fv-ranking-bonus span,
+.fv-ranking-bonus strong,
+.fv-ranking-tags span {
+  overflow-wrap: anywhere;
+}
+.fv-ranking-bonus {
+  width: 100%;
+  min-width: 0;
+  padding: 15px !important;
+}
+.fv-ranking-actions {
+  width: 100%;
+  min-width: 0;
+  gap: 9px !important;
+}
+.fv-ranking-actions a {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px !important;
+  padding: 10px 12px !important;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.35;
+}
+.fv-ranking-list .fv-ranking-card:nth-child(-n+3)::before {
+  right: 14px !important;
+  max-width: calc(100% - 28px);
+  white-space: nowrap;
+}
+
+/* 通常PC・ノートPC：ランキングを2段にして切れを防ぐ */
+@media (max-width: 1440px) {
+  .fv-ranking-list .fv-ranking-card {
+    grid-template-columns: 68px minmax(130px, 165px) minmax(0, 1fr) !important;
+    align-items: center !important;
+  }
+  .fv-ranking-bonus {
+    grid-column: 2 / 4 !important;
+  }
+  .fv-ranking-actions {
+    grid-column: 2 / 4 !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .fv-ranking-list .fv-ranking-card:nth-child(-n+3) {
+    padding-top: 48px !important;
+  }
+}
+
+/* タブレット */
+@media (max-width: 900px) {
+  .hero h1 { font-size: clamp(34px, 7vw, 48px) !important; }
+  .fv-ranking-list .fv-ranking-card {
+    grid-template-columns: 58px minmax(0, 1fr) !important;
+    padding: 48px 16px 18px !important;
+  }
+  .fv-ranking-logo,
+  .fv-ranking-main,
+  .fv-ranking-bonus,
+  .fv-ranking-actions {
+    grid-column: 1 / -1 !important;
+  }
+  .fv-ranking-logo {
+    max-width: 100% !important;
+    min-height: 84px !important;
+  }
+  .fv-ranking-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* モバイル */
+@media (max-width: 640px) {
+  .phase30-promo-rail {
+    width: 100% !important;
+    max-width: none !important;
+    padding-left: 14px !important;
+  }
+  .phase30-promo-scroll {
+    grid-auto-columns: min(84vw, 320px) !important;
+    scroll-padding-left: 0;
+  }
+  .hero,
+  .fv-ranking-section,
+  .after-ranking-clean,
+  .agent-ranking-2026,
+  .ranking-criteria,
+  .search-intent-2026,
+  .bonus-intent-2026,
+  .home-faq-2026,
+  .bonus-status-2026,
+  .final-home-route {
+    width: min(100% - 24px, 1180px) !important;
+  }
+  .hero h1 {
+    font-size: clamp(30px, 9vw, 40px) !important;
+    line-height: 1.2 !important;
+  }
+  .hero-actions { display: grid !important; grid-template-columns: 1fr !important; }
+  .hero-actions .btn { width: 100% !important; }
+  .fv-ranking-list .fv-ranking-card {
+    display: grid !important;
+    grid-template-columns: 52px minmax(0, 1fr) !important;
+    gap: 12px !important;
+    padding: 48px 14px 16px !important;
+    border-radius: 20px !important;
+  }
+  .fv-ranking-list .fv-ranking-card:nth-child(-n+3)::before {
+    left: 14px !important;
+    right: auto !important;
+    max-width: calc(100% - 28px);
+    font-size: 11px !important;
+  }
+  .fv-rank-badge {
+    width: 52px !important;
+    height: 52px !important;
+  }
+  .fv-ranking-logo,
+  .fv-ranking-main,
+  .fv-ranking-bonus,
+  .fv-ranking-actions {
+    grid-column: 1 / -1 !important;
+  }
+  .fv-ranking-main h3 { font-size: 23px !important; }
+  .fv-ranking-actions {
+    grid-template-columns: 1fr !important;
+  }
+  .fv-ranking-actions a { min-height: 46px !important; }
+}
+
+@media (max-width: 380px) {
+  .phase30-promo-scroll { grid-auto-columns: 86vw !important; }
+  .hero h1 { font-size: 29px !important; }
+  .fv-ranking-list .fv-ranking-card { padding-left: 12px !important; padding-right: 12px !important; }
+}
+</style>
+<!-- PHASE32_TOP_PAGE_VISUAL_CLEANUP_END -->
+
 </head>
 <body>
 <aside aria-label="ボーナスCTAサイドバナー" class="bonus-side-rails">
@@ -9720,6 +9960,446 @@ iframe{display:block;border:0;}
 })();
 </script>
 <!-- MOBILE_POLISH_PHASE20_END -->
+
+<style id="phase33-top-quality-polish">
+/* Phase33: TOP page quality polish / mobile-first visual system */
+:root {
+  --p33-red: #c9141d;
+  --p33-red-dark: #8f0b12;
+  --p33-ink: #211d1d;
+  --p33-muted: #675959;
+  --p33-line: rgba(201, 20, 29, .14);
+  --p33-soft: #fff7f6;
+  --p33-gold: #e0ad3b;
+  --p33-shadow: 0 20px 55px rgba(117, 20, 27, .10);
+}
+
+/* Legacy side rails are intentionally retired in favor of the top promo slider. */
+.bonus-side-rails { display: none !important; }
+
+body {
+  color: var(--p33-ink);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(201, 20, 29, .06), transparent 28%),
+    linear-gradient(180deg, #fffafa 0%, #fff 28%, #fffafa 100%);
+}
+
+.site-header {
+  border-bottom: 1px solid rgba(201, 20, 29, .10);
+  box-shadow: 0 8px 28px rgba(70, 20, 20, .05);
+}
+.header-inner { max-width: 1180px; }
+.brand { font-size: 15px; }
+.nav { gap: 10px 18px; }
+.nav a:not(.nav-cta) { position: relative; }
+.nav a:not(.nav-cta)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--p33-red);
+  transform: scaleX(0);
+  transition: transform .18s ease;
+}
+.nav a:not(.nav-cta):hover::after { transform: scaleX(1); }
+
+.phase30-promo-rail {
+  width: min(1180px, calc(100% - 36px));
+  margin: 24px auto 22px;
+  padding: 22px;
+  border: 1px solid var(--p33-line);
+  border-radius: 26px;
+  background: rgba(255,255,255,.96);
+  box-shadow: var(--p33-shadow);
+}
+.phase30-promo-head {
+  align-items: end;
+  margin-bottom: 15px;
+}
+.phase30-promo-head h2 {
+  margin: 0;
+  color: var(--p33-red-dark);
+  font-size: clamp(21px, 2.2vw, 29px);
+  letter-spacing: -.035em;
+}
+.phase30-promo-head p {
+  margin: 5px 0 0;
+  color: var(--p33-muted);
+  font-size: 13px;
+}
+.phase31-swipe-hint {
+  border: 1px solid rgba(201,20,29,.18);
+  background: #fff5f5;
+  color: var(--p33-red-dark);
+  font-weight: 900;
+}
+.phase30-promo-scroll {
+  gap: 14px;
+  padding: 2px 2px 12px;
+  scroll-padding-inline: 2px;
+}
+.phase30-promo-scroll::-webkit-scrollbar { height: 7px; }
+.phase30-promo-scroll::-webkit-scrollbar-track { background: #f9e9e9; border-radius: 999px; }
+.phase30-promo-scroll::-webkit-scrollbar-thumb { background: #d85c62; border-radius: 999px; }
+.phase30-promo-card {
+  border: 1px solid rgba(201,20,29,.14);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(117,20,27,.08);
+  overflow: hidden;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.phase30-promo-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(201,20,29,.27);
+  box-shadow: 0 18px 36px rgba(117,20,27,.13);
+}
+.phase30-promo-image {
+  background: #fff;
+  aspect-ratio: 1200 / 465;
+  overflow: hidden;
+}
+.phase30-promo-image img { width: 100%; height: 100%; object-fit: cover; }
+.phase30-promo-body { padding: 15px; }
+.phase30-promo-body strong {
+  color: var(--p33-ink);
+  font-size: 18px;
+  line-height: 1.35;
+}
+.phase30-promo-body p {
+  min-height: 43px;
+  margin: 7px 0 0;
+  color: var(--p33-muted);
+  font-size: 13px;
+  line-height: 1.65;
+}
+.phase30-promo-label {
+  color: var(--p33-red-dark);
+  background: #fff2f2;
+  border-color: rgba(201,20,29,.16);
+}
+.phase30-promo-body a {
+  min-height: 42px;
+  margin-top: 13px;
+  background: linear-gradient(135deg, var(--p33-red), var(--p33-red-dark));
+  box-shadow: 0 10px 22px rgba(201,20,29,.17);
+}
+
+.phase30-hero-shell {
+  width: min(1180px, calc(100% - 36px));
+  margin: 0 auto;
+}
+.phase30-hero-stage { width: 100%; }
+.hero {
+  width: 100% !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+.hero-box {
+  padding: clamp(30px, 4vw, 52px) !important;
+  border-radius: 32px !important;
+  border-color: rgba(201,20,29,.13) !important;
+  box-shadow: 0 24px 64px rgba(117,20,27,.10) !important;
+}
+.hero-grid.fv-enhanced-grid {
+  grid-template-columns: minmax(250px,.78fr) minmax(420px,1.35fr) minmax(260px,.85fr);
+  gap: clamp(20px, 2.4vw, 34px);
+}
+.hero-copy-panel h1,
+.hero h1 {
+  max-width: 760px;
+  font-size: clamp(42px, 4.2vw, 61px) !important;
+  line-height: 1.13 !important;
+  letter-spacing: -.055em !important;
+  text-wrap: balance;
+}
+.hero-copy-panel .hero-lead {
+  color: #514747;
+  font-size: 15px;
+  line-height: 1.95;
+}
+.fv-pickup-panel,
+.hero-card {
+  border-color: rgba(201,20,29,.12);
+  box-shadow: 0 16px 38px rgba(117,20,27,.09);
+}
+.fv-pickup-card { border-color: rgba(201,20,29,.12); }
+.fv-pickup-card:hover { transform: translateY(-2px); }
+.hero-actions .btn { min-height: 48px; }
+
+.fv-ranking-section,
+.after-ranking-clean,
+.section,
+.cta,
+.notice {
+  width: min(1180px, calc(100% - 36px));
+  max-width: 1180px;
+}
+.fv-ranking-section { margin-top: 38px; }
+.fv-ranking-head {
+  padding: 0 2px;
+  align-items: end;
+}
+.fv-ranking-head h2,
+.after-section h2,
+.section-title {
+  text-wrap: balance;
+}
+.fv-ranking-list { gap: 16px; }
+.fv-ranking-card {
+  grid-template-columns: 66px 156px minmax(220px,1fr) minmax(230px,.9fr) 180px !important;
+  gap: 16px !important;
+  padding: 18px !important;
+  border: 1px solid rgba(201,20,29,.14) !important;
+  border-radius: 22px !important;
+  background: #fff !important;
+  box-shadow: 0 12px 32px rgba(117,20,27,.07) !important;
+  overflow: hidden;
+}
+.fv-ranking-card:first-child {
+  border-color: rgba(224,173,59,.56) !important;
+  background: linear-gradient(135deg,#fffdf5,#fff8e4) !important;
+  box-shadow: 0 18px 42px rgba(171,115,0,.13) !important;
+}
+.fv-ranking-logo {
+  width: 156px !important;
+  min-height: 92px !important;
+  border-radius: 17px !important;
+}
+.fv-ranking-logo img { max-width: 132px !important; width: auto !important; height: 66px !important; }
+.fv-ranking-main { min-width: 0; }
+.fv-ranking-main h3 {
+  margin-bottom: 7px;
+  font-size: clamp(20px,1.7vw,24px);
+  color: var(--p33-ink);
+}
+.fv-ranking-main p,
+.fv-ranking-bonus span { overflow-wrap: anywhere; }
+.fv-ranking-tags span { white-space: nowrap; }
+.fv-ranking-bonus {
+  min-width: 0;
+  padding: 14px !important;
+  border-radius: 16px !important;
+  background: #fffaf4 !important;
+}
+.fv-ranking-bonus strong {
+  overflow-wrap: anywhere;
+  line-height: 1.4;
+}
+.fv-ranking-actions { min-width: 0; }
+.fv-ranking-actions a {
+  width: 100%;
+  min-height: 43px;
+  padding-inline: 12px;
+  white-space: normal;
+  line-height: 1.35;
+}
+
+.after-ranking-clean { margin-top: 42px; }
+.after-section {
+  margin-top: 22px;
+  border: 1px solid rgba(201,20,29,.13);
+  border-radius: 26px;
+  box-shadow: 0 16px 44px rgba(117,20,27,.07);
+}
+.after-section-inner { padding: clamp(22px,3vw,32px); }
+.after-grid,
+.after-flow { gap: 16px; }
+.after-card,
+.after-flow-step,
+.after-row {
+  border-color: rgba(201,20,29,.12);
+  box-shadow: 0 8px 22px rgba(117,20,27,.045);
+}
+.after-row {
+  grid-template-columns: 160px minmax(0,1fr) minmax(150px,190px) 140px;
+}
+.after-final { box-shadow: 0 22px 54px rgba(143,11,18,.19); }
+
+.section {
+  padding-top: 38px;
+  padding-bottom: 38px;
+}
+.section-head { max-width: 880px; }
+.section-title { color: var(--p33-ink); }
+.feature-card,
+.flow-card,
+.casino-card,
+.link-card,
+.check-card,
+.responsible-box,
+.mascot-note {
+  border-color: rgba(201,20,29,.11);
+  box-shadow: 0 12px 32px rgba(117,20,27,.065);
+}
+
+.mobile-bottom-cta {
+  backdrop-filter: blur(16px);
+  background: rgba(255,255,255,.92) !important;
+  border: 1px solid rgba(201,20,29,.14) !important;
+}
+
+@media (max-width: 1180px) {
+  .hero-grid.fv-enhanced-grid { grid-template-columns: 1fr .9fr; }
+  .fv-pickup-panel { grid-column: 1 / -1; grid-row: 2; }
+  .fv-pickup-list { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .fv-ranking-card {
+    grid-template-columns: 62px 145px minmax(0,1fr) minmax(220px,.8fr) !important;
+  }
+  .fv-ranking-actions { grid-column: 2 / -1; grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .after-row { grid-template-columns: 150px minmax(0,1fr) 150px; }
+  .after-row a { grid-column: 1 / -1; }
+}
+
+@media (max-width: 900px) {
+  .phase30-promo-rail,
+  .phase30-hero-shell,
+  .fv-ranking-section,
+  .after-ranking-clean,
+  .section,
+  .cta,
+  .notice { width: min(100% - 28px, 1180px); }
+  .hero-grid.fv-enhanced-grid { grid-template-columns: 1fr; }
+  .hero-copy-panel { order: 1; }
+  .fv-pickup-panel { order: 2; grid-column: auto; grid-row: auto; }
+  .hero-side { order: 3; }
+  .hero-copy-panel h1,
+  .hero h1 { font-size: clamp(36px, 7vw, 50px) !important; }
+  .fv-ranking-card {
+    grid-template-columns: 58px 132px minmax(0,1fr) !important;
+  }
+  .fv-ranking-bonus,
+  .fv-ranking-actions { grid-column: 2 / -1; }
+  .after-grid { grid-template-columns: 1fr; }
+  .after-flow { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+
+@media (max-width: 640px) {
+  body { padding-bottom: calc(92px + env(safe-area-inset-bottom,0px)); }
+  .site-header { position: sticky !important; }
+  .header-inner { padding: 12px 14px; }
+  .brand { width: 100%; justify-content: center; font-size: 14px; }
+  .nav {
+    flex-wrap: nowrap !important;
+    width: 100%;
+    padding: 2px 0 5px;
+    gap: 8px;
+  }
+  .nav a {
+    flex: 0 0 auto;
+    min-height: 42px !important;
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px !important;
+    border: 1px solid rgba(201,20,29,.11);
+    border-radius: 999px;
+    background: #fff;
+  }
+  .nav a::after { display: none !important; }
+
+  .phase30-promo-rail {
+    width: 100%;
+    margin: 0;
+    padding: 18px 14px 17px;
+    border-width: 0 0 1px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .phase30-promo-head { align-items: center; }
+  .phase30-promo-head h2 { font-size: 21px; }
+  .phase30-promo-head p { font-size: 12px; }
+  .phase31-swipe-hint { font-size: 11px; }
+  .phase30-promo-scroll {
+    display: flex !important;
+    gap: 12px !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding-right: 24px;
+  }
+  .phase30-promo-scroll::-webkit-scrollbar { display: none; }
+  .phase30-promo-card {
+    flex: 0 0 min(84vw, 330px);
+    scroll-snap-align: start;
+  }
+  .phase30-promo-body p { min-height: auto; }
+
+  .phase30-hero-shell,
+  .fv-ranking-section,
+  .after-ranking-clean,
+  .section,
+  .cta,
+  .notice { width: min(100% - 24px, 1180px); }
+  .hero-box {
+    padding: 24px 18px !important;
+    border-radius: 24px !important;
+  }
+  .hero-copy-panel h1,
+  .hero h1 {
+    font-size: clamp(30px, 9.2vw, 40px) !important;
+    line-height: 1.2 !important;
+  }
+  .hero-copy-panel .hero-lead { font-size: 14px; line-height: 1.85; }
+  .fv-pickup-panel { padding: 16px; }
+  .fv-pickup-list { grid-template-columns: 1fr; }
+  .hero-side { display: none !important; }
+  .hero-actions { display: grid !important; grid-template-columns: 1fr !important; }
+
+  .fv-ranking-section { margin-top: 28px; }
+  .fv-ranking-head { display: block; }
+  .fv-ranking-more { width: 100%; margin-top: 14px; }
+  .fv-ranking-card {
+    display: grid !important;
+    grid-template-columns: 54px minmax(0,1fr) !important;
+    gap: 12px !important;
+    padding: 15px !important;
+    border-radius: 20px !important;
+  }
+  .fv-ranking-logo,
+  .fv-ranking-main,
+  .fv-ranking-bonus,
+  .fv-ranking-actions {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+  }
+  .fv-ranking-logo {
+    min-height: 82px !important;
+    justify-content: center !important;
+  }
+  .fv-ranking-main h3 { font-size: 21px; }
+  .fv-ranking-main p { font-size: 13.5px; line-height: 1.7; }
+  .fv-ranking-bonus { padding: 13px !important; }
+  .fv-ranking-actions {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 9px;
+  }
+  .fv-ranking-actions a { min-height: 46px !important; }
+
+  .after-section { border-radius: 21px; }
+  .after-section-inner { padding: 20px 17px; }
+  .after-flow { grid-template-columns: 1fr; }
+  .after-row {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  .after-row a { width: 100%; }
+  .after-final-actions { display: grid !important; grid-template-columns: 1fr !important; }
+
+  .section { padding-top: 30px; padding-bottom: 30px; }
+  .mobile-bottom-cta { box-shadow: 0 12px 32px rgba(43,18,18,.20) !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phase30-promo-card,
+  .fv-pickup-card,
+  .nav a::after { transition: none !important; }
+}
+</style>
 
 </body>
 </html>
