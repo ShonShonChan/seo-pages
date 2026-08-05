@@ -70,6 +70,8 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
+          token: ${{ github.token }}
+          persist-credentials: true
 
       - name: Prepare working branch
         id: branch
@@ -177,16 +179,24 @@ jobs:
 
       - name: Push working branch
         if: steps.changes.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ steps.branch.outputs.branch }}
         run: |
           # main への直接 push は行わない（作業ブランチのみ push する）
-          BRANCH="${{ steps.branch.outputs.branch }}"
           case "${BRANCH}" in
-            main|master)
+            main|master|"")
               echo "::error::main への直接 push は禁止されています。"
               exit 1
               ;;
           esac
-          git push --set-upstream origin "${BRANCH}"
+
+          # push 用の認証付き origin を設定する（トークンはログにマスクされる）
+          git remote set-url origin \
+            "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+
+          # 作業ブランチだけを明示的に push する（main は push しない）
+          git push --set-upstream origin "refs/heads/${BRANCH}:refs/heads/${BRANCH}"
 
       - name: Create Pull Request
         if: steps.changes.outputs.changed == 'true'
