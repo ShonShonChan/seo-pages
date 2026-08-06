@@ -321,26 +321,17 @@ jobs:
           fi
 
           if [ "${CHANGED}" = "true" ]; then
-            MESSAGE="$(cat <<EOF
-対応しました。
-
-${REPORT}
-
-確認用PR:
-${PR_URL}
-
-自動マージはしていません。内容を確認してからマージしてください。
-EOF
-)"
+            MESSAGE="$(printf '%s\n\n%s\n\n%s\n%s\n\n%s' \
+              '対応しました。' \
+              "${REPORT}" \
+              '確認用PR:' \
+              "${PR_URL}" \
+              '自動マージはしていません。内容を確認してからマージしてください。')"
           else
-            MESSAGE="$(cat <<EOF
-確認しましたが、今回は変更不要と判断しました。
-
-${REPORT}
-
-PRは作成していません。
-EOF
-)"
+            MESSAGE="$(printf '%s\n\n%s\n\n%s' \
+              '確認しましたが、今回は変更不要と判断しました。' \
+              "${REPORT}" \
+              'PRは作成していません。')"
           fi
 
           PAYLOAD="$(jq -n \
@@ -371,18 +362,13 @@ EOF
 
           RUN_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
 
-          MESSAGE="$(cat <<EOF
-処理中にエラーが発生しました。
-
-依頼:
-${TASK}
-
-GitHub Actions:
-${RUN_URL}
-
-サイトへの自動反映や自動マージは行っていません。
-EOF
-)"
+          MESSAGE="$(printf '%s\n\n%s\n%s\n\n%s\n%s\n\n%s' \
+            '処理中にエラーが発生しました。' \
+            '依頼:' \
+            "${TASK}" \
+            'GitHub Actions:' \
+            "${RUN_URL}" \
+            'サイトへの自動反映や自動マージは行っていません。')"
 
           PAYLOAD="$(jq -n \
             --arg chat_id "${CHAT_ID}" \
