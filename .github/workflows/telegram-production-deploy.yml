@@ -1,8 +1,8 @@
 name: Telegram Production Deploy
 
-# Telegramから明示的に「本番反映して」と指示されたときだけ起動する。
-# mainへ直接pushせず、対象PRをsquash mergeする。
-# 安全確認では「すべてのcheck-run」を一律判定せず、required checksだけを確認する。
+# Telegram から明示的に本番反映を指示されたときだけ起動する。
+# main へ直接 push せず、Telegram Claude Agent が作成した PR を PR 経由でマージする。
+# 必須チェック 0 件、pending、mergeable 未計算、再実行、merge queue、公開反映遅延を考慮する。
 
 on:
   repository_dispatch:
@@ -13,6 +13,8 @@ permissions:
   pull-requests: write
   actions: read
   checks: read
+  statuses: read
+  deployments: read
 
 concurrency:
   group: telegram-production-deploy
@@ -22,29 +24,42 @@ jobs:
   deploy:
     name: Validate, merge and verify deployment
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
 
     env:
       CHAT_ID: ${{ github.event.client_payload.chat_id }}
       REQUEST_ID: ${{ github.event.client_payload.request_id }}
       PR_NUMBER: ${{ github.event.client_payload.pr_number }}
-      PUBLIC_URL: https://revenge-casino-guide.com/
+      PUBLIC_URL: https://revenge-casino-guide.com
+      FAILURE_STAGE: initialization
+      MERGE_COMPLETED: "false"
+      ALREADY_MERGED: "false"
 
     steps:
+      - name: Initialize state
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "FAILURE_STAGE=payload_validation" >> "${GITHUB_ENV}"
+          echo "MERGE_COMPLETED=false" >> "${GITHUB_ENV}"
+          echo "ALREADY_MERGED=false" >> "${GITHUB_ENV}"
+
       - name: Validate payload
         shell: bash
         run: |
           set -euo pipefail
 
           if ! printf '%s' "${PR_NUMBER}" | grep -Eq '^[0-9]+$'; then
-            echo "::error::pr_numberが不正です。"
+            echo "::error::pr_number が不正です。"
             exit 1
           fi
 
           if [ -z "${CHAT_ID}" ]; then
-            echo "::error::chat_idが空です。"
+            echo "::error::chat_id が空です。"
             exit 1
           fi
+
+          echo "FAILURE_STAGE=pr_validation" >> "${GITHUB_ENV}"
 
       - name: Validate target PR
         id: pr
@@ -54,93 +69,169 @@ jobs:
         run: |
           set -euo pipefail
 
-          PR_JSON="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}")"
+          # GitHub が mergeable をまだ計算していない場合があるため、最大30秒待つ。
+          PR_JSON=""
+          for attempt in $(seq 1 6); do
+            PR_JSON="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}")"
+            MERGEABLE="$(printf '%s' "${PR_JSON}" | jq -r '.mergeable')"
+            if [ "${MERGEABLE}" != "null" ]; then
+              break
+            fi
+            sleep 5
+          done
 
           STATE="$(printf '%s' "${PR_JSON}" | jq -r '.state')"
           DRAFT="$(printf '%s' "${PR_JSON}" | jq -r '.draft')"
+          MERGED="$(printf '%s' "${PR_JSON}" | jq -r '.merged')"
           BASE="$(printf '%s' "${PR_JSON}" | jq -r '.base.ref')"
           TITLE="$(printf '%s' "${PR_JSON}" | jq -r '.title')"
           PR_URL="$(printf '%s' "${PR_JSON}" | jq -r '.html_url')"
           HEAD_SHA="$(printf '%s' "${PR_JSON}" | jq -r '.head.sha')"
+          HEAD_REF="$(printf '%s' "${PR_JSON}" | jq -r '.head.ref')"
+          HEAD_REPO="$(printf '%s' "${PR_JSON}" | jq -r '.head.repo.full_name // ""')"
           MERGEABLE="$(printf '%s' "${PR_JSON}" | jq -r '.mergeable')"
           MERGEABLE_STATE="$(printf '%s' "${PR_JSON}" | jq -r '.mergeable_state // "unknown"')"
 
-          [ "${STATE}" = "open" ] || { echo "::error::PRがopenではありません。"; exit 1; }
-          [ "${DRAFT}" = "false" ] || { echo "::error::Draft PRは本番反映できません。"; exit 1; }
-          [ "${BASE}" = "main" ] || { echo "::error::main向けPRではありません。"; exit 1; }
+          [ "${BASE}" = "main" ] || { echo "::error::main 向け PR ではありません。"; exit 1; }
+          [ "${DRAFT}" = "false" ] || { echo "::error::Draft PR は本番反映できません。"; exit 1; }
 
           case "${TITLE}" in
             "[Telegram Claude Agent]"*) ;;
-            *) echo "::error::Telegram Claude Agentが作成したPRではありません。"; exit 1 ;;
+            *) echo "::error::Telegram Claude Agent が作成した PR ではありません。"; exit 1 ;;
           esac
 
-          if [ "${MERGEABLE}" = "false" ]; then
-            echo "::error::PRにマージ競合があります。"
+          case "${HEAD_REF}" in
+            telegram-claude/*) ;;
+            *) echo "::error::Telegram Claude Agent の作業ブランチではありません。"; exit 1 ;;
+          esac
+
+          if [ "${HEAD_REPO}" != "${GITHUB_REPOSITORY}" ]; then
+            echo "::error::外部 fork の PR は Telegram から本番反映できません。"
             exit 1
           fi
 
-          case "${MERGEABLE_STATE}" in
-            dirty)
-              echo "::error::PRに競合があるため停止します。"
+          if [ "${MERGED}" = "true" ]; then
+            echo "ALREADY_MERGED=true" >> "${GITHUB_ENV}"
+            echo "MERGE_COMPLETED=true" >> "${GITHUB_ENV}"
+          elif [ "${STATE}" != "open" ]; then
+            echo "::error::PR は open ではなく、かつ merged でもありません。"
+            exit 1
+          fi
+
+          if [ "${MERGED}" != "true" ]; then
+            if [ "${MERGEABLE}" = "false" ]; then
+              echo "::error::PR にマージ競合があります。"
               exit 1
-              ;;
-          esac
+            fi
+
+            case "${MERGEABLE_STATE}" in
+              dirty)
+                echo "::error::PR に競合があるため停止します。"
+                exit 1
+                ;;
+            esac
+          fi
+
+          # 変更対象を保存。後続の危険ファイル確認と公開内容照合で使う。
+          gh api --paginate "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}/files?per_page=100" \
+            --jq '.[].filename' > /tmp/pr-files.txt
+
+          FILE_COUNT="$(wc -l < /tmp/pr-files.txt | tr -d ' ')"
+          if [ "${FILE_COUNT}" -eq 0 ]; then
+            echo "::error::変更ファイルがありません。"
+            exit 1
+          fi
+
+          if [ "${FILE_COUNT}" -gt 50 ]; then
+            echo "::error::変更ファイルが ${FILE_COUNT} 件あります。Telegram の1ステップ本番反映対象としては大きすぎるため停止します。"
+            exit 1
+          fi
+
+          # Workflow・BOT設定・秘密情報に関わるファイルは、通常のサイト更新と分離する。
+          # これらを変更する PR は手動確認を要求する。
+          if grep -Eq '^(\.github/|wrangler\.toml$|wrangler\.jsonc$|package\.json$|package-lock\.json$|CLAUDE\.md$|bot-capabilities\.md$)' /tmp/pr-files.txt; then
+            echo "::error::運用設定・Workflow・BOTルール等の重要ファイルが含まれています。手動確認が必要です。"
+            cat /tmp/pr-files.txt
+            exit 1
+          fi
 
           echo "pr_url=${PR_URL}" >> "${GITHUB_OUTPUT}"
           echo "head_sha=${HEAD_SHA}" >> "${GITHUB_OUTPUT}"
+          echo "head_ref=${HEAD_REF}" >> "${GITHUB_OUTPUT}"
           echo "title=${TITLE}" >> "${GITHUB_OUTPUT}"
+          echo "file_count=${FILE_COUNT}" >> "${GITHUB_OUTPUT}"
 
-      - name: Verify required checks only
+          echo "FAILURE_STAGE=required_checks" >> "${GITHUB_ENV}"
+
+      - name: Verify required checks safely
+        if: env.ALREADY_MERGED != 'true'
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
 
-          # 重要:
-          # commitに紐づく全check-runを一律で判定すると、
-          # mergeに不要な過去/任意チェックのfailureまで拾ってしまう。
-          # ここではGitHub上で「required」に設定されているチェックだけを見る。
+          # gh pr checks は以下のケースで非0終了になり得る。
+          # - required checks が0件
+          # - pending
+          # - failed/cancelled
+          # そのため終了コードだけで失敗判定せず、取得できた JSON の bucket を正として判定する。
+
+          get_required_checks() {
+            local out_file="$1"
+            local err_file="$2"
+            set +e
+            gh pr checks "${PR_NUMBER}" \
+              --repo "${GITHUB_REPOSITORY}" \
+              --required \
+              --json name,bucket,state,workflow >"${out_file}" 2>"${err_file}"
+            local code=$?
+            set -e
+            return "${code}"
+          }
 
           set +e
-          CHECK_JSON="$(gh pr checks "${PR_NUMBER}" \
-            --repo "${GITHUB_REPOSITORY}" \
-            --required \
-            --json name,bucket,state,workflow 2>/tmp/pr-checks-error.txt)"
+          get_required_checks /tmp/required-checks.json /tmp/required-checks.err
           CHECK_EXIT=$?
           set -e
 
-          # JSONが取れなかった場合だけエラー。
-          # required checkが0件なら [] として正常に続行する。
-          if ! printf '%s' "${CHECK_JSON}" | jq -e 'type == "array"' >/dev/null 2>&1; then
-            echo "::error::required checksの取得に失敗しました。"
-            cat /tmp/pr-checks-error.txt || true
+          CHECK_ERROR="$(cat /tmp/required-checks.err 2>/dev/null || true)"
+          CHECK_JSON="$(cat /tmp/required-checks.json 2>/dev/null || true)"
+
+          if printf '%s' "${CHECK_JSON}" | jq -e 'type == "array"' >/dev/null 2>&1; then
+            :
+          elif printf '%s' "${CHECK_ERROR}" | grep -qi 'no required checks reported'; then
+            CHECK_JSON='[]'
+          else
+            echo "::error::required checks の取得に失敗しました。exit=${CHECK_EXIT}"
+            printf '%s\n' "${CHECK_ERROR}"
             exit 1
           fi
 
           REQUIRED_COUNT="$(printf '%s' "${CHECK_JSON}" | jq 'length')"
 
           if [ "${REQUIRED_COUNT}" -eq 0 ]; then
-            echo "required checksは設定されていません。PR安全確認へ進みます。"
+            echo "required checks は設定されていません。正常として続行します。"
+            echo "FAILURE_STAGE=pre_merge_revalidation" >> "${GITHUB_ENV}"
             exit 0
           fi
 
           echo "required checks:"
           printf '%s' "${CHECK_JSON}" | jq -r '.[] | "- \(.name): \(.bucket) [\(.workflow // "-")]"'
 
-          FAILED="$(printf '%s' "${CHECK_JSON}" | jq '[.[] | select(.bucket == "fail")] | length')"
+          FAILED="$(printf '%s' "${CHECK_JSON}" | jq '[.[] | select(.bucket == "fail" or .bucket == "cancel")] | length')"
           PENDING="$(printf '%s' "${CHECK_JSON}" | jq '[.[] | select(.bucket == "pending")] | length')"
 
           if [ "${FAILED}" -gt 0 ]; then
-            echo "::error::必須チェックに失敗があります。"
+            echo "::error::必須チェックに失敗またはキャンセルがあります。"
             exit 1
           fi
 
           if [ "${PENDING}" -gt 0 ]; then
-            echo "必須チェックが未完了です。最大5分待ちます。"
+            echo "必須チェックが未完了です。最大10分待ちます。"
 
             set +e
-            gh pr checks "${PR_NUMBER}" \
+            timeout 600s gh pr checks "${PR_NUMBER}" \
               --repo "${GITHUB_REPOSITORY}" \
               --required \
               --watch \
@@ -149,16 +240,55 @@ jobs:
             WATCH_EXIT=$?
             set -e
 
-            if [ "${WATCH_EXIT}" -ne 0 ]; then
-              echo "::error::必須チェックが成功完了しませんでした。"
+            if [ "${WATCH_EXIT}" -eq 124 ]; then
+              echo "::error::必須チェック待ちが10分でタイムアウトしました。"
+              exit 1
+            fi
+
+            # watch の終了コードだけに依存せず、最後に JSON を取り直して確定判定する。
+            set +e
+            get_required_checks /tmp/required-checks-final.json /tmp/required-checks-final.err
+            FINAL_EXIT=$?
+            set -e
+
+            FINAL_ERROR="$(cat /tmp/required-checks-final.err 2>/dev/null || true)"
+            FINAL_JSON="$(cat /tmp/required-checks-final.json 2>/dev/null || true)"
+
+            if printf '%s' "${FINAL_JSON}" | jq -e 'type == "array"' >/dev/null 2>&1; then
+              :
+            elif printf '%s' "${FINAL_ERROR}" | grep -qi 'no required checks reported'; then
+              FINAL_JSON='[]'
+            else
+              echo "::error::待機後の required checks 再取得に失敗しました。exit=${FINAL_EXIT}"
+              printf '%s\n' "${FINAL_ERROR}"
+              exit 1
+            fi
+
+            FINAL_FAILED="$(printf '%s' "${FINAL_JSON}" | jq '[.[] | select(.bucket == "fail" or .bucket == "cancel")] | length')"
+            FINAL_PENDING="$(printf '%s' "${FINAL_JSON}" | jq '[.[] | select(.bucket == "pending")] | length')"
+
+            if [ "${FINAL_FAILED}" -gt 0 ]; then
+              echo "::error::必須チェックに失敗またはキャンセルがあります。"
+              exit 1
+            fi
+
+            if [ "${FINAL_PENDING}" -gt 0 ]; then
+              echo "::error::必須チェックが未完了のままです。"
               exit 1
             fi
           fi
 
+          # pass と skipping は GitHub 上でマージを阻害しない結果として扱う。
+          echo "required checks の確認が完了しました。"
+          echo "FAILURE_STAGE=pre_merge_revalidation" >> "${GITHUB_ENV}"
+
       - name: Revalidate immediately before merge
+        if: env.ALREADY_MERGED != 'true'
+        id: revalidate
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
+          ORIGINAL_HEAD_SHA: ${{ steps.pr.outputs.head_sha }}
         run: |
           set -euo pipefail
 
@@ -166,98 +296,237 @@ jobs:
           STATE="$(printf '%s' "${PR_JSON}" | jq -r '.state')"
           DRAFT="$(printf '%s' "${PR_JSON}" | jq -r '.draft')"
           BASE="$(printf '%s' "${PR_JSON}" | jq -r '.base.ref')"
+          CURRENT_HEAD_SHA="$(printf '%s' "${PR_JSON}" | jq -r '.head.sha')"
           MERGEABLE="$(printf '%s' "${PR_JSON}" | jq -r '.mergeable')"
+          MERGEABLE_STATE="$(printf '%s' "${PR_JSON}" | jq -r '.mergeable_state // "unknown"')"
 
-          [ "${STATE}" = "open" ] || { echo "::error::マージ直前にPRがopenではなくなりました。"; exit 1; }
-          [ "${DRAFT}" = "false" ] || { echo "::error::マージ直前にDraft状態です。"; exit 1; }
-          [ "${BASE}" = "main" ] || { echo "::error::マージ直前にbaseがmainではありません。"; exit 1; }
+          [ "${STATE}" = "open" ] || { echo "::error::マージ直前に PR が open ではなくなりました。"; exit 1; }
+          [ "${DRAFT}" = "false" ] || { echo "::error::マージ直前に Draft 状態です。"; exit 1; }
+          [ "${BASE}" = "main" ] || { echo "::error::マージ直前に base が main ではありません。"; exit 1; }
+          [ "${CURRENT_HEAD_SHA}" = "${ORIGINAL_HEAD_SHA}" ] || { echo "::error::安全確認後に PR の HEAD が更新されました。再度本番反映を指示してください。"; exit 1; }
           [ "${MERGEABLE}" != "false" ] || { echo "::error::マージ直前に競合が検出されました。"; exit 1; }
 
+          case "${MERGEABLE_STATE}" in
+            dirty)
+              echo "::error::マージ直前に競合が検出されました。"
+              exit 1
+              ;;
+          esac
+
+          echo "FAILURE_STAGE=merge" >> "${GITHUB_ENV}"
+
       - name: Merge Pull Request
+        if: env.ALREADY_MERGED != 'true'
         id: merge
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_HEAD_SHA: ${{ steps.pr.outputs.head_sha }}
+        run: |
+          set -euo pipefail
+
+          # --match-head-commit で、安全確認後に PR が更新された場合の誤マージを防止する。
+          # merge queue が設定されている場合、gh pr merge はキュー投入/auto-mergeになることがある。
+          gh pr merge "${PR_NUMBER}" \
+            --repo "${GITHUB_REPOSITORY}" \
+            --squash \
+            --delete-branch \
+            --match-head-commit "${EXPECTED_HEAD_SHA}"
+
+          echo "FAILURE_STAGE=merge_confirmation" >> "${GITHUB_ENV}"
+
+          # 通常マージだけでなく merge queue / auto-merge も考慮し、最大10分待つ。
+          MERGED="false"
+          MERGE_SHA=""
+          for attempt in $(seq 1 60); do
+            MERGED_JSON="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}")"
+            MERGED="$(printf '%s' "${MERGED_JSON}" | jq -r '.merged')"
+            MERGE_SHA="$(printf '%s' "${MERGED_JSON}" | jq -r '.merge_commit_sha // ""')"
+
+            if [ "${MERGED}" = "true" ] && [ -n "${MERGE_SHA}" ] && [ "${MERGE_SHA}" != "null" ]; then
+              break
+            fi
+            sleep 10
+          done
+
+          if [ "${MERGED}" != "true" ]; then
+            echo "::error::PR のマージ完了を10分以内に確認できませんでした。"
+            exit 1
+          fi
+
+          echo "merge_sha=${MERGE_SHA}" >> "${GITHUB_OUTPUT}"
+          echo "MERGE_SHA=${MERGE_SHA}" >> "${GITHUB_ENV}"
+          echo "MERGE_COMPLETED=true" >> "${GITHUB_ENV}"
+          echo "FAILURE_STAGE=production_verification" >> "${GITHUB_ENV}"
+
+      - name: Resolve already merged PR state
+        if: env.ALREADY_MERGED == 'true'
+        id: merged_state
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
 
-          gh pr merge "${PR_NUMBER}" \
-            --repo "${GITHUB_REPOSITORY}" \
-            --squash \
-            --delete-branch
+          PR_JSON="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}")"
+          MERGE_SHA="$(printf '%s' "${PR_JSON}" | jq -r '.merge_commit_sha // ""')"
 
-          MERGED_JSON="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}")"
-          MERGED="$(printf '%s' "${MERGED_JSON}" | jq -r '.merged')"
-          MERGE_SHA="$(printf '%s' "${MERGED_JSON}" | jq -r '.merge_commit_sha')"
-
-          [ "${MERGED}" = "true" ] || { echo "::error::PRのマージを確認できませんでした。"; exit 1; }
-          [ -n "${MERGE_SHA}" ] && [ "${MERGE_SHA}" != "null" ] || { echo "::error::merge commit SHAを取得できませんでした。"; exit 1; }
+          if [ -z "${MERGE_SHA}" ] || [ "${MERGE_SHA}" = "null" ]; then
+            echo "::error::merged PR の merge commit SHA を取得できませんでした。"
+            exit 1
+          fi
 
           echo "merge_sha=${MERGE_SHA}" >> "${GITHUB_OUTPUT}"
+          echo "MERGE_SHA=${MERGE_SHA}" >> "${GITHUB_ENV}"
+          echo "MERGE_COMPLETED=true" >> "${GITHUB_ENV}"
+          echo "FAILURE_STAGE=production_verification" >> "${GITHUB_ENV}"
 
-      - name: Verify production availability
+      - name: Verify production content
         id: production
         shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
 
-          # デプロイ基盤をGitHub Pagesだけに決め打ちしない。
-          # mainマージ後、公開URLがHTTP 2xx/3xxで応答することを確認する。
-          # 静的サイトの反映待ちを考慮し、最大約5分ポーリングする。
+          # まず公開サイト自体が応答するか確認する。
+          # そのうえで、変更された HTML がある場合は main の実ファイルと公開HTMLのSHA256を比較する。
+          # これにより「URLが200だから成功」という誤判定を避け、実際の変更反映まで確認する。
 
           VERIFIED="false"
           HTTP_CODE=""
+          VERIFY_MODE="availability"
 
-          for attempt in $(seq 1 30); do
+          HTML_FILES="$(grep -E '\.html$' /tmp/pr-files.txt 2>/dev/null | head -n 10 || true)"
+
+          if [ -n "${HTML_FILES}" ]; then
+            VERIFY_MODE="content_hash"
+          fi
+
+          for attempt in $(seq 1 60); do
             HTTP_CODE="$(curl \
               --silent \
               --show-error \
               --location \
+              --compressed \
               --output /dev/null \
               --write-out '%{http_code}' \
               --max-time 20 \
-              "${PUBLIC_URL}" || true)"
+              -H 'Cache-Control: no-cache' \
+              -H 'Pragma: no-cache' \
+              "${PUBLIC_URL}/?deploy_check=${MERGE_SHA}-${attempt}" || true)"
 
             case "${HTTP_CODE}" in
-              2*|3*)
-                VERIFIED="true"
-                break
+              2*|3*) ;;
+              *)
+                sleep 10
+                continue
                 ;;
             esac
+
+            if [ "${VERIFY_MODE}" = "availability" ]; then
+              VERIFIED="true"
+              break
+            fi
+
+            ALL_MATCH="true"
+            while IFS= read -r file; do
+              [ -n "${file}" ] || continue
+
+              # GitHub main 上の実ファイルを取得。
+              API_JSON="$(gh api "repos/${GITHUB_REPOSITORY}/contents/${file}?ref=main")"
+              ENCODING="$(printf '%s' "${API_JSON}" | jq -r '.encoding // ""')"
+              CONTENT="$(printf '%s' "${API_JSON}" | jq -r '.content // ""')"
+
+              if [ "${ENCODING}" != "base64" ] || [ -z "${CONTENT}" ]; then
+                echo "GitHub main の ${file} を取得できませんでした。"
+                ALL_MATCH="false"
+                break
+              fi
+
+              printf '%s' "${CONTENT}" | tr -d '\n' | base64 --decode > /tmp/expected.html
+              EXPECTED_HASH="$(sha256sum /tmp/expected.html | awk '{print $1}')"
+
+              PUBLIC_PATH="${PUBLIC_URL}/${file}"
+              curl \
+                --fail \
+                --silent \
+                --show-error \
+                --location \
+                --compressed \
+                --max-time 20 \
+                -H 'Cache-Control: no-cache' \
+                -H 'Pragma: no-cache' \
+                "${PUBLIC_PATH}?deploy_check=${MERGE_SHA}-${attempt}" > /tmp/public.html || {
+                  ALL_MATCH="false"
+                  break
+                }
+
+              PUBLIC_HASH="$(sha256sum /tmp/public.html | awk '{print $1}')"
+
+              if [ "${EXPECTED_HASH}" != "${PUBLIC_HASH}" ]; then
+                echo "まだ反映待ち: ${file}"
+                ALL_MATCH="false"
+                break
+              fi
+
+              echo "反映確認OK: ${file}"
+            done <<< "${HTML_FILES}"
+
+            if [ "${ALL_MATCH}" = "true" ]; then
+              VERIFIED="true"
+              break
+            fi
 
             sleep 10
           done
 
           echo "http_code=${HTTP_CODE}" >> "${GITHUB_OUTPUT}"
           echo "verified=${VERIFIED}" >> "${GITHUB_OUTPUT}"
+          echo "verify_mode=${VERIFY_MODE}" >> "${GITHUB_OUTPUT}"
 
           if [ "${VERIFIED}" != "true" ]; then
-            echo "::error::mainへのマージは完了しましたが、公開URLの正常応答を確認できませんでした。"
+            echo "::error::PR のマージは完了しましたが、10分以内に本番コンテンツの反映を確認できませんでした。"
             exit 1
           fi
 
+          echo "FAILURE_STAGE=telegram_success_notification" >> "${GITHUB_ENV}"
+
       - name: Notify Telegram success
         if: success()
+        continue-on-error: true
         shell: bash
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           PR_URL: ${{ steps.pr.outputs.pr_url }}
-          MERGE_SHA: ${{ steps.merge.outputs.merge_sha }}
           HTTP_CODE: ${{ steps.production.outputs.http_code }}
+          VERIFY_MODE: ${{ steps.production.outputs.verify_mode }}
         run: |
           set -euo pipefail
 
           if [ -z "${TELEGRAM_BOT_TOKEN}" ]; then
-            echo "::warning::TELEGRAM_BOT_TOKENが未設定です。"
+            echo "::warning::TELEGRAM_BOT_TOKEN が未設定です。"
             exit 0
+          fi
+
+          if [ "${ALREADY_MERGED}" = "true" ]; then
+            MERGE_TEXT='マージ: 既に完了済み'
+          else
+            MERGE_TEXT='マージ: 成功'
+          fi
+
+          if [ "${VERIFY_MODE}" = "content_hash" ]; then
+            VERIFY_TEXT='公開確認: 変更HTMLの内容一致を確認'
+          else
+            VERIFY_TEXT="公開確認: HTTP ${HTTP_CODE}"
           fi
 
           MESSAGE="$(printf '%s\n\n%s\n%s\n%s\n%s\n%s' \
             '本番反映しました。' \
             "対象PR: #${PR_NUMBER}" \
-            'マージ: 成功' \
-            "公開URL確認: HTTP ${HTTP_CODE}" \
-            "公開URL: ${PUBLIC_URL}" \
+            "${MERGE_TEXT}" \
+            "${VERIFY_TEXT}" \
+            "公開URL: ${PUBLIC_URL}/" \
             "PR: ${PR_URL}")"
 
           PAYLOAD="$(jq -n \
@@ -269,25 +538,64 @@ jobs:
             -X POST \
             -H 'Content-Type: application/json' \
             -d "${PAYLOAD}" \
-            "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage"
+            "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            || echo "::warning::本番反映は成功しましたが、Telegram 成功通知に失敗しました。"
 
       - name: Notify Telegram failure
         if: failure()
+        continue-on-error: true
         shell: bash
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          PR_URL: ${{ steps.pr.outputs.pr_url }}
         run: |
           set -euo pipefail
 
           if [ -z "${TELEGRAM_BOT_TOKEN}" ]; then
+            echo "::warning::TELEGRAM_BOT_TOKEN が未設定のため失敗通知を送れません。"
             exit 0
           fi
 
           RUN_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
-          MESSAGE="$(printf '%s\n\n%s\n%s\n\n%s' \
+
+          case "${FAILURE_STAGE}" in
+            payload_validation)
+              REASON='本番反映依頼のデータ確認で停止しました。'
+              ;;
+            pr_validation)
+              REASON='対象PRの安全確認で停止しました。'
+              ;;
+            required_checks)
+              REASON='PRの必須チェック確認で停止しました。'
+              ;;
+            pre_merge_revalidation)
+              REASON='マージ直前の再確認で停止しました。'
+              ;;
+            merge)
+              REASON='PRのマージ処理で停止しました。'
+              ;;
+            merge_confirmation)
+              REASON='マージ要求後、完了確認で停止しました。'
+              ;;
+            production_verification)
+              REASON='PRはマージ済みですが、本番サイトへの反映確認で停止しました。'
+              ;;
+            *)
+              REASON="処理途中で停止しました。stage=${FAILURE_STAGE}"
+              ;;
+          esac
+
+          if [ "${MERGE_COMPLETED}" = "true" ]; then
+            MERGE_STATUS='マージ状態: 完了済み（再マージしないでください）'
+          else
+            MERGE_STATUS='マージ状態: 未完了'
+          fi
+
+          MESSAGE="$(printf '%s\n\n%s\n%s\n%s\n\n%s' \
             '本番反映を完了できませんでした。' \
             "対象PR: #${PR_NUMBER}" \
-            '安全確認、マージ、または公開確認の途中で停止しました。' \
+            "${REASON}" \
+            "${MERGE_STATUS}" \
             "詳細: ${RUN_URL}")"
 
           PAYLOAD="$(jq -n \
@@ -299,4 +607,5 @@ jobs:
             -X POST \
             -H 'Content-Type: application/json' \
             -d "${PAYLOAD}" \
-            "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage"
+            "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            || echo "::warning::Telegram 失敗通知の送信にも失敗しました。"
