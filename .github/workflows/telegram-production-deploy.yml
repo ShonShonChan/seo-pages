@@ -2,7 +2,7 @@ name: Telegram Production Deploy
 
 # Telegram から明示的に本番反映を指示されたときだけ起動する。
 # main へ直接 push せず、Telegram Claude Agent が作成した PR を PR 経由でマージする。
-# 必須チェック 0 件、pending、mergeable 未計算、再実行、merge queue、公開反映遅延を考慮する。
+# 必須チェック0件/pending、set -e、mergeable未計算、再実行、merge queue、公開反映遅延を考慮する。
 
 on:
   repository_dispatch:
@@ -171,116 +171,143 @@ jobs:
         run: |
           set -euo pipefail
 
-          # gh pr checks は以下のケースで非0終了になり得る。
-          # - required checks が0件
-          # - pending
-          # - failed/cancelled
-          # そのため終了コードだけで失敗判定せず、取得できた JSON の bucket を正として判定する。
+          # gh pr checks は required checks 0件 / pending / failure で非0終了になることがある。
+          # set -e と関数の return code を組み合わせると、判定処理へ到達する前に shell が終了するため、
+          # gh の終了コードは必ず if 文の中で捕捉し、JSON の bucket を正として判定する。
 
-          get_required_checks() {
-            local out_file="$1"
+          capture_required_checks() {
+            local json_file="$1"
             local err_file="$2"
-            set +e
-            gh pr checks "${PR_NUMBER}" \
+            local rc_file="$3"
+            local rc=0
+
+            if gh pr checks "${PR_NUMBER}" \
               --repo "${GITHUB_REPOSITORY}" \
               --required \
-              --json name,bucket,state,workflow >"${out_file}" 2>"${err_file}"
-            local code=$?
-            set -e
-            return "${code}"
+              --json name,bucket,state,workflow >"${json_file}" 2>"${err_file}"; then
+              rc=0
+            else
+              rc=$?
+            fi
+
+            printf '%s\n' "${rc}" > "${rc_file}"
+            return 0
           }
 
-          set +e
-          get_required_checks /tmp/required-checks.json /tmp/required-checks.err
-          CHECK_EXIT=$?
-          set -e
+          normalize_required_checks() {
+            local json_file="$1"
+            local err_file="$2"
+            local normalized_file="$3"
+            local err_text
 
-          CHECK_ERROR="$(cat /tmp/required-checks.err 2>/dev/null || true)"
-          CHECK_JSON="$(cat /tmp/required-checks.json 2>/dev/null || true)"
+            err_text="$(cat "${err_file}" 2>/dev/null || true)"
 
-          if printf '%s' "${CHECK_JSON}" | jq -e 'type == "array"' >/dev/null 2>&1; then
-            :
-          elif printf '%s' "${CHECK_ERROR}" | grep -qi 'no required checks reported'; then
-            CHECK_JSON='[]'
+            if jq -e 'type == "array"' "${json_file}" >/dev/null 2>&1; then
+              cp "${json_file}" "${normalized_file}"
+              return 0
+            fi
+
+            if printf '%s' "${err_text}" | grep -qi 'no required checks reported'; then
+              printf '[]\n' > "${normalized_file}"
+              return 0
+            fi
+
+            echo "::error::required checks の取得結果を解釈できませんでした。"
+            printf '%s\n' "${err_text}"
+            return 1
+          }
+
+          evaluate_required_checks() {
+            local normalized_file="$1"
+            local failed pending count
+
+            count="$(jq 'length' "${normalized_file}")"
+            if [ "${count}" -eq 0 ]; then
+              echo 'required checks は設定されていません。正常として続行します。'
+              return 0
+            fi
+
+            echo 'required checks:'
+            jq -r '.[] | "- \(.name): \(.bucket) [\(.workflow // "-")]"' "${normalized_file}"
+
+            failed="$(jq '[.[] | select(.bucket == "fail" or .bucket == "cancel")] | length' "${normalized_file}")"
+            pending="$(jq '[.[] | select(.bucket == "pending")] | length' "${normalized_file}")"
+
+            if [ "${failed}" -gt 0 ]; then
+              echo '::error::必須チェックに失敗またはキャンセルがあります。'
+              return 2
+            fi
+
+            if [ "${pending}" -gt 0 ]; then
+              return 8
+            fi
+
+            return 0
+          }
+
+          # 初回取得
+          capture_required_checks /tmp/required-checks.json /tmp/required-checks.err /tmp/required-checks.rc
+          CHECK_EXIT="$(cat /tmp/required-checks.rc)"
+
+          if ! normalize_required_checks /tmp/required-checks.json /tmp/required-checks.err /tmp/required-checks-normalized.json; then
+            echo "::error::required checks の取得に失敗しました。gh_exit=${CHECK_EXIT}"
+            exit 1
+          fi
+
+          EVAL_EXIT=0
+          if evaluate_required_checks /tmp/required-checks-normalized.json; then
+            EVAL_EXIT=0
           else
-            echo "::error::required checks の取得に失敗しました。exit=${CHECK_EXIT}"
-            printf '%s\n' "${CHECK_ERROR}"
+            EVAL_EXIT=$?
+          fi
+
+          if [ "${EVAL_EXIT}" -eq 2 ]; then
             exit 1
           fi
 
-          REQUIRED_COUNT="$(printf '%s' "${CHECK_JSON}" | jq 'length')"
+          # pending の場合だけポーリング。gh pr checks --watch の終了コードには依存しない。
+          if [ "${EVAL_EXIT}" -eq 8 ]; then
+            echo '必須チェックが未完了です。最大10分待ちます。'
+            CHECKS_READY='false'
 
-          if [ "${REQUIRED_COUNT}" -eq 0 ]; then
-            echo "required checks は設定されていません。正常として続行します。"
-            echo "FAILURE_STAGE=pre_merge_revalidation" >> "${GITHUB_ENV}"
-            exit 0
-          fi
+            for attempt in $(seq 1 60); do
+              sleep 10
 
-          echo "required checks:"
-          printf '%s' "${CHECK_JSON}" | jq -r '.[] | "- \(.name): \(.bucket) [\(.workflow // "-")]"'
+              capture_required_checks /tmp/required-checks-loop.json /tmp/required-checks-loop.err /tmp/required-checks-loop.rc
+              LOOP_EXIT="$(cat /tmp/required-checks-loop.rc)"
 
-          FAILED="$(printf '%s' "${CHECK_JSON}" | jq '[.[] | select(.bucket == "fail" or .bucket == "cancel")] | length')"
-          PENDING="$(printf '%s' "${CHECK_JSON}" | jq '[.[] | select(.bucket == "pending")] | length')"
+              if ! normalize_required_checks /tmp/required-checks-loop.json /tmp/required-checks-loop.err /tmp/required-checks-loop-normalized.json; then
+                echo "required checks 再取得を一時的に解釈できませんでした。gh_exit=${LOOP_EXIT}; retry=${attempt}/60"
+                continue
+              fi
 
-          if [ "${FAILED}" -gt 0 ]; then
-            echo "::error::必須チェックに失敗またはキャンセルがあります。"
-            exit 1
-          fi
+              LOOP_EVAL=0
+              if evaluate_required_checks /tmp/required-checks-loop-normalized.json; then
+                LOOP_EVAL=0
+              else
+                LOOP_EVAL=$?
+              fi
 
-          if [ "${PENDING}" -gt 0 ]; then
-            echo "必須チェックが未完了です。最大10分待ちます。"
+              if [ "${LOOP_EVAL}" -eq 2 ]; then
+                exit 1
+              fi
 
-            set +e
-            timeout 600s gh pr checks "${PR_NUMBER}" \
-              --repo "${GITHUB_REPOSITORY}" \
-              --required \
-              --watch \
-              --fail-fast \
-              --interval 10
-            WATCH_EXIT=$?
-            set -e
+              if [ "${LOOP_EVAL}" -eq 0 ]; then
+                CHECKS_READY='true'
+                break
+              fi
 
-            if [ "${WATCH_EXIT}" -eq 124 ]; then
-              echo "::error::必須チェック待ちが10分でタイムアウトしました。"
-              exit 1
-            fi
+              echo "required checks pending: ${attempt}/60"
+            done
 
-            # watch の終了コードだけに依存せず、最後に JSON を取り直して確定判定する。
-            set +e
-            get_required_checks /tmp/required-checks-final.json /tmp/required-checks-final.err
-            FINAL_EXIT=$?
-            set -e
-
-            FINAL_ERROR="$(cat /tmp/required-checks-final.err 2>/dev/null || true)"
-            FINAL_JSON="$(cat /tmp/required-checks-final.json 2>/dev/null || true)"
-
-            if printf '%s' "${FINAL_JSON}" | jq -e 'type == "array"' >/dev/null 2>&1; then
-              :
-            elif printf '%s' "${FINAL_ERROR}" | grep -qi 'no required checks reported'; then
-              FINAL_JSON='[]'
-            else
-              echo "::error::待機後の required checks 再取得に失敗しました。exit=${FINAL_EXIT}"
-              printf '%s\n' "${FINAL_ERROR}"
-              exit 1
-            fi
-
-            FINAL_FAILED="$(printf '%s' "${FINAL_JSON}" | jq '[.[] | select(.bucket == "fail" or .bucket == "cancel")] | length')"
-            FINAL_PENDING="$(printf '%s' "${FINAL_JSON}" | jq '[.[] | select(.bucket == "pending")] | length')"
-
-            if [ "${FINAL_FAILED}" -gt 0 ]; then
-              echo "::error::必須チェックに失敗またはキャンセルがあります。"
-              exit 1
-            fi
-
-            if [ "${FINAL_PENDING}" -gt 0 ]; then
-              echo "::error::必須チェックが未完了のままです。"
+            if [ "${CHECKS_READY}" != 'true' ]; then
+              echo '::error::必須チェックが10分以内に完了しませんでした。'
               exit 1
             fi
           fi
 
-          # pass と skipping は GitHub 上でマージを阻害しない結果として扱う。
-          echo "required checks の確認が完了しました。"
-          echo "FAILURE_STAGE=pre_merge_revalidation" >> "${GITHUB_ENV}"
+          echo 'required checks の確認が完了しました。'
+          echo 'FAILURE_STAGE=pre_merge_revalidation' >> "${GITHUB_ENV}"
 
       - name: Revalidate immediately before merge
         if: env.ALREADY_MERGED != 'true'
@@ -389,21 +416,51 @@ jobs:
         run: |
           set -euo pipefail
 
-          # まず公開サイト自体が応答するか確認する。
-          # そのうえで、変更された HTML がある場合は main の実ファイルと公開HTMLのSHA256を比較する。
-          # これにより「URLが200だから成功」という誤判定を避け、実際の変更反映まで確認する。
+          # 本番確認は 3 層で行う。
+          # 1) GitHub Deployments で対象 merge SHA の github-pages 成功を確認
+          # 2) 公開URLが 2xx/3xx で応答することを確認
+          # 3) 変更HTMLは可能なら main と公開内容の SHA256 一致も確認（強い確認）
+          # GitHub Pages / CDN がHTMLを変換する場合があるため、hash 不一致だけでは失敗にしない。
 
-          VERIFIED="false"
-          HTTP_CODE=""
-          VERIFY_MODE="availability"
+          DEPLOYMENT_SEEN='false'
+          DEPLOYMENT_OK='false'
+          CONTENT_MATCH='false'
+          HTTP_OK='false'
+          HTTP_CODE=''
+          VERIFY_MODE='deployment_http'
 
           HTML_FILES="$(grep -E '\.html$' /tmp/pr-files.txt 2>/dev/null | head -n 10 || true)"
 
-          if [ -n "${HTML_FILES}" ]; then
-            VERIFY_MODE="content_hash"
-          fi
-
           for attempt in $(seq 1 60); do
+            # 対象 merge SHA の deployment を探す。GitHub Pages が deployments API を使う構成なら最優先で確認。
+            DEPLOYMENTS_JSON='[]'
+            if DEPLOYMENTS_JSON="$(gh api \
+              -H 'Accept: application/vnd.github+json' \
+              "repos/${GITHUB_REPOSITORY}/deployments?sha=${MERGE_SHA}&per_page=100" 2>/tmp/deployments.err)"; then
+              DEPLOYMENT_ID="$(printf '%s' "${DEPLOYMENTS_JSON}" | jq -r '[.[] | select(.environment == "github-pages" or .environment == "production")][0].id // empty')"
+
+              if [ -n "${DEPLOYMENT_ID}" ]; then
+                DEPLOYMENT_SEEN='true'
+                STATUS_JSON='[]'
+                if STATUS_JSON="$(gh api \
+                  -H 'Accept: application/vnd.github+json' \
+                  "repos/${GITHUB_REPOSITORY}/deployments/${DEPLOYMENT_ID}/statuses?per_page=20" 2>/tmp/deployment-status.err)"; then
+                  DEPLOY_STATE="$(printf '%s' "${STATUS_JSON}" | jq -r '.[0].state // "pending"')"
+                  echo "deployment state: ${DEPLOY_STATE}"
+
+                  case "${DEPLOY_STATE}" in
+                    success)
+                      DEPLOYMENT_OK='true'
+                      ;;
+                    failure|error)
+                      echo '::error::GitHub Pages / production deployment が失敗しました。'
+                      exit 1
+                      ;;
+                  esac
+                fi
+              fi
+            fi
+
             HTTP_CODE="$(curl \
               --silent \
               --show-error \
@@ -417,80 +474,96 @@ jobs:
               "${PUBLIC_URL}/?deploy_check=${MERGE_SHA}-${attempt}" || true)"
 
             case "${HTTP_CODE}" in
-              2*|3*) ;;
-              *)
-                sleep 10
-                continue
-                ;;
+              2*|3*) HTTP_OK='true' ;;
+              *) HTTP_OK='false' ;;
             esac
 
-            if [ "${VERIFY_MODE}" = "availability" ]; then
-              VERIFIED="true"
-              break
-            fi
+            # HTML変更がある場合は内容一致も試す。これは deployment API が見えない環境の代替確認にもなる。
+            if [ -n "${HTML_FILES}" ] && [ "${HTTP_OK}" = 'true' ]; then
+              ALL_MATCH='true'
 
-            ALL_MATCH="true"
-            while IFS= read -r file; do
-              [ -n "${file}" ] || continue
+              while IFS= read -r file; do
+                [ -n "${file}" ] || continue
 
-              # GitHub main 上の実ファイルを取得。
-              API_JSON="$(gh api "repos/${GITHUB_REPOSITORY}/contents/${file}?ref=main")"
-              ENCODING="$(printf '%s' "${API_JSON}" | jq -r '.encoding // ""')"
-              CONTENT="$(printf '%s' "${API_JSON}" | jq -r '.content // ""')"
-
-              if [ "${ENCODING}" != "base64" ] || [ -z "${CONTENT}" ]; then
-                echo "GitHub main の ${file} を取得できませんでした。"
-                ALL_MATCH="false"
-                break
-              fi
-
-              printf '%s' "${CONTENT}" | tr -d '\n' | base64 --decode > /tmp/expected.html
-              EXPECTED_HASH="$(sha256sum /tmp/expected.html | awk '{print $1}')"
-
-              PUBLIC_PATH="${PUBLIC_URL}/${file}"
-              curl \
-                --fail \
-                --silent \
-                --show-error \
-                --location \
-                --compressed \
-                --max-time 20 \
-                -H 'Cache-Control: no-cache' \
-                -H 'Pragma: no-cache' \
-                "${PUBLIC_PATH}?deploy_check=${MERGE_SHA}-${attempt}" > /tmp/public.html || {
-                  ALL_MATCH="false"
+                API_JSON=''
+                if ! API_JSON="$(gh api "repos/${GITHUB_REPOSITORY}/contents/${file}?ref=main" 2>/tmp/content-api.err)"; then
+                  ALL_MATCH='false'
                   break
-                }
+                fi
 
-              PUBLIC_HASH="$(sha256sum /tmp/public.html | awk '{print $1}')"
+                ENCODING="$(printf '%s' "${API_JSON}" | jq -r '.encoding // ""')"
+                CONTENT="$(printf '%s' "${API_JSON}" | jq -r '.content // ""')"
 
-              if [ "${EXPECTED_HASH}" != "${PUBLIC_HASH}" ]; then
-                echo "まだ反映待ち: ${file}"
-                ALL_MATCH="false"
-                break
+                if [ "${ENCODING}" != 'base64' ] || [ -z "${CONTENT}" ]; then
+                  ALL_MATCH='false'
+                  break
+                fi
+
+                printf '%s' "${CONTENT}" | tr -d '\n' | base64 --decode > /tmp/expected.html
+                EXPECTED_HASH="$(sha256sum /tmp/expected.html | awk '{print $1}')"
+
+                PUBLIC_PATH="${PUBLIC_URL}/${file}"
+                if ! curl \
+                  --fail \
+                  --silent \
+                  --show-error \
+                  --location \
+                  --compressed \
+                  --max-time 20 \
+                  -H 'Cache-Control: no-cache' \
+                  -H 'Pragma: no-cache' \
+                  "${PUBLIC_PATH}?deploy_check=${MERGE_SHA}-${attempt}" > /tmp/public.html; then
+                  ALL_MATCH='false'
+                  break
+                fi
+
+                PUBLIC_HASH="$(sha256sum /tmp/public.html | awk '{print $1}')"
+                if [ "${EXPECTED_HASH}" != "${PUBLIC_HASH}" ]; then
+                  ALL_MATCH='false'
+                  break
+                fi
+              done <<< "${HTML_FILES}"
+
+              if [ "${ALL_MATCH}" = 'true' ]; then
+                CONTENT_MATCH='true'
               fi
+            fi
 
-              echo "反映確認OK: ${file}"
-            done <<< "${HTML_FILES}"
-
-            if [ "${ALL_MATCH}" = "true" ]; then
-              VERIFIED="true"
+            # 成功条件:
+            # - deployment成功 + HTTP応答、または
+            # - deployment API が使えない/見えない場合でも、変更HTMLの実内容一致 + HTTP応答
+            if [ "${HTTP_OK}" = 'true' ] && { [ "${DEPLOYMENT_OK}" = 'true' ] || [ "${CONTENT_MATCH}" = 'true' ]; }; then
               break
             fi
 
+            echo "本番反映待ち: attempt=${attempt}/60 deployment_seen=${DEPLOYMENT_SEEN} deployment_ok=${DEPLOYMENT_OK} content_match=${CONTENT_MATCH} http=${HTTP_CODE}"
             sleep 10
           done
 
-          echo "http_code=${HTTP_CODE}" >> "${GITHUB_OUTPUT}"
-          echo "verified=${VERIFIED}" >> "${GITHUB_OUTPUT}"
-          echo "verify_mode=${VERIFY_MODE}" >> "${GITHUB_OUTPUT}"
-
-          if [ "${VERIFIED}" != "true" ]; then
-            echo "::error::PR のマージは完了しましたが、10分以内に本番コンテンツの反映を確認できませんでした。"
+          if [ "${HTTP_OK}" != 'true' ]; then
+            echo '::error::本番URLが10分以内に正常応答しませんでした。'
             exit 1
           fi
 
-          echo "FAILURE_STAGE=telegram_success_notification" >> "${GITHUB_ENV}"
+          if [ "${DEPLOYMENT_OK}" = 'true' ]; then
+            if [ "${CONTENT_MATCH}" = 'true' ]; then
+              VERIFY_MODE='deployment_http_content'
+            else
+              VERIFY_MODE='deployment_http'
+              echo '::warning::deployment は成功しましたが、公開HTMLのバイト単位一致は確認できませんでした。CDN/Pages変換の可能性があるため deployment 成功を正とします。'
+            fi
+          elif [ "${CONTENT_MATCH}" = 'true' ]; then
+            VERIFY_MODE='content_http_fallback'
+            echo '::warning::対象SHAのdeploymentをAPIで確認できませんでしたが、mainと公開HTMLの内容一致を確認しました。'
+          else
+            echo '::error::本番URLは応答していますが、対象マージのデプロイ完了または公開内容一致を10分以内に確認できませんでした。'
+            exit 1
+          fi
+
+          echo "http_code=${HTTP_CODE}" >> "${GITHUB_OUTPUT}"
+          echo 'verified=true' >> "${GITHUB_OUTPUT}"
+          echo "verify_mode=${VERIFY_MODE}" >> "${GITHUB_OUTPUT}"
+          echo 'FAILURE_STAGE=telegram_success_notification' >> "${GITHUB_ENV}"
 
       - name: Notify Telegram success
         if: success()
