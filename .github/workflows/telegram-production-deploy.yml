@@ -1,8 +1,8 @@
 name: Telegram Production Deploy
 
 # Telegram から明示的に本番反映を指示されたときだけ起動する。
-# main へ直接 push せず、Telegram Claude Agent が作成した PR を PR 経由でマージする。
-# 必須チェック0件/pending、set -e、mergeable未計算、再実行、merge queue、公開反映遅延を考慮する。
+# main へ直接 push せず、Telegram Claude Agent の通常PR、またはTelegram Rollback Prepareの正規Revert PRをPR経由でマージする。
+# 通常PR/Revert PRの由来検証、必須チェック0件/pending、set -e、mergeable未計算、再実行、merge queue、公開反映遅延を考慮する。
 
 on:
   repository_dispatch:
@@ -95,19 +95,67 @@ jobs:
           [ "${BASE}" = "main" ] || { echo "::error::main 向け PR ではありません。"; exit 1; }
           [ "${DRAFT}" = "false" ] || { echo "::error::Draft PR は本番反映できません。"; exit 1; }
 
-          case "${TITLE}" in
-            "[Telegram Claude Agent]"*) ;;
-            *) echo "::error::Telegram Claude Agent が作成した PR ではありません。"; exit 1 ;;
-          esac
+          # Telegram から自動本番反映できるPRは、次の2種類だけに限定する。
+          # 1) Telegram Claude Agent が作成した通常修正PR
+          # 2) Telegram Rollback Prepare が作成した正規Revert PR
+          # 単にタイトルが似ているだけのPRや外部forkは許可しない。
+          PR_KIND=""
+          SOURCE_PR_NUMBER=""
 
           case "${HEAD_REF}" in
-            telegram-claude/*) ;;
-            *) echo "::error::Telegram Claude Agent の作業ブランチではありません。"; exit 1 ;;
+            telegram-claude/*)
+              case "${TITLE}" in
+                "[Telegram Claude Agent]"*) PR_KIND="agent" ;;
+                *) echo "::error::Telegram Claude Agentブランチですが、想定タイトルではありません。"; exit 1 ;;
+              esac
+              ;;
+            telegram-revert/*)
+              if printf '%s' "${TITLE}" | grep -Eq '^\[Telegram Claude Agent\] Revert PR #[0-9]+$'; then
+                PR_KIND="revert"
+                SOURCE_PR_NUMBER="$(printf '%s' "${TITLE}" | sed -n 's/^\[Telegram Claude Agent\] Revert PR #\([0-9][0-9]*\)$/\1/p')"
+              else
+                echo "::error::Revert PRのタイトル形式が正規のRollback Workflow形式ではありません。"
+                exit 1
+              fi
+              ;;
+            *)
+              echo "::error::Telegram Claude Agent / Telegram Rollback Prepare の作業ブランチではありません。"
+              exit 1
+              ;;
           esac
 
           if [ "${HEAD_REPO}" != "${GITHUB_REPOSITORY}" ]; then
             echo "::error::外部 fork の PR は Telegram から本番反映できません。"
             exit 1
+          fi
+
+          # Revert PRは、元PRまでたどって正規のロールバック由来か追加検証する。
+          if [ "${PR_KIND}" = "revert" ]; then
+            if ! printf '%s' "${SOURCE_PR_NUMBER}" | grep -Eq '^[0-9]+$'; then
+              echo "::error::Revert元PR番号を取得できませんでした。"
+              exit 1
+            fi
+
+            SOURCE_JSON="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${SOURCE_PR_NUMBER}")"
+            SOURCE_MERGED="$(printf '%s' "${SOURCE_JSON}" | jq -r '.merged')"
+            SOURCE_BASE="$(printf '%s' "${SOURCE_JSON}" | jq -r '.base.ref')"
+            SOURCE_TITLE="$(printf '%s' "${SOURCE_JSON}" | jq -r '.title')"
+            SOURCE_HEAD_REPO="$(printf '%s' "${SOURCE_JSON}" | jq -r '.head.repo.full_name // ""')"
+
+            [ "${SOURCE_MERGED}" = "true" ] || { echo "::error::Revert元PRはマージ済みではありません。"; exit 1; }
+            [ "${SOURCE_BASE}" = "main" ] || { echo "::error::Revert元PRはmain向けではありません。"; exit 1; }
+            [ "${SOURCE_HEAD_REPO}" = "${GITHUB_REPOSITORY}" ] || { echo "::error::Revert元PRが外部fork由来です。"; exit 1; }
+            case "${SOURCE_TITLE}" in
+              "[Telegram Claude Agent]"*) ;;
+              *) echo "::error::Revert元PRはTelegram系PRではありません。"; exit 1 ;;
+            esac
+
+            # Rollback Prepare Workflowが書く本文マーカーも確認する。
+            PR_BODY="$(printf '%s' "${PR_JSON}" | jq -r '.body // ""')"
+            if ! printf '%s' "${PR_BODY}" | grep -Fq -- "- 元PR: #${SOURCE_PR_NUMBER}"; then
+              echo "::error::Revert PR本文に元PR情報がなく、正規Rollback Workflow由来と確認できません。"
+              exit 1
+            fi
           fi
 
           if [ "${MERGED}" = "true" ]; then
