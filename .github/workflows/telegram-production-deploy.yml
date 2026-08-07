@@ -1,0 +1,213 @@
+name: Telegram Production Deploy
+
+# 明示的なTelegram指示だけで起動する本番反映専用ワークフロー。
+# 対象は Telegram Claude Agent が作成した open PR のみ。
+# mainへの直接pushはせず、PRをsquash mergeする。
+
+on:
+  repository_dispatch:
+    types: [telegram_production_deploy]
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: read
+  checks: read
+
+concurrency:
+  group: telegram-production-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Validate, merge and verify deployment
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    env:
+      CHAT_ID: ${{ github.event.client_payload.chat_id }}
+      REQUEST_ID: ${{ github.event.client_payload.request_id }}
+      PR_NUMBER: ${{ github.event.client_payload.pr_number }}
+      PUBLIC_URL: https://revenge-casino-guide.com/
+
+    steps:
+      - name: Validate payload
+        run: |
+          if ! printf '%s' "${PR_NUMBER}" | grep -Eq '^[0-9]+$'; then
+            echo "::error::pr_numberが不正です。"
+            exit 1
+          fi
+
+          if [ -z "${CHAT_ID}" ]; then
+            echo "::error::chat_idが空です。"
+            exit 1
+          fi
+
+      - name: Validate target PR
+        id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PR_JSON="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}")"
+
+          STATE="$(printf '%s' "${PR_JSON}" | jq -r '.state')"
+          DRAFT="$(printf '%s' "${PR_JSON}" | jq -r '.draft')"
+          BASE="$(printf '%s' "${PR_JSON}" | jq -r '.base.ref')"
+          TITLE="$(printf '%s' "${PR_JSON}" | jq -r '.title')"
+          PR_URL="$(printf '%s' "${PR_JSON}" | jq -r '.html_url')"
+          HEAD_SHA="$(printf '%s' "${PR_JSON}" | jq -r '.head.sha')"
+          MERGEABLE_STATE="$(printf '%s' "${PR_JSON}" | jq -r '.mergeable_state // "unknown"')"
+
+          [ "${STATE}" = "open" ] || { echo "::error::PRがopenではありません。"; exit 1; }
+          [ "${DRAFT}" = "false" ] || { echo "::error::Draft PRは本番反映できません。"; exit 1; }
+          [ "${BASE}" = "main" ] || { echo "::error::main向けPRではありません。"; exit 1; }
+
+          case "${TITLE}" in
+            "[Telegram Claude Agent]"*) ;;
+            *) echo "::error::Telegram Claude Agentが作成したPRではありません。"; exit 1 ;;
+          esac
+
+          case "${MERGEABLE_STATE}" in
+            dirty|blocked) echo "::error::競合またはブロック状態のため停止します。"; exit 1 ;;
+          esac
+
+          echo "pr_url=${PR_URL}" >> "$GITHUB_OUTPUT"
+          echo "head_sha=${HEAD_SHA}" >> "$GITHUB_OUTPUT"
+          echo "title=${TITLE}" >> "$GITHUB_OUTPUT"
+
+      - name: Verify checks
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD_SHA: ${{ steps.pr.outputs.head_sha }}
+        run: |
+          CHECKS="$(gh api "repos/${GITHUB_REPOSITORY}/commits/${HEAD_SHA}/check-runs" --jq '.check_runs')"
+          COUNT="$(printf '%s' "${CHECKS}" | jq 'length')"
+
+          if [ "${COUNT}" -eq 0 ]; then
+            echo "チェックランはありません。PR自体の検証結果を前提に続行します。"
+            exit 0
+          fi
+
+          PENDING="$(printf '%s' "${CHECKS}" | jq '[.[] | select(.status != "completed")] | length')"
+          FAILED="$(printf '%s' "${CHECKS}" | jq '[.[] | select(.status == "completed" and (.conclusion != "success" and .conclusion != "neutral" and .conclusion != "skipped"))] | length')"
+
+          [ "${PENDING}" -eq 0 ] || { echo "::error::未完了のチェックがあります。"; exit 1; }
+          [ "${FAILED}" -eq 0 ] || { echo "::error::失敗しているチェックがあります。"; exit 1; }
+
+      - name: Merge Pull Request
+        id: merge
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr merge "${PR_NUMBER}" \
+            --repo "${GITHUB_REPOSITORY}" \
+            --squash \
+            --delete-branch
+
+          MERGED_JSON="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}")"
+          MERGED="$(printf '%s' "${MERGED_JSON}" | jq -r '.merged')"
+          MERGE_SHA="$(printf '%s' "${MERGED_JSON}" | jq -r '.merge_commit_sha')"
+
+          [ "${MERGED}" = "true" ] || { echo "::error::PRのマージを確認できませんでした。"; exit 1; }
+          echo "merge_sha=${MERGE_SHA}" >> "$GITHUB_OUTPUT"
+
+      - name: Wait for Pages deployment
+        id: pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MERGE_SHA: ${{ steps.merge.outputs.merge_sha }}
+        run: |
+          RUN_URL=""
+          CONCLUSION=""
+
+          for attempt in $(seq 1 30); do
+            RUN_JSON="$(gh run list \
+              --repo "${GITHUB_REPOSITORY}" \
+              --workflow pages-build-deployment \
+              --branch main \
+              --limit 10 \
+              --json databaseId,headSha,status,conclusion,url \
+              --jq '.[] | select(.headSha == env.MERGE_SHA) | .' | head -n 1 || true)"
+
+            if [ -n "${RUN_JSON}" ]; then
+              STATUS="$(printf '%s' "${RUN_JSON}" | jq -r '.status')"
+              CONCLUSION="$(printf '%s' "${RUN_JSON}" | jq -r '.conclusion // ""')"
+              RUN_URL="$(printf '%s' "${RUN_JSON}" | jq -r '.url')"
+
+              if [ "${STATUS}" = "completed" ]; then
+                break
+              fi
+            fi
+
+            sleep 10
+          done
+
+          if [ -z "${RUN_URL}" ]; then
+            echo "::warning::PagesデプロイRunを時間内に特定できませんでした。"
+            echo "verified=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "run_url=${RUN_URL}" >> "$GITHUB_OUTPUT"
+          if [ "${CONCLUSION}" = "success" ]; then
+            echo "verified=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::error::Pagesデプロイが成功しませんでした: ${CONCLUSION}"
+            exit 1
+          fi
+
+      - name: Notify Telegram success
+        if: success()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          PR_URL: ${{ steps.pr.outputs.pr_url }}
+          DEPLOY_RUN_URL: ${{ steps.pages.outputs.run_url }}
+          VERIFIED: ${{ steps.pages.outputs.verified }}
+        run: |
+          if [ -z "${TELEGRAM_BOT_TOKEN}" ]; then
+            echo "::warning::TELEGRAM_BOT_TOKENが未設定です。"
+            exit 0
+          fi
+
+          if [ "${VERIFIED}" = "true" ]; then
+            RESULT="デプロイ確認: 成功"
+          else
+            RESULT="デプロイ確認: GitHub PagesのRunを時間内に特定できませんでした"
+          fi
+
+          MESSAGE="$(printf '%s\n\n%s\n%s\n%s\n%s' \
+            '本番反映しました。' \
+            "対象PR: #${PR_NUMBER}" \
+            "${RESULT}" \
+            "公開URL: ${PUBLIC_URL}" \
+            "PR: ${PR_URL}")"
+
+          PAYLOAD="$(jq -n --arg chat_id "${CHAT_ID}" --arg text "${MESSAGE}" \
+            '{chat_id: $chat_id, text: $text, disable_web_page_preview: true}')"
+
+          curl --fail-with-body --silent --show-error \
+            -X POST -H 'Content-Type: application/json' -d "${PAYLOAD}" \
+            "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage"
+
+      - name: Notify Telegram failure
+        if: failure()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: |
+          if [ -z "${TELEGRAM_BOT_TOKEN}" ]; then
+            exit 0
+          fi
+
+          RUN_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          MESSAGE="$(printf '%s\n\n%s\n%s\n\n%s' \
+            '本番反映を完了できませんでした。' \
+            "対象PR: #${PR_NUMBER}" \
+            '安全確認、マージ、またはデプロイ確認の途中で停止しました。' \
+            "詳細: ${RUN_URL}")"
+
+          PAYLOAD="$(jq -n --arg chat_id "${CHAT_ID}" --arg text "${MESSAGE}" \
+            '{chat_id: $chat_id, text: $text, disable_web_page_preview: true}')"
+
+          curl --fail-with-body --silent --show-error \
+            -X POST -H 'Content-Type: application/json' -d "${PAYLOAD}" \
+            "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage"
