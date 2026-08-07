@@ -1,0 +1,146 @@
+name: Telegram Rollback Prepare
+
+# マージ済みのTelegram Claude Agent PRを安全に戻すため、Revert PRを作る。
+# このWorkflow自体はmainへ直接pushせず、本番反映もしない。
+
+on:
+  repository_dispatch:
+    types: [telegram_rollback_prepare]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: telegram-rollback-${{ github.event.client_payload.pr_number || github.run_id }}
+  cancel-in-progress: false
+
+jobs:
+  prepare-revert:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CHAT_ID: ${{ github.event.client_payload.chat_id }}
+      REQUEST_ID: ${{ github.event.client_payload.request_id }}
+      PR_NUMBER: ${{ github.event.client_payload.pr_number }}
+
+    steps:
+      - name: Validate payload
+        run: |
+          printf '%s' "${PR_NUMBER}" | grep -Eq '^[0-9]+$' || { echo "::error::pr_numberが不正です。"; exit 1; }
+          [ -n "${CHAT_ID}" ] || { echo "::error::chat_idが空です。"; exit 1; }
+
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ github.token }}
+          persist-credentials: true
+
+      - name: Validate merged source PR
+        id: source
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PR_JSON="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}")"
+          MERGED="$(printf '%s' "${PR_JSON}" | jq -r '.merged')"
+          BASE="$(printf '%s' "${PR_JSON}" | jq -r '.base.ref')"
+          TITLE="$(printf '%s' "${PR_JSON}" | jq -r '.title')"
+          MERGE_SHA="$(printf '%s' "${PR_JSON}" | jq -r '.merge_commit_sha')"
+          PR_URL="$(printf '%s' "${PR_JSON}" | jq -r '.html_url')"
+
+          [ "${MERGED}" = "true" ] || { echo "::error::対象PRはマージ済みではありません。"; exit 1; }
+          [ "${BASE}" = "main" ] || { echo "::error::main向けPRではありません。"; exit 1; }
+          case "${TITLE}" in
+            "[Telegram Claude Agent]"*) ;;
+            *) echo "::error::Telegram Claude Agent作成PRではありません。"; exit 1 ;;
+          esac
+          [ -n "${MERGE_SHA}" ] && [ "${MERGE_SHA}" != "null" ] || { echo "::error::merge commitを取得できません。"; exit 1; }
+
+          echo "merge_sha=${MERGE_SHA}" >> "$GITHUB_OUTPUT"
+          echo "source_url=${PR_URL}" >> "$GITHUB_OUTPUT"
+          echo "source_title=${TITLE}" >> "$GITHUB_OUTPUT"
+
+      - name: Create revert branch and commit
+        id: revert
+        env:
+          MERGE_SHA: ${{ steps.source.outputs.merge_sha }}
+        run: |
+          SAFE_ID="$(printf '%s' "${REQUEST_ID}" | tr -c 'A-Za-z0-9._-' '-' | cut -c1-40)"
+          [ -n "${SAFE_ID}" ] || SAFE_ID="rollback"
+          BRANCH="telegram-revert/pr-${PR_NUMBER}-${SAFE_ID}-${GITHUB_RUN_ID}"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "${BRANCH}"
+
+          PARENTS="$(git show -s --format=%P "${MERGE_SHA}" | wc -w | tr -d ' ')"
+          if [ "${PARENTS}" -gt 1 ]; then
+            git revert -m 1 --no-edit "${MERGE_SHA}"
+          else
+            git revert --no-edit "${MERGE_SHA}"
+          fi
+
+          git remote set-url origin "https://x-access-token:${{ github.token }}@github.com/${GITHUB_REPOSITORY}.git"
+          git push --set-upstream origin "${BRANCH}"
+          echo "branch=${BRANCH}" >> "$GITHUB_OUTPUT"
+
+      - name: Create Revert PR
+        id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ steps.revert.outputs.branch }}
+          SOURCE_URL: ${{ steps.source.outputs.source_url }}
+          SOURCE_TITLE: ${{ steps.source.outputs.source_title }}
+        run: |
+          BODY="$(mktemp)"
+          {
+            echo "## 戻す対象"
+            echo ""
+            echo "- 元PR: #${PR_NUMBER}"
+            echo "- 元PR URL: ${SOURCE_URL}"
+            echo "- request_id: \`${REQUEST_ID}\`"
+            echo ""
+            echo "## 安全ルール"
+            echo ""
+            echo "- mainへ直接pushしていません。"
+            echo "- このRevert PRは自動マージしません。"
+            echo "- 内容確認後、Telegramから明示的に本番反映してください。"
+          } > "${BODY}"
+
+          gh pr create \
+            --base main \
+            --head "${BRANCH}" \
+            --title "[Telegram Claude Agent] Revert PR #${PR_NUMBER}" \
+            --body-file "${BODY}"
+
+          URL="$(gh pr view "${BRANCH}" --json url --jq .url)"
+          NUMBER="$(gh pr view "${BRANCH}" --json number --jq .number)"
+          echo "url=${URL}" >> "$GITHUB_OUTPUT"
+          echo "number=${NUMBER}" >> "$GITHUB_OUTPUT"
+
+      - name: Notify Telegram success
+        if: success()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          REVERT_URL: ${{ steps.pr.outputs.url }}
+          REVERT_NUMBER: ${{ steps.pr.outputs.number }}
+        run: |
+          MESSAGE="$(printf '%s\n\n%s\n%s\n\n%s' \
+            '元に戻すためのRevert PRを作成しました。' \
+            "戻す対象: PR #${PR_NUMBER}" \
+            "Revert PR: #${REVERT_NUMBER} ${REVERT_URL}" \
+            '本番にはまだ反映していません。内容確認後に「そのPRを本番反映して」と送ってください。')"
+          PAYLOAD="$(jq -n --arg chat_id "${CHAT_ID}" --arg text "${MESSAGE}" '{chat_id:$chat_id,text:$text,disable_web_page_preview:true}')"
+          curl --fail-with-body --silent --show-error -X POST -H 'Content-Type: application/json' -d "${PAYLOAD}" "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage"
+
+      - name: Notify Telegram failure
+        if: failure()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: |
+          RUN_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          MESSAGE="$(printf '%s\n\n%s\n%s' 'Revert PRを作成できませんでした。' "対象PR: #${PR_NUMBER}" "詳細: ${RUN_URL}")"
+          PAYLOAD="$(jq -n --arg chat_id "${CHAT_ID}" --arg text "${MESSAGE}" '{chat_id:$chat_id,text:$text,disable_web_page_preview:true}')"
+          curl --fail-with-body --silent --show-error -X POST -H 'Content-Type: application/json' -d "${PAYLOAD}" "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage"
