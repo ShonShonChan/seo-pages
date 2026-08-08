@@ -225,12 +225,6 @@
       font-size: 14px;
     }
 
-    .mini-btn {
-      min-height: 40px;
-      padding: 9px 14px;
-      font-size: 13px;
-    }
-
     .btn-primary,
     .mini-primary {
       background: linear-gradient(135deg, var(--red), var(--red-dark));
@@ -269,7 +263,7 @@
       box-shadow: 0 18px 38px rgba(120, 20, 20, 0.12);
     }
 
-    .hero-card h2 {
+    .hero-card h3 {
       margin: 0 0 10px;
       font-size: 23px;
       line-height: 1.35;
@@ -319,26 +313,6 @@
       filter: drop-shadow(0 12px 16px rgba(120, 20, 20, 0.12));
     }
 
-    .notice {
-      max-width: var(--max);
-      margin: 0 auto 18px;
-      padding: 0 18px;
-    }
-
-    .notice-box {
-      padding: 18px 20px;
-      border-radius: 18px;
-      background: #fff;
-      border: 1px solid rgba(215, 25, 32, 0.16);
-      color: #555;
-      box-shadow: 0 10px 28px rgba(150, 22, 24, 0.08);
-      font-size: 14px;
-    }
-
-    .notice-box strong {
-      color: var(--red-dark);
-    }
-
     .section {
       max-width: var(--max);
       margin: 0 auto;
@@ -363,12 +337,6 @@
       font-size: 15px;
     }
 
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
     .feature-card,
     .flow-card,
     .casino-card,
@@ -390,33 +358,6 @@
       padding: 22px;
     }
 
-    .feature-card,
-    .flow-card,
-    .casino-card {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .feature-card::before,
-    .flow-card::before,
-    .casino-card::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 5px;
-      background: linear-gradient(90deg, var(--red), var(--gold));
-    }
-
-    .feature-card h3,
-    .flow-card h3,
-    .casino-card h3,
-    .check-card h3 {
-      margin: 8px 0 10px;
-      font-size: 20px;
-      line-height: 1.45;
-      color: var(--red-dark);
-    }
-
     .feature-card p,
     .flow-card p,
     .casino-card p,
@@ -424,124 +365,6 @@
     .link-card p {
       margin: 0;
       color: #5f5f5f;
-      font-size: 14px;
-    }
-
-    .feature-icon,
-    .flow-number {
-      width: 38px;
-      height: 38px;
-      border-radius: 14px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, var(--red), var(--red-dark));
-      color: #fff;
-      font-weight: 900;
-      margin-bottom: 12px;
-      box-shadow: 0 8px 18px rgba(215, 25, 32, 0.2);
-    }
-
-    .flow-grid {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .casino-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .casino-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin: 14px 0 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .casino-meta li {
-      padding: 5px 8px;
-      border-radius: 999px;
-      background: #fff8f6;
-      border: 1px solid rgba(215, 25, 32, 0.12);
-      color: #666;
-      font-size: 11px;
-      font-weight: 800;
-      margin: 0;
-    }
-
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 5px 9px;
-      margin-bottom: 12px;
-      border-radius: 999px;
-      background: var(--gold-soft);
-      color: #8b6114;
-      border: 1px solid rgba(214, 166, 66, 0.3);
-      font-size: 11px;
-      line-height: 1.2;
-      font-weight: 900;
-      white-space: nowrap;
-    }
-
-    .tag-red {
-      background: var(--red-soft);
-      color: var(--red-dark);
-      border-color: rgba(215, 25, 32, 0.16);
-    }
-
-    .check-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .check-card ul {
-      margin: 12px 0 0;
-      padding-left: 1.2em;
-      color: #5f5f5f;
-      font-size: 14px;
-    }
-
-    .check-card li {
-      margin: 5px 0;
-    }
-
-    .mascot-note {
-      display: grid;
-      grid-template-columns: 110px 1fr;
-      gap: 18px;
-      align-items: center;
-      padding: 20px;
-      background:
-        radial-gradient(circle at 40px 40px, rgba(255, 248, 230, 0.9), transparent 42%),
-        #fff;
-    }
-
-    .mascot-note img {
-      width: 104px;
-      max-height: 128px;
-      object-fit: contain;
-      filter: drop-shadow(0 10px 14px rgba(120, 20, 20, 0.12));
-    }
-
-    .mascot-note h2,
-    .mascot-note h3 {
-      margin: 0 0 8px;
-      color: var(--red-dark);
-      font-size: 20px;
-      line-height: 1.45;
-    }
-
-    .mascot-note p {
-      margin: 0;
-      color: #555;
       font-size: 14px;
     }
 
@@ -574,69 +397,6 @@
       color: #666;
       font-size: 13px;
       line-height: 1.6;
-    }
-
-    .responsible-box {
-      padding: 24px;
-      background:
-        linear-gradient(135deg, #fff 0%, #fff8f6 100%);
-    }
-
-    .responsible-box h2 {
-      margin: 0 0 10px;
-      font-size: 24px;
-      line-height: 1.35;
-      color: var(--red-dark);
-    }
-
-    .responsible-box p {
-      margin: 0;
-      color: #555;
-      font-size: 14px;
-    }
-
-    .cta {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 30px 18px 58px;
-    }
-
-    .cta-box {
-      position: relative;
-      overflow: hidden;
-      padding: 34px;
-      border-radius: 30px;
-      background:
-        radial-gradient(circle at 88% 20%, rgba(255, 224, 140, 0.35), transparent 28%),
-        linear-gradient(135deg, var(--red), var(--red-dark));
-      color: #fff;
-      box-shadow: 0 18px 44px rgba(150, 22, 24, 0.18);
-    }
-
-    .cta-box h2 {
-      margin: 0 0 10px;
-      font-size: clamp(24px, 3.5vw, 38px);
-      line-height: 1.28;
-      letter-spacing: -0.04em;
-    }
-
-    .cta-box p {
-      margin: 0;
-      max-width: 780px;
-      color: rgba(255, 255, 255, 0.88);
-      font-size: 15px;
-    }
-
-    .cta-box .btn-secondary {
-      color: var(--red-dark);
-      background: #fff;
-      border: 2px solid #cc0000;
-    }
-
-    .cta-box .btn-primary {
-      background: rgba(255, 255, 255, 0.14);
-      border: 1px solid rgba(255, 255, 255, 0.34);
-      box-shadow: none;
     }
 
     .site-footer {
@@ -672,18 +432,6 @@
     }
 
     @media (max-width: 1040px) {
-      .feature-grid,
-      .check-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .flow-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .casino-grid {
-        grid-template-columns: 1fr;
-      }
 
       .link-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -801,11 +549,6 @@
         font-size: 14px;
       }
 
-      .mini-btn {
-        padding: 10px 12px;
-        font-size: 13px;
-      }
-
       .hero-side {
         min-height: 300px;
         padding-top: 4px;
@@ -821,18 +564,6 @@
         width: 86px;
         right: 0;
         bottom: 2px;
-      }
-
-      .notice {
-        margin-bottom: 14px;
-        padding: 0 16px;
-      }
-
-      .notice-box {
-        padding: 15px 16px;
-        font-size: 13px;
-        line-height: 1.75;
-        border-radius: 14px;
       }
 
       .section {
@@ -872,42 +603,6 @@
         border-radius: 18px;
       }
 
-      .mascot-note {
-        grid-template-columns: 82px 1fr;
-        gap: 12px;
-        padding: 16px;
-        border-radius: 18px;
-      }
-
-      .mascot-note img {
-        width: 82px;
-        max-height: 104px;
-      }
-
-      .mascot-note h2,
-      .mascot-note h3 {
-        font-size: 16px;
-        margin-bottom: 6px;
-      }
-
-      .mascot-note p {
-        font-size: 13px;
-        line-height: 1.7;
-      }
-
-      .responsible-box h2 {
-        font-size: 21px;
-      }
-
-      .cta {
-        padding: 24px 16px 42px;
-      }
-
-      .cta-box {
-        padding: 24px 18px;
-        border-radius: 22px;
-      }
-
       .site-footer {
         padding: 28px 16px;
       }
@@ -939,15 +634,6 @@
 
       .mascot-mini {
         width: 74px;
-      }
-
-      .mascot-note {
-        grid-template-columns: 70px 1fr;
-      }
-
-      .mascot-note img {
-        width: 70px;
-        max-height: 92px;
       }
     }
   .hero-title-break{display:block}
@@ -984,250 +670,12 @@
 .hero-title-break {
   display: block;
 }
-/* Homepage comparison redesign block */
-.homepage-redesign-block{margin-top:34px}
-.home-section{max-width:1120px;margin:0 auto 34px;padding:0 18px}
-.home-section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:16px}
-.home-section h2{font-size:clamp(22px,3vw,32px);line-height:1.35;color:#9f0000;margin:0}
-.home-section-lead{color:#5f4545;margin:8px 0 0;font-size:15px}
-.casino-card-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.casino-card{background:#fff;border:1px solid #f0caca;border-radius:20px;padding:16px;box-shadow:0 10px 28px rgba(130,0,0,.07);display:flex;flex-direction:column;gap:12px;min-height:230px}
-.casino-card-logo{height:54px;display:flex;align-items:center;justify-content:flex-start;border-radius:14px;background:#fff7f7;border:1px solid #f4d7d7;padding:10px;overflow:hidden}
-.casino-card-logo img{max-width:150px;max-height:42px;object-fit:contain}
-.casino-card h3{margin:0;color:#8f0000;font-size:18px;line-height:1.35}
-.casino-card p{margin:0;color:#4c3434;font-size:14px;line-height:1.7}
-.casino-card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
-.casino-card-tags span{font-size:12px;font-weight:700;color:#9f0000;background:#fff0f0;border:1px solid #f3c1c1;border-radius:999px;padding:3px 8px}
-.casino-card a{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;background:#c90000;color:#fff;border-radius:999px;padding:9px 12px;font-weight:800;font-size:14px;margin-top:4px}
-.route-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
-.route-card{background:#fff;border:1px solid #f0caca;border-radius:18px;padding:16px;text-decoration:none;color:#2a1b1b;box-shadow:0 8px 22px rgba(130,0,0,.05)}
-.route-card strong{display:block;color:#9f0000;font-size:16px;margin-bottom:6px}
-.route-card span{display:block;font-size:13px;line-height:1.65;color:#5d4545}
-.payment-route-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-.payment-route{background:linear-gradient(180deg,#fff,#fff7f7);border:1px solid #f0caca;border-radius:18px;padding:16px}
-.payment-route strong{display:block;color:#9f0000;font-size:17px;margin-bottom:6px}
-.payment-route p{margin:0 0 10px;color:#4c3434;font-size:14px;line-height:1.7}
-.payment-route a{color:#b60000;font-weight:800}
-.check-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-.check-item{background:#fff;border:1px solid #f0caca;border-radius:18px;padding:16px}
-.check-item b{display:block;color:#9f0000;margin-bottom:6px}
-.check-item p{margin:0;color:#4c3434;font-size:14px;line-height:1.7}
-.article-link-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.article-link{background:#fff;border:1px solid #f0caca;border-radius:18px;padding:16px;text-decoration:none;color:#2a1b1b}
-.article-link strong{display:block;color:#9f0000;margin-bottom:6px}
-.article-link span{font-size:13px;line-height:1.7;color:#5d4545}
-.home-safe-note{background:#fffbea;border:1px solid #f0d36c;border-radius:18px;padding:16px;color:#594000;font-size:14px;line-height:1.8}
-@media (max-width: 980px){.casino-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.route-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.payment-route-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.check-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.article-link-list{grid-template-columns:1fr 1fr}}
-@media (max-width: 640px){.home-section{padding:0 14px}.home-section-head{display:block}.casino-card-grid,.route-grid,.payment-route-grid,.check-grid,.article-link-list{grid-template-columns:1fr}.casino-card{min-height:auto}}
-/* Homepage logo card polish */
-.home-featured-casinos .casino-card{min-height:280px;justify-content:flex-start}
-.home-featured-casinos .casino-card-logo{height:78px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #f1d1d1;border-radius:16px;padding:12px;overflow:hidden}
-.home-featured-casinos .casino-card-logo img{display:block;max-width:185px;max-height:56px;width:auto;height:auto;object-fit:contain;margin:0 auto}
-.home-featured-casinos .casino-card h3{text-align:center;margin-top:2px}
-.home-featured-casinos .casino-card p{min-height:72px}
-.home-featured-casinos .casino-card-tags{justify-content:center}
-.home-featured-casinos .casino-card a{margin-top:auto}
-.casino-logo-placeholder{width:100%;height:56px;display:flex;align-items:center;justify-content:center;border-radius:12px;background:linear-gradient(135deg,#fff7f7,#ffffff);border:1px dashed #e4b4b4;color:#9f0000;font-weight:900;font-size:18px;letter-spacing:.04em;text-align:center}
-@media (max-width: 980px){.home-featured-casinos .casino-card{min-height:260px}.home-featured-casinos .casino-card p{min-height:0}}
-@media (max-width: 640px){.home-featured-casinos .casino-card{min-height:auto}.home-featured-casinos .casino-card-logo{height:72px}.home-featured-casinos .casino-card-logo img{max-width:170px;max-height:52px}}
-/* Agent ranking section 2026 */
-.agent-ranking-2026 {
-  width: min(1120px, calc(100% - 36px));
-  max-width: 1120px;
-  margin: 48px auto 44px;
-  box-sizing: border-box;
-}
-.agent-ranking-2026 .ranking-head {
-  margin-bottom: 18px;
-}
-.agent-ranking-2026 .ranking-kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border: 1px solid #f2c2c2;
-  border-radius: 999px;
-  color: #b60000;
-  background: #fff7f7;
-  font-weight: 800;
-  font-size: 13px;
-}
-.agent-ranking-2026 h2 {
-  margin: 12px 0 8px;
-  color: #9f0000;
-  font-size: clamp(26px, 3vw, 38px);
-  line-height: 1.25;
-}
-.agent-ranking-2026 .ranking-head p {
-  margin: 0;
-  color: #5f4a4a;
-}
-.ranking-table {
-  overflow: hidden;
-  border: 1px solid #f0caca;
-  border-radius: 22px;
-  background: #fff;
-  box-shadow: 0 18px 44px rgba(150, 22, 24, 0.08);
-}
-.ranking-row {
-  display: grid;
-  grid-template-columns: 72px 170px minmax(220px, 1fr) minmax(260px, 1.15fr) 190px;
-  gap: 18px;
-  align-items: center;
-  padding: 18px 20px;
-  border-bottom: 1px solid #f3dede;
-}
-.ranking-row:last-child {
-  border-bottom: 0;
-}
-.ranking-row:nth-child(odd) {
-  background: linear-gradient(90deg, #fff, #fff8f8);
-}
-.ranking-rank {
-  display: grid;
-  place-items: center;
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #d90000, #f0a928);
-  color: #fff;
-  box-shadow: 0 10px 22px rgba(190, 0, 0, 0.18);
-  font-weight: 900;
-}
-.ranking-rank span {
-  font-size: 22px;
-  line-height: 1;
-}
-.ranking-rank small {
-  margin-top: -10px;
-  font-size: 11px;
-}
-.ranking-logo {
-  min-height: 74px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #f3c9c9;
-  border-radius: 16px;
-  background: #fffafa;
-  padding: 10px;
-}
-.ranking-logo img {
-  display: block;
-  max-width: 138px;
-  max-height: 58px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-}
-.ranking-logo-placeholder {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 112px;
-  min-height: 52px;
-  padding: 8px 12px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #c90000, #f3b0a9);
-  color: #fff;
-  font-weight: 900;
-  text-align: center;
-}
-.ranking-summary h3 {
-  margin: 0 0 8px;
-  color: #191919;
-  font-size: 21px;
-}
-.ranking-summary p,
-.ranking-bonus p {
-  margin: 8px 0 0;
-  color: #5c4545;
-  line-height: 1.7;
-  font-size: 14px;
-}
-.ranking-label,
-.ranking-bonus span {
-  display: inline-flex;
-  align-items: center;
-  padding: 4px 10px;
-  border-radius: 999px;
-  border: 1px solid #f1c6c6;
-  background: #fff5f5;
-  color: #b60000;
-  font-weight: 800;
-  font-size: 12px;
-}
-.ranking-bonus {
-  padding: 12px 14px;
-  border-radius: 16px;
-  background: #fff8ef;
-  border: 1px solid #f4ddbd;
-}
-.ranking-cta {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.ranking-cta a {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 44px;
-  padding: 10px 16px;
-  border-radius: 999px;
-  background: #d90000;
-  color: #fff;
-  font-weight: 900;
-  text-decoration: none;
-  box-shadow: 0 12px 24px rgba(217, 0, 0, 0.18);
-}
-.ranking-cta a.ranking-sub {
-  background: #fff;
-  color: #b60000;
-  border: 1px solid #f0bcbc;
-  box-shadow: none;
-}
-.ranking-note {
-  margin: 14px 0 0;
-  padding: 14px 16px;
-  border: 1px solid #efd0d0;
-  border-radius: 16px;
-  background: #fff;
-  color: #5c4545;
-  font-size: 13px;
-}
-@media (max-width: 980px) {
-  .ranking-row {
-    grid-template-columns: 58px 130px 1fr;
-    gap: 14px;
-  }
-  .ranking-bonus,
-  .ranking-cta {
-    grid-column: 2 / -1;
-  }
-}
-@media (max-width: 640px) {
-  .ranking-row {
-    grid-template-columns: 48px 1fr;
-    padding: 16px;
-  }
-  .ranking-logo,
-  .ranking-summary,
-  .ranking-bonus,
-  .ranking-cta {
-    grid-column: 1 / -1;
-  }
-  .ranking-logo {
-    justify-content: flex-start;
-  }
-  .ranking-cta {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  .ranking-cta a {
-    flex: 1 1 150px;
-  }
-}
+
+
+
+
+
+
 
 /* Ranking section container width fix */
 @media (max-width: 640px) {
@@ -1366,461 +814,13 @@
   box-sizing: border-box;
 }
 
-.intent-panel,
-.bonus-panel,
-.faq-panel {
-  background: #fff;
-  border: 1px solid #f0caca;
-  border-radius: 22px;
-  box-shadow: 0 14px 34px rgba(150, 22, 24, 0.08);
-  padding: 24px;
-}
-
-.intent-head,
-.bonus-head,
-.faq-head {
-  margin-bottom: 18px;
-}
-
-.intent-kicker,
-.bonus-kicker,
-.faq-kicker {
-  display: inline-flex;
-  align-items: center;
-  padding: 5px 10px;
-  border-radius: 999px;
-  background: var(--red-soft);
-  border: 1px solid rgba(215, 25, 32, 0.16);
-  color: var(--red-dark);
-  font-size: 12px;
-  font-weight: 900;
-  margin-bottom: 8px;
-}
-
-.intent-panel h2,
-.bonus-panel h2,
-.faq-panel h2 {
-  margin: 0;
-  color: #9f0000;
-  font-size: clamp(22px, 2.7vw, 32px);
-  line-height: 1.35;
-  letter-spacing: -0.03em;
-}
-
-.intent-lead,
-.bonus-lead,
-.faq-lead {
-  margin: 8px 0 0;
-  color: #5c4545;
-  font-size: 14px;
-  line-height: 1.8;
-  max-width: 840px;
-}
-
-.intent-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.intent-card {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid #f2cccc;
-  border-radius: 18px;
-  padding: 18px;
-  background: linear-gradient(180deg, #fff, #fff8f8);
-}
-
-.intent-card::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--red), var(--gold));
-}
-
-.intent-card b {
-  display: block;
-  margin: 4px 0 8px;
-  color: #9f0000;
-  font-size: 17px;
-}
-
-.intent-card p {
-  margin: 0;
-  color: #5c4545;
-  font-size: 14px;
-  line-height: 1.75;
-}
-
-.bonus-table {
-  display: grid;
-  gap: 10px;
-}
-
-.bonus-row {
-  display: grid;
-  grid-template-columns: 170px 1fr 1fr 170px;
-  gap: 12px;
-  align-items: center;
-  padding: 14px 16px;
-  border: 1px solid #f2cccc;
-  border-radius: 16px;
-  background: #fffafa;
-}
-
-.bonus-row:nth-child(even) {
-  background: #fff;
-}
-
-.bonus-casino {
-  color: #9f0000;
-  font-weight: 900;
-}
-
-.bonus-copy,
-.bonus-check {
-  color: #5c4545;
-  font-size: 14px;
-  line-height: 1.7;
-}
-
-.bonus-row a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 40px;
-  padding: 9px 14px;
-  border-radius: 999px;
-  background: #d90000;
-  color: #fff;
-  font-weight: 900;
-  text-decoration: none;
-  text-align: center;
-}
-
-.intent-cta-box {
-  margin-top: 18px;
-  padding: 18px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, #d90000, #9f1017);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-}
-
-.intent-cta-box p {
-  margin: 0;
-  color: rgba(255,255,255,.9);
-  font-size: 14px;
-  line-height: 1.75;
-}
-
-.intent-cta-box a {
-  flex: 0 0 auto;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  padding: 10px 18px;
-  border-radius: 999px;
-  background: #fff;
-  color: #9f1017;
-  font-weight: 900;
-}
-
-.faq-list {
-  display: grid;
-  gap: 12px;
-}
-
-.faq-item {
-  border: 1px solid #f2cccc;
-  border-radius: 16px;
-  padding: 16px;
-  background: linear-gradient(180deg, #fff, #fff8f8);
-}
-
-.faq-item h3 {
-  margin: 0 0 8px;
-  color: #9f0000;
-  font-size: 17px;
-  line-height: 1.45;
-}
-
-.faq-item p {
-  margin: 0;
-  color: #5c4545;
-  font-size: 14px;
-  line-height: 1.8;
-}
-
-@media (max-width: 980px) {
-  .intent-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .bonus-row {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .bonus-row a {
-    grid-column: 1 / -1;
-  }
-
-  .intent-cta-box {
-    display: block;
-  }
-
-  .intent-cta-box a {
-    margin-top: 14px;
-    width: 100%;
-  }
-}
-
-@media (max-width: 640px) {
-  .search-intent-2026,
-  .bonus-intent-2026,
-  .home-faq-2026 {
-    width: min(100% - 24px, 1120px);
-    margin-bottom: 34px;
-  }
-
-  .intent-panel,
-  .bonus-panel,
-  .faq-panel {
-    padding: 18px;
-    border-radius: 18px;
-  }
-
-  .bonus-row {
-    grid-template-columns: 1fr;
-  }
-}
 
 
-/* Latest bonus status block */
-.bonus-status-2026 {
-  width: min(1120px, calc(100% - 36px));
-  max-width: 1120px;
-  margin: 0 auto 44px;
-  box-sizing: border-box;
-}
 
-.bonus-status-panel {
-  background: #fff;
-  border: 1px solid #f0caca;
-  border-radius: 22px;
-  box-shadow: 0 14px 34px rgba(150, 22, 24, 0.08);
-  padding: 24px;
-}
 
-.bonus-status-head {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 18px;
-  margin-bottom: 18px;
-}
 
-.bonus-status-kicker {
-  display: inline-flex;
-  align-items: center;
-  padding: 5px 10px;
-  border-radius: 999px;
-  background: var(--gold-soft);
-  border: 1px solid rgba(214, 166, 66, 0.34);
-  color: #8b6114;
-  font-size: 12px;
-  font-weight: 900;
-  margin-bottom: 8px;
-}
 
-.bonus-status-panel h2 {
-  margin: 0;
-  color: #9f0000;
-  font-size: clamp(22px, 2.7vw, 32px);
-  line-height: 1.35;
-  letter-spacing: -0.03em;
-}
 
-.bonus-status-lead {
-  margin: 8px 0 0;
-  color: #5c4545;
-  font-size: 14px;
-  line-height: 1.8;
-  max-width: 850px;
-}
-
-.bonus-status-date {
-  flex: 0 0 auto;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 34px;
-  padding: 6px 11px;
-  border-radius: 999px;
-  background: #fff7f7;
-  border: 1px solid #f2c2c2;
-  color: #9f0000;
-  font-size: 12px;
-  font-weight: 900;
-  white-space: nowrap;
-}
-
-.bonus-status-table {
-  display: grid;
-  gap: 10px;
-}
-
-.bonus-status-row {
-  display: grid;
-  grid-template-columns: 150px 170px minmax(230px, 1fr) minmax(210px, 1fr) 150px;
-  gap: 12px;
-  align-items: center;
-  padding: 14px 16px;
-  border: 1px solid #f2cccc;
-  border-radius: 16px;
-  background: #fffafa;
-}
-
-.bonus-status-row:nth-child(even) {
-  background: #fff;
-}
-
-.bonus-status-casino {
-  color: #9f0000;
-  font-weight: 900;
-  line-height: 1.5;
-}
-
-.bonus-status-type {
-  display: inline-flex;
-  align-items: center;
-  width: fit-content;
-  padding: 5px 10px;
-  border-radius: 999px;
-  background: #fff0f0;
-  border: 1px solid #f2c2c2;
-  color: #b60000;
-  font-size: 12px;
-  font-weight: 900;
-}
-
-.bonus-status-copy,
-.bonus-status-check {
-  color: #5c4545;
-  font-size: 13px;
-  line-height: 1.75;
-}
-
-.bonus-status-row a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 40px;
-  padding: 9px 14px;
-  border-radius: 999px;
-  background: #d90000;
-  color: #fff;
-  font-weight: 900;
-  text-decoration: none;
-  text-align: center;
-}
-
-.bonus-status-note {
-  margin: 16px 0 0;
-  padding: 14px 16px;
-  border-radius: 16px;
-  background: #fffbea;
-  border: 1px solid #f0d36c;
-  color: #594000;
-  font-size: 13px;
-  line-height: 1.8;
-}
-
-.bonus-status-next {
-  margin-top: 16px;
-  display: grid;
-  grid-template-columns: 1.2fr .8fr;
-  gap: 14px;
-  align-items: stretch;
-}
-
-.bonus-status-next-card {
-  padding: 18px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, #fff, #fff7f7);
-  border: 1px solid #f2cccc;
-}
-
-.bonus-status-next-card b {
-  display: block;
-  color: #9f0000;
-  margin-bottom: 6px;
-  font-size: 16px;
-}
-
-.bonus-status-next-card p {
-  margin: 0;
-  color: #5c4545;
-  font-size: 14px;
-  line-height: 1.75;
-}
-
-.bonus-status-next-card a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 12px;
-  min-height: 42px;
-  padding: 9px 15px;
-  border-radius: 999px;
-  background: #d90000;
-  color: #fff;
-  font-weight: 900;
-}
-
-@media (max-width: 1040px) {
-  .bonus-status-row {
-    grid-template-columns: 150px 1fr 1fr;
-  }
-
-  .bonus-status-row a {
-    grid-column: 1 / -1;
-  }
-}
-
-@media (max-width: 760px) {
-  .bonus-status-2026 {
-    width: min(100% - 24px, 1120px);
-    margin-bottom: 34px;
-  }
-
-  .bonus-status-panel {
-    padding: 18px;
-    border-radius: 18px;
-  }
-
-  .bonus-status-head {
-    display: block;
-  }
-
-  .bonus-status-date {
-    margin-top: 12px;
-  }
-
-  .bonus-status-row {
-    grid-template-columns: 1fr;
-  }
-
-  .bonus-status-next {
-    grid-template-columns: 1fr;
-  }
-}
 
 
 /* FV 2-column pickup redesign */
@@ -1861,7 +861,7 @@
   line-height: 1.3;
 }
 
-.fv-pickup-panel h2 {
+.fv-pickup-panel h3 {
   margin: 10px 0 4px;
   color: var(--red-dark);
   font-size: clamp(18px, 2.1vw, 24px);
@@ -2036,127 +1036,8 @@
 }
 
 
-/* ===== TOP最終導線調整 ===== */
-.final-home-route {
-  width: min(1120px, calc(100% - 36px));
-  max-width: 1120px;
-  margin: 0 auto 44px;
-  box-sizing: border-box;
-}
 
-.final-home-route-panel {
-  background: #fff;
-  border: 1px solid #f0caca;
-  border-radius: 22px;
-  box-shadow: 0 14px 34px rgba(150, 22, 24, 0.08);
-  padding: 24px;
-}
 
-.final-home-route-kicker {
-  display: inline-flex;
-  align-items: center;
-  padding: 5px 10px;
-  border-radius: 999px;
-  background: var(--red-soft);
-  border: 1px solid rgba(215, 25, 32, 0.16);
-  color: var(--red-dark);
-  font-size: 12px;
-  font-weight: 900;
-  margin-bottom: 8px;
-}
-
-.final-home-route h2 {
-  margin: 0;
-  color: #9f0000;
-  font-size: clamp(22px, 2.7vw, 32px);
-  line-height: 1.35;
-  letter-spacing: -0.03em;
-}
-
-.final-home-route-lead {
-  margin: 8px 0 0;
-  color: #5c4545;
-  font-size: 14px;
-  line-height: 1.8;
-  max-width: 860px;
-}
-
-.final-home-route-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
-  margin-top: 18px;
-}
-
-.final-home-route-card {
-  padding: 18px;
-  border-radius: 18px;
-  background: linear-gradient(180deg, #fff, #fff8f8);
-  border: 1px solid #f2cccc;
-}
-
-.final-home-route-card strong {
-  display: block;
-  color: #9f0000;
-  margin-bottom: 6px;
-  font-size: 15px;
-  line-height: 1.45;
-}
-
-.final-home-route-card span {
-  display: block;
-  color: #5c4545;
-  font-size: 13px;
-  line-height: 1.65;
-}
-
-.final-home-route-card a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 12px;
-  min-height: 38px;
-  padding: 8px 13px;
-  border-radius: 999px;
-  background: #d90000;
-  color: #fff;
-  font-size: 13px;
-  font-weight: 900;
-  text-decoration: none;
-}
-
-.final-home-route-note {
-  margin-top: 16px;
-  padding: 14px 16px;
-  border-radius: 16px;
-  background: #fffbea;
-  border: 1px solid #f0d36c;
-  color: #594000;
-  font-size: 13px;
-  line-height: 1.8;
-}
-
-@media (max-width: 980px) {
-  .final-home-route-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 640px) {
-  .final-home-route {
-    width: min(100% - 24px, 1120px);
-    margin-bottom: 34px;
-  }
-
-  .final-home-route-panel {
-    padding: 18px;
-    border-radius: 18px;
-  }
-
-  .final-home-route-grid {
-    grid-template-columns: 1fr;
-  }
-}
 
 
 
@@ -2255,7 +1136,7 @@ body {
   margin-bottom: 7px;
 }
 
-.bonus-side-card h2 {
+.bonus-side-card h3 {
   margin: 0 0 5px;
   color: #fff;
   font-size: 19px;
@@ -2298,21 +1179,8 @@ body {
   min-height: 136px;
 }
 
-.bonus-side-card.featured h2 {
+.bonus-side-card.featured h3 {
   font-size: 20px;
-}
-
-.bonus-mobile-banners {
-  display: none;
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 0 18px 24px;
-}
-
-.bonus-mobile-banner-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
 }
 
 .bonus-mobile-banner {
@@ -2323,22 +1191,6 @@ body {
     linear-gradient(135deg, #d71920 0%, #9f1017 72%);
   color: #fff;
   box-shadow: 0 14px 32px rgba(150,22,24,.18);
-}
-
-.bonus-mobile-blank {
-  width: 100%;
-  aspect-ratio: 16 / 7;
-  min-height: 108px;
-  display: grid;
-  place-items: center;
-  border-radius: 14px;
-  margin-bottom: 11px;
-  background: rgba(255,255,255,.14);
-  border: 1.5px dashed rgba(255,255,255,.55);
-  font-size: 12px;
-  font-weight: 900;
-  color: rgba(255,255,255,.88);
-  text-align: center;
 }
 
 .bonus-mobile-banner strong {
@@ -2383,7 +1235,7 @@ body {
     min-height: 116px;
   }
 
-  .bonus-side-card h2 {
+  .bonus-side-card h3 {
     font-size: 17px;
   }
 
@@ -2405,7 +1257,7 @@ body {
     min-height: 98px;
   }
 
-  .bonus-side-card h2 {
+  .bonus-side-card h3 {
     font-size: 16px;
   }
 
@@ -2420,12 +1272,7 @@ body {
   }
 }
 
-@media (max-width: 760px) {
-  .bonus-mobile-banners {
-    display: block;
-    padding: 0 16px 22px;
-  }
-}
+
 
 
 /* ===== 画像挿入前：FV/左右CTA/余白の最終整え ===== */
@@ -2483,13 +1330,13 @@ body {
   margin-bottom: 6px;
 }
 
-.bonus-side-card h2 {
+.bonus-side-card h3 {
   font-size: 18px;
   line-height: 1.24;
   margin-bottom: 4px;
 }
 
-.bonus-side-card.featured h2 {
+.bonus-side-card.featured h3 {
   font-size: 19px;
 }
 
@@ -2524,26 +1371,6 @@ body {
   max-width: 620px;
 }
 
-.hero-panel {
-  box-shadow: 0 18px 42px rgba(150, 22, 24, 0.10);
-}
-
-/* FV左の候補カードを少し締めて、バナーCTAと喧嘩しないようにする */
-.hero-picks,
-.hero-picks-card,
-.fv-pick-card {
-  box-shadow: 0 12px 28px rgba(150, 22, 24, 0.07);
-}
-
-.fv-pick-card {
-  border-radius: 18px;
-}
-
-/* FV直下のスマホ/狭幅CTAの余白を整える */
-.bonus-mobile-banners {
-  margin-top: -8px;
-}
-
 /* 横幅が足りない時は中央コンテンツ優先 */
 @media (max-width: 1540px) {
   .bonus-side-column {
@@ -2559,8 +1386,8 @@ body {
     min-height: 104px;
   }
 
-  .bonus-side-card h2,
-  .bonus-side-card.featured h2 {
+  .bonus-side-card h3,
+  .bonus-side-card.featured h3 {
     font-size: 16px;
   }
 
@@ -2597,22 +1424,6 @@ body {
 }
 
 .bonus-side-image-slot.has-image img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  border-radius: inherit;
-}
-
-.bonus-mobile-blank.has-image {
-  padding: 0;
-  border-style: solid;
-  border-color: rgba(255,255,255,.34);
-  background: rgba(255,255,255,.08);
-  overflow: hidden;
-}
-
-.bonus-mobile-blank.has-image img {
   width: 100%;
   height: 100%;
   display: block;
@@ -2665,12 +1476,12 @@ body {
   margin-bottom: 5px;
 }
 
-.bonus-side-card h2 {
+.bonus-side-card h3 {
   font-size: 18px;
   margin-bottom: 3px;
 }
 
-.bonus-side-card.featured h2 {
+.bonus-side-card.featured h3 {
   font-size: 19px;
 }
 
@@ -2723,12 +1534,12 @@ body {
   min-height: 188px;
 }
 
-.bonus-side-card h2 {
+.bonus-side-card h3 {
   font-size: 17px;
   margin-bottom: 2px;
 }
 
-.bonus-side-card.featured h2 {
+.bonus-side-card.featured h3 {
   font-size: 18px;
 }
 
@@ -2847,12 +1658,12 @@ body {
   margin-bottom: 4px;
 }
 
-.bonus-side-card h2 {
+.bonus-side-card h3 {
   font-size: 16px;
   margin-bottom: 2px;
 }
 
-.bonus-side-card.featured h2 {
+.bonus-side-card.featured h3 {
   font-size: 17px;
 }
 
@@ -2894,11 +1705,6 @@ body {
   overflow: hidden;
 }
 
-.bonus-mobile-blank.has-image img {
-  object-fit: contain;
-  background: #fff;
-}
-
 
 /* ===== サイドCTA下テキスト：ボーナス訴求強化 ===== */
 .bonus-side-body {
@@ -2912,13 +1718,13 @@ body {
   padding: 4px 9px;
 }
 
-.bonus-side-card h2 {
+.bonus-side-card h3 {
   font-size: 18px;
   line-height: 1.22;
   margin-bottom: 3px;
 }
 
-.bonus-side-card.featured h2 {
+.bonus-side-card.featured h3 {
   font-size: 19px;
 }
 
@@ -2937,8 +1743,8 @@ body {
 }
 
 @media (max-width: 1760px) {
-  .bonus-side-card h2,
-  .bonus-side-card.featured h2 {
+  .bonus-side-card h3,
+  .bonus-side-card.featured h3 {
     font-size: 16.5px;
   }
 
@@ -3351,7 +2157,7 @@ body {
   margin-bottom: 12px;
 }
 
-.after-section h2 {
+.after-section h2, .after-section h3 {
   margin: 0 0 10px;
   color: #a80000;
   font-size: clamp(25px, 2.7vw, 36px);
@@ -3507,7 +2313,7 @@ body {
   color: #fff;
 }
 
-.after-final h2,
+.after-final h2, .after-final h3,
 .after-final .after-kicker {
   color: #fff;
 }
@@ -3537,32 +2343,6 @@ body {
   color: #6c5555;
   font-size: 13px;
   line-height: 1.75;
-}
-
-/* 既存の後続セクションが残る場合でも崩れないように統一 */
-.notice,
-.home-faq-2026,
-.section#responsible,
-.cta {
-  width: min(1120px, calc(100% - 36px));
-  margin: 28px auto 44px;
-  position: relative;
-  z-index: 2;
-}
-
-.notice-box,
-.faq-panel,
-.responsible-box,
-.cta-box {
-  background: rgba(255,255,255,.96);
-  border: 1px solid #ffc9c9;
-  border-radius: 24px;
-  box-shadow: 0 14px 34px rgba(150, 22, 24, 0.08);
-  padding: 24px;
-}
-
-.cta-box {
-  text-align: center;
 }
 
 @media (max-width: 900px) {
@@ -3725,7 +2505,7 @@ main {
   padding: 28px;
 }
 
-.after-section h2 {
+.after-section h2, .after-section h3 {
   color: var(--top-red-dark);
   text-wrap: balance;
 }
@@ -3781,23 +2561,6 @@ main {
   background: rgba(255,255,255,.98);
 }
 
-.notice,
-.home-faq-2026,
-.section#responsible,
-.cta {
-  width: min(1120px, calc(100% - 36px));
-  margin: 28px auto 44px;
-}
-
-.notice-box,
-.faq-panel,
-.responsible-box,
-.cta-box {
-  border-radius: 24px;
-  border: 1px solid var(--top-border);
-  box-shadow: 0 14px 34px rgba(150,22,24,.08);
-}
-
 @media (max-width: 980px) {
   .fv-ranking-section {
     margin-top: 22px;
@@ -3820,7 +2583,7 @@ main {
   }
 
   .fv-ranking-head h2,
-  .after-section h2 {
+  .after-section h2, .after-section h3 {
     letter-spacing: -0.045em;
   }
 
@@ -3882,9 +2645,9 @@ dt,
   font-weight: 700;
 }
 
-.bonus-side-card h2,
+.bonus-side-card h3,
 .fv-ranking-main h3,
-.after-section h2 {
+.after-section h2, .after-section h3 {
   font-weight: 950;
 }
 
@@ -3934,16 +2697,6 @@ main th,
   color: #3f3232;
 }
 
-/* FV左の比較カードとランキングの説明文も少し強める */
-.fv-pick-card p,
-.fv-pick-card span,
-.hero-picks p,
-.hero-picks span,
-.casino-card p,
-.casino-card span {
-  font-weight: 650;
-}
-
 /* サイドバナー内は前回の良い太さを維持 */
 .bonus-side-card p {
   font-weight: 700;
@@ -3952,7 +2705,7 @@ main th,
 /* 見出し・CTAはさらに明確に */
 .hero h1,
 .fv-ranking-head h2,
-.after-section h2,
+.after-section h2, .after-section h3,
 .fv-ranking-main h3 {
   font-weight: 950;
 }
@@ -4274,84 +3027,6 @@ main th,
   line-height: 1.8;
 }
 
-/* 選定基準カードを読みやすく */
-.ranking-criteria .criteria-grid,
-.ranking-criteria-section .criteria-grid,
-.criteria-section .criteria-grid,
-.selection-criteria .criteria-grid,
-.ranking-standard .criteria-grid,
-.ranking-criteria-2026 .criteria-grid,
-.ranking-criteria .criteria-cards,
-.ranking-criteria-section .criteria-cards,
-.criteria-section .criteria-cards,
-.selection-criteria .criteria-cards,
-.ranking-standard .criteria-cards,
-.ranking-criteria-2026 .criteria-cards {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 14px;
-  margin-top: 18px;
-}
-
-.ranking-criteria .criteria-card,
-.ranking-criteria-section .criteria-card,
-.criteria-section .criteria-card,
-.selection-criteria .criteria-card,
-.ranking-standard .criteria-card,
-.ranking-criteria-2026 .criteria-card {
-  background: linear-gradient(180deg, #fff, #fff8f8);
-  border: 1px solid #ffd1d1;
-  border-radius: 18px;
-  padding: 18px;
-  color: #2a1f1f;
-}
-
-.ranking-criteria .criteria-card strong,
-.ranking-criteria-section .criteria-card strong,
-.criteria-section .criteria-card strong,
-.selection-criteria .criteria-card strong,
-.ranking-standard .criteria-card strong,
-.ranking-criteria-2026 .criteria-card strong {
-  display: block;
-  color: #a80000;
-  font-weight: 950;
-  margin-bottom: 8px;
-}
-
-.ranking-criteria .criteria-card p,
-.ranking-criteria-section .criteria-card p,
-.criteria-section .criteria-card p,
-.selection-criteria .criteria-card p,
-.ranking-standard .criteria-card p,
-.ranking-criteria-2026 .criteria-card p {
-  margin: 0;
-  color: #3f3232;
-  font-size: 14px;
-  line-height: 1.7;
-}
-
-/* 注意ボックスを黄色系で見やすく */
-.ranking-criteria .notice,
-.ranking-criteria-section .notice,
-.criteria-section .notice,
-.selection-criteria .notice,
-.ranking-standard .notice,
-.ranking-criteria-2026 .notice,
-.ranking-criteria .criteria-notice,
-.ranking-criteria-section .criteria-notice,
-.criteria-section .criteria-notice,
-.selection-criteria .criteria-notice,
-.ranking-standard .criteria-notice,
-.ranking-criteria-2026 .criteria-notice {
-  margin-top: 18px;
-  background: #fffbea;
-  border: 1px solid #f1cf64;
-  border-radius: 18px;
-  padding: 16px;
-  color: #3f2f00;
-  font-weight: 650;
-}
-
 /* もし旧ブロックが赤背景を持っていた場合も上書き */
 section:has(> .ranking-criteria),
 section:has(> .ranking-criteria-section),
@@ -4397,21 +3072,6 @@ section:has(> .selection-criteria) {
     width: min(100% - 24px, 1120px);
     padding: 18px;
     border-radius: 22px;
-  }
-
-  .ranking-criteria .criteria-grid,
-  .ranking-criteria-section .criteria-grid,
-  .criteria-section .criteria-grid,
-  .selection-criteria .criteria-grid,
-  .ranking-standard .criteria-grid,
-  .ranking-criteria-2026 .criteria-grid,
-  .ranking-criteria .criteria-cards,
-  .ranking-criteria-section .criteria-cards,
-  .criteria-section .criteria-cards,
-  .selection-criteria .criteria-cards,
-  .ranking-standard .criteria-cards,
-  .ranking-criteria-2026 .criteria-cards {
-    grid-template-columns: 1fr;
   }
 }
 
@@ -4885,25 +3545,6 @@ section:has(> .selection-criteria) {
   }
 }
 
-
-/* ===== ランキング10位対応：下位カード整列・ロゴ文字対応 ===== */
-.fv-ranking-logo-text {
-  width: 100%;
-  min-height: 68px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #fff, #fff7f7);
-  color: #202020;
-  font-size: 20px;
-  font-weight: 950;
-  letter-spacing: -0.02em;
-  text-align: center;
-  line-height: 1.1;
-}
-
 .fv-ranking-list .fv-ranking-card:nth-child(n+4) {
   border-color: #ffcaca;
   background: linear-gradient(135deg, #fff, #fff8f8);
@@ -4935,19 +3576,9 @@ section:has(> .selection-criteria) {
   border: 1px solid #ffb7b7;
 }
 
-@media (max-width: 980px) {
-  .fv-ranking-logo-text {
-    min-height: 58px;
-    font-size: 17px;
-  }
-}
 
-@media (max-width: 640px) {
-  .fv-ranking-logo-text {
-    min-height: 56px;
-    font-size: 16px;
-  }
-}
+
+
 
 
 /* ===== ランキング6〜10位：アップロード済みロゴ画像対応 ===== */
@@ -5182,7 +3813,7 @@ section:has(> .selection-criteria) {
   border-color: #ffcaca;
 }
 
-.after-section h2 {
+.after-section h2, .after-section h3 {
   font-weight: 950;
 }
 
@@ -5354,7 +3985,7 @@ section:has(> .selection-criteria) {
   font-weight: 900;
 }
 
-.slottenkoku-popup-body h2 {
+.slottenkoku-popup-body h3 {
   margin: 0 0 8px;
   color: #9f1017;
   font-size: clamp(22px, 4vw, 28px);
@@ -5497,7 +4128,7 @@ section:has(> .selection-criteria) {
   font-weight: 900;
   margin-bottom: 8px;
 }
-.slottenkoku-conversion-panel h2 {
+.slottenkoku-conversion-panel h3 {
   margin: 0;
   color: var(--red-dark);
   font-size: clamp(24px, 3.4vw, 38px);
@@ -5597,22 +4228,6 @@ section:has(> .selection-criteria) {
 
 
 
-/* ===== Slottenkoku entry CTA AB upgrade ===== */
-.slottenkoku-ab-cta-section{max-width:var(--max,1120px);margin:0 auto;padding:30px 18px 10px;}
-.slottenkoku-ab-cta-panel{position:relative;overflow:hidden;border-radius:28px;background:linear-gradient(135deg,#fff 0%,#fff7f3 54%,#ffe9e2 100%);border:1px solid rgba(215,25,32,.16);box-shadow:0 18px 44px rgba(150,22,24,.10);padding:28px;}
-.slottenkoku-ab-cta-panel:before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:linear-gradient(90deg,var(--red,#d71920),var(--gold,#d6a642));}
-.slottenkoku-ab-cta-kicker{display:inline-flex;align-items:center;gap:8px;margin:0 0 10px;padding:6px 12px;border-radius:999px;background:#fff3d4;border:1px solid rgba(214,166,66,.40);color:#815a10;font-size:12px;font-weight:900;letter-spacing:.04em;}
-.slottenkoku-ab-cta-panel h2{margin:0;color:var(--red-dark,#9f1016);font-size:clamp(23px,3.1vw,34px);line-height:1.34;letter-spacing:-.04em;}
-.slottenkoku-ab-cta-lead{margin:10px 0 0;color:#5a4444;font-size:15px;line-height:1.85;max-width:900px;}
-.slottenkoku-ab-cta-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px;}
-.slottenkoku-ab-cta-link{display:flex;align-items:center;justify-content:center;text-align:center;min-height:52px;padding:12px 14px;border-radius:999px;font-weight:900;font-size:14px;line-height:1.35;text-decoration:none;}
-.slottenkoku-ab-cta-link.primary{background:linear-gradient(135deg,var(--red,#d71920),var(--red-dark,#9f1016));color:#fff;box-shadow:0 13px 26px rgba(215,25,32,.22);}
-.slottenkoku-ab-cta-link.secondary{background:#fff;color:var(--red-dark,#9f1016);border:1px solid rgba(215,25,32,.18);}
-.slottenkoku-ab-cta-link.tertiary{background:#fffaf0;color:#7a5200;border:1px solid rgba(214,166,66,.36);}
-.slottenkoku-ab-cta-note{margin:14px 0 0;color:#725656;font-size:12px;line-height:1.7;}
-@media(max-width:960px){.slottenkoku-ab-cta-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
-@media(max-width:640px){.slottenkoku-ab-cta-section{padding:24px 16px 8px}.slottenkoku-ab-cta-panel{padding:24px 18px;border-radius:22px}.slottenkoku-ab-cta-grid{grid-template-columns:1fr}.slottenkoku-ab-cta-link{width:100%;}}
-
 
 /* mobile final hardening phase5 */
 html, body { max-width: 100%; overflow-x: hidden; }
@@ -5642,13 +4257,9 @@ section, main, article, .container, .wrap, .section, .card, .hero, .hero-card, .
   p, li, td, th { font-size: 15px; line-height: 1.85; overflow-wrap: anywhere; }
   .cta-row, .hero-actions, .actions, .btn-row, .button-row { display: grid !important; grid-template-columns: 1fr !important; gap: 10px !important; width: 100% !important; }
   .btn, .button, .cta, .primary-btn, .secondary-btn, a[class*="btn"], a[class*="cta"] { width: 100%; max-width: 100%; min-height: 48px; display: inline-flex; align-items: center; justify-content: center; text-align: center; padding: 13px 16px !important; white-space: normal !important; line-height: 1.35 !important; }
-  .grid, .cards, .ranking-grid, .casino-grid, .bonus-grid, .payment-grid, .article-grid { display: grid !important; grid-template-columns: 1fr !important; gap: 14px !important; }
   table { display: block; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; border-radius: 14px; }
   th, td { white-space: normal; min-width: 120px; }
   .side-banner, .side-banners, .pc-side-banner, .floating-banner, .fixed-banner, [class*="sideBanner"], [class*="floating"] { display: none !important; }
-  .mobile-banner-strip, .mobile-focus-strip, .sp-banner-strip { display: flex !important; gap: 10px !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch; padding: 8px 2px 14px !important; scrollbar-width: none; }
-  .mobile-banner-strip::-webkit-scrollbar, .mobile-focus-strip::-webkit-scrollbar, .sp-banner-strip::-webkit-scrollbar { display: none; }
-  .mobile-banner-strip > *, .mobile-focus-strip > *, .sp-banner-strip > * { flex: 0 0 86%; max-width: 86%; }
   .popup, .modal, .campaign-popup, .slottenkoku-popup { max-width: calc(100vw - 24px) !important; left: 12px !important; right: 12px !important; bottom: calc(12px + env(safe-area-inset-bottom)) !important; }
   .site-footer, footer { padding-bottom: calc(28px + env(safe-area-inset-bottom)) !important; }
 }
@@ -5689,10 +4300,6 @@ a,button,.btn,.nav a,.nav-cta{touch-action:manipulation;-webkit-tap-highlight-co
   .cta-row,.btn-row,.hero-actions,.action-row,.button-row{display:flex!important;flex-direction:column!important;gap:10px!important;align-items:stretch!important;}
   .cta-row a,.btn-row a,.hero-actions a,.action-row a,.button-row a{width:100%;max-width:100%;}
   .card,.panel,.box,.hero-box,.ranking-card,.casino-card,.review-card,.info-card{border-radius:18px!important;overflow:hidden;}
-  .grid,.cards,.ranking-grid,.casino-grid,.review-grid,.feature-grid,.two-col,.three-col{display:grid!important;grid-template-columns:1fr!important;gap:14px!important;}
-  .side-banner,.floating-banner,.left-banner,.right-banner,.pc-side-banner,.desktop-side-banner,.fixed-side-banner{display:none!important;}
-  .mobile-sticky-cta,.sticky-mobile-cta{left:10px!important;right:10px!important;bottom:calc(8px + var(--mobile-safe-bottom))!important;width:auto!important;max-width:none!important;border-radius:18px!important;box-shadow:0 14px 34px rgba(20,20,20,.22)!important;}
-  .mobile-sticky-cta a,.sticky-mobile-cta a{min-height:44px!important;}
   .popup,.modal,.promo-popup{max-width:calc(100vw - 24px)!important;max-height:calc(100vh - 120px)!important;overflow:auto!important;}
 }
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important;}}
@@ -5713,7 +4320,6 @@ a,button,.btn,.nav a,.nav-cta{touch-action:manipulation;-webkit-tap-highlight-co
   .page, .wrap, .container, main, section, article, header, footer { max-width: 100%; }
   .side-banner, .side-banners, .floating-banner, .fixed-side, .pc-side-banner, .left-banner, .right-banner,
   [class*="sideBanner"], [class*="side-banner"], [class*="floating"] { max-width: 100%; }
-  .mobile-safe-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   @media (max-width: 768px) {
     body { min-width: 0 !important; }
     .side-banner, .side-banners, .floating-banner, .fixed-side, .pc-side-banner, .left-banner, .right-banner,
@@ -5731,11 +4337,9 @@ a,button,.btn,.nav a,.nav-cta{touch-action:manipulation;-webkit-tap-highlight-co
     .hero, .fv, .first-view, .mv { padding: 26px 18px !important; }
     .grid, .cards, .card-grid, .ranking-grid, .compare-grid, .cta-grid, .link-grid, .article-grid { display: grid !important; grid-template-columns: 1fr !important; gap: 14px !important; }
     .btn, .button, .cta, .cta-button, .primary-btn, .secondary-btn, a[class*="btn"], a[class*="cta"] { width: 100% !important; max-width: 100% !important; display: flex !important; align-items: center; justify-content: center; text-align: center; min-height: 48px; padding: 14px 16px !important; white-space: normal !important; line-height: 1.45 !important; border-radius: 999px; }
-    .cta-row, .button-row, .actions, .btn-row, .cta-buttons { display: grid !important; grid-template-columns: 1fr !important; gap: 12px !important; width: 100% !important; }
     table { display: block; width: 100% !important; overflow-x: auto; -webkit-overflow-scrolling: touch; border-collapse: collapse; }
     th, td { min-width: 120px; }
     .table-wrap, .scroll-table, .comparison-table { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .logo, .brand-logo, .casino-logo { max-width: min(180px, 55vw) !important; height: auto !important; }
     .popup, .modal, .notice, .sticky-cta { max-width: calc(100vw - 24px) !important; left: 12px !important; right: 12px !important; }
   }
 </style>
@@ -5759,7 +4363,6 @@ a,button,.btn,.nav a,.nav-cta{touch-action:manipulation;-webkit-tap-highlight-co
   }
   .mobile-bottom-cta__main{flex:1.1; color:#fff; background:linear-gradient(135deg,#d60000,#ff5a1f); box-shadow:0 8px 18px rgba(214,0,0,.24);}
   .mobile-bottom-cta__sub{flex:.9; color:#8b0000; background:#fff7f4; border:1px solid rgba(214,0,0,.22);}
-  .mobile-bottom-cta__label{display:block; font-size:10px; opacity:.82; font-weight:800; margin-right:3px;}
   table{max-width:100%;}
   .table-wrap,.comparison-table,.ranking-table,.bonus-table,.payment-table{overflow-x:auto; -webkit-overflow-scrolling:touch;}
 }
@@ -5789,7 +4392,6 @@ table { width: 100%; max-width: 100%; border-collapse: collapse; }
   .mobile-sticky-cta, .sticky-mobile-cta, [id*="mobile-sticky"] {
     max-width: calc(100vw - 16px); left: 8px !important; right: 8px !important; bottom: env(safe-area-inset-bottom);
   }
-  .mobile-sticky-cta a, .sticky-mobile-cta a { font-size: 13px; line-height: 1.35; }
   header nav, .nav, .global-nav, .site-nav { -webkit-overflow-scrolling: touch; scrollbar-width: none; }
   header nav::-webkit-scrollbar, .nav::-webkit-scrollbar, .global-nav::-webkit-scrollbar, .site-nav::-webkit-scrollbar { display: none; }
 }
@@ -5933,14 +4535,11 @@ table { width: 100%; max-width: 100%; border-collapse: collapse; }
   html{overflow-x:hidden;scroll-padding-bottom:var(--mobile-safe-bottom);}
   body{overflow-x:hidden;word-break:normal;-webkit-text-size-adjust:100%;padding-bottom:var(--mobile-safe-bottom);}
   main, .container, .wrap, .page, .content, .section, section, article{max-width:100% !important;box-sizing:border-box;}
-  .container, .wrap, .page, .content{padding-left:var(--mobile-page-pad) !important;padding-right:var(--mobile-page-pad) !important;}
   .hero, .fv, .hero-section, .main-visual{border-radius:22px !important;margin-left:0 !important;margin-right:0 !important;overflow:hidden;}
   h1{font-size:clamp(1.62rem,7vw,2.25rem) !important;line-height:1.18 !important;letter-spacing:-.02em;}
   h2{font-size:clamp(1.25rem,5.4vw,1.7rem) !important;line-height:1.28 !important;}
   h3{font-size:clamp(1.08rem,4.8vw,1.35rem) !important;line-height:1.32 !important;}
   p, li, td, th{font-size:15.5px;line-height:1.82;}
-  .card, .box, .panel, .rank-card, .casino-card, .article-card, .cta-box, .notice, .faq-item{border-radius:var(--mobile-card-radius) !important;max-width:100% !important;box-sizing:border-box;}
-  .grid, .cards, .rank-grid, .casino-grid, .article-grid, .comparison-grid{display:grid !important;grid-template-columns:1fr !important;gap:14px !important;}
   a[class*="btn"], .btn, .button, .cta, .cta-button, .primary-btn, .secondary-btn{min-height:46px;display:inline-flex;align-items:center;justify-content:center;text-align:center;white-space:normal;line-height:1.35;padding:12px 16px;border-radius:999px;max-width:100%;box-sizing:border-box;}
   .cta-row, .btn-row, .button-row, .hero-actions, .actions{display:flex !important;flex-direction:column !important;gap:10px !important;align-items:stretch !important;}
   .cta-row a, .btn-row a, .button-row a, .hero-actions a, .actions a{width:100% !important;}
@@ -5950,7 +4549,6 @@ table { width: 100%; max-width: 100%; border-collapse: collapse; }
   .table-wrap::after, .scroll-table::after, .comparison-table::after{content:"横にスクロールできます";display:block;font-size:12px;color:#777;margin-top:4px;text-align:right;}
   header nav, .nav, .global-nav, .header-nav{overflow-x:auto !important;-webkit-overflow-scrolling:touch;scrollbar-width:none;white-space:nowrap;gap:8px;}
   header nav::-webkit-scrollbar, .nav::-webkit-scrollbar, .global-nav::-webkit-scrollbar, .header-nav::-webkit-scrollbar{display:none;}
-  .side-banner, .fixed-banner, .floating-banner, .left-banner, .right-banner, .pc-side-banner{display:none !important;}
   .mobile-sticky-cta, .sticky-cta, .bottom-cta, .mobile-bottom-cta{padding-bottom:calc(10px + env(safe-area-inset-bottom,0px)) !important;box-shadow:0 -10px 26px rgba(0,0,0,.16);backdrop-filter:blur(10px);}
   .mobile-sticky-cta a, .sticky-cta a, .bottom-cta a, .mobile-bottom-cta a{min-height:48px !important;}
   .popup, .modal, .campaign-popup{max-width:calc(100vw - 28px) !important;max-height:calc(100dvh - 110px) !important;overflow:auto !important;border-radius:20px !important;}
@@ -5958,7 +4556,6 @@ table { width: 100%; max-width: 100%; border-collapse: collapse; }
 @media (max-width: 420px){
   :root{--mobile-page-pad:12px;}
   p, li, td, th{font-size:15px;}
-  .card, .box, .panel, .rank-card, .casino-card, .article-card{padding:14px !important;}
 }
 </style>
 <!-- mobile-final-visual-phase10-end -->
@@ -6139,11 +4736,6 @@ table { width: 100%; max-width: 100%; border-collapse: collapse; }
     margin-right:auto;
     min-width:0;
   }
-  .content, .main-content, .article-body, .post-body, .entry-content, .card, .box, .panel, .ranking-card, .review-card, .casino-card, .bonus-card, .payment-card{
-    max-width:100%;
-    min-width:0;
-    overflow-wrap:anywhere;
-  }
   p, li, dd, td, th, figcaption, .note, .small, .badge, .label{
     overflow-wrap:anywhere;
     word-break:normal;
@@ -6181,12 +4773,6 @@ table { width: 100%; max-width: 100%; border-collapse: collapse; }
     justify-content:center;
     text-align:center;
   }
-  .button-row, .btn-row, .cta-row, .cta-buttons, .actions, .action-row{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-    width:100%;
-  }
   table{
     width:max-content;
     min-width:100%;
@@ -6211,39 +4797,11 @@ table { width: 100%; max-width: 100%; border-collapse: collapse; }
   th:first-child, td:first-child{
     max-width:42vw;
   }
-  .mobile-sticky-cta, .sticky-cta, .sp-fixed-cta, .fixed-cta, .bottom-cta{
-    max-width:calc(100vw - 16px) !important;
-    left:8px !important;
-    right:8px !important;
-    bottom:calc(8px + var(--rv-mobile-safe-bottom)) !important;
-    border-radius:18px !important;
-    box-shadow:0 12px 34px rgba(15,23,42,.22) !important;
-  }
-  .mobile-sticky-cta a, .sticky-cta a, .sp-fixed-cta a, .fixed-cta a, .bottom-cta a{
-    min-height:46px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    line-height:1.25;
-    white-space:normal;
-  }
   .popup, .modal, .dialog, .overlay-content, .campaign-popup, .bonus-popup{
     width:min(94vw, 420px) !important;
     max-width:94vw !important;
     max-height:calc(100dvh - 28px - var(--rv-mobile-safe-bottom)) !important;
     overflow:auto !important;
-  }
-  .breadcrumb, .breadcrumbs, .bread, .topic-path{
-    display:flex;
-    gap:6px;
-    max-width:100%;
-    overflow-x:auto;
-    white-space:nowrap;
-    -webkit-overflow-scrolling:touch;
-    scrollbar-width:none;
-  }
-  .breadcrumb::-webkit-scrollbar, .breadcrumbs::-webkit-scrollbar, .bread::-webkit-scrollbar, .topic-path::-webkit-scrollbar{
-    display:none;
   }
   .site-header, header[role="banner"], .header{
     max-width:100vw;
@@ -6263,13 +4821,6 @@ table { width: 100%; max-width: 100%; border-collapse: collapse; }
   h1{font-size:clamp(25px, 8vw, 34px) !important;}
   h2{font-size:clamp(21px, 6.3vw, 28px) !important;}
   h3{font-size:clamp(18px, 5.2vw, 23px) !important;}
-  .card, .box, .panel, .ranking-card, .review-card, .casino-card, .bonus-card, .payment-card{
-    border-radius:16px !important;
-  }
-  .mobile-sticky-cta, .sticky-cta, .sp-fixed-cta, .fixed-cta, .bottom-cta{
-    gap:6px !important;
-    padding:8px !important;
-  }
 }
 @supports not (overflow: clip){
   @media (max-width: 768px){ body{overflow-x:hidden;} }
@@ -6363,11 +4914,6 @@ pre, code, kbd, samp {
     max-width: 100%;
   }
 
-  :where(.grid, .cards, .card-grid, .ranking-grid, .review-grid, .bonus-grid, .comparison-grid) {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) !important;
-  }
-
   :where(.btn, .button, .cta, .cta-button, .primary-cta, .secondary-cta, .mobile-bottom-cta a) {
     min-height: 44px;
     white-space: normal;
@@ -6385,13 +4931,6 @@ pre, code, kbd, samp {
 
   :where(.popup, .modal, .dialog, .slottenkoku-popup, [role="dialog"]) {
     max-width: 100vw;
-  }
-
-  :where(.popup-content, .modal-content, .dialog-content, .slottenkoku-popup-card) {
-    max-width: calc(100vw - 20px) !important;
-    max-height: calc(100dvh - 28px) !important;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
   }
 
   :where(table, .comparison-table, .ranking-table) {
@@ -6665,11 +5204,9 @@ pre, code, kbd, samp {
   h1{font-size:clamp(24px,7vw,32px) !important; line-height:1.18;}
   h2{font-size:clamp(20px,6vw,26px) !important; line-height:1.25;}
   h3{font-size:clamp(17px,5vw,22px) !important; line-height:1.3;}
-  .mobile-sticky-cta, .sticky-cta, .fixed-cta{font-size:13px;}
 }
 @media (max-width: 768px) and (orientation: landscape){
   body{padding-bottom:64px;}
-  .mobile-sticky-cta, .sticky-cta, .fixed-cta{padding:8px 10px !important;}
 }
 </style>
 
@@ -7016,22 +5553,9 @@ pre, code, kbd, samp {
   h1 { font-size: clamp(24px, 8vw, 31px); }
   h2 { font-size: clamp(20px, 6.4vw, 26px); }
   h3 { font-size: clamp(18px, 5.6vw, 22px); }
-  .mobile-sticky-cta,
-  .sticky-cta,
-  .bottom-cta,
-  .floating-cta-mobile {
-    border-radius: 16px;
-  }
 }
 
 @media (max-width: 768px) and (orientation: landscape) {
-  .mobile-sticky-cta,
-  .sticky-cta,
-  .bottom-cta,
-  .floating-cta-mobile {
-    transform: scale(0.94);
-    transform-origin: bottom center;
-  }
   .popup,
   .modal,
   .dialog,
@@ -7075,22 +5599,16 @@ pre, code, kbd, samp {
   p,li,td,th,dd{font-size:clamp(15px,4.05vw,17px);line-height:1.78;}
   img,svg,video,canvas,iframe,picture{max-width:100%!important;height:auto!important;box-sizing:border-box;}
   iframe{display:block;width:100%!important;border:0;}
-  .logo img,.site-logo img,.brand-logo img{max-width:min(180px,70vw)!important;height:auto!important;object-fit:contain;}
   .nav,.global-nav,.header-nav,.site-nav,.breadcrumb,.breadcrumbs,.tabs,.chip-nav,.mobile-banner-row{max-width:100%!important;overflow-x:auto!important;overflow-y:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;scrollbar-width:none;white-space:nowrap;}
   .nav::-webkit-scrollbar,.global-nav::-webkit-scrollbar,.header-nav::-webkit-scrollbar,.site-nav::-webkit-scrollbar,.breadcrumb::-webkit-scrollbar,.breadcrumbs::-webkit-scrollbar,.tabs::-webkit-scrollbar,.chip-nav::-webkit-scrollbar,.mobile-banner-row::-webkit-scrollbar{display:none;}
   .nav a,.global-nav a,.header-nav a,.site-nav a,.tabs a,.chip-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 13px;border-radius:999px;white-space:nowrap;}
-  .grid,.cards,.card-grid,.ranking-grid,.review-grid,.bonus-grid,.payment-grid,.article-grid,.columns,.two-column,.three-column{display:grid!important;grid-template-columns:1fr!important;gap:14px!important;max-width:100%!important;}
-  .flex,.cta-row,.button-row,.btn-row,.actions,.cta-buttons{flex-wrap:wrap!important;gap:10px!important;max-width:100%!important;}
   .cta-row a,.button-row a,.btn-row a,.actions a,.cta-buttons a,.btn,.button,.cta-button,a[class*="btn"],a[class*="cta"]{max-width:100%!important;min-height:46px;white-space:normal!important;text-align:center;line-height:1.35;overflow-wrap:anywhere;}
-  @supports (width: 100dvw){.mobile-sticky-cta,.sticky-mobile-cta,.bottom-cta,.fixed-cta{max-width:calc(100dvw - 20px)!important;}}
-  .mobile-sticky-cta,.sticky-mobile-cta,.bottom-cta,.fixed-cta{left:10px!important;right:10px!important;bottom:calc(10px + env(safe-area-inset-bottom))!important;width:auto!important;max-width:calc(100vw - 20px)!important;box-sizing:border-box!important;z-index:9999;}
-  .mobile-sticky-cta a,.sticky-mobile-cta a,.bottom-cta a,.fixed-cta a{min-width:0!important;min-height:44px!important;padding:10px 12px!important;font-size:14px!important;line-height:1.25!important;}
+  @supports (width: 100dvw){}
   table{width:max-content;min-width:100%;border-collapse:collapse;}
   .table-wrap,.table-scroll,.responsive-table,.comparison-table,.scroll-table,div:has(> table){max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;}
   th,td{min-width:96px;vertical-align:top;}
   pre,code,kbd,samp{white-space:pre-wrap!important;word-break:break-word!important;overflow-wrap:anywhere!important;max-width:100%!important;}
   pre{overflow-x:auto!important;padding:12px;border-radius:12px;}
-  .side-banner,.side-banners,.floating-banner,.pc-side-banner,.left-banner,.right-banner,.desktop-only,.ad-side,.side-fixed{display:none!important;}
   .modal,.popup,.dialog,.overlay-content,[role="dialog"]{max-width:calc(100vw - 24px)!important;max-height:calc(100dvh - 72px)!important;overflow:auto!important;box-sizing:border-box!important;}
   input,select,textarea,button{font-size:16px!important;max-width:100%!important;box-sizing:border-box!important;}
   a,button,input,select,textarea,summary{touch-action:manipulation;}
@@ -7099,12 +5617,9 @@ pre, code, kbd, samp {
 @media (max-width: 380px){
   @media (max-width: 768px){
     :root{--mobile-page-pad:12px;--mobile-card-pad:13px;}
-    .mobile-sticky-cta,.sticky-mobile-cta,.bottom-cta,.fixed-cta{left:8px!important;right:8px!important;max-width:calc(100vw - 16px)!important;}
-    .mobile-sticky-cta a,.sticky-mobile-cta a,.bottom-cta a,.fixed-cta a{font-size:13px!important;padding:9px 8px!important;}
   }
 }
 @media (max-width: 768px) and (orientation: landscape){
-  .mobile-sticky-cta,.sticky-mobile-cta,.bottom-cta,.fixed-cta{position:fixed!important;transform:scale(.94);transform-origin:bottom center;}
   .hero,.fv,.keyvisual{padding-top:18px!important;padding-bottom:18px!important;}
 }
 </style>
@@ -7239,19 +5754,6 @@ pre, code, kbd, samp {
   input, select, textarea {
     font-size: 16px !important;
   }
-  .cta, .cta-box, .cta-buttons, .button-row, .btn-row, .actions, .action-row {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 10px !important;
-    align-items: stretch !important;
-    width: 100% !important;
-  }
-  .cta a, .cta button, .cta-box a, .cta-box button, .cta-buttons a, .cta-buttons button, .button-row a, .button-row button, .btn-row a, .btn-row button, .actions a, .actions button {
-    width: 100% !important;
-    justify-content: center !important;
-    text-align: center !important;
-    white-space: normal !important;
-  }
   header, .site-header, .header, nav, .nav, .global-nav, .site-nav, .menu, .breadcrumb, .breadcrumbs {
     max-width: 100% !important;
     min-width: 0 !important;
@@ -7267,15 +5769,6 @@ pre, code, kbd, samp {
   .nav::-webkit-scrollbar, .global-nav::-webkit-scrollbar, .site-nav::-webkit-scrollbar, .menu::-webkit-scrollbar, .breadcrumb::-webkit-scrollbar, .breadcrumbs::-webkit-scrollbar { display: none; }
   .side-banner, .side-banners, .fixed-banner, .floating-banner, .pc-banner, .left-banner, .right-banner, [class*="side-banner"], [class*="floating"] {
     display: none !important;
-  }
-  .mobile-sticky-cta, .sticky-cta, .bottom-cta, .fixed-cta {
-    left: max(10px, env(safe-area-inset-left)) !important;
-    right: max(10px, env(safe-area-inset-right)) !important;
-    bottom: max(10px, env(safe-area-inset-bottom)) !important;
-    width: auto !important;
-    max-width: calc(100vw - 20px) !important;
-    box-sizing: border-box !important;
-    z-index: 999 !important;
   }
   .modal, .popup, .dialog, .overlay-content, [role="dialog"] {
     width: calc(100vw - 28px) !important;
@@ -7304,16 +5797,8 @@ pre, code, kbd, samp {
   h1 { font-size: clamp(25px, 8vw, 34px) !important; }
   h2 { font-size: clamp(21px, 6.4vw, 28px) !important; }
   h3 { font-size: clamp(18px, 5.4vw, 23px) !important; }
-  .mobile-sticky-cta, .sticky-cta, .bottom-cta, .fixed-cta {
-    font-size: 13px !important;
-  }
 }
-@media (max-width: 768px) and (orientation: landscape) {
-  .mobile-sticky-cta, .sticky-cta, .bottom-cta, .fixed-cta {
-    transform: scale(.96);
-    transform-origin: bottom center;
-  }
-}
+
 </style>
 
 
@@ -7337,9 +5822,7 @@ pre, code, kbd, samp {
   .cta-row, .cta-buttons, .button-row, .actions, .hero-actions { display: grid; grid-template-columns: 1fr; gap: 10px; width: 100%; max-width: 100%; }
   nav, .nav, .site-nav, .header-nav, .breadcrumbs, .breadcrumb { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
   nav::-webkit-scrollbar, .nav::-webkit-scrollbar, .site-nav::-webkit-scrollbar, .header-nav::-webkit-scrollbar, .breadcrumbs::-webkit-scrollbar, .breadcrumb::-webkit-scrollbar { display: none; }
-  .mobile-sticky-cta, .sticky-cta, .bottom-cta, .fixed-cta { left: max(10px, env(safe-area-inset-left)); right: max(10px, env(safe-area-inset-right)); bottom: max(10px, env(safe-area-inset-bottom)); width: auto; max-width: calc(100vw - 20px); box-sizing: border-box; z-index: 900; }
   body:has(.mobile-sticky-cta), body:has(.sticky-cta), body:has(.bottom-cta), body:has(.fixed-cta) { padding-bottom: calc(84px + env(safe-area-inset-bottom)); }
-  .side-banner, .side-banners, .floating-banner, .floating-cta, .pc-side-banner, .left-banner, .right-banner { display: none !important; }
   .modal, .popup, .overlay-content, .dialog, [role="dialog"] { max-width: calc(100vw - 28px) !important; max-height: calc(100dvh - 28px) !important; overflow: auto; box-sizing: border-box; }
 }
 @media (max-width: 380px) {
@@ -7347,11 +5830,8 @@ pre, code, kbd, samp {
   h2 { font-size: clamp(20px, 5.8vw, 28px) !important; line-height: 1.25 !important; }
   h3 { font-size: clamp(17px, 5vw, 22px) !important; line-height: 1.3 !important; }
   .container, .wrap, .wrapper, .content, .main, .page-wrap, .site-main { padding-left: 12px; padding-right: 12px; }
-  .mobile-sticky-cta, .sticky-cta, .bottom-cta, .fixed-cta { font-size: 13px; }
 }
-@media (orientation: landscape) and (max-height: 520px) {
-  .mobile-sticky-cta, .sticky-cta, .bottom-cta, .fixed-cta { transform: scale(.96); transform-origin: bottom center; }
-}
+
 </style>
 
 
@@ -7412,12 +5892,6 @@ pre, code, kbd, samp {
     width:max-content;
     max-width:100%;
   }
-  .grid,.cards,.card-grid,.ranking-grid,.review-grid,.bonus-grid,.payment-grid,
-  .casino-grid,.article-grid,.post-grid,.columns,.two-col,.three-col{
-    display:grid !important;
-    grid-template-columns:1fr !important;
-    gap:14px !important;
-  }
   .btn,.button,.cta,.cta-btn,.primary-btn,.secondary-btn,a[class*="btn"],a[class*="cta"]{
     max-width:100% !important;
     min-height:44px;
@@ -7425,12 +5899,6 @@ pre, code, kbd, samp {
     text-align:center;
     line-height:1.35;
     touch-action:manipulation;
-  }
-  .cta-row,.cta-group,.button-row,.button-group,.actions,.action-row{
-    display:flex !important;
-    flex-direction:column !important;
-    gap:10px !important;
-    align-items:stretch !important;
   }
   nav,.nav,.global-nav,.header-nav,.breadcrumb,.breadcrumbs,.toc,.toc-list{
     max-width:100% !important;
@@ -7442,18 +5910,6 @@ pre, code, kbd, samp {
     min-height:40px;
     display:inline-flex;
     align-items:center;
-  }
-  .side-banner,.side-fixed,.left-banner,.right-banner,.fixed-side,.floating-side,
-  .pc-side-banner,.desktop-banner,.sticky-side,.ad-side,.sidebar-fixed{
-    display:none !important;
-    visibility:hidden !important;
-  }
-  .mobile-sticky-cta,.sticky-cta,.fixed-cta,.bottom-cta{
-    max-width:calc(100vw - 18px) !important;
-    left:9px !important;
-    right:9px !important;
-    bottom:max(10px, env(safe-area-inset-bottom)) !important;
-    z-index:9999;
   }
   body:has(.mobile-sticky-cta), body:has(.sticky-cta), body:has(.fixed-cta), body:has(.bottom-cta){
     padding-bottom:calc(92px + env(safe-area-inset-bottom));
@@ -7473,11 +5929,9 @@ pre, code, kbd, samp {
   @media (max-width:768px){
     .container,.wrap,.wrapper,.inner,.content,.main-content,.page-content{ padding-left:12px !important; padding-right:12px !important; }
     h1{ font-size:clamp(1.42rem, 7.4vw, 1.9rem) !important; }
-    .mobile-sticky-cta,.sticky-cta,.fixed-cta,.bottom-cta{ max-width:calc(100vw - 12px) !important; left:6px !important; right:6px !important; }
   }
 }
 @media (max-width: 768px) and (orientation: landscape){
-  .mobile-sticky-cta,.sticky-cta,.fixed-cta,.bottom-cta{ position:static !important; margin:12px auto !important; }
   body{ padding-bottom:0 !important; }
 }
 </style>
@@ -7554,17 +6008,6 @@ body {
     max-width: 100%;
     overflow: hidden;
   }
-  :where(.grid, .cards, .ranking-list, .review-list, .bonus-list, .payment-list, .article-grid) {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) !important;
-    gap: 14px;
-  }
-  :where(.card, .ranking-card, .review-card, .bonus-card, .payment-card, .box, .panel) {
-    width: 100%;
-    min-width: 0;
-    overflow: hidden;
-    border-radius: min(18px, 5vw);
-  }
   :where(h1) { font-size: clamp(1.55rem, 7vw, 2.2rem); line-height: 1.18; }
   :where(h2) { font-size: clamp(1.25rem, 5.8vw, 1.75rem); line-height: 1.25; }
   :where(h3) { font-size: clamp(1.08rem, 4.9vw, 1.35rem); line-height: 1.3; }
@@ -7585,11 +6028,6 @@ body {
     white-space: normal;
     overflow-wrap: anywhere;
     text-align: center;
-  }
-  :where(.cta-row, .button-row, .btn-row, .action-row) {
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) !important;
-    gap: 10px;
   }
   :where(.mobile-bottom-cta, .fixed-cta, .sticky-cta, .bottom-cta) {
     left: 0;
@@ -7629,22 +6067,13 @@ body {
     max-width: 100vw;
     overflow-x: hidden;
   }
-  :where(.modal-content, .popup-content, .dialog-content, .overlay-content) {
-    width: min(94vw, 560px);
-    max-width: 94vw;
-    max-height: calc(100vh - 28px);
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-  }
 }
 @supports (height: 100svh) {
   @media (max-width: 767px) {
-    :where(.modal-content, .popup-content, .dialog-content, .overlay-content) { max-height: calc(100svh - 28px); }
   }
 }
 @supports (height: 100dvh) {
   @media (max-width: 767px) {
-    :where(.modal-content, .popup-content, .dialog-content, .overlay-content) { max-height: calc(100dvh - 28px); }
   }
 }
 @media (max-width: 390px) {
@@ -7755,16 +6184,6 @@ body {
   :where(.container .container, .wrap .wrap, .inner .inner, section section) {
     padding-left: 0;
     padding-right: 0;
-  }
-  :where(.grid, .cards, .card-grid, .review-grid, .bonus-grid, .casino-grid, .features, .columns) {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) !important;
-    gap: clamp(12px, 3.5vw, 18px);
-  }
-  :where(.card, .box, .panel, .review-card, .bonus-card, .casino-card, .feature-card, .ranking-card) {
-    min-width: 0;
-    max-width: 100%;
-    overflow: hidden;
   }
   :where(h1) { font-size: clamp(1.55rem, 7vw, 2.15rem); line-height: 1.16; }
   :where(h2) { font-size: clamp(1.3rem, 5.8vw, 1.75rem); line-height: 1.22; }
@@ -7954,12 +6373,6 @@ body {
     width: 100%;
     max-width: 100%;
   }
-  :where(.grid, .cards, .columns, .layout, .two-column, .three-column, .ranking-list, .review-list) {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) !important;
-    gap: 14px;
-    max-width: 100%;
-  }
   :where(.site-header, .header, .global-nav, nav, .breadcrumb, .breadcrumbs) {
     overflow-x: auto;
     overflow-y: hidden;
@@ -8122,18 +6535,8 @@ iframe{display:block;border:0;}
 :where(.popup,.modal,.dialog,.overlay,.drawer){
   max-width:100vw;
 }
-:where(.popup-content,.modal-content,.dialog-content,.drawer-content){
-  max-width:calc(100vw - 24px);
-  max-height:calc(100vh - 28px);
-  overflow:auto;
-  -webkit-overflow-scrolling:touch;
-}
-@supports (height:100dvh){
-  :where(.popup-content,.modal-content,.dialog-content,.drawer-content){max-height:calc(100dvh - 28px);}
-}
-@supports (height:100svh){
-  :where(.popup-content,.modal-content,.dialog-content,.drawer-content){max-height:calc(100svh - 28px);}
-}
+
+
 @media (max-width:767px){
   body{
     width:100%;
@@ -8143,15 +6546,6 @@ iframe{display:block;border:0;}
   :where(.container,.wrap,.inner,.content,.page,.page-wrap,.site-main,main,section,article){
     width:100%;
     min-width:0;
-  }
-  :where(.grid,.cards,.card-grid,.review-grid,.bonus-grid,.ranking-grid,.columns,.row){
-    display:grid;
-    grid-template-columns:minmax(0,1fr) !important;
-    gap:16px;
-  }
-  :where(.card,.box,.panel,.ranking-card,.review-card,.bonus-card,.casino-card,.cta-box){
-    min-width:0;
-    max-width:100%;
   }
   :where(.site-header,.header,.global-nav,.nav,.breadcrumb,.tabs,.pills){
     max-width:100%;
@@ -8231,7 +6625,7 @@ iframe{display:block;border:0;}
   gap: 16px;
   margin-bottom: 12px;
 }
-.phase30-promo-head h2 {
+.phase30-promo-head h3 {
   margin: 0;
   color: #9f1017;
   font-size: clamp(20px, 2.3vw, 28px);
@@ -8334,7 +6728,7 @@ iframe{display:block;border:0;}
     padding-left: 16px;
   }
   .phase30-promo-head { padding-right: 16px; }
-  .phase30-promo-head h2 { font-size: 21px !important; }
+  .phase30-promo-head h3 { font-size: 21px !important; }
   .phase30-promo-head p { font-size: 12px; }
   .phase30-promo-scroll {
     grid-auto-columns: min(78vw, 300px);
@@ -8381,7 +6775,7 @@ iframe{display:block;border:0;}
   margin: 0 0 12px;
   padding: 0 4px;
 }
-.phase30-promo-head h2 {
+.phase30-promo-head h3 {
   margin: 0;
   color: #9f1017;
   font-size: clamp(20px, 2vw, 28px) !important;
@@ -8503,7 +6897,7 @@ iframe{display:block;border:0;}
     padding: 0 16px 0 0;
     align-items: center;
   }
-  .phase30-promo-head h2 { font-size: 20px !important; }
+  .phase30-promo-head h3 { font-size: 20px !important; }
   .phase30-promo-head p { font-size: 11.5px; }
   .phase31-swipe-hint { font-size: 11px; }
   .phase30-promo-scroll {
@@ -8773,7 +7167,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 <div class="bonus-side-image-slot has-image"><img alt="スロット天国の登録ボーナスバナー" loading="lazy" src="side-banner-slottenkoku-bonus.png"/></div>
 <div class="bonus-side-body">
 <span class="bonus-side-label">初回特典</span>
-<h2>登録で$20</h2>
+<h3>登録で$20</h3>
 <p>登録特典とヘブンズショット無料参加チケットを確認。</p>
 <a class="bonus-side-button" href="https://sloten.io?referral=0ZjM" rel="nofollow sponsored noopener" target="_blank">公式サイトで特典を確認</a>
 </div>
@@ -8784,7 +7178,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 <div class="bonus-side-image-slot has-image"><img alt="コニベットの限定ボーナスバナー" loading="lazy" src="side-banner-konibet-bonus.png"/></div>
 <div class="bonus-side-body">
 <span class="bonus-side-label">限定特典</span>
-<h2>66ドル特典</h2>
+<h3>66ドル特典</h3>
 <p>$60ボーナス＋30回FS。登録前に条件を確認。</p>
 <a class="bonus-side-button" href="review-konibet.html">限定特典を見る</a>
 </div>
@@ -8795,7 +7189,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 <div class="bonus-side-image-slot has-image"><img alt="Roobetのプロモーションバナー" loading="lazy" src="side-banner-roobet-bonus.png"/></div>
 <div class="bonus-side-body">
 <span class="bonus-side-label">人気候補</span>
-<h2>$100,000抽選</h2>
+<h3>$100,000抽選</h3>
 <p>最新プロモ・フリースピン・限定コードをチェック。</p>
 <a class="bonus-side-button" href="review-roobet.html">最新特典を見る</a>
 </div>
@@ -8806,7 +7200,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 <div class="bonus-side-image-slot has-image"><img alt="BitStarzのウェルカムボーナスバナー" loading="lazy" src="side-banner-bitstarz-bonus.png"/></div>
 <div class="bonus-side-body">
 <span class="bonus-side-label">初回特典</span>
-<h2>100%＋180FS</h2>
+<h3>100%＋180FS</h3>
 <p>初回入金特典と追加入金ボーナスを確認。</p>
 <a class="bonus-side-button" href="review-bitstarz.html">特典を見る</a>
 </div>
@@ -8817,7 +7211,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 <div class="bonus-side-image-slot has-image"><img alt="7Bit Casinoのウェルカムボーナスバナー" loading="lazy" src="side-banner-7bitcasino-bonus.png"/></div>
 <div class="bonus-side-body">
 <span class="bonus-side-label">クリプト特典</span>
-<h2>325%＋250FS</h2>
+<h3>325%＋250FS</h3>
 <p>最大5.25BTCのウェルカム特典を確認。</p>
 <a class="bonus-side-button" href="review-7bitcasino.html">特典を見る</a>
 </div>
@@ -8828,7 +7222,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 <div class="bonus-side-image-slot has-image"><img alt="FortuneJackのウェルカムボーナスバナー" loading="lazy" src="side-banner-fortunejack-bonus.png"/></div>
 <div class="bonus-side-body">
 <span class="bonus-side-label">ウェルカム</span>
-<h2>4ミッション特典</h2>
+<h3>4ミッション特典</h3>
 <p>段階型ウェルカムボーナスの内容を確認。</p>
 <a class="bonus-side-button" href="review-fortunejack.html">特典を見る</a>
 </div>
@@ -8839,7 +7233,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 <div class="bonus-side-image-slot has-image"><img alt="Vaveの暗号資産ボーナスバナー" loading="lazy" src="side-banner-vave-bonus.png"/></div>
 <div class="bonus-side-body">
 <span class="bonus-side-label">暗号資産</span>
-<h2>USDTボーナス</h2>
+<h3>USDTボーナス</h3>
 <p>暗号資産の初回入金特典を登録前に確認。</p>
 <a class="bonus-side-button" href="review-vave.html">特典を見る</a>
 </div>
@@ -8854,7 +7248,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 <div class="bonus-side-image-slot has-image"><img alt="BitStarzのウェルカムボーナスバナー" loading="lazy" src="side-banner-bitstarz-bonus.png"/></div>
 <div class="bonus-side-body">
 <span class="bonus-side-label">初回特典</span>
-<h2>100%＋180FS</h2>
+<h3>100%＋180FS</h3>
 <p>初回入金特典と追加入金ボーナスを確認。</p>
 <a class="bonus-side-button" href="review-bitstarz.html">特典を見る</a>
 </div>
@@ -8865,7 +7259,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 <div class="bonus-side-image-slot has-image"><img alt="スロット天国の初回特典バナー" loading="lazy" src="side-banner-slottenkoku-bonus.png"/></div>
 <div class="bonus-side-body">
 <span class="bonus-side-label">1位候補</span>
-<h2>スロット天国</h2>
+<h3>スロット天国</h3>
 <p>登録$20と初回入金特典をまとめて確認。</p>
 <a class="bonus-side-button" href="https://sloten.io?referral=0ZjM" rel="nofollow sponsored noopener" target="_blank">公式サイトでボーナスを確認</a>
 </div>
@@ -8876,7 +7270,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 <div class="bonus-side-image-slot has-image"><img alt="Stakeの限定特典バナー" loading="lazy" src="side-banner-stake-bonus.png"/></div>
 <div class="bonus-side-body">
 <span class="bonus-side-label">限定特典</span>
-<h2>Stake</h2>
+<h3>Stake</h3>
 <p>7日間で合計$7。条件なし特典を確認。</p>
 <a class="bonus-side-button" href="review-stake.html">特典を確認</a>
 </div>
@@ -8887,7 +7281,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 <div class="bonus-side-image-slot has-image"><img alt="ミスティーノのボーナスバナー" loading="lazy" src="side-banner-mystino-bonus.png"/></div>
 <div class="bonus-side-body">
 <span class="bonus-side-label">初心者向け</span>
-<h2>ミスティーノ</h2>
+<h3>ミスティーノ</h3>
 <p>3,500円特典と初回100%ボーナスを確認。</p>
 <a class="bonus-side-button" href="review-mystino.html">特典を見る</a>
 </div>
@@ -8898,7 +7292,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 <div class="bonus-side-image-slot has-image"><img alt="ベラジョンのウェルカム特典バナー" loading="lazy" src="side-banner-verajohn-bonus.png"/></div>
 <div class="bonus-side-body">
 <span class="bonus-side-label">定番</span>
-<h2>ベラジョン</h2>
+<h3>ベラジョン</h3>
 <p>150回FSと最大15万円の特典を確認。</p>
 <a class="bonus-side-button" href="review-verajohn.html">特典を見る</a>
 </div>
@@ -8909,7 +7303,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 <div class="bonus-side-image-slot has-image"><img alt="FortuneJackのウェルカムボーナスバナー" loading="lazy" src="side-banner-fortunejack-bonus.png"/></div>
 <div class="bonus-side-body">
 <span class="bonus-side-label">暗号資産</span>
-<h2>仮想通貨特典</h2>
+<h3>仮想通貨特典</h3>
 <p>暗号資産対応カジノのボーナスをまとめて確認。</p>
 <a class="bonus-side-button" href="payments.html">確認する</a>
 </div>
@@ -8920,7 +7314,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 <div class="bonus-side-image-slot has-image"><img alt="Vaveの暗号資産ボーナスバナー" loading="lazy" src="side-banner-vave-bonus.png"/></div>
 <div class="bonus-side-body">
 <span class="bonus-side-label">登録前</span>
-<h2>登録前チェック</h2>
+<h3>登録前チェック</h3>
 <p>ボーナス前に賭け条件・出金条件を確認。</p>
 <a class="bonus-side-button" href="site-checklist.html">確認する</a>
 </div>
@@ -8948,7 +7342,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 <section class="phase30-promo-rail" aria-labelledby="phase30-promo-title">
   <div class="phase30-promo-head">
     <div>
-      <h2 id="phase30-promo-title">注目特典を比較</h2>
+      <h3 id="phase30-promo-title">注目特典を比較</h3>
       <p>通常PCでは一覧表示、スマホでは横にスワイプして確認できます。</p>
     </div>
     <span class="phase31-swipe-hint" aria-hidden="true">横にスライド</span>
@@ -8991,7 +7385,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 <div aria-label="注目カジノ比較カード" class="fv-pickup-panel">
 <div class="fv-pickup-head">
 <span class="fv-pickup-kicker">注目比較・条件確認</span>
-<h2>まず見たい候補をFVで比較</h2>
+<h3>まず見たい候補をFVで比較</h3>
 <p class="fv-pickup-lead">
                 ボーナス額だけでなく、入出金・本人確認・公式規約まで確認するための入口です。
               </p>
@@ -9059,7 +7453,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 </div>
 <div aria-label="サイトの確認ポイント" class="hero-side">
 <div class="hero-card">
-<h2>まず見るべき3つ</h2>
+<h3>まず見るべき3つ</h3>
 <p>
                 気になるサイトがあっても、入金前に出金条件と本人確認まで確認しましょう。
               </p>
@@ -9090,7 +7484,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 </img></div>
 <div>
 <span class="slottenkoku-conversion-kicker">決済条件から選ぶなら</span>
-<h2>コンビニ決済・PayPayを確認したい人は、スロット天国の条件もチェック</h2>
+<h3>コンビニ決済・PayPayを確認したい人は、スロット天国の条件もチェック</h3>
 <p class="slottenkoku-conversion-lead">
               入金前に見るべきポイントは、ボーナス額だけではありません。最低入金額、反映時間、対象キャンペーン、本人確認、出金時の条件まで確認してから比較しましょう。
               スロット天国は、コンビニ決済やPayPay導線を重視したい人が確認候補に入れやすいページとして整理しています。
@@ -9414,7 +7808,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 <section class="after-section" id="bonus-check-table">
 <div class="after-section-inner">
 <span class="after-kicker">ボーナス確認早見表</span>
-<h2>候補ごとに、見るべきボーナスを整理</h2>
+<h3>候補ごとに、見るべきボーナスを整理</h3>
 <p class="after-lead">CTA前に迷わないよう、ランキング上位のカジノで見るべきボーナス項目を一覧化しています。</p>
 <div aria-label="ボーナス確認早見表" class="after-table">
 <div class="after-row"><b>スロット天国</b><p>登録特典、初回入金特典、コンビニ決済・PayPay条件を確認。</p><span class="check">決済 / ボーナス</span><a href="review-slottenkoku.html">詳細を見る</a></div>
@@ -9428,7 +7822,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 <section class="after-section" id="safe-check-flow">
 <div class="after-section-inner">
 <span class="after-kicker">登録前チェック導線</span>
-<h2>登録・CTAへ進む前に、この順番で確認</h2>
+<h3>登録・CTAへ進む前に、この順番で確認</h3>
 <p class="after-lead">ボーナス訴求からそのまま登録へ進むのではなく、最低限の確認ポイントを踏んでから詳細ページへ進める構成にしています。</p>
 <div class="after-flow">
 <div class="after-flow-step"><em>1</em><strong>レビューを見る</strong><span>特徴、強み、注意点、対象ユーザーを確認。</span></div>
@@ -9442,7 +7836,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 <section class="after-section after-final" id="top-final-cta">
 <div class="after-section-inner">
 <span class="after-kicker">TOP最終導線</span>
-<h2>迷ったら、まずはレビューとボーナス条件へ</h2>
+<h3>迷ったら、まずはレビューとボーナス条件へ</h3>
 <p class="after-lead">気になる候補が決まったら、レビュー一覧またはボーナス比較から、詳細条件を確認してから次へ進みましょう。</p>
 <div class="after-final-actions">
 <a class="primary" href="review.html">レビュー一覧を見る</a>
@@ -9476,7 +7870,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 </div>
 </section>
 <section class="section soft-section">
-<div class="section-title"><span class="eyebrow">Limited promo</span><h2>スロット天国の限定プロモ条件も確認</h2><p>キャンペーンや特典を見る前に、参加費、対象決済、対象ゲーム、報告方法、出金条件を確認できます。</p></div>
+<div class="section-title"><span class="eyebrow">Limited promo</span><h3>スロット天国の限定プロモ条件も確認</h3><p>キャンペーンや特典を見る前に、参加費、対象決済、対象ゲーム、報告方法、出金条件を確認できます。</p></div>
 <div class="hero-actions">
 <a class="btn btn-primary aff-cta" href="https://sloten.io?referral=0ZjM" rel="nofollow sponsored noopener" target="_blank">公式サイトで限定プロモを確認する</a>
 <a class="btn btn-secondary" href="slottenkoku-limited-promo-guide.html">限定プロモ条件を見る</a>
@@ -9484,7 +7878,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 </div>
 </section>
 <section class="section soft-section">
-<div class="section-title"><span class="eyebrow">Bonus Buy</span><h2>スロット天国のボーナスBUY条件も確認</h2><p>限定プロモでボーナスBUYやFeature Buyが関係する場合は、対象ゲーム、BUY額、報告方法、賭け条件を先に確認しておきましょう。</p></div>
+<div class="section-title"><span class="eyebrow">Bonus Buy</span><h3>スロット天国のボーナスBUY条件も確認</h3><p>限定プロモでボーナスBUYやFeature Buyが関係する場合は、対象ゲーム、BUY額、報告方法、賭け条件を先に確認しておきましょう。</p></div>
 <div class="hero-actions">
 <a class="btn btn-primary aff-cta" href="https://sloten.io?referral=0ZjM" rel="nofollow sponsored noopener" target="_blank">公式サイトで最新条件を確認する</a>
 <a class="btn btn-secondary" href="slottenkoku-bonus-buy-guide.html">ボーナスBUY条件を見る</a>
@@ -9492,13 +7886,13 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 </div>
 </section>
 <section class="section soft-section">
-<div class="section-title"><span class="eyebrow">Related guide</span><h2>スロット天国の報告方法も確認</h2><p>限定プロモやボーナスBUYに参加する前に、報告方法まで確認しておくと安心です。</p></div>
+<div class="section-title"><span class="eyebrow">Related guide</span><h3>スロット天国の報告方法も確認</h3><p>限定プロモやボーナスBUYに参加する前に、報告方法まで確認しておくと安心です。</p></div>
 <div class="hero-actions">
 <a class="btn btn-secondary" href="slottenkoku-replay-report-guide.html">リプレイリンク報告を見る</a>
 </div>
 </section>
 <section class="section soft-section">
-<div class="section-title"><span class="eyebrow">Prize conditions</span><h2>賞金獲得条件もあわせて確認</h2><p>限定プロモやボーナスBUY型キャンペーンは、参加条件・達成条件・報告方法を分けて見ると判断しやすくなります。</p></div>
+<div class="section-title"><span class="eyebrow">Prize conditions</span><h3>賞金獲得条件もあわせて確認</h3><p>限定プロモやボーナスBUY型キャンペーンは、参加条件・達成条件・報告方法を分けて見ると判断しやすくなります。</p></div>
 <div class="hero-actions">
 <a class="btn btn-primary aff-cta" href="https://sloten.io?referral=0ZjM" rel="nofollow sponsored noopener" target="_blank">条件を確認して公式サイトへ進む</a>
 <a class="btn btn-secondary" href="slottenkoku-prize-conditions-guide.html">賞金獲得条件を見る</a>
@@ -9506,7 +7900,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 </div>
 </section>
 <section class="section soft-section">
-<div class="section-title"><span class="eyebrow">Entry fee</span><h2>参加費・無料条件も確認する</h2><p>限定プロモでは参加費、無料対象、対象決済の確認が重要です。参加前に条件を整理しておきましょう。</p></div>
+<div class="section-title"><span class="eyebrow">Entry fee</span><h3>参加費・無料条件も確認する</h3><p>限定プロモでは参加費、無料対象、対象決済の確認が重要です。参加前に条件を整理しておきましょう。</p></div>
 <div class="hero-actions">
 <a class="btn btn-secondary" href="slottenkoku-participation-fee-guide.html">参加費条件を見る</a>
 <a class="btn btn-secondary" href="slottenkoku-prize-conditions-guide.html">賞金条件を見る</a>
@@ -9514,7 +7908,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 </div>
 </section>
 <section class="section soft-section">
-<div class="section-title"><span class="eyebrow">3x condition</span><h2>3倍条件の確認ページを追加しました</h2><p>限定プロモやボーナスBUYに参加する前に、対象ゲーム・報告方法・賞金条件とあわせて確認できます。</p></div>
+<div class="section-title"><span class="eyebrow">3x condition</span><h3>3倍条件の確認ページを追加しました</h3><p>限定プロモやボーナスBUYに参加する前に、対象ゲーム・報告方法・賞金条件とあわせて確認できます。</p></div>
 <div class="hero-actions">
 <a class="btn btn-secondary" href="slottenkoku-3x-condition-guide.html">3倍条件を確認する</a>
 <a class="btn btn-secondary" href="slottenkoku-prize-conditions-guide.html">賞金条件を見る</a>
@@ -9551,7 +7945,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 
 
 <section class="section konibet-safety-cluster" style="background:#fff;border:1px solid #f0d8d4;border-radius:22px;padding:24px;margin:24px 0;box-shadow:0 12px 28px rgba(120,20,10,.05)">
-  <h2>KONIBETの安全性・規約・出金条件も確認</h2>
+  <h3>KONIBETの安全性・規約・出金条件も確認</h3>
   <p>ボーナスを見る前後で、安全性・公式規約・本人確認・出金条件も合わせて確認しておくと安心です。</p>
   <div style="display:flex;gap:10px;flex-wrap:wrap">
     <a style="display:inline-flex;border-radius:999px;padding:10px 16px;background:#d71920;color:#fff;text-decoration:none;font-weight:900" href="konibet-safety-check.html">安全性を見る</a>
@@ -9562,7 +7956,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 
 
 <section class="section konibet-payment-cluster" style="background:#fff;border:1px solid #f0d8d4;border-radius:22px;padding:24px;margin:24px auto;max-width:1120px;box-shadow:0 12px 28px rgba(120,20,10,.05)">
-  <h2>KONIBETの入金方法・出金時間を比較</h2>
+  <h3>KONIBETの入金方法・出金時間を比較</h3>
   <p>登録前に、入金方法の選び方・反映時間・出金条件をまとめて確認できます。</p>
   <div style="display:flex;gap:10px;flex-wrap:wrap">
     <a style="display:inline-flex;border-radius:999px;padding:10px 16px;background:#d71920;color:#fff;text-decoration:none;font-weight:900" href="konibet-deposit-method-comparison.html">入金方法を比較</a>
@@ -9648,7 +8042,7 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 </div>
 <div class="slottenkoku-popup-body">
 <span class="slottenkoku-popup-kicker">🎁 登録前チェック</span>
-<h2 id="slottenkokuPopupTitle">スロット天国の限定特典を確認</h2>
+<h3 id="slottenkokuPopupTitle">スロット天国の限定特典を確認</h3>
 <p>リベンジカジノ比較ガイド経由で、スロット天国の登録特典・初回特典・参加条件を確認できます。対象条件・賭け条件・本人確認の流れは登録前に公式情報で確認してください。</p>
 <a class="slottenkoku-popup-cta" href="https://sloten.io?referral=0ZjM" rel="nofollow sponsored noopener" target="_blank">公式サイトで限定特典を確認する →</a>
 <span class="slottenkoku-popup-note">※ 特典内容・対象条件は変更される場合があります。登録前に公式規約をご確認ください。</span>
@@ -10019,7 +8413,7 @@ body {
   align-items: end;
   margin-bottom: 15px;
 }
-.phase30-promo-head h2 {
+.phase30-promo-head h3 {
   margin: 0;
   color: var(--p33-red-dark);
   font-size: clamp(21px, 2.2vw, 29px);
@@ -10145,7 +8539,7 @@ body {
   align-items: end;
 }
 .fv-ranking-head h2,
-.after-section h2,
+.after-section h2, .after-section h3,
 .section-title {
   text-wrap: balance;
 }
@@ -10310,7 +8704,7 @@ body {
     box-shadow: none;
   }
   .phase30-promo-head { align-items: center; }
-  .phase30-promo-head h2 { font-size: 21px; }
+  .phase30-promo-head h3 { font-size: 21px; }
   .phase30-promo-head p { font-size: 12px; }
   .phase31-swipe-hint { font-size: 11px; }
   .phase30-promo-scroll {
