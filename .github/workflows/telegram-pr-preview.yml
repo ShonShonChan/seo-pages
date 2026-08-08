@@ -1,0 +1,358 @@
+name: Telegram PR Preview
+
+# 正規のTelegram Claude Agent / Revert PRだけを、
+# 本番とは分離したCloudflare Pagesの仮ページへデプロイする。
+# mainへのマージや本番URLへの変更は行わない。
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  repository_dispatch:
+    types: [telegram_preview_deploy]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: "プレビューするPR番号"
+        required: true
+        type: number
+      chat_id:
+        description: "Telegram chat_id（任意）"
+        required: false
+        default: "manual"
+        type: string
+      request_id:
+        description: "request_id（任意）"
+        required: false
+        default: "manual"
+        type: string
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: telegram-pr-preview-${{ github.event.pull_request.number || github.event.client_payload.pr_number || inputs.pr_number || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    name: Build isolated PR preview
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    env:
+      CF_PAGES_PROJECT: revenge-casino-guide-preview
+      CF_PRODUCTION_BRANCH: main
+
+    steps:
+      - name: Resolve and validate target PR
+        id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_PR_NUMBER: ${{ github.event.pull_request.number }}
+          DISPATCH_PR_NUMBER: ${{ github.event.client_payload.pr_number }}
+          INPUT_PR_NUMBER: ${{ inputs.pr_number }}
+          DISPATCH_CHAT_ID: ${{ github.event.client_payload.chat_id }}
+          INPUT_CHAT_ID: ${{ inputs.chat_id }}
+          DISPATCH_REQUEST_ID: ${{ github.event.client_payload.request_id }}
+          INPUT_REQUEST_ID: ${{ inputs.request_id }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          PR_NUMBER="${EVENT_PR_NUMBER:-}"
+          [ -n "${PR_NUMBER}" ] || PR_NUMBER="${DISPATCH_PR_NUMBER:-}"
+          [ -n "${PR_NUMBER}" ] || PR_NUMBER="${INPUT_PR_NUMBER:-}"
+
+          if ! [[ "${PR_NUMBER}" =~ ^[0-9]+$ ]] || [ "${PR_NUMBER}" -le 0 ]; then
+            echo "::error::有効なPR番号を取得できませんでした。"
+            exit 1
+          fi
+
+          PR_JSON="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}")"
+
+          STATE="$(printf '%s' "${PR_JSON}" | jq -r '.state // ""')"
+          DRAFT="$(printf '%s' "${PR_JSON}" | jq -r '.draft // false')"
+          BASE_REF="$(printf '%s' "${PR_JSON}" | jq -r '.base.ref // ""')"
+          HEAD_REF="$(printf '%s' "${PR_JSON}" | jq -r '.head.ref // ""')"
+          HEAD_SHA="$(printf '%s' "${PR_JSON}" | jq -r '.head.sha // ""')"
+          HEAD_REPO="$(printf '%s' "${PR_JSON}" | jq -r '.head.repo.full_name // ""')"
+          TITLE="$(printf '%s' "${PR_JSON}" | jq -r '.title // ""')"
+          PR_URL="$(printf '%s' "${PR_JSON}" | jq -r '.html_url // ""')"
+          BODY="$(printf '%s' "${PR_JSON}" | jq -r '.body // ""')"
+
+          if [ "${STATE}" != "open" ]; then
+            echo "::error::PR #${PR_NUMBER} はopenではありません。"
+            exit 1
+          fi
+          if [ "${DRAFT}" = "true" ]; then
+            echo "::error::Draft PRはプレビュー対象外です。"
+            exit 1
+          fi
+          if [ "${BASE_REF}" != "main" ]; then
+            echo "::error::main向けPRではありません。"
+            exit 1
+          fi
+          if [ "${HEAD_REPO}" != "${GITHUB_REPOSITORY}" ]; then
+            echo "::error::外部forkのPRはプレビューしません。"
+            exit 1
+          fi
+
+          case "${HEAD_REF}" in
+            telegram-claude/*|telegram-revert/*) ;;
+            *)
+              echo "::error::正規のTelegram作業ブランチではありません。"
+              exit 1
+              ;;
+          esac
+
+          case "${TITLE}" in
+            "[Telegram Claude Agent]"*) ;;
+            *)
+              echo "::error::正規のTelegram Claude Agent PRではありません。"
+              exit 1
+              ;;
+          esac
+
+          CHAT_ID="${DISPATCH_CHAT_ID:-}"
+          [ -n "${CHAT_ID}" ] || CHAT_ID="${INPUT_CHAT_ID:-}"
+          if [ -z "${CHAT_ID}" ] || [ "${CHAT_ID}" = "manual" ]; then
+            CHAT_ID="$(printf '%s\n' "${BODY}" | sed -nE 's/^\| chat_id \| `([^`]*)` \|$/\1/p' | head -n 1)"
+          fi
+
+          REQUEST_ID="${DISPATCH_REQUEST_ID:-}"
+          [ -n "${REQUEST_ID}" ] || REQUEST_ID="${INPUT_REQUEST_ID:-}"
+          if [ -z "${REQUEST_ID}" ] || [ "${REQUEST_ID}" = "manual" ]; then
+            REQUEST_ID="$(printf '%s\n' "${BODY}" | sed -nE 's/^\| request_id \| `([^`]*)` \|$/\1/p' | head -n 1)"
+          fi
+
+          PREVIEW_BRANCH="pr-${PR_NUMBER}"
+
+          {
+            echo "number=${PR_NUMBER}"
+            echo "head_ref=${HEAD_REF}"
+            echo "head_sha=${HEAD_SHA}"
+            echo "pr_url=${PR_URL}"
+            echo "preview_branch=${PREVIEW_BRANCH}"
+            echo "chat_id=${CHAT_ID}"
+            echo "request_id=${REQUEST_ID}"
+          } >> "${GITHUB_OUTPUT}"
+
+          echo "PR #${PR_NUMBER} / ${HEAD_REF} / ${HEAD_SHA}"
+
+      - name: Checkout PR commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.pr.outputs.head_sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Validate Cloudflare credentials
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -z "${CLOUDFLARE_API_TOKEN:-}" ]; then
+            echo "::error::GitHub Secret CLOUDFLARE_API_TOKEN が未設定です。"
+            exit 1
+          fi
+          if [ -z "${CLOUDFLARE_ACCOUNT_ID:-}" ]; then
+            echo "::error::GitHub Secret CLOUDFLARE_ACCOUNT_ID が未設定です。"
+            exit 1
+          fi
+
+      - name: Ensure isolated Cloudflare Pages preview project
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          API_BASE="https://api.cloudflare.com/client/v4/accounts/${CLOUDFLARE_ACCOUNT_ID}/pages/projects"
+          HTTP_CODE="$(curl --silent --show-error \
+            -o "${RUNNER_TEMP}/cf-project.json" \
+            -w '%{http_code}' \
+            -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+            -H "Content-Type: application/json" \
+            "${API_BASE}/${CF_PAGES_PROJECT}")"
+
+          if [ "${HTTP_CODE}" = "200" ] && [ "$(jq -r '.success // false' "${RUNNER_TEMP}/cf-project.json")" = "true" ]; then
+            echo "Preview project already exists: ${CF_PAGES_PROJECT}"
+            exit 0
+          fi
+
+          if [ "${HTTP_CODE}" != "404" ]; then
+            echo "::error::Cloudflare Pages project確認に失敗しました。HTTP ${HTTP_CODE}"
+            cat "${RUNNER_TEMP}/cf-project.json"
+            exit 1
+          fi
+
+          CREATE_PAYLOAD="$(jq -n \
+            --arg name "${CF_PAGES_PROJECT}" \
+            --arg production_branch "${CF_PRODUCTION_BRANCH}" \
+            '{name:$name, production_branch:$production_branch}')"
+
+          CREATE_CODE="$(curl --silent --show-error \
+            -o "${RUNNER_TEMP}/cf-project-create.json" \
+            -w '%{http_code}' \
+            -X POST \
+            -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+            -H "Content-Type: application/json" \
+            --data "${CREATE_PAYLOAD}" \
+            "${API_BASE}")"
+
+          if [ "${CREATE_CODE}" != "200" ] && [ "${CREATE_CODE}" != "201" ]; then
+            echo "::error::Cloudflare Pages preview project作成に失敗しました。HTTP ${CREATE_CODE}"
+            cat "${RUNNER_TEMP}/cf-project-create.json"
+            exit 1
+          fi
+
+          if [ "$(jq -r '.success // false' "${RUNNER_TEMP}/cf-project-create.json")" != "true" ]; then
+            echo "::error::Cloudflare Pages preview project作成APIが失敗を返しました。"
+            cat "${RUNNER_TEMP}/cf-project-create.json"
+            exit 1
+          fi
+
+          echo "Created preview-only project: ${CF_PAGES_PROJECT}"
+
+      - name: Deploy PR to Cloudflare Pages preview
+        id: deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PREVIEW_BRANCH: ${{ steps.pr.outputs.preview_branch }}
+          HEAD_SHA: ${{ steps.pr.outputs.head_sha }}
+          PR_NUMBER: ${{ steps.pr.outputs.number }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          LOG_FILE="${RUNNER_TEMP}/wrangler-pages-deploy.log"
+
+          set +e
+          npx --yes wrangler@4 pages deploy . \
+            --project-name "${CF_PAGES_PROJECT}" \
+            --branch "${PREVIEW_BRANCH}" \
+            --commit-hash "${HEAD_SHA}" \
+            --commit-message "PR #${PR_NUMBER} preview" \
+            >"${LOG_FILE}" 2>&1
+          EXIT_CODE=$?
+          set -e
+
+          cat "${LOG_FILE}"
+
+          if [ "${EXIT_CODE}" -ne 0 ]; then
+            echo "::error::Cloudflare Pages preview deployに失敗しました。"
+            exit "${EXIT_CODE}"
+          fi
+
+          PREVIEW_URL="$(grep -Eo 'https://[A-Za-z0-9.-]+\.pages\.dev' "${LOG_FILE}" | tail -n 1 || true)"
+          if [ -z "${PREVIEW_URL}" ]; then
+            PREVIEW_URL="https://${PREVIEW_BRANCH}.${CF_PAGES_PROJECT}.pages.dev"
+          fi
+
+          echo "preview_url=${PREVIEW_URL}" >> "${GITHUB_OUTPUT}"
+          echo "Preview URL: ${PREVIEW_URL}"
+
+      - name: Add or update PR preview comment
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ steps.pr.outputs.number }}
+          PREVIEW_URL: ${{ steps.deploy.outputs.preview_url }}
+          PR_URL: ${{ steps.pr.outputs.pr_url }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          MARKER='<!-- telegram-pr-preview -->'
+          BODY_FILE="${RUNNER_TEMP}/preview-comment.md"
+          {
+            echo "${MARKER}"
+            echo "## 仮ページプレビュー"
+            echo ""
+            echo "PR #${PR_NUMBER} の変更内容を、本番とは分離したCloudflare Pages上で確認できます。"
+            echo ""
+            echo "**Preview:** ${PREVIEW_URL}"
+            echo ""
+            echo "> このURLは確認用です。mainへマージするまで本番には反映されません。"
+          } > "${BODY_FILE}"
+
+          COMMENT_ID="$(gh api "repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/comments" --paginate \
+            --jq ".[] | select(.body | contains(\"${MARKER}\")) | .id" | head -n 1 || true)"
+
+          if [ -n "${COMMENT_ID}" ]; then
+            jq -n --rawfile body "${BODY_FILE}" '{body:$body}' | \
+              gh api --method PATCH "repos/${GITHUB_REPOSITORY}/issues/comments/${COMMENT_ID}" --input - >/dev/null
+          else
+            gh pr comment "${PR_NUMBER}" --body-file "${BODY_FILE}"
+          fi
+
+      - name: Notify Telegram preview ready
+        if: success()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          CHAT_ID: ${{ steps.pr.outputs.chat_id }}
+          PR_NUMBER: ${{ steps.pr.outputs.number }}
+          PR_URL: ${{ steps.pr.outputs.pr_url }}
+          PREVIEW_URL: ${{ steps.deploy.outputs.preview_url }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ -z "${TELEGRAM_BOT_TOKEN:-}" ] || [ -z "${CHAT_ID:-}" ] || [ "${CHAT_ID}" = "manual" ]; then
+            echo "Telegram通知先がないため、PRコメントだけ更新しました。"
+            exit 0
+          fi
+
+          MESSAGE="$(printf '%s\n\n%s\n%s\n%s\n\n%s' \
+            '仮ページを作成しました。' \
+            "対象PR: #${PR_NUMBER}" \
+            "仮ページ: ${PREVIEW_URL}" \
+            "PR: ${PR_URL}" \
+            '本番にはまだ反映していません。ブラウザで確認後、問題なければ「そのPRを本番反映して」と送ってください。')"
+
+          jq -n \
+            --arg chat_id "${CHAT_ID}" \
+            --arg text "${MESSAGE}" \
+            '{chat_id:$chat_id,text:$text,disable_web_page_preview:false}' > "${RUNNER_TEMP}/telegram-preview.json"
+
+          curl --fail-with-body --silent --show-error \
+            -X POST \
+            -H "Content-Type: application/json" \
+            --data @"${RUNNER_TEMP}/telegram-preview.json" \
+            "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage"
+
+      - name: Notify Telegram preview failure
+        if: failure()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          CHAT_ID: ${{ steps.pr.outputs.chat_id }}
+          PR_NUMBER: ${{ steps.pr.outputs.number }}
+        shell: bash
+        run: |
+          if [ -z "${TELEGRAM_BOT_TOKEN:-}" ] || [ -z "${CHAT_ID:-}" ] || [ "${CHAT_ID}" = "manual" ]; then
+            exit 0
+          fi
+
+          RUN_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          MESSAGE="$(printf '%s\n\n%s\n%s\n%s' \
+            '仮ページの作成を完了できませんでした。PR自体には影響ありません。' \
+            "対象PR: #${PR_NUMBER}" \
+            "Actions: ${RUN_URL}" \
+            '本番反映は行っていません。')"
+
+          jq -n \
+            --arg chat_id "${CHAT_ID}" \
+            --arg text "${MESSAGE}" \
+            '{chat_id:$chat_id,text:$text,disable_web_page_preview:true}' > "${RUNNER_TEMP}/telegram-preview-failure.json"
+
+          curl --silent --show-error \
+            -X POST \
+            -H "Content-Type: application/json" \
+            --data @"${RUNNER_TEMP}/telegram-preview-failure.json" \
+            "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" || true
