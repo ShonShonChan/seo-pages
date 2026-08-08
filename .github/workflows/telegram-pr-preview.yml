@@ -165,6 +165,44 @@ jobs:
             exit 1
           fi
 
+      - name: Verify Cloudflare API token
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          RESPONSE_FILE="${RUNNER_TEMP}/cf-token-verify.json"
+          HTTP_CODE="$(curl --silent --show-error \
+            -o "${RESPONSE_FILE}" \
+            -w '%{http_code}' \
+            -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+            -H "Content-Type: application/json" \
+            "https://api.cloudflare.com/client/v4/user/tokens/verify")"
+
+          SUCCESS="$(jq -r '.success // false' "${RESPONSE_FILE}")"
+          STATUS="$(jq -r '.result.status // ""' "${RESPONSE_FILE}")"
+          ERROR_CODE="$(jq -r '.errors[0].code // ""' "${RESPONSE_FILE}")"
+          ERROR_MESSAGE="$(jq -r '.errors[0].message // ""' "${RESPONSE_FILE}")"
+
+          echo "Cloudflare token verify HTTP: ${HTTP_CODE}"
+          echo "Cloudflare token status: ${STATUS:-unknown}"
+          if [ -n "${ERROR_CODE}" ] || [ -n "${ERROR_MESSAGE}" ]; then
+            echo "Cloudflare error: code=${ERROR_CODE:-none} message=${ERROR_MESSAGE:-none}"
+          fi
+
+          if [ "${HTTP_CODE}" != "200" ] || [ "${SUCCESS}" != "true" ]; then
+            echo "::error::Cloudflare API Token自体の認証に失敗しています。GitHub Secretの値・Tokenの有効状態を確認してください。"
+            exit 1
+          fi
+
+          if [ "${STATUS}" != "active" ]; then
+            echo "::error::Cloudflare API Tokenがactiveではありません。status=${STATUS:-unknown}"
+            exit 1
+          fi
+
+          echo "Cloudflare API Token is valid and active."
+
       - name: Ensure isolated Cloudflare Pages preview project
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
