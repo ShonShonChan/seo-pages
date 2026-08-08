@@ -10402,5 +10402,30 @@ body {
 }
 </style>
 
+<!-- PHASE34_HERO_BANNER_LAYOUT_START -->
+<style id="phase34-hero-banner-layout">
+/* Phase34: FV左サイドに縦積みだったバナーCTA（注目カジノ比較カード）を、
+   ヒーロー本文の下へ横並びで再配置し、右側に出ていた大きな余白を解消する。
+   1180px以下は既存のレイアウト（2段組→1段組）をそのまま使うため、
+   デスクトップ幅のみを対象にした上書きにとどめる。 */
+@media (min-width: 1181px) {
+  .hero-grid.fv-enhanced-grid {
+    grid-template-columns: minmax(420px, 1.32fr) minmax(300px, .92fr);
+  }
+
+  /* バナーCTAはヒーロー本文＋確認ポイントカードの下段へ全幅で配置 */
+  .fv-pickup-panel {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .fv-pickup-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+</style>
+<!-- PHASE34_HERO_BANNER_LAYOUT_END -->
+
 </body>
 </html>
