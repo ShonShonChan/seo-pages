@@ -109,7 +109,7 @@ jobs:
             --allowed-tools
             "Read,Glob,Grep,Edit,MultiEdit,Write,
             Bash(git status:*),Bash(git diff:*),Bash(git log:*),
-            Bash(ls:*),Bash(node:*),Bash(npx:*),Bash(python3:*)"
+            Bash(ls:*),Bash(node:*),Bash(npx:*),Bash(python3:*),Bash(curl:*)"
             --max-turns 60
           prompt: |
             あなたは静的サイトリポジトリ（SEOサイト）で作業するエンジニアです。
