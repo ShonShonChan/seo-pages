@@ -1,4 +1,5 @@
 name: Telegram Claude Agent
+run-name: "Telegram Claude Agent · ${{ github.event.client_payload.request_id || inputs.request_id || github.run_id }}"
 
 # Telegram → Cloudflare Worker → repository_dispatch → このワークフロー
 # → Claude Code → 必要に応じて作業ブランチへpush → PR作成 → Telegramへ結果通知
