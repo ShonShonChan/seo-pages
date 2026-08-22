@@ -112,7 +112,7 @@ jobs:
             "Read,Glob,Grep,Edit,MultiEdit,Write,
             Bash(git status:*),Bash(git diff:*),Bash(git log:*),
             Bash(ls:*),Bash(node:*),Bash(npx:*),Bash(python3:*),Bash(curl:*)"
-            --max-turns 60
+            --max-turns 100
           prompt: |
             あなたはこのSEOサイトのGitHubリポジトリを扱うClaude Code Agentです。
 
