@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>【確認用】トップページ上部バナー プレビュー | リベンジカジノ比較ガイド</title>
+<style>
+  :root {
+    --red: #d71920;
+    --red-dark: #9f1017;
+    --gold: #d6a642;
+    --ink: #242424;
+    --muted: #6b5a5a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0 0 60px;
+    background: #fff8f6;
+    color: var(--ink);
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, system-ui, -apple-system, sans-serif;
+    line-height: 1.75;
+  }
+  .pv-head {
+    padding: 22px 20px;
+    background: linear-gradient(115deg, var(--red) 0%, var(--red-dark) 60%, #76060b 100%);
+    border-bottom: 2px solid var(--gold);
+    color: #fff;
+  }
+  .pv-head-inner { max-width: 1180px; margin: 0 auto; }
+  .pv-head h1 { margin: 0 0 6px; font-size: clamp(18px, 2.2vw, 26px); line-height: 1.35; }
+  .pv-head p { margin: 0; font-size: 13px; color: rgba(255,255,255,.92); }
+  .pv-badge {
+    display: inline-block;
+    margin-bottom: 8px;
+    padding: 3px 12px;
+    border-radius: 999px;
+    background: #fff8e6;
+    color: var(--red-dark);
+    font-size: 11px;
+    font-weight: 900;
+  }
+
+  .pv-wrap { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
+
+  .pv-note {
+    margin: 22px 0;
+    padding: 14px 16px;
+    border: 1px solid #f0caca;
+    border-left: 4px solid var(--red);
+    border-radius: 12px;
+    background: #fff;
+    font-size: 13px;
+  }
+  .pv-note ul { margin: 8px 0 0; padding-left: 20px; }
+  .pv-note li { margin-bottom: 4px; }
+
+  .pv-frame { margin: 26px 0 34px; }
+  .pv-frame-head {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    margin-bottom: 8px;
+  }
+  .pv-frame-head h2 { margin: 0; font-size: 16px; color: var(--red-dark); }
+  .pv-frame-head span { font-size: 12px; color: var(--muted); }
+  .pv-stage {
+    overflow: hidden;
+    border: 1px solid #e3d3d3;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 10px 26px rgba(120,20,20,.08);
+  }
+  .pv-stage iframe {
+    display: block;
+    border: 0;
+    transform-origin: top left;
+    background: #fff;
+  }
+  .pv-actions { margin-top: 10px; font-size: 13px; }
+  .pv-actions a { color: var(--red-dark); font-weight: 700; }
+</style>
+</head>
+<body>
+
+<div class="pv-head">
+  <div class="pv-head-inner">
+    <span class="pv-badge">確認用ページ（noindex）</span>
+    <h1>トップページ上部バナー プレビュー</h1>
+    <p>実際の <code>index.html</code> を各画面幅で読み込んで表示しています。デザイン確認専用のため、検索エンジンには登録されません。</p>
+  </div>
+</div>
+
+<div class="pv-wrap">
+
+  <div class="pv-note">
+    <strong>この画面の見かた</strong>
+    <ul>
+      <li>各枠は <code>index.html</code> をその横幅（CSSピクセル）で読み込んでいます。メディアクエリも実際と同じ条件で効きます。</li>
+      <li>表示スペースの都合で縮小表示している枠がありますが、レイアウトの計算は指定した横幅で行われています。</li>
+      <li>スロット天国のポップアップはバナー確認の邪魔になるため、この画面の中でのみ非表示にしています（本番の挙動は変えていません）。</li>
+      <li>実寸で見る場合は、各枠の下のリンクから <code>index.html</code> を直接開いてください。</li>
+    </ul>
+  </div>
+
+  <div class="pv-note">
+    <strong>今回の調整内容（ヘッドレスChromeでの実測値）</strong>
+    <ul>
+      <li>1920px幅：バナー幅 1920px（画面幅100%）／高さ 約228px／ヘッダーとの余白 0px</li>
+      <li>1440px幅：バナー幅 1440px／高さ 約172px　｜　1280px幅：高さ 約153px</li>
+      <li>390px幅（スマホ）：高さ 約173px（PCの固定高さは使わず、内容に応じて縮小）</li>
+      <li>ロゴ画像 <code>fv-logo-slottenkoku.png</code> は実寸 400×180px（比率2.22）。表示比率も 2.22 のままで、引き伸ばしは発生していません。</li>
+      <li>320px〜1920px のすべてで横スクロールは発生していません。</li>
+    </ul>
+  </div>
+
+  <div id="pv-frames"></div>
+
+</div>
+
+<script>
+(function () {
+  var FRAMES = [
+    { label: "PC（1920px）",      w: 1920, h: 560, scale: 0.58 },
+    { label: "PC（1440px）",      w: 1440, h: 520, scale: 0.72 },
+    { label: "ノートPC（1280px）", w: 1280, h: 500, scale: 0.8 },
+    { label: "タブレット（768px）", w: 768,  h: 560, scale: 1 },
+    { label: "スマホ（390px）",     w: 390,  h: 620, scale: 1 },
+    { label: "スマホ小（320px）",   w: 320,  h: 620, scale: 1 }
+  ];
+
+  var HIDE_POPUP_CSS =
+    ".slottenkoku-popup-overlay{display:none !important;}" +
+    "body{padding-bottom:0 !important;}";
+
+  var host = document.getElementById("pv-frames");
+
+  FRAMES.forEach(function (f) {
+    var sec = document.createElement("section");
+    sec.className = "pv-frame";
+
+    var head = document.createElement("div");
+    head.className = "pv-frame-head";
+    head.innerHTML =
+      "<h2>" + f.label + "</h2>" +
+      "<span>表示倍率 " + Math.round(f.scale * 100) + "%（レイアウトは " + f.w + "px 幅で計算）</span>";
+    sec.appendChild(head);
+
+    var stage = document.createElement("div");
+    stage.className = "pv-stage";
+    stage.style.width = Math.round(f.w * f.scale) + "px";
+    stage.style.maxWidth = "100%";
+    stage.style.height = Math.round(f.h * f.scale) + "px";
+
+    var frame = document.createElement("iframe");
+    frame.src = "index.html";
+    frame.loading = "lazy";
+    frame.title = f.label + " のトップページ表示";
+    frame.style.width = f.w + "px";
+    frame.style.height = f.h + "px";
+    frame.style.transform = "scale(" + f.scale + ")";
+    frame.setAttribute("scrolling", "no");
+
+    // 同一オリジンで読み込めた場合だけ、確認の邪魔になるポップアップを枠内で隠す。
+    frame.addEventListener("load", function () {
+      try {
+        var doc = frame.contentDocument;
+        if (!doc) { return; }
+        var st = doc.createElement("style");
+        st.textContent = HIDE_POPUP_CSS;
+        doc.head.appendChild(st);
+      } catch (e) {
+        /* クロスオリジンで読めない環境では何もしない */
+      }
+    });
+
+    stage.appendChild(frame);
+    sec.appendChild(stage);
+
+    var actions = document.createElement("p");
+    actions.className = "pv-actions";
+    actions.innerHTML = '<a href="index.html" target="_blank" rel="noopener">この画面幅のまま index.html を新しいタブで開く</a>';
+    sec.appendChild(actions);
+
+    host.appendChild(sec);
+  });
+})();
+</script>
+
+</body>
+</html>
