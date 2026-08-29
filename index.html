@@ -7324,6 +7324,19 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 </div>
 </div>
 </aside>
+<!-- PHASE35_TOP_LEAD_BANNER_START -->
+<aside class="phase35-lead-banner" aria-label="注目特典バナー">
+<a class="phase35-lead-banner-link" href="https://sloten.io?referral=0ZjM" target="_blank" rel="nofollow sponsored noopener">
+<span class="phase35-lead-banner-logo"><img alt="スロット天国 ロゴ" src="fv-logo-slottenkoku.png" width="400" height="180" loading="eager" decoding="async"></span>
+<span class="phase35-lead-banner-text">
+<span class="phase35-lead-banner-label">注目特典</span>
+<strong>スロット天国の登録特典・初回入金特典</strong>
+<span class="phase35-lead-banner-note">受け取り前に、賭け条件と出金条件を公式サイトで確認できます。</span>
+</span>
+<span class="phase35-lead-banner-action">公式サイトで条件を確認</span>
+</a>
+</aside>
+<!-- PHASE35_TOP_LEAD_BANNER_END -->
 <header class="site-header">
 <div class="header-inner">
 <a aria-label="リベンジカジノ比較ガイド トップへ" class="brand" href="index.html">
@@ -8821,6 +8834,147 @@ body {
 }
 </style>
 <!-- PHASE34_HERO_BANNER_LAYOUT_END -->
+
+<!-- PHASE35_TOP_LEAD_BANNER_START -->
+<style id="phase35-top-lead-banner">
+/* Phase35: ナビゲーション上部の横長バナー。
+   既存の上部プロモスライダー（phase30/31）と同じ赤ベース＋白文字で揃え、
+   金はふち取りとラベルのアクセントのみに使う。
+   スマホでは2段（ロゴ＋テキスト／全幅ボタン）に折り返して横スクロールを出さない。 */
+.phase35-lead-banner {
+  width: min(1180px, calc(100% - 32px));
+  max-width: 1180px;
+  margin: 14px auto 0;
+  min-width: 0;
+}
+
+.phase35-lead-banner-link {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(214, 166, 66, .55);
+  background: linear-gradient(135deg, #d71920 0%, #a70e16 58%, #76060b 100%);
+  color: #fff;
+  box-shadow: 0 12px 26px rgba(120, 20, 20, .16);
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+
+.phase35-lead-banner-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 46px;
+  padding: 4px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid #f0caca;
+}
+
+/* 既存のモバイル用共通CSSが img { height:auto !important } を掛けているため、
+   高さ固定ではなく max-height で収める（縦横比は維持される）。 */
+.phase35-lead-banner-logo img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.phase35-lead-banner-text { min-width: 0; }
+
+.phase35-lead-banner-label {
+  display: inline-block;
+  margin-bottom: 3px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--gold-soft);
+  color: #9f1017;
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1.6;
+}
+
+.phase35-lead-banner-text strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.phase35-lead-banner-note {
+  display: block;
+  color: rgba(255, 255, 255, .92);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.phase35-lead-banner-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  background: #fff;
+  color: #9f1017;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.35;
+  text-align: center;
+  white-space: nowrap;
+}
+
+@media (hover: hover) {
+  .phase35-lead-banner-link:hover {
+    box-shadow: 0 16px 32px rgba(120, 20, 20, .22);
+    transform: translateY(-1px);
+  }
+}
+
+@media (max-width: 760px) {
+  .phase35-lead-banner {
+    width: min(100% - 24px, 1180px);
+    margin-top: 10px;
+  }
+  .phase35-lead-banner-link {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 10px 12px;
+    padding: 11px 12px;
+    border-radius: 16px;
+  }
+  .phase35-lead-banner-logo {
+    width: 74px;
+    height: 38px;
+    border-radius: 10px;
+  }
+  .phase35-lead-banner-text strong { font-size: 13.5px; }
+  .phase35-lead-banner-note { font-size: 11.5px; }
+  .phase35-lead-banner-action {
+    grid-column: 1 / -1;
+    width: 100%;
+    padding: 9px 14px;
+    font-size: 12.5px;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 380px) {
+  .phase35-lead-banner-logo { width: 64px; height: 34px; }
+  .phase35-lead-banner-text strong { font-size: 13px; }
+  .phase35-lead-banner-note { font-size: 11px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phase35-lead-banner-link { transition: none !important; }
+  .phase35-lead-banner-link:hover { transform: none !important; }
+}
+</style>
+<!-- PHASE35_TOP_LEAD_BANNER_END -->
 
 </body>
 </html>
