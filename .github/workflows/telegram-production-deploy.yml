@@ -255,7 +255,8 @@ jobs:
               return 0
             fi
 
-            if printf '%s' "${err_text}" | grep -qi 'no required checks reported'; then
+            if printf '%s' "${err_text}" | grep -Eqi \
+              'no required checks reported|no checks reported on .* branch'; then
               printf '[]\n' > "${normalized_file}"
               return 0
             fi
