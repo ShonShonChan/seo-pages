@@ -10,7 +10,7 @@ run-name: "Telegram Claude Agent · ${{ github.event.client_payload.request_id |
 #   - 調査のみの場合はファイル変更・commit・push・PR作成をしない
 #   - 変更があるときだけcommit・push・PR作成
 #   - 自動マージしない
-#   - Telegramには最終結果を省略せず、必要に応じて複数メッセージに分割して返す
+#   - Telegramには結論・主要結果・次の行動だけを短く返す
 
 on:
   repository_dispatch:
@@ -32,6 +32,16 @@ on:
         required: false
         default: "manual"
         type: string
+      photo_file_id:
+        description: "Telegram画像のfile_id（手動テスト時は任意）"
+        required: false
+        default: ""
+        type: string
+      photo_file_name:
+        description: "画像ファイル名のヒント（任意）"
+        required: false
+        default: ""
+        type: string
 
 permissions:
   contents: write
@@ -52,6 +62,8 @@ jobs:
       TASK: ${{ github.event.client_payload.task || inputs.task }}
       CHAT_ID: ${{ github.event.client_payload.chat_id || inputs.chat_id || 'manual' }}
       REQUEST_ID: ${{ github.event.client_payload.request_id || inputs.request_id || 'manual' }}
+      PHOTO_FILE_ID: ${{ github.event.client_payload.photo_file_id || inputs.photo_file_id || '' }}
+      PHOTO_FILE_NAME: ${{ github.event.client_payload.photo_file_name || inputs.photo_file_name || '' }}
       BASE_BRANCH: main
 
     steps:
@@ -102,6 +114,61 @@ jobs:
           echo "--- task ---"
           cat "${TASK_FILE}"
 
+      - name: Download Telegram image attachment
+        id: attachment
+        if: env.PHOTO_FILE_ID != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: |
+          if [ -z "${TELEGRAM_BOT_TOKEN}" ]; then
+            echo "::error::画像付き依頼ですが TELEGRAM_BOT_TOKEN が未設定です。"
+            exit 1
+          fi
+
+          ATTACH_DIR="${RUNNER_TEMP}/telegram-attachment"
+          mkdir -p "${ATTACH_DIR}"
+
+          META_JSON="$(curl --fail-with-body --silent --show-error \
+            "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getFile?file_id=${PHOTO_FILE_ID}")"
+
+          FILE_PATH="$(printf '%s' "${META_JSON}" | jq -r '.result.file_path // empty')"
+          if [ -z "${FILE_PATH}" ]; then
+            echo "::error::Telegram getFile から file_path を取得できませんでした。"
+            exit 1
+          fi
+
+          EXT="${FILE_PATH##*.}"
+          case "${EXT}" in
+            jpg|jpeg|png|webp) ;;
+            *) EXT="jpg" ;;
+          esac
+
+          SAFE_HINT="$(printf '%s' "${PHOTO_FILE_NAME}" | tr -c 'A-Za-z0-9._-' '-' | sed 's/^-*//;s/-*$//' | cut -c1-80)"
+          if [ -n "${SAFE_HINT}" ]; then
+            case "${SAFE_HINT}" in
+              *.*) FILE_NAME="${SAFE_HINT}" ;;
+              *) FILE_NAME="${SAFE_HINT}.${EXT}" ;;
+            esac
+          else
+            SAFE_ID="$(printf '%s' "${REQUEST_ID}" | tr -c 'A-Za-z0-9._-' '-' | cut -c1-50)"
+            FILE_NAME="telegram-${SAFE_ID}.${EXT}"
+          fi
+
+          LOCAL_PATH="${ATTACH_DIR}/${FILE_NAME}"
+          curl --fail-with-body --silent --show-error \
+            -o "${LOCAL_PATH}" \
+            "https://api.telegram.org/file/bot${TELEGRAM_BOT_TOKEN}/${FILE_PATH}"
+
+          if [ ! -s "${LOCAL_PATH}" ]; then
+            echo "::error::Telegram画像のダウンロード結果が空です。"
+            exit 1
+          fi
+
+          echo "path=${LOCAL_PATH}" >> "$GITHUB_OUTPUT"
+          echo "name=${FILE_NAME}" >> "$GITHUB_OUTPUT"
+          echo "画像を受け取りました: ${FILE_NAME}"
+          file "${LOCAL_PATH}" || true
+
       - name: Run Claude Code
         id: claude
         uses: anthropics/claude-code-action@v1
@@ -111,7 +178,8 @@ jobs:
             --allowed-tools
             "Read,Glob,Grep,Edit,MultiEdit,Write,
             Bash(git status:*),Bash(git diff:*),Bash(git log:*),
-            Bash(ls:*),Bash(node:*),Bash(npx:*),Bash(python3:*),Bash(curl:*)"
+            Bash(ls:*),Bash(node:*),Bash(npx:*),Bash(python3:*),Bash(curl:*),
+            Bash(cp:*),Bash(file:*),Bash(mkdir:*)"
             --max-turns 100
           prompt: |
             あなたはこのSEOサイトのGitHubリポジトリを扱うClaude Code Agentです。
@@ -120,6 +188,14 @@ jobs:
 
             作業指示:
             ${{ steps.task_file.outputs.path }}
+
+            Telegram画像ファイル（添付がある場合のみ）:
+            ${{ steps.attachment.outputs.path }}
+
+            画像パスが空でなければ、そのファイルはユーザーが今回Telegramで添付した実ファイルです。
+            必要なら `file` で確認し、依頼を成立させるために `cp` でリポジトリ内へ追加して使用してください。
+            画像ファイル名や保存先は現物確認後に自然な名前を選び、存在しない画像名を推測して参照しないでください。
+            画像パスが空なら「画像が届いている」と仮定しないでください。
 
             必要な場合のみ、次の補助ファイルを参照してください。
 
@@ -131,14 +207,14 @@ jobs:
 
             1. ユーザーの表面的な文言だけでなく、渡された文脈から最終目的を理解する。
             2. 推測より現物確認を優先し、Read / Glob / Grep / Bash / curl等から必要なツールを自分で選ぶ。
-            3. ユーザーが依頼した範囲と、その目的を正しく成立させるために必要な範囲だけ作業する。
+            3. ユーザーが依頼した範囲と、その目的を正しく成立させるために必要な範囲だけ作業する。曖昧な依頼を勝手にサイト全体監査へ拡大しない。
             4. 小さなタスクは現状確認後すぐ実行し、大きなタスクは軽く計画してから進める。
             5. 調査のみの依頼ではリポジトリを変更しない。修正依頼では必要なファイルだけを変更する。
             6. 実行後は結果を観測し、必要な検証を自分で選んで行う。
             7. 依頼範囲内の問題を見つけ、安全に直せる場合は自分で修正し、再検証する。
             8. 確認できない情報を事実のように断定しない。
             9. 不可逆・危険な操作は行わない。Production反映やmainへの直接変更はこのAgentの担当外。
-            10. 最後に、ユーザーが判断できる簡潔で事実ベースの作業レポートを作る。
+            10. 最後に、ユーザーが判断できる短い作業レポートを作る。求められていない全件一覧・長い検証ログ・重複説明は出さない。
 
             ## Git操作
 
@@ -166,18 +242,17 @@ jobs:
 
             ${{ steps.task_file.outputs.report }}
 
-            レポートには、タスクに応じて必要なものだけを含めてください。
+            レポートは原則1200文字以内、最大でも次の4項目だけにしてください。
 
             - 結論 / 結果
-            - 実施した内容
-            - ユーザーが求めた成果物
-            - 変更ファイル（変更がある場合）
-            - 実施した検証と結果
-            - 未確認事項・注意点（ある場合のみ）
+            - 変更したもの（ある場合のみ）
+            - 検証結果（重要なものだけ）
+            - 次にユーザーがすること（必要な場合のみ）
 
-            ユーザーが求めた一覧・データ・成果物は省略しないでください。
-            「後で提示します」で終了せず、この実行内で完成させてください。
-            同じ要点を通常の応答としても出力してください。
+            ユーザーが明示的に一覧・詳細レポートを求めた場合だけ詳細化してください。
+            通常タスクでは、全ファイル一覧、全リンク一覧、長い調査手順、同じ内容の言い換えを出さないでください。
+            作業不能の場合も「止まった理由1つ + 次に必要なこと1つ」を短く返してください。
+            「後で提示します」で終了せず、この実行内で必要な成果まで完成させてください。
 
       - name: Detect changes
         id: changes
@@ -343,64 +418,35 @@ jobs:
           if report_path.exists() and report_path.stat().st_size > 0:
               report = report_path.read_text(encoding="utf-8", errors="replace").strip()
           else:
-              report = "Claude Codeのレポートファイルが生成されませんでした。Actionsログを確認してください。"
+              report = "処理は完了しましたが、作業レポートを取得できませんでした。"
+
+          # Telegramは詳細ログ置き場ではない。通常は短い結論だけ返す。
+          limit = 1800
+          if len(report) > limit:
+              report = report[:limit].rstrip() + "\n…（詳細はPR / Actionsで確認できます）"
 
           if changed:
-              intro = "対応が完了しました。変更内容と検証結果を送ります。"
-              outro = (
-                  f"確認用PR:\n{pr_url}\n\n"
-                  "自動マージはしていません。内容を確認してから本番反映してください。"
-              )
+              parts = ["対応完了。", report]
+              if pr_url:
+                  parts.append(f"確認用PR:\n{pr_url}")
           else:
-              intro = "調査・確認が完了しました。ファイル変更は行っていません。"
-              outro = "PRは作成していません。"
+              parts = ["確認完了。", report]
 
+          text = "\n\n".join(part for part in parts if part).strip()
           api_url = f"https://api.telegram.org/bot{token}/sendMessage"
-
-          def send_message(text):
-              payload = json.dumps({
-                  "chat_id": chat_id,
-                  "text": text,
-                  "disable_web_page_preview": True,
-              }, ensure_ascii=False).encode("utf-8")
-              req = urllib.request.Request(
-                  api_url,
-                  data=payload,
-                  headers={"Content-Type": "application/json"},
-                  method="POST",
-              )
-              with urllib.request.urlopen(req, timeout=30) as response:
-                  response.read()
-
-          def split_text(text, limit=3500):
-              text = text.strip()
-              if not text:
-                  return []
-              chunks = []
-              while len(text) > limit:
-                  cut = text.rfind("\n", 0, limit)
-                  if cut < limit // 2:
-                      cut = text.rfind(" ", 0, limit)
-                  if cut < limit // 2:
-                      cut = limit
-                  chunks.append(text[:cut].rstrip())
-                  text = text[cut:].lstrip()
-              if text:
-                  chunks.append(text)
-              return chunks
-
-          send_message(intro)
-
-          chunks = split_text(report)
-          total = len(chunks)
-
-          for index, chunk in enumerate(chunks, start=1):
-              if total > 1:
-                  send_message(f"【結果 {index}/{total}】\n{chunk}")
-              else:
-                  send_message(chunk)
-
-          send_message(outro)
+          payload = json.dumps({
+              "chat_id": chat_id,
+              "text": text,
+              "disable_web_page_preview": True,
+          }, ensure_ascii=False).encode("utf-8")
+          req = urllib.request.Request(
+              api_url,
+              data=payload,
+              headers={"Content-Type": "application/json"},
+              method="POST",
+          )
+          with urllib.request.urlopen(req, timeout=30) as response:
+              response.read()
           PY
 
       - name: Send failure result to Telegram
@@ -420,7 +466,10 @@ jobs:
 
           RUN_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
 
-          MESSAGE="$(printf '%s\n\n%s\n%s\n\n%s\n%s\n\n%s'             '処理中にエラーが発生しました。'             '依頼:'             "${TASK}"             'GitHub Actions:'             "${RUN_URL}"             'サイトへの自動反映や自動マージは行っていません。')"
+          MESSAGE="$(printf '%s\n\n%s\n%s' \
+            '処理中にエラーが発生しました。' \
+            'GitHub Actions:' \
+            "${RUN_URL}")"
 
           PAYLOAD="$(jq -n             --arg chat_id "${CHAT_ID}"             --arg text "${MESSAGE}"             '{chat_id: $chat_id, text: $text, disable_web_page_preview: true}')"
 
