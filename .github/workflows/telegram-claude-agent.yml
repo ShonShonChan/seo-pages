@@ -9,7 +9,10 @@ run-name: "Telegram Claude Agent · ${{ github.event.client_payload.request_id |
 #   - 実行ごとに新しい作業ブランチを作る
 #   - 調査のみの場合はファイル変更・commit・push・PR作成をしない
 #   - 変更があるときだけcommit・push・PR作成
-#   - 自動マージしない
+#   - PRのClose / Merge / Revertは、ユーザーが明示的に依頼した場合だけActions側で実行する
+#   - Mergeはユーザーの明示指示がある場合だけ許可する
+#   - Revert対象PRが未マージなら、RevertではなくPR Closeとして扱う
+#   - Production反映はこのWorkflowでは行わない
 #   - Telegramには結論・主要結果・次の行動だけを短く返す
 
 on:
@@ -105,11 +108,14 @@ jobs:
         run: |
           TASK_FILE="${RUNNER_TEMP}/telegram-task.md"
           REPORT_FILE="${RUNNER_TEMP}/claude-report.md"
+          CONTROL_FILE="${RUNNER_TEMP}/github-control.json"
 
           printf '%s\n' "${TASK}" > "${TASK_FILE}"
+          printf '%s\n' '{"action":"none","pr_number":null,"reason":""}' > "${CONTROL_FILE}"
 
           echo "path=${TASK_FILE}" >> "$GITHUB_OUTPUT"
           echo "report=${REPORT_FILE}" >> "$GITHUB_OUTPUT"
+          echo "control=${CONTROL_FILE}" >> "$GITHUB_OUTPUT"
 
           echo "--- task ---"
           cat "${TASK_FILE}"
@@ -218,7 +224,7 @@ jobs:
 
             ## Git操作
 
-            このWorkflowでは、branch作成・commit・push・PR作成はGitHub Actions側が担当します。
+            通常のコード変更では、branch作成・commit・push・PR作成はGitHub Actions側が担当します。
             Claude Code自身は以下を行わないでください。
 
             - git commit
@@ -226,10 +232,33 @@ jobs:
             - git branch操作
             - PR作成
             - mainへの直接変更
-            - 自動マージ
+            - ghによるPR操作
             - Production反映
 
             状態確認のための `git status` / `git diff` / `git log` は使用して構いません。
+
+            ただし、ユーザーが既存PRについて明示的にGitHub操作を依頼した場合は、
+            Claude Codeが直接操作するのではなく、次の制御ファイルへ指示を書き出してください。
+
+            制御ファイル:
+            ${{ steps.task_file.outputs.control }}
+
+            JSON形式は必ず次のいずれかです。
+
+            - 通常タスク: {"action":"none","pr_number":null,"reason":""}
+            - PRを閉じる: {"action":"close_pr","pr_number":24,"reason":"短い理由"}
+            - PRをマージ: {"action":"merge_pr","pr_number":24,"reason":"短い理由"}
+            - PRを元に戻す: {"action":"revert_pr","pr_number":24,"reason":"短い理由"}
+
+            ルール:
+
+            1. close_pr / merge_pr / revert_pr は、ユーザーが今回の依頼で明確にその操作を求めている場合だけ指定する。
+            2. PR番号を推測しない。依頼や文脈から対象PRを特定できない場合は action=none とし、作業レポートでPR番号の確認を1つだけ求める。
+            3. merge_pr は「マージして」「mergeして」等の明示指示がある場合だけ指定する。
+            4. revert_pr は「元に戻して」「取り消して」「revertして」等、既存PRの変更を戻す明示指示がある場合だけ指定する。
+            5. GitHub管理操作だけの依頼では、リポジトリファイルを編集しない。
+            6. Production反映、Secret変更、main直接pushは制御ファイルでも要求しない。
+            7. 不明な場合は危険側へ推測せず action=none とする。
 
             ## セキュリティ
 
@@ -253,6 +282,201 @@ jobs:
             通常タスクでは、全ファイル一覧、全リンク一覧、長い調査手順、同じ内容の言い換えを出さないでください。
             作業不能の場合も「止まった理由1つ + 次に必要なこと1つ」を短く返してください。
             「後で提示します」で終了せず、この実行内で必要な成果まで完成させてください。
+
+      - name: Execute explicit GitHub PR control request
+        id: github_control
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CONTROL_FILE: ${{ steps.task_file.outputs.control }}
+          REPORT_FILE: ${{ steps.task_file.outputs.report }}
+          BRANCH: ${{ steps.branch.outputs.branch }}
+        run: |
+          set -euo pipefail
+
+          echo "executed=false" >> "$GITHUB_OUTPUT"
+          echo "action=none" >> "$GITHUB_OUTPUT"
+          echo "pr_url=" >> "$GITHUB_OUTPUT"
+
+          if [ ! -s "${CONTROL_FILE}" ]; then
+            echo "GitHub制御ファイルがないため通常タスクとして続行します。"
+            exit 0
+          fi
+
+          if ! jq -e . "${CONTROL_FILE}" >/dev/null 2>&1; then
+            echo "::error::GitHub制御ファイルが正しいJSONではありません。"
+            exit 1
+          fi
+
+          ACTION="$(jq -r '.action // "none"' "${CONTROL_FILE}")"
+          PR_NUMBER="$(jq -r '.pr_number // empty' "${CONTROL_FILE}")"
+
+          case "${ACTION}" in
+            none)
+              exit 0
+              ;;
+            close_pr|merge_pr|revert_pr)
+              ;;
+            *)
+              echo "::error::未対応のGitHub操作です: ${ACTION}"
+              exit 1
+              ;;
+          esac
+
+          if ! printf '%s' "${PR_NUMBER}" | grep -Eq '^[0-9]+$'; then
+            echo "::error::GitHub操作には正しいPR番号が必要です。"
+            exit 1
+          fi
+
+          # Claudeの判断だけで破壊的操作へ進まないため、元の依頼文にも明示語があることを確認する。
+          case "${ACTION}" in
+            merge_pr)
+              if ! printf '%s' "${TASK}" | grep -Eqi 'マージ|merge'; then
+                echo "::error::merge_pr が指定されましたが、元の依頼文に明示的なマージ指示がありません。"
+                exit 1
+              fi
+              ;;
+            close_pr)
+              if ! printf '%s' "${TASK}" | grep -Eqi 'close|クローズ|閉じ|取り下げ|消して|削除'; then
+                echo "::error::close_pr が指定されましたが、元の依頼文に明示的なClose指示がありません。"
+                exit 1
+              fi
+              ;;
+            revert_pr)
+              if ! printf '%s' "${TASK}" | grep -Eqi 'revert|リバート|元に戻|取り消|戻して|巻き戻'; then
+                echo "::error::revert_pr が指定されましたが、元の依頼文に明示的なRevert指示がありません。"
+                exit 1
+              fi
+              ;;
+          esac
+
+          PR_JSON="$(gh pr view "${PR_NUMBER}" --json number,state,mergedAt,url,mergeCommit,headRefName,baseRefName)"
+          PR_STATE="$(printf '%s' "${PR_JSON}" | jq -r '.state')"
+          MERGED_AT="$(printf '%s' "${PR_JSON}" | jq -r '.mergedAt // empty')"
+          PR_URL="$(printf '%s' "${PR_JSON}" | jq -r '.url')"
+
+          echo "action=${ACTION}" >> "$GITHUB_OUTPUT"
+          echo "pr_url=${PR_URL}" >> "$GITHUB_OUTPUT"
+
+          case "${ACTION}" in
+            close_pr)
+              if [ -n "${MERGED_AT}" ]; then
+                printf '%s\n' \
+                  "対応できませんでした。" \
+                  "PR #${PR_NUMBER} はすでにマージ済みのためCloseでは取り消せません。元に戻す場合はRevertを依頼してください。" \
+                  > "${REPORT_FILE}"
+                echo "executed=true" >> "$GITHUB_OUTPUT"
+                exit 0
+              fi
+
+              if [ "${PR_STATE}" = "OPEN" ]; then
+                gh pr close "${PR_NUMBER}"
+                printf '%s\n' \
+                  "対応完了。" \
+                  "PR #${PR_NUMBER} をCloseしました。" \
+                  "${PR_URL}" \
+                  > "${REPORT_FILE}"
+              else
+                printf '%s\n' \
+                  "確認完了。" \
+                  "PR #${PR_NUMBER} はすでにCloseされています。追加操作はしていません。" \
+                  "${PR_URL}" \
+                  > "${REPORT_FILE}"
+              fi
+              echo "executed=true" >> "$GITHUB_OUTPUT"
+              ;;
+
+            merge_pr)
+              if [ -n "${MERGED_AT}" ]; then
+                printf '%s\n' \
+                  "確認完了。" \
+                  "PR #${PR_NUMBER} はすでにマージ済みです。追加操作はしていません。" \
+                  "${PR_URL}" \
+                  > "${REPORT_FILE}"
+                echo "executed=true" >> "$GITHUB_OUTPUT"
+                exit 0
+              fi
+
+              if [ "${PR_STATE}" != "OPEN" ]; then
+                printf '%s\n' \
+                  "マージできませんでした。" \
+                  "PR #${PR_NUMBER} はOPEN状態ではありません。" \
+                  "${PR_URL}" \
+                  > "${REPORT_FILE}"
+                echo "executed=true" >> "$GITHUB_OUTPUT"
+                exit 0
+              fi
+
+              # 明示依頼でのみここへ到達する。Branch protection / required checksはGitHub側に従う。
+              gh pr merge "${PR_NUMBER}" --merge
+              printf '%s\n' \
+                "対応完了。" \
+                "PR #${PR_NUMBER} をマージしました。" \
+                "Production反映はこのWorkflowでは行っていません。" \
+                "${PR_URL}" \
+                > "${REPORT_FILE}"
+              echo "executed=true" >> "$GITHUB_OUTPUT"
+              ;;
+
+            revert_pr)
+              if [ -z "${MERGED_AT}" ]; then
+                if [ "${PR_STATE}" = "OPEN" ]; then
+                  gh pr close "${PR_NUMBER}"
+                  printf '%s\n' \
+                    "対応完了。" \
+                    "PR #${PR_NUMBER} はまだマージされていなかったため、RevertではなくPRをCloseしました。" \
+                    "mainには変更が入っていないためRevert PRは不要です。" \
+                    "${PR_URL}" \
+                    > "${REPORT_FILE}"
+                else
+                  printf '%s\n' \
+                    "確認完了。" \
+                    "PR #${PR_NUMBER} は未マージかつClose済みです。mainへ変更は入っていないため追加操作は不要です。" \
+                    "${PR_URL}" \
+                    > "${REPORT_FILE}"
+                fi
+                echo "executed=true" >> "$GITHUB_OUTPUT"
+                exit 0
+              fi
+
+              MERGE_OID="$(printf '%s' "${PR_JSON}" | jq -r '.mergeCommit.oid // empty')"
+              if [ -z "${MERGE_OID}" ]; then
+                echo "::error::PR #${PR_NUMBER} のmerge commitを取得できませんでした。"
+                exit 1
+              fi
+
+              git fetch origin "${BASE_BRANCH}"
+              git reset --hard "origin/${BASE_BRANCH}"
+              git switch -C "${BRANCH}"
+
+              # Merge commitならmainline指定、Squash等の通常commitなら通常Revert。
+              PARENT_COUNT="$(git rev-list --parents -n 1 "${MERGE_OID}" | awk '{print NF-1}')"
+              if [ "${PARENT_COUNT}" -ge 2 ]; then
+                REVERT_CMD=(git revert -m 1 --no-commit "${MERGE_OID}")
+              else
+                REVERT_CMD=(git revert --no-commit "${MERGE_OID}")
+              fi
+
+              # commitは後段の共通Commit stepに任せる。
+              if ! "${REVERT_CMD[@]}"; then
+                git revert --abort || true
+                echo "::error::PR #${PR_NUMBER} のRevert差分を作成できませんでした。競合の可能性があります。"
+                exit 1
+              fi
+
+              printf '%s\n' \
+                "Revert差分を作成しました。" \
+                "対象: PR #${PR_NUMBER}" \
+                "この後、安全なRevert PRを自動作成します。本番への再反映は自動では行いません。" \
+                > "${REPORT_FILE}"
+              echo "executed=true" >> "$GITHUB_OUTPUT"
+              ;;
+          esac
+
+      - name: Discard accidental repo edits for PR-only controls
+        if: steps.github_control.outputs.action == 'close_pr' || steps.github_control.outputs.action == 'merge_pr'
+        run: |
+          git reset --hard HEAD
+          git clean -fd
 
       - name: Detect changes
         id: changes
@@ -359,7 +583,13 @@ jobs:
           TASK_SNIPPET="$(head -n 1 "${TASK_FILE}" | cut -c1-60)"
           [ -n "${TASK_SNIPPET}" ] || TASK_SNIPPET="${REQUEST_ID}"
 
-          gh pr create             --base "${BASE_BRANCH}"             --head "${BRANCH}"             --title "[Telegram Claude Agent] ${TASK_SNIPPET}"             --body-file "${BODY_FILE}"
+          if [ "${{ steps.github_control.outputs.action }}" = "revert_pr" ]; then
+            PR_TITLE="[Telegram Claude Agent] Revert requested PR"
+          else
+            PR_TITLE="[Telegram Claude Agent] ${TASK_SNIPPET}"
+          fi
+
+          gh pr create             --base "${BASE_BRANCH}"             --head "${BRANCH}"             --title "${PR_TITLE}"             --body-file "${BODY_FILE}"
 
           PR_URL="$(gh pr view "${BRANCH}" --json url --jq .url)"
 
@@ -382,7 +612,7 @@ jobs:
             echo ""
             echo "- request_id: \`${REQUEST_ID}\`"
             echo "- chat_id: \`${CHAT_ID}\`"
-            echo "- 結果: ファイル変更なし。調査・確認タスクの場合は正常な結果です。"
+            echo "- 結果: ファイル変更なし。調査・確認、またはPR管理操作のみの場合は正常な結果です。"
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Send final result to Telegram
