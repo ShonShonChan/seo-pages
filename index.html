@@ -7157,6 +7157,120 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 </style>
 <!-- PHASE32_TOP_PAGE_VISUAL_CLEANUP_END -->
 
+<!-- CLAUDE_DESIGN_TOP_MIGRATION_START -->
+<style id="claude-design-migration-css">
+.quick-category-nav {
+  max-width: var(--max);
+  margin: 26px auto 0;
+  padding: 0 18px;
+}
+.quick-category-nav .qcn-grid {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 6px;
+  padding: 14px;
+}
+.quick-category-nav a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  color: var(--text);
+  transition: background .2s ease;
+}
+.quick-category-nav a:hover { background: var(--red-soft); }
+.quick-category-nav .qcn-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--red-soft);
+  color: var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 15px;
+  flex: 0 0 42px;
+}
+.quick-category-nav .qcn-title {
+  font-size: 14.5px;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+.quick-category-nav .qcn-sub {
+  font-size: 12.5px;
+  color: var(--red);
+  font-weight: 700;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+.mascot-bubble-row {
+  max-width: var(--max);
+  margin: 18px auto;
+  padding: 0 18px;
+  display: flex;
+  justify-content: flex-end;
+}
+.mascot-bubble {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+.mascot-bubble img {
+  height: 84px;
+  width: auto;
+  display: block;
+}
+.mascot-bubble .bubble {
+  position: relative;
+  background: var(--white);
+  border: 2px solid var(--red);
+  border-radius: 16px;
+  padding: 10px 14px;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: var(--red);
+  line-height: 1.5;
+  box-shadow: var(--shadow);
+  white-space: nowrap;
+}
+.mascot-bubble .bubble::after,
+.mascot-bubble .bubble::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 0;
+  height: 0;
+}
+.mascot-bubble .bubble::after {
+  left: -11px;
+  margin-top: -11px;
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  border-right: 11px solid var(--red);
+}
+.mascot-bubble .bubble::before {
+  left: -8px;
+  margin-top: -9px;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  border-right: 9px solid var(--white);
+}
+@media (max-width: 780px) {
+  .mascot-bubble-row { display: none; }
+}
+@media (max-width: 640px) {
+  .ranking-criteria-head .mascot-bubble { display: none; }
+}
+</style>
+<!-- CLAUDE_DESIGN_TOP_MIGRATION_END -->
+
   <link rel="canonical" href="https://revenge-casino-guide.com/">
 </head>
 <body>
@@ -7550,6 +7664,17 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 
 </div>
 
+<!-- CLAUDE_DESIGN_TOP_MIGRATION_START -->
+<nav class="quick-category-nav" aria-label="カテゴリ早見リンク">
+<div class="qcn-grid">
+<a href="#ranking"><span class="qcn-icon">1</span><span><span class="qcn-title">人気ランキング</span><br/><span class="qcn-sub">今月の候補を比較</span></span></a>
+<a href="bonus.html"><span class="qcn-icon">¥</span><span><span class="qcn-title">ボーナス比較</span><br/><span class="qcn-sub">賭け条件・最大出金</span></span></a>
+<a href="payments.html"><span class="qcn-icon">⇄</span><span><span class="qcn-title">入出金ガイド</span><br/><span class="qcn-sub">反映時間・出金条件</span></span></a>
+<a href="guide.html"><span class="qcn-icon">?</span><span><span class="qcn-title">初心者ガイド</span><br/><span class="qcn-sub">登録前の基礎知識</span></span></a>
+<a href="site-checklist.html"><span class="qcn-icon">&#10003;</span><span><span class="qcn-title">登録前チェック</span><br/><span class="qcn-sub">本人確認・公式規約</span></span></a>
+</div>
+</nav>
+<!-- CLAUDE_DESIGN_TOP_MIGRATION_END -->
 
 <section class="ranking-criteria-2026 ranking-criteria" id="ranking-criteria">
 <div class="ranking-criteria-card">
@@ -7562,6 +7687,12 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
               利用前に確認しやすい情報が整理されているかを重視し、比較前の入口として並べています。
             </p>
 </div>
+<!-- CLAUDE_DESIGN_TOP_MIGRATION_START -->
+<div class="mascot-bubble">
+<div class="bubble">後悔しないために<br/>条件をしっかり確認！</div>
+<img alt="リベ男" loading="lazy" src="ribedan-transparent.png"/>
+</div>
+<!-- CLAUDE_DESIGN_TOP_MIGRATION_END -->
 </div>
 <div aria-label="ランキング選定基準" class="ranking-criteria-grid">
 <div class="ranking-criteria-item">
@@ -7591,6 +7722,14 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
         </p>
 </div>
 </section>
+<!-- CLAUDE_DESIGN_TOP_MIGRATION_START -->
+<div class="mascot-bubble-row">
+<div class="mascot-bubble">
+<div class="bubble">はじめての方も<br/>安心！</div>
+<img alt="リベ女" loading="lazy" src="ribejo-warning.png"/>
+</div>
+</div>
+<!-- CLAUDE_DESIGN_TOP_MIGRATION_END -->
 <section aria-label="登録前に確認するポイント" class="top-trust-strip">
 <div class="top-trust-item">
 <span class="top-trust-icon">1</span>
@@ -7868,6 +8007,14 @@ img, svg, video, iframe { max-width: 100%; height: auto; }
 <h2 class="section-title">入出金・本人確認の検索ワード別ガイド</h2>
 <p class="section-desc">仮想通貨での入出金、出金条件、本人確認など、登録前に不安になりやすいポイントを個別に確認できます。</p>
 </div>
+<!-- CLAUDE_DESIGN_TOP_MIGRATION_START -->
+<div class="mascot-bubble-row">
+<div class="mascot-bubble">
+<div class="bubble">迷ったら<br/>ガイドから読んでね！</div>
+<img alt="リベ女" loading="lazy" src="ribejo-note.png"/>
+</div>
+</div>
+<!-- CLAUDE_DESIGN_TOP_MIGRATION_END -->
 <div class="link-grid">
 <a class="link-card" href="crypto-casino.html"><strong>仮想通貨カジノ</strong><span>対応通貨、ネットワーク、ウォレット、送金前の確認点を整理。</span></a>
 <a class="link-card" href="withdrawal-condition.html"><strong>出金条件ガイド</strong><span>賭け条件、本人確認、最低・最大出金、手数料を確認。</span></a>
