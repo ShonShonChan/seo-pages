@@ -45,6 +45,21 @@ on:
         required: false
         default: ""
         type: string
+      document_file_id:
+        description: "Telegram一般ファイルのfile_id（ZIP / HTML / TXT / PDF等）"
+        required: false
+        default: ""
+        type: string
+      document_file_name:
+        description: "一般ファイル名のヒント（任意）"
+        required: false
+        default: ""
+        type: string
+      document_mime_type:
+        description: "一般ファイルのMIME type（任意）"
+        required: false
+        default: ""
+        type: string
 
 permissions:
   contents: write
@@ -67,6 +82,9 @@ jobs:
       REQUEST_ID: ${{ github.event.client_payload.request_id || inputs.request_id || 'manual' }}
       PHOTO_FILE_ID: ${{ github.event.client_payload.photo_file_id || inputs.photo_file_id || '' }}
       PHOTO_FILE_NAME: ${{ github.event.client_payload.photo_file_name || inputs.photo_file_name || '' }}
+      DOCUMENT_FILE_ID: ${{ github.event.client_payload.document_file_id || inputs.document_file_id || '' }}
+      DOCUMENT_FILE_NAME: ${{ github.event.client_payload.document_file_name || inputs.document_file_name || '' }}
+      DOCUMENT_MIME_TYPE: ${{ github.event.client_payload.document_mime_type || inputs.document_mime_type || '' }}
       BASE_BRANCH: main
 
     steps:
@@ -175,6 +193,113 @@ jobs:
           echo "画像を受け取りました: ${FILE_NAME}"
           file "${LOCAL_PATH}" || true
 
+      - name: Download and safely prepare Telegram document attachment
+        id: document_attachment
+        if: env.DOCUMENT_FILE_ID != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${TELEGRAM_BOT_TOKEN}" ]; then
+            echo "::error::ファイル付き依頼ですが TELEGRAM_BOT_TOKEN が未設定です。"
+            exit 1
+          fi
+
+          DOC_DIR="${RUNNER_TEMP}/telegram-document"
+          EXTRACT_DIR="${RUNNER_TEMP}/telegram-document-extracted"
+          mkdir -p "${DOC_DIR}" "${EXTRACT_DIR}"
+
+          META_JSON="$(curl --fail-with-body --silent --show-error \
+            "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getFile?file_id=${DOCUMENT_FILE_ID}")"
+
+          FILE_PATH="$(printf '%s' "${META_JSON}" | jq -r '.result.file_path // empty')"
+          if [ -z "${FILE_PATH}" ]; then
+            echo "::error::Telegram getFile から一般ファイルの file_path を取得できませんでした。"
+            exit 1
+          fi
+
+          SAFE_HINT="$(printf '%s' "${DOCUMENT_FILE_NAME}" | tr -c 'A-Za-z0-9._-' '-' | sed 's/^-*//;s/-*$//' | cut -c1-120)"
+          if [ -n "${SAFE_HINT}" ]; then
+            FILE_NAME="${SAFE_HINT}"
+          else
+            FILE_NAME="$(basename "${FILE_PATH}" | tr -c 'A-Za-z0-9._-' '-')"
+          fi
+          [ -n "${FILE_NAME}" ] || FILE_NAME="telegram-file"
+
+          LOCAL_PATH="${DOC_DIR}/${FILE_NAME}"
+          curl --fail-with-body --silent --show-error \
+            -o "${LOCAL_PATH}" \
+            "https://api.telegram.org/file/bot${TELEGRAM_BOT_TOKEN}/${FILE_PATH}"
+
+          if [ ! -s "${LOCAL_PATH}" ]; then
+            echo "::error::Telegram一般ファイルのダウンロード結果が空です。"
+            exit 1
+          fi
+
+          # Runner保護。今回のデザイン素材には十分な上限を設け、巨大ファイルは止める。
+          FILE_BYTES="$(wc -c < "${LOCAL_PATH}" | tr -d ' ')"
+          MAX_FILE_BYTES=$((50 * 1024 * 1024))
+          if [ "${FILE_BYTES}" -gt "${MAX_FILE_BYTES}" ]; then
+            echo "::error::添付ファイルが50MBを超えているため安全のため停止しました。"
+            exit 1
+          fi
+
+          IS_ZIP=false
+          case "${FILE_NAME}" in
+            *.zip|*.ZIP) IS_ZIP=true ;;
+          esac
+          if [ "${DOCUMENT_MIME_TYPE}" = "application/zip" ] || [ "${DOCUMENT_MIME_TYPE}" = "application/x-zip-compressed" ]; then
+            IS_ZIP=true
+          fi
+
+          if [ "${IS_ZIP}" = "true" ]; then
+            ZIP_PATH="${LOCAL_PATH}" EXTRACT_DIR="${EXTRACT_DIR}" python3 - <<'PY'
+          import os
+          import stat
+          import zipfile
+          from pathlib import Path
+
+          zip_path = Path(os.environ["ZIP_PATH"])
+          extract_dir = Path(os.environ["EXTRACT_DIR"]).resolve()
+          max_files = 1000
+          max_total = 150 * 1024 * 1024
+
+          with zipfile.ZipFile(zip_path) as zf:
+              infos = zf.infolist()
+              if len(infos) > max_files:
+                  raise SystemExit(f"ZIP内ファイル数が上限({max_files})を超えています。")
+
+              total = 0
+              for info in infos:
+                  total += int(info.file_size or 0)
+                  if total > max_total:
+                      raise SystemExit("ZIP展開後サイズが150MBを超えるため停止しました。")
+
+                  mode = (info.external_attr >> 16) & 0xFFFF
+                  if stat.S_ISLNK(mode):
+                      raise SystemExit(f"ZIP内のシンボリックリンクは禁止です: {info.filename}")
+
+                  target = (extract_dir / info.filename).resolve()
+                  if target != extract_dir and extract_dir not in target.parents:
+                      raise SystemExit(f"危険なZIPパスを検出しました: {info.filename}")
+
+              zf.extractall(extract_dir)
+          PY
+            echo "is_archive=true" >> "$GITHUB_OUTPUT"
+            echo "extract_dir=${EXTRACT_DIR}" >> "$GITHUB_OUTPUT"
+            echo "ZIPを安全に展開しました: ${EXTRACT_DIR}"
+          else
+            echo "is_archive=false" >> "$GITHUB_OUTPUT"
+            echo "extract_dir=" >> "$GITHUB_OUTPUT"
+          fi
+
+          echo "path=${LOCAL_PATH}" >> "$GITHUB_OUTPUT"
+          echo "name=${FILE_NAME}" >> "$GITHUB_OUTPUT"
+          echo "mime_type=${DOCUMENT_MIME_TYPE}" >> "$GITHUB_OUTPUT"
+          echo "一般ファイルを受け取りました: ${FILE_NAME} (${FILE_BYTES} bytes)"
+          file "${LOCAL_PATH}" || true
+
       - name: Run Claude Code
         id: claude
         uses: anthropics/claude-code-action@v1
@@ -202,6 +327,21 @@ jobs:
             必要なら `file` で確認し、依頼を成立させるために `cp` でリポジトリ内へ追加して使用してください。
             画像ファイル名や保存先は現物確認後に自然な名前を選び、存在しない画像名を推測して参照しないでください。
             画像パスが空なら「画像が届いている」と仮定しないでください。
+
+            Telegram一般ファイル（添付がある場合のみ）:
+            ${{ steps.document_attachment.outputs.path }}
+
+            一般ファイル名:
+            ${{ steps.document_attachment.outputs.name }}
+
+            ZIP等の安全展開先（アーカイブの場合のみ）:
+            ${{ steps.document_attachment.outputs.extract_dir }}
+
+            一般ファイルパスが空でなければ、ユーザーが今回Telegramで添付した実ファイルです。
+            展開先が空でなければ、安全検査済みのZIP展開内容です。まず展開内容を確認し、依頼に必要なファイルだけを使用してください。
+            Claude Design等のバンドル/書き出し素材は、そのまま本番ファイルへ丸ごと置換せず、現行Repoの構造・SEO・canonical・リンク・既存機能を確認して必要部分を移植してください。
+            添付素材そのものや展開一式を無条件にRepoへ保存せず、本番実装に必要なコード/画像/アセットだけを自然な配置へコピーしてください。
+            一般ファイルパスが空なら「ファイルが届いている」と仮定しないでください。
 
             必要な場合のみ、次の補助ファイルを参照してください。
 
