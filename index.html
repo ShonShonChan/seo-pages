@@ -58,9 +58,9 @@
   }
 
   /* ---- TOP redesign (static port of the Claude Design "Revenge Casino TOP") ---- */
-  /* hero banners are 1920x800 (2.4:1): keep the frame at the same ratio so nothing is cropped */
+  /* hero banners are 1920x800 (2.4:1): full width up to the images' native 1920px, same ratio so nothing is cropped */
   .rc-hero-wrap{background:#120608;}
-  .rc-hero{position:relative;max-width:1280px;margin:0 auto;aspect-ratio:1920/800;background:#120608;overflow:hidden;touch-action:pan-y;}
+  .rc-hero{position:relative;max-width:1920px;margin:0 auto;aspect-ratio:1920/800;background:#120608;overflow:hidden;touch-action:pan-y;}
   .rc-slide{position:absolute;inset:0;display:block;opacity:0;z-index:1;transition:opacity .55s ease;}
   .rc-slide.is-active{opacity:1;z-index:2;}
   .rc-slide img{width:100%;height:100%;object-fit:cover;object-position:50% 45%;display:block;}
