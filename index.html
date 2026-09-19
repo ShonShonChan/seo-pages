@@ -58,7 +58,9 @@
   }
 
   /* ---- TOP redesign (static port of the Claude Design "Revenge Casino TOP") ---- */
-  .rc-hero{position:relative;background:#120608;height:min(480px,41.7vw);overflow:hidden;touch-action:pan-y;}
+  /* banner images are 1942x809 (about 2.4:1): keep the frame at the same ratio so nothing is cropped */
+  .rc-hero-wrap{background:#120608;}
+  .rc-hero{position:relative;max-width:1280px;margin:0 auto;aspect-ratio:1942/809;background:#120608;overflow:hidden;touch-action:pan-y;}
   .rc-slide{position:absolute;inset:0;display:block;opacity:0;z-index:1;transition:opacity .55s ease;}
   .rc-slide.is-active{opacity:1;z-index:2;}
   .rc-slide img{width:100%;height:100%;object-fit:cover;object-position:50% 45%;display:block;}
@@ -320,6 +322,7 @@
   </header>
 
   <!-- Hero slider -->
+  <div class="rc-hero-wrap">
   <section class="rc-hero" id="rc-hero" aria-roledescription="carousel" aria-label="注目のバナー">
     <a href="https://sloten.io?referral=0ZjM" class="rc-slide is-active" target="_blank" rel="nofollow sponsored noopener"><img src="top-images/hero-promo.webp" alt="スロット天国 史上最強激熱プロモ ボーナスBUYの3倍配当で最大200万円" width="1942" height="809" fetchpriority="high" decoding="async"></a>
     <a href="review-verajohn.html" class="rc-slide" tabindex="-1" aria-hidden="true"><img src="top-images/hero-verajohn.webp" alt="ベラジョンカジノ 新規登録で最大$100入金不要ボーナス" width="1942" height="809" loading="lazy" decoding="async"></a>
@@ -332,6 +335,7 @@
       <button type="button" class="rc-hero-dot" aria-label="バナー3を表示"></button>
     </div>
   </section>
+  </div>
 
   <!-- Intro -->
   <section style="background:#fff;border-bottom:1px solid #ebe6e4;">
