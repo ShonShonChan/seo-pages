@@ -58,16 +58,22 @@
   }
 
   /* ---- TOP redesign (static port of the Claude Design "Revenge Casino TOP") ---- */
-  /* hero banners are 1920x800 (2.4:1): full width up to the images' native 1920px, same ratio so nothing is cropped */
+  /* DESIGN: two banners per slide instead of one cropped image — mobile/tablet banners are
+     ~2.4:1 (unchanged), desktop banners are ~4:1 (wider/shorter, swapped in via <picture> at
+     900px). The frame's aspect-ratio matches each breakpoint's intended banner shape, and
+     object-fit:contain is a safety net so a mismatched or not-yet-made banner is only ever
+     letterboxed, never cropped. */
   .rc-hero-wrap{background:#120608;}
-  .rc-hero{position:relative;max-width:1920px;margin:0 auto;aspect-ratio:1920/800;background:#120608;overflow:hidden;touch-action:pan-y;}
+  .rc-hero{position:relative;max-width:1920px;margin:0 auto;aspect-ratio:2.4;background:#120608;overflow:hidden;touch-action:pan-y;}
+  @media (min-width:900px){ .rc-hero{aspect-ratio:4;} }
   .rc-slide{position:absolute;inset:0;display:block;opacity:0;z-index:1;transition:opacity .55s ease;}
   .rc-slide.is-active{opacity:1;z-index:2;}
-  .rc-slide img{width:100%;height:100%;object-fit:cover;object-position:50% 45%;display:block;}
+  .rc-slide picture,.rc-slide img{display:block;width:100%;height:100%;}
+  .rc-slide img{object-fit:contain;object-position:50% 50%;}
   .rc-hero-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:42px;height:42px;border-radius:50%;border:none;background:rgba(18,6,8,0.45);color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
   .rc-hero-prev{left:14px;}
   .rc-hero-next{right:14px;}
-  .rc-hero-dots{position:absolute;left:0;right:0;bottom:14px;z-index:3;display:flex;justify-content:center;gap:8px;}
+  .rc-hero-dots{position:absolute;left:0;right:0;bottom:8px;z-index:3;display:flex;justify-content:center;gap:8px;}
   .rc-hero-dot{width:8px;height:8px;border-radius:100px;border:none;padding:0;cursor:pointer;background:rgba(255,255,255,0.5);transition:width .2s ease,background .2s ease;}
   .rc-hero-dot.is-active{width:26px;background:#fff;}
   @media (max-width:700px){
@@ -324,12 +330,12 @@
   <!-- Hero slider -->
   <div class="rc-hero-wrap">
   <section class="rc-hero" id="rc-hero" aria-roledescription="carousel" aria-label="注目のバナー">
-    <a href="https://sloten.io?referral=0ZjM" class="rc-slide is-active" target="_blank" rel="nofollow sponsored noopener"><img src="top-images/hero-promo.webp" alt="スロット天国 史上最強激熱プロモ ボーナスBUYの3倍配当で最大200万円" width="1920" height="800" fetchpriority="high" decoding="async"></a>
+    <a href="https://sloten.io?referral=0ZjM" class="rc-slide is-active" target="_blank" rel="nofollow sponsored noopener"><picture><source media="(min-width:900px)" srcset="top-images/hero-promo-pc.webp"><img src="top-images/hero-promo.webp" alt="スロット天国 入金不要3,000円 ステップアップショット・ヘブンズショット・Gates POP" width="1942" height="809" fetchpriority="high" decoding="async"></picture></a>
     <a href="https://stake.com/?c=eTX5s1Ji" class="rc-slide" target="_blank" rel="nofollow sponsored noopener" tabindex="-1" aria-hidden="true"><img src="top-images/hero-stake.webp" alt="Stake 遊びの常識を、アップデート。世界が選ぶ、次世代のオンラインカジノ" width="1920" height="800" loading="lazy" decoding="async"></a>
     <a href="review-verajohn.html" class="rc-slide" tabindex="-1" aria-hidden="true"><img src="top-images/hero-verajohn.webp" alt="ベラジョンカジノ 新規登録で最大$100入金不要ボーナス" width="1920" height="800" loading="lazy" decoding="async"></a>
     <a href="https://k8.io?invite=revengedanji" class="rc-slide" target="_blank" rel="nofollow sponsored noopener" tabindex="-1" aria-hidden="true"><img src="top-images/hero-k8.webp" alt="K8カジノ 初回入金で50%ボーナス USDT対応・PAGCORライセンス" width="1920" height="800" loading="lazy" decoding="async"></a>
     <a href="https://notifyreels.com/?/r/revedan" class="rc-slide" target="_blank" rel="nofollow sponsored noopener" tabindex="-1" aria-hidden="true"><img src="top-images/hero-reels.webp" alt="REELS Casino 初回入金100%ボーナス 最大200USDT" width="1920" height="800" loading="lazy" decoding="async"></a>
-    <a href="https://stake.com/?c=eTX5s1Ji" class="rc-slide" target="_blank" rel="nofollow sponsored noopener" tabindex="-1" aria-hidden="true"><img src="top-images/hero-stake-code.webp" alt="Stake 紹介コードで即時レーキバック ウェルカムオファー・VIPクラブ・暗号資産対応" width="1920" height="800" loading="lazy" decoding="async"></a>
+    <a href="https://stake.com/?c=eTX5s1Ji" class="rc-slide" target="_blank" rel="nofollow sponsored noopener" tabindex="-1" aria-hidden="true"><picture><source media="(min-width:900px)" srcset="top-images/hero-stake-code-pc.webp"><img src="top-images/hero-stake-code.webp" alt="Stake Wheel Wars 賞金総額$150,000 Daily Race 賞金総額$100,000も開催中" width="1942" height="809" loading="lazy" decoding="async"></picture></a>
     <button type="button" class="rc-hero-btn rc-hero-prev" aria-label="前のバナー">‹</button>
     <button type="button" class="rc-hero-btn rc-hero-next" aria-label="次のバナー">›</button>
     <div class="rc-hero-dots">
