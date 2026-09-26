@@ -5,14 +5,15 @@ run-name: "Telegram Claude Agent · ${{ github.event.client_payload.request_id |
 # → Claude Code → 必要に応じて作業ブランチへpush → PR作成 → Telegramへ結果通知
 #
 # ルール:
-#   - mainへ直接pushしない
+#   - mainへ直接pushしない。変更は必ず作業ブランチ + PRを経由する
 #   - 実行ごとに新しい作業ブランチを作る
 #   - 調査のみの場合はファイル変更・commit・push・PR作成をしない
 #   - 変更があるときだけcommit・push・PR作成
-#   - PRのClose / Merge / Revertは、ユーザーが明示的に依頼した場合だけActions側で実行する
-#   - Mergeはユーザーの明示指示がある場合だけ許可する
+#   - 通常の修正依頼は、Claude Codeが検証完了・安全と判断した場合にPRを自動マージできる
+#   - ユーザーが「PRまで」「マージしない」「確認後にマージ」等を指定した場合は自動マージしない
+#   - 既存PRのClose / Merge / Revertは、ユーザーが明示的に依頼した場合だけActions側で実行する
 #   - Revert対象PRが未マージなら、RevertではなくPR Closeとして扱う
-#   - Production反映はこのWorkflowでは行わない
+#   - mainへのマージ後は、既存のCloudflare Pages連携によるProductionデプロイ対象となる
 #   - Telegramには結論・主要結果・次の行動だけを短く返す
 
 on:
@@ -359,12 +360,13 @@ jobs:
             6. 実行後は結果を観測し、必要な検証を自分で選んで行う。
             7. 依頼範囲内の問題を見つけ、安全に直せる場合は自分で修正し、再検証する。
             8. 確認できない情報を事実のように断定しない。
-            9. 不可逆・危険な操作は行わない。Production反映やmainへの直接変更はこのAgentの担当外。
+            9. mainへの直接pushは行わない。Production反映は、検証済みPRをmainへマージする既存のデプロイ経路だけを使用する。
             10. 最後に、ユーザーが判断できる短い作業レポートを作る。求められていない全件一覧・長い検証ログ・重複説明は出さない。
 
             ## Git操作
 
-            通常のコード変更では、branch作成・commit・push・PR作成はGitHub Actions側が担当します。
+            通常のコード変更では、branch作成・commit・push・PR作成・mainへのマージ実行はGitHub Actions側が担当します。
+            Claude Codeは変更内容の調査・編集・検証・自己レビューと、マージ可否の判断を担当します。
             Claude Code自身は以下を行わないでください。
 
             - git commit
@@ -372,12 +374,18 @@ jobs:
             - git branch操作
             - PR作成
             - mainへの直接変更
-            - ghによるPR操作
-            - Production反映
+            - ghによる直接PR操作
+            - Cloudflare / Productionへの直接デプロイ操作
 
             状態確認のための `git status` / `git diff` / `git log` は使用して構いません。
 
-            ただし、ユーザーが既存PRについて明示的にGitHub操作を依頼した場合は、
+            通常の修正依頼では、作業完了後に差分と検証結果を自己レビューしてください。
+            意図した変更だけで、必要な検証に合格し、未解決の重大な問題がなく、
+            ユーザーが「PRまで」「マージしない」「確認後にマージ」等を指定していない場合は、
+            制御ファイルへ `auto_merge_after_pr` を書き出してください。
+            これにより、後段のGitHub ActionsがPR作成後に状態を再確認し、mainへマージします。
+
+            既存PRについてユーザーが明示的にGitHub操作を依頼した場合も、
             Claude Codeが直接操作するのではなく、次の制御ファイルへ指示を書き出してください。
 
             制御ファイル:
@@ -385,20 +393,24 @@ jobs:
 
             JSON形式は必ず次のいずれかです。
 
-            - 通常タスク: {"action":"none","pr_number":null,"reason":""}
-            - PRを閉じる: {"action":"close_pr","pr_number":24,"reason":"短い理由"}
-            - PRをマージ: {"action":"merge_pr","pr_number":24,"reason":"短い理由"}
-            - PRを元に戻す: {"action":"revert_pr","pr_number":24,"reason":"短い理由"}
+            - 通常タスク（自動マージしない）: {"action":"none","pr_number":null,"reason":""}
+            - 今回作成するPRを検証後に自動マージ: {"action":"auto_merge_after_pr","pr_number":null,"reason":"検証完了・自動マージ可能と判断した短い理由"}
+            - 既存PRを閉じる: {"action":"close_pr","pr_number":24,"reason":"短い理由"}
+            - 既存PRをマージ: {"action":"merge_pr","pr_number":24,"reason":"短い理由"}
+            - 既存PRを元に戻す: {"action":"revert_pr","pr_number":24,"reason":"短い理由"}
 
             ルール:
 
-            1. close_pr / merge_pr / revert_pr は、ユーザーが今回の依頼で明確にその操作を求めている場合だけ指定する。
-            2. PR番号を推測しない。依頼や文脈から対象PRを特定できない場合は action=none とし、作業レポートでPR番号の確認を1つだけ求める。
-            3. merge_pr は「マージして」「mergeして」等の明示指示がある場合だけ指定する。
-            4. revert_pr は「元に戻して」「取り消して」「revertして」等、既存PRの変更を戻す明示指示がある場合だけ指定する。
-            5. GitHub管理操作だけの依頼では、リポジトリファイルを編集しない。
-            6. Production反映、Secret変更、main直接pushは制御ファイルでも要求しない。
-            7. 不明な場合は危険側へ推測せず action=none とする。
+            1. 通常の修正依頼は、差分確認・必要な検証・自己レビューまで完了し、安全にmainへ反映できると判断した場合 `auto_merge_after_pr` を指定する。
+            2. ユーザーが「PRまで」「マージしない」「Previewで確認したい」「確認後にマージ」等を指定した場合は `auto_merge_after_pr` を使わず action=none とする。
+            3. 未解決のエラー、重大な警告、意図不明の差分、検証不足、ユーザー判断が必要な事項が残る場合は action=none とする。
+            4. close_pr / merge_pr / revert_pr は、既存PRについてユーザーが今回の依頼で明確にその操作を求めている場合だけ指定する。
+            5. 既存PR番号を推測しない。対象PRを特定できない場合は action=none とし、作業レポートでPR番号の確認を1つだけ求める。
+            6. merge_pr は既存PRに対して「マージして」「mergeして」等の明示指示がある場合だけ指定する。
+            7. revert_pr は「元に戻して」「取り消して」「revertして」等、既存PRの変更を戻す明示指示がある場合だけ指定する。
+            8. GitHub管理操作だけの依頼では、リポジトリファイルを編集しない。
+            9. Secret変更、main直接push、Cloudflareへの直接デプロイは制御ファイルでも要求しない。
+            10. 不明な場合は危険側へ推測せず action=none とする。
 
             ## セキュリティ
 
@@ -435,6 +447,7 @@ jobs:
 
           echo "executed=false" >> "$GITHUB_OUTPUT"
           echo "action=none" >> "$GITHUB_OUTPUT"
+          echo "auto_merge=false" >> "$GITHUB_OUTPUT"
           echo "pr_url=" >> "$GITHUB_OUTPUT"
 
           if [ ! -s "${CONTROL_FILE}" ]; then
@@ -454,6 +467,12 @@ jobs:
             none)
               exit 0
               ;;
+            auto_merge_after_pr)
+              echo "action=auto_merge_after_pr" >> "$GITHUB_OUTPUT"
+              echo "auto_merge=true" >> "$GITHUB_OUTPUT"
+              echo "Claude Codeが今回作成するPRを検証後に自動マージ可能と判断しました。"
+              exit 0
+              ;;
             close_pr|merge_pr|revert_pr)
               ;;
             *)
@@ -463,7 +482,7 @@ jobs:
           esac
 
           if ! printf '%s' "${PR_NUMBER}" | grep -Eq '^[0-9]+$'; then
-            echo "::error::GitHub操作には正しいPR番号が必要です。"
+            echo "::error::既存PRのGitHub操作には正しいPR番号が必要です。"
             exit 1
           fi
 
@@ -717,7 +736,11 @@ jobs:
             echo ""
             echo "---"
             echo ""
-            echo "> 自動マージはしません。内容を確認してから人間がマージしてください。"
+            if [ "${{ steps.github_control.outputs.auto_merge }}" = "true" ]; then
+              echo "> Claude Codeの自己レビューで自動マージ可能と判断されたため、PR作成後にGitHub Actionsがチェックを確認してmainへマージします。"
+            else
+              echo "> このPRは自動マージ対象ではありません。必要に応じて内容を確認してからマージしてください。"
+            fi
           } > "${BODY_FILE}"
 
           TASK_SNIPPET="$(head -n 1 "${TASK_FILE}" | cut -c1-60)"
@@ -744,6 +767,122 @@ jobs:
             echo "- PR: ${PR_URL}"
           } >> "$GITHUB_STEP_SUMMARY"
 
+      - name: Validate and auto-merge Pull Request
+        id: auto_merge
+        if: steps.changes.outputs.changed == 'true' && steps.github_control.outputs.auto_merge == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_URL: ${{ steps.create_pr.outputs.pr_url }}
+          REPORT_FILE: ${{ steps.task_file.outputs.report }}
+        run: |
+          set -euo pipefail
+
+          echo "merged=false" >> "$GITHUB_OUTPUT"
+          echo "pr_number=" >> "$GITHUB_OUTPUT"
+
+          if [ -z "${PR_URL}" ]; then
+            echo "::error::自動マージ対象ですがPR URLを取得できませんでした。"
+            exit 1
+          fi
+
+          PR_NUMBER="$(gh pr view "${PR_URL}" --json number --jq .number)"
+          echo "pr_number=${PR_NUMBER}" >> "$GITHUB_OUTPUT"
+
+          # PR作成後の実状態を再確認する。
+          PR_JSON="$(gh pr view "${PR_NUMBER}" --json state,isDraft,baseRefName,mergeable,mergeStateStatus,url)"
+          PR_STATE="$(printf '%s' "${PR_JSON}" | jq -r '.state')"
+          IS_DRAFT="$(printf '%s' "${PR_JSON}" | jq -r '.isDraft')"
+          BASE_REF="$(printf '%s' "${PR_JSON}" | jq -r '.baseRefName')"
+
+          [ "${PR_STATE}" = "OPEN" ] || { echo "::error::PR #${PR_NUMBER} がOPENではありません。"; exit 1; }
+          [ "${IS_DRAFT}" = "false" ] || { echo "::error::PR #${PR_NUMBER} はDraftのため自動マージしません。"; exit 1; }
+          [ "${BASE_REF}" = "${BASE_BRANCH}" ] || { echo "::error::PR #${PR_NUMBER} のbaseが${BASE_BRANCH}ではありません。"; exit 1; }
+
+          # GitHub上のcheck runがある場合は完了まで待つ。
+          # checkが1件もない場合は、そのままbranch protectionの判定へ進む。
+          for i in $(seq 1 60); do
+            CHECKS="$(gh pr view "${PR_NUMBER}" --json statusCheckRollup --jq '.statusCheckRollup')"
+            TOTAL="$(printf '%s' "${CHECKS}" | jq 'length')"
+
+            if [ "${TOTAL}" -eq 0 ]; then
+              echo "PRにcheck runはありません。GitHubのmerge可否判定へ進みます。"
+              break
+            fi
+
+            PENDING="$(printf '%s' "${CHECKS}" | jq '[.[] | select((.status // "") != "COMPLETED")] | length')"
+            FAILED="$(printf '%s' "${CHECKS}" | jq '[.[] | select((.status // "") == "COMPLETED" and ((.conclusion // "") != "SUCCESS" and (.conclusion // "") != "NEUTRAL" and (.conclusion // "") != "SKIPPED"))] | length')"
+
+            if [ "${FAILED}" -gt 0 ]; then
+              echo "::error::PR #${PR_NUMBER} に失敗したcheckがあります。自動マージを停止します。"
+              printf '%s\n' "${CHECKS}" | jq .
+              exit 1
+            fi
+
+            if [ "${PENDING}" -eq 0 ]; then
+              echo "すべてのcheckが完了しました。"
+              break
+            fi
+
+            if [ "${i}" -eq 60 ]; then
+              echo "::error::PR #${PR_NUMBER} のcheck完了待ちがタイムアウトしました。"
+              exit 1
+            fi
+
+            echo "check完了待ち... (${i}/60)"
+            sleep 10
+          done
+
+          # 最新mainとの競合・GitHub側のマージ可否を再確認する。
+          PR_JSON="$(gh pr view "${PR_NUMBER}" --json state,isDraft,baseRefName,mergeable,mergeStateStatus,url)"
+          MERGEABLE="$(printf '%s' "${PR_JSON}" | jq -r '.mergeable')"
+          MERGE_STATE="$(printf '%s' "${PR_JSON}" | jq -r '.mergeStateStatus')"
+
+          if [ "${MERGEABLE}" = "CONFLICTING" ]; then
+            echo "::error::PR #${PR_NUMBER} はmainと競合しているため自動マージしません。"
+            exit 1
+          fi
+
+          case "${MERGE_STATE}" in
+            BLOCKED|DIRTY)
+              echo "::error::PR #${PR_NUMBER} はGitHub側でマージがブロックされています (${MERGE_STATE})。"
+              exit 1
+              ;;
+          esac
+
+          # mainへ直接pushせず、必ずPR経由でマージする。
+          # Branch protection / required reviews / required checksはGitHub側のルールを尊重する。
+          gh pr merge "${PR_NUMBER}" \
+            --repo "${GITHUB_REPOSITORY}" \
+            --merge \
+            --delete-branch
+
+          MERGED_JSON="$(gh pr view "${PR_NUMBER}" --json mergedAt,url,mergeCommit)"
+          MERGED_AT="$(printf '%s' "${MERGED_JSON}" | jq -r '.mergedAt // empty')"
+          PR_FINAL_URL="$(printf '%s' "${MERGED_JSON}" | jq -r '.url')"
+
+          if [ -z "${MERGED_AT}" ]; then
+            echo "::error::PR #${PR_NUMBER} のマージ完了を確認できませんでした。"
+            exit 1
+          fi
+
+          echo "merged=true" >> "$GITHUB_OUTPUT"
+          echo "pr_url=${PR_FINAL_URL}" >> "$GITHUB_OUTPUT"
+
+          {
+            echo ""
+            echo "## 自動マージ"
+            echo "- PR #${PR_NUMBER} をmainへマージしました。"
+            echo "- PR: ${PR_FINAL_URL}"
+            echo "- main更新により、既存のCloudflare Pages Productionデプロイ対象になります。"
+          } >> "${REPORT_FILE}"
+
+          {
+            echo ""
+            echo "### Auto merge"
+            echo "- PR: ${PR_FINAL_URL}"
+            echo "- Result: merged to \`${BASE_BRANCH}\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: No changes summary
         if: steps.changes.outputs.changed != 'true'
         run: |
@@ -761,6 +900,8 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           CHANGED: ${{ steps.changes.outputs.changed }}
           PR_URL: ${{ steps.create_pr.outputs.pr_url }}
+          AUTO_MERGED: ${{ steps.auto_merge.outputs.merged }}
+          AUTO_MERGE_PR_NUMBER: ${{ steps.auto_merge.outputs.pr_number }}
           REPORT_FILE: ${{ steps.task_file.outputs.report }}
         run: |
           if [ -z "${TELEGRAM_BOT_TOKEN}" ]; then
@@ -783,6 +924,8 @@ jobs:
           chat_id = os.environ["CHAT_ID"]
           changed = os.environ.get("CHANGED", "false") == "true"
           pr_url = os.environ.get("PR_URL", "").strip()
+          auto_merged = os.environ.get("AUTO_MERGED", "false") == "true"
+          auto_merge_pr_number = os.environ.get("AUTO_MERGE_PR_NUMBER", "").strip()
           report_path = Path(os.environ["REPORT_FILE"])
 
           if report_path.exists() and report_path.stat().st_size > 0:
@@ -796,9 +939,17 @@ jobs:
               report = report[:limit].rstrip() + "\n…（詳細はPR / Actionsで確認できます）"
 
           if changed:
-              parts = ["対応完了。", report]
-              if pr_url:
-                  parts.append(f"確認用PR:\n{pr_url}")
+              if auto_merged:
+                  headline = "対応完了。PRをmainへ自動マージしました。"
+                  if auto_merge_pr_number:
+                      headline += f" (PR #{auto_merge_pr_number})"
+                  parts = [headline, report]
+                  if pr_url:
+                      parts.append(f"マージ済みPR:\n{pr_url}")
+              else:
+                  parts = ["対応完了。", report]
+                  if pr_url:
+                      parts.append(f"確認用PR:\n{pr_url}")
           else:
               parts = ["確認完了。", report]
 
