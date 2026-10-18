@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>【管理用】カジノAFFリンク管理 | リベンジカジノ比較ガイド</title>
+<style>
+  :root {
+    --red: #d71920;
+    --red-dark: #9f1017;
+    --gold: #d6a642;
+    --ink: #242424;
+    --muted: #6b5a5a;
+    --line: #f0d8d4;
+    --bg: #fff8f6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0 0 60px;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, system-ui, -apple-system, sans-serif;
+    line-height: 1.7;
+  }
+  .ac-head {
+    padding: 22px 20px;
+    background: linear-gradient(115deg, var(--red) 0%, var(--red-dark) 60%, #76060b 100%);
+    border-bottom: 2px solid var(--gold);
+    color: #fff;
+  }
+  .ac-head-inner { max-width: 1100px; margin: 0 auto; }
+  .ac-head h1 { margin: 0 0 6px; font-size: clamp(18px, 2.2vw, 24px); line-height: 1.35; }
+  .ac-head p { margin: 0; font-size: 13px; color: rgba(255,255,255,.92); }
+  .ac-badge {
+    display: inline-block;
+    margin-bottom: 8px;
+    padding: 3px 12px;
+    border-radius: 999px;
+    background: #fff8e6;
+    color: var(--red-dark);
+    font-size: 12px;
+    font-weight: 700;
+  }
+  main { max-width: 1100px; margin: 24px auto 0; padding: 0 20px; }
+  .ac-auth {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .ac-auth input[type="password"] {
+    flex: 1 1 260px;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    background: var(--red);
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  button:hover { background: var(--red-dark); }
+  button.secondary { background: #fff; color: var(--red); border: 1px solid var(--red); }
+  .ac-status { font-size: 13px; color: var(--muted); }
+  .ac-status.error { color: var(--red-dark); font-weight: 700; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  th, td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    font-size: 13.5px;
+    vertical-align: top;
+  }
+  th { background: #fff3f1; font-weight: 700; }
+  tr:last-child td { border-bottom: none; }
+  td input[type="text"], td input[type="url"], td select {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    font-size: 13px;
+  }
+  .ac-slug { font-weight: 700; white-space: nowrap; }
+  .ac-save { white-space: nowrap; }
+  .ac-note {
+    margin-top: 16px;
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+</style>
+</head>
+<body>
+<header class="ac-head">
+  <div class="ac-head-inner">
+    <span class="ac-badge">管理用（noindex）</span>
+    <h1>カジノ AFF リンク管理</h1>
+    <p>/r/&lt;slug&gt; が参照する収益化リンクを一元管理します。保存すると即座に /r/ の転送先に反映されます。</p>
+  </div>
+</header>
+<main>
+  <div class="ac-auth">
+    <input type="password" id="token" placeholder="管理トークンを入力">
+    <button id="loadBtn">読み込む</button>
+    <span class="ac-status" id="status"></span>
+  </div>
+
+  <table id="table" hidden>
+    <thead>
+      <tr>
+        <th>slug</th>
+        <th>名称</th>
+        <th>affiliate_url（空欄でfallbackへ転送）</th>
+        <th>fallback_path</th>
+        <th>status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+
+  <p class="ac-note">
+    トークンはこのタブを閉じると破棄されます（sessionStorageのみ保持、永続保存しません）。<br>
+    status=active かつ affiliate_url が入っている行だけ、実際にそのURLへ転送されます。それ以外は fallback_path（内部ページ）へ転送されます。
+  </p>
+</main>
+
+<script>
+(function () {
+  "use strict";
+
+  var tokenInput = document.getElementById("token");
+  var loadBtn = document.getElementById("loadBtn");
+  var statusEl = document.getElementById("status");
+  var table = document.getElementById("table");
+  var tbody = document.getElementById("tbody");
+
+  function getToken() {
+    try {
+      return sessionStorage.getItem("rc_admin_token") || "";
+    } catch (e) {
+      return "";
+    }
+  }
+  function setToken(t) {
+    try {
+      sessionStorage.setItem("rc_admin_token", t);
+    } catch (e) {
+      /* sessionStorageが使えない場合はメモリ保持のみ（タブ内の操作は可能） */
+    }
+  }
+
+  function setStatus(msg, isError) {
+    statusEl.textContent = msg;
+    statusEl.className = "ac-status" + (isError ? " error" : "");
+  }
+
+  function escapeHtml(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function renderRows(casinos) {
+    tbody.innerHTML = "";
+    casinos.forEach(function (c) {
+      var tr = document.createElement("tr");
+      tr.innerHTML =
+        '<td class="ac-slug">' + escapeHtml(c.slug) + "</td>" +
+        '<td><input type="text" class="f-name" value="' + escapeHtml(c.name) + '"></td>' +
+        '<td><input type="url" class="f-url" placeholder="https://..." value="' + escapeHtml(c.affiliate_url || "") + '"></td>' +
+        '<td><input type="text" class="f-fallback" value="' + escapeHtml(c.fallback_path) + '"></td>' +
+        '<td><select class="f-status">' +
+          ["active", "pending", "test"].map(function (s) {
+            return '<option value="' + s + '"' + (s === c.status ? " selected" : "") + ">" + s + "</option>";
+          }).join("") +
+        "</select></td>" +
+        '<td class="ac-save"><button type="button" class="secondary">保存</button></td>';
+      tr.querySelector("button").addEventListener("click", function () {
+        saveRow(c.slug, tr);
+      });
+      tbody.appendChild(tr);
+    });
+    table.hidden = false;
+  }
+
+  function api(path, options) {
+    options = options || {};
+    options.headers = Object.assign({ Authorization: "Bearer " + getToken() }, options.headers || {});
+    return fetch(path, options).then(function (res) {
+      if (res.status === 401) {
+        throw new Error("トークンが正しくありません");
+      }
+      return res.json().then(function (data) {
+        if (!res.ok) {
+          throw new Error(data && data.error ? data.error : "エラー（" + res.status + "）");
+        }
+        return data;
+      });
+    });
+  }
+
+  function load() {
+    setStatus("読み込み中…");
+    api("/admin/casinos", { method: "GET" })
+      .then(function (data) {
+        renderRows(data.casinos || []);
+        setStatus("読み込み完了（" + (data.casinos || []).length + "件）");
+      })
+      .catch(function (err) {
+        setStatus(err.message, true);
+      });
+  }
+
+  function saveRow(slug, tr) {
+    var payload = {
+      slug: slug,
+      name: tr.querySelector(".f-name").value,
+      affiliate_url: tr.querySelector(".f-url").value,
+      fallback_path: tr.querySelector(".f-fallback").value,
+      status: tr.querySelector(".f-status").value
+    };
+    setStatus(slug + " を保存中…");
+    api("/admin/casinos", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) })
+      .then(function () {
+        setStatus(slug + " を保存しました");
+      })
+      .catch(function (err) {
+        setStatus(slug + ": " + err.message, true);
+      });
+  }
+
+  loadBtn.addEventListener("click", function () {
+    setToken(tokenInput.value.trim());
+    load();
+  });
+
+  var saved = getToken();
+  if (saved) {
+    tokenInput.value = saved;
+    load();
+  }
+})();
+</script>
+</body>
+</html>

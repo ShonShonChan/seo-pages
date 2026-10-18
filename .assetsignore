@@ -11,3 +11,17 @@ node_modules/**
 *.sketch
 *.fig
 *.log
+
+# サイトのコンテンツではない内部ドキュメント・運用ファイル(公開しない)
+*.md
+*.yml
+*.yaml
+schema.sql
+worker-backups
+worker-backups/**
+CNAME
+wrangler.toml
+worker
+worker/**
+.wrangler
+.wrangler/**

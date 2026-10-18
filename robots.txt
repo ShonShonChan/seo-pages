@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /r/
+Disallow: /admin/
+Disallow: /admin-casinos
 
 Sitemap: https://revenge-casino-guide.com/sitemap.xml
