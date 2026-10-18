@@ -1,0 +1,15 @@
+name = "seo-pages"
+main = "worker/index.ts"
+compatibility_date = "2026-10-18"
+
+[assets]
+directory = "."
+binding = "ASSETS"
+
+[[d1_databases]]
+binding = "CASINO_DB"
+database_name = "rankcraft-casinos"
+database_id = "69510f56-8c6b-4d38-b173-b73a29f8f9ac"
+
+# RANKCRAFT_ADMIN_TOKEN は secret として別途設定する(ここには書かない):
+#   wrangler secret put RANKCRAFT_ADMIN_TOKEN
