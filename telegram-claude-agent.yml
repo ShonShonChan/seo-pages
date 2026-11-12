@@ -1,0 +1,579 @@
+name: Telegram Claude Agent
+run-name: "Telegram Claude Agent · ${{ github.event.client_payload.request_id || inputs.request_id || github.run_id }}"
+
+# Telegram → Cloudflare Worker → repository_dispatch → このワークフロー
+# → Claude Code → 必要に応じて作業ブランチへpush → PR作成 → Telegramへ結果通知
+#
+# ルール:
+#   - mainへ直接pushしない
+#   - 実行ごとに新しい作業ブランチを作る
+#   - 調査のみの場合はファイル変更・commit・push・PR作成をしない
+#   - 変更があるときだけcommit・push・PR作成
+#   - 自動マージしない
+#   - Telegramには結論・主要結果・次の行動だけを短く返す
+
+on:
+  repository_dispatch:
+    types: [telegram_claude_agent]
+
+  workflow_dispatch:
+    inputs:
+      task:
+        description: "Claude Codeへの作業指示"
+        required: true
+        type: string
+      chat_id:
+        description: "Telegram chat_id（手動テスト時は任意）"
+        required: false
+        default: "manual"
+        type: string
+      request_id:
+        description: "リクエスト識別子（手動テスト時は任意）"
+        required: false
+        default: "manual"
+        type: string
+      photo_file_id:
+        description: "Telegram画像のfile_id（手動テスト時は任意）"
+        required: false
+        default: ""
+        type: string
+      photo_file_name:
+        description: "画像ファイル名のヒント（任意）"
+        required: false
+        default: ""
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+concurrency:
+  group: telegram-claude-agent-${{ github.event.client_payload.request_id || inputs.request_id || github.run_id }}
+  cancel-in-progress: false
+
+jobs:
+  agent:
+    name: Run Claude Code and open PR
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    env:
+      TASK: ${{ github.event.client_payload.task || inputs.task }}
+      CHAT_ID: ${{ github.event.client_payload.chat_id || inputs.chat_id || 'manual' }}
+      REQUEST_ID: ${{ github.event.client_payload.request_id || inputs.request_id || 'manual' }}
+      PHOTO_FILE_ID: ${{ github.event.client_payload.photo_file_id || inputs.photo_file_id || '' }}
+      PHOTO_FILE_NAME: ${{ github.event.client_payload.photo_file_name || inputs.photo_file_name || '' }}
+      BASE_BRANCH: main
+
+    steps:
+      - name: Validate payload
+        run: |
+          if [ -z "${TASK// /}" ]; then
+            echo "::error::client_payload.task（またはworkflow_dispatchのtask）が空です。"
+            exit 1
+          fi
+
+          echo "request_id: ${REQUEST_ID}"
+          echo "chat_id:    ${CHAT_ID}"
+
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ github.token }}
+          persist-credentials: true
+
+      - name: Prepare working branch
+        id: branch
+        run: |
+          SAFE_ID="$(printf '%s' "${REQUEST_ID}" | tr -c 'A-Za-z0-9._-' '-' | cut -c1-40)"
+          [ -n "${SAFE_ID}" ] || SAFE_ID="req"
+
+          BRANCH="telegram-claude/${SAFE_ID}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "${BRANCH}"
+
+          echo "branch=${BRANCH}" >> "$GITHUB_OUTPUT"
+          echo "作業ブランチ: ${BRANCH}"
+
+      - name: Write task instruction to file
+        id: task_file
+        run: |
+          TASK_FILE="${RUNNER_TEMP}/telegram-task.md"
+          REPORT_FILE="${RUNNER_TEMP}/claude-report.md"
+
+          printf '%s\n' "${TASK}" > "${TASK_FILE}"
+
+          echo "path=${TASK_FILE}" >> "$GITHUB_OUTPUT"
+          echo "report=${REPORT_FILE}" >> "$GITHUB_OUTPUT"
+
+          echo "--- task ---"
+          cat "${TASK_FILE}"
+
+      - name: Download Telegram image attachment
+        id: attachment
+        if: env.PHOTO_FILE_ID != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: |
+          if [ -z "${TELEGRAM_BOT_TOKEN}" ]; then
+            echo "::error::画像付き依頼ですが TELEGRAM_BOT_TOKEN が未設定です。"
+            exit 1
+          fi
+
+          ATTACH_DIR="${RUNNER_TEMP}/telegram-attachment"
+          mkdir -p "${ATTACH_DIR}"
+
+          META_JSON="$(curl --fail-with-body --silent --show-error \
+            "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getFile?file_id=${PHOTO_FILE_ID}")"
+
+          FILE_PATH="$(printf '%s' "${META_JSON}" | jq -r '.result.file_path // empty')"
+          if [ -z "${FILE_PATH}" ]; then
+            echo "::error::Telegram getFile から file_path を取得できませんでした。"
+            exit 1
+          fi
+
+          EXT="${FILE_PATH##*.}"
+          case "${EXT}" in
+            jpg|jpeg|png|webp) ;;
+            *) EXT="jpg" ;;
+          esac
+
+          SAFE_HINT="$(printf '%s' "${PHOTO_FILE_NAME}" | tr -c 'A-Za-z0-9._-' '-' | sed 's/^-*//;s/-*$//' | cut -c1-80)"
+          if [ -n "${SAFE_HINT}" ]; then
+            case "${SAFE_HINT}" in
+              *.*) FILE_NAME="${SAFE_HINT}" ;;
+              *) FILE_NAME="${SAFE_HINT}.${EXT}" ;;
+            esac
+          else
+            SAFE_ID="$(printf '%s' "${REQUEST_ID}" | tr -c 'A-Za-z0-9._-' '-' | cut -c1-50)"
+            FILE_NAME="telegram-${SAFE_ID}.${EXT}"
+          fi
+
+          LOCAL_PATH="${ATTACH_DIR}/${FILE_NAME}"
+          curl --fail-with-body --silent --show-error \
+            -o "${LOCAL_PATH}" \
+            "https://api.telegram.org/file/bot${TELEGRAM_BOT_TOKEN}/${FILE_PATH}"
+
+          if [ ! -s "${LOCAL_PATH}" ]; then
+            echo "::error::Telegram画像のダウンロード結果が空です。"
+            exit 1
+          fi
+
+          echo "path=${LOCAL_PATH}" >> "$GITHUB_OUTPUT"
+          echo "name=${FILE_NAME}" >> "$GITHUB_OUTPUT"
+          echo "画像を受け取りました: ${FILE_NAME}"
+          file "${LOCAL_PATH}" || true
+
+      - name: Run Claude Code
+        id: claude
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude_args: >-
+            --allowed-tools
+            "Read,Glob,Grep,Edit,MultiEdit,Write,
+            Bash(git status:*),Bash(git diff:*),Bash(git log:*),
+            Bash(ls:*),Bash(node:*),Bash(npx:*),Bash(python3:*),Bash(curl:*),
+            Bash(cp:*),Bash(file:*),Bash(mkdir:*)"
+            --max-turns 100
+          prompt: |
+            あなたはこのSEOサイトのGitHubリポジトリを扱うClaude Code Agentです。
+
+            まず、リポジトリ直下の `CLAUDE.md` と、Telegramから渡された作業指示ファイルを読んでください。
+
+            作業指示:
+            ${{ steps.task_file.outputs.path }}
+
+            Telegram画像ファイル（添付がある場合のみ）:
+            ${{ steps.attachment.outputs.path }}
+
+            画像パスが空でなければ、そのファイルはユーザーが今回Telegramで添付した実ファイルです。
+            必要なら `file` で確認し、依頼を成立させるために `cp` でリポジトリ内へ追加して使用してください。
+            画像ファイル名や保存先は現物確認後に自然な名前を選び、存在しない画像名を推測して参照しないでください。
+            画像パスが空なら「画像が届いている」と仮定しないでください。
+
+            Telegramへ画像を添付して返したい場合の送信箱:
+            ${{ runner.temp }}/telegram-outbox
+
+            ユーザーが「画像そのものを送ってほしい」「リンクではなく添付で」と求めている場合は、
+            このディレクトリを `mkdir -p` で作り、送りたい画像ファイルを `cp` で置いてください。
+            置かれた画像（png/jpg/jpeg/gif/webp、1ファイル10MB未満）は、
+            作業レポートより先にTelegramへ添付送信されます。
+            送信箱はリポジトリ外なのでコミット対象にはなりません。
+            画像が不要なタスクでは、このディレクトリを作らないでください。
+
+            必要な場合のみ、次の補助ファイルを参照してください。
+
+            - `bot-capabilities.md`
+            - `bot-handoff.md`
+            - `auto-checklist.md`
+
+            ## 基本原則
+
+            1. ユーザーの表面的な文言だけでなく、渡された文脈から最終目的を理解する。
+            2. 推測より現物確認を優先し、Read / Glob / Grep / Bash / curl等から必要なツールを自分で選ぶ。
+            3. ユーザーが依頼した範囲と、その目的を正しく成立させるために必要な範囲だけ作業する。曖昧な依頼を勝手にサイト全体監査へ拡大しない。
+            4. 小さなタスクは現状確認後すぐ実行し、大きなタスクは軽く計画してから進める。
+            5. 調査のみの依頼ではリポジトリを変更しない。修正依頼では必要なファイルだけを変更する。
+            6. 実行後は結果を観測し、必要な検証を自分で選んで行う。
+            7. 依頼範囲内の問題を見つけ、安全に直せる場合は自分で修正し、再検証する。
+            8. 確認できない情報を事実のように断定しない。
+            9. 不可逆・危険な操作は行わない。Production反映やmainへの直接変更はこのAgentの担当外。
+            10. 最後に、ユーザーが判断できる短い作業レポートを作る。求められていない全件一覧・長い検証ログ・重複説明は出さない。
+
+            ## Git操作
+
+            このWorkflowでは、branch作成・commit・push・PR作成はGitHub Actions側が担当します。
+            Claude Code自身は以下を行わないでください。
+
+            - git commit
+            - git push
+            - git branch操作
+            - PR作成
+            - mainへの直接変更
+            - 自動マージ
+            - Production反映
+
+            状態確認のための `git status` / `git diff` / `git log` は使用して構いません。
+
+            ## セキュリティ
+
+            Secret、Token、APIキー等を表示しないでください。
+            `CLAUDE.md` の禁止事項・サイト固有ルールは必ず守ってください。
+
+            ## 作業レポート
+
+            最後に、次のファイルへ日本語Markdownで作業レポートを書き出してください。
+
+            ${{ steps.task_file.outputs.report }}
+
+            レポートは原則1200文字以内、最大でも次の4項目だけにしてください。
+
+            - 結論 / 結果
+            - 変更したもの（ある場合のみ）
+            - 検証結果（重要なものだけ）
+            - 次にユーザーがすること（必要な場合のみ）
+
+            ユーザーが明示的に一覧・詳細レポートを求めた場合だけ詳細化してください。
+            通常タスクでは、全ファイル一覧、全リンク一覧、長い調査手順、同じ内容の言い換えを出さないでください。
+            作業不能の場合も「止まった理由1つ + 次に必要なこと1つ」を短く返してください。
+            「後で提示します」で終了せず、この実行内で必要な成果まで完成させてください。
+
+      - name: Send images to Telegram
+        if: success()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: |
+          OUTBOX="${RUNNER_TEMP}/telegram-outbox"
+
+          if [ ! -d "${OUTBOX}" ]; then
+            echo "送信箱がないため画像送信はありません。"
+            exit 0
+          fi
+
+          if [ -z "${TELEGRAM_BOT_TOKEN}" ]; then
+            echo "::warning::TELEGRAM_BOT_TOKENが未設定のため画像送信をスキップします。"
+            exit 0
+          fi
+
+          if [ -z "${CHAT_ID}" ] || [ "${CHAT_ID}" = "manual" ]; then
+            echo "手動実行のため画像送信をスキップします。"
+            exit 0
+          fi
+
+          FILES=()
+          while IFS= read -r line; do
+            FILES+=("${line}")
+          done < <(find "${OUTBOX}" -maxdepth 1 -type f -size -10M \
+            \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' \
+               -o -iname '*.gif' -o -iname '*.webp' \) | sort)
+
+          TOTAL="${#FILES[@]}"
+
+          if [ "${TOTAL}" -eq 0 ]; then
+            echo "送信対象の画像がありません。"
+            exit 0
+          fi
+
+          API="https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}"
+          SENT=0
+          INDEX=0
+
+          while [ "${INDEX}" -lt "${TOTAL}" ]; do
+            MEDIA='[]'
+            ARGS=()
+            BATCH=0
+            LAST_FILE=""
+
+            # sendMediaGroupは1回あたり最大10件。
+            while [ "${BATCH}" -lt 10 ] && [ "${INDEX}" -lt "${TOTAL}" ]; do
+              FILE="${FILES[${INDEX}]}"
+              KEY="file${BATCH}"
+              MEDIA="$(jq -c \
+                --arg key "${KEY}" \
+                --arg caption "$(basename "${FILE}")" \
+                '. + [{type: "photo", media: ("attach://" + $key), caption: $caption}]' \
+                <<< "${MEDIA}")"
+              ARGS+=(-F "${KEY}=@${FILE}")
+              LAST_FILE="${FILE}"
+              BATCH=$((BATCH + 1))
+              INDEX=$((INDEX + 1))
+            done
+
+            # sendMediaGroupは2件以上必要なので、1件だけならsendPhotoを使う。
+            if [ "${BATCH}" -eq 1 ]; then
+              ENDPOINT="${API}/sendPhoto"
+              REQUEST=(
+                -F "chat_id=${CHAT_ID}"
+                -F "caption=$(basename "${LAST_FILE}")"
+                -F "photo=@${LAST_FILE}"
+              )
+            else
+              ENDPOINT="${API}/sendMediaGroup"
+              REQUEST=(
+                -F "chat_id=${CHAT_ID}"
+                -F "media=${MEDIA}"
+                "${ARGS[@]}"
+              )
+            fi
+
+            if curl --fail-with-body --silent --show-error --output /dev/null \
+              "${REQUEST[@]}" \
+              "${ENDPOINT}"; then
+              SENT=$((SENT + BATCH))
+            else
+              echo "::warning::画像${BATCH}件の送信に失敗しました。"
+            fi
+
+            if [ "${INDEX}" -lt "${TOTAL}" ]; then
+              sleep 2
+            fi
+          done
+
+          echo "Telegramへ送信した画像: ${SENT}/${TOTAL}"
+
+      - name: Detect changes
+        id: changes
+        run: |
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "変更はありません。commit、push、PR作成をスキップします。"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+
+            {
+              echo "files<<CHANGED_FILES_EOF"
+              git diff --cached --name-status
+              echo "CHANGED_FILES_EOF"
+            } >> "$GITHUB_OUTPUT"
+
+            {
+              echo "stat<<DIFFSTAT_EOF"
+              git diff --cached --stat
+              echo "DIFFSTAT_EOF"
+            } >> "$GITHUB_OUTPUT"
+
+            git diff --cached --stat
+          fi
+
+      - name: Commit changes
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git commit             -m "chore(telegram-agent): apply requested changes"             -m "request_id: ${REQUEST_ID}"             -m "chat_id: ${CHAT_ID}"
+
+      - name: Push working branch
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ steps.branch.outputs.branch }}
+        run: |
+          case "${BRANCH}" in
+            main|master|"")
+              echo "::error::mainへの直接pushは禁止されています。"
+              exit 1
+              ;;
+          esac
+
+          git remote set-url origin             "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+
+          git push --set-upstream origin             "refs/heads/${BRANCH}:refs/heads/${BRANCH}"
+
+      - name: Create Pull Request
+        id: create_pr
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ steps.branch.outputs.branch }}
+          CHANGED_FILES: ${{ steps.changes.outputs.files }}
+          DIFFSTAT: ${{ steps.changes.outputs.stat }}
+          TASK_FILE: ${{ steps.task_file.outputs.path }}
+          REPORT_FILE: ${{ steps.task_file.outputs.report }}
+        run: |
+          BODY_FILE="${RUNNER_TEMP}/pr-body.md"
+
+          {
+            echo "## リクエスト情報"
+            echo ""
+            echo "| 項目 | 値 |"
+            echo "| --- | --- |"
+            echo "| request_id | \`${REQUEST_ID}\` |"
+            echo "| chat_id | \`${CHAT_ID}\` |"
+            echo "| 作業ブランチ | \`${BRANCH}\` |"
+            echo "| ワークフロー実行 | [#${GITHUB_RUN_ID}](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}) |"
+            echo ""
+            echo "## 作業指示"
+            echo ""
+            echo '```text'
+            cat "${TASK_FILE}"
+            echo '```'
+            echo ""
+            echo "## 変更ファイル"
+            echo ""
+            echo '```'
+            printf '%s\n' "${CHANGED_FILES}"
+            echo '```'
+            echo ""
+            echo "### 差分サマリ"
+            echo ""
+            echo '```'
+            printf '%s\n' "${DIFFSTAT}"
+            echo '```'
+            echo ""
+            echo "## Claude Code作業レポート"
+            echo ""
+            if [ -s "${REPORT_FILE}" ]; then
+              cat "${REPORT_FILE}"
+            else
+              echo "_レポートファイルが生成されませんでした。Actionsログを確認してください。_"
+            fi
+            echo ""
+            echo "---"
+            echo ""
+            echo "> 自動マージはしません。内容を確認してから人間がマージしてください。"
+          } > "${BODY_FILE}"
+
+          TASK_SNIPPET="$(head -n 1 "${TASK_FILE}" | cut -c1-60)"
+          [ -n "${TASK_SNIPPET}" ] || TASK_SNIPPET="${REQUEST_ID}"
+
+          gh pr create             --base "${BASE_BRANCH}"             --head "${BRANCH}"             --title "[Telegram Claude Agent] ${TASK_SNIPPET}"             --body-file "${BODY_FILE}"
+
+          PR_URL="$(gh pr view "${BRANCH}" --json url --jq .url)"
+
+          echo "pr_url=${PR_URL}" >> "$GITHUB_OUTPUT"
+          echo "PR: ${PR_URL}"
+
+          {
+            echo "### Telegram Claude Agent"
+            echo ""
+            echo "- request_id: \`${REQUEST_ID}\`"
+            echo "- chat_id: \`${CHAT_ID}\`"
+            echo "- PR: ${PR_URL}"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: No changes summary
+        if: steps.changes.outputs.changed != 'true'
+        run: |
+          {
+            echo "### Telegram Claude Agent"
+            echo ""
+            echo "- request_id: \`${REQUEST_ID}\`"
+            echo "- chat_id: \`${CHAT_ID}\`"
+            echo "- 結果: ファイル変更なし。調査・確認タスクの場合は正常な結果です。"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Send final result to Telegram
+        if: success()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          CHANGED: ${{ steps.changes.outputs.changed }}
+          PR_URL: ${{ steps.create_pr.outputs.pr_url }}
+          REPORT_FILE: ${{ steps.task_file.outputs.report }}
+        run: |
+          if [ -z "${TELEGRAM_BOT_TOKEN}" ]; then
+            echo "::warning::TELEGRAM_BOT_TOKENが未設定のため通知をスキップします。"
+            exit 0
+          fi
+
+          if [ -z "${CHAT_ID}" ] || [ "${CHAT_ID}" = "manual" ]; then
+            echo "手動実行のためTelegram通知をスキップします。"
+            exit 0
+          fi
+
+          python3 - <<'PY'
+          import json
+          import os
+          import urllib.request
+          from pathlib import Path
+
+          token = os.environ["TELEGRAM_BOT_TOKEN"]
+          chat_id = os.environ["CHAT_ID"]
+          changed = os.environ.get("CHANGED", "false") == "true"
+          pr_url = os.environ.get("PR_URL", "").strip()
+          report_path = Path(os.environ["REPORT_FILE"])
+
+          if report_path.exists() and report_path.stat().st_size > 0:
+              report = report_path.read_text(encoding="utf-8", errors="replace").strip()
+          else:
+              report = "処理は完了しましたが、作業レポートを取得できませんでした。"
+
+          # Telegramは詳細ログ置き場ではない。通常は短い結論だけ返す。
+          limit = 1800
+          if len(report) > limit:
+              report = report[:limit].rstrip() + "\n…（詳細はPR / Actionsで確認できます）"
+
+          if changed:
+              parts = ["対応完了。", report]
+              if pr_url:
+                  parts.append(f"確認用PR:\n{pr_url}")
+          else:
+              parts = ["確認完了。", report]
+
+          text = "\n\n".join(part for part in parts if part).strip()
+          api_url = f"https://api.telegram.org/bot{token}/sendMessage"
+          payload = json.dumps({
+              "chat_id": chat_id,
+              "text": text,
+              "disable_web_page_preview": True,
+          }, ensure_ascii=False).encode("utf-8")
+          req = urllib.request.Request(
+              api_url,
+              data=payload,
+              headers={"Content-Type": "application/json"},
+              method="POST",
+          )
+          with urllib.request.urlopen(req, timeout=30) as response:
+              response.read()
+          PY
+
+      - name: Send failure result to Telegram
+        if: failure()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: |
+          if [ -z "${TELEGRAM_BOT_TOKEN}" ]; then
+            echo "::warning::TELEGRAM_BOT_TOKENが未設定のため失敗通知をスキップします。"
+            exit 0
+          fi
+
+          if [ -z "${CHAT_ID}" ] || [ "${CHAT_ID}" = "manual" ]; then
+            echo "手動実行のためTelegram通知をスキップします。"
+            exit 0
+          fi
+
+          RUN_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+
+          MESSAGE="$(printf '%s\n\n%s\n%s' \
+            '処理中にエラーが発生しました。' \
+            'GitHub Actions:' \
+            "${RUN_URL}")"
+
+          PAYLOAD="$(jq -n             --arg chat_id "${CHAT_ID}"             --arg text "${MESSAGE}"             '{chat_id: $chat_id, text: $text, disable_web_page_preview: true}')"
+
+          curl --fail-with-body --silent --show-error             -X POST             -H "Content-Type: application/json"             -d "${PAYLOAD}"             "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage"
